@@ -1,0 +1,71 @@
+import React from 'react';
+import Swiper from 'react-id-swiper';
+import {NavLink} from "react-router-dom";
+
+
+const SwiperDefault = () => {
+    const params = {
+        slidesPerView: 5.5,
+        spaceBetween: 15,
+        centeredSlides: false,
+        observer: true,
+        observeParents: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: true,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            dynamicBullets: true,
+            clickable: true,
+        },
+        breakpoints: {
+            992: {
+                spaceBetween: 8
+            },
+            1200: {
+                spaceBetween: 10
+            }
+        }
+    }
+    return (
+        <Swiper {...params}>
+            <div>
+                <NavLink to='/cinema'>
+                    <img className="opacity" src="./Images/top_menu/OnoTwo.gif"></img>
+                    <h1>Оно 2</h1>
+                    <p>с 5 сентября</p>
+                </NavLink>
+            </div>
+            <div>
+                <a href="OnoTwo.html">
+                    <img className="opacity" src="./Images/top_menu/OnoTwo.gif"></img>
+                    <h1>Оно 2</h1>
+                    <p>с 5 сентября</p>
+                </a>
+            </div>
+            <div>
+                <a href="OnoTwo.html">
+                    <img className="opacity" src="./Images/top_menu/OnoTwo.gif"></img>
+                    <h1>Оно 2</h1>
+                    <p>с 5 сентября</p>
+                </a>
+            </div>
+            <div>
+                <a href="OnoTwo.html">
+                    <img className="opacity" src="./Images/top_menu/OnoTwo.gif"></img>
+                    <h1>Оно 2</h1>
+                    <p>с 5 сентября</p>
+                </a>
+            </div>
+            <div>
+                <a href="OnoTwo.html">
+                    <img className="opacity" src="./Images/top_menu/OnoTwo.gif"></img>
+                    <h1>Оно 2</h1>
+                    <p>с 5 сентября</p>
+                </a>
+            </div>
+        </Swiper>
+    )
+};
+export default SwiperDefault;

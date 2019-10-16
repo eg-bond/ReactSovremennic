@@ -1,6 +1,8 @@
 import React from 'react';
 import s from './About.module.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap.css';
+import TopSwiper from "../Template/TopSwiper";
+import SwiperDefault from "../Template/SwiperDefault";
 
 
 function About() {
@@ -25,6 +27,10 @@ function About() {
                     </nav>
                 </div>
             </div>
+
+            {/*<TopSwiper />*/}
+            <SwiperDefault />
+
 
             <div>Line5px</div>
             <div>separator-xs</div>
