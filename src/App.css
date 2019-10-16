@@ -14,7 +14,7 @@ body {
   margin: 0;
   padding: 0;
   /*background-image: url(../main_image.jpg);*/
-  background-color: #d6e6e6;
+  background-color: #000 !important;
   /*background-repeat: no-repeat;*/
   /*background-position: top center;*/
   height: 100%;
@@ -41,23 +41,27 @@ body {
   color: white;
 }
 
-.logo {
-  width: 17%;
-  margin-right: 1%;
-  margin: -0.6% 0 1% 0;
+.margin-top-1 {
+    margin-top: 1% !important;
 }
 
-.navbar_custom {
-  background-color: #000;
-  padding-top: 1%;
-  margin-bottom: 0;
-  border: solid 5px white;
-  border-bottom: none;
-  position: relative;
-  height: 80px;
-  padding:1% 0 0 2%;
-  border-radius: 20px 20px 0 0;
+.margin-top-2 {
+    margin-top: 2% !important;
 }
+
+.wrapper {
+  height: 100% ;
+  background-color: black;
+  border: solid 5px white;
+  border-top: none;
+}
+
+hr {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+
+/*Navigation components*/
 
 .navbar-collapse {
   padding-left: 80px !important;
@@ -83,6 +87,13 @@ body {
   color: black;
   transition: ease 650ms ;
 }
+
+.line_5px {
+  border-top: 5px solid white;
+}
+
+/*TopSwiper components*/
+
 .top-menu {
   height: 330px;
   margin-top: 10px;
@@ -98,7 +109,7 @@ body {
   padding: 0px;
 }
 
-.swiper-wrapper {
+.top-swiper-wrapper {
   position: relative;
   width: 100%;
   height: 100%;
@@ -106,28 +117,138 @@ body {
   display: flex;
   transition-property: transform;
   box-sizing: content-box;
+  height: 330px;
 }
 
-.swiper-slide {
+.top-swiper-slide {
   flex-shrink: 0;
   width: 100%;
   height: 100%;
   position: relative;
   transition-property: transform;
+  font-size: 12px;
+}
 
-  /* Center slide text vertically */
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
+.top-swiper-slide img {
+  height: 250px;
+  width: 100%;
+  border-radius: 3px;
+}
+
+.top-swiper-slide h1 {
+  font-size: 101%;
+  font-weight: bold;
+  padding-left: 2%;
+  color: white;
+  font-family: Lucida Console, monospace;
+  margin: 5% 0 2% 0;
+}
+
+.top-swiper-slide p {
+  padding-left: 2.5%;
+  font-size: 90%;
+  letter-spacing: 0.01em;
+  color: white;
+  font-weight: normal;
+  font-family: Lucida Console, monospace;
+}
+
+.top-swiper-slide a {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: normal;
+}
+
+.top-swiper-slide a:hover {
+  color: #d8d1d1;
+  transition: all 0.3s;
+  cursor: pointer;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+.film-swiper {
+  width: 98%;
+  margin: 0.5% 0 0 1%;
+}
+
+.opacity {
+  transition: all 0.3s;
+  opacity:1;
+}
+
+.opacity:hover {
+  opacity:0.82;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background: #000;
+  background-color: white;
+}
+
+.swiper-pagination-bullet {
+  background: #000;
+  background-color: white;
+}
+
+/*Стили для части "о кинотеатре"*/
+
+.about-img img {
+    border: solid 1px white;
+    width: 110%;
+    margin-bottom: 10%;
+}
+
+.margin-minus-left  {
+    margin-left: -1.7%;
+}
+
+.about-images  {
+    margin-left: -1.7%;
+}
+
+.about-images img {
+    border: solid 1px white;
+    width: 110%;
+    margin-bottom: 10%;
+    border-radius: 3px;
+}
+
+/*Стили для rules*/
+
+.rules h3, .rules h4 {
+    font-family: Lucida Console, monospace !important;
+    text-align: center;
+    font-size: 140%
+}
+
+.rules p {
+    font-family: Lucida Console, monospace !important;
+    font-size: 89%;
+    text-align: justify;
+}
+
+/*Advs*/
+
+.info {
+    margin-top: 7.8%;
+}
+
+.info img {
+    width: 100%;
+    height: 100%;
+    border: solid 1px white;
+    border-radius: 3px;
+}
+
+.sushi img {
+    width: 100%;
+    height: 100%;
+    border: solid 1px white;
+    border-radius: 3px;
+    margin: 20px 0 20px 0;
 }
 
 @media (max-width: 1200px) {
@@ -145,6 +266,149 @@ body {
     padding-left: 30px !important;
   }
 
+}
+
+/*bottom swiper*/
+
+.swiper_bar {
+    color: white;
+    width: 45%;
+    padding: -20px 0 5px -20px;
+    margin-left: 1.2%;
+}
+
+.swiper_bar>h2 {
+    font-weight: bold;
+    float: left;
+    font-family: Arial Black, sans-serif
+}
+
+.bottom-swiper {
+    padding: 0;
+    width: 1160px;
+    background-color: black;
+    border-top: solid 5px white;
+    border-left: solid 0.5px white;
+    border-right: solid 0.5px white;
+    margin: 0 0 0 -15px;
+    cursor: grab;
+}
+
+.bottom-swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+    box-sizing: content-box;
+}
+
+.bottom-swiper-slide {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition-property: transform;
+    text-align: left;
+    font-size: 14px;
+    background: black;
+}
+
+.bottom-swiper-slide img {
+    height: 360px;
+    width: 100%;
+    margin-top: 0.35px;
+}
+
+.bottom-swiper-slide h1 {
+    font-size: 140%;
+    font-weight: bold;
+    padding-left: 2%;
+}
+
+.bottom-swiper-slide p {
+    padding-left: 2%;
+    font-size: 90%;
+    letter-spacing: 0.02em;
+    font: normal 100% 'century gothic', arial;
+}
+
+.bottom-swiper-slide a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.bottom-swiper-slide a:hover {
+    color: #d8d1d1;
+    transition: all 0.3s;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/*Стили для страницы с описаниями*/
+
+.film_info img {
+    width: 250px;
+    height: auto;
+    border: solid 1px white;
+    border-radius: 8px;
+    margin: 0 0 7% 12px;
+}
+
+.description_h {
+    color: #e41b2b;
+    margin-top: -4.5%;
+    font-weight: bold;
+    font-family: Arial Black, sans-serif;
+}
+
+.description_table {
+    color: white;
+    text-align: left;
+    margin-bottom: 3%;
+    font-family: Lucida Console, monospace;
+}
+
+.description_table td {
+    padding: 0.7% 0 0.7% 0;
+    text-align: justify;
+}
+
+.description_table td:nth-of-type(1) {
+    width:170px;
+    vertical-align: top;
+}
+
+.description {
+    text-align: justify;
+    color: white;
+}
+
+.embed-responsive {
+    border: solid 1px white;
+    border-radius: 2px;
+    margin: 20px 0 30px 0;
+}
+
+/*footer*/
+
+.footer {
+    text-align: center;
+    background-color: white;
+    padding: 1.5%;
+}
+
+.footer a {
+    color: black;
+    text-decoration: none;
+    font: normal 100% 'century gothic', arial;
+}
+
+.footer a:hover {
+    color: #ff0000 !important;
+    text-decoration: none;
 }
 
 @media (max-width: 992px), /*(max-width: 850px) and (max-height: 425px) and*/ {
@@ -180,6 +444,11 @@ body {
 }
 
 @media (min-width: 768.2px) and (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+
+  .padding_15xs {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
 
   .logo {
     width: 150px;

@@ -2,43 +2,30 @@ import React from 'react';
 import Swiper from 'react-id-swiper';
 import {NavLink} from "react-router-dom";
 
-const TopSwiper = () => {
+const BottomSwiper = () => {
     const params = {
-        slidesPerView: 5.5,
-        spaceBetween: 15,
+        slidesPerView: 4,
+        spaceBetween: 30,
         centeredSlides: false,
-        observer: true,
-        observeParents: true,
-        containerClass: 'film-swiper swiper-container',
-        wrapperClass: 'top-swiper-wrapper',
-        slideClass: 'top-swiper-slide',
+        loop: true,
+        containerClass: 'bottom-swiper swiper-container',
+        wrapperClass: 'bottom-swiper-wrapper',
+        slideClass: 'bottom-swiper-slide',
         autoplay: {
             delay: 3000,
             disableOnInteraction: true,
         },
-        pagination: {
-            el: '.swiper-pagination',
-            dynamicBullets: true,
-            clickable: true,
-        },
-        breakpoints: {
-            992: {
-                spaceBetween: 8
-            },
-            1200: {
-                spaceBetween: 10
-            }
-        }
     }
 
     return (
-        <div className='top-menu'>
+        <div className='container'>
+            <div className="swiper_bar hidden-xs"><h2>Сегодня в кино</h2></div>
             <Swiper {...params}>
                 <div>
-                    <NavLink to='/joker'>
-                        <img className="opacity" src="./Images/top_menu/Joker.gif"></img>
+                    <NavLink to='/cinema'>
+                        <img className="opacity" src="./Images/top_menu/OnoTwo.gif"></img>
                         <h1>Оно 2</h1>
-                        <p>с 5 сентября</p>
+                        <p>Мульт</p>
                     </NavLink>
                 </div>
                 <div>
@@ -102,4 +89,4 @@ const TopSwiper = () => {
     )
 };
 
-export default TopSwiper;
+export default BottomSwiper;

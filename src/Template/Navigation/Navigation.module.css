@@ -1,0 +1,17 @@
+.logo {
+    width: 17%;
+    margin-right: 1%;
+    margin: -0.6% 0 1% 0;
+}
+
+.navbar_custom {
+    background-color: #000;
+    padding-top: 1%;
+    margin-bottom: 0;
+    border: solid 5px white;
+    border-bottom: none;
+    position: relative;
+    height: 80px;
+    padding:1% 0 0 2%;
+    border-radius: 20px 20px 0 0;
+}
