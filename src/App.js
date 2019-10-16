@@ -10,6 +10,8 @@ import Navigation from "./Template/Navigation/Navigation";
 import Rules from "./Content/Rules/Rules";
 import BottomSwiper from "./Template/BottomSwiper";
 import Footer from "./Template/Footer";
+import Seans from "./Content/Seans/Seans";
+import ReactBT from "./Content/Seans/ReactBT";
 
 function App() {
     return (
@@ -31,6 +33,7 @@ function App() {
 
                         <Route path='/about' component={About}/>
                         <Route path='/rules' component={Rules}/>
+                        <Route path='/seans' component={Seans}/>
 
                         {/*swiper-xs*/}
                         {/*adv-xs*/}
