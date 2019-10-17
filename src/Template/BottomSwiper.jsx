@@ -18,7 +18,7 @@ const BottomSwiper = () => {
     }
 
     return (
-        <div className='container'>
+        <div className='container hidden-xs'>
             <div className="swiper_bar hidden-xs"><h2>Сегодня в кино</h2></div>
             <Swiper {...params}>
                 <div>

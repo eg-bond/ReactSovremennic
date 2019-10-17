@@ -1,8 +1,78 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import {NavItem, Row, Tab} from "react-bootstrap";
+import {Button, Modal, NavItem, Row, Tab} from "react-bootstrap";
 import Nav from "react-bootstrap/lib/Nav";
 import Adv from "../../Template/Adv";
+
+
+
+class ModalWindow extends React.Component {
+    constructor(props, context) {
+        super(props, context);
+
+        this.handleHide = this.handleHide.bind(this);
+
+        this.state = {
+            show: false
+        };
+    }
+
+    handleHide() {
+        this.setState({ show: false });
+    }
+
+    render() {
+        return (
+            <div className="modal-container">
+                <Button
+                    id="seans_button_xs"
+                    onClick={() => this.setState({ show: true })}
+                    className='seans_button_xs'
+                >
+                    Дата
+                </Button>
+
+                <Modal
+                    show={this.state.show}
+                    onHide={this.handleHide}
+                    container={this}
+                    aria-labelledby="contained-modal-title"
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title id="contained-modal-title">
+                            Дата
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <Nav bsStyle="tabs" className='seans-tab-xs sushi-tab-xs' stacked>
+                            <NavItem eventKey="day3" onClick={this.handleHide}>
+                                Среда 16 октября
+                            </NavItem>
+                            <NavItem eventKey="day4" onClick={this.handleHide}>
+                                Четверг 17 октября
+                            </NavItem>
+                            <NavItem eventKey="day5" onClick={this.handleHide}>
+                                Пятница 18 октября
+                            </NavItem>
+                            <NavItem eventKey="day6" onClick={this.handleHide}>
+                                Суббота 19 октября
+                            </NavItem>
+                            <NavItem eventKey="day0" onClick={this.handleHide}>
+                                Воскресенье 20 октября
+                            </NavItem>
+                            <NavItem eventKey="day1" onClick={this.handleHide}>
+                                Понедельник 21 октября
+                            </NavItem>
+                            <NavItem eventKey="day2" onClick={this.handleHide}>
+                                Вторник 22 октября
+                            </NavItem>
+                        </Nav>
+                    </Modal.Body>
+                </Modal>
+            </div>
+        );
+    }
+}
 
 
 function Seans() {
@@ -22,6 +92,11 @@ function Seans() {
                                 <NavItem eventKey="day2">Вторник<br></br>22 октября</NavItem>
                             </Nav>
                         </div>
+
+                        <div className="sushi_menu_xs visible-xs">
+                            <ModalWindow />
+                        </div>
+
                         <div>
                             <Tab.Content className="xs350px" animation>
                                 <Tab.Pane eventKey="day3">

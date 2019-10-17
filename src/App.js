@@ -30,7 +30,7 @@ function App() {
                 <div className="separator"></div>
 
                 <div className="container wrapper">
-                    <div className="row padding_15xs">
+                    <div className="row">
                         <TopSwiper />
                         <hr className="line_5px hidden-xs"></hr>
 

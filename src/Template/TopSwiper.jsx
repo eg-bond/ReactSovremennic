@@ -32,7 +32,7 @@ const TopSwiper = () => {
     }
 
     return (
-        <div className='top-menu'>
+        <div className='top-menu hidden-xs'>
             <Swiper {...params}>
                 <div>
                     <NavLink to='/joker'>
