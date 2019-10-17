@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import About from "./Content/About/About";
 import TopSwiper from "./Template/TopSwiper";
@@ -11,7 +10,10 @@ import Rules from "./Content/Rules/Rules";
 import BottomSwiper from "./Template/BottomSwiper";
 import Footer from "./Template/Footer";
 import Seans from "./Content/Seans/Seans";
-import ReactBT from "./Content/Seans/ReactBT";
+import Sushi from "./Content/Sushi/Sushi";
+import '../node_modules/swiper/css/swiper.css';
+
+
 
 function App() {
     return (
@@ -31,9 +33,12 @@ function App() {
                         <TopSwiper />
                         <hr className="line_5px hidden-xs"></hr>
 
+
                         <Route path='/about' component={About}/>
                         <Route path='/rules' component={Rules}/>
                         <Route path='/seans' component={Seans}/>
+                        <Route path='/sushi' component={Sushi}/>
+
 
                         {/*swiper-xs*/}
                         {/*adv-xs*/}

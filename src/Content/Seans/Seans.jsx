@@ -2,6 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import {NavItem, Row, Tab} from "react-bootstrap";
 import Nav from "react-bootstrap/lib/Nav";
+import Adv from "../../Template/Adv";
 
 
 function Seans() {
@@ -366,11 +367,7 @@ function Seans() {
                 </div>
             </div>
 
-            <div className="container col-lg-3 col-md-3 col-sm-3 hidden-xs">
-                <div className="info"><a href="http://www.region47.sbor.net/"><img src="images/region47.gif"></img></a></div>
-                <div className="info"><img src="images/jsb1.gif"></img></div>
-                <div className="sushi"><a href="sushi.html"><img src="images/72.gif"></img></a></div>
-            </div>
+            <Adv />
 
             <div className="separator-xs margin-top-1"></div>
 
