@@ -369,7 +369,7 @@ function Seans() {
 
             <Adv />
 
-            <div className="separator-xs"></div>
+            <div className="separator-xs margin-top-1"></div>
 
             <div className="container visible-xs info_wide padding_0xs">
                 <a href="http://www.region47.sbor.net/"><img src="images/region47_wide.gif"></img></a>

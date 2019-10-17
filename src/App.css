@@ -66,6 +66,24 @@ hr {
 
 /*Navigation components*/
 
+.logo {
+    width: 17%;
+    margin-right: 1%;
+    margin: -0.6% 0 1% 0;
+}
+
+.navbar_custom {
+    background-color: #000;
+    padding-top: 1%;
+    margin-bottom: 0;
+    border: solid 5px white;
+    border-bottom: none;
+    position: relative;
+    height: 80px;
+    padding:1% 0 0 2%;
+    border-radius: 20px 20px 0 0;
+}
+
 .navbar-collapse {
   padding-left: 80px !important;
 }
@@ -103,14 +121,14 @@ hr {
   cursor: grab;
 }
 
-.swiper-container {
-  position: relative;
-  z-index: 1;
-  margin: 0px auto;
-  overflow: hidden;
-  list-style: none;
-  padding: 0px;
-}
+/*.swiper-container {*/
+/*  position: relative;*/
+/*  z-index: 1;*/
+/*  margin: 0px auto;*/
+/*  overflow: hidden;*/
+/*  list-style: none;*/
+/*  padding: 0px;*/
+/*}*/
 
 .top-swiper-wrapper {
   position: relative;
@@ -276,23 +294,6 @@ hr {
     border: solid 1px white;
     border-radius: 3px;
     margin: 20px 0 20px 0;
-}
-
-@media (max-width: 1200px) {
-
-  .logo {
-    width: 19%;
-    margin: -0.1% 0 1% 0;
-  }
-
-  .navbar_custom {
-    height: 75px;
-  }
-
-  .navbar-collapse {
-    padding-left: 30px !important;
-  }
-
 }
 
 /*bottom swiper*/
@@ -555,10 +556,6 @@ hr {
     color: black !important;
 }
 
-/*.swiper-container-sushi>.swiper-pagination-bullets {*/
-/*    margin: 0px 10px 20px 0;*/
-/*}*/
-
 .swiper-pagination-fraction {
     margin-bottom: 35px;
     font-weight: bold;
@@ -583,35 +580,309 @@ hr {
     text-decoration: none;
 }
 
-@media (max-width: 992px), /*(max-width: 850px) and (max-height: 425px) and*/ {
+@media (max-width: 1200px) {
 
-  .logo {
-    width: 21%;
-    margin: 0 0 1% -1.5%;
-  }
+    /*navigation  */
 
-  .navbar_custom {
-    height: 60px;
-    border: solid 3px white;
-    border-bottom: none;
-  }
+    .logo {
+        width: 19% !important;
+        margin: -0.1% 0 1% 0;
+    }
 
-  .nav-pills>li>a {
-    font-size: 85%;
-    margin-bottom: -7px;
-  }
+    .navbar_custom {
+        height: 75px;
+    }
 
-  .nav>li>a {
-    padding: 8px 6px;
-  }
+    .navbar-collapse {
+        padding-left: 30px !important;
+    }
 
-  .navigation {
-    padding: 1% 0 0 3%;
-  }
+    /*TopSwiper*/
 
-  .navbar-collapse {
-    padding-left: 1% !important;
-  }
+    .top-menu {
+        height: 282px;
+        margin-top: 10px;
+    }
+
+    .film-swiper {
+        margin: 0.5% 0 0 1%;
+    }
+
+    .top-swiper-wrapper {
+        height: 282px;
+    }
+
+    .top-swiper-slide {
+        font-size: 76%;
+    }
+
+    .top-swiper-slide img{
+        height: 210px;
+    }
+
+    /*swiperBottom*/
+
+    .bottom-swiper {
+        width: 960px !important;
+    }
+
+    .bottom-swiper-slide img {
+        width: 100%;
+        height: 300px !important;
+        margin-top: 0.5px;
+    }
+
+    .bottom-swiper-slide h1 {
+        font-size: 115% !important;
+        font-weight: bold;
+        padding-left: 2%;
+    }
+
+    .bottom-swiper-slide p {
+        padding-left: 2%;
+        font-size: 78% !important;
+        letter-spacing: 0.02em;
+    }
+
+    .info img {
+        margin-top: 2%;
+    }
+
+    .swiper_bar h2 {
+        font-size: 24px;
+        margin-left: 1.2%;
+    }
+
+    /*index*/
+
+    .news h2 {
+        font-weight: bold;
+        font-size: 175% !important;
+    }
+
+    .news p{
+        padding: 1%;
+        font-size: 85% !important;
+    }
+
+    /*seans*/
+
+    .seans-tabs>li>a  {
+        font-size: 84%;
+        padding: 5px 4.5px !important;
+    }
+
+    .table_custom {
+        height: 400px;
+    }
+
+    .table_custom th, .table_custom td {
+        font-size: 85%;
+    }
+
+    /*cinema*/
+
+    .film_info img {
+        width: 100%;
+        margin: 1% 0 0 7px;
+    }
+
+    .description_table {
+        font-size: 85%;
+    }
+
+    .description_h h2 {
+        font-size: 175%;
+    }
+
+    .description_h p {
+        font-size: 95%;
+    }
+
+    .description {
+        font-size: 85%;
+    }
+
+    /*sushi*/
+    .sushi-tab {
+        font-size: 90%;
+    }
+}
+
+@media (max-width: 992px) /*(max-width: 850px) and (max-height: 425px) and*/ {
+
+    .logo {
+        width: 21% !important;
+        margin: 0 0 1% -1.5%;
+    }
+
+    .navbar_custom {
+        height: 64px;
+        border: solid 3px white;
+        border-bottom: none;
+    }
+
+    .nav-pills > li > a {
+        font-size: 85%;
+        margin-bottom: -2px;
+    }
+
+    .nav > li > a {
+        padding: 8px 6px;
+    }
+
+    .navigation {
+        padding: 1% 0 0 3%;
+    }
+
+    .navbar-collapse {
+        padding-left: 1% !important;
+    }
+
+    .line_5px {
+        border-top: solid 3px white;
+    }
+
+    .wrapper {
+        border: solid 3px white;
+        border-top: none;
+    }
+
+    /*SwiperTop*/
+
+    .top-menu {
+        height: 240px;
+    }
+
+    .film-swiper {
+        margin: 0.5% 0 0 1%;
+        height: 240px;
+    }
+
+    .top-swiper-slide {
+        font-size: 72%;
+    }
+
+    .top-swiper-slide p {
+        font-size: 87%;
+    }
+
+    .top-swiper-slide img {
+        height: 170px;
+        width: 100%;
+        border-radius: 3px;
+    }
+
+    /*swiperBottom*/
+
+    .bottom-swiper {
+        border-top: solid 2px white;
+        margin: 0 0 0 -15px;
+        width: 745px !important;
+        border-bottom: none;
+    }
+
+    .bottom-swiper-slide img {
+        width: 100%;
+        height: 220px !important;
+        margin-top: 0.1px;
+    }
+
+    .bottom-swiper-slide h1 {
+        font-size: 87% !important;
+        font-weight: bold;
+        padding-left: 2%;
+        margin: 5% 0 4% 0;
+    }
+
+    .bottom-swiper-slide p {
+        padding-left: 2%;
+        font-size: 68% !important;
+        letter-spacing: 0.02em;
+    }
+
+    .swiper_bar h2 {
+        font-size: 20px;
+        margin-left: 1.6%;
+    }
+
+    /*index*/
+
+    .news h2 {
+        font-weight: bold;
+        font-size: 160% !important;
+    }
+
+    .news p{
+        padding: 0.5%;
+        font-size: 80% !important;
+    }
+
+    /*rules*/
+
+    .rules h3, .rules h4 {
+        font-size: 110%
+    }
+
+    .rules p {
+        font-size: 75%;
+    }
+
+    /*seans*/
+    .seans-menu {
+        margin-top: 3.2%;
+    }
+
+    .seans-tabs>li>a  {
+        font-size: 65%;
+        padding: 3px 2px;
+        margin-top: 5%;
+    }
+
+    .table_custom th, .table_custom td {
+        font-size: 68%;
+    }
+
+    .table_custom {
+        height: 300px;
+    }
+
+    /*cinema*/
+
+    .film_info img {
+        width: 100%;
+        margin-top: 3%;
+    }
+
+    .description_h h2 {
+        font-size: 135%;
+    }
+
+    .description_h p {
+        font-size: 75%;
+    }
+
+    .description_table {
+        font-size: 77%;
+    }
+
+    .description_table td:nth-of-type(1) {
+        width:40%;
+    }
+
+    .description_table td:nth-of-type(2) {
+        width:60%;
+    }
+
+    .description {
+        font-size: 77%;
+    }
+    
+    /*sushi*/
+
+    .sushi_page ul>li>a {
+        padding: 7px 6px;
+    }
 
 }
 

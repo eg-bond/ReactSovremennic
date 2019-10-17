@@ -2,7 +2,7 @@
   "name": "react_sovremennik",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://sovremennik.sbor.net/reactSovrem/",
+  "homepage": "http://sovremennik.sbor.net/react",
   "dependencies": {
     "3": "^2.1.0",
     "bootstrap": "^3.4.1",

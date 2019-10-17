@@ -12,6 +12,7 @@ import Footer from "./Template/Footer";
 import Seans from "./Content/Seans/Seans";
 import Sushi from "./Content/Sushi/Sushi";
 import '../node_modules/swiper/css/swiper.css';
+import IndexContent from "./Content/IndexContent/IndexContent";
 
 
 
@@ -33,11 +34,12 @@ function App() {
                         <TopSwiper />
                         <hr className="line_5px hidden-xs"></hr>
 
-
+                        <Route exact path='/' component={IndexContent}/>
                         <Route path='/about' component={About}/>
                         <Route path='/rules' component={Rules}/>
                         <Route path='/seans' component={Seans}/>
                         <Route path='/sushi' component={Sushi}/>
+
 
 
                         {/*swiper-xs*/}

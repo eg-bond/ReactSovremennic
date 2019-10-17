@@ -10,28 +10,28 @@ function Sushi() {
         <div>
             <div className="margin-top-2">
                 <div className="sushi_page">
-                    <Tab.Container id="left-tabs-example" defaultActiveKey="sushi">
+                    <Tab.Container defaultActiveKey="sushi">
                         <div>
-                            <Col lg={3}>
+                            <Col lg={3} md={3} sm={3}>
                                 <Nav bsStyle="pills" stacked>
-                                    <NavItem eventKey="sushi">Суши</NavItem>
-                                    <NavItem eventKey="rolls">Роллы</NavItem>
-                                    <NavItem eventKey="black_rolls">Цветные/черные роллы</NavItem>
-                                    <NavItem eventKey="hot_rolls">Запеченые роллы</NavItem>
-                                    <NavItem eventKey="brand_rolls">Фирменные роллы</NavItem>
-                                    <NavItem eventKey="sets">Наборы, сашими</NavItem>
-                                    <NavItem eventKey="salads">Салаты</NavItem>
-                                    <NavItem eventKey="soups">Супы</NavItem>
-                                    <NavItem eventKey="hot_dishes">Горячие блюда</NavItem>
-                                    <NavItem eventKey="garnish">Гарниры</NavItem>
-                                    <NavItem eventKey="dessert">Десерты</NavItem>
-                                    <NavItem eventKey="gruzia">Грузинская кухня</NavItem>
+                                    <NavItem className='sushi-tab' eventKey="sushi">Суши</NavItem>
+                                    <NavItem className='sushi-tab' eventKey="rolls">Роллы</NavItem>
+                                    <NavItem className='sushi-tab' eventKey="black_rolls">Цветные/черные роллы</NavItem>
+                                    <NavItem className='sushi-tab' eventKey="hot_rolls">Запеченые роллы</NavItem>
+                                    <NavItem className='sushi-tab' eventKey="brand_rolls">Фирменные роллы</NavItem>
+                                    <NavItem className='sushi-tab' eventKey="sets">Наборы, сашими</NavItem>
+                                    <NavItem className='sushi-tab' eventKey="salads">Салаты</NavItem>
+                                    <NavItem className='sushi-tab' eventKey="soups">Супы</NavItem>
+                                    <NavItem className='sushi-tab' eventKey="hot_dishes">Горячие блюда</NavItem>
+                                    <NavItem className='sushi-tab' eventKey="garnish">Гарниры</NavItem>
+                                    <NavItem className='sushi-tab' eventKey="dessert">Десерты</NavItem>
+                                    <NavItem className='sushi-tab' eventKey="gruzia">Грузинская кухня</NavItem>
                                 </Nav>
                                 <div className="info"><a href="http://www.region47.sbor.net/"><img
                                     src="images/region47.gif"></img></a>
                                 </div>
                             </Col>
-                            <Col lg={9}>
+                            <Col lg={9} md={9} sm={9}>
                                 <Tab.Content animation>
                                     <Tab.Pane eventKey="sushi"><img src="./Images/sushi/sushi.jpg"></img></Tab.Pane>
                                     <Tab.Pane eventKey="rolls"> <img src="./Images/sushi/rolls.jpg"></img></Tab.Pane>
