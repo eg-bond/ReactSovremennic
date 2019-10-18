@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Nav from "react-bootstrap/lib/Nav";
 import {Button, Col, Modal, NavItem, Tab} from "react-bootstrap";
 import SushiSwiper from "./SushiSwiper";
+import SwiperXs from "../../Template/SwiperXs";
 
 class ModalSushi extends React.Component {
     constructor(props, context) {
@@ -25,7 +26,7 @@ class ModalSushi extends React.Component {
                 <Button
                     id="seans_button_xs"
                     onClick={() => this.setState({ show: true })}
-                    className='seans_button_xs'
+                    className='seans_button_xs '
                 >
                     Меню
                 </Button>
@@ -68,10 +69,14 @@ function Sushi() {
         <div>
             <div className="margin-top-2">
                 <div className="sushi_page">
-                    <Tab.Container defaultActiveKey="sushi">
+                    <Tab.Container defaultActiveKey="sushi" id='sushiTab'>
                         <div>
-                            <Col lg={3} md={3} sm={3}>
-                                <Nav bsStyle="pills" className='hidden-xs' stacked>
+                            <div className="sushi_menu_xs visible-xs padding_15xs">
+                                <ModalSushi />
+                            </div>
+
+                            <Col lg={3} md={3} sm={3} className='hidden-xs'>
+                                <Nav bsStyle="pills" stacked>
                                     <NavItem className='sushi-tab' eventKey="sushi">Суши</NavItem>
                                     <NavItem className='sushi-tab' eventKey="rolls">Роллы</NavItem>
                                     <NavItem className='sushi-tab' eventKey="black_rolls">Цветные/черные роллы</NavItem>
@@ -90,9 +95,6 @@ function Sushi() {
                                 </div>
                             </Col>
 
-                            <div className="sushi_menu_xs visible-xs">
-                                <ModalSushi />
-                            </div>
                             <Col lg={9} md={9} sm={9} xs={12}>
                                 <Tab.Content animation>
                                     <Tab.Pane eventKey="sushi"><img src="./Images/sushi/sushi.jpg"></img></Tab.Pane>
@@ -112,27 +114,16 @@ function Sushi() {
                                 </Tab.Content>
                             </Col>
                         </div>
+
                     </Tab.Container>;
 
-
-                    <div className="visible-xs">
-                        <div className="row">
-                            <ul className="dropdown-menu-xs float-left">
-                                <div className="separator"></div>
-                                <h4>Фильмы</h4>
-                                <div className="swiper-container film-swiper-xs">
-                                    <div className="swiper-wrapper" id="mobileSwiper">
-
-                                    </div>
-                                </div>
-                            </ul>
-                        </div>
-                    </div>
+                    <div className="separator-xs"></div>
+                    <SwiperXs />
 
                     <div className="separator-xs margin-top-1"></div>
 
                     <div className="container visible-xs info_wide padding_0xs">
-                        <a href="http://www.region47.sbor.net/"><img src="images/region47_wide.gif"></img></a>
+                        <a href="http://www.region47.sbor.net/"><img src="./Images/region47_wide.gif"></img></a>
                     </div>
                 </div>
             </div>

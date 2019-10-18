@@ -1,9 +1,9 @@
 import React from 'react';
-import Adv from "../../Template/Adv";
+import CinemaXsBottom from "../CinemaXsBottom";
 
-function Joker(props) {
+function Maleficent(props) {
     return (
-        <div>
+        <div className='padding_15xs'>
             <div className="col-lg-9 col-md-9 col-sm-9 col-xs-12 margin-top-2">
                 <div className="film_info">
                     <div className="row">
@@ -21,33 +21,33 @@ function Joker(props) {
                                 <tbody>
                                 <tr>
                                     <td>Жанр</td>
-                                    <td>Триллер, драма, криминал</td>
+                                    <td>Фэнтези, приключения, семейный</td>
                                 </tr>
                                 <tr>
                                     <td>Режиссер</td>
-                                    <td>Тодд Филлипс</td>
+                                    <td>Хоаким Роннинг</td>
                                 </tr>
                                 <tr>
                                     <td>Продолжительность</td>
-                                    <td>122 мин.</td>
+                                    <td>118 мин.</td>
                                 </tr>
                                 <tr>
                                     <td>Возраст</td>
-                                    <td>18+</td>
+                                    <td>6+</td>
                                 </tr>
                                 <tr>
                                     <td>В главных ролях</td>
                                     <td>
-                                        Хоакин Феникс,
-                                        Зази Битц,
-                                        Роберт Де Ниро,
-                                        Джоли Чань,
-                                        Марк Мэрон,
-                                        Фрэнсис Конрой,
-                                        Бретт Каллен,
-                                        Дуглас Ходж,
-                                        Мэри Кейт Малат,
-                                        Шей Уигэм.
+                                        Дэвид Гяси,
+                                        Анджелина Джоли,
+                                        Эль Фаннинг,
+                                        Харрис Дикинсон,
+                                        Джуно Темпл,
+                                        Мишель Пфайффер,
+                                        Эд Скрейн,
+                                        Чиветель Эджиофор,
+                                        Имелда Стонтон,
+                                        Каэ Александр.
                                     </td>
                                 </tr>
                                 </tbody>
@@ -56,10 +56,7 @@ function Joker(props) {
                             <hr className="hidden-xs"></hr>
                                 <br></br>
                                     <p id="normal_desc" className="lucida_font description hidden-xs">
-                                        Готэм, начало 1980-х годов. Комик Артур Флек живет с больной матерью, которая с
-                                        детства учит его «ходить с улыбкой». Пытаясь нести в мир хорошее и дарить людям
-                                        радость, Артур сталкивается с человеческой жестокостью и постепенно приходит к
-                                        выводу, что этот мир получит от него не добрую улыбку, а ухмылку злодея Джокера.
+                                        Действие происходит через несколько лет после того, как Малефисента наложила злые чары на принцессу Аврору. Фильм рассказывает про сложную взаимосвязь между тёмной феей и будущей королевой, о новых союзниках и противниках в деле защиты волшебного леса и магических существах, которые в нем обитают.
                                     </p>
 
                                     <div className="embed-responsive embed-responsive-16by9 hidden-xs">
@@ -76,19 +73,20 @@ function Joker(props) {
             <div className="visible-xs">
 
                 <p id="xs_desc" className="lucida_font description xs_desc">
-
+                    Действие происходит через несколько лет после того, как Малефисента наложила злые чары на принцессу Аврору. Фильм рассказывает про сложную взаимосвязь между тёмной феей и будущей королевой, о новых союзниках и противниках в деле защиты волшебного леса и магических существах, которые в нем обитают.
                 </p>
 
                 <div className="embed-responsive embed-responsive-16by9">
-                    <iframe id="desc_frame2" className="embed-responsive-item"
-                            src="https://www.youtube.com/embed/e1cnRzbPu4I" frameBorder="0"
-                            allow="accelerometer; autoplay; encrypted-media; gyroscope" allowFullScreen></iframe>
+                    <iframe id="desc_frame1" className="embed-responsive-item" frameBorder="0" src={"https://www.youtube.com/embed/" + props.films['playerCode']}
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope"
+                            allowFullScreen></iframe>
                 </div>
             </div>
 
-            <Adv />
+            <CinemaXsBottom/>
+
         </div>
     );
 }
 
-export default Joker;
+export default Maleficent;

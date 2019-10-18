@@ -1,4 +1,5 @@
 import React from "react";
+import {NavLink} from "react-router-dom";
 
 function Adv() {
     return (
@@ -6,7 +7,7 @@ function Adv() {
             <div className="info"><a href="http://www.region47.sbor.net"><img src="./images/region47.gif"></img></a>
             </div>
             <div className="info"><img src="images/jsb1.gif"></img></div>
-            <div className="sushi"><a href="sushi.html"><img src="./images/72.gif"></img></a></div>
+            <div className="sushi"><NavLink to="sushi"><img src="./images/72.gif"></img></NavLink></div>
         </div>
     );
 }

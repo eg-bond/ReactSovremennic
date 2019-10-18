@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {Button, Modal, NavItem, Row, Tab} from "react-bootstrap";
 import Nav from "react-bootstrap/lib/Nav";
 import Adv from "../../Template/Adv";
+import SwiperXs from "../../Template/SwiperXs";
 
 
 
@@ -425,24 +426,14 @@ function Seans() {
                         </div>
                     </div>
                 </Tab.Container>;
-
+                <div className="separator-special"></div>
             </div>
 
-            <div className="visible-xs">
-                <div className="row">
-                    <ul className="dropdown-menu-xs float-left">
-                        <div className="separator"></div>
-                        <h4>Фильмы</h4>
-                        <div className="swiper-container film-swiper-xs">
-                            <div className="swiper-wrapper" id="mobileSwiper">
 
-                            </div>
-                        </div>
-                    </ul>
-                </div>
-            </div>
 
             <Adv />
+
+            <SwiperXs />
 
             <div className="separator-xs"></div>
 

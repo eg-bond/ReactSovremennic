@@ -44,6 +44,10 @@ body {
   color: white;
 }
 
+.margin-top-minus1 {
+    margin-top: -1% !important;
+}
+
 .margin-top-1 {
     margin-top: 1% !important;
 }
@@ -74,10 +78,22 @@ body {
         margin: 0 0 0 -15px;
     }
 
-    .separator-xs {
+    .separator-index {
         height: 5px;
         background-color: #292e33;
         margin: 0 -15px 0 -15px;
+    }
+
+    .separator-special {
+        height: 5px;
+        background-color: #292e33;
+        margin: 0 -15px 10px -15px;
+    }
+
+    .separator-xs {
+        height: 5px;
+        background-color: #292e33;
+        /*margin: 0 -15px 0 -15px;*/
     }
 
 }
@@ -579,7 +595,7 @@ hr {
 .sushi_page img{
     width: 100%;
     height: auto;
-    margin: 0 0 20px 0;
+    /*margin: 0 0 20px 0;*/
     border-radius: 3px;
 }
 
@@ -951,11 +967,6 @@ hr {
 
 @media (min-width: 768.2px) and (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
 
-  .padding_15xs {
-    padding-left: 18px;
-    padding-right: 18px;
-  }
-
   .logo {
     width: 150px;
     padding-right: 0;
@@ -997,6 +1008,9 @@ hr {
 
 @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
 
+    .h600 {
+        height: 600px;
+    }
     .logo {
         width: 150px !important;
         padding-right: 0 !important;
@@ -1055,10 +1069,10 @@ hr {
 
     .dropdown-menu-xs {
         width: 100%;
-        height: 310px;
+        /*height: 310px;*/
         background-color: black;
         border-color: #fff;
-        padding-left: 10px;
+        padding-left: 5px;
     }
 
     .dropdown-menu-xs2 {
@@ -1079,7 +1093,6 @@ hr {
     .film-swiper-xs {
         width: 98%;
         margin: 0.5% 0 0 1%;
-        opacity: 0;
     }
 
     .film-swiper-xs>.swiper-wrapper>.swiper-slide {
@@ -1237,7 +1250,7 @@ hr {
     }
 
     .dropdown-menu-xs {
-        height: 260px;
+        /*height: 260px;*/
     }
 
     .dropdown-menu-xs h4 {
@@ -1337,7 +1350,7 @@ hr {
     }
 
     .dropdown-menu-xs {
-        height: 215px;
+        /*height: 215px;*/
     }
 
     .dropdown-menu-xs h4 {
@@ -1429,7 +1442,7 @@ hr {
     }
 
     .dropdown-menu-xs {
-        height: 188px;
+        /*height: 188px;*/
     }
 
     .dropdown-menu-xs h4 {
@@ -1518,7 +1531,7 @@ hr {
     }
 
     .dropdown-menu-xs {
-        height: 162px;
+        /*height: 162px;*/
     }
 
     .dropdown-menu-xs h4 {
@@ -1590,8 +1603,8 @@ hr {
     }
 
     .padding_15xs {
-        padding-left: 18px;
-        padding-right: 18px;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
     .seans-tabs{
@@ -1614,7 +1627,7 @@ hr {
         width: 100%;
         font-size: 106.5%;
         min-height: 350px;
-        margin: 2% 0 4% 0;
+        margin: 0 0 4% 0;
     }
 
     .seans-tabs>li>a {
@@ -1702,9 +1715,9 @@ hr {
         margin: 3% 0 3% 0 ;
     }
 
-    .xs_desc {
-        opacity: 0;
-    }
+    /*.xs_desc {*/
+    /*    opacity: 0;*/
+    /*}*/
 }
 
 @media (max-width: 590px) {
@@ -1832,7 +1845,7 @@ hr {
 
     .sushi_menu_xs>div>button {
         padding: 2% 2% 2% 4.5% !important;
-        margin: 3.5% 0 1% 0 !important;
+        margin: 2% 0 4% 0 !important;
         font-family: Arial Black, sans-serif !important;
         background-color: black !important;
         border: solid 1.7px white !important;
@@ -1891,7 +1904,7 @@ hr {
 
     .sushi_page img{
         width: 100%;
-        margin-top: 2%;
+        /*margin-top: 2%;*/
     }
 
     .swiper-container-sushi {
@@ -2072,6 +2085,10 @@ hr {
 
     .about-images>.col-xs-6 {
         padding: 0 5% 0 2%;
+    }
+
+    .rules h3, .rules h4 {
+        margin-top: 8px;
     }
 
 }
