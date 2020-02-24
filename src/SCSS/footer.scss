@@ -1,0 +1,50 @@
+.footer {
+  text-align: center;
+  background-color: white;
+  padding: 2%;
+
+  a {
+    color: black;
+    text-decoration: none;
+    font: normal 100% 'century gothic', arial;
+
+    &:hover {
+      color: #ff0000 !important;
+    }
+  }
+}
+
+@for $i from 6 to -1 {
+  $maxWidth: 320px + $i*112px;
+
+  @media (max-width: $maxWidth) {
+    .footer a {
+      font-size: 73% + 3.33*$i;
+    }
+  }
+}
+
+//@media (max-width: 992px) {
+//
+//  .footer a {
+//    font-size: 90%;
+//  }
+//}
+
+//@media (max-width: 590px) {
+//
+//  .footer {
+//    padding: 2.5%;
+//  }
+
+  //.footer a {
+  //  font-size: 80%;
+  //}
+//}
+
+//@media (max-width: 350px) {
+//
+//  .footer a {
+//    font-size: 70%;
+//  }
+//}

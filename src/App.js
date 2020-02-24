@@ -1,10 +1,9 @@
 import React from 'react';
-import './App.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import About from "./Content/About/About";
 import TopSwiper from "./Template/TopSwiper";
 import {BrowserRouter, Route} from "react-router-dom";
 import Cinema from "./Content/Cinema/Cinema";
-import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import Navigation from "./Template/Navigation/Navigation";
 import Rules from "./Content/Rules/Rules";
 import BottomSwiper from "./Template/BottomSwiper";
@@ -13,6 +12,7 @@ import Seans from "./Content/Seans/Seans";
 import Sushi from "./Content/Sushi/Sushi";
 import '../node_modules/swiper/css/swiper.css';
 import IndexContent from "./Content/IndexContent/IndexContent";
+import './App.css';
 import SwiperXs from "./Template/SwiperXs";
 
 const films = [ // Массив с данными по всем фильмам

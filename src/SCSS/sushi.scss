@@ -1,0 +1,231 @@
+@import "variables";
+
+
+
+
+
+.sushi-tab {
+  border-radius: 4px 4px 4px 4px !important;
+
+  @media (max-width: 1200px) {
+    font-size: 85%;
+  }
+  @media (max-width: 992px) {
+    font-size: 80%;
+  }
+  &:focus, &:hover {
+    @extend %buttonsAnimation;
+  }
+}
+
+.sushi_page>div>.nav-tabs {
+  border: 0;
+  font-weight: bold;
+}
+
+.sushi_page img{
+  width: 100%;
+  height: auto;
+  margin: 0 0 20px 0;
+  border-radius: 3px;
+}
+
+.swiper-container-sushi {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  margin-bottom: 20px;
+  cursor: grab;
+}
+
+.swiper-button-next {
+  margin-right: 1%;
+}
+
+.swiper-button-prev {
+  margin-left: 1%;
+}
+
+.swiper-container-sushi>.swiper-pagination-bullets {
+  margin: 0 10px 20px 0;
+}
+
+.swiper-pagination-fraction {
+  margin-bottom: 35px;
+  font-weight: bold;
+
+  @media (max-width: 1200px) {
+    font-size: 90%;
+  }
+  @media (max-width: 992px) {
+    font-size: 80%;
+  }
+}
+
+@media (max-width: 992px)  {
+  .sushi_page ul>li>a {
+    padding: 7px 6px;
+  }
+}
+
+@media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+
+  .sushi_page>.col-xs-12 {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  //.sushi_menu_xs>div>button {
+  //  padding: 2% 2% 2% 4.5% !important;
+  //  margin: 2% 0 4% 0 !important;
+  //  font-family: Arial Black, sans-serif !important;
+  //  background-color: black !important;
+  //  border: solid 1.7px white !important;
+  //  color: white !important;
+  //  border-radius: 21px !important;
+  //  width: 100% !important;
+  //  margin-left: 0% !important;
+  //}
+  //
+  //.sushi_menu_xs>div>button:hover {
+  //  background-color: black !important;
+  //  border-color: red !important;
+  //  color: red !important;
+  //  border-radius: 21px !important;
+  //  transition: ease 650ms !important;
+  //}
+  //
+  //.sushi_menu_xs>div>button:focus  {
+  //  outline: none !important;
+  //}
+
+  .sushi_menu_xs {
+    >div {
+      >button {
+        padding: 2% 2% 2% 4.5%;
+        margin: 1.5% 0;
+        font-family: $arialFont;
+        background-color: black !important;
+        border: solid 1.7px white !important;
+        color: white !important;
+        border-radius: 21px;
+        width: 100%;
+
+        &:hover {
+          background-color: black !important;
+          border-color: red !important;
+          color: red !important;
+          border-radius: 21px;
+          transition: ease 650ms ;
+
+        }
+        &:focus {
+          outline: none !important;
+        }
+      }
+    }
+  }
+
+  .glyphicon-chevron-down {
+    float: right;
+    margin-top: 0.5%;
+  }
+
+  .modal-dialog {
+    padding: 8.5% 20% 0 20%;
+  }
+
+  .modal-title {
+    font-family: $arialFont;
+  }
+
+  .sushi-tab-xs {
+    > li {
+      border-bottom: solid 1px black;
+
+      > a {
+        color: black;
+        font-family: Lucida Console, monospace !important;
+        font-weight: bold;
+
+        &:hover {
+          color: #f00;
+          border: none;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  .sushi-tab-xs>li.active>a, .sushi-tab-xs>li.active>a:focus, .sushi-tab-xs>li.active>a:hover {
+    color: #f00;
+    border: none;
+  }
+
+  .sushi_page img{
+    width: 100%;
+    margin-top: 2%;
+  }
+
+  .swiper-container-sushi {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    margin-bottom: 0;
+  }
+
+}
+
+@mixin sushi($buttonFontSize, $modalFontSize, $aFontSize, $swiperBuM, $swiperBuH, $swFractionFS, $swFractionMB, $maxWidth) {
+
+  @media (max-width: $maxWidth) {
+    .sushi_menu_xs > button {
+      font-size: $buttonFontSize;
+    }
+    .modal-title {
+      font-size: $modalFontSize;
+    }
+    .sushi_page ul > li > a {
+      font-size: $aFontSize;
+    }
+    .swiper-button-next {
+      margin-right: $swiperBuM;
+      height: $swiperBuH;
+    }
+    .swiper-button-prev {
+      margin-left: $swiperBuM;
+      height: $swiperBuH;
+    }
+    .swiper-pagination-fraction {
+      margin-bottom: $swFractionMB;
+      font-size: $swFractionFS;
+    }
+  }
+}
+
+@for $i from 4 to -1 {
+  $maxWidth: 320px + $i*112px;
+  $buttonFontSize: 72%+7%*$i;
+  $modalFontSize: 95%+ 2.5*$i;
+  $aFontSize: 82% + 4.5*$i;
+  $swiperBuM: -1.7% + 0.1*$i;
+  $swiperBuH: 10px + 3.75*$i;
+  $swFractionFS: 55% + 8.75*$i;
+
+  $swFractionMB: null;
+  @if (8px + 3*$i >= 12px) {
+    $swFractionMB: 8px + 3*$i;
+  } @else {
+    $swFractionMB: 12px;
+  }
+  @include sushi ($buttonFontSize, $modalFontSize, $aFontSize, $swiperBuM, $swiperBuH, $swFractionFS, $swFractionMB, $maxWidth);
+}
+
+@media (max-width: 590px) {
+
+  .modal-dialog {
+    padding: 9.5% 0.9% 0 0.9%;
+  }
+
+}
+

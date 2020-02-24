@@ -8,7 +8,7 @@ import SwiperXs from "../../Template/SwiperXs";
 function About() {
     return (
         <div className="margin-top-minus1">
-            <div className="col-lg-9 col-md-9 col-sm-9 col-xs-12 padding_0xs">
+            <div className="col-lg-9 col-md-9 col-sm-9 padding_15xs">
                 <div className="rules white">
                     <h3>О кинотеатре «Современник»</h3>
                     <p>    &nbsp;&nbsp;Кинотеатр «Современник» обрёл свою вторую жизнь в 2005 году и стал одним из
@@ -29,19 +29,18 @@ function About() {
                         отражения, выполненный по новейшей технологии и не препятствующий распространению звука.</p>
                 </div>
 
-
-                <div className="about-images">
-                    <div className="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                        <img src="images/about1.gif"></img>
+                <div className="aboutImages">
+                    <div className="aboutImage">
+                        <img src="images/about1.gif"/>
                     </div>
-                    <div className="col-lg-3 col-md-3 col-sm-3 hidden-xs">
-                        <img src="images/about2.gif"></img>
+                    <div className="aboutImage hidden-xs">
+                        <img src="images/about2.gif"/>
                     </div>
-                    <div className="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                        <img src="images/about3.gif"></img>
+                    <div className="aboutImage">
+                        <img src="images/about3.gif"/>
                     </div>
-                    <div className="col-lg-3 col-md-3 col-sm-3 hidden-xs">
-                        <img src="images/about4.gif"></img>
+                    <div className="aboutImage hidden-xs">
+                        <img src="images/about4.gif"/>
                     </div>
                 </div>
 
@@ -53,17 +52,18 @@ function About() {
                             src="https://yandex.ru/map-widget/v1/?um=constructor%3Ab3cf16ca0bc3eed0838b34be9c0607866b4c270427026b7fe0dd14ef4096116b&amp;source=constructor"
                             width="769" height="491" frameBorder="0"></iframe>
                     </div>
-                    <div className="separator-special"></div>
                 </div>
             </div>
 
             <Adv/>
 
+            <div className="separator"></div>
+
             <SwiperXs/>
 
-            <div className="separator-xs margin-top-1"></div>
+            <div className="separator"></div>
 
-            <div className="container visible-xs info_wide padding_0xs">
+            <div className="container visible-xs info_wide">
                 <a href="http://www.region47.sbor.net/"><img src="images/region47_wide.gif"></img></a>
             </div>
         </div>

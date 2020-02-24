@@ -1,0 +1,14 @@
+$lusidaFont: Lucida Console, monospace;
+$arialFont: Arial Black, sans-serif;
+
+$border1px: solid 1px white;
+$border2px: solid 2px white;
+$border3px: solid 3px white;
+$border5px: solid 5px white;
+
+%buttonsAnimation {
+  text-decoration: none;
+  background-color: #fff;
+  color: black;
+  transition: ease 650ms;
+}

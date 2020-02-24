@@ -10,8 +10,8 @@ const TopSwiper = (props) => {
         observer: true,
         observeParents: true,
         containerClass: 'film-swiper swiper-container',
-        wrapperClass: 'top-swiper-wrapper',
-        slideClass: 'top-swiper-slide',
+        wrapperClass: 'swiper-wrapper',
+        slideClass: 'swiper-slide',
         autoplay: {
             delay: 3000,
             disableOnInteraction: true,

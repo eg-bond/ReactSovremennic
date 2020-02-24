@@ -8,9 +8,9 @@ const BottomSwiper = () => {
         spaceBetween: 30,
         centeredSlides: false,
         loop: true,
-        containerClass: 'bottom-swiper swiper-container',
-        wrapperClass: 'bottom-swiper-wrapper',
-        slideClass: 'bottom-swiper-slide',
+        containerClass: 'swiper-bottom swiper-container',
+        wrapperClass: 'swiper-wrapper',
+        slideClass: 'swiper-slide',
         autoplay: {
             delay: 3000,
             disableOnInteraction: true,
@@ -18,7 +18,7 @@ const BottomSwiper = () => {
     }
 
     return (
-        <div className='container hidden-xs'>
+        <div className='hidden-xs'>
             <div className="swiper_bar hidden-xs"><h2>Сегодня в кино</h2></div>
             <Swiper {...params}>
                 <div>

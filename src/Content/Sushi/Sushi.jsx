@@ -95,7 +95,7 @@ function Sushi() {
                                 </div>
                             </Col>
 
-                            <Col lg={9} md={9} sm={9} xs={12}>
+                            <Col lg={9} md={9} sm={9}>
                                 <Tab.Content animation>
                                     <Tab.Pane eventKey="sushi"><img src="./Images/sushi/sushi.jpg"></img></Tab.Pane>
                                     <Tab.Pane eventKey="rolls"> <img src="./Images/sushi/rolls.jpg"></img></Tab.Pane>
@@ -117,14 +117,15 @@ function Sushi() {
 
                     </Tab.Container>;
 
-                    <div className="separator-xs"></div>
+                    <div className="separator"></div>
+
                     <SwiperXs />
 
-                    <div className="separator-xs margin-top-1"></div>
+                    <div className="separator"></div>
 
-                    <div className="container visible-xs info_wide padding_0xs">
-                        <a href="http://www.region47.sbor.net/"><img src="./Images/region47_wide.gif"></img></a>
-                    </div>
+                    {/*<div className="container visible-xs info_wide">*/}
+                        {/*<a href="http://www.region47.sbor.net/"><img src="./Images/region47_wide.gif"></img></a>*/}
+                    {/*</div>*/}
                 </div>
             </div>
         </div>

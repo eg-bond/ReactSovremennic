@@ -1,0 +1,2118 @@
+a, h1, h2, p {
+  font-family: Arial Black, sans-serif;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #eee;
+  font-size: 14px;
+  color:#000;
+  margin: 0;
+  padding: 0;
+  /*background-image: url(../main_image.jpg);*/
+  background-color: #000 !important;
+  /*background-repeat: no-repeat;*/
+  /*background-position: top center;*/
+  height: 100%;
+}
+.nav-tabs {
+    border: none !important;
+}
+
+.nav-tabs>li>a {
+  border: none !important;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+  color: black !important;
+  border: none !important;
+}
+
+.lucida_font {
+  font-family: Lucida Console, monospace;
+}
+
+.century  {
+  font: normal 100% 'century gothic', arial;
+}
+
+.white {
+  color: white;
+}
+
+.margin-top-minus1 {
+    margin-top: -1% !important;
+}
+
+.margin-top-1 {
+    margin-top: 1% !important;
+}
+
+.margin-top-2 {
+    margin-top: 2% !important;
+}
+
+@media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+
+    body {
+        background-color: white;
+        background-image: none;
+    }
+
+    .padding_0xs {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .wrapper {
+        background-color: black !important;
+    }
+
+    .separator {
+        height: 5px;
+        background-color: #292e33;
+        margin: 0 0 0 -15px;
+    }
+
+    .separator-index {
+        height: 5px;
+        background-color: #292e33;
+        margin: 0 -15px 0 -15px;
+    }
+
+    .separator-special {
+        height: 5px;
+        background-color: #292e33;
+        margin: 0 -15px 10px -15px;
+    }
+
+    .separator-xs {
+        height: 5px;
+        background-color: #292e33;
+        /*margin: 0 -15px 0 -15px;*/
+    }
+
+}
+
+@media (min-width: 768.2px) and (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+
+    .container {
+        width: auto;
+    }
+
+    .col-xs-12 {
+        width: 100% !important;
+    }
+
+    .col-xs-9 {
+        width: 80% !important;
+    }
+
+    .col-xs-6 {
+        width: 50% !important;
+    }
+
+    .navbar-collapse {
+        padding-right: 0 !important;
+    }
+
+    .hidden-xs {
+        display: none !important;
+    }
+
+    .visible-xs {
+        display: block !important;
+
+    }
+
+}
+
+.wrapper {
+  height: 100% ;
+  background-color: black;
+  border: solid 5px white;
+  border-top: none;
+}
+
+hr {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+
+/*Navigation components*/
+
+.logo {
+    width: 17%;
+    margin-right: 1%;
+    margin: -0.6% 0 1% 0;
+}
+
+.navbar_custom {
+    background-color: #000;
+    padding-top: 1%;
+    margin-bottom: 0;
+    border: solid 5px white;
+    border-bottom: none;
+    position: relative;
+    height: 80px;
+    padding:1% 0 0 2%;
+    border-radius: 20px 20px 0 0;
+}
+
+.navbar-collapse {
+  padding-left: 80px !important;
+}
+
+.nav-pills a {
+  color: white;
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+  color: #000 !important;
+  background-color: #ffffff !important;
+}
+
+.nav-pills>li>a {
+  margin: 4px 0 0 0;
+  font-weight: bold;
+}
+
+.nav>li>a:focus, .nav>li>a:hover {
+  text-decoration: none;
+  background-color: #fff !important;
+  color: black;
+  transition: ease 650ms ;
+}
+
+.line_5px {
+  border-top: 5px solid white;
+}
+
+/*TopSwiper components*/
+
+.top-menu {
+  height: 330px;
+  margin-top: 10px;
+  cursor: grab;
+}
+
+/*.swiper-container {*/
+/*  position: relative;*/
+/*  z-index: 1;*/
+/*  margin: 0px auto;*/
+/*  overflow: hidden;*/
+/*  list-style: none;*/
+/*  padding: 0px;*/
+/*}*/
+
+.top-swiper-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  transition-property: transform;
+  box-sizing: content-box;
+  height: 330px;
+}
+
+.top-swiper-slide {
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition-property: transform;
+  font-size: 12px;
+}
+
+.top-swiper-slide img {
+  height: 250px;
+  width: 100%;
+  border-radius: 3px;
+}
+
+.top-swiper-slide h1 {
+  font-size: 101%;
+  font-weight: bold;
+  padding-left: 2%;
+  color: white;
+  font-family: Lucida Console, monospace;
+  margin: 5% 0 2% 0;
+}
+
+.top-swiper-slide p {
+  padding-left: 2.5%;
+  font-size: 90%;
+  letter-spacing: 0.01em;
+  color: white;
+  font-weight: normal;
+  font-family: Lucida Console, monospace;
+}
+
+.top-swiper-slide a {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: normal;
+}
+
+.top-swiper-slide a:hover {
+  color: #d8d1d1;
+  transition: all 0.3s;
+  cursor: pointer;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+.swiper-pagination-bullet {
+    color: white !important;
+    background-color: white !important;
+}
+
+.film-swiper {
+  width: 98%;
+  margin: 0.5% 0 0 1%;
+}
+
+.opacity {
+  transition: all 0.3s;
+  opacity:1;
+}
+
+.opacity:hover {
+  opacity:0.82;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background: #000;
+  background-color: white;
+}
+
+.swiper-pagination-bullet {
+  background: #000;
+  background-color: white;
+}
+
+/*Indexpage*/
+
+.news {
+    padding: 0 0 2% 3%;
+    color: white;
+}
+
+.news h2 {
+    font-family: Lucida Console, monospace;
+    font-weight: bold;
+    font-size: 230% !important;
+}
+
+.news p{
+    padding: 1%;
+    font-family: Lucida Console, monospace;
+    font-size: 110% !important;
+}
+
+/*Стили для части "о кинотеатре"*/
+
+.about-img img {
+    border: solid 1px white;
+    width: 110%;
+    margin-bottom: 10%;
+}
+
+.margin-minus-left  {
+    margin-left: -1.7%;
+}
+
+.about-images  {
+    margin-left: -1.7%;
+}
+
+.about-images img {
+    border: solid 1px white;
+    width: 110%;
+    margin-bottom: 10%;
+    border-radius: 3px;
+}
+
+/*Стили для rules*/
+
+.rules h3, .rules h4 {
+    font-family: Lucida Console, monospace !important;
+    text-align: center;
+    font-size: 140%
+}
+
+.rules p {
+    font-family: Lucida Console, monospace !important;
+    font-size: 89%;
+    text-align: justify;
+}
+
+/*Advs*/
+
+.info {
+    margin-top: 7.8%;
+}
+
+.info img {
+    width: 100%;
+    height: 100%;
+    border: solid 1px white;
+    border-radius: 3px;
+}
+
+.sushi img {
+    width: 100%;
+    height: 100%;
+    border: solid 1px white;
+    border-radius: 3px;
+    margin: 20px 0 20px 0;
+}
+
+/*bottom swiper*/
+
+.swiper_bar {
+    color: white;
+    width: 45%;
+    padding: -20px 0 5px -20px;
+    margin-left: 1.2%;
+}
+
+.swiper_bar>h2 {
+    font-weight: bold;
+    float: left;
+    font-family: Arial Black, sans-serif
+}
+
+.bottom-swiper {
+    padding: 0;
+    width: 1160px;
+    background-color: black;
+    border-top: solid 5px white;
+    border-left: solid 0.5px white;
+    border-right: solid 0.5px white;
+    margin: 0 0 0 -15px !important;
+    cursor: grab;
+}
+
+.bottom-swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+    box-sizing: content-box;
+}
+
+.bottom-swiper-slide {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition-property: transform;
+    text-align: left;
+    font-size: 14px;
+    background: black;
+}
+
+.bottom-swiper-slide img {
+    height: 360px;
+    width: 100%;
+    margin-top: 0.35px;
+}
+
+.bottom-swiper-slide h1 {
+    font-size: 140%;
+    font-weight: bold;
+    padding-left: 2%;
+}
+
+.bottom-swiper-slide p {
+    padding-left: 2%;
+    font-size: 90%;
+    letter-spacing: 0.02em;
+    font: normal 100% 'century gothic', arial;
+}
+
+.bottom-swiper-slide a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.bottom-swiper-slide a:hover {
+    color: #d8d1d1;
+    transition: all 0.3s;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/*Стили для страницы с описаниями*/
+
+.film_info img {
+    width: 250px;
+    height: auto;
+    border: solid 1px white;
+    border-radius: 8px;
+    margin: 0 0 7% 12px;
+}
+
+.description_h {
+    color: #e41b2b;
+    margin-top: -4.5%;
+    font-weight: bold;
+    font-family: Arial Black, sans-serif;
+}
+
+.description_table {
+    color: white;
+    text-align: left;
+    margin-bottom: 3%;
+    font-family: Lucida Console, monospace;
+}
+
+.description_table td {
+    padding: 0.7% 0 0.7% 0;
+    text-align: justify;
+}
+
+.description_table td:nth-of-type(1) {
+    width:170px;
+    vertical-align: top;
+}
+
+.description {
+    text-align: justify;
+    color: white;
+}
+
+.embed-responsive {
+    border: solid 1px white;
+    border-radius: 2px;
+    margin: 20px 0 30px 0;
+}
+
+/*SeansStyles*/
+
+.seans {
+    height: 100%;
+}
+
+.seans h1  {
+    color: white;
+    text-align: center;
+}
+
+.seans-menu {
+    margin-left: -5px;
+    margin-right: -5px;
+    margin-top: 2.5%;
+}
+
+.seans-tabs {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 0px;
+    font-size: 96%;
+}
+
+.seans-tabs>li>a  {
+    padding: 7px 8px;
+    border-radius: 4px 4px 4px 4px !important;
+    font-weight: bold;
+    color: white;
+}
+
+.table_custom {
+    margin-top: 3%;
+    font-family: Lucida Console, monospace;
+    font-weight: bold;
+    /*border: solid 2px white;*/
+    border-radius: 5px;
+    width: 100%;
+    font-size: 100%;
+    height: 500px;
+}
+
+.table_custom table, .table_custom td:nth-of-type(1), table th:nth-of-type(1) {
+    width:8%;
+    text-align: center;
+}
+
+.table_custom table, .table_custom td:nth-of-type(2), table th:nth-of-type(2) {
+    width:48%;
+}
+
+.table_custom table, .table_custom td:nth-of-type(3), table th:nth-of-type(3) {
+    width:12%;
+    text-align: center;
+    padding-right: 2%;
+}
+
+.table_custom th, .table_custom td {
+    padding: 1.8% 0 1.8% 1%;
+}
+
+.table_head {
+    background-color: #e41b2b !important;
+    color: white !important;
+    border-color: #ea2222 !important;
+}
+
+.table_head td {
+    border-color: #ea2222 !important;
+}
+
+.table_white {
+    color: black;
+    background-color:white;
+}
+
+.table_gray {
+    color: white;
+    background-color: #2b2831;
+}
+
+.tab-pane p {
+    color: white;
+}
+
+/*sushi*/
+
+.sushi_page>div>.nav-tabs {
+    border: 0px;
+    font-weight: bold;
+}
+
+.sushi_page img{
+    width: 100%;
+    height: auto;
+    /*margin: 0 0 20px 0;*/
+    border-radius: 3px;
+}
+
+/*.sushi-swiper-container {*/
+/*    width: 100%;*/
+/*    height: auto;*/
+/*    overflow: hidden;*/
+/*    margin-bottom: 20px;*/
+/*    cursor: grab;*/
+/*}*/
+
+/*.sushi-swiper-wrapper {*/
+/*    position: relative;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    display: flex;*/
+/*    transition-property: transform;*/
+/*    box-sizing: content-box;*/
+/*}*/
+
+.sushi-swiper-slide {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition-property: transform;
+    font-size: 12px;
+}
+
+.swiper-button-next {
+    margin-right: 1%;
+    color: black !important;
+}
+
+.swiper-button-prev {
+    margin-left: 1%;
+    color: black !important;
+}
+
+.swiper-pagination-fraction {
+    margin-bottom: 35px;
+    font-weight: bold;
+}
+
+/*footer*/
+
+.footer {
+    text-align: center;
+    background-color: white;
+    padding: 1.5%;
+}
+
+.footer a {
+    color: black;
+    text-decoration: none;
+    font: normal 100% 'century gothic', arial;
+}
+
+.footer a:hover {
+    color: #ff0000 !important;
+    text-decoration: none;
+}
+
+@media (max-width: 1200px) {
+
+    /*navigation  */
+
+    .logo {
+        width: 19% !important;
+        margin: -0.1% 0 1% 0;
+    }
+
+    .navbar_custom {
+        height: 75px;
+    }
+
+    .navbar-collapse {
+        padding-left: 30px !important;
+    }
+
+    /*TopSwiper*/
+
+    .top-menu {
+        height: 282px;
+        margin-top: 10px;
+    }
+
+    .film-swiper {
+        margin: 0.5% 0 0 1%;
+    }
+
+    .top-swiper-wrapper {
+        height: 282px;
+    }
+
+    .top-swiper-slide {
+        font-size: 76%;
+    }
+
+    .top-swiper-slide img{
+        height: 210px;
+    }
+
+    /*swiperBottom*/
+
+    .bottom-swiper {
+        width: 960px !important;
+    }
+
+    .bottom-swiper-slide img {
+        width: 100%;
+        height: 300px !important;
+        margin-top: 0.5px;
+    }
+
+    .bottom-swiper-slide h1 {
+        font-size: 115% !important;
+        font-weight: bold;
+        padding-left: 2%;
+    }
+
+    .bottom-swiper-slide p {
+        padding-left: 2%;
+        font-size: 78% !important;
+        letter-spacing: 0.02em;
+    }
+
+    .info img {
+        margin-top: 2%;
+    }
+
+    .swiper_bar h2 {
+        font-size: 24px;
+        margin-left: 1.2%;
+    }
+
+    /*index*/
+
+    .news h2 {
+        font-weight: bold;
+        font-size: 175% !important;
+    }
+
+    .news p{
+        padding: 1%;
+        font-size: 85% !important;
+    }
+
+    /*seans*/
+
+    .seans-tabs>li>a  {
+        font-size: 84%;
+        padding: 5px 4.5px !important;
+    }
+
+    .table_custom {
+        height: 400px;
+    }
+
+    .table_custom th, .table_custom td {
+        font-size: 85%;
+    }
+
+    /*cinema*/
+
+    .film_info img {
+        width: 100%;
+        margin: 1% 0 0 7px;
+    }
+
+    .description_table {
+        font-size: 85%;
+    }
+
+    .description_h h2 {
+        font-size: 175%;
+    }
+
+    .description_h p {
+        font-size: 95%;
+    }
+
+    .description {
+        font-size: 85%;
+    }
+
+    /*sushi*/
+    .sushi-tab {
+        font-size: 90%;
+    }
+}
+
+@media (max-width: 992px) /*(max-width: 850px) and (max-height: 425px) and*/ {
+
+    .logo {
+        width: 21% !important;
+        margin: 0 0 1% -1.5%;
+    }
+
+    .navbar_custom {
+        height: 64px;
+        border: solid 3px white;
+        border-bottom: none;
+    }
+
+    .nav-pills > li > a {
+        font-size: 85%;
+        margin-bottom: -2px;
+    }
+
+    .nav > li > a {
+        padding: 8px 6px;
+    }
+
+    .navigation {
+        padding: 1% 0 0 3%;
+    }
+
+    .navbar-collapse {
+        padding-left: 1% !important;
+    }
+
+    .line_5px {
+        border-top: solid 3px white;
+    }
+
+    .wrapper {
+        border: solid 3px white;
+        border-top: none;
+    }
+
+    /*SwiperTop*/
+
+    .top-menu {
+        height: 240px;
+    }
+
+    .film-swiper {
+        margin: 0.5% 0 0 1%;
+        height: 240px;
+    }
+
+    .top-swiper-slide {
+        font-size: 72%;
+    }
+
+    .top-swiper-slide p {
+        font-size: 87%;
+    }
+
+    .top-swiper-slide img {
+        height: 170px;
+        width: 100%;
+        border-radius: 3px;
+    }
+
+    /*swiperBottom*/
+
+    .bottom-swiper {
+        border-top: solid 2px white;
+        margin: 0 0 0 -15px;
+        width: 745px !important;
+        border-bottom: none;
+    }
+
+    .bottom-swiper-slide img {
+        width: 100%;
+        height: 220px !important;
+        margin-top: 0.1px;
+    }
+
+    .bottom-swiper-slide h1 {
+        font-size: 87% !important;
+        font-weight: bold;
+        padding-left: 2%;
+        margin: 5% 0 4% 0;
+    }
+
+    .bottom-swiper-slide p {
+        padding-left: 2%;
+        font-size: 68% !important;
+        letter-spacing: 0.02em;
+    }
+
+    .swiper_bar h2 {
+        font-size: 20px;
+        margin-left: 1.6%;
+    }
+
+    /*index*/
+
+    .news h2 {
+        font-weight: bold;
+        font-size: 160% !important;
+    }
+
+    .news p{
+        padding: 0.5%;
+        font-size: 80% !important;
+    }
+
+    /*rules*/
+
+    .rules h3, .rules h4 {
+        font-size: 110%
+    }
+
+    .rules p {
+        font-size: 75%;
+    }
+
+    /*seans*/
+    .seans-menu {
+        margin-top: 3.2%;
+    }
+
+    .seans-tabs>li>a  {
+        font-size: 65%;
+        padding: 3px 2px;
+        margin-top: 5%;
+    }
+
+    .table_custom th, .table_custom td {
+        font-size: 68%;
+    }
+
+    .table_custom {
+        height: 300px;
+    }
+
+    /*cinema*/
+
+    .film_info img {
+        width: 100%;
+        margin-top: 3%;
+    }
+
+    .description_h h2 {
+        font-size: 135%;
+    }
+
+    .description_h p {
+        font-size: 75%;
+    }
+
+    .description_table {
+        font-size: 77%;
+    }
+
+    .description_table td:nth-of-type(1) {
+        width:40%;
+    }
+
+    .description_table td:nth-of-type(2) {
+        width:60%;
+    }
+
+    .description {
+        font-size: 77%;
+    }
+
+    /*sushi*/
+
+    .sushi_page ul>li>a {
+        padding: 7px 6px;
+    }
+
+}
+
+@media (min-width: 768.2px) and (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+
+  .logo {
+    width: 150px;
+    padding-right: 0;
+  }
+
+  .nav-pills {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .nav-pills>li {
+    width:auto;
+  }
+
+  .nav-pills>li>a {
+    font-size: 80%;
+    margin-bottom: -7px;
+    padding: 10px 1px !important;
+  }
+
+  .navigation {
+    padding: 0.4% 0 0 0;
+    border-top: none !important;
+    border-radius: 0px;
+    border-width: 0px;
+    position: fixed !important;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 52px;
+  }
+
+  .navbar-collapse {
+    padding-right: 0 !important;
+  }
+
+}
+
+@media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+
+    .h600 {
+        height: 600px;
+    }
+    .logo {
+        width: 150px !important;
+        padding-right: 0 !important;
+    }
+
+    .navbar-collapse {
+        padding-right: 0 !important;
+    }
+
+    .nav-pills {
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .nav-pills>li {
+        width:auto;
+    }
+
+    .nav-pills>li>a {
+        font-size: 80%;
+        margin-bottom: -7px;
+        padding: 10px 1px !important;
+    }
+
+    .navigation {
+        padding: 0.4% 0 0 0;
+        border-top: none;
+        border-radius: 0px;
+        border-width: 0px;
+        position: fixed !important;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        height: 52px;
+    }
+
+    .space {
+        background-color: black;
+        border-left: solid 5px white;
+        border-right: solid 5px white;
+        height: 35%;
+    }
+
+    .line_5px {
+        display: none;
+    }
+
+    .wrapper {
+        border-width: 0px;
+    }
+
+    .line_container {
+        margin-top: 52px;
+    }
+
+    .dropdown-menu-xs {
+        width: 100%;
+        /*height: 310px;*/
+        background-color: black;
+        border-color: #fff;
+        padding-left: 5px;
+    }
+
+    .dropdown-menu-xs2 {
+        background-color: #e4d3d3 !important;
+    }
+
+    .dropdown-menu-xs h4 {
+        font-size: 110%;
+        padding-left: 2%;
+        font-family: Arial Black, sans-serif;
+        color: white;
+    }
+
+    ul.dropdown-menu-xs li {
+        float: left;
+    }
+
+    .film-swiper-xs {
+        width: 98%;
+        margin: 0.5% 0 0 1%;
+    }
+
+    .film-swiper-xs>.swiper-wrapper>.swiper-slide {
+        text-align: left;
+        font-size: 11px;
+        overflow: hidden;
+    }
+
+    .film-swiper-xs>.swiper-wrapper>.swiper-slide>a>h1:before{
+        content: "";
+        display:block;
+        height:20px;
+        width: 72px;
+        position:relative;
+        left: 45%;
+        top: 15px;
+        margin-top: -20px;
+        background-image:linear-gradient(to right, rgba(255, 255, 255, 0), black 25%)
+    }
+
+    .film-swiper-xs>.swiper-wrapper {
+        height: 282px;
+    }
+
+    .film-swiper-xs>.swiper-wrapper>.swiper-slide img {
+        height: 235px;
+        width: 100%;
+        border-radius: 3px;
+    }
+
+    .film-swiper-xs>.swiper-wrapper>.swiper-slide h1 {
+        font-size: 110%;
+        font-weight: bold;
+        padding-left: 2%;
+        color: black;
+        font-family: Lucida Console, monospace;
+        margin: 5% 0 2% 0;
+        width: 200%;
+        color: white;
+    }
+
+    .film-swiper-xs>.swiper-wrapper>.swiper-slide p {
+        padding-left: 2.5%;
+        font-size: 90%;
+        letter-spacing: 0.01em;
+        color: black;
+        font-weight: normal;
+        font-family: Lucida Console, monospace;
+        color: white;
+    }
+
+    .film-swiper-xs>.swiper-wrapper>.swiper-slide a {
+        color: white;
+        text-decoration: none;
+        cursor: pointer;
+        font-weight: normal;
+    }
+
+    .film-swiper-xs>.swiper-wrapper>.swiper-slide a:hover {
+        color: #d8d1d1;
+        transition: all 0.3s;
+        cursor: pointer;
+        font-weight: normal;
+    }
+
+    .trailers {
+        background-color: black;
+        padding-bottom: 1%;
+    }
+
+    .trailers h4 {
+        font-size: 100%;
+        font-family: Arial Black, sans-serif;
+        padding-left: 1%;
+        color: white;
+    }
+
+    .trailers>.embed-responsive {
+        margin: 2% 0 2% 0;
+    }
+
+    .adv {
+        padding-top: 2%;
+    }
+
+    .adv-xs {
+        background-color: black;
+        padding-bottom: 2%;
+    }
+
+    .news {
+        padding: 1%;
+    }
+
+    .news h2 {
+        margin-top: 1%;
+    }
+
+    .news p{
+        font-size: 95% !important;
+    }
+
+    .sushi img {
+        margin: 11% 0 5% 0;
+    }
+
+    .info img {
+        margin: 0 0 3% 0;
+    }
+
+    .info_wide {
+        margin: 3% 0 3.7% 0;
+        background-color: black;
+    }
+
+    .info_wide img {
+        width: 100%;
+        height: 100%;
+        border: solid 1px white;
+        border-radius: 3px;
+    }
+
+}
+
+@media (max-width: 590px) {
+
+    .logo {
+        width: 125px !important;
+    }
+
+    .nav-pills {
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .nav-pills>li {
+        width:auto;
+        display: inline-block;
+    }
+
+    .nav-pills>li>a {
+        font-size: 68%;
+        margin-bottom: -7px;
+        padding: 10px 1px;
+    }
+
+    .navigation {
+        padding: 0.6% 0 0 0;
+        height: 50px;
+    }
+
+    .line_container {
+        margin-top: 50px;
+    }
+
+    .dropdown-menu-xs {
+        /*height: 260px;*/
+    }
+
+    .dropdown-menu-xs h4 {
+        font-size: 95%;
+        padding-left: 2.5%;
+    }
+
+    .film-swiper-xs {
+        width: 97.5%;
+        margin: 0.5% 0 0 1%;
+    }
+
+    .film-swiper-xs>.swiper-wrapper>.swiper-slide {
+        font-size: 10px;
+    }
+
+    .film-swiper-xs>.swiper-wrapper {
+        height: 235px;
+    }
+
+    .film-swiper-xs>.swiper-wrapper>.swiper-slide img {
+        height: 195px;
+    }
+
+    .film-swiper-xs>.swiper-wrapper>.swiper-slide h1 {
+        font-size: 110%;
+    }
+
+    .film-swiper-xs>.swiper-wrapper>.swiper-slide p {
+        padding-left: 2.5%;
+        font-size: 90%;
+    }
+
+    .trailers h4 {
+        font-size: 95%;
+        padding-left: 1.5%;
+    }
+
+    .news {
+        font-size: 85%;
+    }
+
+    .news h2 {
+        margin-top: 2%;
+    }
+
+    .footer {
+        padding: 2.5%;
+    }
+
+    .footer a {
+        font-size: 80%;
+    }
+
+}
+
+@media (max-width: 499px) {
+
+    .navigation>.col-xs-9 {
+        width: 100%;
+    }
+
+    .logo {
+        width: 130px !important;
+        padding: 0 0 0 4% !important;
+    }
+
+    .navbar-collapse {
+        border-top: none !important;
+        box-shadow: none !important;
+    }
+
+    .nav-pills {
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .nav-pills>li {
+        width:auto;
+        display: inline-block;
+    }
+
+    .nav-pills>li>a {
+        font-size: 70%;
+        margin-bottom: -7px;
+        padding: 10px 1px;
+    }
+
+    .navigation {
+        padding: 0.6% 0 2% 0;
+        height: 90px;
+    }
+
+    .line_container {
+        margin-top: 90px;
+    }
+
+    .dropdown-menu-xs {
+        /*height: 215px;*/
+    }
+
+    .dropdown-menu-xs h4 {
+        font-size: 80%;
+        padding-left: 3%;
+    }
+
+    .film-swiper-xs {
+        width: 97.5%;
+        margin: 0.5% 0 0 1%;
+    }
+
+    .film-swiper-xs>.swiper-wrapper>.swiper-slide {
+        font-size: 9.5px;
+    }
+
+    .film-swiper-xs>.swiper-wrapper {
+        height: 192px;
+    }
+
+    .film-swiper-xs>.swiper-wrapper>.swiper-slide img {
+        height: 155px;
+    }
+
+    .film-swiper-xs>.swiper-wrapper>.swiper-slide h1 {
+        font-size: 110%;
+    }
+
+    .film-swiper-xs>.swiper-wrapper>.swiper-slide>a>h1:before{
+        left: 40%;
+    }
+
+    .film-swiper-xs>.swiper-wrapper>.swiper-slide p {
+        padding-left: 2.5%;
+        font-size: 90%;
+    }
+
+    .trailers h4 {
+        font-size: 80%;
+        padding-left: 2%;
+    }
+
+    .news {
+        font-size: 70%;
+    }
+
+    .news h2 {
+        margin: 1.5% 0%;
+    }
+
+    .news p {
+        margin: 1.3% 0%;
+    }
+
+
+}
+
+@media (max-width: 400px) {
+
+    .logo {
+        width: 120px !important;
+        padding-left: 4% !important;
+    }
+
+    .nav-pills {
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .nav-pills>li {
+        width:auto;
+        display: inline-block;
+    }
+
+    .nav-pills>li>a {
+        font-size: 62%;
+        margin-bottom: -7px;
+        padding: 10px 1px;
+    }
+
+    .navigation {
+        padding: 0.6% 0 2.5% 0;
+        height: 85px;
+    }
+
+    .line_container {
+        margin-top: 85px;
+    }
+
+    .dropdown-menu-xs {
+        /*height: 188px;*/
+    }
+
+    .dropdown-menu-xs h4 {
+        font-size: 70%;
+    }
+
+    .film-swiper-xs {
+        width: 97.5%;
+        margin: 0.5% 0 0 1%;
+    }
+
+    .film-swiper-xs>.swiper-wrapper>.swiper-slide {
+        font-size: 9px;
+    }
+
+    .film-swiper-xs>.swiper-wrapper {
+        height: 170px;
+    }
+
+    .film-swiper-xs>.swiper-wrapper>.swiper-slide img {
+        height: 136px;
+    }
+
+    .film-swiper-xs>.swiper-wrapper>.swiper-slide h1 {
+        font-size: 100%;
+    }
+
+    .film-swiper-xs>.swiper-wrapper>.swiper-slide p {
+        padding-left: 2.5%;
+        font-size: 85%;
+    }
+
+    .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
+        width: 6px;
+        height: 6px;
+    }
+
+    .trailers h4 {
+        font-size: 70%;
+    }
+
+    .news {
+        font-size: 65%;
+    }
+
+    .news h2 {
+        margin: 1.5 0%;
+    }
+
+    .news p {
+        margin: 1% 0%;
+    }
+
+}
+
+@media (max-width: 350px) {
+
+    .logo {
+        width: 110px !important;
+        padding-left: 4% !important;
+    }
+
+    .nav-pills {
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .nav-pills>li {
+        width:auto;
+        display: inline-block;
+    }
+
+    .nav-pills>li>a {
+        font-size: 55%;
+        margin-bottom: -7px;
+        padding: 10px 1px !important;
+    }
+
+    .navigation {
+        height: 80px;
+    }
+
+    .line_container {
+        margin-top: 80px;
+    }
+
+    .dropdown-menu-xs {
+        /*height: 162px;*/
+    }
+
+    .dropdown-menu-xs h4 {
+        font-size: 65%;
+        padding-left: 3.5%;
+        margin: 2% 0 2% 0;
+    }
+
+    .film-swiper-xs {
+        width: 97.5%;
+        margin: 0.5% 0 0 1%;
+    }
+
+    .film-swiper-xs>.swiper-wrapper>.swiper-slide {
+        font-size: 8px;
+    }
+
+    .film-swiper-xs>.swiper-wrapper {
+        height: 148px;
+    }
+
+    .film-swiper-xs>.swiper-wrapper>.swiper-slide img {
+        height: 118px;
+    }
+
+    .film-swiper-xs>.swiper-wrapper>.swiper-slide h1 {
+        font-size: 95%;
+    }
+
+    .film-swiper-xs>.swiper-wrapper>.swiper-slide>a>h1:before{
+        left: 38%;
+    }
+
+    .film-swiper-xs>.swiper-wrapper>.swiper-slide p {
+        padding-left: 2.5%;
+        font-size: 82%;
+    }
+
+    .trailers h4 {
+        font-size: 65%;
+        padding-left: 2%;
+    }
+
+    .news {
+        font-size: 55%;
+    }
+
+    .news h2 {
+        margin: 1.5 0%;
+    }
+
+    .news p {
+        margin: 1% 0%;
+    }
+
+    .footer a {
+        font-size: 67%;
+    }
+
+}
+
+/*seansAdaptive*/
+
+@media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+
+    .padding_0xs {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .padding_15xs {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .seans-tabs{
+        border: none;
+        margin-top: 1.8%;
+    }
+
+    .seans-tabs>li>a{
+        border-radius: 4px 4px 4px 4px;
+    }
+
+    .sushi_menu_xs>.seans_button_xs {
+        margin-top: 3.4%;
+    }
+    .xs350px {
+        min-height: 400px;
+    }
+
+    .table_custom {
+        width: 100%;
+        font-size: 106.5%;
+        min-height: 350px;
+        margin: 0 0 4% 0;
+    }
+
+    .seans-tabs>li>a {
+        font-size: 67%;
+    }
+
+    .seans-tab-xs {
+        font-size: 90%;
+    }
+
+}
+
+@media (max-width: 590px) {
+
+    .table_custom {
+        font-size: 120%;
+    }
+
+    .seans-tabs>li>a {
+        font-size: 75%;
+        padding: 10px 6.5%;
+    }
+
+}
+
+@media (max-width: 499px) {
+
+    .table_custom {
+        font-size: 100%;
+    }
+
+    .seans-tabs>li  {
+        margin: 0px -4px 0 0;
+    }
+
+    .seans-tabs>li>a {
+        font-size: 55%;
+    }
+
+    .table_custom table, .table_custom td:nth-of-type(3) {
+        width: 13%;
+        text-align: center;
+        padding-right: 0.5%;
+    }
+
+    .xs350px {
+        min-height: 375px;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .table_custom {
+        font-size: 78%;
+    }
+
+}
+
+@media (max-width: 350px) {
+
+    .table_custom {
+        font-size: 70%;
+    }
+
+    table th:nth-of-type(3) {
+        width: 16%;
+        text-align: center;
+    }
+
+}
+
+/*descriptionAdaptive*/
+
+@media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+
+    .film_info  {
+        margin: 0 -15px 0 -15px !important;
+    }
+
+    .film_info img {
+        margin: 1.5% 0 7% 0;
+    }
+
+    .embed-responsive {
+        margin: 3% 0 3% 0 ;
+    }
+
+    /*.xs_desc {*/
+    /*    opacity: 0;*/
+    /*}*/
+}
+
+@media (max-width: 590px) {
+
+    .film_info  {
+        margin: 0 -15px 0 -15px !important;
+    }
+
+    .film_info img {
+        margin: 5% 0 7% 0;
+        width: 115%;
+    }
+
+    .description_h h2 {
+        font-size: 130%;
+    }
+
+    .description_h p {
+        font-size: 73%;
+    }
+
+    .description_table {
+        font-size: 72%;
+    }
+
+    .description {
+        font-size: 72%;
+    }
+
+}
+
+@media (max-width: 499px) {
+
+    .film_info img {
+        margin: 10% 0 7% 0;
+        width: 120%;
+    }
+
+    .description_h h2 {
+        font-size: 110%;
+    }
+
+    .description_h p {
+        font-size: 70%;
+    }
+
+    .description_table {
+        font-size: 68%;
+        margin-bottom: 0%;
+    }
+
+    .description {
+        font-size: 68%;
+    }
+
+}
+
+@media (max-width: 400px) {
+
+    .film_info img {
+        margin: 15% 0 7% 0;
+        width: 125%;
+    }
+
+    .description_h h2 {
+        font-size: 98%;
+    }
+
+    .description_h p {
+        font-size: 68%;
+    }
+
+    .description_table {
+        font-size: 62%;
+        margin-bottom: 0%;
+    }
+
+    .description {
+        font-size: 62%;
+    }
+
+}
+
+@media (max-width: 350px) {
+
+    .film_info img {
+        margin: 10px 0 7% 0;
+        width: 140%;
+    }
+
+    .description_h h2 {
+        font-size: 82%;
+    }
+
+    .description_h p {
+        font-size: 58%;
+    }
+
+    .description_table {
+        font-size: 50%;
+    }
+
+    .description_table td:nth-of-type(1) {
+        width:40%;
+    }
+
+    .description_table td:nth-of-type(2) {
+        width:60%;
+    }
+
+    .description {
+        font-size: 50%;
+    }
+
+}
+
+/*sushiAdaptive*/
+
+@media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+
+    .sushi_page>.col-xs-12 {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .sushi_menu_xs>div>button {
+        padding: 2% 2% 2% 4.5% !important;
+        margin: 2% 0 4% 0 !important;
+        font-family: Arial Black, sans-serif !important;
+        background-color: black !important;
+        border: solid 1.7px white !important;
+        color: white !important;
+        border-radius: 21px !important;
+        width: 100% !important;
+        margin-left: 0% !important;
+    }
+
+    .sushi_menu_xs>div>button:hover {
+        background-color: black !important;
+        border-color: red !important;
+        color: red !important;
+        border-radius: 21px !important;
+        transition: ease 650ms !important;
+    }
+
+    .sushi_menu_xs>div>button:focus  {
+        outline: none !important;
+    }
+
+    .glyphicon-chevron-down {
+        float: right;
+        margin-top: 0.5%;
+    }
+
+    .modal-dialog {
+        /* width: 60%; */
+        padding: 8.5% 20% 0 20%;
+    }
+
+    .modal-title {
+        font-family: Arial Black, sans-serif;
+    }
+
+    .sushi-tab-xs li{
+        border-bottom: solid 1px black;
+    }
+
+    .sushi-tab-xs>li>a {
+        color: black;
+        font-family: Lucida Console, monospace !important;
+        font-weight: bold;
+    }
+
+    .sushi-tab-xs>li.active>a, .sushi-tab-xs>li.active>a:focus, .sushi-tab-xs>li.active>a:hover {
+        color: #f00 !important;
+        border: none;
+    }
+
+    .sushi-tab-xs>li>a:hover {
+        color: #f00;
+        border: none;
+        text-decoration: none;
+    }
+
+    .sushi_page img{
+        width: 100%;
+        /*margin-top: 2%;*/
+    }
+
+    .swiper-container-sushi {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        margin-bottom: 0px;
+    }
+
+    .swiper-pagination-fraction {
+        font-size: 90%;
+        margin-bottom: 20px;
+    }
+
+    .swiper-button-next {
+        margin-right: -1.3%;
+        height: 25px;
+    }
+
+    .swiper-button-prev {
+        margin-left: -1.3%;
+        height: 25px;
+    }
+
+}
+
+@media (max-width: 590px) {
+
+    .sushi_menu_xs>button {
+        margin-bottom: 2%;
+        width: 100%;
+        margin-left: 0%;
+        font-size: 85%;
+    }
+
+    .glyphicon-chevron-down {
+        margin-top: 0.5%;
+    }
+
+    .modal-dialog {
+
+        padding: 9.5% 0.9% 0 0.9%;
+    }
+
+    .modal-title {
+        font-size: 105%;
+    }
+
+    .sushi_page ul>li>a {
+        font-size: 90%;
+    }
+
+    .swiper-button-next {
+        margin-right: -1.5%;
+        height: 20px;
+    }
+
+    .swiper-button-prev {
+        margin-left: -1.5%;
+        height: 20px;
+    }
+
+    .swiper-pagination-fraction {
+        font-size: 80%;
+        margin-bottom: 15px;
+    }
+
+}
+
+@media (max-width: 499px) {
+
+    .sushi_menu_xs>button {
+        padding: 2.3% 2% 2.3% 4.5%;
+        margin-bottom: 2%;
+        width: 100%;
+        margin-left: 0%;
+        font-size: 77%;
+    }
+
+    .glyphicon-chevron-down {
+        margin-top: 0.5%;
+    }
+
+    .swiper-button-next {
+        margin-right: -1.6%;
+        height: 16px;
+    }
+
+    .swiper-button-prev {
+        margin-left: -1.6%;
+        height: 16px;
+    }
+
+    .swiper-pagination-fraction {
+        font-size: 70%;
+        margin-bottom: 12px;
+    }
+
+}
+
+@media (max-width: 400px) {
+
+    .sushi_menu_xs>button {
+        padding: 2.1% 2% 2.1% 4.5%;
+        margin-bottom: 2%;
+        width: 100%;
+        font-size: 74%;
+    }
+
+    .glyphicon-chevron-down {
+        margin-top: 0.5%;
+    }
+
+    .modal-title {
+        font-size: 98%;
+    }
+
+    .sushi_page ul>li>a {
+        font-size: 84%;
+    }
+
+    .swiper-button-next {
+        margin-right: -1.6%;
+        height: 12px;
+    }
+
+    .swiper-button-prev {
+        margin-left: -1.6%;
+        height: 12px;
+    }
+
+    .swiper-pagination-fraction {
+        font-size: 60%;
+    }
+
+}
+
+@media (max-width: 350px) {
+
+    .sushi_menu_xs>button {
+        padding: 2.1% 2% 2.1% 4.5%;
+        margin-bottom: 2%;
+        width: 100%;
+        margin-left: 0%;
+        font-size: 71%;
+    }
+
+    .glyphicon-chevron-down {
+        margin-top: 0.5%;
+    }
+
+    .modal-title {
+        font-size: 95%;
+    }
+
+    .sushi_page ul>li>a {
+        font-size: 82%;
+    }
+
+    .swiper-button-next {
+        margin-right: -1.7%;
+        height: 10px;
+    }
+
+    .swiper-button-prev {
+        margin-left: -1.7%;
+        height: 10px;
+    }
+
+    .swiper-pagination-fraction {
+        font-size: 55%;
+    }
+
+}
+
+/*about+rules*/
+@media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+
+    .about-images>.col-xs-6 {
+        padding: 0 5% 0 2%;
+    }
+
+    .rules h3, .rules h4 {
+        margin-top: 8px;
+    }
+
+}
+
+@media (max-width: 400px) {
+
+    .rules h3, .rules h4 {
+        font-size: 100%
+    }
+
+    .rules p {
+        font-size: 72%;
+    }
+
+}
+
+@media (max-width: 350px) {
+
+    .rules h4 {
+        font-size: 90%
+    }
+
+    .rules p {
+        font-size: 70%;
+    }
+
+}

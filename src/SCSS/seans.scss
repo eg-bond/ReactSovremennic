@@ -1,0 +1,138 @@
+@import "variables";
+
+.seans-menu {
+  margin: 2.5% -5px 0 -5px;
+
+  @media (max-width: 992px) {
+    margin-top: 3.2%;
+  }
+}
+
+.seans-tabs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 0;
+  font-size: 96%;
+
+  > li > a {
+    padding: 7px 8px;
+    border-radius: 4px 4px 4px 4px;
+    font-weight: bold;
+    color: white;
+
+    &:focus, &:hover {
+      @extend %buttonsAnimation;
+    }
+    @media (max-width: 1200px) {
+      font-size: 84%;
+      padding: 5px 4.5px;
+    }
+    @media (max-width: 992px) {
+      font-size: 65%;
+      padding: 3px 2px;
+      margin-top: 5%;
+    }
+  }
+}
+
+.table_custom {
+  margin-top: 3%;
+  font-family: $lusidaFont;
+  font-weight: bold;
+  font-size: 100%;
+  border-radius: 5px;
+  width: 100%;
+  height: 500px;
+
+  @media (max-width: 1200px) {
+    height: 400px;
+    font-size: 85%;
+  }
+  @media (max-width: 992px) {
+    height: 300px;
+    font-size: 68%;
+  }
+}
+
+@mixin seansTable($leftColumnW, $centerColumnW, $rightColumnW, $paddingRight) {
+
+  @if ($leftColumnW != null) {
+    .table_custom table, .table_custom td:nth-of-type(1), table th:nth-of-type(1) {
+      width: $leftColumnW;
+      text-align: center;
+    }
+  }
+
+  @if ($centerColumnW != null) {
+    .table_custom table, .table_custom td:nth-of-type(2), table th:nth-of-type(2) {
+      width: $centerColumnW;
+    }
+  }
+
+  @if ($rightColumnW != null) {
+    .table_custom table, .table_custom td:nth-of-type(3), table th:nth-of-type(3) {
+      width: $rightColumnW;
+      text-align: center;
+      padding-right: $paddingRight;
+    }
+  }
+}
+
+@include seansTable(8%, 48%, 12%, 2%);
+
+.table_custom th, .table_custom td {
+  padding: 1.8% 0 1.8% 1%;
+}
+
+.table_head {
+  background-color: #e41b2b;
+  color: white;
+  border-color: #ea2222;
+}
+
+.table_white {
+  color: black;
+  background-color: white;
+}
+
+.table_gray {
+  color: white;
+  background-color: #2b2831;
+}
+
+@media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+
+  .sushi_menu_xs > .seans_button_xs {
+    margin-top: 3.4%;
+  }
+
+  .table_custom {
+    width: 100%;
+    min-height: 350px;
+    margin: 2% 0 4% 0;
+  }
+
+  .seans-tab-xs {
+    font-size: 90%;
+  }
+}
+
+@for $i from 4 to -1 {
+  $maxWidth: 320px + $i*112px;
+  $tableFontSize: 48%+9%*$i;
+
+  @media (max-width: $maxWidth) {
+    .table_custom {
+      font-size: $tableFontSize;
+    }
+  }
+}
+
+@media (max-width: 544px) {
+  @include seansTable(null, null, 13%, 0.5%);
+}
+
+@media (max-width: 432px) {
+  @include seansTable(null, null, 16%, 0.5%);
+}

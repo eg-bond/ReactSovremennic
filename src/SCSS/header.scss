@@ -1,0 +1,136 @@
+@import "variables";
+
+.space {
+  text-align: center;
+  opacity: 1;
+  height: 280px;
+
+  @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+    display: none;
+  }
+}
+
+.flexMenu {
+  display: flex;
+  flex-direction: row;
+  border-radius: 20px 20px 0 0;
+  background-color: #000;
+  margin-bottom: 0 !important;
+  border: $border5px;
+  border-bottom: none !important;
+
+  @media (max-width: 992px) {
+    border: $border3px;
+  }
+  @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+    border-radius: 0;
+    border-width: 0;
+    position: fixed !important;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+  }
+}
+
+.logoElem {
+  display: flex;
+  justify-content: flex-start;
+  flex: 1;
+  padding: 0.5% 0 0.5% 2.5%;
+  img {
+    width: 175px;
+    @media (max-width: 1200px) {
+      width: 150px;
+    }
+    @media (max-width: 992px) {
+      width: 125px;
+    }
+  }
+  @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+    padding: 0.5% 0 0.5% 1.5%;
+  }
+}
+.menu {
+  flex: 3.5;
+  padding: 1.5% 0 0 0;
+  border-top: none;
+  box-shadow: none;
+  @media (max-width: 1200px) {
+    flex: 4;
+    padding: 1% 0 0 0;
+  }
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 0 2%;
+    @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+      justify-content: space-between;
+      padding: 0;
+    }
+  }
+  a {
+    color: white;
+    font-weight: bold;
+
+    &:focus, &:hover {
+      //@extend %buttonsAnimation;
+    }
+    @media (max-width: 992px) {
+      font-size: 85%;
+    }
+    @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+      padding: 11px 3px !important;
+    }
+  }
+  li.active {
+    a, a:focus, a:hover {
+      color: #000 !important;
+      background-color: #ffffff !important;
+    }
+  }
+}
+
+
+@mixin flexMenuXS ($menuHeight, $logoElemWidth, $logoElemPadd, $menuFS) {
+  .flexMenu {
+    height: $menuHeight;
+  }
+  .line_container {
+    margin-top: $menuHeight;
+  }
+  .logoElem {
+    @if ($logoElemPadd != inherit) {
+      padding: $logoElemPadd;
+    }
+    img {
+      width: $logoElemWidth;
+    }
+  }
+  .menu a {
+    font-size: $menuFS;
+  }
+}
+
+@media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+  @include flexMenuXS (55px, 140px, inherit, 80%);
+}
+
+@media (max-width: 656px) {
+  @include flexMenuXS (50px, 125px, inherit, 74%);
+}
+
+@media (max-width: 544px) {
+  .flexMenu {
+    flex-direction: column;
+  }
+  @include flexMenuXS (90px, 120px, 0 0 0 3%, 72%);
+}
+
+@media (max-width: 432px) {
+  @include flexMenuXS (82px, 110px, 0 0 0 2%, 60%);
+}
+
+@media (max-width: 350px) {
+  @include flexMenuXS (75px, 100px, inherit, 55%);
+}

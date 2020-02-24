@@ -10,7 +10,7 @@ import SwiperXs from "../../Template/SwiperXs";
 function Rules() {
     return (
         <div className="margin-top-minus1">
-            <div className="col-lg-9 col-md-9 col-sm-9 col-xs-12 padding_0xs">
+            <div className="col-lg-9 col-md-9 col-sm-9 padding_15xs">
                 <div className="rules white">
                     <h3>Правила Кинотеатра «Современник»</h3>
                     <p>    &nbsp;&nbsp;Настоящие правила разработаны в соответствии с Законом РФ «О защите прав
@@ -120,16 +120,17 @@ function Rules() {
                         • Пожалуйста, бережно и терпимо относитесь к оборудованию и другим посетителям
                         Кинотеатра.</p>
                 </div>
-                <div className="separator-special"></div>
             </div>
 
             <Adv/>
 
+            <div className="separator"></div>
+
             <SwiperXs/>
 
-            <div className="separator-xs margin-top-1"></div>
+            <div className="separator"></div>
 
-            <div className="container visible-xs info_wide padding_0xs">
+            <div className="container visible-xs info_wide">
                 <a href="http://www.region47.sbor.net/"><img src="images/region47_wide.gif"></img></a>
             </div>
         </div>

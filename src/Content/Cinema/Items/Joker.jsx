@@ -88,6 +88,7 @@ function Joker(props) {
 
             <CinemaXsBottom/>
 
+
         </div>
     );
 }

@@ -79,7 +79,7 @@ class ModalWindow extends React.Component {
 function Seans() {
     return (
         <div>
-            <div className="col-lg-9 col-md-9 col-sm-9 col-xs-12 padding_0xs">
+            <div className="col-lg-9 col-md-9 col-sm-9">
                 <Tab.Container defaultActiveKey="day4" id='table'>
                     <div>
                         <div className="hidden-xs seans-menu">
@@ -433,11 +433,13 @@ function Seans() {
 
             <Adv />
 
+            <div className="separator-xs"></div>
+
             <SwiperXs />
 
             <div className="separator-xs"></div>
 
-            <div className="container visible-xs info_wide padding_0xs">
+            <div className="container visible-xs info_wide">
                 <a href="http://www.region47.sbor.net/"><img src="images/region47_wide.gif"></img></a>
             </div>
         </div>

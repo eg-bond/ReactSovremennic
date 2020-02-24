@@ -22,7 +22,7 @@ function IndexContent() {
                             src="http://www.youtube.com/embed/PKSxTsuCQ4?autoplay=1&amp;iv_load_policy=3; &showinfo=0; &rel=0; loop=1&amp;&amp;autohide=1;listType=pla ype=playlist&list=PLfrc7TOjXulMiQWLR1Jr8ZiZ2b7hWqSZf"></iframe>
                 </div>
 
-                <div className="separator-index"></div>
+                <div className="separator-xs"></div>
 
                 <div className="news ">
                     <h2>Информация</h2>
@@ -33,20 +33,23 @@ function IndexContent() {
                         пятницу с <b>12.00 - 16.00</b> часов действует скидка на все блюда <b>-30%</b></p>
                 </div>
 
-                <div className="separator-index"></div>
+                <div className="separator-xs"></div>
             </div>
 
             <Adv />
+
             <div className="container visible-xs col-xs-12 padding_15xs">
                 <div className="row adv-xs">
-                    <div className="sushi col-xs-5"><a href="sushi.html"><img src="images/72.gif"></img></a></div>
-                    <div className="col-xs-7">
-                        <div className="info"><a href="http://www.region47.sbor.net/"><img
-                            src="images/region47.gif"></img></a></div>
-                        <div className="info"><img src="images/jsb1.gif"></img></div>
+                    <div className="flexAdvXS">
+                        <div className="sushiFlex"><a href="sushi.html"><img src="images/72.gif"/></a></div>
+                        <div className="infoFlex">
+                            <div><a href="http://www.region47.sbor.net/"><img src="images/region47.gif"/></a></div>
+                            <div><img src="images/jsb1.gif"/></div>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
     );
 }

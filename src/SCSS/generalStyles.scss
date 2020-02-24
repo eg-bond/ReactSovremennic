@@ -1,0 +1,143 @@
+@import "variables";
+
+a, h1, h2, p {
+  font-family: $arialFont;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+  background-color: black !important;
+  //background: #24b17d url(../main_image.jpg) no-repeat top center;
+  height: 100%;
+
+  @media (max-width: 1200px) {
+    background-size: 1700px 950px;
+  }
+  @media (max-width: 992px) {
+    background-size: 1320px 950px;
+  }
+}
+
+hr {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.opacity {
+  transition: all 0.3s;
+  opacity: 1;
+
+  &:hover {
+    opacity:0.82;
+  }
+}
+
+.block {
+  display: block;
+}
+
+.line_5px {
+  border-top: $border5px;
+}
+
+.wrapper {
+  height: 100% ;
+  background-color: black;
+  border: $border5px;
+  border-top: none;
+}
+
+@media (max-width: 992px) {
+
+  .line_5px {
+    border-top: $border3px;
+  }
+  .wrapper {
+    border: $border3px;
+    border-top: none;
+  }
+}
+
+.nav-tabs>li>a {
+  border: none;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+  color: #000;
+  border: none;
+}
+
+// Делаем выпадающие менюшки нормальными
+.nav>li>a:focus, .nav>li>a:hover {
+  text-decoration: none;
+  background-color: #fff;
+  color: black;
+  transition: ease 650ms ;
+}
+
+.margin-top-1 {
+  margin-top: 1% !important;
+}
+
+.margin-top-2 {
+  margin-top: 2% !important;
+}
+
+.lucida_font {
+  font-family: $lusidaFont;
+}
+
+.century  {
+  font: normal 100% 'century gothic', arial;
+}
+
+.white {
+  color: white;
+}
+
+@media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+
+  body {
+    background-color: white;
+    background-image: none;
+  }
+
+  .padding_0xs {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .padding_15xs {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .wrapper {
+    background-color: black !important;
+    border-width: 0;
+  }
+
+  .separator {
+    height: 5px;
+    background-color: #292e33;
+    margin: 0 0 0 -15px;
+  }
+
+  .separator-xs {
+    height: 5px;
+    background-color: #292e33;
+    margin: 0 -15px 0 -15px;
+  }
+
+  .line_5px {
+    display: none;
+  }
+}

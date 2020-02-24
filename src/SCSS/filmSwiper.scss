@@ -1,0 +1,106 @@
+@import "variables";
+
+.top-menu {
+  margin-top: 10px;
+  cursor: grab;
+  //opacity: 0;
+}
+
+.film-swiper {
+  width: 98%;
+  margin: 0.5% 0 0 1%;
+
+  .swiper-wrapper {
+
+    .swiper-slide {
+      text-align: left;
+      img {
+        height: 250px;
+        width: 100%;
+        border-radius: 3px;
+      }
+      h1 {
+        font-size: 101%;
+        font-weight: bold;
+        padding-left: 2%;
+        font-family: $lusidaFont;
+        margin: 5% 0 2% 0;
+        white-space: pre;
+        overflow: hidden;
+
+        &:before {
+          content: "";
+          display: block;
+          height: 20px;
+          width: 72px;
+          position: relative;
+          left: 88%;
+          margin-top: -20px;
+          background-image:linear-gradient(to right, rgba(255, 255, 255, 0), black 25%)
+        }
+      }
+    }
+    .swiper-slide {
+      p {
+        padding-left: 2.5%;
+        font-size: 90%;
+        letter-spacing: 0.01em;
+        color: white;
+        font-weight: normal;
+        font-family: $lusidaFont;
+      }
+      a {
+        color: white;
+        text-decoration: none;
+        cursor: pointer;
+        font-weight: normal;
+
+        &:hover {
+          color: #d8d1d1;
+          transition: all 0.3s;
+          cursor: pointer;
+          font-weight: normal;
+        }
+      }
+    }
+  }
+}
+
+.swiper-pagination-bullet {
+  background: #000;
+  background-color: white;
+}
+
+@mixin topSwiper ($swiperHeight, $beforeElem, $fontSize, $imgHeight) {
+  .top-menu {
+    height: $swiperHeight;
+  }
+
+  .film-swiper>.swiper-wrapper {
+    height: $swiperHeight;
+  }
+
+  .film-swiper>.swiper-wrapper>.swiper-slide h1:before {
+    top: $beforeElem;
+  }
+
+  .film-swiper>.swiper-wrapper>.swiper-slide {
+    font-size: $fontSize;
+  }
+
+  .film-swiper>.swiper-wrapper>.swiper-slide img{
+    height: $imgHeight;
+  }
+}
+
+
+@include topSwiper (330px, 24px, 12px, 250px);
+
+
+@media (max-width: 1200px) {
+  @include topSwiper (282px, 21px, 76%, 210px);
+}
+
+@media (max-width: 992px) {
+  @include topSwiper (236px, 21px, 72%, 170px);
+}

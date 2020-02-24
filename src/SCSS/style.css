@@ -19,7 +19,7 @@ body {
   color: #000;
   margin: 0;
   padding: 0;
-  background-color: black !important;
+  background: #24b17d url(../main_image.jpg) no-repeat top center;
   height: 100%;
 }
 @media (max-width: 1200px) {
@@ -119,8 +119,8 @@ hr {
   }
 
   .padding_15xs {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 18px;
+    padding-right: 18px;
   }
 
   .wrapper {
@@ -378,6 +378,7 @@ hr {
   .film-swiper-xs {
     width: 98%;
     margin: 0.5% 0 0 1%;
+    opacity: 0;
   }
   .film-swiper-xs .swiper-wrapper .swiper-slide {
     text-align: left;
@@ -754,6 +755,7 @@ hr {
 .top-menu {
   margin-top: 10px;
   cursor: grab;
+  opacity: 0;
 }
 
 .film-swiper {
@@ -888,6 +890,7 @@ hr {
   background-color: black;
   border-top: solid 5px white;
   cursor: grab;
+  opacity: 0;
 }
 @media (max-width: 992px) {
   .swiper-bottom {
@@ -976,6 +979,7 @@ hr {
   .film-swiper-xs {
     width: 98%;
     margin: 0.5% 0 0 1%;
+    opacity: 0;
   }
   .film-swiper-xs .swiper-wrapper .swiper-slide {
     text-align: left;
@@ -1174,7 +1178,6 @@ hr {
   padding: 7px 8px;
   border-radius: 4px 4px 4px 4px;
   font-weight: bold;
-  color: white;
 }
 @media (max-width: 1200px) {
   .seans-tabs > li > a {
@@ -1308,6 +1311,9 @@ hr {
   transition: ease 650ms;
 }
 
+.film_info {
+  opacity: 0;
+}
 .film_info img {
   width: 250px;
   height: auto;
@@ -1398,6 +1404,10 @@ hr {
 
   .embed-responsive {
     margin: 3% 0 3% 0;
+  }
+
+  .xs_desc {
+    opacity: 0;
   }
 }
 @media (max-width: 768px) {
@@ -1618,24 +1628,24 @@ hr {
     padding-left: 0;
   }
 
-  .sushi_menu_xs > div > button {
+  .sushi_menu_xs > button {
     padding: 2% 2% 2% 4.5%;
     margin: 1.5% 0;
     font-family: Arial Black, sans-serif;
-    background-color: black !important;
-    border: solid 1.7px white !important;
-    color: white !important;
+    background-color: black;
+    border: solid 1.7px white;
+    color: white;
     border-radius: 21px;
     width: 100%;
   }
-  .sushi_menu_xs > div > button:hover {
-    background-color: black !important;
-    border-color: red !important;
-    color: red !important;
+  .sushi_menu_xs > button:hover {
+    background-color: black;
+    border-color: red;
+    color: red;
     border-radius: 21px;
     transition: ease 650ms;
   }
-  .sushi_menu_xs > div > button:focus {
+  .sushi_menu_xs > button:focus {
     outline: none !important;
   }
 
