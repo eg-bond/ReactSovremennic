@@ -10,6 +10,7 @@ const SushiSwiper = () => {
         // containerClass: 'sushi-swiper-container swiper-container',
         // wrapperClass: 'sushi-swiper-wrapper',
         // slideClass: 'sushi-swiper-slide, swiper-slide',
+        // buttonClass: swiper-button-black,
 
         pagination: {
             el: '.swiper-pagination',

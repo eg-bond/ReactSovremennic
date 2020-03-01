@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Rules.module.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import TopSwiper from "../../Template/TopSwiper";
+import TopSwiper from "../../Template/FilmSwiper";
 import Navigation from "../../Template/Navigation/Navigation";
 import Adv from "../../Template/Adv";
 import SwiperXs from "../../Template/SwiperXs";
@@ -124,15 +124,6 @@ function Rules() {
 
             <Adv/>
 
-            <div className="separator"></div>
-
-            <SwiperXs/>
-
-            <div className="separator"></div>
-
-            <div className="container visible-xs info_wide">
-                <a href="http://www.region47.sbor.net/"><img src="images/region47_wide.gif"></img></a>
-            </div>
         </div>
     );
 }

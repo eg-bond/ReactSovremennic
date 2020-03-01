@@ -1,67 +1,52 @@
-import React from 'react';
+import React, {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import Nav from "react-bootstrap/lib/Nav";
 import {Button, Col, Modal, NavItem, Tab} from "react-bootstrap";
 import SushiSwiper from "./SushiSwiper";
-import SwiperXs from "../../Template/SwiperXs";
 
-class ModalSushi extends React.Component {
-    constructor(props, context) {
-        super(props, context);
+function SushiModal() {
 
-        this.handleHide = this.handleHide.bind(this);
+    let [show, setShow] = useState(false);
+    let [buttonTitle, changButtonTitle] = useState("Меню");
 
-        this.state = {
-            show: false
-        };
-    }
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    const selectModalItem = (e) => {
+        changButtonTitle(e.target.text);
+        setShow(false);
+    };
 
-    handleHide() {
-        this.setState({ show: false });
-    }
+    console.log(buttonTitle);
 
-    render() {
-        return (
-            <div className="modal-container">
-                <Button
-                    id="seans_button_xs"
-                    onClick={() => this.setState({ show: true })}
-                    className='seans_button_xs '
-                >
-                    Меню
-                </Button>
+    return (
+        <div className="modal-container">
+            <Button onClick={handleShow} className='seans_button_xs '>
+                {buttonTitle}
+            </Button>
 
-                <Modal
-                    show={this.state.show}
-                    onHide={this.handleHide}
-                    container={this}
-                    aria-labelledby="contained-modal-title"
-                >
-                    <Modal.Header closeButton>
-                        <Modal.Title id="contained-modal-title">
-                            Меню
-                        </Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <Nav bsStyle="tabs" className='seans-tab-xs sushi-tab-xs' stacked>
-                            <NavItem eventKey="sushi" onClick={this.handleHide}>Суши</NavItem>
-                            <NavItem eventKey="rolls" onClick={this.handleHide}>Роллы</NavItem>
-                            <NavItem eventKey="black_rolls" onClick={this.handleHide}>Цветные/черные роллы</NavItem>
-                            <NavItem eventKey="hot_rolls" onClick={this.handleHide}>Запеченые роллы</NavItem>
-                            <NavItem eventKey="brand_rolls" onClick={this.handleHide}>Фирменные роллы</NavItem>
-                            <NavItem eventKey="sets" onClick={this.handleHide}>Наборы, сашими</NavItem>
-                            <NavItem eventKey="salads" onClick={this.handleHide}>Салаты</NavItem>
-                            <NavItem eventKey="soups" onClick={this.handleHide}>Супы</NavItem>
-                            <NavItem eventKey="hot_dishes" onClick={this.handleHide}>Горячие блюда</NavItem>
-                            <NavItem eventKey="garnish" onClick={this.handleHide}>Гарниры</NavItem>
-                            <NavItem eventKey="dessert" onClick={this.handleHide}>Десерты</NavItem>
-                            <NavItem eventKey="gruzia" onClick={this.handleHide}>Грузинская кухня</NavItem>
-                        </Nav>
-                    </Modal.Body>
-                </Modal>
-            </div>
-        );
-    }
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Меню</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Nav bsStyle="tabs" className='seans-tab-xs sushi-tab-xs' stacked>
+                        <NavItem eventKey="sushi" onClick={selectModalItem}>Суши</NavItem>
+                        <NavItem eventKey="rolls" onClick={selectModalItem}>Роллы</NavItem>
+                        <NavItem eventKey="black_rolls" onClick={selectModalItem}>Цветные/черные роллы</NavItem>
+                        <NavItem eventKey="hot_rolls" onClick={selectModalItem}>Запеченые роллы</NavItem>
+                        <NavItem eventKey="brand_rolls" onClick={selectModalItem}>Фирменные роллы</NavItem>
+                        <NavItem eventKey="sets" onClick={selectModalItem}>Наборы, сашими</NavItem>
+                        <NavItem eventKey="salads" onClick={selectModalItem}>Салаты</NavItem>
+                        <NavItem eventKey="soups" onClick={selectModalItem}>Супы</NavItem>
+                        <NavItem eventKey="hot_dishes" onClick={selectModalItem}>Горячие блюда</NavItem>
+                        <NavItem eventKey="garnish" onClick={selectModalItem}>Гарниры</NavItem>
+                        <NavItem eventKey="dessert" onClick={selectModalItem}>Десерты</NavItem>
+                        <NavItem eventKey="gruzia" onClick={selectModalItem}>Грузинская кухня</NavItem>
+                    </Nav>
+                </Modal.Body>
+            </Modal>
+        </div>
+    );
 }
 
 function Sushi() {
@@ -72,7 +57,7 @@ function Sushi() {
                     <Tab.Container defaultActiveKey="sushi" id='sushiTab'>
                         <div>
                             <div className="sushi_menu_xs visible-xs padding_15xs">
-                                <ModalSushi />
+                                <SushiModal />
                             </div>
 
                             <Col lg={3} md={3} sm={3} className='hidden-xs'>
@@ -90,9 +75,6 @@ function Sushi() {
                                     <NavItem className='sushi-tab' eventKey="dessert">Десерты</NavItem>
                                     <NavItem className='sushi-tab' eventKey="gruzia">Грузинская кухня</NavItem>
                                 </Nav>
-                                <div className="info hidden-xs"><a href="http://www.region47.sbor.net/"><img
-                                    src="images/region47.gif"></img></a>
-                                </div>
                             </Col>
 
                             <Col lg={9} md={9} sm={9}>
@@ -114,18 +96,7 @@ function Sushi() {
                                 </Tab.Content>
                             </Col>
                         </div>
-
                     </Tab.Container>;
-
-                    <div className="separator"></div>
-
-                    <SwiperXs />
-
-                    <div className="separator"></div>
-
-                    {/*<div className="container visible-xs info_wide">*/}
-                        {/*<a href="http://www.region47.sbor.net/"><img src="./Images/region47_wide.gif"></img></a>*/}
-                    {/*</div>*/}
                 </div>
             </div>
         </div>

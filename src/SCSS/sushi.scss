@@ -1,9 +1,5 @@
 @import "variables";
 
-
-
-
-
 .sushi-tab {
   border-radius: 4px 4px 4px 4px !important;
 
@@ -16,6 +12,10 @@
   &:focus, &:hover {
     @extend %buttonsAnimation;
   }
+  //> li.active > a {
+  //  color: #fff;
+  //  background-color: white !important;
+  //}
 }
 
 .sushi_page>div>.nav-tabs {
@@ -39,11 +39,13 @@
 }
 
 .swiper-button-next {
-  margin-right: 1%;
+  //margin-right: 1%;
+  color: black;
 }
 
 .swiper-button-prev {
-  margin-left: 1%;
+  //margin-left: 1%;
+  color: black;
 }
 
 .swiper-container-sushi>.swiper-pagination-bullets {
@@ -74,30 +76,6 @@
     padding-right: 0;
     padding-left: 0;
   }
-
-  //.sushi_menu_xs>div>button {
-  //  padding: 2% 2% 2% 4.5% !important;
-  //  margin: 2% 0 4% 0 !important;
-  //  font-family: Arial Black, sans-serif !important;
-  //  background-color: black !important;
-  //  border: solid 1.7px white !important;
-  //  color: white !important;
-  //  border-radius: 21px !important;
-  //  width: 100% !important;
-  //  margin-left: 0% !important;
-  //}
-  //
-  //.sushi_menu_xs>div>button:hover {
-  //  background-color: black !important;
-  //  border-color: red !important;
-  //  color: red !important;
-  //  border-radius: 21px !important;
-  //  transition: ease 650ms !important;
-  //}
-  //
-  //.sushi_menu_xs>div>button:focus  {
-  //  outline: none !important;
-  //}
 
   .sushi_menu_xs {
     >div {

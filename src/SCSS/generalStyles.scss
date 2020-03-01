@@ -1,7 +1,8 @@
 @import "variables";
 
-a, h1, h2, p {
+a, h1, h2, h4, p {
   font-family: $arialFont;
+  color: white;
 }
 
 *{
@@ -53,6 +54,17 @@ hr {
   background-color: black;
   border: $border5px;
   border-top: none;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+  color: black;
+  background-color: white;
+}
+
+.modal-dialog {
+  h4 {
+    color: black;
+  }
 }
 
 @media (max-width: 992px) {

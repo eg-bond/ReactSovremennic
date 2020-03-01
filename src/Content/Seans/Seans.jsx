@@ -1,101 +1,93 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import {Button, Modal, NavItem, Row, Tab} from "react-bootstrap";
 import Nav from "react-bootstrap/lib/Nav";
 import Adv from "../../Template/Adv";
-import SwiperXs from "../../Template/SwiperXs";
+import NavItems from "./NavItems";
 
 
+function SeansModal(props) {
 
-class ModalWindow extends React.Component {
-    constructor(props, context) {
-        super(props, context);
+    const refArr = ["day0","day1", "day2", "day3", "day4", "day5", "day6"];
 
-        this.handleHide = this.handleHide.bind(this);
+    let [show, setShow] = useState(false);
+    let [buttonTitle, changButtonTitle] = useState(props.todayDate);
 
-        this.state = {
-            show: false
-        };
-    }
+    useEffect(() => {
+        changButtonTitle(props.todayDate);
+    }, [props.todayDate]);
 
-    handleHide() {
-        this.setState({ show: false });
-    }
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    const selectModalItem = (e) => {
+        changButtonTitle(e.target.text);
+        setShow(false);
+    };
 
-    render() {
-        return (
-            <div className="modal-container">
-                <Button
-                    id="seans_button_xs"
-                    onClick={() => this.setState({ show: true })}
-                    className='seans_button_xs'
-                >
-                    Дата
-                </Button>
+    return (
+        <div className="modal-container">
+            <Button onClick={handleShow} className='seans_button_xs '>
+                {buttonTitle}
+            </Button>
 
-                <Modal
-                    show={this.state.show}
-                    onHide={this.handleHide}
-                    container={this}
-                    aria-labelledby="contained-modal-title"
-                >
-                    <Modal.Header closeButton>
-                        <Modal.Title id="contained-modal-title">
-                            Дата
-                        </Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <Nav bsStyle="tabs" className='seans-tab-xs sushi-tab-xs' stacked>
-                            <NavItem eventKey="day3" onClick={this.handleHide}>
-                                Среда 16 октября
-                            </NavItem>
-                            <NavItem eventKey="day4" onClick={this.handleHide}>
-                                Четверг 17 октября
-                            </NavItem>
-                            <NavItem eventKey="day5" onClick={this.handleHide}>
-                                Пятница 18 октября
-                            </NavItem>
-                            <NavItem eventKey="day6" onClick={this.handleHide}>
-                                Суббота 19 октября
-                            </NavItem>
-                            <NavItem eventKey="day0" onClick={this.handleHide}>
-                                Воскресенье 20 октября
-                            </NavItem>
-                            <NavItem eventKey="day1" onClick={this.handleHide}>
-                                Понедельник 21 октября
-                            </NavItem>
-                            <NavItem eventKey="day2" onClick={this.handleHide}>
-                                Вторник 22 октября
-                            </NavItem>
-                        </Nav>
-                    </Modal.Body>
-                </Modal>
-            </div>
-        );
-    }
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Дата</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <NavItems datesArr={props.datesArr} deviceType={"Mobile"} selectModalItem={selectModalItem}/>
+                </Modal.Body>
+            </Modal>
+        </div>
+    );
 }
 
 
-function Seans() {
+
+
+const Seans = React.memo((props) => {
+
+    console.log("render");
+
+    // const datesArr = [
+    //     ["day1", "Понедельник", "7 октября"],
+    //     ["day2", "Вторник", "8 октября"],
+    //     ["day3", "Среда", "9 октября"],
+    //     ["day4", "Четверг", "10 октября"],
+    //     ["day5", "Пятница", "11 октября"],
+    //     ["day6", "Суббота", "12 октября"],
+    //     ["day0", "Воскресенье", "6 октября"]
+    // ]
+
+    // let [todayDate, setTodayDate] = useState("Дата");
+    // let [activeKey, setActiveKey] = useState(null);
+
+    // const findActiveKey = () => {
+    //     let date = new Date();
+    //     let day = date.getDay();
+    //     for (let i=0; i<=6; i++) {
+    //         if (i == day) {
+    //             setActiveKey(`day${i}`);
+    //         }
+    //     }
+    // }
+
+    // useEffect(() => {
+    //     let todayItem = props.datesArr.find((item) => item[0] == props.activeKey);
+    //     setTodayDate(todayItem[1] +" "+ todayItem[2]);
+    // }, [props.activeKey]);
+
     return (
         <div>
             <div className="col-lg-9 col-md-9 col-sm-9">
-                <Tab.Container defaultActiveKey="day4" id='table'>
+                <Tab.Container defaultActiveKey={props.activeKey} id='table'>
                     <div>
                         <div className="hidden-xs seans-menu">
-                            <Nav bsStyle="tabs" className='seans-tabs'>
-                                <NavItem eventKey="day3">Среда<br></br>16 октября</NavItem>
-                                <NavItem eventKey="day4">Четверг<br></br>17 октября</NavItem>
-                                <NavItem eventKey="day5">Пятница<br></br>18 октября</NavItem>
-                                <NavItem eventKey="day6">Суббота<br></br>19 октября</NavItem>
-                                <NavItem eventKey="day0">Воскресенье<br></br>20 октября</NavItem>
-                                <NavItem eventKey="day1">Понедельник<br></br>21 октября</NavItem>
-                                <NavItem eventKey="day2">Вторник<br></br>22 октября</NavItem>
-                            </Nav>
+                            <NavItems datesArr={props.datesArr} deviceType={"notMobile"}/>
                         </div>
 
                         <div className="sushi_menu_xs visible-xs">
-                            <ModalWindow />
+                            <SeansModal datesArr={props.datesArr} todayDate={props.todayDate} />
                         </div>
 
                         <div>
@@ -429,21 +421,11 @@ function Seans() {
                 <div className="separator-special"></div>
             </div>
 
-
-
             <Adv />
 
-            <div className="separator-xs"></div>
 
-            <SwiperXs />
-
-            <div className="separator-xs"></div>
-
-            <div className="container visible-xs info_wide">
-                <a href="http://www.region47.sbor.net/"><img src="images/region47_wide.gif"></img></a>
-            </div>
         </div>
     );
-}
+});
 
 export default Seans;

@@ -5,8 +5,9 @@
   transition: ease 650ms;
 }
 
-a, h1, h2, p {
+a, h1, h2, h4, p {
   font-family: Arial Black, sans-serif;
+  color: white;
 }
 
 * {
@@ -59,6 +60,15 @@ hr {
   background-color: black;
   border: solid 5px white;
   border-top: none;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+  color: black;
+  background-color: white;
+}
+
+.modal-dialog h4 {
+  color: black;
 }
 
 @media (max-width: 992px) {
@@ -240,6 +250,10 @@ hr {
   color: white;
   font-weight: bold;
 }
+.menu a.active {
+  color: #000;
+  background-color: #ffffff;
+}
 @media (max-width: 992px) {
   .menu a {
     font-size: 85%;
@@ -249,10 +263,6 @@ hr {
   .menu a {
     padding: 11px 3px !important;
   }
-}
-.menu li.active a, .menu li.active a:focus, .menu li.active a:hover {
-  color: #000 !important;
-  background-color: #ffffff !important;
 }
 
 @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
@@ -873,6 +883,195 @@ hr {
 
   .film-swiper > .swiper-wrapper > .swiper-slide img {
     height: 170px;
+  }
+}
+@media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+  .top-menu {
+    width: 100%;
+    padding-left: 10px;
+  }
+  .top-menu h4 {
+    font-family: Arial Black, sans-serif;
+    color: white;
+    margin: 2% 0 2% 0;
+  }
+
+  .swiper-pagination-bullet {
+    display: none;
+  }
+
+  .film-swiper {
+    width: 98%;
+    margin: 0.5% 0 0 1%;
+  }
+  .film-swiper .swiper-wrapper .swiper-slide {
+    text-align: left;
+    font-size: 11px;
+    overflow: hidden;
+  }
+  .film-swiper .swiper-wrapper .swiper-slide img {
+    width: 100%;
+    border-radius: 3px;
+  }
+  .film-swiper .swiper-wrapper .swiper-slide h1 {
+    font-weight: bold;
+    padding-left: 2%;
+    font-family: Lucida Console, monospace;
+    margin: 5% 0 2% 0;
+    white-space: nowrap;
+    color: white;
+  }
+  .film-swiper .swiper-wrapper .swiper-slide p {
+    padding-left: 2%;
+    letter-spacing: 0.01em;
+    font-family: Lucida Console, monospace;
+    color: white;
+  }
+  .film-swiper .swiper-wrapper .swiper-slide a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .film-swiper .swiper-wrapper .swiper-slide a h1:before {
+    content: "";
+    display: block;
+    height: 20px;
+    width: 72px;
+    position: relative;
+    left: 85%;
+    top: 15px;
+    margin-top: -20px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), black 25%);
+  }
+}
+@media (max-width: 768px) {
+  .top-menu {
+    height: 310px;
+  }
+
+  .top-menu h4 {
+    font-size: 110%;
+    padding-left: 2%;
+  }
+
+  .film-swiper > .swiper-wrapper {
+    height: 281.8181818182px;
+  }
+
+  .film-swiper > .swiper-wrapper > .swiper-slide img {
+    height: 229.6296296296px;
+  }
+
+  .film-swiper > .swiper-wrapper > .swiper-slide h1 {
+    font-size: 111%;
+  }
+
+  .film-swiper > .swiper-wrapper > .swiper-slide p {
+    font-size: 87%;
+  }
+}
+@media (max-width: 656px) {
+  .top-menu {
+    height: 273px;
+  }
+
+  .top-menu h4 {
+    font-size: 98.75%;
+    padding-left: 2.375%;
+  }
+
+  .film-swiper > .swiper-wrapper {
+    height: 248.1818181818px;
+  }
+
+  .film-swiper > .swiper-wrapper > .swiper-slide img {
+    height: 202.2222222222px;
+  }
+
+  .film-swiper > .swiper-wrapper > .swiper-slide h1 {
+    font-size: 102%;
+  }
+
+  .film-swiper > .swiper-wrapper > .swiper-slide p {
+    font-size: 84%;
+  }
+}
+@media (max-width: 544px) {
+  .top-menu {
+    height: 236px;
+  }
+
+  .top-menu h4 {
+    font-size: 87.5%;
+    padding-left: 2.75%;
+  }
+
+  .film-swiper > .swiper-wrapper {
+    height: 214.5454545455px;
+  }
+
+  .film-swiper > .swiper-wrapper > .swiper-slide img {
+    height: 174.8148148148px;
+  }
+
+  .film-swiper > .swiper-wrapper > .swiper-slide h1 {
+    font-size: 93%;
+  }
+
+  .film-swiper > .swiper-wrapper > .swiper-slide p {
+    font-size: 81%;
+  }
+}
+@media (max-width: 432px) {
+  .top-menu {
+    height: 199px;
+  }
+
+  .top-menu h4 {
+    font-size: 76.25%;
+    padding-left: 3.125%;
+  }
+
+  .film-swiper > .swiper-wrapper {
+    height: 180.9090909091px;
+  }
+
+  .film-swiper > .swiper-wrapper > .swiper-slide img {
+    height: 147.4074074074px;
+  }
+
+  .film-swiper > .swiper-wrapper > .swiper-slide h1 {
+    font-size: 84%;
+  }
+
+  .film-swiper > .swiper-wrapper > .swiper-slide p {
+    font-size: 78%;
+  }
+}
+@media (max-width: 320px) {
+  .top-menu {
+    height: 162px;
+  }
+
+  .top-menu h4 {
+    font-size: 65%;
+    padding-left: 3.5%;
+  }
+
+  .film-swiper > .swiper-wrapper {
+    height: 147.2727272727px;
+  }
+
+  .film-swiper > .swiper-wrapper > .swiper-slide img {
+    height: 120px;
+  }
+
+  .film-swiper > .swiper-wrapper > .swiper-slide h1 {
+    font-size: 75%;
+  }
+
+  .film-swiper > .swiper-wrapper > .swiper-slide p {
+    font-size: 75%;
   }
 }
 .sushi-tab:focus, .sushi-tab:hover, .seans-tabs > li > a:focus, .seans-tabs > li > a:hover {
@@ -1581,11 +1780,11 @@ hr {
 }
 
 .swiper-button-next {
-  margin-right: 1%;
+  color: black;
 }
 
 .swiper-button-prev {
-  margin-left: 1%;
+  color: black;
 }
 
 .swiper-container-sushi > .swiper-pagination-bullets {

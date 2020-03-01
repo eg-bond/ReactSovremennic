@@ -1,11 +1,13 @@
 import React from 'react';
 import Adv from "../../Template/Adv";
 import SwiperXs from "../../Template/SwiperXs";
+import TopSwiper from "../../Template/FilmSwiper";
+import IndexAdvXS from "../../Template/IndexAdvXS";
 
-function IndexContent() {
+function IndexContent(props) {
     return (
         <div>
-            <SwiperXs />
+            {/*<SwiperXs />*/}
             <div className="separator"></div>
 
             <div className="trailers padding_15xs visible-xs">
@@ -38,17 +40,7 @@ function IndexContent() {
 
             <Adv />
 
-            <div className="container visible-xs col-xs-12 padding_15xs">
-                <div className="row adv-xs">
-                    <div className="flexAdvXS">
-                        <div className="sushiFlex"><a href="sushi.html"><img src="images/72.gif"/></a></div>
-                        <div className="infoFlex">
-                            <div><a href="http://www.region47.sbor.net/"><img src="images/region47.gif"/></a></div>
-                            <div><img src="images/jsb1.gif"/></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <IndexAdvXS />
 
         </div>
     );

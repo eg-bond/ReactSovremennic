@@ -62,14 +62,6 @@
     }
   }
 }
-//@mixin xsMediaCycle {
-//  @for $i from 4 to -1 {
-//    $maxWidth: 320px + $i*112px;
-//    @media (max-width: $maxWidth) {
-//
-//    }
-//  }
-//}
 
 @mixin filmSwiperXS ($swiperHeight, $mainHeadFS, $mainHeadPL, $filmTitleFS, $filmDateFS, $maxWidth) {
 
