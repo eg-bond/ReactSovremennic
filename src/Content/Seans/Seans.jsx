@@ -4,10 +4,13 @@ import {Tab} from "react-bootstrap";
 import Adv from "../../Template/Adv";
 import NavItems from "./NavItems";
 import SeansModal from "./SeansModal";
+import {changeActiveKey, changeButtonTitle, initialButtonTitle} from "../../REDUX/seansReduser";
+import {compose} from "redux";
+import {connect} from "react-redux";
 
 
 const Seans = React.memo((props) => {
-
+    console.log("render")
     return (
         <div>
             <div className="col-lg-9 col-md-9 col-sm-9">
@@ -360,4 +363,12 @@ const Seans = React.memo((props) => {
     );
 });
 
-export default Seans;
+let mapStateToProps = (state) => ({
+    datesArr: state.seansPage.actualDatesArr,
+    activeKey: state.seansPage.activeKey,
+    buttonTitle: state.seansPage.buttonTitle
+});
+
+export default compose(
+    connect(mapStateToProps, {changeButtonTitle, changeActiveKey, initialButtonTitle})
+)(Seans);

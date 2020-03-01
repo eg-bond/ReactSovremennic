@@ -1,8 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import {Button, Modal} from "react-bootstrap";
 import NavItems from "./NavItems";
-import {initialButtonTitle} from "../../REDUX/seansReduser";
 
 function SeansModal(props) {
 

@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import About from "./Content/About/About";
 import FilmSwiper from "./Template/FilmSwiper";
-import {BrowserRouter, Route, useParams} from "react-router-dom";
+import {Route, useParams} from "react-router-dom";
 import Cinema from "./Content/Cinema/Cinema";
 import Navigation from "./Template/Navigation/Navigation";
 import Rules from "./Content/Rules/Rules";
@@ -13,12 +13,9 @@ import Sushi from "./Content/Sushi/Sushi";
 import '../node_modules/swiper/css/swiper.css';
 import IndexContent from "./Content/IndexContent/IndexContent";
 import './App.css';
-import SwiperXs from "./Template/SwiperXs";
 import {useMediaQuery} from "react-responsive";
-import MediaFragment from "./Content/MediaFragment";
 import Media from 'react-media';
 import AdvXS from "./Template/AdvXS";
-import SeansContainer from "./Content/Seans/SeansContainer";
 import {initialButtonTitle, initialActiveKey, createActualDatesArr} from "./REDUX/seansReduser";
 import {compose} from "redux";
 import {connect} from "react-redux";
@@ -168,7 +165,7 @@ const App = (props) => {
                         <Route exact path="/"><IndexContent films = {films}/></Route>
                         <Route exact path="/about"><About films = {films}/></Route>
                         <Route exact path="/rules"><Rules films = {films}/></Route>
-                        <Route exact path="/seans"><SeansContainer films = {films}/></Route>
+                        <Route exact path="/seans"><Seans /></Route>
                         <Route exact path="/sushi"><Sushi films = {films}/></Route>
                         <Cinema />
 
