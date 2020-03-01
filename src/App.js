@@ -19,7 +19,7 @@ import MediaFragment from "./Content/MediaFragment";
 import Media from 'react-media';
 import AdvXS from "./Template/AdvXS";
 import SeansContainer from "./Content/Seans/SeansContainer";
-import {initialActiveKey} from "./REDUX/seansReduser";
+import {initialButtonTitle, initialActiveKey, createActualDatesArr} from "./REDUX/seansReduser";
 import {compose} from "redux";
 import {connect} from "react-redux";
 
@@ -132,10 +132,13 @@ const filmsToday = [ // Массив с данными по всем фильм�
 const App = (props) => {
 
     useEffect(() => {
+        props.createActualDatesArr();
         props.initialActiveKey();
+        props.initialButtonTitle();
     }, []);
 
     let { id } = useParams();
+
     return (
             <div>
                 <Navigation />
@@ -196,5 +199,5 @@ const App = (props) => {
 
 
 export default compose(
-    connect(null, {initialActiveKey})
+    connect(null, {initialActiveKey, initialButtonTitle, createActualDatesArr})
 )(App);

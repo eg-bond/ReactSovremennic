@@ -7,21 +7,14 @@ import SushiSwiper from "./SushiSwiper";
 function SushiModal() {
 
     let [show, setShow] = useState(false);
-    let [buttonTitle, changButtonTitle] = useState("Меню");
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const selectModalItem = (e) => {
-        changButtonTitle(e.target.text);
-        setShow(false);
-    };
-
-    console.log(buttonTitle);
 
     return (
         <div className="modal-container">
             <Button onClick={handleShow} className='seans_button_xs '>
-                {buttonTitle}
+                Меню <span className="glyphicon glyphicon-chevron-down" aria-hidden="true"/>
             </Button>
 
             <Modal show={show} onHide={handleClose}>
@@ -30,18 +23,18 @@ function SushiModal() {
                 </Modal.Header>
                 <Modal.Body>
                     <Nav bsStyle="tabs" className='seans-tab-xs sushi-tab-xs' stacked>
-                        <NavItem eventKey="sushi" onClick={selectModalItem}>Суши</NavItem>
-                        <NavItem eventKey="rolls" onClick={selectModalItem}>Роллы</NavItem>
-                        <NavItem eventKey="black_rolls" onClick={selectModalItem}>Цветные/черные роллы</NavItem>
-                        <NavItem eventKey="hot_rolls" onClick={selectModalItem}>Запеченые роллы</NavItem>
-                        <NavItem eventKey="brand_rolls" onClick={selectModalItem}>Фирменные роллы</NavItem>
-                        <NavItem eventKey="sets" onClick={selectModalItem}>Наборы, сашими</NavItem>
-                        <NavItem eventKey="salads" onClick={selectModalItem}>Салаты</NavItem>
-                        <NavItem eventKey="soups" onClick={selectModalItem}>Супы</NavItem>
-                        <NavItem eventKey="hot_dishes" onClick={selectModalItem}>Горячие блюда</NavItem>
-                        <NavItem eventKey="garnish" onClick={selectModalItem}>Гарниры</NavItem>
-                        <NavItem eventKey="dessert" onClick={selectModalItem}>Десерты</NavItem>
-                        <NavItem eventKey="gruzia" onClick={selectModalItem}>Грузинская кухня</NavItem>
+                        <NavItem eventKey="sushi" onClick={handleClose}>Суши</NavItem>
+                        <NavItem eventKey="rolls" onClick={handleClose}>Роллы</NavItem>
+                        <NavItem eventKey="black_rolls" onClick={handleClose}>Цветные/черные роллы</NavItem>
+                        <NavItem eventKey="hot_rolls" onClick={handleClose}>Запеченые роллы</NavItem>
+                        <NavItem eventKey="brand_rolls" onClick={handleClose}>Фирменные роллы</NavItem>
+                        <NavItem eventKey="sets" onClick={handleClose}>Наборы, сашими</NavItem>
+                        <NavItem eventKey="salads" onClick={handleClose}>Салаты</NavItem>
+                        <NavItem eventKey="soups" onClick={handleClose}>Супы</NavItem>
+                        <NavItem eventKey="hot_dishes" onClick={handleClose}>Горячие блюда</NavItem>
+                        <NavItem eventKey="garnish" onClick={handleClose}>Гарниры</NavItem>
+                        <NavItem eventKey="dessert" onClick={handleClose}>Десерты</NavItem>
+                        <NavItem eventKey="gruzia" onClick={handleClose}>Грузинская кухня</NavItem>
                     </Nav>
                 </Modal.Body>
             </Modal>
@@ -79,20 +72,20 @@ function Sushi() {
 
                             <Col lg={9} md={9} sm={9}>
                                 <Tab.Content animation>
-                                    <Tab.Pane eventKey="sushi"><img src="./Images/sushi/sushi.jpg"></img></Tab.Pane>
-                                    <Tab.Pane eventKey="rolls"> <img src="./Images/sushi/rolls.jpg"></img></Tab.Pane>
-                                    <Tab.Pane eventKey="black_rolls"> <img src="./Images/sushi/black_rolls.jpg"></img></Tab.Pane>
-                                    <Tab.Pane eventKey="hot_rolls"> <img src="./Images/sushi/hot_rolls.jpg"></img></Tab.Pane>
-                                    <Tab.Pane eventKey="brand_rolls"> <img src="./Images/sushi/brand_rolls.jpg"></img></Tab.Pane>
-                                    <Tab.Pane eventKey="sets"> <img src="./Images/sushi/sets.jpg"></img></Tab.Pane>
-                                    <Tab.Pane eventKey="salads"> <img src="./Images/sushi/salads.jpg"></img></Tab.Pane>
-                                    <Tab.Pane eventKey="soups"> <img src="./Images/sushi/soups.jpg"></img></Tab.Pane>
+                                    <Tab.Pane eventKey="sushi"><img src="./Images/sushi/sushi.jpg"/></Tab.Pane>
+                                    <Tab.Pane eventKey="rolls"> <img src="./Images/sushi/rolls.jpg"/></Tab.Pane>
+                                    <Tab.Pane eventKey="black_rolls"> <img src="./Images/sushi/black_rolls.jpg"/></Tab.Pane>
+                                    <Tab.Pane eventKey="hot_rolls"> <img src="./Images/sushi/hot_rolls.jpg"/></Tab.Pane>
+                                    <Tab.Pane eventKey="brand_rolls"> <img src="./Images/sushi/brand_rolls.jpg"/></Tab.Pane>
+                                    <Tab.Pane eventKey="sets"> <img src="./Images/sushi/sets.jpg"/></Tab.Pane>
+                                    <Tab.Pane eventKey="salads"> <img src="./Images/sushi/salads.jpg"/></Tab.Pane>
+                                    <Tab.Pane eventKey="soups"> <img src="./Images/sushi/soups.jpg"/></Tab.Pane>
                                     <Tab.Pane eventKey="hot_dishes">
                                         <SushiSwiper />
                                     </Tab.Pane>
-                                    <Tab.Pane eventKey="garnish"> <img src="./Images/sushi/garnish.jpg"></img></Tab.Pane>
-                                    <Tab.Pane eventKey="dessert"> <img src="./Images/sushi/dessert.jpg"></img></Tab.Pane>
-                                    <Tab.Pane eventKey="gruzia"> <img src="./Images/sushi/gruzia.jpg"></img></Tab.Pane>
+                                    <Tab.Pane eventKey="garnish"> <img src="./Images/sushi/garnish.jpg"/></Tab.Pane>
+                                    <Tab.Pane eventKey="dessert"> <img src="./Images/sushi/dessert.jpg"/></Tab.Pane>
+                                    <Tab.Pane eventKey="gruzia"> <img src="./Images/sushi/gruzia.jpg"/></Tab.Pane>
                                 </Tab.Content>
                             </Col>
                         </div>

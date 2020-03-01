@@ -1,4 +1,8 @@
 const INITIAL_ACTIVE_KEY = "INITIAL_ACTIVE_KEY";
+const CHANGE_ACTIVE_KEY = "CHANGE_ACTIVE_KEY";
+const INITIAL_BUTTON_TITLE = "INITIAL_BUTTON_TITLE";
+const CHANGE_BUTTON_TITLE = "CHANGE_BUTTON_TITLE";
+const CREATE_ACTUAL_DATES_ARR = "CREATE_ACTUAL_DATES_ARR";
 
 let initialState = {
     datesArr: [
@@ -10,20 +14,12 @@ let initialState = {
         ["day5", "Пятница", "11 октября"],
         ["day6", "Суббота", "12 октября"]
     ],
+    actualDatesArr: [],
+    beginDate: "monday", //monday либо любое другое значение
     activeKey: "",
-    buttonTitle:""
+    buttonTitle: "Дата"
 }
 
-// const findActiveKey = () => {
-//     let date = new Date();
-//     let day = date.getDay();
-//     // for (let i = 0; i <= 6; i++) {
-//     //     if (i == day) {
-//     //         return `day${i}`;
-//     //     }
-//     // }
-//     return initialState.datesArr[day][0]
-// }
 
 export const seansReduser = (state = initialState, action) => {
     switch (action.type) {
@@ -34,7 +30,35 @@ export const seansReduser = (state = initialState, action) => {
                 ...state,
                 activeKey: state.datesArr[day][0]
             }
-
+        case CHANGE_ACTIVE_KEY:
+            return {
+                ...state,
+                activeKey: action.activeKey
+            }
+        case INITIAL_BUTTON_TITLE:
+            let todayItem = state.datesArr.find((item) => item[0] == state.activeKey);
+            return {
+                ...state,
+                buttonTitle: todayItem[1] +" "+ todayItem[2]
+            }
+        case CHANGE_BUTTON_TITLE:
+            return {
+                ...state,
+                buttonTitle: action.buttonTitle
+            }
+        case CREATE_ACTUAL_DATES_ARR:
+            let newArr = [];
+            if (state.beginDate == "monday") {
+                newArr = [...state.datesArr, state.datesArr[0]];
+                newArr.shift();
+            } else {
+                newArr = [...state.datesArr, state.datesArr[0], state.datesArr[1], state.datesArr[2], state.datesArr[3]];
+                newArr.splice(0, 4);
+            }
+            return {
+                ...state,
+                actualDatesArr: newArr
+            }
         default:
             return state;
     }
@@ -45,16 +69,33 @@ export const initialActiveKey = () => {
         type: INITIAL_ACTIVE_KEY
     }
 }
+export const changeActiveKey = (activeKey) => {
+    return {
+        type: CHANGE_ACTIVE_KEY,
+        activeKey
+    }
+}
+
+export const initialButtonTitle = () => {
+    return {
+        type: INITIAL_BUTTON_TITLE
+    }
+}
+
+export const changeButtonTitle = (buttonTitle) => {
+    return {
+        type: CHANGE_BUTTON_TITLE,
+        buttonTitle
+    }
+}
+
+export const createActualDatesArr = () => {
+    return {
+        type: CREATE_ACTUAL_DATES_ARR
+    }
+}
 
 export default seansReduser;
-//
-// let activeKey = findActiveKey();
-//
-// let [todayDate, setTodayDate] = useState("Дата");
-//
-// useEffect(() => {
-//     let todayItem = datesArr.find((item) => item[0] == activeKey);
-//     setTodayDate(todayItem[1] +" "+ todayItem[2]);
-// }, [activeKey]);
+
 
 
