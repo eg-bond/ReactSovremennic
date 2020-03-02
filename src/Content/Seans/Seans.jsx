@@ -356,7 +356,7 @@ const Seans = React.memo((props) => {
                 <div className="separator-special"></div>
             </div>
 
-            <Adv />
+            {/*<Adv />*/}
 
 
         </div>

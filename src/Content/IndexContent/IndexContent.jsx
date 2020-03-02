@@ -38,7 +38,7 @@ function IndexContent(props) {
                 <div className="separator-xs"></div>
             </div>
 
-            <Adv />
+            {/*<Adv />*/}
 
             <IndexAdvXS />
 

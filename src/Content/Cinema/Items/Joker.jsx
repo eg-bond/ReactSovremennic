@@ -1,6 +1,4 @@
 import React from 'react';
-import CinemaXsBottom from "../CinemaXsBottom";
-import Adv from "../../../Template/Adv";
 
 function Joker(props) {
     return (
@@ -86,11 +84,6 @@ function Joker(props) {
                             allowFullScreen></iframe>
                 </div>
             </div>
-
-            <Adv/>
-
-
-
 
         </div>
     );

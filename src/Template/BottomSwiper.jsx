@@ -3,8 +3,13 @@ import Swiper from 'react-id-swiper';
 import {NavLink} from "react-router-dom";
 
 const BottomSwiper = (props) => {
+
+    if (props.films[0] == undefined) {
+        return null;
+    }
+
     const params = {
-        slidesPerView: 4,
+        slidesPerView: props.slidesPerView,
         spaceBetween: 30,
         centeredSlides: false,
         loop: true,
@@ -26,7 +31,7 @@ const BottomSwiper = (props) => {
                         <NavLink to={f.link}>
                             <img className="opacity" src={f.topImgPath}></img>
                             <h1>{f.title}</h1>
-                            <p>{f.beginDate}</p>
+                            <p>{f.kind.split(", ")[0]}</p>
                         </NavLink>
                     </div>)
                 }

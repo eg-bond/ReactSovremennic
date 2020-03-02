@@ -122,7 +122,7 @@ function Rules() {
                 </div>
             </div>
 
-            <Adv/>
+            {/*<Adv/>*/}
 
         </div>
     );

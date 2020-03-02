@@ -19,112 +19,10 @@ import AdvXS from "./Template/AdvXS";
 import {initialButtonTitle, initialActiveKey, createActualDatesArr} from "./REDUX/seansReduser";
 import {compose} from "redux";
 import {connect} from "react-redux";
+import Adv from "./Template/Adv";
+import ScrollToTop from "./Content/Cinema/Scroll";
+import {createFilmsTodayArr} from "./REDUX/cinemaReduser";
 
-
-const films = [ // Массив с данными по всем фильмам
-
-    { title: 'Джокер',
-        beginDate: 'с 3 октября',
-        endDate: 'по 23 октября',
-        kind: 'Триллер',
-        topImgPath: './Images/top_menu/joker.gif',
-        bottomImgPath: 'Images/description/joker_D.jpg',
-        playerCode: 'jGfiPs9zuhE',
-        link: 'joker' },
-
-    { title: 'Гемини',
-        beginDate: 'с 10 октября',
-        endDate: 'по 30 октября',
-        kind: 'Боевик',
-        topImgPath: './Images/top_menu/gemini.gif',
-        bottomImgPath: 'Images/description/gemini_D.jpg',
-        playerCode: 'Io6_zfPA1BE',
-        link: 'gemini' },
-
-    { title: 'Малефисента: Владычица тьмы',
-        beginDate: 'с 17 октября',
-        endDate: 'по 6 ноября',
-        kind: 'Фэнтези',
-        topImgPath: './Images/top_menu/maleficent.gif',
-        bottomImgPath: 'Images/description/maleficent_D.jpg',
-        playerCode: 'L0ttxMz-tyo',
-        link: 'maleficent' },
-
-    { title: 'Zомбилэнд: Контрольный Выстрел',
-        beginDate: 'с 24 октября',
-        endDate: 'по 6 ноября',
-        kind: 'Боевик',
-        topImgPath: './Images/top_menu/zombieland.gif',
-        bottomImgPath: 'Images/description/zombieland_D.jpg',
-        playerCode: 'E3CPPp8CXHM',
-        link: 'zombieland' },
-
-    { title: 'Терминатор: Темные судьбы',
-        beginDate: 'с 31 октября',
-        endDate: 'по 13 ноября',
-        kind: 'Боевик',
-        topImgPath: './Images/top_menu/terminator.gif',
-        bottomImgPath: 'Images/description/terminator_D.jpg',
-        playerCode: 'A36LahZNUiE',
-        link: 'terminator' },
-
-    { title: 'Девятая',
-        beginDate: 'с 7 ноября',
-        endDate: 'по 20 ноября',
-        kind: 'Триллер',
-        topImgPath: './Images/top_menu/nine.gif',
-        bottomImgPath: 'Images/description/nine_D.jpg',
-        playerCode: '6CdM9JrcYRg',
-        link: 'nine' },
-
-    { title: 'Доктор Сон',
-        beginDate: 'с 7 ноября',
-        endDate: 'по 27 ноября',
-        kind: 'Ужасы',
-        topImgPath: './Images/top_menu/sleep.gif',
-        bottomImgPath: 'Images/description/sleep_D.jpg',
-        playerCode: 'bkhjbv9UbPI',
-        link: 'sleep' }
-]
-
-const filmsToday = [ // Массив с данными по всем фильмам
-
-    { title: 'Джокер',
-        beginDate: 'с 3 октября',
-        endDate: 'по 23 октября',
-        kind: 'Триллер',
-        topImgPath: 'Images/top_menu/joker.gif',
-        bottomImgPath: 'Images/description/joker_D.jpg',
-        playerCode: 'jGfiPs9zuhE',
-        link: 'joker' },
-
-    { title: 'Гемини',
-        beginDate: 'с 10 октября',
-        endDate: 'по 30 октября',
-        kind: 'Боевик',
-        topImgPath: 'Images/top_menu/gemini.gif',
-        bottomImgPath: 'Images/description/gemini_D.jpg',
-        playerCode: 'Io6_zfPA1BE',
-        link: 'gemini' },
-
-    { title: 'Малефисента: Владычица тьмы',
-        beginDate: 'с 17 октября',
-        endDate: 'по 6 ноября',
-        kind: 'Фэнтези',
-        topImgPath: 'Images/top_menu/maleficent.gif',
-        bottomImgPath: 'Images/description/maleficent_D.jpg',
-        playerCode: 'L0ttxMz-tyo',
-        link: 'maleficent' },
-
-    { title: 'Девятая',
-        beginDate: 'с 7 ноября',
-        endDate: 'по 20 ноября',
-        kind: 'Триллер',
-        topImgPath: './Images/top_menu/nine.gif',
-        bottomImgPath: 'Images/description/nine_D.jpg',
-        playerCode: '6CdM9JrcYRg',
-        link: 'nine' }
-]
 
 const App = (props) => {
 
@@ -132,53 +30,64 @@ const App = (props) => {
         props.createActualDatesArr();
         props.initialActiveKey();
         props.initialButtonTitle();
+        props.createFilmsTodayArr();
     }, []);
 
     let { id } = useParams();
 
     return (
+
             <div>
+                <Media query="(max-width: 768px)">
+                    <ScrollToTop />
+                </Media>
                 <Navigation />
 
                 <div id="menu_anchor" className="container line_container">
                     <div className="row">
-                        <hr className="line_5px"></hr>
+                        <hr className="line_5px"/>
                     </div>
                 </div>
-                <div className="separator"></div>
+                <div className="separator"/>
 
                 <div className="container wrapper">
                     <div className="row">
 
-
                         <Media query="(min-width: 768px)">
-                            <FilmSwiper films = {films}/>
+                            <FilmSwiper films = {props.films}/>
                         </Media>
+
                         <Route exact path="/">
                             <Media query="(max-width: 768px)">
-                                <FilmSwiper films = {films}/>
+                                <FilmSwiper films = {props.films}/>
                             </Media>
                         </Route>
 
-                        <hr className="line_5px hidden-xs"></hr>
+                        <hr className="line_5px hidden-xs"/>
 
-                        <Route exact path="/"><IndexContent films = {films}/></Route>
-                        <Route exact path="/about"><About films = {films}/></Route>
-                        <Route exact path="/rules"><Rules films = {films}/></Route>
+                        <Route exact path="/"><IndexContent /></Route>
+                        <Route exact path="/about"><About /></Route>
+                        <Route exact path="/rules"><Rules /></Route>
                         <Route exact path="/seans"><Seans /></Route>
-                        <Route exact path="/sushi"><Sushi films = {films}/></Route>
-                        <Cinema />
+                        <Route exact path="/sushi"><Sushi /></Route>
+                        <Cinema films={props.films} filmsToday={props.filmsToday}/>
+
+                        {id != "sushi" && <Adv/>}
+
+                        {
+                            props.filmsToday != [] &&
+                            <Media query="(min-width: 768px)">
+                                <BottomSwiper films ={props.filmsToday} slidesPerView={props.filmsTodaySlides}/>
+                            </Media>
+                        }
 
 
-                        <Media query="(min-width: 768px)">
-                            <BottomSwiper films ={filmsToday}/>
-                        </Media>
                         {id != null && (
                             <Media query="(max-width: 768px)">
                                 <div>
-                                    <div className="separator"></div>
-                                    <FilmSwiper films={films}/>
-                                    <div className="separator"></div>
+                                    <div className="separator"/>
+                                    <FilmSwiper films={props.films}/>
+                                    <div className="separator"/>
                                     <AdvXS />
                                 </div>
                             </Media>
@@ -194,7 +103,13 @@ const App = (props) => {
     );
 }
 
+let mapStateToProps = (state) => ({
+    films: state.cinema.films,
+    filmsToday: state.cinema.filmsToday,
+    filmsTodaySlides: state.cinema.filmsTodaySlides,
+});
+
 
 export default compose(
-    connect(null, {initialActiveKey, initialButtonTitle, createActualDatesArr})
+    connect(mapStateToProps, {initialActiveKey, initialButtonTitle, createActualDatesArr, createFilmsTodayArr})
 )(App);

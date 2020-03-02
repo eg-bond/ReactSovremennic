@@ -1,5 +1,4 @@
 import React from 'react';
-import CinemaXsBottom from "../CinemaXsBottom";
 
 function Maleficent(props) {
     return (
@@ -82,8 +81,6 @@ function Maleficent(props) {
                             allowFullScreen></iframe>
                 </div>
             </div>
-
-            <CinemaXsBottom/>
 
         </div>
     );

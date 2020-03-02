@@ -57,7 +57,7 @@ function About(props) {
                     </div>
                 </div>
 
-                <Adv/>
+                {/*<Adv/>*/}
             </div>
         </div>
 
