@@ -1,10 +1,5 @@
 import React from 'react';
-import s from './About.module.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import Adv from "../../Template/Adv";
-import SwiperXs from "../../Template/SwiperXs";
-import TopSwiper from "../../Template/FilmSwiper";
-
 
 function About(props) {
     return (
@@ -52,12 +47,10 @@ function About(props) {
                         <div className="embed-responsive embed-responsive-16by9">
                             <iframe
                                 src="https://yandex.ru/map-widget/v1/?um=constructor%3Ab3cf16ca0bc3eed0838b34be9c0607866b4c270427026b7fe0dd14ef4096116b&amp;source=constructor"
-                                width="769" height="491" frameBorder="0"></iframe>
+                                width="769" height="491" frameBorder="0"/>
                         </div>
                     </div>
                 </div>
-
-                {/*<Adv/>*/}
             </div>
         </div>
 

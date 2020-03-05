@@ -8,7 +8,7 @@ function SelectedFilm(props) {
                     <div className="row">
 
                         <div className="col-lg-4 col-md-4 col-sm-4 col-xs-3 row-xs">
-                            <img id="desc_img" src={"./Images/description/"+props.film['bottomImgPath']}></img>
+                            <img id="desc_img" src={"./Images/description/"+props.film['bottomImgPath']}/>
                         </div>
 
                         <div className="col-lg-8 col-md-8 col-sm-8 col-xs-9">
@@ -43,7 +43,7 @@ function SelectedFilm(props) {
                                 </tbody>
                             </table>
 
-                            <hr className="hidden-xs"></hr>
+                            <hr className="hidden-xs"/>
                                 <br></br>
                                     <p id="normal_desc" className="lucida_font description hidden-xs">
                                         {props.film['description']}
@@ -52,7 +52,7 @@ function SelectedFilm(props) {
                                     <div className="embed-responsive embed-responsive-16by9 hidden-xs">
                                         <iframe id="desc_frame1" className="embed-responsive-item" frameBorder="0" src={"https://www.youtube.com/embed/" + props.film['playerCode']}
                                                 allow="accelerometer; autoplay; encrypted-media; gyroscope"
-                                                allowFullScreen></iframe>
+                                                allowFullScreen/>
                                     </div>
 
                         </div>
@@ -69,7 +69,7 @@ function SelectedFilm(props) {
                 <div className="embed-responsive embed-responsive-16by9">
                     <iframe id="desc_frame1" className="embed-responsive-item" frameBorder="0" src={"https://www.youtube.com/embed/" + props.film['playerCode']}
                             allow="accelerometer; autoplay; encrypted-media; gyroscope"
-                            allowFullScreen></iframe>
+                            allowFullScreen/>
                 </div>
             </div>
 

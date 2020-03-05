@@ -1,11 +1,5 @@
 import React from 'react';
-import s from './Rules.module.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import TopSwiper from "../../Template/FilmSwiper";
-import Navigation from "../../Template/Navigation/Navigation";
-import Adv from "../../Template/Adv";
-import SwiperXs from "../../Template/SwiperXs";
-
 
 function Rules() {
     return (
@@ -121,9 +115,6 @@ function Rules() {
                         Кинотеатра.</p>
                 </div>
             </div>
-
-            {/*<Adv/>*/}
-
         </div>
     );
 }

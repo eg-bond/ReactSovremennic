@@ -22,6 +22,8 @@ import {connect} from "react-redux";
 import Adv from "./Template/Adv";
 import ScrollToTop from "./Content/Cinema/Scroll";
 import {createFilmsTodayArr} from "./REDUX/cinemaReduser";
+import {result1} from "./XML/xml2json";
+
 
 
 const App = (props) => {
@@ -36,7 +38,6 @@ const App = (props) => {
     let { id } = useParams();
 
     return (
-
             <div>
                 <Media query="(max-width: 768px)">
                     <ScrollToTop />
@@ -92,8 +93,6 @@ const App = (props) => {
                                 </div>
                             </Media>
                         )}
-
-
 
                     </div>
                 </div>
