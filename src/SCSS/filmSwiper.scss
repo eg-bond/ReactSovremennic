@@ -94,15 +94,15 @@
 }
 
 
-@include topSwiper (330px, 24px, 12px, 250px);
+@include topSwiper (318px, 24px, 12px, 250px);
 
 
 @media (max-width: 1200px) {
-  @include topSwiper (282px, 21px, 76%, 210px);
+  @include topSwiper (270px, 21px, 76%, 210px);
 }
 
 @media (max-width: 992px) {
-  @include topSwiper (236px, 21px, 72%, 170px);
+  @include topSwiper (226px, 21px, 72%, 170px);
 }
 
 

@@ -14,7 +14,7 @@ let finalTable = [...table];
 
 const Seans = React.memo((props) => {
     return (
-        <div className="col-lg-9 col-md-9 col-sm-9">
+        <div className="col-lg-9 col-md-9 col-sm-9 margin-top-xs">
             <Tab.Container id='table' activeKey={props.activeKey} onSelect={k => props.changeActiveKey(k)}>
                 <div>
                     <div className="hidden-xs seans-menu">

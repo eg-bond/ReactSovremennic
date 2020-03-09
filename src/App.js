@@ -22,8 +22,6 @@ import {connect} from "react-redux";
 import Adv from "./Template/Adv";
 import ScrollToTop from "./Content/Cinema/Scroll";
 import {createFilmsTodayArr} from "./REDUX/cinemaReduser";
-import {result1} from "./XML/xml2json";
-
 
 
 const App = (props) => {
@@ -49,6 +47,7 @@ const App = (props) => {
                         <hr className="line_5px"/>
                     </div>
                 </div>
+
                 <div className="separator"/>
 
                 <div className="container wrapper">
@@ -78,10 +77,9 @@ const App = (props) => {
                         {
                             props.filmsToday != [] &&
                             <Media query="(min-width: 768px)">
-                                <BottomSwiper films ={props.filmsToday} slidesPerView={props.filmsTodaySlides}/>
+                                <BottomSwiper films={props.filmsToday} slidesPerView={props.filmsTodaySlides}/>
                             </Media>
                         }
-
 
                         {id != null && (
                             <Media query="(max-width: 768px)">

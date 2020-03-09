@@ -23,14 +23,12 @@ const FilmSwiper = (props) => {
             clickable: true,
         },
         breakpoints: {
-            1200: {
-                spaceBetween: 10,
+            250: {
+                slidesPerView: 3.5
             },
             768: {
                 slidesPerView: 5.5,
-            },
-            250: {
-                slidesPerView: 3.5
+                spaceBetween: 8
             }
         }
     }
@@ -43,7 +41,7 @@ const FilmSwiper = (props) => {
                     {
                         props.films.map(f => <div key={f.link}>
                             <NavLink to={f.link}>
-                                <img className="opacity" src={f.topImgPath}></img>
+                                <img className="opacity" src={`./Images/top_menu/${f.link}.gif`}/>
                                 <h1>{f.title}</h1>
                                 <p>{f.beginDate}</p>
                             </NavLink>

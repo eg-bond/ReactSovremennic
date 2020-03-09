@@ -45,7 +45,7 @@ function SushiModal() {
 function Sushi() {
     return (
         <div>
-            <div className="margin-top-2">
+            {/*<div className="margin-top-2">*/}
                 <div className="sushi_page">
                     <Tab.Container defaultActiveKey="sushi" id='sushiTab'>
                         <div>
@@ -91,7 +91,7 @@ function Sushi() {
                         </div>
                     </Tab.Container>;
                 </div>
-            </div>
+            {/*</div>*/}
         </div>
     );
 }

@@ -25,6 +25,9 @@ body {
   @media (max-width: 992px) {
     background-size: 1320px 950px;
   }
+  @media (max-width: 768px) {
+    background-color: white !important;
+  }
 }
 
 hr {

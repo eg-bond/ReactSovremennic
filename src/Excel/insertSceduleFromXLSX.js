@@ -2,7 +2,7 @@ const xlsx =  require('xlsx');
 const fs = require('fs');
 
 //Вытаскиваем JS объект с расписанием из екселя
-let workBook = xlsx.readFile("macros.xlsm");
+let workBook = xlsx.readFile("src/Excel/macros.xlsm");
 let ws = workBook.Sheets['Лист2'];
 let data = xlsx.utils.sheet_to_json(ws);
 
@@ -15,11 +15,11 @@ for (let i=0; i<7; i++) {
 }
 
 //Формируем данные для записи в файл расписания в строковом формате
-let finalData = `let scedule = ${JSON.stringify(scedule)} 
+let finalData = `let scedule = ${JSON.stringify(scedule)}
 export default scedule;`;
 
 //Записываем получившиеся данные в файл
-fs.writeFileSync('scedule.js', finalData);
+fs.writeFileSync('src/Excel/scedule.js', finalData);
 
 
 

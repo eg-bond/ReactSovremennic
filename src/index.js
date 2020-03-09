@@ -3,18 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {BrowserRouter, Route} from "react-router-dom";
+import {BrowserRouter, HashRouter, Route} from "react-router-dom";
 import {Provider} from "react-redux";
 import store from "./REDUX/store";
 
 ReactDOM.render(
-    <BrowserRouter>
+    <HashRouter>
         <Route path="/:id?">
             <Provider store={store}>
                 <App/>
             </Provider>
         </Route>
-    </BrowserRouter>,
+    </HashRouter>,
     document.getElementById("root")
 );
 

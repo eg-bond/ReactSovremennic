@@ -8,12 +8,13 @@ const BottomSwiper = (props) => {
         return null;
     }
 
+
     const params = {
         slidesPerView: props.slidesPerView,
-        spaceBetween: 30,
+        spaceBetween: props.slidesPerView == 2 ? 100 : 30,
         centeredSlides: false,
         loop: true,
-        containerClass: 'swiper-bottom swiper-container',
+        containerClass: 'swiper-bottom swiper-container slides_3',
         wrapperClass: 'swiper-wrapper',
         slideClass: 'swiper-slide',
         autoplay: {
@@ -29,7 +30,7 @@ const BottomSwiper = (props) => {
                 {
                     props.films.map( f => <div key={f.link}>
                         <NavLink to={f.link}>
-                            <img className="opacity" src={f.topImgPath}></img>
+                            <img className="opacity" src={`./Images/description/${f.link}_D.jpg`}/>
                             <h1>{f.title}</h1>
                             <p>{f.kind.split(", ")[0]}</p>
                         </NavLink>

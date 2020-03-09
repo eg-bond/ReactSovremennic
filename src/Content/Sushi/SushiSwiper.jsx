@@ -7,11 +7,6 @@ const SushiSwiper = () => {
         spaceBetween: 30,
         observer: true,
         observeParents: true,
-        // containerClass: 'sushi-swiper-container swiper-container',
-        // wrapperClass: 'sushi-swiper-wrapper',
-        // slideClass: 'sushi-swiper-slide, swiper-slide',
-        // buttonClass: swiper-button-black,
-
         pagination: {
             el: '.swiper-pagination',
             type: 'fraction',
@@ -25,16 +20,16 @@ const SushiSwiper = () => {
     return (
         <Swiper {...params}>
             <div>
-                <img src="./Images/sushi/hot_dishes1.jpg"></img>
+                <img src="./Images/sushi/hot_dishes1.jpg"/>
             </div>
             <div>
-                <img src="./Images/sushi/hot_dishes2.jpg"></img>
+                <img src="./Images/sushi/hot_dishes2.jpg"/>
             </div>
             <div >
-                <img src="./Images/sushi/hot_dishes3.jpg"></img>
+                <img src="./Images/sushi/hot_dishes3.jpg"/>
             </div>
             <div>
-                <img src="./Images/sushi/hot_dishes4.jpg"></img>
+                <img src="./Images/sushi/hot_dishes4.jpg"/>
             </div>
         </Swiper>
     )

@@ -14,7 +14,7 @@ function SeansModal(props) {
 
     return (
         <div className="modal-container">
-            <Button onClick={() => setShow(true)} className='seans_button_xs '>
+            <Button onClick={() => setShow(true)} className='seans_button_xs'>
                 {props.buttonTitle} <span className="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
             </Button>
 

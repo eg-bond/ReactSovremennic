@@ -3,14 +3,34 @@
 // больше 1200px
 .film_info {
   //opacity: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 
   img {
-    width: 250px;
+    width: 100%;
     height: auto;
     border: solid 1px white;
     border-radius: 8px;
-    margin: 0 0 7% 12px;
   }
+}
+
+.filmFlex1 {
+  flex: 1;
+  padding: 0 3% 1% 1%;
+  @media (max-width: 768px) {
+    padding-bottom: 4%;
+    padding-left: 0;
+    flex: 0.75;
+  }
+  @media (max-width: 432px) {
+    flex: 0.65;
+  }
+}
+
+.filmFlex2 {
+  width: 100%;
+  flex: 2.3;
 }
 
 .description {
@@ -19,9 +39,11 @@
 }
 
 .description_h {
-  color: #e41b2b;
   margin-top: -4.5%;
   font-weight: bold;
+  h2, p {
+    color: #e41b2b;
+  }
 }
 
 .description_table {
@@ -41,13 +63,12 @@
   }
 }
 
-@mixin mediaDesc($imgMargin, $imgWidth, $descHead, $descDate, $descTable, $descFS, $maxWidth) {
+@mixin mediaDesc($imgPT, $descHead, $descDate, $descTable, $descFS, $maxWidth) {
 
   @media (max-width: $maxWidth) {
 
-    .film_info img {
-      margin: $imgMargin;
-      width: $imgWidth;
+    .filmFlex1 {
+      padding-top: $imgPT;
     }
 
     .description_h {
@@ -67,22 +88,13 @@
       font-size: $descFS;
     }
 
-    @if ($maxWidth <= 992px) {
+    @if ($maxWidth <= 544px) {
       .description_table td {
         &:nth-of-type(1) {
-          width: 40%;
+          width: 30%;
         }
         &:nth-of-type(2) {
-          width: 60%;
-        }
-      }
-    } @else if ($maxWidth <= 432px) {
-      .description_table td {
-        &:nth-of-type(1) {
-          width: 45%;
-        }
-        &:nth-of-type(2) {
-          width: 50%;
+          width: 48%;
         }
       }
     }
@@ -90,12 +102,12 @@
 }
 
 //1200px
-@include mediaDesc ($imgMargin: 1% 0 0 7px, $imgWidth: 100%, $descHead: 175%,
-                    $descDate: 95%, $descTable: 85%, $descFS: 85%, $maxWidth: 1200px);
+@include mediaDesc (0, $descHead: 175%,
+$descDate: 95%, $descTable: 85%, $descFS: 85%, $maxWidth: 1200px);
 
 //992px
-@include mediaDesc ($imgMargin: 3% 0 0 7px, $imgWidth: 100%, $descHead: 135%,
-                    $descDate: 75%, $descTable: 77%, $descFS: 77%, $maxWidth: 992px);
+@include mediaDesc (1%, $descHead: 135%,
+$descDate: 75%, $descTable: 77%, $descFS: 77%, $maxWidth: 992px);
 
 //768px и меньше
 @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
@@ -109,18 +121,16 @@
   }
 
   .xs_desc {
-    //opacity: 0;
+    opacity: 0;
   }
 }
 
 @for $i from 4 to -1 {
   $maxWidth: 320px + $i*112px;
-  $imgMargin: 20% - 5%*$i 0 7% 0;
-  $imgWidth: 140% - 10%*$i;
+  $imgPT: 3.5% - 0.9%*$i;
   $descHead: 80% + 13%*$i;
   $descDate: 60% + 4%*$i;
   $descTable: 55% + 5%*$i;
   $descFS: 55% + 5%*$i;
-  @include mediaDesc ($imgMargin, $imgWidth, $descHead, $descDate, $descTable, $descFS, $maxWidth);
+  @include mediaDesc ($imgPT, $descHead, $descDate, $descTable, $descFS, $maxWidth);
 }
-

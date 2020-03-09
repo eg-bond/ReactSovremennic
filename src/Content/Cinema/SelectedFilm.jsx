@@ -5,16 +5,15 @@ function SelectedFilm(props) {
         <div className='padding_15xs'>
             <div className="col-lg-9 col-md-9 col-sm-9 col-xs-12 margin-top-2">
                 <div className="film_info">
-                    <div className="row">
 
-                        <div className="col-lg-4 col-md-4 col-sm-4 col-xs-3 row-xs">
-                            <img id="desc_img" src={"./Images/description/"+props.film['bottomImgPath']}/>
+                        <div className="filmFlex1 row-xs">
+                            <img id="desc_img" src={`Images/description/${props.film['link']}_D.jpg`}/>
                         </div>
 
-                        <div className="col-lg-8 col-md-8 col-sm-8 col-xs-9">
+                        <div className="filmFlex2">
                             <div className="description_h">
                                 <h2 id="desc_title">{props.film['title']}</h2>
-                                <p id="desc_date">{`${props.film['beginDate']} ${props.film['endDate']}`}</p>
+                                <p id="desc_date">Смотрите {`${props.film['beginDate']} ${props.film['endDate']}`}</p>
                             </div>
                             <table className="description_table">
                                 <tbody>
@@ -56,7 +55,6 @@ function SelectedFilm(props) {
                                     </div>
 
                         </div>
-                    </div>
                 </div>
             </div>
 
