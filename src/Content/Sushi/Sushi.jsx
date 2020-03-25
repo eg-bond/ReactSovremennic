@@ -14,7 +14,7 @@ function SushiModal() {
     return (
         <div className="modal-container">
             <Button onClick={handleShow} className='seans_button_xs '>
-                Меню <span className="glyphicon glyphicon-chevron-down" aria-hidden="true"/>
+                <span className="seans_button_xs__title">Меню</span> <span className="glyphicon glyphicon-chevron-down" aria-hidden="true"/>
             </Button>
 
             <Modal show={show} onHide={handleClose}>
@@ -72,20 +72,24 @@ function Sushi() {
 
                             <Col lg={9} md={9} sm={9}>
                                 <Tab.Content animation>
-                                    <Tab.Pane eventKey="sushi"><img src="./Images/sushi/sushi.jpg"/></Tab.Pane>
-                                    <Tab.Pane eventKey="rolls"> <img src="./Images/sushi/rolls.jpg"/></Tab.Pane>
-                                    <Tab.Pane eventKey="black_rolls"> <img src="./Images/sushi/black_rolls.jpg"/></Tab.Pane>
-                                    <Tab.Pane eventKey="hot_rolls"> <img src="./Images/sushi/hot_rolls.jpg"/></Tab.Pane>
-                                    <Tab.Pane eventKey="brand_rolls"> <img src="./Images/sushi/brand_rolls.jpg"/></Tab.Pane>
-                                    <Tab.Pane eventKey="sets"> <img src="./Images/sushi/sets.jpg"/></Tab.Pane>
-                                    <Tab.Pane eventKey="salads"> <img src="./Images/sushi/salads.jpg"/></Tab.Pane>
-                                    <Tab.Pane eventKey="soups"> <img src="./Images/sushi/soups.jpg"/></Tab.Pane>
+                                    <Tab.Pane eventKey="sushi">
+                                        <div className="sushiEmptyImg">
+                                            <img className="sushiFirstImg" src="./Images/sushi/sushi.gif" alt=""/>
+                                        </div>
+                                    </Tab.Pane>
+                                    <Tab.Pane eventKey="rolls"><img src="./Images/sushi/rolls.gif" alt=""/></Tab.Pane>
+                                    <Tab.Pane eventKey="black_rolls"> <img src="./Images/sushi/black_rolls.gif" alt=""/></Tab.Pane>
+                                    <Tab.Pane eventKey="hot_rolls"> <img src="./Images/sushi/hot_rolls.gif" alt=""/></Tab.Pane>
+                                    <Tab.Pane eventKey="brand_rolls"> <img src="./Images/sushi/brand_rolls.gif" alt=""/></Tab.Pane>
+                                    <Tab.Pane eventKey="sets"> <img src="./Images/sushi/sets.gif" alt=""/></Tab.Pane>
+                                    <Tab.Pane eventKey="salads"> <img src="./Images/sushi/salads.gif" alt=""/></Tab.Pane>
+                                    <Tab.Pane eventKey="soups"> <img src="./Images/sushi/soups.gif" alt=""/></Tab.Pane>
                                     <Tab.Pane eventKey="hot_dishes">
                                         <SushiSwiper />
                                     </Tab.Pane>
-                                    <Tab.Pane eventKey="garnish"> <img src="./Images/sushi/garnish.jpg"/></Tab.Pane>
-                                    <Tab.Pane eventKey="dessert"> <img src="./Images/sushi/dessert.jpg"/></Tab.Pane>
-                                    <Tab.Pane eventKey="gruzia"> <img src="./Images/sushi/gruzia.jpg"/></Tab.Pane>
+                                    <Tab.Pane eventKey="garnish"> <img src="./Images/sushi/garnish.gif" alt=""/></Tab.Pane>
+                                    <Tab.Pane eventKey="dessert"> <img src="./Images/sushi/dessert.gif" alt=""/></Tab.Pane>
+                                    <Tab.Pane eventKey="gruzia"> <img src="./Images/sushi/gruzia.gif" alt=""/></Tab.Pane>
                                 </Tab.Content>
                             </Col>
                         </div>

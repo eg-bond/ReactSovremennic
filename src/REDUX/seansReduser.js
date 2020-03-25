@@ -14,7 +14,7 @@ let initialState = {
         ["day5", "Пятница", "6 марта"],
         ["day6", "Суббота", "7 марта"]
     ],
-    actualDatesArr: [],
+    actualDatesArr: [], //массив с датами, расположенными в правильном порядке
     beginDate: "thursday", //monday либо любое другое значение
     activeKey: "",
     buttonTitle: "Дата"
@@ -36,7 +36,7 @@ export const seansReduser = (state = initialState, action) => {
                 activeKey: action.activeKey
             }
         case INITIAL_BUTTON_TITLE:
-            let todayItem = state.datesArr.find((item) => item[0] == state.activeKey);
+            let todayItem = state.datesArr.find((item) => item[0] === state.activeKey);
             return {
                 ...state,
                 buttonTitle: todayItem[1] +" "+ todayItem[2]
@@ -48,7 +48,7 @@ export const seansReduser = (state = initialState, action) => {
             }
         case CREATE_ACTUAL_DATES_ARR:
             let newArr = [];
-            if (state.beginDate == "monday") {
+            if (state.beginDate === "monday") {
                 newArr = [...state.datesArr, state.datesArr[0]];
                 newArr.shift();
             } else {

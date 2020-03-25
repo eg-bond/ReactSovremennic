@@ -125,10 +125,14 @@
 @for $i from 4 to -1 {
   $maxWidth: 320px + $i*112px;
   $tableFontSize: 48%+9%*$i;
+  $buttonTitleFontSize: 75%+6%*$i;
 
   @media (max-width: $maxWidth) {
     .table_custom {
       font-size: $tableFontSize;
+    }
+    .seans_button_xs__title {
+      font-size: $buttonTitleFontSize;
     }
   }
 }

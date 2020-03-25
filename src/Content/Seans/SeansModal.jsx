@@ -6,16 +6,18 @@ import NavItems from "./NavItems";
 function SeansModal(props) {
 
     let [show, setShow] = useState(false);
+    // let [buttonTitle, changeButtonTitle] = useState(props.buttonTitle);
 
     const selectModalItem = (e) => {
         props.changeButtonTitle(e.target.text);
+        // changeButtonTitle(e.target.text);
         setShow(false);
     };
 
     return (
         <div className="modal-container">
             <Button onClick={() => setShow(true)} className='seans_button_xs'>
-                {props.buttonTitle} <span className="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                <span className="seans_button_xs__title">{props.buttonTitle}</span> <span className="glyphicon glyphicon-chevron-down" aria-hidden="true"/>
             </Button>
 
             <Modal show={show} onHide={() => setShow(false)}>

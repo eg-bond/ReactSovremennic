@@ -13,14 +13,13 @@ export const CreateTable = () => {
         //Inner loop to create children
         for (let j = 0; j < 7; j++) {
             children.push(
-                <tr key={`${elem}${j}`} className={j%2==0 ? "table_gray" : "table_white"}>
+                <tr key={`${elem}${j}`} className={j%2===0 ? "table_gray" : "table_white"}>
                     <td>{scedule[elem][j][0]}</td>
                     <td>{scedule[elem][j][1]}</td>
                     <td>{scedule[elem][j][2]}</td>
                 </tr>);
         }
         //Create the parent and add the children
-        // table.push(<tr className={elem}>{children}</tr>);
 
         table.push(
             <Tab.Pane key={elem} eventKey={elem}>

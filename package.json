@@ -2,7 +2,7 @@
   "name": "react_sovremennik",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://sovremennik.sbor.net",
+  "homepage": "http://eg-bond.github.io/ReactSovremennic",
   "dependencies": {
     "3": "^2.1.0",
     "bootstrap": "^3.4.1",
@@ -25,8 +25,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "getScedule": "node src/Excel/insertSceduleFromXLSX"
-
+    "getScedule": "node src/Excel/insertSceduleFromXLSX",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -42,5 +43,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^2.2.0"
   }
 }

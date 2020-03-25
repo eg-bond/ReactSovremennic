@@ -15,33 +15,59 @@ a, h1, h2, h4, p {
   padding: 0;
 }
 
-body {
+.mainContainer {
   font-size: 14px;
   color: #000;
   margin: 0;
   padding: 0;
-  background-color: black !important;
+  background: #889c23 no-repeat top center;
   height: 100%;
 }
 @media (max-width: 1200px) {
-  body {
-    background-size: 1700px 950px;
+  .mainContainer {
+    background-size: 1600px 950px;
   }
 }
 @media (max-width: 992px) {
-  body {
-    background-size: 1320px 950px;
+  .mainContainer {
+    background-size: 1220px 800px;
   }
 }
 @media (max-width: 768px) {
-  body {
+  .mainContainer {
     background-color: white !important;
+  }
+}
+
+.space {
+  text-align: center;
+  opacity: 1;
+  height: 280px;
+}
+@media (max-width: 992px) {
+  .space {
+    height: 225px;
+  }
+}
+@media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+  .space {
+    display: none;
   }
 }
 
 hr {
   margin-top: 0;
   margin-bottom: 0;
+}
+
+.opacity_0 {
+  opacity: 0;
+  transition: all 0.35s;
+}
+
+.opacity_1 {
+  opacity: 1;
+  transition: all 0.35s;
 }
 
 .opacity {
@@ -164,17 +190,6 @@ hr {
   background-color: #fff;
   color: black;
   transition: ease 650ms;
-}
-
-.space {
-  text-align: center;
-  opacity: 1;
-  height: 280px;
-}
-@media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
-  .space {
-    display: none;
-  }
 }
 
 .flexMenu {
@@ -419,23 +434,41 @@ hr {
   }
 }
 
-.info, .sushi {
+.info {
+  position: relative;
+  width: 100%;
+  background-color: black;
+  border: solid 1px white;
+  border-radius: 3px;
   margin: 7.8% 0;
 }
 @media (max-width: 1200px) {
-  .info, .sushi {
+  .info {
     margin-top: 10%;
   }
 }
 @media (max-width: 992px) {
-  .info, .sushi {
+  .info {
     margin-top: 13%;
   }
 }
-.info img, .sushi img {
+.info img {
+  position: absolute;
   width: 100%;
-  border: solid 1px white;
+  height: 100%;
   border-radius: 3px;
+}
+
+.info1 {
+  padding-bottom: 50%;
+}
+
+.info2 {
+  padding-bottom: 66.6%;
+}
+
+.info3 {
+  padding-bottom: 200%;
 }
 
 .swiper_bar {
@@ -510,10 +543,18 @@ hr {
     margin: 3% 0 3.7% 0;
     background-color: black;
   }
-
-  .info_wide img {
+  .info_wide .info_wide_img {
+    position: relative;
     width: 100%;
+    background-color: black;
     border: solid 1px white;
+    border-radius: 3px;
+    padding-bottom: 13%;
+  }
+  .info_wide img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
     border-radius: 3px;
   }
 }
@@ -1077,25 +1118,45 @@ hr {
   .table_custom {
     font-size: 84%;
   }
+
+  .seans_button_xs__title {
+    font-size: 99%;
+  }
 }
 @media (max-width: 656px) {
   .table_custom {
     font-size: 75%;
+  }
+
+  .seans_button_xs__title {
+    font-size: 93%;
   }
 }
 @media (max-width: 544px) {
   .table_custom {
     font-size: 66%;
   }
+
+  .seans_button_xs__title {
+    font-size: 87%;
+  }
 }
 @media (max-width: 432px) {
   .table_custom {
     font-size: 57%;
   }
+
+  .seans_button_xs__title {
+    font-size: 81%;
+  }
 }
 @media (max-width: 320px) {
   .table_custom {
     font-size: 48%;
+  }
+
+  .seans_button_xs__title {
+    font-size: 75%;
   }
 }
 @media (max-width: 544px) {
@@ -1124,12 +1185,6 @@ hr {
   flex-direction: row;
   justify-content: space-around;
 }
-.film_info img {
-  width: 100%;
-  height: auto;
-  border: solid 1px white;
-  border-radius: 8px;
-}
 
 .filmFlex1 {
   flex: 1;
@@ -1146,6 +1201,20 @@ hr {
   .filmFlex1 {
     flex: 0.65;
   }
+}
+.filmFlex1 .descImg {
+  position: relative;
+  width: 100%;
+  padding-bottom: 140%;
+  background-color: black;
+  border: solid 1px white;
+  border-radius: 8px;
+}
+.filmFlex1 .descImg img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
 }
 
 .filmFlex2 {
@@ -1228,10 +1297,6 @@ hr {
 
   .embed-responsive {
     margin: 3% 0 3% 0;
-  }
-
-  .xs_desc {
-    opacity: 0;
   }
 }
 @media (max-width: 768px) {
@@ -1386,9 +1451,21 @@ hr {
 
 .sushi_page img {
   width: 100%;
-  height: auto;
-  margin: 0 0 20px 0;
   border-radius: 3px;
+}
+
+.sushiEmptyImg {
+  position: relative;
+  width: 100%;
+  background-color: black;
+  padding-bottom: 155%;
+  margin-bottom: 2%;
+}
+
+.sushiFirstImg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .swiper-container-sushi {
@@ -1693,13 +1770,23 @@ hr {
   margin: 1.5% -1.8%;
 }
 .aboutImages .aboutImage {
+  position: relative;
   flex: 1;
-  padding: 1.8%;
+  margin: 2%;
+  width: 100%;
+  background-color: black;
+  border: solid 1px white;
+  padding-bottom: 15%;
+}
+@media (max-width: 768px) {
+  .aboutImages .aboutImage {
+    padding-bottom: 30%;
+  }
 }
 .aboutImages img {
-  border: solid 1px white;
+  position: absolute;
   width: 100%;
-  border-radius: 3px;
+  height: 100%;
 }
 
 .footer {

@@ -2,12 +2,10 @@ import React from "react";
 import {NavLink} from "react-router-dom";
 
 function Adv() {
-    return (
-        <div className="container col-lg-3 col-md-3 col-sm-3 hidden-xs">
-            <div className="info"><a href="http://www.region47.sbor.net"><img src="./images/region47.gif"></img></a>
-            </div>
-            <div className="info"><img src="images/jsb1.gif"></img></div>
-            <div className="sushi"><NavLink to="sushi"><img src="./images/72.gif"></img></NavLink></div>
+    return (<div className="col-lg-3 col-md-3 col-sm-3">
+            <div className="info info1"><a href="http://www.region47.sbor.net"><img src="./Images/region47.gif" alt="reg47_img"/></a></div>
+            <div className="info info2"><img src="./Images/jsb1.gif" alt="gift_img"/></div>
+            <div className="info info3"><NavLink to="sushi"><img src="./Images/72.gif" alt="sushi_img"/></NavLink></div>
         </div>
     );
 }

@@ -1,10 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import {Tab} from "react-bootstrap";
-import Adv from "../../Template/Adv";
 import NavItems from "./NavItems";
 import SeansModal from "./SeansModal";
-import {changeActiveKey, changeButtonTitle, initialButtonTitle} from "../../REDUX/seansReduser";
+import {changeActiveKey, changeButtonTitle, initialActiveKey, initialButtonTitle} from "../../REDUX/seansReduser";
 import {compose} from "redux";
 import {connect} from "react-redux";
 import {CreateTable} from "./CreateTable";
@@ -13,6 +12,14 @@ let table = CreateTable();
 let finalTable = [...table];
 
 const Seans = React.memo((props) => {
+
+    useEffect(() => {
+        return () => {
+            props.initialActiveKey();
+            props.initialButtonTitle();
+        }
+    }, []);
+
     return (
         <div className="col-lg-9 col-md-9 col-sm-9 margin-top-xs">
             <Tab.Container id='table' activeKey={props.activeKey} onSelect={k => props.changeActiveKey(k)}>
@@ -45,5 +52,5 @@ let mapStateToProps = (state) => ({
 });
 
 export default compose(
-    connect(mapStateToProps, {changeButtonTitle, changeActiveKey, initialButtonTitle})
+    connect(mapStateToProps, {changeButtonTitle, changeActiveKey, initialButtonTitle, initialActiveKey})
 )(Seans);

@@ -20,16 +20,16 @@ const SushiSwiper = () => {
     return (
         <Swiper {...params}>
             <div>
-                <img src="./Images/sushi/hot_dishes1.jpg"/>
+                <img src="./Images/sushi/hot_dishes1.gif" alt="hot_dishes_1"/>
             </div>
             <div>
-                <img src="./Images/sushi/hot_dishes2.jpg"/>
+                <img src="./Images/sushi/hot_dishes2.gif" alt="hot_dishes_2"/>
             </div>
             <div >
-                <img src="./Images/sushi/hot_dishes3.jpg"/>
+                <img src="./Images/sushi/hot_dishes3.gif" alt="hot_dishes_3"/>
             </div>
             <div>
-                <img src="./Images/sushi/hot_dishes4.jpg"/>
+                <img src="./Images/sushi/hot_dishes4.gif" alt="hot_dishes_4"/>
             </div>
         </Swiper>
     )

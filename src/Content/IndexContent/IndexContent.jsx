@@ -9,14 +9,14 @@ function IndexContent(props) {
             <div className="trailers padding_15xs visible-xs">
                 <h4>Трейлеры</h4>
                 <div className="embed-responsive embed-responsive-16by9">
-                    <iframe className="embed-responsive-item"
+                    <iframe className="embed-responsive-item" title="trailers_mobile"
                             src="http://www.youtube.com/embed/PKSxTsuCQ4?autoplay=1&amp;iv_load_policy=3; &showinfo=0; &rel=0; loop=1&amp;&amp;autohide=1;listType=pla ype=playlist&list=PLfrc7TOjXulMiQWLR1Jr8ZiZ2b7hWqSZf"/>
                 </div>
             </div>
 
             <div className="container col-lg-9 col-md-9 col-sm-9 col-xs-12 padding_15xs">
                 <div className="embed-responsive embed-responsive-16by9 hidden-xs">
-                    <iframe className="embed-responsive-item"
+                    <iframe className="embed-responsive-item" title="trailers_desktop"
                             src="http://www.youtube.com/embed/PKSxTsuCQ4?autoplay=1&amp;iv_load_policy=3; &showinfo=0; &rel=0; loop=1&amp;&amp;autohide=1;listType=pla ype=playlist&list=PLfrc7TOjXulMiQWLR1Jr8ZiZ2b7hWqSZf"/>
                 </div>
 

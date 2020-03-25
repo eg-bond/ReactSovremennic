@@ -6,10 +6,10 @@ function Navigation() {
         <div>
             <div className="container">
                 <div className="row">
-                    <div className="space"></div>
+                    <div className="space"/>
                     <nav role="navigation" className="navbar navbar-inverse flexMenu">
                         <div className="logoElem">
-                            <NavLink to="/"><img src="images/logo.jpg"/></NavLink>
+                            <NavLink to="/"><img src="./Images/logo.gif" alt='logoImage'/></NavLink>
                         </div>
                         <div id="navbarcollapse" className="navbar-collapse menu">
                             <ul className="nav nav-pills">

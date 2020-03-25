@@ -25,9 +25,21 @@
 
 .sushi_page img{
   width: 100%;
-  height: auto;
-  margin: 0 0 20px 0;
   border-radius: 3px;
+}
+
+.sushiEmptyImg {
+  position: relative;
+  width: 100%;
+  background-color: black;
+  padding-bottom: 155%;
+  margin-bottom: 2%;
+}
+
+.sushiFirstImg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .swiper-container-sushi {

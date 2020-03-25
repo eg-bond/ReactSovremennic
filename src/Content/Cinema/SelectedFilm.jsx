@@ -1,13 +1,18 @@
 import React from 'react';
 
 function SelectedFilm(props) {
+
+    let filmImg = `Images/description/${props.film['link']}_D.jpg`;
+
     return (
-        <div className='padding_15xs'>
+        <div className={`padding_15xs `}>
             <div className="col-lg-9 col-md-9 col-sm-9 col-xs-12 margin-top-2">
                 <div className="film_info">
 
                         <div className="filmFlex1 row-xs">
-                            <img id="desc_img" src={`Images/description/${props.film['link']}_D.jpg`}/>
+                            <div className="descImg">
+                                <img src={filmImg} alt="cinemaImage"/>
+                            </div>
                         </div>
 
                         <div className="filmFlex2">
@@ -43,7 +48,7 @@ function SelectedFilm(props) {
                             </table>
 
                             <hr className="hidden-xs"/>
-                                <br></br>
+                                <br/>
                                     <p id="normal_desc" className="lucida_font description hidden-xs">
                                         {props.film['description']}
                                     </p>
@@ -51,7 +56,7 @@ function SelectedFilm(props) {
                                     <div className="embed-responsive embed-responsive-16by9 hidden-xs">
                                         <iframe id="desc_frame1" className="embed-responsive-item" frameBorder="0" src={"https://www.youtube.com/embed/" + props.film['playerCode']}
                                                 allow="accelerometer; autoplay; encrypted-media; gyroscope"
-                                                allowFullScreen/>
+                                                allowFullScreen title="film_trailer_desktop"/>
                                     </div>
 
                         </div>
@@ -59,7 +64,6 @@ function SelectedFilm(props) {
             </div>
 
             <div className="visible-xs">
-
                 <p id="xs_desc" className="lucida_font description xs_desc">
                     {props.film['description']}
                 </p>
@@ -67,7 +71,7 @@ function SelectedFilm(props) {
                 <div className="embed-responsive embed-responsive-16by9">
                     <iframe id="desc_frame1" className="embed-responsive-item" frameBorder="0" src={"https://www.youtube.com/embed/" + props.film['playerCode']}
                             allow="accelerometer; autoplay; encrypted-media; gyroscope"
-                            allowFullScreen/>
+                            allowFullScreen title="film_trailer_mobile"/>
                 </div>
             </div>
 

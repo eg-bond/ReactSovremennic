@@ -10,29 +10,51 @@ a, h1, h2, h4, p {
   padding: 0;
 }
 
-body {
+.mainContainer {
   font-size: 14px;
   color: #000;
   margin: 0;
   padding: 0;
-  background-color: black !important;
-  //background: #24b17d url(../main_image.jpg) no-repeat top center;
+  background: #889c23 no-repeat top center;
   height: 100%;
 
   @media (max-width: 1200px) {
-    background-size: 1700px 950px;
+    background-size: 1600px 950px;
   }
   @media (max-width: 992px) {
-    background-size: 1320px 950px;
+    background-size: 1220px 800px;
   }
   @media (max-width: 768px) {
     background-color: white !important;
   }
 }
 
+.space {
+  text-align: center;
+  opacity: 1;
+  height: 280px;
+
+  @media (max-width: 992px) {
+    height: 225px;
+  }
+  @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+    display: none;
+  }
+}
+
 hr {
   margin-top: 0;
   margin-bottom: 0;
+}
+
+.opacity_0 {
+  opacity: 0;
+  transition: all 0.35s;
+}
+
+.opacity_1 {
+  opacity: 1;
+  transition: all 0.35s;
 }
 
 .opacity {
