@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "46ef9b7cd0267b6af0d12eb2ec1bfb6e",
+    "revision": "4782e49a85cddfe2abaec41269bc9c8b",
     "url": "/ReactSovremennic/index.html"
   },
   {
-    "revision": "1a6c6585bbe1240bfb74",
+    "revision": "b4113a6671cd80033515",
     "url": "/ReactSovremennic/static/css/2.5777a307.chunk.css"
   },
   {
-    "revision": "048ae37b9803fd7de2e0",
-    "url": "/ReactSovremennic/static/css/main.964a44f9.chunk.css"
+    "revision": "0e39bc20f94270392b5a",
+    "url": "/ReactSovremennic/static/css/main.2aebaeb7.chunk.css"
   },
   {
-    "revision": "1a6c6585bbe1240bfb74",
-    "url": "/ReactSovremennic/static/js/2.1777b612.chunk.js"
+    "revision": "b4113a6671cd80033515",
+    "url": "/ReactSovremennic/static/js/2.ba7416b9.chunk.js"
   },
   {
-    "revision": "048ae37b9803fd7de2e0",
-    "url": "/ReactSovremennic/static/js/main.452dd2aa.chunk.js"
+    "revision": "0e39bc20f94270392b5a",
+    "url": "/ReactSovremennic/static/js/main.fb9bec4f.chunk.js"
   },
   {
     "revision": "d3b542feb7f03e4065b9",
