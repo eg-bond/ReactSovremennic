@@ -11,14 +11,14 @@ import {CreateTable} from "./CreateTable";
 let table = CreateTable();
 let finalTable = [...table];
 
-const Seans = React.memo((props) => {
+const Seans = React.memo(({initialActiveKey, initialButtonTitle, ...props}) => {
 
     useEffect(() => {
         return () => {
-            props.initialActiveKey();
-            props.initialButtonTitle();
+            initialActiveKey();
+            initialButtonTitle();
         }
-    }, []);
+    }, [initialActiveKey, initialButtonTitle]);
 
     return (
         <div className="col-lg-9 col-md-9 col-sm-9 margin-top-xs">

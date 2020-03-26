@@ -24,7 +24,8 @@ const FilmSwiper = (props) => {
         },
         breakpoints: {
             250: {
-                slidesPerView: 3.5
+                slidesPerView: 3.5,
+                spaceBetween: 9
             },
             768: {
                 slidesPerView: 5.5,

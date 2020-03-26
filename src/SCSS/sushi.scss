@@ -59,7 +59,6 @@
 }
 
 .swiper-pagination-fraction {
-  margin-bottom: 15px;
   font-weight: bold;
 
   @media (max-width: 1200px) {
@@ -101,7 +100,6 @@
           color: red !important;
           border-radius: 21px;
           transition: ease 650ms ;
-
         }
         &:focus {
           outline: none !important;
@@ -200,13 +198,8 @@
   $swiperBuM: -4.5% + 0.8*$i;
   $swiperBuH: 10px + 3.75*$i;
   $swFractionFS: 55% + 8.75*$i;
+  $swFractionMB: -3% + 0.7%*$i;
 
-  $swFractionMB: null;
-  @if (8px + 3*$i >= 12px) {
-    $swFractionMB: 8px + 3*$i;
-  } @else {
-    $swFractionMB: 12px;
-  }
   @include sushi ($buttonFontSize, $modalFontSize, $aFontSize, $swiperBuM, $swiperBuH, $swFractionFS, $swFractionMB, $maxWidth);
 }
 

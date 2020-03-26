@@ -19,26 +19,22 @@ import {initialButtonTitle, initialActiveKey, createActualDatesArr} from "./REDU
 import {compose} from "redux";
 import {connect} from "react-redux";
 import Adv from "./Template/Adv";
-import ScrollToTop from "./Content/Cinema/Scroll";
+import ScrollToTop from "./Template/ScrollToTop";
 import {createFilmsTodayArr} from "./REDUX/cinemaReduser";
 
-const App = (props) => {
+const App = ({createActualDatesArr, initialActiveKey, initialButtonTitle, createFilmsTodayArr, films, filmsToday, filmsTodaySlides}) => {
 
     useEffect(() => {
-        props.createActualDatesArr();
-        props.initialActiveKey();
-        props.initialButtonTitle();
-        props.createFilmsTodayArr();
-    }, []);
-
-    let backStyle = {
-        backgroundImage: "url(./Images/main_image.jpg)"
-    }
+        createActualDatesArr();
+        initialActiveKey();
+        initialButtonTitle();
+        createFilmsTodayArr();
+    }, [createActualDatesArr, initialActiveKey, initialButtonTitle, createFilmsTodayArr]);
 
     let { id } = useParams();
 
     return (
-        <div className="mainContainer" style={backStyle}>
+        <div className="mainContainer" style={{backgroundImage: "url(./Images/main_image.jpg)"}}>
             <Media query="(max-width: 768px)">
                 <ScrollToTop/>
             </Media>
@@ -56,12 +52,12 @@ const App = (props) => {
                 <div className="row">
 
                     <Media query="(min-width: 768px)">
-                        <FilmSwiper films={props.films}/>
+                        <FilmSwiper films={films}/>
                     </Media>
 
                     <Route exact path="/">
                         <Media query="(max-width: 768px)">
-                            <FilmSwiper films={props.films}/>
+                            <FilmSwiper films={films}/>
                         </Media>
                     </Route>
 
@@ -72,16 +68,16 @@ const App = (props) => {
                     <Route exact path="/rules"><Rules/></Route>
                     <Route exact path="/seans"><Seans/></Route>
                     <Route exact path="/sushi"><Sushi/></Route>
-                    <Cinema films={props.films} filmsToday={props.filmsToday}/>
+                    <Cinema films={films} filmsToday={filmsToday}/>
 
                     <Media query="(min-width: 768px)">
                         {id !== "sushi" && <Adv/>}
                     </Media>
 
                     {
-                        props.filmsToday !== [] &&
+                        filmsToday !== [] &&
                         <Media query="(min-width: 768px)">
-                            <BottomSwiper films={props.filmsToday} slidesPerView={props.filmsTodaySlides}/>
+                            <BottomSwiper films={filmsToday} slidesPerView={filmsTodaySlides}/>
                         </Media>
                     }
 
@@ -89,7 +85,7 @@ const App = (props) => {
                         <Media query="(max-width: 768px)">
                             <div>
                                 <div className="separator"/>
-                                <FilmSwiper films={props.films}/>
+                                <FilmSwiper films={films}/>
                                 <div className="separator"/>
                                 <AdvXS/>
                             </div>

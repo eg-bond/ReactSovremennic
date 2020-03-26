@@ -3,7 +3,7 @@ import {NavLink} from "react-router-dom";
 
 function IndexAdvXS() {
     return (
-        <div className="container visible-xs col-xs-12 padding_15xs">
+        <div className="container col-xs-12 padding_15xs">
             <div className="row adv-xs">
                 <div className="flexAdvXS">
                     <div className="sushiFlex"><NavLink to="/sushi"><img src="./Images/72.gif" alt="sushi_img"/></NavLink></div>

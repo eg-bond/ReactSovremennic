@@ -12,10 +12,10 @@ const BottomSwiper = (props) => {
 
     const params = {
         slidesPerView: props.slidesPerView,
-        spaceBetween: props.slidesPerView === 2 ? 100 : 30,
+        spaceBetween: props.slidesPerView === 2 ? 100 : 20,
         centeredSlides: false,
         loop: true,
-        containerClass: `swiper-bottom swiper-container slides_3 ${opacity===props.films.length ? 'opacity_1' : 'opacity_0'}`,
+        containerClass: `swiper-bottom swiper-container slides_3 ${opacity === props.films.length ? 'opacity_1' : 'opacity_0'}`,
         wrapperClass: 'swiper-wrapper ',
         slideClass: 'swiper-slide',
         autoplay: {

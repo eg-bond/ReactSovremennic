@@ -1,7 +1,6 @@
 import React from 'react';
 import Swiper from 'react-id-swiper';
 
-
 const SushiSwiper = () => {
     const params = {
         spaceBetween: 30,
