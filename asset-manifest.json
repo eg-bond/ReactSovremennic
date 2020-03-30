@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/ReactSovremennic/static/css/main.487c0cac.chunk.css",
-    "main.js": "/ReactSovremennic/static/js/main.f9713ad3.chunk.js",
-    "main.js.map": "/ReactSovremennic/static/js/main.f9713ad3.chunk.js.map",
-    "runtime-main.js": "/ReactSovremennic/static/js/runtime-main.cadd256d.js",
-    "runtime-main.js.map": "/ReactSovremennic/static/js/runtime-main.cadd256d.js.map",
-    "static/css/2.5777a307.chunk.css": "/ReactSovremennic/static/css/2.5777a307.chunk.css",
-    "static/js/2.01033af4.chunk.js": "/ReactSovremennic/static/js/2.01033af4.chunk.js",
-    "static/js/2.01033af4.chunk.js.map": "/ReactSovremennic/static/js/2.01033af4.chunk.js.map",
-    "index.html": "/ReactSovremennic/index.html",
-    "precache-manifest.fb7b998a8071f64d31295521463ed34e.js": "/ReactSovremennic/precache-manifest.fb7b998a8071f64d31295521463ed34e.js",
-    "service-worker.js": "/ReactSovremennic/service-worker.js",
-    "static/css/2.5777a307.chunk.css.map": "/ReactSovremennic/static/css/2.5777a307.chunk.css.map",
-    "static/css/main.487c0cac.chunk.css.map": "/ReactSovremennic/static/css/main.487c0cac.chunk.css.map",
-    "static/media/bootstrap.css": "/ReactSovremennic/static/media/glyphicons-halflings-regular.fa277232.woff"
+    "main.css": "/newSovrem/static/css/main.0b24e786.chunk.css",
+    "main.js": "/newSovrem/static/js/main.9ebdfc3e.chunk.js",
+    "main.js.map": "/newSovrem/static/js/main.9ebdfc3e.chunk.js.map",
+    "runtime-main.js": "/newSovrem/static/js/runtime-main.fcc1eea5.js",
+    "runtime-main.js.map": "/newSovrem/static/js/runtime-main.fcc1eea5.js.map",
+    "static/css/2.9340fab1.chunk.css": "/newSovrem/static/css/2.9340fab1.chunk.css",
+    "static/js/2.f8fa59f7.chunk.js": "/newSovrem/static/js/2.f8fa59f7.chunk.js",
+    "static/js/2.f8fa59f7.chunk.js.map": "/newSovrem/static/js/2.f8fa59f7.chunk.js.map",
+    "index.html": "/newSovrem/index.html",
+    "precache-manifest.cd05b94f44546078905be636bae32659.js": "/newSovrem/precache-manifest.cd05b94f44546078905be636bae32659.js",
+    "service-worker.js": "/newSovrem/service-worker.js",
+    "static/css/2.9340fab1.chunk.css.map": "/newSovrem/static/css/2.9340fab1.chunk.css.map",
+    "static/css/main.0b24e786.chunk.css.map": "/newSovrem/static/css/main.0b24e786.chunk.css.map",
+    "static/media/bootstrap.css": "/newSovrem/static/media/glyphicons-halflings-regular.fa277232.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.cadd256d.js",
-    "static/css/2.5777a307.chunk.css",
-    "static/js/2.01033af4.chunk.js",
-    "static/css/main.487c0cac.chunk.css",
-    "static/js/main.f9713ad3.chunk.js"
+    "static/js/runtime-main.fcc1eea5.js",
+    "static/css/2.9340fab1.chunk.css",
+    "static/js/2.f8fa59f7.chunk.js",
+    "static/css/main.0b24e786.chunk.css",
+    "static/js/main.9ebdfc3e.chunk.js"
   ]
 }
