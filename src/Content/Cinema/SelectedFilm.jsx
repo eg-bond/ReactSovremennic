@@ -8,12 +8,12 @@ function SelectedFilm(props) {
 
     return (
         <div className={`padding_15xs `}>
-            <div className="col-lg-9 col-md-9 col-sm-9 col-xs-12 margin-top-2">
+            <div className="col-lg-9 col-md-9 col-sm-9 margin-top-2">
                 <div className="film_info">
 
                     <div className="filmFlex1 row-xs">
                         <div className="descImg">
-                            <img src={filmImg} alt="cinemaImage"/>
+                            <img src={filmImg} alt=""/>
                         </div>
                     </div>
 
@@ -49,10 +49,10 @@ function SelectedFilm(props) {
                             </tbody>
                         </table>
 
-                        <hr className="hidden-xs"/>
+                        {/*<hr className="hidden-xs"/>*/}
                         <br/>
 
-                        <Media query="(min-width: 768px)">
+                        <Media query="(min-width: 768px) and (min-height: 500px)">
                             <DescriptionTrailer description={props.film['description']}
                                                      trailer_src={props.film['playerCode']}/>
                         </Media>
@@ -61,7 +61,7 @@ function SelectedFilm(props) {
                 </div>
             </div>
 
-            <Media query="(max-width: 768px)">
+            <Media query="(max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)">
                 <DescriptionTrailer description={props.film['description']}
                                          trailer_src={props.film['playerCode']}/>
             </Media>

@@ -119,6 +119,7 @@
 
   .modal-title {
     font-family: $arialFont;
+    font-weight: 900;
   }
 
   .sushi-tab-xs {
@@ -191,7 +192,7 @@
 }
 
 @for $i from 4 to -1 {
-  $maxWidth: 320px + $i*112px;
+  $maxWidth: 320px + $i*111.9px;
   $buttonFontSize: 72%+7%*$i;
   $modalFontSize: 95%+ 2.5*$i;
   $aFontSize: 82% + 4.5*$i;

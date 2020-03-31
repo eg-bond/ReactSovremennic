@@ -1,5 +1,15 @@
 @import "variables";
 
+.rulesGrid {
+  position: relative;
+  width: 75%;
+  //float: left;
+  min-height: 1px;
+  @media (max-width: 767.5px), (max-width: 830px) and (max-height: 410px) {
+    width: 100%;
+  }
+}
+
 .rules h3, .rules h4 {
   font-family: $lusidaFont !important;
   text-align: center;
@@ -47,7 +57,7 @@
     background-color: black;
     border: solid 1px white;
     padding-bottom: 15%;
-    @media (max-width: 768px) {
+    @media (max-width: 767.5px) {
       padding-bottom: 30%;
     }
   }

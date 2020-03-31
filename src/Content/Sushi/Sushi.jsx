@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Nav from "react-bootstrap/lib/Nav";
 import {Button, Col, Modal, NavItem, Tab} from "react-bootstrap";
 import SushiSwiper from "./SushiSwiper";
+import Media from 'react-media';
 
 function SushiModal() {
 
@@ -48,26 +49,31 @@ function Sushi() {
             <div className="sushi_page">
                 <Tab.Container defaultActiveKey="sushi" id='sushiTab'>
                     <div>
-                        <div className="sushi_menu_xs visible-xs padding_15xs">
-                            <SushiModal/>
-                        </div>
 
-                        <Col lg={3} md={3} sm={3} className='hidden-xs'>
-                            <Nav bsStyle="pills" stacked>
-                                <NavItem className='sushi-tab' eventKey="sushi">Суши</NavItem>
-                                <NavItem className='sushi-tab' eventKey="rolls">Роллы</NavItem>
-                                <NavItem className='sushi-tab' eventKey="black_rolls">Цветные/черные роллы</NavItem>
-                                <NavItem className='sushi-tab' eventKey="hot_rolls">Запеченые роллы</NavItem>
-                                <NavItem className='sushi-tab' eventKey="brand_rolls">Фирменные роллы</NavItem>
-                                <NavItem className='sushi-tab' eventKey="sets">Наборы, сашими</NavItem>
-                                <NavItem className='sushi-tab' eventKey="salads">Салаты</NavItem>
-                                <NavItem className='sushi-tab' eventKey="soups">Супы</NavItem>
-                                <NavItem className='sushi-tab' eventKey="hot_dishes">Горячие блюда</NavItem>
-                                <NavItem className='sushi-tab' eventKey="garnish">Гарниры</NavItem>
-                                <NavItem className='sushi-tab' eventKey="dessert">Десерты</NavItem>
-                                <NavItem className='sushi-tab' eventKey="gruzia">Грузинская кухня</NavItem>
-                            </Nav>
-                        </Col>
+                        <Media query="(max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)">
+                            <div className="sushi_menu_xs padding_15xs">
+                                <SushiModal/>
+                            </div>
+                        </Media>
+
+                        <Media query="(min-width: 768px) and (min-height: 500px)">
+                            <Col lg={3} md={3} sm={3}>
+                                <Nav bsStyle="pills" stacked>
+                                    <NavItem className='sushi-tab' eventKey="sushi">Суши</NavItem>
+                                    <NavItem className='sushi-tab' eventKey="rolls">Роллы</NavItem>
+                                    <NavItem className='sushi-tab' eventKey="black_rolls">Цветные/черные роллы</NavItem>
+                                    <NavItem className='sushi-tab' eventKey="hot_rolls">Запеченые роллы</NavItem>
+                                    <NavItem className='sushi-tab' eventKey="brand_rolls">Фирменные роллы</NavItem>
+                                    <NavItem className='sushi-tab' eventKey="sets">Наборы, сашими</NavItem>
+                                    <NavItem className='sushi-tab' eventKey="salads">Салаты</NavItem>
+                                    <NavItem className='sushi-tab' eventKey="soups">Супы</NavItem>
+                                    <NavItem className='sushi-tab' eventKey="hot_dishes">Горячие блюда</NavItem>
+                                    <NavItem className='sushi-tab' eventKey="garnish">Гарниры</NavItem>
+                                    <NavItem className='sushi-tab' eventKey="dessert">Десерты</NavItem>
+                                    <NavItem className='sushi-tab' eventKey="gruzia">Грузинская кухня</NavItem>
+                                </Nav>
+                            </Col>
+                        </Media>
 
                         <Col lg={9} md={9} sm={9}>
                             <Tab.Content animation>

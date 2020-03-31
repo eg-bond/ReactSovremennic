@@ -1,5 +1,11 @@
 @import "variables";
 
+.advGrid {
+  width: 25%;
+  float: left;
+}
+
+
 .embed-responsive {
   border: $border1px;
   border-radius: 2px;
@@ -67,6 +73,27 @@
   padding-bottom: 200%;
 }
 
+.barNewImages {
+  display: flex;
+  justify-content: space-between;
+  margin: 1.5% -1.8%;
+}
+.barNewImage {
+  flex: 1;
+  padding: 0.5% 1.5%;
+}
+.barNewImage__container {
+  position: relative;
+  background-color: black;
+  border: solid 1px white;
+  padding-bottom: 80%;
+}
+.barNewImage__img {
+  position:absolute;
+  width:100%;
+  height:100%;
+}
+
 .swiper_bar {
   color: white;
   width: 45%;
@@ -114,7 +141,7 @@
     justify-content: space-around;
   }
   .sushiFlex {
-    padding: 2.5%;
+    padding: 2.5% 2% 2.5% 4%;
     img {
       width: 100%;
       border: $border1px;
@@ -123,7 +150,7 @@
   .infoFlex {
     display: flex;
     flex-direction: column;
-    padding: 2.5%;
+    padding: 2.5% 4% 2.5% 2%;
     img {
       width: 100%;
       border: $border1px;
@@ -168,9 +195,9 @@
 }
 
 @for $i from 4 to -1 {
-  $maxWidth: 320px + $i*112px;
+  $maxWidth: 320px + $i*111.9px;
   $trailersHeadFS: 65% + 11.25%*$i;
   $trailersHeadPL: 3.5% - 0.375%*$i;
-  $newsFS: 60% + 9%*$i;
+  $newsFS: 56% + 10%*$i;
   @include indexXS ($trailersHeadFS, $trailersHeadPL, $newsFS, $maxWidth);
 }

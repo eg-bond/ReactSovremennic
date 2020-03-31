@@ -32,19 +32,19 @@ const FilmSwiper = (props) => {
                 spaceBetween: 8
             }
         }
-    }
+    };
 
     let [opacity, turnOpacity] = useState(0);
 
     return (<>
             <div className={`top-menu ${opacity===props.films.length ? 'opacity_1' : 'opacity_0'}`}>
-                <Media query="(max-width: 768px)"><h4>Фильмы</h4></Media>
+                <Media query="(max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)"><h4>Фильмы</h4></Media>
                 <Swiper {...params}>
                     {
                         props.films.map(f => <div key={f.link}>
                             <NavLink to={f.link}>
                                 <img onLoad={() => turnOpacity(opacity + 1)} className="opacity"
-                                     src={`./Images/top_menu/${f.link}.gif`} alt={`${f.link}_img`} />
+                                     src={`./Images/top_menu/${f.link}.gif`} alt=""/>
                                 <h1>{f.title}</h1>
                                 <p>{f.beginDate}</p>
                             </NavLink>

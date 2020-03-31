@@ -20,17 +20,11 @@
     border-radius: 4px 4px 4px 4px;
     font-weight: bold;
     color: white;
-
-    &:focus, &:hover {
-      @extend %buttonsAnimation;
-    }
     @media (max-width: 1200px) {
       font-size: 84%;
-      //padding: 5px 4.5px;
     }
     @media (max-width: 992px) {
       font-size: 65%;
-      //padding: 3px 2px;
       margin-top: 5%;
     }
   }
@@ -39,7 +33,7 @@
 .table_custom {
   margin-top: 3%;
   font-family: $lusidaFont;
-  font-weight: bold;
+  font-weight: 900;
   font-size: 100%;
   border-radius: 5px;
   width: 100%;
@@ -111,6 +105,10 @@
     margin-top: 3.4%;
   }
 
+  .seans_button_xs__title {
+    font-weight: 900;
+  }
+
   .table_custom {
     width: 100%;
     min-height: 350px;
@@ -123,7 +121,7 @@
 }
 
 @for $i from 4 to -1 {
-  $maxWidth: 320px + $i*112px;
+  $maxWidth: 320px + $i*111.9px;
   $tableFontSize: 48%+9%*$i;
   $buttonTitleFontSize: 75%+6%*$i;
 

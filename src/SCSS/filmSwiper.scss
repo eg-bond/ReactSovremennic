@@ -3,7 +3,7 @@
 .top-menu {
   margin-top: 10px;
   cursor: grab;
-  //opacity: 0;
+  height: auto;
 }
 
 .film-swiper {
@@ -72,9 +72,6 @@
 }
 
 @mixin topSwiper ($swiperHeight, $beforeElem, $fontSize, $imgHeight) {
-  .top-menu {
-    height: $swiperHeight;
-  }
 
   .film-swiper>.swiper-wrapper {
     height: $swiperHeight;
@@ -93,18 +90,18 @@
   }
 }
 
-
 @include topSwiper (318px, 24px, 12px, 250px);
-
 
 @media (max-width: 1200px) {
   @include topSwiper (270px, 21px, 76%, 210px);
 }
 
 @media (max-width: 992px) {
+  .top-menu h4 {
+      padding-left: 1.5%;
+  }
   @include topSwiper (226px, 21px, 72%, 170px);
 }
-
 
 @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
 
@@ -114,7 +111,7 @@
     h4 {
       font-family: $arialFont;
       color: white;
-      margin: 2% 0 2% 0;
+      margin: 1% 0 2% 0;
     }
   }
 
@@ -125,7 +122,6 @@
   .film-swiper {
     width: 98%;
     margin: 0.5% 0 0 1%;
-    //opacity: 0;
 
     .swiper-wrapper {
 
@@ -204,8 +200,8 @@
 }
 
 @for $i from 4 to -1 {
-  $maxWidth: 320px + $i*112px;
-  $swiperHeight: 162px + 37px*$i;
+  $maxWidth: 320px + $i*111.9px;
+  $swiperHeight: 164px + 37px*$i;
   $mainHeadFS: 65% + 11.25%*$i;
   $mainHeadPL: 3.5% - 0.375%*$i;
   $filmTitleFS: 75% + 9%*$i;

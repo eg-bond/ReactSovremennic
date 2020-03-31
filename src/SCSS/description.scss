@@ -9,7 +9,7 @@
 .filmFlex1 {
   flex: 1;
   padding: 0 3% 1% 1%;
-  @media (max-width: 768px) {
+  @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
     padding-bottom: 4%;
     padding-left: 0;
     flex: 0.75;
@@ -129,7 +129,7 @@ $descDate: 75%, $descTable: 77%, $descFS: 77%, $maxWidth: 992px);
 }
 
 @for $i from 4 to -1 {
-  $maxWidth: 320px + $i*112px;
+  $maxWidth: 320px + $i*111.9px;
   $imgPT: 3.5% - 0.9%*$i;
   $descHead: 80% + 13%*$i;
   $descDate: 60% + 4%*$i;

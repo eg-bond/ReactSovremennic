@@ -24,8 +24,8 @@ a, h1, h2, h4, p {
   @media (max-width: 992px) {
     background-size: 1220px 800px;
   }
-  @media (max-width: 768px) {
-    background-color: white !important;
+  @media (max-width: 767.5px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+    background-image: none !important;
   }
 }
 
@@ -81,9 +81,9 @@ hr {
   border-top: none;
 }
 
-.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
-  color: black;
-  background-color: white;
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover {
+  color: black !important;
+  background-color: white !important;
 }
 
 .modal-dialog {
@@ -144,8 +144,18 @@ hr {
 
   body {
     background-color: white;
-    background-image: none;
   }
+
+  //подкрутка
+  .container {
+    width: auto;
+  }
+
+  .col-sm-9 {
+    width: 100% !important;
+    float: none;
+  }
+  //подкрутка закончилась
 
   .padding_0xs {
     padding-left: 0;

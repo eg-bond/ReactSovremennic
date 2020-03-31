@@ -32,7 +32,7 @@ const BottomSwiper = (props) => {
                     props.films.map( f => <div key={f.link}>
                         <NavLink to={f.link}>
                             <img onLoad={() => turnOpacity(opacity + 1)} className="opacity"
-                                 src={`./Images/description/${f.link}_D.jpg`} alt={`${f.link}_img`}/>
+                                 src={`./Images/description/${f.link}_D.jpg`} alt=""/>
                             <h1>{f.title}</h1>
                             <p>{f.kind.split(", ")[0]}</p>
                         </NavLink>
