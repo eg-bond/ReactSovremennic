@@ -1,17 +1,7 @@
 @import "variables";
 
-.rulesGrid {
-  position: relative;
-  width: 75%;
-  //float: left;
-  min-height: 1px;
-  @media (max-width: 767.5px), (max-width: 830px) and (max-height: 410px) {
-    width: 100%;
-  }
-}
-
 .rules h3, .rules h4 {
-  font-family: $lusidaFont !important;
+  font-family: $lusidaFont;
   text-align: center;
   font-size: 140%;
 
@@ -27,7 +17,7 @@
 }
 
 .rules p {
-  font-family: $lusidaFont !important;
+  font-family: $lusidaFont;
   font-size: 89%;
   text-align: justify;
 
@@ -45,26 +35,27 @@
 
 //"О кинотеатре"
 
-.aboutImages{
+.aboutImages {
   display: flex;
   justify-content: space-between;
   margin: 1.5% -1.8%;
-  .aboutImage {
-    position: relative;
-    flex: 1;
-    margin: 2%;
-    width: 100%;
-    background-color: black;
-    border: solid 1px white;
-    padding-bottom: 15%;
-    @media (max-width: 767.5px) {
-      padding-bottom: 30%;
-    }
-  }
-  img {
-    position:absolute;
-    width:100%;
-    height:100%;
+}
+.aboutImages__image {
+  position: relative;
+  flex: 1;
+  margin: 2%;
+  width: 100%;
+  background-color: black;
+  border: solid 1px white;
+  padding-bottom: 15%;
+  @media (max-width: 767.5px) {
+    padding-bottom: 30%;
   }
 }
+.aboutImages__image img {
+  position:absolute;
+  width:100%;
+  height:100%;
+}
+
 

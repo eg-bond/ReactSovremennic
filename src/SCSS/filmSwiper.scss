@@ -1,69 +1,57 @@
 @import "variables";
 
-.top-menu {
+.cinemaSlider {
   margin-top: 10px;
   cursor: grab;
   height: auto;
 }
-
-.film-swiper {
+.filmSwiper {
   width: 98%;
   margin: 0.5% 0 0 1%;
-
-  .swiper-wrapper {
-
-    .swiper-slide {
-      text-align: left;
-      img {
-        height: 250px;
-        width: 100%;
-        border-radius: 3px;
-      }
-      h1 {
-        font-size: 101%;
-        font-weight: bold;
-        padding-left: 2%;
-        font-family: $lusidaFont;
-        margin: 5% 0 2% 0;
-        white-space: pre;
-        overflow: hidden;
-
-        &:before {
-          content: "";
-          display: block;
-          height: 20px;
-          width: 72px;
-          position: relative;
-          left: 88%;
-          margin-top: -20px;
-          background-image:linear-gradient(to right, rgba(255, 255, 255, 0), black 25%)
-        }
-      }
-    }
-    .swiper-slide {
-      p {
-        padding-left: 2.5%;
-        font-size: 90%;
-        letter-spacing: 0.01em;
-        color: white;
-        font-weight: normal;
-        font-family: $lusidaFont;
-      }
-      a {
-        color: white;
-        text-decoration: none;
-        cursor: pointer;
-        font-weight: normal;
-
-        &:hover {
-          color: #d8d1d1;
-          transition: all 0.3s;
-          cursor: pointer;
-          font-weight: normal;
-        }
-      }
-    }
-  }
+}
+.filmSwiper img {
+  height: 250px;
+  width: 100%;
+  border-radius: 3px;
+}
+.filmSwiper h1 {
+  font-size: 101%;
+  font-weight: bold;
+  padding-left: 2%;
+  font-family: $lusidaFont;
+  margin: 5% 0 2% 0;
+  white-space: pre;
+  overflow: hidden;
+}
+.filmSwiper h1:before {
+  content: "";
+  display: block;
+  height: 20px;
+  width: 72px;
+  position: relative;
+  left: 88%;
+  margin-top: -20px;
+  background-image: linear-gradient(to right, transparent, black 25%)
+}
+.filmSwiper p {
+  padding-left: 2.5%;
+  font-size: 90%;
+  letter-spacing: 0.01em;
+  color: white;
+  font-weight: normal;
+  font-family: $lusidaFont;
+}
+.filmSwiper a {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: normal;
+}
+.filmSwiper a:hover {
+  color: #d8d1d1;
+  transition: all 0.3s;
+  cursor: pointer;
+  font-weight: normal;
 }
 
 .swiper-pagination-bullet {
@@ -71,41 +59,38 @@
   background-color: white;
 }
 
-@mixin topSwiper ($swiperHeight, $beforeElem, $fontSize, $imgHeight) {
+@mixin filmSwiperDesktop ($swiperHeight, $beforeElem, $fontSize, $imgHeight) {
 
-  .film-swiper>.swiper-wrapper {
+  .filmSwiper .swiper-wrapper {
     height: $swiperHeight;
   }
-
-  .film-swiper>.swiper-wrapper>.swiper-slide h1:before {
+  .filmSwiper h1:before {
     top: $beforeElem;
   }
-
-  .film-swiper>.swiper-wrapper>.swiper-slide {
+  .filmSwiper .swiper-slide {
     font-size: $fontSize;
   }
-
-  .film-swiper>.swiper-wrapper>.swiper-slide img{
+  .filmSwiper img{
     height: $imgHeight;
   }
 }
 
-@include topSwiper (318px, 24px, 12px, 250px);
+@include filmSwiperDesktop (318px, 24px, 12px, 250px);
 
 @media (max-width: 1200px) {
-  @include topSwiper (270px, 21px, 76%, 210px);
+  @include filmSwiperDesktop (270px, 21px, 76%, 210px);
 }
 
 @media (max-width: 992px) {
-  .top-menu h4 {
+  .cinemaSlider h4 {
       padding-left: 1.5%;
   }
-  @include topSwiper (226px, 21px, 72%, 170px);
+  @include filmSwiperDesktop (226px, 21px, 72%, 170px);
 }
 
 @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
 
-  .top-menu {
+  .cinemaSlider {
     width: 100%;
     padding-left: 10px;
     h4 {
@@ -115,85 +100,67 @@
     }
   }
 
-  .swiper-pagination-bullet {
-   display: none;
+  .filmSwiper .swiper-slide {
+    font-size: 11px;
+  }
+  .filmSwiper img {
+    width: 100%;
+    border-radius: 3px;
+  }
+  .filmSwiper h1 {
+    font-weight: bold;
+    font-family: $lusidaFont;
+    margin: 5% 0 2% 0;
+    white-space: nowrap;
+    color: white;
+  }
+  .filmSwiper h1:before {
+    content: "";
+    display: block;
+    height: 20px;
+    width: 72px;
+    position: relative;
+    left: 85%;
+    top: 15px;
+    margin-top: -20px;
+    background-image: linear-gradient(to right, transparent, black 25%)
+  }
+  .filmSwiper p {
+    letter-spacing: 0.01em;
+    font-family: $lusidaFont;
+    color: white;
+  }
+  .filmSwiper a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
   }
 
-  .film-swiper {
-    width: 98%;
-    margin: 0.5% 0 0 1%;
-
-    .swiper-wrapper {
-
-      .swiper-slide {
-        text-align: left;
-        font-size: 11px;
-        overflow: hidden;
-        img {
-          width: 100%;
-          border-radius: 3px;
-        }
-        h1 {
-          font-weight: bold;
-          padding-left: 2%;
-          font-family: $lusidaFont;
-          margin: 5% 0 2% 0;
-          white-space: nowrap;
-          color: white;
-        }
-        p {
-          padding-left: 2%;
-          letter-spacing: 0.01em;
-          font-family: $lusidaFont;
-          color: white;
-        }
-        a {
-          color: white;
-          text-decoration: none;
-          cursor: pointer;
-
-          h1:before {
-            content: "";
-            display: block;
-            height: 20px;
-            width: 72px;
-            position: relative;
-            left: 85%;
-            top: 15px;
-            margin-top: -20px;
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0), black 25%)
-          }
-        }
-      }
-    }
+  .swiper-pagination-bullet {
+    display: none;
   }
 }
 
 @mixin filmSwiperXS ($swiperHeight, $mainHeadFS, $mainHeadPL, $filmTitleFS, $filmDateFS, $maxWidth) {
 
   @media (max-width: $maxWidth) {
-    .top-menu {
+    .cinemaSlider {
       height: $swiperHeight;
     }
-
-    .top-menu h4 {
+    .cinemaSlider h4 {
       font-size: $mainHeadFS;
       padding-left: $mainHeadPL;
     }
-
-    .film-swiper > .swiper-wrapper {
+    .filmSwiper .swiper-wrapper {
       height: $swiperHeight/1.1;
     }
-
-    .film-swiper>.swiper-wrapper>.swiper-slide img {
+    .filmSwiper img {
       height: $swiperHeight/1.35;
     }
-
-    .film-swiper>.swiper-wrapper>.swiper-slide h1 {
+    .filmSwiper h1 {
       font-size: $filmTitleFS;
     }
-
-    .film-swiper>.swiper-wrapper>.swiper-slide p {
+    .filmSwiper p {
       font-size: $filmDateFS;
     }
   }

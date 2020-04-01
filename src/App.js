@@ -80,6 +80,7 @@ const App = ({createActualDatesArr, initialActiveKey, initialButtonTitle, create
                         filmsToday !== [] &&
                         <Media query="(min-width: 768px) and (min-height: 500px)">
                             <BottomSwiper films={filmsToday} slidesPerView={filmsTodaySlides}/>
+                            {/*<BottomSwiperOrigin films={filmsToday} slidesPerView={filmsTodaySlides}/>*/}
                         </Media>
                     }
 

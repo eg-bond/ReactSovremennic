@@ -49,7 +49,6 @@ function SelectedFilm(props) {
                             </tbody>
                         </table>
 
-                        {/*<hr className="hidden-xs"/>*/}
                         <br/>
 
                         <Media query="(min-width: 768px) and (min-height: 500px)">

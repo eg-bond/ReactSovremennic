@@ -1,28 +1,28 @@
 @import "variables";
 
-.flexMenu {
+.navigation {
   display: flex;
   flex-direction: row;
   border-radius: 20px 20px 0 0;
   background-color: #000;
-  margin-bottom: 0 !important;
+  margin-bottom: 0;
   border: $border5px;
-  border-bottom: none !important;
-
+  border-bottom: none;
   @media (max-width: 992px) {
     border: $border3px;
+    border-bottom: none;
   }
   @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
     border-radius: 0;
     border-width: 0;
-    position: fixed !important;
+    position: fixed;
     top: 0;
     width: 100%;
     z-index: 10;
   }
 }
 
-.logoElem {
+.navigation__logo {
   display: flex;
   justify-content: flex-start;
   flex: 1;
@@ -40,93 +40,82 @@
     padding: 0.5% 0 0.5% 1.5%;
   }
 }
-.menu {
+
+.navigation__menu {
   flex: 3.5;
-  padding: 1.5% 0 0 0;
+  padding-top: 2.25%;
   border-top: none;
   box-shadow: none;
-  @media (max-width: 1200px) {
-    flex: 4;
-    padding: 1% 0 0 0;
-  }
-  ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    list-style: none;
-    padding-top: 1%;
-    @media (max-width: 1200px) {
-      padding-top: 1.5%;
-    }
-    @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
-      justify-content: space-between;
-      padding: 1.5% 1.5% 0 1.5%;
-    }
-  }
-  li {
-    margin: auto 0.75%;
-    @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
-      margin: auto 0.3%;
-    }
-  }
-  a {
-    color: white;
-    font-weight: 900;
-    border-radius: 5px;
-    padding: 10px 15px;
-    text-decoration: none;
-    &.active {
-      color: #000;
-      background-color: #ffffff;
-    }
-    &:hover {
-      color: #000;
-      background-color: #ffffff;
-      transition: ease 650ms;
-    }
-    @media (max-width: 992px) {
-      font-size: 85%;
-    }
-    @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
-      padding: 11px 3px !important;
-    }
+}
+.navigation__menu ul {
+  display: flex;
+  list-style: none;
+  @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+    justify-content: space-between;
+    padding: 0 1.5%;
   }
 }
+.navigation__menu li {
+  margin: auto 0.5%;
+}
+.navigation__menu a {
+  color: white;
+  font-weight: 900;
+  border-radius: 5px;
+  padding: 10px 15px;
+  text-decoration: none;
+  @media (max-width: 992px) {
+    font-size: 85%;
+  }
+  @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+    padding: 11px 4.5px;
+  }
+}
+.navigation__menu a.active {
+  color: #000;
+  background-color: #ffffff;
+}
+.navigation__menu a:hover {
+  color: #000;
+  background-color: #ffffff;
+  transition: ease 650ms;
+}
 
-@mixin flexMenuXS ($menuHeight, $logoElemWidth, $menuFS) {
-  .flexMenu {
-    height: $menuHeight;
+
+@mixin navigationXS ($navigationHeight, $logoWidth, $menuFS) {
+  .navigation {
+    height: $navigationHeight;
   }
   .line_container {
-    margin-top: $menuHeight;
+    margin-top: $navigationHeight;
   }
-  .logoElem img {
-      width: $logoElemWidth;
+  .navigation__logo img {
+      width: $logoWidth;
   }
-  .menu a {
+  .navigation__menu a {
     font-size: $menuFS;
   }
 }
 
 @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
-  @include flexMenuXS (55px, 140px, 80%);
+  @include navigationXS (55px, 140px, 80%);
 }
 
 @media (max-width: 656px) {
-  @include flexMenuXS (50px, 125px, 72%);
+  @include navigationXS (50px, 125px, 72%);
 }
 
 @media (max-width: 544px) {
-  .flexMenu {
+  .navigation {
     flex-direction: column;
   }
-  @include flexMenuXS (97px, 120px, 77%);
+  @include navigationXS (97px, 120px, 77%);
 }
 
 @media (max-width: 432px) {
-  @include flexMenuXS (90px, 110px, 66%);
+  @include navigationXS (90px, 110px, 66%);
 }
 
 @media (max-width: 365px) {
-  @include flexMenuXS (82px, 100px, 56.5%);
+  @include navigationXS (82px, 100px, 56.5%);
 }

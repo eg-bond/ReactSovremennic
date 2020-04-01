@@ -1,6 +1,6 @@
 @import "variables";
 
-.swiper-bottom {
+.bottomSwiper {
   padding: 0.5px 0 0 0;
   width: 100%;
   background-color: black;
@@ -9,53 +9,43 @@
   @media (max-width: 992px) {
     border-top: solid 2px white;
   }
-
-  .swiper-wrapper {
-
-    .swiper-slide {
-      text-align: left;
-      font-size: 14px;
-      background: black;
-
-      img {
-        width: 100%;
-      }
-      h1 {
-        font-size: 140%;
-        font-weight: bold;
-        padding-left: 2%;
-        @media (max-width: 1200px) {
-          font-size: 115%;
-        }
-        @media (max-width: 992px) {
-          font-size: 87%;
-          margin: 5% 0 4% 0;
-        }
-      }
-      p {
-        padding-left: 2%;
-        letter-spacing: 0.02em;
-        font: normal 100% 'century gothic', arial;
-        @media (max-width: 1200px) {
-          font-size: 78%;
-        }
-        @media (max-width: 992px) {
-          font-size: 68%;
-        }
-      }
-      a {
-        color: white;
-        text-decoration: none;
-        cursor: pointer;
-
-        &:hover {
-          color: #d8d1d1;
-          transition: all 0.3s;
-          cursor: pointer;
-        }
-      }
-    }
-  }
 }
 
+.bottomSwiper .swiper-slide {
+  font-size: 14px;
+}
+.bottomSwiper img {
+  width: 100%;
+}
+.bottomSwiper h1 {
+  font-size: 140%;
+  font-weight: bold;
+  padding-left: 2%;
+  @media (max-width: 1200px) {
+    font-size: 115%;
+  }
+  @media (max-width: 992px) {
+    font-size: 87%;
+    margin: 5% 0 4% 0;
+  }
+}
+.bottomSwiper p {
+  padding-left: 2%;
+  letter-spacing: 0.02em;
+  font: normal 100% 'century gothic', arial;
+  @media (max-width: 1200px) {
+    font-size: 78%;
+  }
+  @media (max-width: 992px) {
+    font-size: 68%;
+  }
+}
+.bottomSwiper a {
+  text-decoration: none;
+}
+//.bottomSwiper a:hover {
+//  color: #d8d1d1;
+//  transition: all 0.3s;
+//  cursor: pointer;
+//}
 

@@ -31,16 +31,16 @@ function About() {
                 </div>
 
                 <div className="aboutImages">
-                    <div className="aboutImage">
+                    <div className="aboutImages__image">
                         <img src="./Images/about1.gif" alt=""/>
                     </div>
-                    <div className="aboutImage hidden-xs">
+                    <div className="aboutImages__image hidden-xs">
                         <img src="./Images/about2.gif" alt=""/>
                     </div>
-                    <div className="aboutImage">
+                    <div className="aboutImages__image">
                         <img src="./Images/about3.gif" alt=""/>
                     </div>
-                    <div className="aboutImage hidden-xs">
+                    <div className="aboutImages__image hidden-xs">
                         <img src="./Images/about4.gif" alt=""/>
                     </div>
                 </div>

@@ -7,11 +7,11 @@ function Navigation() {
             <div className="container">
                 <div className="row">
                     <div className="space"/>
-                    <nav role="navigation" className="navbar navbar-inverse flexMenu">
-                        <div className="logoElem">
+                    <nav role="navigation" className="navbar navbar-inverse navigation">
+                        <div className="navigation__logo">
                             <NavLink to="/"><img src="./Images/logo.gif" alt='logoImage'/></NavLink>
                         </div>
-                        <div id="navbarcollapse" className="menu">
+                        <div className="navigation__menu">
                             <ul>
                                 <li><NavLink to="seans" activeClassName="active">Расписание</NavLink></li>
                                 <li><NavLink to="about" activeClassName="active">Реклама</NavLink></li>

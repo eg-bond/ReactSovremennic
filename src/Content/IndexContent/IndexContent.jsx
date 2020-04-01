@@ -8,15 +8,17 @@ function IndexContent() {
         <div>
             <div className="separator"/>
 
-            <div className="trailers container col-lg-9 col-md-9 col-sm-9 col-xs-12 padding_15xs">
+            <div className="container col-lg-9 col-md-9 col-sm-9 col-xs-12 padding_15xs">
 
-                <Media query="(max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)">
-                    <h4>Трейлеры</h4>
-                </Media>
+                <div  className="trailers">
+                    <Media query="(max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)">
+                        <h4>Трейлеры</h4>
+                    </Media>
 
-                <div className="embed-responsive embed-responsive-16by9">
-                    <iframe className="embed-responsive-item" title="trailers_desktop"
-                            src="http://www.youtube.com/embed/PKSxTsuCQ4? ype=playlist&list=PLfrc7TOjXulMiQWLR1Jr8ZiZ2b7hWqSZf"/>
+                    <div className="embed-responsive embed-responsive-16by9">
+                        <iframe className="embed-responsive-item" title="trailers_desktop"
+                                src="http://www.youtube.com/embed/PKSxTsuCQ4? ype=playlist&list=PLfrc7TOjXulMiQWLR1Jr8ZiZ2b7hWqSZf"/>
+                    </div>
                 </div>
 
                 <div className="separator-xs"/>
@@ -33,7 +35,7 @@ function IndexContent() {
                 <div className="separator-xs"/>
 
                 <div className="news">
-                    <h2>Новинки в баре</h2>
+                    <h2 className="barNew__title">Новинки в баре</h2>
                     <div className="barNewImages">
                         <div className="barNewImage">
                             <p className="barNewImage__p">Начос "Торнадо"</p>

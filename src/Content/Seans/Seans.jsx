@@ -22,7 +22,7 @@ const Seans = React.memo(({initialActiveKey, initialButtonTitle, ...props}) => {
     }, [initialActiveKey, initialButtonTitle]);
 
     return (
-        <div className="col-lg-9 col-md-9 col-sm-9 margin-top-xs">
+        <div className="col-lg-9 col-md-9 col-sm-9">
             <Tab.Container id='table' activeKey={props.activeKey} onSelect={k => props.changeActiveKey(k)}>
                 <div>
 

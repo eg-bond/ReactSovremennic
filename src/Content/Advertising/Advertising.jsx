@@ -1,8 +1,10 @@
 import React from 'react';
+import ScrollToTop from "../../Template/ScrollToTop";
 
 function Advertising() {
     return (
         <div>
+            <ScrollToTop/>
             <div className="col-lg-9 col-md-9 col-sm-9 padding_15xs">
                 <div className="rules white">
                     <h3>Реклама в кинотеатре "Современник"</h3>
