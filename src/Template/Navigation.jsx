@@ -14,7 +14,7 @@ function Navigation() {
                         <div className="navigation__menu">
                             <ul>
                                 <li><NavLink to="seans" activeClassName="active">Расписание</NavLink></li>
-                                <li><NavLink to="about" activeClassName="active">Реклама</NavLink></li>
+                                <li><NavLink to="about" activeClassName="active">О кинотеатре</NavLink></li>
                                 <li><NavLink to="rules" activeClassName="active">Правила работы</NavLink></li>
                                 <li><NavLink to="sushi" activeClassName="active">Суши-бар "КИН-НО"</NavLink></li>
                             </ul>

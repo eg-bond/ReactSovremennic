@@ -2,8 +2,10 @@ import React, {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import Nav from "react-bootstrap/lib/Nav";
 import {Button, Col, Modal, NavItem, Tab} from "react-bootstrap";
-import SushiSwiper from "./SushiSwiper";
+import HotDishesSwiper from "./HotDishesSwiper";
 import Media from 'react-media';
+import BrandRollsSwiper from "./BrandRollsSwiper";
+import ScrollToTop from "../../Template/ScrollToTop";
 
 function SushiModal() {
 
@@ -29,6 +31,7 @@ function SushiModal() {
                         <NavItem eventKey="black_rolls" onClick={handleClose}>Цветные/черные роллы</NavItem>
                         <NavItem eventKey="hot_rolls" onClick={handleClose}>Запеченые роллы</NavItem>
                         <NavItem eventKey="brand_rolls" onClick={handleClose}>Фирменные роллы</NavItem>
+                        <NavItem eventKey="mini_rolls" onClick={handleClose}>Мини-роллы</NavItem>
                         <NavItem eventKey="sets" onClick={handleClose}>Наборы, сашими</NavItem>
                         <NavItem eventKey="salads" onClick={handleClose}>Салаты</NavItem>
                         <NavItem eventKey="soups" onClick={handleClose}>Супы</NavItem>
@@ -36,6 +39,7 @@ function SushiModal() {
                         <NavItem eventKey="garnish" onClick={handleClose}>Гарниры</NavItem>
                         <NavItem eventKey="dessert" onClick={handleClose}>Десерты</NavItem>
                         <NavItem eventKey="gruzia" onClick={handleClose}>Грузинская кухня</NavItem>
+                        <NavItem eventKey="pizza" onClick={handleClose}>Пицца</NavItem>
                     </Nav>
                 </Modal.Body>
             </Modal>
@@ -46,6 +50,7 @@ function SushiModal() {
 function Sushi() {
     return (
         <div>
+            <ScrollToTop/>
             <div className="sushi_page">
                 <Tab.Container defaultActiveKey="sushi" id='sushiTab'>
                     <div>
@@ -64,6 +69,7 @@ function Sushi() {
                                     <NavItem className='sushi-tab' eventKey="black_rolls">Цветные/черные роллы</NavItem>
                                     <NavItem className='sushi-tab' eventKey="hot_rolls">Запеченые роллы</NavItem>
                                     <NavItem className='sushi-tab' eventKey="brand_rolls">Фирменные роллы</NavItem>
+                                    <NavItem className='sushi-tab' eventKey="mini_rolls">Мини-роллы</NavItem>
                                     <NavItem className='sushi-tab' eventKey="sets">Наборы, сашими</NavItem>
                                     <NavItem className='sushi-tab' eventKey="salads">Салаты</NavItem>
                                     <NavItem className='sushi-tab' eventKey="soups">Супы</NavItem>
@@ -71,11 +77,19 @@ function Sushi() {
                                     <NavItem className='sushi-tab' eventKey="garnish">Гарниры</NavItem>
                                     <NavItem className='sushi-tab' eventKey="dessert">Десерты</NavItem>
                                     <NavItem className='sushi-tab' eventKey="gruzia">Грузинская кухня</NavItem>
+                                    <NavItem className='sushi-tab' eventKey="pizza">Пицца</NavItem>
                                 </Nav>
                             </Col>
                         </Media>
 
                         <Col lg={9} md={9} sm={9}>
+
+                            <Media query="(min-width: 768px) and (min-height: 500px)">
+                                <div className="sushiAdv sushiAdv--1">
+                                    <a href="http://www.region47.sbor.net/"><img src="./Images/region47_wide.gif" alt=""/></a>
+                                </div>
+                            </Media>
+
                             <Tab.Content animation>
                                 <Tab.Pane eventKey="sushi">
                                     <div className="sushiEmptyImg">
@@ -87,17 +101,21 @@ function Sushi() {
                                                                        alt=""/></Tab.Pane>
                                 <Tab.Pane eventKey="hot_rolls"> <img src="./Images/sushi/hot_rolls.gif"
                                                                      alt=""/></Tab.Pane>
-                                <Tab.Pane eventKey="brand_rolls"> <img src="./Images/sushi/brand_rolls.gif"
+                                <Tab.Pane eventKey="brand_rolls">
+                                    <BrandRollsSwiper/>
+                                </Tab.Pane>
+                                <Tab.Pane eventKey="mini_rolls"> <img src="./Images/sushi/mini_rolls.gif"
                                                                        alt=""/></Tab.Pane>
                                 <Tab.Pane eventKey="sets"> <img src="./Images/sushi/sets.gif" alt=""/></Tab.Pane>
                                 <Tab.Pane eventKey="salads"> <img src="./Images/sushi/salads.gif" alt=""/></Tab.Pane>
                                 <Tab.Pane eventKey="soups"> <img src="./Images/sushi/soups.gif" alt=""/></Tab.Pane>
                                 <Tab.Pane eventKey="hot_dishes">
-                                    <SushiSwiper/>
+                                    <HotDishesSwiper/>
                                 </Tab.Pane>
                                 <Tab.Pane eventKey="garnish"> <img src="./Images/sushi/garnish.gif" alt=""/></Tab.Pane>
                                 <Tab.Pane eventKey="dessert"> <img src="./Images/sushi/dessert.gif" alt=""/></Tab.Pane>
                                 <Tab.Pane eventKey="gruzia"> <img src="./Images/sushi/gruzia.gif" alt=""/></Tab.Pane>
+                                <Tab.Pane eventKey="pizza"> <img src="./Images/sushi/pizza.jpg" alt=""/></Tab.Pane>
                             </Tab.Content>
                         </Col>
                     </div>

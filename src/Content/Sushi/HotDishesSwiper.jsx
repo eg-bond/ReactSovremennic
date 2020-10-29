@@ -1,7 +1,7 @@
 import React from 'react';
 import Swiper from 'react-id-swiper';
 
-const SushiSwiper = () => {
+const HotDishesSwiper = () => {
     const params = {
         spaceBetween: 30,
         observer: true,
@@ -34,4 +34,4 @@ const SushiSwiper = () => {
     )
 };
 
-export default SushiSwiper;
+export default HotDishesSwiper;

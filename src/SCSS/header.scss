@@ -102,20 +102,20 @@
 }
 
 @media (max-width: 656px) {
-  @include navigationXS (50px, 125px, 72%);
+  @include navigationXS (50px, 125px, 68%);
 }
 
 @media (max-width: 544px) {
   .navigation {
     flex-direction: column;
   }
-  @include navigationXS (97px, 120px, 77%);
+  @include navigationXS (97px, 120px, 72%);
 }
 
 @media (max-width: 432px) {
-  @include navigationXS (90px, 110px, 66%);
+  @include navigationXS (90px, 110px, 60%);
 }
 
 @media (max-width: 365px) {
-  @include navigationXS (82px, 100px, 56.5%);
+  @include navigationXS (82px, 100px, 50%);
 }

@@ -3,9 +3,26 @@ a, h1, h2, h4, p {
   color: white;
 }
 
+a:focus {
+  outline: none;
+}
+
 * {
   margin: 0;
   padding: 0;
+}
+
+.vk_ref {
+  color: white;
+  text-decoration: underline;
+}
+
+.vk_ref:hover {
+  color: white;
+}
+
+.red {
+  color: red;
 }
 
 .mainContainer {
@@ -13,7 +30,7 @@ a, h1, h2, h4, p {
   color: #000;
   margin: 0;
   padding: 0;
-  background: black no-repeat top center;
+  background: #fff2d0 no-repeat top center;
   height: 100%;
 }
 @media (max-width: 1200px) {
@@ -86,9 +103,9 @@ hr {
   border-top: none;
 }
 
-.nav-pills > li.active > a, .nav-pills > li.active > a:hover {
-  color: black !important;
-  background-color: white !important;
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+  color: black;
+  background-color: white;
 }
 
 .modal-dialog h4 {
@@ -319,7 +336,7 @@ hr {
   }
 
   .navigation__menu a {
-    font-size: 72%;
+    font-size: 68%;
   }
 }
 @media (max-width: 544px) {
@@ -340,7 +357,7 @@ hr {
   }
 
   .navigation__menu a {
-    font-size: 77%;
+    font-size: 72%;
   }
 }
 @media (max-width: 432px) {
@@ -357,7 +374,7 @@ hr {
   }
 
   .navigation__menu a {
-    font-size: 66%;
+    font-size: 60%;
   }
 }
 @media (max-width: 365px) {
@@ -374,7 +391,7 @@ hr {
   }
 
   .navigation__menu a {
-    font-size: 56.5%;
+    font-size: 50%;
   }
 }
 .embed-responsive {
@@ -391,6 +408,7 @@ hr {
 .news {
   padding: 0 0 2% 3%;
   color: white;
+  text-align: justify;
 }
 @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
   .news {
@@ -422,17 +440,17 @@ hr {
 .news p {
   font-family: Lucida Console, monospace;
   padding: 1%;
-  font-size: 110%;
+  font-size: 135%;
 }
 @media (max-width: 1200px) {
   .news p {
-    font-size: 85%;
+    font-size: 115%;
   }
 }
 @media (max-width: 992px) {
   .news p {
     padding: 0.5%;
-    font-size: 80%;
+    font-size: 95%;
   }
 }
 @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
@@ -592,7 +610,7 @@ hr {
   }
 
   .news {
-    font-size: 96%;
+    font-size: 100%;
   }
 }
 @media (max-width: 655.7px) {
@@ -602,7 +620,7 @@ hr {
   }
 
   .news {
-    font-size: 86%;
+    font-size: 90%;
   }
 }
 @media (max-width: 543.8px) {
@@ -612,7 +630,7 @@ hr {
   }
 
   .news {
-    font-size: 76%;
+    font-size: 80%;
   }
 }
 @media (max-width: 431.9px) {
@@ -622,7 +640,7 @@ hr {
   }
 
   .news {
-    font-size: 66%;
+    font-size: 70%;
   }
 }
 @media (max-width: 320px) {
@@ -632,7 +650,7 @@ hr {
   }
 
   .news {
-    font-size: 56%;
+    font-size: 60%;
   }
 }
 .cinemaSlider {
@@ -1408,6 +1426,22 @@ hr {
   .sushi-tab {
     font-size: 80%;
   }
+}
+
+.sushiAdv {
+  position: relative;
+  width: 100%;
+  background-color: black;
+  border: solid 1px white;
+  border-radius: 3px;
+  margin-bottom: 3%;
+  padding-bottom: 10%;
+}
+
+.sushiAdv img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .sushi_page {

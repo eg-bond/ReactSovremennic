@@ -9,6 +9,22 @@
   }
 }
 
+.sushiAdv {
+  position: relative;
+  width: 100%;
+  background-color: black;
+  border: solid 1px white;
+  border-radius: 3px;
+  margin-bottom: 3%;
+  padding-bottom: 10%;
+
+}
+.sushiAdv img {
+  position:absolute;
+  width:100%;
+  height:100%;
+}
+
 .sushi_page {
   margin-top: 2%;
 }

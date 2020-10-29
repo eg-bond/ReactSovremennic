@@ -5,9 +5,24 @@ a, h1, h2, h4, p {
   color: white;
 }
 
+a:focus {
+  outline: none;
+}
+
 *{
   margin: 0;
   padding: 0;
+}
+
+.vk_ref {
+  color: white;
+  text-decoration: underline;
+}
+.vk_ref:hover {
+  color: white;
+}
+.red {
+  color: red;
 }
 
 .mainContainer {
@@ -15,7 +30,7 @@ a, h1, h2, h4, p {
   color: #000;
   margin: 0;
   padding: 0;
-  background: black no-repeat top center;
+  background: #fff2d0 no-repeat top center;
   height: 100%;
 
   @media (max-width: 1200px) {
@@ -81,9 +96,9 @@ hr {
   border-top: none;
 }
 
-.nav-pills > li.active > a, .nav-pills > li.active > a:hover {
-  color: black !important;
-  background-color: white !important;
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+  color: black;
+  background-color: white;
 }
 
 .modal-dialog {

@@ -6,12 +6,12 @@ import scedule from "../../Excel/scedule";
 export const CreateTable = () => {
 
     let table = [];
-
     // Outer loop to create parent
     for (let elem in scedule) {
         let children = [];
         //Inner loop to create children
-        for (let j = 0; j < 7; j++) {
+        for (let j = 0; j < scedule[elem].length; j++) {
+
             children.push(
                 <tr key={`${elem}${j}`} className={j%2===0 ? "table_gray" : "table_white"}>
                     <td>{scedule[elem][j][0]}</td>

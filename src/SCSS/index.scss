@@ -12,6 +12,7 @@
 .news {
   padding: 0 0 2% 3%;
   color: white;
+  text-align: justify;
   @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
     padding: 1%;
   }
@@ -33,13 +34,13 @@
 .news p {
   font-family: $lusidaFont;
   padding: 1%;
-  font-size: 110%;
+  font-size: 135%;
   @media (max-width: 1200px) {
-    font-size: 85%;
+    font-size: 115%;
   }
   @media (max-width: 992px) {
     padding: 0.5%;
-    font-size: 80%;
+    font-size: 95%;
   }
   @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
     font-size: 95%;
@@ -197,6 +198,6 @@
   $maxWidth: 320px + $i*111.9px;
   $trailersHeadFS: 65% + 11.25%*$i;
   $trailersHeadPL: 3.5% - 0.375%*$i;
-  $newsFS: 56% + 10%*$i;
+  $newsFS: 60% + 10%*$i;
   @include indexXS ($trailersHeadFS, $trailersHeadPL, $newsFS, $maxWidth);
 }

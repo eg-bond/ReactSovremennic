@@ -52,6 +52,13 @@ const App = ({createActualDatesArr, initialActiveKey, initialButtonTitle, create
             <div className="container wrapper">
                 <div className="row">
 
+                    <Media query="(max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)">
+                        <div>
+                            <AdvXS/>
+                            <div className="separator"/>
+                        </div>
+                    </Media>
+
                     <Media query="(min-width: 768px) and (min-height: 500px)">
                         <FilmSwiper films={films}/>
                     </Media>
@@ -89,8 +96,8 @@ const App = ({createActualDatesArr, initialActiveKey, initialButtonTitle, create
                             <div>
                                 <div className="separator"/>
                                 <FilmSwiper films={films}/>
-                                <div className="separator"/>
-                                <AdvXS/>
+                                {/*<div className="separator"/>*/}
+                                {/*<AdvXS/>*/}
                             </div>
                         </Media>
                     )}
