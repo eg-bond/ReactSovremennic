@@ -10,8 +10,7 @@ let data = xlsx.utils.sheet_to_json(ws);
 let scedule = {};
 for (let i=0; i<7; i++) {
     let dayArr = data.filter(item => item.day === `day${i}`);
-    let pureDayArr = dayArr.map(item => [item.time, item.filmTitle, item.cost]);
-    scedule[`day${i}`] = pureDayArr;
+    scedule[`day${i}`] = dayArr.map(item => [item.time, item.filmTitle, item.cost]);
 }
 
 //Формируем данные для записи в файл расписания в строковом формате

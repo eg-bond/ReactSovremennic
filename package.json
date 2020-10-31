@@ -6,7 +6,6 @@
   "dependencies": {
     "3": "^2.1.0",
     "bootstrap": "^3.4.1",
-    "fs": "0.0.1-security",
     "react": "^16.13.1",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.13.1",
@@ -17,11 +16,8 @@
     "react-responsive": "^8.0.3",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
-    "react-youtube": "^7.9.0",
     "redux": "^4.0.5",
-    "swiper": "^5.3.6",
-    "xlsx": "^0.15.6",
-    "xml-js": "^1.6.11"
+    "swiper": "^5.3.6"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -48,6 +44,8 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^2.2.0"
+    "fs": "^0.0.1-security",
+    "gh-pages": "^2.2.0",
+    "xlsx": "^0.16.8"
   }
 }

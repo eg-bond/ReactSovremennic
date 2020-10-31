@@ -1,7 +1,6 @@
 import React from 'react';
 import IndexAdvXS from "../../Template/IndexAdvXS";
 import Media from 'react-media';
-import ModalImage from "react-modal-image";
 import {NavLink} from "react-router-dom";
 
 function IndexContent() {
