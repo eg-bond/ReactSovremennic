@@ -4,10 +4,10 @@
   padding: 0.5px 0 0 0;
   width: 100%;
   background-color: black;
-  border-top: solid 5px white;
+  border-top: $border5px;
   cursor: grab;
   @media (max-width: 992px) {
-    border-top: solid 2px white;
+    border-top: solid 2px $linesColor;
   }
 }
 

@@ -50,7 +50,13 @@ const App = ({createActualDatesArr, initialActiveKey, initialButtonTitle, create
             <div className="separator"/>
 
             <div className="container wrapper">
-                <div className="row">
+                <div className="row">  
+
+                    {/*<div className="collage">*/}
+                    {/*        <h2 className="collage_h2">Дорогие друзья, Суши-бар "КИН-НО" начиная с 14 декабря и до 31 декабря 2020 года, с понедельника по четверг, */}
+                    {/*        с 18:00 действует скидка <b className={'red'}>15%</b> на все меню, включая доставку и самовывоз!</h2>*/}
+                    {/*        <div className="separator"/>*/}
+                    {/*</div>*/}
 
                     <Media query="(max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)">
                         <div>
@@ -59,7 +65,7 @@ const App = ({createActualDatesArr, initialActiveKey, initialButtonTitle, create
                         </div>
                     </Media>
 
-                    <Media query="(min-width: 768px) and (min-height: 500px)">
+                    <Media query="(min-width: 768px) and (min-height: 500px)">                    
                         <FilmSwiper films={films}/>
                     </Media>
 

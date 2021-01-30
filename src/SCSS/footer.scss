@@ -1,6 +1,8 @@
+@import "variables";
+
 .footer {
   text-align: center;
-  background-color: white;
+  background-color: $linesColor;
   padding: 2%;
 
   a {

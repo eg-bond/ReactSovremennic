@@ -8,7 +8,7 @@ function IndexContent() {
         <div>
             <div className="separator"/>
 
-            <div className="container col-lg-9 col-md-9 col-sm-9 col-xs-12 padding_15xs">
+            <div className="container col-lg-9 col-md-9 col-sm-9 col-xs-12 padding_15xs">                
 
                 <div className="trailers">
                     <Media query="(max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)">
@@ -26,7 +26,7 @@ function IndexContent() {
                 <div className="news">
                     <h2>Информация</h2>
                     <p>• Дорогие друзья! Кинотеатр "Современник" возобновляет свою деятельность с 21.08.2020. Посещение кинотеатра допускается <b className={'red'}>только в масках!</b> {' '}</p>
-                    <p>• Расписание сеансов можно узнать по телефону <b>2-12-32</b></p>
+                    <p>• Расписание сеансов можно узнать по телефону <b>2-12-32</b></p>                    
                     <p>• Суши-бар "КИН-НО" работает в полном объеме! <b>Время работы:</b> понедельник-четверг с 12:00 до 23:00,
                         пятница-суббота с 12:00 до 01:00, воскресенье с 12:00 до 23:00. Доставка осуществляется в часы работы ресторана, телефон 2-000-8, доставка бесплатная.
                         Меню на <NavLink to="sushi" className={"vk_ref"}>странице</NavLink> сайта и в группе {' '}
