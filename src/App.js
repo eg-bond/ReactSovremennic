@@ -13,7 +13,7 @@ import Seans from "./Content/Seans/Seans";
 import Sushi from "./Content/Sushi/Sushi";
 import '../node_modules/swiper/css/swiper.css';
 import IndexContent from "./Content/IndexContent/IndexContent";
-import './App.css';
+import './SCSS/style.scss';
 import Media from 'react-media';
 import AdvXS from "./Template/AdvXS";
 import {initialButtonTitle, initialActiveKey, createActualDatesArr} from "./REDUX/seansReduser";
@@ -33,9 +33,9 @@ const App = ({createActualDatesArr, initialActiveKey, initialButtonTitle, create
     }, [createActualDatesArr, initialActiveKey, initialButtonTitle, createFilmsTodayArr]);
 
     let { id } = useParams();
-
+    // style={{backgroundImage: "url(./Images/main_image.jpg)"}}
     return (
-        <div className="mainContainer" style={{backgroundImage: "url(./Images/main_image.jpg)"}}>
+        <div className="mainContainer">
             <Media query="(max-width: 767.5px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)">
                 <ScrollToTop/>
             </Media>
@@ -50,13 +50,7 @@ const App = ({createActualDatesArr, initialActiveKey, initialButtonTitle, create
             <div className="separator"/>
 
             <div className="container wrapper">
-                <div className="row">  
-
-                    {/*<div className="collage">*/}
-                    {/*        <h2 className="collage_h2">Дорогие друзья, Суши-бар "КИН-НО" начиная с 14 декабря и до 31 декабря 2020 года, с понедельника по четверг, */}
-                    {/*        с 18:00 действует скидка <b className={'red'}>15%</b> на все меню, включая доставку и самовывоз!</h2>*/}
-                    {/*        <div className="separator"/>*/}
-                    {/*</div>*/}
+                <div className="row">
 
                     <Media query="(max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)">
                         <div>
