@@ -1,0 +1,1 @@
+export const modifiedClass = (cl, siteMode) => `${cl} ${siteMode === 'default' ? cl + '__default' : cl + '__special'}`

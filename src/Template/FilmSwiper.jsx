@@ -52,22 +52,22 @@ const FilmSwiper = (props) => {
     };
 
     return (<>
-            <div onMouseEnter={() => turnAutoplay("stop")} onMouseLeave={() => turnAutoplay("start")}
-                 className={`cinemaSlider ${opacity===1 ? 'opacity_1' : 'opacity_0'}`}>
-                <Media query="(max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)"><h4>Фильмы</h4></Media>
-                <Swiper getSwiper={updateSwiper} {...params}>
-                    {
-                        props.films.map(f => <div key={f.link}>
-                            <NavLink to={f.link}>
-                                <img className="opacity"
-                                     src={`./Images/top_menu/${f.link}.gif`} alt=""/>
-                                <h1>{f.title}</h1>
-                                <p>{f.beginDate}</p>
-                            </NavLink>
-                        </div>)
-                    }
-                </Swiper>
-            </div>
+                <div onMouseEnter={() => turnAutoplay("stop")} onMouseLeave={() => turnAutoplay("start")}
+                     className={`cinemaSlider ${opacity===1 ? 'opacity_1' : 'opacity_0'}`}>
+                    <Media query="(max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)"><h4>Фильмы</h4></Media>
+                    <Swiper getSwiper={updateSwiper} {...params}>
+                        {
+                            props.films.map(f => <div key={f.link}>
+                                <NavLink to={f.link}>
+                                    <img className="opacity"
+                                         src={`./Images/top_menu/${f.link}.gif`} alt={f.title}/>
+                                    <h1>{f.title}</h1>
+                                    <p>{f.beginDate}</p>
+                                </NavLink>
+                            </div>)
+                        }
+                    </Swiper>
+                </div>
         </>
     )
 };

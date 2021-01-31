@@ -31,9 +31,11 @@ a:focus {
   margin: 0;
   padding: 0;
   background: #172f51 no-repeat top center;
-  background-image: url("/Images/main_image.jpg");
   height: 100%;
+}
 
+.mainContainer__default {
+  background-image: url("/Images/main_image.jpg");
   @media (max-width: 1200px) {
     background-size: 1600px 950px;
   }
@@ -43,6 +45,10 @@ a:focus {
   @media (max-width: 767.5px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
     background-image: none !important;
   }
+}
+
+.mainContainer__special {
+  background-color: black;
 }
 
 .space {

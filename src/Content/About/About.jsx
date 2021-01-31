@@ -1,6 +1,7 @@
 import React from 'react';
+import SpecialSettings from "../../Template/SpecialSettings";
 
-function About() {
+function About({siteMode}) {
 
     return (
         <div>
@@ -43,11 +44,15 @@ function About() {
                 <div className="rules white">
                     <p>Адрес: г. Сосновый Бор, ул. Комсомольская д.1 </p>
 
-                    <div className="embed-responsive embed-responsive-16by9">
-                        <iframe
-                            src="https://yandex.ru/map-widget/v1/?um=constructor%3Ab3cf16ca0bc3eed0838b34be9c0607866b4c270427026b7fe0dd14ef4096116b&amp;source=constructor"
-                            width="769" height="491" frameBorder="0" title="yandex_map"/>
-                    </div>
+                    {
+                        siteMode === "default" &&
+                        <div className="embed-responsive embed-responsive-16by9">
+                            <iframe
+                                src="https://yandex.ru/map-widget/v1/?um=constructor%3Ab3cf16ca0bc3eed0838b34be9c0607866b4c270427026b7fe0dd14ef4096116b&amp;source=constructor"
+                                width="769" height="491" frameBorder="0" title="yandex_map"/>
+                        </div>
+                    }
+
                 </div>
             </div>
         </div>

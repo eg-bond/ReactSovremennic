@@ -22,8 +22,12 @@ import {connect} from "react-redux";
 import Adv from "./Template/Adv";
 import ScrollToTop from "./Template/ScrollToTop";
 import {createFilmsTodayArr} from "./REDUX/cinemaReduser";
+import {switchSiteMode} from "./REDUX/specialReduser";
+import {modifiedClass} from "./helpers";
+import FilmsSpecialPage from "./Content/Films/FilmsSpecialPage";
 
-const App = ({createActualDatesArr, initialActiveKey, initialButtonTitle, createFilmsTodayArr, films, filmsToday, filmsTodaySlides}) => {
+const App = ({createActualDatesArr, initialActiveKey, initialButtonTitle, createFilmsTodayArr,
+                 films, filmsToday, filmsTodaySlides, switchSiteMode, siteMode, theme}) => {
 
     useEffect(() => {
         createActualDatesArr();
@@ -34,16 +38,18 @@ const App = ({createActualDatesArr, initialActiveKey, initialButtonTitle, create
 
     let { id } = useParams();
     // style={{backgroundImage: "url(./Images/main_image.jpg)"}}
+    const classHandler = (cl) => modifiedClass(cl, siteMode)
+
     return (
-        <div className="mainContainer">
+        <div className={classHandler("mainContainer")}>
             <Media query="(max-width: 767.5px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)">
                 <ScrollToTop/>
             </Media>
-            <Navigation/>
+            <Navigation siteMode={siteMode} switchSiteMode={switchSiteMode}/>
 
             <div id="menu_anchor" className="container line_container">
                 <div className="row">
-                    <hr className="line_5px"/>
+                    {/*<hr className="line_5px"/>*/}
                 </div>
             </div>
 
@@ -59,9 +65,9 @@ const App = ({createActualDatesArr, initialActiveKey, initialButtonTitle, create
                         </div>
                     </Media>
 
-                    <Media query="(min-width: 768px) and (min-height: 500px)">                    
+                    {siteMode === "default" && <Media query="(min-width: 768px) and (min-height: 500px)">
                         <FilmSwiper films={films}/>
-                    </Media>
+                    </Media>}
 
                     <Route exact path="/">
                         <Media query="(max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)">
@@ -71,11 +77,12 @@ const App = ({createActualDatesArr, initialActiveKey, initialButtonTitle, create
 
                     <hr className="line_5px hidden-xs"/>
 
-                    <Route exact path="/"><IndexContent/></Route>
-                    <Route exact path="/about"><About/></Route>
+                    <Route exact path="/"><IndexContent siteMode={siteMode} films={films}/></Route>
+                    <Route exact path="/about"><About siteMode={siteMode}/></Route>
                     <Route exact path="/rules"><Rules/></Route>
                     <Route exact path="/seans"><Seans/></Route>
                     <Route exact path="/sushi"><Sushi/></Route>
+                    {siteMode === "special" && <Route exact path="/films"><FilmsSpecialPage films={films}/></Route>}
                     <Route exact path="/advertising"><Advertising /></Route>
                     <Cinema films={films} filmsToday={filmsToday}/>
 
@@ -83,21 +90,13 @@ const App = ({createActualDatesArr, initialActiveKey, initialButtonTitle, create
                         {id !== "sushi" && <Adv/>}
                     </Media>
 
-                    {
-                        filmsToday !== [] &&
-                        <Media query="(min-width: 768px) and (min-height: 500px)">
-                            <BottomSwiper films={filmsToday} slidesPerView={filmsTodaySlides}/>
-                            {/*<BottomSwiperOrigin films={filmsToday} slidesPerView={filmsTodaySlides}/>*/}
-                        </Media>
-                    }
+                    {siteMode === "default" && filmsToday !== [] && <BottomSwiper films={filmsToday} slidesPerView={filmsTodaySlides}/>}
 
                     {id != null && (
                         <Media query="(max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)">
                             <div>
                                 <div className="separator"/>
                                 <FilmSwiper films={films}/>
-                                {/*<div className="separator"/>*/}
-                                {/*<AdvXS/>*/}
                             </div>
                         </Media>
                     )}
@@ -107,14 +106,17 @@ const App = ({createActualDatesArr, initialActiveKey, initialButtonTitle, create
             <Footer/>
         </div>
     );
+
 }
 
 let mapStateToProps = (state) => ({
     films: state.cinema.films,
     filmsToday: state.cinema.filmsToday,
     filmsTodaySlides: state.cinema.filmsTodaySlides,
+    siteMode: state.special.siteMode,
+    theme: state.special.theme
 });
 
 export default compose(
-    connect(mapStateToProps, {initialActiveKey, initialButtonTitle, createActualDatesArr, createFilmsTodayArr})
+    connect(mapStateToProps, {initialActiveKey, initialButtonTitle, createActualDatesArr, createFilmsTodayArr, switchSiteMode})
 )(App);

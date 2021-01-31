@@ -3,14 +3,12 @@
 .navigation {
   display: flex;
   flex-direction: row;
-  border-radius: 20px 20px 0 0;
   background-color: #000;
   margin-bottom: 0;
   border: $border5px;
-  border-bottom: none;
+  //border-bottom: none;
   @media (max-width: 992px) {
     border: $border3px;
-    border-bottom: none;
   }
   @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
     border-radius: 0;
@@ -20,6 +18,18 @@
     width: 100%;
     z-index: 10;
   }
+}
+
+.navigation__default {
+  border-radius: 20px 20px 0 0;
+  @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+    border-radius: 0;
+    border-width: 0;
+  }
+}
+.navigation__special {
+  border-radius: 0;
+  border-bottom: none;
 }
 
 .navigation__logo {
