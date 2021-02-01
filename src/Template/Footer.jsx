@@ -1,13 +1,13 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
 
-function Footer() {
+function Footer({theme}) {
+    let footerBackground = theme === 'blackWhite' ? 'bc__white' : 'bc__black'
+
     return (
         <div>
-            <div className="footer container" id="footer">
+            <div className={`footer container ${footerBackground}`} id="footer">
                 <NavLink className="lucida_font" to="/">Кинотеатр «Современник» © 2019</NavLink>
-                {/*<NavLink className="lucida_font" to="/">Кинотеатр «Современник» © 2019</NavLink> |*/}
-                {/*<NavLink className="lucida_font" to="/advertising"> Реклама на сайте</NavLink>*/}
             </div>
         </div>
     );

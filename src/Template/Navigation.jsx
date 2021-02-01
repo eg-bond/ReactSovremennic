@@ -4,7 +4,7 @@ import SpecialSettings from "./SpecialSettings";
 import {modifiedClass} from "../helpers";
 import Media from "react-media";
 
-function Navigation({siteMode, switchSiteMode}) {
+function Navigation({siteMode, switchSiteMode, themeCl}) {
     let modeToDispatch = siteMode === 'default' ? 'special' : 'default'
     const classHandler = (cl) => modifiedClass(cl, siteMode)
 
@@ -24,11 +24,11 @@ function Navigation({siteMode, switchSiteMode}) {
                             </button>}
                     </div>
 
-                    <nav role="navigation" className={`navbar navbar-inverse ${classHandler('navigation')}`}>
+                    <nav role="navigation" className={`navbar navbar-inverse ${classHandler('navigation')} ${themeCl.back} ${themeCl.navs} ${themeCl.borders}`}>
                         {siteMode === "default" && <div className="navigation__logo">
                             <NavLink to="/"><img src="./Images/logo.gif" alt='logoImage'/></NavLink>
                         </div>}
-                        <div className="navigation__menu">
+                        <div className={`navigation__menu`}>
                             <ul>
                                 <li><NavLink to="seans" activeClassName="active">Расписание</NavLink></li>
                                 {siteMode === "special" && <li><NavLink to="films" activeClassName="active">Фильмы</NavLink></li>}

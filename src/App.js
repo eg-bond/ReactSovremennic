@@ -23,7 +23,7 @@ import Adv from "./Template/Adv";
 import ScrollToTop from "./Template/ScrollToTop";
 import {createFilmsTodayArr} from "./REDUX/cinemaReduser";
 import {switchSiteMode} from "./REDUX/specialReduser";
-import {modifiedClass} from "./helpers";
+import {modifiedClass, themeClass} from "./helpers";
 import FilmsSpecialPage from "./Content/Films/FilmsSpecialPage";
 
 const App = ({createActualDatesArr, initialActiveKey, initialButtonTitle, createFilmsTodayArr,
@@ -39,13 +39,14 @@ const App = ({createActualDatesArr, initialActiveKey, initialButtonTitle, create
     let { id } = useParams();
     // style={{backgroundImage: "url(./Images/main_image.jpg)"}}
     const classHandler = (cl) => modifiedClass(cl, siteMode)
+    const themeCl = themeClass(theme)
 
     return (
-        <div className={classHandler("mainContainer")}>
+        <div className={`${classHandler("mainContainer")} ${themeCl.back} ${themeCl.elems}`}>
             <Media query="(max-width: 767.5px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)">
                 <ScrollToTop/>
             </Media>
-            <Navigation siteMode={siteMode} switchSiteMode={switchSiteMode}/>
+            <Navigation siteMode={siteMode} switchSiteMode={switchSiteMode} themeCl={themeCl}/>
 
             <div id="menu_anchor" className="container line_container">
                 <div className="row">
@@ -55,7 +56,7 @@ const App = ({createActualDatesArr, initialActiveKey, initialButtonTitle, create
 
             <div className="separator"/>
 
-            <div className="container wrapper">
+            <div className={`container wrapper ${themeCl.back} ${themeCl.borders}`}>
                 <div className="row">
 
                     <Media query="(max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)">
@@ -75,13 +76,13 @@ const App = ({createActualDatesArr, initialActiveKey, initialButtonTitle, create
                         </Media>
                     </Route>
 
-                    <hr className="line_5px hidden-xs"/>
+                    <hr className={`line_5px hidden-xs ${themeCl.borders}`}/>
 
                     <Route exact path="/"><IndexContent siteMode={siteMode} films={films}/></Route>
                     <Route exact path="/about"><About siteMode={siteMode}/></Route>
                     <Route exact path="/rules"><Rules/></Route>
-                    <Route exact path="/seans"><Seans/></Route>
-                    <Route exact path="/sushi"><Sushi/></Route>
+                    <Route exact path="/seans"><Seans themeCl={themeCl}/></Route>
+                    <Route exact path="/sushi"><Sushi themeCl={themeCl}/></Route>
                     {siteMode === "special" && <Route exact path="/films"><FilmsSpecialPage films={films}/></Route>}
                     <Route exact path="/advertising"><Advertising /></Route>
                     <Cinema films={films} filmsToday={filmsToday}/>
@@ -103,7 +104,7 @@ const App = ({createActualDatesArr, initialActiveKey, initialButtonTitle, create
 
                 </div>
             </div>
-            <Footer/>
+            <Footer theme={theme}/>
         </div>
     );
 

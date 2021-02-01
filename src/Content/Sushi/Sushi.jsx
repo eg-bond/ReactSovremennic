@@ -47,7 +47,7 @@ function SushiModal() {
     );
 }
 
-function Sushi() {
+function Sushi({themeCl}) {
     return (
         <div>
             <ScrollToTop/>
@@ -63,7 +63,7 @@ function Sushi() {
 
                         <Media query="(min-width: 768px) and (min-height: 500px)">
                             <Col lg={3} md={3} sm={3}>
-                                <Nav bsStyle="pills" stacked>
+                                <Nav className={themeCl.pills} bsStyle="pills" stacked>
                                     <NavItem className='sushi-tab' eventKey="sushi">Суши</NavItem>
                                     <NavItem className='sushi-tab' eventKey="rolls">Роллы</NavItem>
                                     <NavItem className='sushi-tab' eventKey="black_rolls">Цветные/черные роллы</NavItem>

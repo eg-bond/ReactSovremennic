@@ -3,7 +3,7 @@
 .navigation {
   display: flex;
   flex-direction: row;
-  background-color: #000;
+  //background-color: #000;
   margin-bottom: 0;
   border: $border5px;
   //border-bottom: none;
@@ -69,7 +69,7 @@
   margin: auto 0.5%;
 }
 .navigation__menu a {
-  color: white;
+  //color: white;
   font-weight: 900;
   border-radius: 5px;
   padding: 10px 15px;
@@ -82,12 +82,12 @@
   }
 }
 .navigation__menu a.active {
-  color: #000;
-  background-color: #ffffff;
+  //color: #000;
+  //background-color: #ffffff;
 }
 .navigation__menu a:hover {
-  color: #000;
-  background-color: #ffffff;
+  //color: #000;
+  //background-color: #ffffff;
   transition: ease 650ms;
 }
 

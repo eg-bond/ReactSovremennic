@@ -30,12 +30,13 @@ a:focus {
   color: #000;
   margin: 0;
   padding: 0;
-  background: #172f51 no-repeat top center;
+  //background: #172f51 no-repeat top center;
   height: 100%;
 }
 
 .mainContainer__default {
-  background-image: url("/Images/main_image.jpg");
+  background: #172f51 no-repeat top center url("/Images/main_image.jpg");
+  //background-image: url("/Images/main_image.jpg");
   @media (max-width: 1200px) {
     background-size: 1600px 950px;
   }
@@ -48,7 +49,7 @@ a:focus {
 }
 
 .mainContainer__special {
-  background-color: black;
+  //background-color: black;
 }
 
 .space {
@@ -151,15 +152,19 @@ hr {
 
 .wrapper {
   height: 100% ;
-  background-color: black;
+  //background-color: black;
   border: $border5px;
   border-top: none;
 }
 
-.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
-  color: black;
-  background-color: white;
-}
+
+//.copyClass {
+//  color: black;
+//  background-color: white;
+//}
+//.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+//  @extend .copyClass;
+//}
 
 .modal-dialog {
   h4 {
@@ -179,19 +184,19 @@ hr {
 }
 
 .nav-tabs>li>a {
-  border: none;
+  border: none !important;
 }
 
-.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
-  color: #000;
-  border: none;
-}
+//.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+//  color: #000;
+//  border: none;
+//}
 
-// Делаем выпадающие менюшки нормальными
-.nav>li>a:focus, .nav>li>a:hover {
+
+.nav a:focus, .nav a:hover {
+  //background-color: #fff;
+  //color: black;
   text-decoration: none;
-  background-color: #fff;
-  color: black;
   transition: ease 650ms ;
 }
 

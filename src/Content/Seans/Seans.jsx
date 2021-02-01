@@ -12,7 +12,7 @@ import Media from 'react-media';
 let table = CreateTable();
 let finalTable = [...table];
 
-const Seans = React.memo(({initialActiveKey, initialButtonTitle, ...props}) => {
+const Seans = React.memo(({initialActiveKey, initialButtonTitle, themeCl, ...props}) => {
 
     useEffect(() => {
         return () => {
@@ -27,7 +27,7 @@ const Seans = React.memo(({initialActiveKey, initialButtonTitle, ...props}) => {
                 <div>
 
                     <Media query="(min-width: 768px) and (min-height: 500px)">
-                        <div className="seans-menu">
+                        <div className={`seans-menu ${themeCl.pills}`}>
                             <NavItems deviceType={"notMobile"} datesArr={props.datesArr}
                                       changeButtonTitle={props.changeButtonTitle}/>
                         </div>
@@ -45,7 +45,7 @@ const Seans = React.memo(({initialActiveKey, initialButtonTitle, ...props}) => {
                         {finalTable}
                     </Tab.Content>
                 </div>
-            </Tab.Container>;
+            </Tab.Container>
             <div className="separator-special"/>
         </div>
     );
