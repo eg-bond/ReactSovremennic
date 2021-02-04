@@ -22,31 +22,34 @@ import {connect} from "react-redux";
 import Adv from "./Template/Adv";
 import ScrollToTop from "./Template/ScrollToTop";
 import {createFilmsTodayArr} from "./REDUX/cinemaReduser";
-import {switchSiteMode} from "./REDUX/specialReduser";
-import {modifiedClass, themeClasses} from "./helpers";
+import {switchFontSize, switchSiteMode} from "./REDUX/specialReduser";
+import {currentFontSizeClass, modifiedClass, themeClasses} from "./helpers";
 import FilmsSpecialPage from "./Content/Films/FilmsSpecialPage";
 
 const App = ({createActualDatesArr, initialActiveKey, initialButtonTitle, createFilmsTodayArr,
-                 films, filmsToday, filmsTodaySlides, switchSiteMode, siteMode, theme, imgHidden}) => {
+                 films, filmsToday, filmsTodaySlides, switchSiteMode, siteMode, theme, imgHidden,
+                 switchFontSize, fontSize}) => {
 
     useEffect(() => {
         createActualDatesArr();
         initialActiveKey();
         initialButtonTitle();
         createFilmsTodayArr();
+        // switchFontSize(fontSize);
     }, [createActualDatesArr, initialActiveKey, initialButtonTitle, createFilmsTodayArr]);
 
     let { id } = useParams();
     // style={{backgroundImage: "url(./Images/main_image.jpg)"}}
     const classHandler = (cl) => modifiedClass(cl, siteMode)
     const themeCl = themeClasses(theme)
+    let currentFS = currentFontSizeClass(fontSize) || 'fontSize__100'
 
     return (
-        <div className={`${classHandler("mainContainer")} ${themeCl.back} ${themeCl.elems}`}>
+        <div className={`${classHandler("mainContainer")} ${themeCl.back} ${themeCl.elems} ${currentFS}`}>
             <Media query="(max-width: 767.5px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)">
                 <ScrollToTop/>
             </Media>
-            <Navigation siteMode={siteMode} switchSiteMode={switchSiteMode} themeCl={themeCl}/>
+            <Navigation siteMode={siteMode} switchSiteMode={switchSiteMode} themeCl={themeCl} fontSize={fontSize}/>
 
             <div id="menu_anchor" className="container line_container">
                 <div className="row">
@@ -116,9 +119,10 @@ let mapStateToProps = (state) => ({
     filmsTodaySlides: state.cinema.filmsTodaySlides,
     siteMode: state.special.siteMode,
     theme: state.special.theme,
-    imgHidden: state.special.imgHidden
+    imgHidden: state.special.imgHidden,
+    fontSize: state.special.fontSize
 });
 
 export default compose(
-    connect(mapStateToProps, {initialActiveKey, initialButtonTitle, createActualDatesArr, createFilmsTodayArr, switchSiteMode})
+    connect(mapStateToProps, {initialActiveKey, initialButtonTitle, createActualDatesArr, createFilmsTodayArr, switchSiteMode, switchFontSize})
 )(App);

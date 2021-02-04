@@ -3,6 +3,7 @@
 .navigation {
   display: flex;
   flex-direction: row;
+
   //background-color: #000;
   margin-bottom: 0;
   border: $border5px;
@@ -53,12 +54,44 @@
 
 .navigation__menu {
   flex: 3.5;
-  padding-top: 2.25%;
   border-top: none;
   box-shadow: none;
 }
+.navigation__menu__default {
+  padding-top: 1%;
+}
+.navigation__menu__special {
+  padding-left: 17%;
+  padding-top: 1%;
+  @media (max-width: 1200px) {
+    padding-left: 11%;
+  }
+  @media (max-width: 992px) {
+    padding-left: 6%;
+  }
+}
+.navigation__menu__special__fsAdd-150 {
+  padding-left: 5.5% !important;
+  @media (max-width: 1200px) {
+    padding-left: 24% !important;
+  }
+  @media (max-width: 992px) {
+    padding-left: 20% !important;
+  }
+}
+.navigation__menu__special__fsAdd-200 {
+  padding-left: 22% !important;
+  @media (max-width: 1200px) {
+    padding-left: 16.5% !important;
+  }
+  @media (max-width: 992px) {
+    padding-left: 13% !important;
+  }
+}
 .navigation__menu ul {
   display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
   list-style: none;
   @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
     justify-content: space-between;
@@ -66,7 +99,8 @@
   }
 }
 .navigation__menu li {
-  margin: auto 0.5%;
+  //margin: auto 0.5%;
+  margin: 1.5% 0.5%;
 }
 .navigation__menu a {
   //color: white;

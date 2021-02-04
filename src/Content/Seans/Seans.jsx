@@ -12,7 +12,7 @@ import Media from 'react-media';
 let table = CreateTable();
 let finalTable = [...table];
 
-const Seans = React.memo(({initialActiveKey, initialButtonTitle, themeCl, ...props}) => {
+const Seans = React.memo(({initialActiveKey, initialButtonTitle, themeCl, fontSize, ...props}) => {
 
     useEffect(() => {
         return () => {
@@ -29,7 +29,7 @@ const Seans = React.memo(({initialActiveKey, initialButtonTitle, themeCl, ...pro
                     <Media query="(min-width: 768px) and (min-height: 500px)">
                         <div className={`seans-menu ${themeCl.pills}`}>
                             <NavItems deviceType={"notMobile"} datesArr={props.datesArr}
-                                      changeButtonTitle={props.changeButtonTitle}/>
+                                      changeButtonTitle={props.changeButtonTitle} fontSize={fontSize}/>
                         </div>
                     </Media>
 
@@ -54,7 +54,8 @@ const Seans = React.memo(({initialActiveKey, initialButtonTitle, themeCl, ...pro
 let mapStateToProps = (state) => ({
     datesArr: state.seansPage.actualDatesArr,
     activeKey: state.seansPage.activeKey,
-    buttonTitle: state.seansPage.buttonTitle
+    buttonTitle: state.seansPage.buttonTitle,
+    fontSize: state.special.fontSize
 });
 
 export default compose(

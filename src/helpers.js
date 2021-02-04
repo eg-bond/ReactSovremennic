@@ -12,6 +12,9 @@ export const themeClasses = theme => {
     }
 }
 
+export const currentFontSizeClass = fontSize => `fontSize__${fontSize}`
+
+
 // export const themeClass = (theme) => {
 //     const themeObj = theme => {
 //         return {

@@ -1,5 +1,9 @@
 @import "variables";
 
+//:root {
+//  --defaultFontSize: 14px;
+//}
+
 a, h1, h2, h4, p {
   font-family: $arialFont;
   color: white;
@@ -25,8 +29,21 @@ a:focus {
   color: red;
 }
 
-.mainContainer {
+.fontSize__100 {
+  //--defaultFontSize: 14px;
   font-size: 14px;
+}
+.fontSize__150 {
+  //--defaultFontSize: 21px;
+  font-size: 21px;
+}
+.fontSize__200 {
+  //--defaultFontSize: 28px;
+  font-size: 28px;
+}
+
+.mainContainer {
+  //font-size: var(--defaultFontSize);
   color: #000;
   margin: 0;
   padding: 0;

@@ -2,11 +2,14 @@ import React from 'react';
 import {NavLink} from "react-router-dom";
 import SpecialSettings from "./SpecialSettings";
 import {modifiedClass} from "../helpers";
-import Media from "react-media";
 
-function Navigation({siteMode, switchSiteMode, themeCl}) {
+function Navigation({siteMode, switchSiteMode, themeCl, fontSize}) {
     let modeToDispatch = siteMode === 'default' ? 'special' : 'default'
     const classHandler = (cl) => modifiedClass(cl, siteMode)
+    let fsAdditionClass = fontSize === '150'
+        ? 'navigation__menu__special__fsAdd-150'
+        : fontSize === '200'
+            ? 'navigation__menu__special__fsAdd-200' : ''
 
     return (
         <div>
@@ -28,7 +31,7 @@ function Navigation({siteMode, switchSiteMode, themeCl}) {
                         {siteMode === "default" && <div className="navigation__logo">
                             <NavLink to="/"><img src="./Images/logo.gif" alt='logoImage'/></NavLink>
                         </div>}
-                        <div className={`navigation__menu`}>
+                        <div className={`${classHandler('navigation__menu')} ${fsAdditionClass}`}>
                             <ul>
                                 <li><NavLink to="seans" activeClassName="active">Расписание</NavLink></li>
                                 {siteMode === "special" && <li><NavLink to="films" activeClassName="active">Фильмы</NavLink></li>}

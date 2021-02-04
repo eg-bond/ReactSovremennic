@@ -7,9 +7,19 @@
 .seans-tabs {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   border: 0;
   font-size: 96%;
+  flex-wrap: wrap;
+  > li {
+    padding-right: 1.55%;
+    @media (max-width: 1200px) {
+      padding-right: 0.9%;
+    }
+    @media (max-width: 992px) {
+      padding-right: 0;
+    }
+  }
   > li > a {
     padding: 7px 8px;
     border-radius: 4px;
