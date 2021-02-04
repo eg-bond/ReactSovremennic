@@ -1,38 +1,40 @@
 export const modifiedClass = (cl, siteMode) => `${cl} ${siteMode === 'default' ? cl + '__default' : cl + '__special'}`
 
-export const themeClass = (theme) => {
-    switch (theme) {
-        case 'blackWhite':
-            return {
-                back: 'theme__blackWhite__background',
-                elems: 'theme__blackWhite__elements',
-                borders: 'theme__blackWhite__borders',
-                pills: 'theme__blackWhite__pills',
-                navs: 'theme__blackWhite__navs'
-            }
-        case 'whiteBlack':
-            return {
-                back: 'theme__whiteBlack__background',
-                elems: 'theme__whiteBlack__elements',
-                borders: 'theme__whiteBlack__borders',
-                pills: 'theme__whiteBlack__pills',
-                navs: 'theme__whiteBlack__navs'
-            }
-        case 'blackRed':
-            return {
-                back: 'theme__blackRed__background',
-                elems: 'theme__blackRed__elements',
-                borders: 'theme__blackRed__borders',
-                pills: 'theme__blackRed__pills',
-                navs: 'theme__blackRed__navs'
-            }
-        default:
-            return {
-                back: 'theme__blackWhite__background',
-                elems: 'theme__blackWhite__elements',
-                borders: 'theme__blackWhite__borders',
-                pills: 'theme__blackWhite__pills',
-                navs: 'theme__blackWhite__navs'
-            }
+export const themeClasses = theme => {
+    return {
+        back: `theme__${theme}__background`,
+        elems: `theme__${theme}__elements`,
+        borders: `theme__${theme}__borders`,
+        pills: `theme__${theme}__pills`,
+        navs: `theme__${theme}__navs`,
+        footer: `theme__${theme}__footer`,
+
     }
 }
+
+// export const themeClass = (theme) => {
+//     const themeObj = theme => {
+//         return {
+//             back: `theme__${theme}__background`,
+//             elems: `theme__${theme}__elements`,
+//             borders: `theme__${theme}__borders`,
+//             pills: `theme__${theme}__pills`,
+//             navs: `theme__${theme}__navs`
+//         }
+//     }
+//
+//     switch (theme) {
+//         case 'blackWhite':
+//             return themeObj('blackWhite')
+//         case 'whiteBlack':
+//             return themeObj('whiteBlack')
+//         case 'blackRed':
+//             return themeObj('blackRed')
+//         case 'yellowBrown':
+//             return themeObj('yellowBrown')
+//         case 'brownGreen':
+//             return themeObj('brownGreen')
+//         default:
+//             return themeObj('blackWhite')
+//     }
+// }

@@ -23,7 +23,7 @@ import Adv from "./Template/Adv";
 import ScrollToTop from "./Template/ScrollToTop";
 import {createFilmsTodayArr} from "./REDUX/cinemaReduser";
 import {switchSiteMode} from "./REDUX/specialReduser";
-import {modifiedClass, themeClass} from "./helpers";
+import {modifiedClass, themeClasses} from "./helpers";
 import FilmsSpecialPage from "./Content/Films/FilmsSpecialPage";
 
 const App = ({createActualDatesArr, initialActiveKey, initialButtonTitle, createFilmsTodayArr,
@@ -39,7 +39,7 @@ const App = ({createActualDatesArr, initialActiveKey, initialButtonTitle, create
     let { id } = useParams();
     // style={{backgroundImage: "url(./Images/main_image.jpg)"}}
     const classHandler = (cl) => modifiedClass(cl, siteMode)
-    const themeCl = themeClass(theme)
+    const themeCl = themeClasses(theme)
 
     return (
         <div className={`${classHandler("mainContainer")} ${themeCl.back} ${themeCl.elems}`}>
@@ -104,7 +104,7 @@ const App = ({createActualDatesArr, initialActiveKey, initialButtonTitle, create
 
                 </div>
             </div>
-            <Footer theme={theme}/>
+            <Footer themeCl={themeCl}/>
         </div>
     );
 

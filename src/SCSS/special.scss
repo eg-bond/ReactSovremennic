@@ -1,93 +1,141 @@
 @import "variables";
 
-// черная тема
-.theme__blackWhite__background {
-  background-color: $blackWhiteBackground;
-}
-.theme__blackWhite__elements {
-  color: $blackWhiteElements;
-}
-.theme__blackWhite__elements a, .theme__blackWhite__elements h1, .theme__blackWhite__elements h2,
-.theme__blackWhite__elements h3, .theme__blackWhite__elements h4, .theme__blackWhite__elements p, {
-  color: $blackWhiteElements;
-}
-.theme__blackWhite__borders {
-  border-color: $blackWhiteElements !important;
-}
-.theme__blackWhite__pills li.active > a, .theme__blackWhite__pills li.active > a:hover, .theme__blackWhite__pills li.active > a:focus,
-.theme__blackWhite__pills a:focus, .theme__blackWhite__pills a:hover {
-  color: $blackWhiteBackground !important;
-  background-color: $blackWhiteElements !important;
-}
-.theme__blackWhite__navs a.active {
-  color: $blackWhiteBackground;
-  background-color: $blackWhiteElements;
-}
-.theme__blackWhite__navs a:hover {
-  color: $blackWhiteBackground;
-  background-color: $blackWhiteElements;
+@mixin backColor ($class){
+  .#{$class}{
+    background-color: $blackWhiteBackground;
+  }
 }
 
-// белая тема
-.theme__whiteBlack__background {
-  background-color: $whiteBlackBackground;
-}
-.theme__whiteBlack__elements {
-  color: $whiteBlackElements;
-}
-.theme__whiteBlack__elements a, .theme__whiteBlack__elements h1, .theme__whiteBlack__elements h2,
-.theme__whiteBlack__elements h3, .theme__whiteBlack__elements h4, .theme__whiteBlack__elements p,{
-  color: $whiteBlackElements;
-}
-.theme__whiteBlack__borders {
-  border-color: $whiteBlackElements;
-}
-.theme__whiteBlack__pills li.active > a, .theme__whiteBlack__pills li.active > a:hover, .theme__whiteBlack__pills li.active > a:focus,
-.theme__whiteBlack__pills a:focus, .theme__whiteBlack__pills a:hover {
-  color: $whiteBlackBackground !important;
-  background-color: $whiteBlackElements !important;
-}
-.theme__whiteBlack__navs a.active {
-  color: $whiteBlackBackground;
-  background-color: $whiteBlackElements;
-}
-.theme__whiteBlack__navs a:hover {
-  color: $whiteBlackBackground;
-  background-color: $whiteBlackElements;
-}
-
-// черно-красная тема
-.theme__blackRed__background {
-  background-color: $blackRedBackground;
-}
-.theme__blackRed__elements {
-  color: $blackRedElements;
-}
-.theme__blackRed__elements a, .theme__blackRed__elements h1, .theme__blackRed__elements h2,
-.theme__blackRed__elements h3, .theme__blackRed__elements h4, .theme__blackRed__elements p,{
-  color: $blackRedElements;
-}
-.theme__blackRed__borders {
-  border-color: $blackRedElements;
-}
-.theme__blackRed__pills li.active > a, .theme__blackRed__pills li.active > a:hover, .theme__blackRed__pills li.active > a:focus,
-.theme__blackRed__pills a:focus, .theme__blackRed__pills a:hover {
-  color: $blackRedBackground !important;
-  background-color: $blackRedElements !important;
-}
-.theme__blackRed__navs a.active {
-  color: $blackRedBackground;
-  background-color: $blackRedElements;
-}
-.theme__blackRed__navs a:hover {
-  color: $blackRedBackground;
-  background-color: $blackRedElements;
+@mixin theme ($theme, $backColor, $elemsColor){
+  .theme__#{$theme}__background {
+    background-color: $backColor;
+  }
+  .theme__#{$theme}__footer {
+    background-color: $elemsColor;
+    & a {
+      color: $backColor !important;
+    }
+  }
+  .theme__#{$theme}__elements {
+    color: $elemsColor;
+  }
+  .theme__#{$theme}__elements a, .theme__#{$theme}__elements h1, .theme__#{$theme}__elements h2,
+  .theme__#{$theme}__elements h3, .theme__#{$theme}__elements h4, .theme__#{$theme}__elements p, {
+    color: $elemsColor;
+  }
+  .theme__#{$theme}__borders {
+    border-color: $elemsColor !important;
+  }
+  .theme__#{$theme}__pills li.active > a, .theme__#{$theme}__pills li.active > a:hover, .theme__#{$theme}__pills li.active > a:focus,
+  .theme__#{$theme}__pills a:focus, .theme__#{$theme}__pills a:hover {
+    color: $backColor !important;
+    background-color: $elemsColor !important;
+  }
+  .theme__#{$theme}__navs a.active {
+    color: $backColor;
+    background-color: $elemsColor;
+  }
+  .theme__#{$theme}__navs a:hover {
+    color: $backColor;
+    background-color: $elemsColor;
+  }
 }
 
-// отдельные классы
+@include theme(blackWhite, $blackWhiteBackground, $blackWhiteElements);
+@include theme(whiteBlack, $whiteBlackBackground, $whiteBlackElements);
+@include theme(blackRed, $blackRedBackground, $blackRedElements);
+@include theme(yellowBrown, $yellowBrownBackground, $yellowBrownElements);
+@include theme(brownGreen, $brownGreenBackground, $brownGreenElements);
+
+// отдельные классы (для футера)
 .bc__black {
-  background-color: black;
-}
+   background-color: black;
+ }
 .bc__white {
   background-color: white;
 }
+
+//.theme__blackWhite__background {
+//  background-color: $blackWhiteBackground;
+//}
+//
+//.theme__blackWhite__elements {
+//  color: $blackWhiteElements;
+//}
+//.theme__blackWhite__elements a, .theme__blackWhite__elements h1, .theme__blackWhite__elements h2,
+//.theme__blackWhite__elements h3, .theme__blackWhite__elements h4, .theme__blackWhite__elements p, {
+//  color: $blackWhiteElements;
+//}
+//.theme__blackWhite__borders {
+//  border-color: $blackWhiteElements !important;
+//}
+//.theme__blackWhite__pills li.active > a, .theme__blackWhite__pills li.active > a:hover, .theme__blackWhite__pills li.active > a:focus,
+//.theme__blackWhite__pills a:focus, .theme__blackWhite__pills a:hover {
+//  color: $blackWhiteBackground !important;
+//  background-color: $blackWhiteElements !important;
+//}
+//.theme__blackWhite__navs a.active {
+//  color: $blackWhiteBackground;
+//  background-color: $blackWhiteElements;
+//}
+//.theme__blackWhite__navs a:hover {
+//  color: $blackWhiteBackground;
+//  background-color: $blackWhiteElements;
+//}
+
+//// белая тема
+//.theme__whiteBlack__background {
+//  background-color: $whiteBlackBackground;
+//}
+//.theme__whiteBlack__elements {
+//  color: $whiteBlackElements;
+//}
+//.theme__whiteBlack__elements a, .theme__whiteBlack__elements h1, .theme__whiteBlack__elements h2,
+//.theme__whiteBlack__elements h3, .theme__whiteBlack__elements h4, .theme__whiteBlack__elements p,{
+//  color: $whiteBlackElements;
+//}
+//.theme__whiteBlack__borders {
+//  border-color: $whiteBlackElements;
+//}
+//.theme__whiteBlack__pills li.active > a, .theme__whiteBlack__pills li.active > a:hover, .theme__whiteBlack__pills li.active > a:focus,
+//.theme__whiteBlack__pills a:focus, .theme__whiteBlack__pills a:hover {
+//  color: $whiteBlackBackground !important;
+//  background-color: $whiteBlackElements !important;
+//}
+//.theme__whiteBlack__navs a.active {
+//  color: $whiteBlackBackground;
+//  background-color: $whiteBlackElements;
+//}
+//.theme__whiteBlack__navs a:hover {
+//  color: $whiteBlackBackground;
+//  background-color: $whiteBlackElements;
+//}
+//
+//// черно-красная тема
+//.theme__blackRed__background {
+//  background-color: $blackRedBackground;
+//}
+//.theme__blackRed__elements {
+//  color: $blackRedElements;
+//}
+//.theme__blackRed__elements a, .theme__blackRed__elements h1, .theme__blackRed__elements h2,
+//.theme__blackRed__elements h3, .theme__blackRed__elements h4, .theme__blackRed__elements p,{
+//  color: $blackRedElements;
+//}
+//.theme__blackRed__borders {
+//  border-color: $blackRedElements;
+//}
+//.theme__blackRed__pills li.active > a, .theme__blackRed__pills li.active > a:hover, .theme__blackRed__pills li.active > a:focus,
+//.theme__blackRed__pills a:focus, .theme__blackRed__pills a:hover {
+//  color: $blackRedBackground !important;
+//  background-color: $blackRedElements !important;
+//}
+//.theme__blackRed__navs a.active {
+//  color: $blackRedBackground;
+//  background-color: $blackRedElements;
+//}
+//.theme__blackRed__navs a:hover {
+//  color: $blackRedBackground;
+//  background-color: $blackRedElements;
+//}
+

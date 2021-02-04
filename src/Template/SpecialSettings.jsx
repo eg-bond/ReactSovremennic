@@ -10,6 +10,8 @@ import {switchSiteTheme} from "../REDUX/specialReduser";
             <button onClick={() => switchSiteTheme('blackWhite')}>BlackWhite</button>
             <button onClick={() => switchSiteTheme('whiteBlack')}>WhiteBlack</button>
             <button onClick={() => switchSiteTheme('blackRed')}>BlackRed</button>
+            <button onClick={() => switchSiteTheme('yellowBrown')}>YellowBrown</button>
+            <button onClick={() => switchSiteTheme('brownGreen')}>BrownGreen</button>
         </div>
     );
 }
