@@ -1,11 +1,5 @@
 @import "variables";
 
-@mixin backColor ($class){
-  .#{$class}{
-    background-color: $blackWhiteBackground;
-  }
-}
-
 @mixin theme ($theme, $backColor, $elemsColor){
   .theme__#{$theme}__background {
     background-color: $backColor;
@@ -41,11 +35,18 @@
   }
 }
 
+// Цветовые темы
 @include theme(blackWhite, $blackWhiteBackground, $blackWhiteElements);
 @include theme(whiteBlack, $whiteBlackBackground, $whiteBlackElements);
 @include theme(blackRed, $blackRedBackground, $blackRedElements);
 @include theme(yellowBrown, $yellowBrownBackground, $yellowBrownElements);
 @include theme(brownGreen, $brownGreenBackground, $brownGreenElements);
+
+// Скрываем все изображения на сайте
+
+.hideImages img{
+  opacity: 0;
+}
 
 // отдельные классы (для футера)
 .bc__black {

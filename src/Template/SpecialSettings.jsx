@@ -1,9 +1,9 @@
 import React from 'react';
 import {compose} from "redux";
 import {connect} from "react-redux";
-import {switchSiteTheme} from "../REDUX/specialReduser";
+import {switchSiteTheme, switchImagesVisibility} from "../REDUX/specialReduser";
 
-    function SpecialSettings({switchSiteTheme}) {
+    function SpecialSettings({switchSiteTheme, switchImagesVisibility, imgHidden}) {
 
     return (
         <div>
@@ -12,6 +12,11 @@ import {switchSiteTheme} from "../REDUX/specialReduser";
             <button onClick={() => switchSiteTheme('blackRed')}>BlackRed</button>
             <button onClick={() => switchSiteTheme('yellowBrown')}>YellowBrown</button>
             <button onClick={() => switchSiteTheme('brownGreen')}>BrownGreen</button>
+            {imgHidden
+                ? <button onClick={() => switchImagesVisibility(false)}>ShowImg</button>
+                : <button onClick={() => switchImagesVisibility(true)}>HideImg</button>
+            }
+
         </div>
     );
 }
@@ -19,9 +24,10 @@ import {switchSiteTheme} from "../REDUX/specialReduser";
 // export default SpecialSettings;
 let mapStateToProps = (state) => ({
     siteMode: state.special.siteMode,
-    theme: state.special.theme
+    theme: state.special.theme,
+    imgHidden: state.special.imgHidden
 });
 
 export default compose(
-    connect(mapStateToProps, {switchSiteTheme})
+    connect(mapStateToProps, {switchSiteTheme, switchImagesVisibility})
 )(SpecialSettings);

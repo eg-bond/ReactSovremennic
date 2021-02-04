@@ -27,7 +27,7 @@ import {modifiedClass, themeClasses} from "./helpers";
 import FilmsSpecialPage from "./Content/Films/FilmsSpecialPage";
 
 const App = ({createActualDatesArr, initialActiveKey, initialButtonTitle, createFilmsTodayArr,
-                 films, filmsToday, filmsTodaySlides, switchSiteMode, siteMode, theme}) => {
+                 films, filmsToday, filmsTodaySlides, switchSiteMode, siteMode, theme, imgHidden}) => {
 
     useEffect(() => {
         createActualDatesArr();
@@ -56,7 +56,7 @@ const App = ({createActualDatesArr, initialActiveKey, initialButtonTitle, create
 
             <div className="separator"/>
 
-            <div className={`container wrapper ${themeCl.back} ${themeCl.borders}`}>
+            <div className={`container wrapper ${themeCl.back} ${themeCl.borders} ${imgHidden && 'hideImages'}`}>
                 <div className="row">
 
                     <Media query="(max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)">
@@ -115,7 +115,8 @@ let mapStateToProps = (state) => ({
     filmsToday: state.cinema.filmsToday,
     filmsTodaySlides: state.cinema.filmsTodaySlides,
     siteMode: state.special.siteMode,
-    theme: state.special.theme
+    theme: state.special.theme,
+    imgHidden: state.special.imgHidden
 });
 
 export default compose(
