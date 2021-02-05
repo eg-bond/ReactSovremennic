@@ -2,7 +2,7 @@ import React from 'react';
 import {DescriptionTrailer} from "./DescriptionTrailer";
 import Media from 'react-media';
 
-function SelectedFilm(props) {
+function SelectedFilm({siteMode, ...props}) {
 
     let filmImg = `Images/description/${props.film['link']}_D.jpg`;
 
@@ -13,7 +13,7 @@ function SelectedFilm(props) {
 
                     <div className="filmFlex1 row-xs">
                         <div className="descImg">
-                            <img src={filmImg} alt=""/>
+                            <img src={filmImg} alt={props.film['title']}/>
                         </div>
                     </div>
 
@@ -51,10 +51,11 @@ function SelectedFilm(props) {
 
                         <br/>
 
-                        <Media query="(min-width: 768px) and (min-height: 500px)">
+                        {siteMode === 'default' && <Media query="(min-width: 768px) and (min-height: 500px)">
                             <DescriptionTrailer description={props.film['description']}
-                                                     trailer_src={props.film['playerCode']}/>
-                        </Media>
+                                                trailer_src={props.film['playerCode']}/>
+                        </Media>}
+
 
                     </div>
                 </div>

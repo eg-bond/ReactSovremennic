@@ -47,7 +47,21 @@ function SushiModal() {
     );
 }
 
-function Sushi({themeCl}) {
+function Sushi({themeCl, siteMode}) {
+
+    const brandRollsSpecial = [
+        <NavItem className='sushi-tab' eventKey="brand_rolls1">Фирменные роллы 1</NavItem>,
+        <NavItem className='sushi-tab' eventKey="brand_rolls2">Фирменные роллы 2</NavItem>,
+        <NavItem className='sushi-tab' eventKey="brand_rolls3">Фирменные роллы 3</NavItem>
+    ]
+    const hotDishesSpecial = [
+        <NavItem className='sushi-tab' eventKey="hot_dishes1">Горячие блюда 1</NavItem>,
+        <NavItem className='sushi-tab' eventKey="hot_dishes2">Горячие блюда 2</NavItem>,
+        <NavItem className='sushi-tab' eventKey="hot_dishes3">Горячие блюда 3</NavItem>,
+        <NavItem className='sushi-tab' eventKey="hot_dishes4">Горячие блюда 4</NavItem>
+    ]
+    const desktopMenuItem = (eventKey, title) => <NavItem className='sushi-tab' eventKey={eventKey}>{title}</NavItem>
+    const sushiContentItem = (key) => <Tab.Pane eventKey={key}><img src={`./Images/sushi/${key}.gif`} alt={key}/></Tab.Pane>
     return (
         <div>
             <ScrollToTop/>
@@ -64,20 +78,28 @@ function Sushi({themeCl}) {
                         <Media query="(min-width: 768px) and (min-height: 500px)">
                             <Col lg={3} md={3} sm={3}>
                                 <Nav className={themeCl.pills} bsStyle="pills" stacked>
-                                    <NavItem className='sushi-tab' eventKey="sushi">Суши</NavItem>
-                                    <NavItem className='sushi-tab' eventKey="rolls">Роллы</NavItem>
-                                    <NavItem className='sushi-tab' eventKey="black_rolls">Цветные/черные роллы</NavItem>
-                                    <NavItem className='sushi-tab' eventKey="hot_rolls">Запеченые роллы</NavItem>
-                                    <NavItem className='sushi-tab' eventKey="brand_rolls">Фирменные роллы</NavItem>
-                                    <NavItem className='sushi-tab' eventKey="mini_rolls">Мини-роллы</NavItem>
-                                    <NavItem className='sushi-tab' eventKey="sets">Наборы, сашими</NavItem>
-                                    <NavItem className='sushi-tab' eventKey="salads">Салаты</NavItem>
-                                    <NavItem className='sushi-tab' eventKey="soups">Супы</NavItem>
-                                    <NavItem className='sushi-tab' eventKey="hot_dishes">Горячие блюда</NavItem>
-                                    <NavItem className='sushi-tab' eventKey="garnish">Гарниры</NavItem>
-                                    <NavItem className='sushi-tab' eventKey="dessert">Десерты</NavItem>
-                                    <NavItem className='sushi-tab' eventKey="gruzia">Грузинская кухня</NavItem>
-                                    <NavItem className='sushi-tab' eventKey="pizza">Пицца</NavItem>
+                                    {desktopMenuItem("sushi", "Суши")}
+                                    {desktopMenuItem("rolls", "Роллы")}
+                                    {desktopMenuItem("black_rolls", "Цветные/черные роллы")}
+                                    {desktopMenuItem("hot_rolls", "Запеченые роллы")}
+                                    {
+                                        siteMode === 'default'
+                                        ? desktopMenuItem("brand_rolls", "Фирменные роллы")
+                                        : brandRollsSpecial
+                                    }
+                                    {desktopMenuItem("mini_rolls", "Мини-роллы")}
+                                    {desktopMenuItem("sets", "Наборы, сашими")}
+                                    {desktopMenuItem("salads", "Салаты")}
+                                    {desktopMenuItem("soups", "Супы")}
+                                    {
+                                        siteMode === 'default'
+                                        ? desktopMenuItem("hot_dishes", "Горячие блюда")
+                                        : hotDishesSpecial
+                                    }
+                                    {desktopMenuItem("garnish", "Гарниры")}
+                                    {desktopMenuItem("dessert", "Десерты")}
+                                    {desktopMenuItem("gruzia", "Грузинская кухня")}
+                                    {desktopMenuItem("pizza", "Пицца")}
                                 </Nav>
                             </Col>
                         </Media>
@@ -90,37 +112,40 @@ function Sushi({themeCl}) {
                                 </div>
                             </Media>
 
-                            <Tab.Content animation>
+                            <Tab.Content animation style={{paddingBottom: "30px"}}>
                                 <Tab.Pane eventKey="sushi">
                                     <div className="sushiEmptyImg">
-                                        <img className="sushiFirstImg" src="./Images/sushi/sushi.gif" alt=""/>
+                                        <img className="sushiFirstImg" src="./Images/sushi/sushi.gif" alt="sushi"/>
                                     </div>
                                 </Tab.Pane>
-                                <Tab.Pane eventKey="rolls"><img src="./Images/sushi/rolls.gif" alt=""/></Tab.Pane>
-                                <Tab.Pane eventKey="black_rolls"> <img src="./Images/sushi/black_rolls.gif"
-                                                                       alt=""/></Tab.Pane>
-                                <Tab.Pane eventKey="hot_rolls"> <img src="./Images/sushi/hot_rolls.gif"
-                                                                     alt=""/></Tab.Pane>
+                                {sushiContentItem("rolls")}
+                                {sushiContentItem("black_rolls")}
+                                {sushiContentItem("hot_rolls")}
                                 <Tab.Pane eventKey="brand_rolls">
                                     <BrandRollsSwiper/>
                                 </Tab.Pane>
-                                <Tab.Pane eventKey="mini_rolls"> <img src="./Images/sushi/mini_rolls.gif"
-                                                                       alt=""/></Tab.Pane>
-                                <Tab.Pane eventKey="sets"> <img src="./Images/sushi/sets.gif" alt=""/></Tab.Pane>
-                                <Tab.Pane eventKey="salads"> <img src="./Images/sushi/salads.gif" alt=""/></Tab.Pane>
-                                <Tab.Pane eventKey="soups"> <img src="./Images/sushi/soups.gif" alt=""/></Tab.Pane>
+                                {sushiContentItem("brand_rolls1")}
+                                {sushiContentItem("brand_rolls2")}
+                                {sushiContentItem("brand_rolls3")}
+                                {sushiContentItem("mini_rolls")}
+                                {sushiContentItem("sets")}
+                                {sushiContentItem("salads")}
+                                {sushiContentItem("soups")}
                                 <Tab.Pane eventKey="hot_dishes">
                                     <HotDishesSwiper/>
                                 </Tab.Pane>
-                                <Tab.Pane eventKey="garnish"> <img src="./Images/sushi/garnish.gif" alt=""/></Tab.Pane>
-                                <Tab.Pane eventKey="dessert"> <img src="./Images/sushi/dessert.gif" alt=""/></Tab.Pane>
-                                <Tab.Pane eventKey="gruzia"> <img src="./Images/sushi/gruzia.gif" alt=""/></Tab.Pane>
-                                <Tab.Pane eventKey="pizza"> <img src="./Images/sushi/pizza.jpg" alt=""/></Tab.Pane>
+                                {sushiContentItem("hot_dishes1")}
+                                {sushiContentItem("hot_dishes2")}
+                                {sushiContentItem("hot_dishes3")}
+                                {sushiContentItem("hot_dishes4")}
+                                {sushiContentItem("garnish")}
+                                {sushiContentItem("dessert")}
+                                {sushiContentItem("gruzia")}
+                                {sushiContentItem("pizza")}
                             </Tab.Content>
                         </Col>
                     </div>
                 </Tab.Container>
-                <div>asdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
             </div>
         </div>
     );

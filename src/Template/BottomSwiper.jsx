@@ -38,7 +38,7 @@ const BottomSwiper = (props) => {
     return (
         <Media query="(min-width: 768px) and (min-height: 500px)">
             <div>
-                <div className="swiper_bar"><h2>Сегодня в кино</h2></div>
+                <div className="swiper_bar"><h1>Сегодня в кино</h1></div>
                 <div onMouseEnter={() => turnAutoplay("stop")} onMouseLeave={() => turnAutoplay("start")}>
                     <Swiper getSwiper={updateSwiper} {...params}>
                         {

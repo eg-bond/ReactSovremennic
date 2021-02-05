@@ -1,15 +1,16 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
 import SpecialSettings from "./SpecialSettings";
-import {modifiedClass} from "../helpers";
+import {modifiedClass, themeLogo} from "../helpers";
 
-function Navigation({siteMode, switchSiteMode, themeCl, fontSize}) {
+function Navigation({siteMode, switchSiteMode, themeCl, fontSize, theme}) {
     let modeToDispatch = siteMode === 'default' ? 'special' : 'default'
     const classHandler = (cl) => modifiedClass(cl, siteMode)
     let fsAdditionClass = fontSize === '150'
         ? 'navigation__menu__special__fsAdd-150'
         : fontSize === '200'
             ? 'navigation__menu__special__fsAdd-200' : ''
+    let logo = themeLogo(theme)
 
     return (
         <div>
@@ -19,10 +20,10 @@ function Navigation({siteMode, switchSiteMode, themeCl, fontSize}) {
 
                     <div className={siteMode === "default" && "space"}>
                         {siteMode === "special" && <div className="navigation__logo">
-                                <NavLink to="/"><img src="./Images/logo.gif" alt='logoImage'/></NavLink>
+                                <NavLink to="/"><img src={`./Images/${logo}.gif`} alt='logoImage'/></NavLink>
                             </div>
                             }
-                            <button onClick={() => switchSiteMode(modeToDispatch)}>
+                            <button className={"focus"} onClick={() => switchSiteMode(modeToDispatch)}>
                                 {siteMode === "default" ? "Версия для слабовидящих" : "Обычная версия сайта"}
                             </button>}
                     </div>
@@ -31,7 +32,7 @@ function Navigation({siteMode, switchSiteMode, themeCl, fontSize}) {
                         {siteMode === "default" && <div className="navigation__logo">
                             <NavLink to="/"><img src="./Images/logo.gif" alt='logoImage'/></NavLink>
                         </div>}
-                        <div className={`${classHandler('navigation__menu')} ${fsAdditionClass}`}>
+                        <div className={`${classHandler('navigation__menu')} ${fsAdditionClass} focus`}>
                             <ul>
                                 <li><NavLink to="seans" activeClassName="active">Расписание</NavLink></li>
                                 {siteMode === "special" && <li><NavLink to="films" activeClassName="active">Фильмы</NavLink></li>}

@@ -17,17 +17,18 @@
     padding: 1%;
   }
 }
-.news h2 {
-  font-family: $lusidaFont;
-  font-weight: bold;
-  font-size: 230%;
-  @media (max-width: 1200px) {
-    font-size: 175%;
-  }
-  @media (max-width: 992px) {
-    font-size: 160%;
-  }
+.news h1 {
+  //font-family: $lusidaFont;
+  //font-weight: bold;
+  //font-size: 230%;
+  //@media (max-width: 1200px) {
+  //  font-size: 175%;
+  //}
+  //@media (max-width: 992px) {
+  //  font-size: 160%;
+  //}
   @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+    font-size: 150%;
     margin-top: 1.5%;
   }
 }
@@ -52,7 +53,7 @@
 .desktopAdv {
   position: relative;
   width: 100%;
-  background-color: black;
+  //background-color: black;
   border: $border1px;
   border-radius: 3px;
   margin: 7.8% 0;
@@ -107,15 +108,9 @@
 .swiper_bar {
   color: white;
   width: 45%;
-  margin-left: 3%;
-  h2 {
-    font-weight: 900;
-    @media (max-width: 1200px) {
-      font-size: 24px;
-    }
-    @media (max-width: 992px) {
-      font-size: 20px;
-    }
+  margin-left: 3.5%;
+  @media (max-width: 992px) {
+    margin-left: 4.2%;
   }
 }
 

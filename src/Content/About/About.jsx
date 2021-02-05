@@ -28,16 +28,16 @@ function About({siteMode}) {
 
                 <div className="aboutImages">
                     <div className="aboutImages__image">
-                        <img src="./Images/about1.gif" alt=""/>
+                        <img src="./Images/about1.gif" alt="фото кинотеатра 1"/>
                     </div>
                     <div className="aboutImages__image hidden-xs">
-                        <img src="./Images/about2.gif" alt=""/>
+                        <img src="./Images/about2.gif" alt="фото кинотеатра 2"/>
                     </div>
                     <div className="aboutImages__image">
-                        <img src="./Images/about3.gif" alt=""/>
+                        <img src="./Images/about3.gif" alt="фото кинотеатра 3"/>
                     </div>
                     <div className="aboutImages__image hidden-xs">
-                        <img src="./Images/about4.gif" alt=""/>
+                        <img src="./Images/about4.gif" alt="фото кинотеатра 4"/>
                     </div>
                 </div>
 

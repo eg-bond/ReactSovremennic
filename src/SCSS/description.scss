@@ -22,8 +22,8 @@
   position: relative;
   width: 100%;
   padding-bottom: 140%;
-  background-color: black;
-  border: solid 1px white;
+  //background-color: black;
+  border: solid 1px;
   border-radius: 8px;
 }
 .descImg img {
@@ -50,7 +50,7 @@
   }
 }
 .description_table {
-  color: white;
+  //color: white;
   text-align: left;
   margin-bottom: 3%;
   font-family: $lusidaFont;

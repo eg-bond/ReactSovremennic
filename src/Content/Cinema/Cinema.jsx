@@ -2,11 +2,11 @@ import React from 'react';
 import {Route} from "react-router-dom";
 import SelectedFilm from "./SelectedFilm";
 
-function Cinema(props) {
+function Cinema({siteMode, ...props}) {
     return (
         <>
             {props.films.map(filmItem =>
-                <Route key={filmItem.link} path={`/${filmItem.link}`}><SelectedFilm film={filmItem}/></Route>
+                <Route key={filmItem.link} path={`/${filmItem.link}`}><SelectedFilm film={filmItem} siteMode={siteMode}/></Route>
             )}
         </>
     );

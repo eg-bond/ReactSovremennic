@@ -49,7 +49,7 @@ const App = ({createActualDatesArr, initialActiveKey, initialButtonTitle, create
             <Media query="(max-width: 767.5px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)">
                 <ScrollToTop/>
             </Media>
-            <Navigation siteMode={siteMode} switchSiteMode={switchSiteMode} themeCl={themeCl} fontSize={fontSize}/>
+            <Navigation siteMode={siteMode} switchSiteMode={switchSiteMode} theme={theme} themeCl={themeCl} fontSize={fontSize}/>
 
             <div id="menu_anchor" className="container line_container">
                 <div className="row">
@@ -85,10 +85,10 @@ const App = ({createActualDatesArr, initialActiveKey, initialButtonTitle, create
                     <Route exact path="/about"><About siteMode={siteMode}/></Route>
                     <Route exact path="/rules"><Rules/></Route>
                     <Route exact path="/seans"><Seans themeCl={themeCl}/></Route>
-                    <Route exact path="/sushi"><Sushi themeCl={themeCl}/></Route>
+                    <Route exact path="/sushi"><Sushi themeCl={themeCl} siteMode={siteMode}/></Route>
                     {siteMode === "special" && <Route exact path="/films"><FilmsSpecialPage films={films}/></Route>}
                     <Route exact path="/advertising"><Advertising /></Route>
-                    <Cinema films={films} filmsToday={filmsToday}/>
+                    <Cinema films={films} filmsToday={filmsToday} siteMode={siteMode}/>
 
                     <Media query="(min-width: 768px) and (min-height: 500px)">
                         {id !== "sushi" && <Adv/>}

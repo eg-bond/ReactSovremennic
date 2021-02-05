@@ -6,12 +6,12 @@ import {switchSiteTheme, switchImagesVisibility, switchFontSize} from "../REDUX/
     function SpecialSettings({switchSiteTheme, switchImagesVisibility, switchFontSize, imgHidden}) {
 
     return (
-        <div>
+        <div className={"focus"}>
             <button onClick={() => switchSiteTheme('blackWhite')}>BlackWhite</button>
             <button onClick={() => switchSiteTheme('whiteBlack')}>WhiteBlack</button>
             <button onClick={() => switchSiteTheme('blackRed')}>BlackRed</button>
             <button onClick={() => switchSiteTheme('yellowBrown')}>YellowBrown</button>
-            <button onClick={() => switchSiteTheme('brownGreen')}>BrownGreen</button>
+            <button onClick={() => switchSiteTheme('blueGreen')}>BrownGreen</button>
             {imgHidden
                 ? <button onClick={() => switchImagesVisibility(false)}>ShowImg</button>
                 : <button onClick={() => switchImagesVisibility(true)}>HideImg</button>

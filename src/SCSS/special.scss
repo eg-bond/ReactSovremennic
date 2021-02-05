@@ -40,7 +40,7 @@
 @include theme(whiteBlack, $whiteBlackBackground, $whiteBlackElements);
 @include theme(blackRed, $blackRedBackground, $blackRedElements);
 @include theme(yellowBrown, $yellowBrownBackground, $yellowBrownElements);
-@include theme(brownGreen, $brownGreenBackground, $brownGreenElements);
+@include theme(blueGreen, $blueGreenBackground, $blueGreenElements);
 
 // Скрываем все изображения на сайте
 
@@ -51,10 +51,23 @@
 
 // отдельные классы (для футера)
 .bc__black {
-   background-color: black;
- }
+  background-color: $blackWhiteBackground;
+}
 .bc__white {
-  background-color: white;
+  background-color: $whiteBlackBackground;
+}
+.bc__yellow {
+  background-color: $yellowBrownBackground;
+}
+.bc__blue {
+  background-color: $blueGreenBackground;
+}
+
+.focus:focus, .focus a:focus, .focus button:focus {
+  background-color: red !important;
+}
+.focusImg a:focus {
+  border: 5px solid green;
 }
 
 //.theme__blackWhite__background {
