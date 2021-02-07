@@ -5,7 +5,7 @@ const SWITCH_FONT_SIZE = "SWITCH_FONT_SIZE"
 
 let initialState = {
     siteMode: 'special',
-    theme: 'blackWhite', // blackWhite, whiteBlack, blackRed, yellowBrown, brownGreen
+    theme: 'blackWhite',
     fontStyle: 'Times',
     fontSize: '100',
     imgHidden: false

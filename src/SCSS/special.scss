@@ -20,18 +20,27 @@
   .theme__#{$theme}__borders {
     border-color: $elemsColor !important;
   }
-  .theme__#{$theme}__pills li.active > a, .theme__#{$theme}__pills li.active > a:hover, .theme__#{$theme}__pills li.active > a:focus,
-  .theme__#{$theme}__pills a:focus, .theme__#{$theme}__pills a:hover {
+  .theme__#{$theme}__pills li.active > a,
+  .theme__#{$theme}__pills a:hover, .theme__#{$theme}__pills a.active {
     color: $backColor !important;
     background-color: $elemsColor !important;
   }
-  .theme__#{$theme}__navs a.active {
-    color: $backColor;
-    background-color: $elemsColor;
+  .theme__#{$theme}__pills:focus, .theme__#{$theme}__pills a:focus, .theme__#{$theme}__pills button:focus, .theme__#{$theme}__navs button:focus {
+    outline: 2px solid $elemsColor;
   }
-  .theme__#{$theme}__navs a:hover {
+  .theme__#{$theme}__navs .active {
     color: $backColor;
     background-color: $elemsColor;
+    //transition: ease 600ms;
+  }
+  .theme__#{$theme}__navs button {
+    background-color: $backColor;
+    border: none;
+  }
+  .theme__#{$theme}__navs button:hover {
+    color: $backColor;
+    background-color: $elemsColor;
+    //transition: ease 600ms;
   }
 }
 
@@ -63,12 +72,12 @@
   background-color: $blueGreenBackground;
 }
 
-.focus:focus, .focus a:focus, .focus button:focus {
-  background-color: red !important;
-}
-.focusImg a:focus {
-  border: 5px solid green;
-}
+//.focus:focus, .focus a:focus, .focus button:focus {
+//  outline: 1px solid white;
+//}
+//.focusImg a:focus {
+//  border: 5px solid green;
+//}
 
 
 //.theme__blackWhite__background {

@@ -28,7 +28,7 @@ function Navigation({siteMode, switchSiteMode, themeCl, fontSize, theme}) {
                             </button>}
                     </div>
 
-                    <nav role="navigation" className={`navbar navbar-inverse ${classHandler('navigation')} ${themeCl.back} ${themeCl.navs} ${themeCl.borders}`}>
+                    <nav role="navigation" className={`navbar navbar-inverse ${classHandler('navigation')} ${themeCl.back} ${themeCl.pills} ${themeCl.borders}`}>
                         {siteMode === "default" && <div className="navigation__logo">
                             <NavLink to="/"><img src="./Images/logo.gif" alt='logoImage'/></NavLink>
                         </div>}

@@ -1,5 +1,4 @@
 import React from 'react';
-import SpecialSettings from "../../Template/SpecialSettings";
 
 function About({siteMode}) {
 

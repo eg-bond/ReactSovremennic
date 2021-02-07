@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import Nav from "react-bootstrap/lib/Nav";
-import {Button, Col, Modal, NavItem, Tab} from "react-bootstrap";
+import {Button, Col, Modal, NavItem} from "react-bootstrap";
 import HotDishesSwiper from "./HotDishesSwiper";
 import Media from 'react-media';
 import BrandRollsSwiper from "./BrandRollsSwiper";
-import ScrollToTop from "../../Template/ScrollToTop";
 
 function SushiModal() {
 
@@ -47,121 +46,10 @@ function SushiModal() {
     );
 }
 
-// function Sushi({themeCl, siteMode}) {
-//
-//     const brandRollsSpecial = [
-//         <NavItem className='sushi-tab' eventKey="brand_rolls1">Фирменные роллы 1</NavItem>,
-//         <NavItem className='sushi-tab' eventKey="brand_rolls2">Фирменные роллы 2</NavItem>,
-//         <NavItem className='sushi-tab' eventKey="brand_rolls3">Фирменные роллы 3</NavItem>
-//     ]
-//     const hotDishesSpecial = [
-//         <NavItem className='sushi-tab' eventKey="hot_dishes1">Горячие блюда 1</NavItem>,
-//         <NavItem className='sushi-tab' eventKey="hot_dishes2">Горячие блюда 2</NavItem>,
-//         <NavItem className='sushi-tab' eventKey="hot_dishes3">Горячие блюда 3</NavItem>,
-//         <NavItem className='sushi-tab' eventKey="hot_dishes4">Горячие блюда 4</NavItem>
-//     ]
-//     const desktopMenuItem = (eventKey, title) => <NavItem className='sushi-tab' eventKey={eventKey}>{title}</NavItem>
-//     const sushiContentItem = (key) => <Tab.Pane eventKey={key}><img src={`./Images/sushi/${key}.gif`} alt={key}/></Tab.Pane>
-//
-//
-//     return (
-//         <div>
-//             <ScrollToTop/>
-//             <div className="sushi_page">
-//                 <Tab.Container defaultActiveKey="sushi" id='sushiTab'>
-//                     <div>
-//
-//                         <Media query="(max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)">
-//                             <div className="sushi_menu_xs padding_15xs">
-//                                 <SushiModal/>
-//                             </div>
-//                         </Media>
-//
-//                         <Media query="(min-width: 768px) and (min-height: 500px)">
-//                             <Col lg={3} md={3} sm={3}>
-//                                 <Nav className={themeCl.pills} bsStyle="pills" stacked>
-//                                     {desktopMenuItem("sushi", "Суши")}
-//                                     {desktopMenuItem("rolls", "Роллы")}
-//                                     {desktopMenuItem("black_rolls", "Цветные/черные роллы")}
-//                                     {desktopMenuItem("hot_rolls", "Запеченые роллы")}
-//                                     {
-//                                         siteMode === 'default'
-//                                         ? desktopMenuItem("brand_rolls", "Фирменные роллы")
-//                                         : brandRollsSpecial
-//                                     }
-//                                     {desktopMenuItem("mini_rolls", "Мини-роллы")}
-//                                     {desktopMenuItem("sets", "Наборы, сашими")}
-//                                     {desktopMenuItem("salads", "Салаты")}
-//                                     {desktopMenuItem("soups", "Супы")}
-//                                     {
-//                                         siteMode === 'default'
-//                                         ? desktopMenuItem("hot_dishes", "Горячие блюда")
-//                                         : hotDishesSpecial
-//                                     }
-//                                     {desktopMenuItem("garnish", "Гарниры")}
-//                                     {desktopMenuItem("dessert", "Десерты")}
-//                                     {desktopMenuItem("gruzia", "Грузинская кухня")}
-//                                     {desktopMenuItem("pizza", "Пицца")}
-//                                 </Nav>
-//                             </Col>
-//                         </Media>
-//
-//                         <Col lg={9} md={9} sm={9}>
-//
-//                             <Media query="(min-width: 768px) and (min-height: 500px)">
-//                                 <div className="sushiAdv sushiAdv--1">
-//                                     <a href="http://www.region47.sbor.net/"><img src="./Images/region47_wide.gif" alt=""/></a>
-//                                 </div>
-//                             </Media>
-//
-//                             <Tab.Content animation style={{paddingBottom: "30px"}}>
-//                                 <Tab.Pane eventKey="sushi">
-//                                     <div className="sushiEmptyImg">
-//                                         <img className="sushiFirstImg" src="./Images/sushi/sushi.gif" alt="sushi"/>
-//                                     </div>
-//                                 </Tab.Pane>
-//                                 {sushiContentItem("rolls")}
-//                                 {sushiContentItem("black_rolls")}
-//                                 {sushiContentItem("hot_rolls")}
-//                                 <Tab.Pane eventKey="brand_rolls">
-//                                     <BrandRollsSwiper/>
-//                                 </Tab.Pane>
-//                                 {sushiContentItem("brand_rolls1")}
-//                                 {sushiContentItem("brand_rolls2")}
-//                                 {sushiContentItem("brand_rolls3")}
-//                                 {sushiContentItem("mini_rolls")}
-//                                 {sushiContentItem("sets")}
-//                                 {sushiContentItem("salads")}
-//                                 {sushiContentItem("soups")}
-//                                 <Tab.Pane eventKey="hot_dishes">
-//                                     <HotDishesSwiper/>
-//                                 </Tab.Pane>
-//                                 {sushiContentItem("hot_dishes1")}
-//                                 {sushiContentItem("hot_dishes2")}
-//                                 {sushiContentItem("hot_dishes3")}
-//                                 {sushiContentItem("hot_dishes4")}
-//                                 {sushiContentItem("garnish")}
-//                                 {sushiContentItem("dessert")}
-//                                 {sushiContentItem("gruzia")}
-//                                 {sushiContentItem("pizza")}
-//                             </Tab.Content>
-//                         </Col>
-//                     </div>
-//                 </Tab.Container>
-//             </div>
-//         </div>
-//     );
-// }
-
 const Sushi = ({themeCl, siteMode}) => {
 
     let [key, setKey] = useState('sushi');
     let [activeKey, setActiveKey] = useState('sushi');
-
-    const sushiImageChange = (key) => {
-        setKey(key)
-        setActiveKey(key)
-    }
 
     let swiperArr = ['brand_rolls', 'hot_dishes']
     let defaultSushiArr = [
@@ -202,27 +90,30 @@ const Sushi = ({themeCl, siteMode}) => {
         ['pizza', 'Пицца']
     ]
 
+    const desktopMenuItem = (key, title) =>
+        <button key={key} className={activeKey === key && 'active'}
+                onClick={(e) => sushiImageChange(e, key)}>{title}</button>
 
-    const firstSushiImage = (key) => {
-        return (
-            <div className='sushi_page__content' style={{paddingBottom: "30px"}}>
-                <div className="sushiEmptyImg">
-                    <img className="sushiFirstImg" src={`./Images/sushi/${key}.gif`} alt="sushi"/>
-                </div>
-            </div>
-        )
-    }
-    const swiperElem = (key) => {
-        let swiperEl = key === 'brand_rolls' ? <BrandRollsSwiper/> : <HotDishesSwiper/>
-        return (
-            <div className='sushi_page__content' style={{paddingBottom: "30px"}}>
-                {swiperEl}
-            </div>
-        )
-    }
+    const SushiContentWrapper = (props) =>
+        <div className='sushi_page__content' style={{paddingBottom: "30px"}}>{props.children}</div>
 
-    const desktopMenuItem = (eventKey, title) => <NavItem className='sushi-tab' eventKey={eventKey}>{title}</NavItem>
-    const sushiContentItem = (key) => <Tab.Pane eventKey={key}><img src={`./Images/sushi/${key}.gif`} alt={key}/></Tab.Pane>
+    const firstSushiImage = (key) =>
+        <SushiContentWrapper>
+            <div className="sushiEmptyImg">
+                <img className="sushiFirstImg" src={`./Images/sushi/${key}.gif`} alt="sushi"/>
+            </div>
+        </SushiContentWrapper>
+
+    const swiperSushiElem = (key) =>
+        <SushiContentWrapper>
+            {key === 'brand_rolls' ? <BrandRollsSwiper/> : <HotDishesSwiper/>}
+        </SushiContentWrapper>
+
+    const sushiImageChange = (e, key) => {
+        setKey(key)
+        setActiveKey(key)
+        e.target.className = 'active'
+    }
 
     return (
         <div>
@@ -237,10 +128,10 @@ const Sushi = ({themeCl, siteMode}) => {
 
                         <Media query="(min-width: 768px) and (min-height: 500px)">
                             <Col lg={3} md={3} sm={3}>
-                                <div>
+                                <div className={`sushi_page__menuButtons ${themeCl.navs}`}>
                                     {siteMode === 'default'
-                                        ? defaultSushiArr.map(item => <button onClick={() => setKey(item[0])}>{item[1]}</button>)
-                                        : specialSushiArr.map(item => <button onClick={() => setKey(item[0])}>{item[1]}</button>)}
+                                        ? defaultSushiArr.map(item => desktopMenuItem(item[0], item[1]))
+                                        : specialSushiArr.map(item => desktopMenuItem(item[0], item[1]))}
                                 </div>
                             </Col>
                         </Media>
@@ -256,10 +147,10 @@ const Sushi = ({themeCl, siteMode}) => {
                             {key === 'sushi'
                                 ? firstSushiImage(key)
                                 : swiperArr.includes(key)
-                                    ? swiperElem(key)
-                                    : <div className='sushi_page__content' style={{paddingBottom: "30px"}}>
+                                    ? swiperSushiElem(key)
+                                    : <SushiContentWrapper>
                                         <div><img src={`./Images/sushi/${key}.gif`} alt={key}/></div>
-                                    </div>}
+                                    </SushiContentWrapper>}
 
                         </Col>
                     </div>

@@ -2,7 +2,6 @@ import React from 'react';
 import {NavLink} from "react-router-dom";
 
 function Footer({themeCl}) {
-    // let footerBackground = theme === 'blackWhite' ? 'bc__white' : 'bc__black'
 
     return (
         <div>
