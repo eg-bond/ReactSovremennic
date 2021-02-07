@@ -1,12 +1,25 @@
-.filmsSpecial {
+.filmsSpecial__indexPage {
+  padding-left: 2%;
+}
+
+.filmsSpecial__cinemaPage {
+  padding-left: 1%;
+}
+
+.filmsSpecial__h1 {
+  padding-left: 1%;
+}
+
+.filmsSpecial__flex {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
 }
 
-.filmsSpecial__item {
+.filmsSpecial__flex__item {
+  //border: solid 1px white;
   position: relative;
-  margin: 2% 0 2% 4%;
+  margin: 1% 0% 0.5% 3.5%;
   width: 240px;
   @media (max-width: 1200px) {
     width: 200px;
@@ -17,19 +30,48 @@
   }
 }
 
-.filmsSpecial__item__img {
+.filmsSpecial__flex__item__img {
   position: relative;
   width: 100%;
   height: 270px;
   border: 1px solid;
+  @media (max-width: 1200px) {
+    height: 240px;
+  }
+  @media (max-width: 992px) {
+    //margin-left: 3.5%;
+    height: 200px;
+  }
   img {
     position: absolute;
     width: 100%;
     height: 100%;
   }
 }
+.filmsSpecial__flex__title {
 
+  padding-left: 1%;
+}
+.filmsSpecial__flex__title h2 {
+  margin: 4% auto;
+  font-size: 125%;
+  @media (max-width: 1200px) {
+    font-size: 105%;
+  }
+  @media (max-width: 992px) {
+    font-size: 75%;
+  }
+}
 
+.filmsSpecial__flex__title p {
+  font-size: 90%;
+  @media (max-width: 1200px) {
+    font-size: 75%;
+  }
+  @media (max-width: 992px) {
+    font-size: 60%;
+  }
+}
 
 
 

@@ -7,8 +7,8 @@ function SelectedFilm({siteMode, ...props}) {
     let filmImg = `Images/description/${props.film['link']}_D.jpg`;
 
     return (
-        <div className={`padding_15xs `}>
-            <div className="col-lg-9 col-md-9 col-sm-9 margin-top-2">
+        // <div className={`padding_15xs `}>
+        //     <div className="col-lg-9 col-md-9 col-sm-9 margin-top-2">
                 <div className="film_info">
 
                     <div className="filmFlex1 row-xs">
@@ -51,20 +51,23 @@ function SelectedFilm({siteMode, ...props}) {
 
                         <br/>
 
-                        {siteMode === 'default' && <Media query="(min-width: 768px) and (min-height: 500px)">
+                        <Media query="(min-width: 768px) and (min-height: 500px)">
                             <DescriptionTrailer description={props.film['description']}
-                                                trailer_src={props.film['playerCode']}/>
-                        </Media>}
+                                                trailer_src={props.film['playerCode']}
+                                                siteMode={siteMode}/>
+                        </Media>
 
 
                     </div>
-                </div>
-            </div>
+            {/*    </div>*/}
+            {/*</div>*/}
 
-            <Media query="(max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)">
-                <DescriptionTrailer description={props.film['description']}
-                                         trailer_src={props.film['playerCode']}/>
-            </Media>
+
+
+            {/*<Media query="(max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)">*/}
+            {/*    <DescriptionTrailer description={props.film['description']}*/}
+            {/*                             trailer_src={props.film['playerCode']}/>*/}
+            {/*</Media>*/}
         </div>
     );
 }

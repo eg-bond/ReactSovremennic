@@ -1,5 +1,5 @@
 @import "variables";
-
+// ?
 .sushi-tab {
   @media (max-width: 1200px) {
     font-size: 85%;
@@ -12,7 +12,6 @@
 .sushiAdv {
   position: relative;
   width: 100%;
-  //background-color: black;
   border: solid 1px;
   border-radius: 3px;
   margin-bottom: 3%;
@@ -29,7 +28,7 @@
   margin-top: 2%;
 }
 
-.sushi_page .tab-content img{
+.sushi_page .sushi_page__content img{
   width: 100%;
   border-radius: 3px;
   border: 1px solid;
@@ -65,6 +64,7 @@
 }
 
 .swiper-pagination-fraction {
+  color: black;
   font-weight: bold;
   @media (max-width: 1200px) {
     font-size: 90%;

@@ -43,7 +43,7 @@ function IndexContent({siteMode, films}) {
 
                 {
                     siteMode === "special" && <Media query="(min-width: 768px) and (min-height: 500px)">
-                        <Films films={films}/>
+                        <Films films={films} page={'index'}/>
                     </Media>
                 }
 
