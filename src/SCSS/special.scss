@@ -31,7 +31,6 @@
   .theme__#{$theme}__navs .active {
     color: $backColor;
     background-color: $elemsColor;
-    //transition: ease 600ms;
   }
   .theme__#{$theme}__navs button {
     background-color: $backColor;
@@ -40,7 +39,7 @@
   .theme__#{$theme}__navs button:hover {
     color: $backColor;
     background-color: $elemsColor;
-    //transition: ease 600ms;
+    transition: ease 600ms;
   }
 }
 

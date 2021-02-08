@@ -25,11 +25,12 @@ const Seans = React.memo(({initialActiveKey, initialButtonTitle, themeCl, fontSi
         <div className="col-lg-9 col-md-9 col-sm-9">
             <Tab.Container id='table' activeKey={props.activeKey} onSelect={k => props.changeActiveKey(k)}>
                 <div>
-
                     <Media query="(min-width: 768px) and (min-height: 500px)">
-                        <div className={`seans-menu ${themeCl.pills}`}>
+                        <div className={`seans-menu ${themeCl.navs}`}>
                             <NavItems deviceType={"notMobile"} datesArr={props.datesArr}
-                                      changeButtonTitle={props.changeButtonTitle} fontSize={fontSize}/>
+                                      changeButtonTitle={props.changeButtonTitle}
+                                      changeActiveKey={props.changeActiveKey} activeKey={props.activeKey}
+                                      />
                         </div>
                     </Media>
 
@@ -46,6 +47,7 @@ const Seans = React.memo(({initialActiveKey, initialButtonTitle, themeCl, fontSi
                     </Tab.Content>
                 </div>
             </Tab.Container>
+
             <div className="separator-special"/>
         </div>
     );

@@ -22,6 +22,7 @@ let initialState = {
 
 
 export const seansReduser = (state = initialState, action) => {
+    window.seansState = state
     switch (action.type) {
         case INITIAL_ACTIVE_KEY:
             let date = new Date();

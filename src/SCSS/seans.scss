@@ -8,28 +8,21 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  border: 0;
-  font-size: 96%;
   flex-wrap: wrap;
-  > li {
-    padding-right: 1.55%;
+  font-family: $arialFont;
+  margin: 0 -4px;
+  > button {
+    flex: 0.25;
+    padding: 7px 9px;
+    margin: 0 4px;
+    text-align: left;
+    border-radius: 5px;
     @media (max-width: 1200px) {
-      padding-right: 0.9%;
+      font-size: 80%;
     }
     @media (max-width: 992px) {
-      padding-right: 0;
-    }
-  }
-  > li > a {
-    padding: 7px 8px;
-    border-radius: 4px;
-    font-weight: bold;
-    @media (max-width: 1200px) {
-      font-size: 84%;
-    }
-    @media (max-width: 992px) {
-      font-size: 65%;
-      margin-top: 5%;
+      font-size: 62%;
+      padding: 4px 5px;
     }
   }
 }

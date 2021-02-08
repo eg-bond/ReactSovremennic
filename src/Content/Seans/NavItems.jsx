@@ -3,14 +3,19 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {NavItem, Nav} from "react-bootstrap";
 
 const NavItems = (props) => {
+
+    const switchSeanstable = (e, key) => {
+        props.changeButtonTitle(e.target.value)
+        props.changeActiveKey(key)
+    }
+
     const desktopNavs = () => {
         return (
-            <div>
-                <Nav bsStyle="tabs" className='seans-tabs'>
-                    {props.datesArr.map(d => <NavItem key={d[0]} eventKey={d[0]}
-                                                      onClick={(e) => props.changeButtonTitle(e.target.text)}>{d[1]}
-                        <br/>{d[2]}</NavItem>)}
-                </Nav>
+            <div className='seans-tabs'>
+                {props.datesArr.map(d =>
+                    <button value={`${d[1]} ${d[2]}`} key={d[0]} className={props.activeKey === d[0] && 'active'}
+                            onClick={(e) => switchSeanstable(e, d[0])}>{d[1]}<br/>{d[2]}
+                    </button>)}
             </div>
         )
     }
