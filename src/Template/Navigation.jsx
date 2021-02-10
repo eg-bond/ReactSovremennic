@@ -16,7 +16,7 @@ function Navigation({siteMode, switchSiteMode, themeCl, fontSize, theme}) {
         <div>
             <div className="container">
                 <div className="row">
-                    {siteMode === "special" && <SpecialSettings/>}
+                    {siteMode === "special" && <SpecialSettings themeCl={themeCl}/>}
 
                     <div className={siteMode === "default" && "space"}>
                         {siteMode === "special" && <div className="navigation__logo">
