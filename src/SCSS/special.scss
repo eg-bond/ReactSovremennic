@@ -71,6 +71,24 @@
   background-color: $blueGreenBackground;
 }
 
+// Стили для верхней панели настроек
+.specialSettings__flex {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.specialSettings__item {
+  position: relative;
+  //width: 240px;
+  //@media (max-width: 1200px) {
+  //  width: 200px;
+  //}
+  //@media (max-width: 992px) {
+  //  margin-left: 3.5%;
+  //  width: 155px;
+  //}
+}
+
 @mixin themeButton ($theme, $backColor, $elemsColor) {
   .#{$theme} {
     background-color: $backColor !important;

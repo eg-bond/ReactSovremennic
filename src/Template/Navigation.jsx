@@ -4,7 +4,7 @@ import SpecialSettings from "./SpecialSettings";
 import {modifiedClass, themeLogo} from "../helpers";
 
 function Navigation({siteMode, switchSiteMode, themeCl, fontSize, theme}) {
-    let modeToDispatch = siteMode === 'default' ? 'special' : 'default'
+    // let modeToDispatch = siteMode === 'default' ? 'special' : 'default'
     const classHandler = (cl) => modifiedClass(cl, siteMode)
     let fsAdditionClass = fontSize === '150'
         ? 'navigation__menu__special__fsAdd-150'
@@ -16,16 +16,17 @@ function Navigation({siteMode, switchSiteMode, themeCl, fontSize, theme}) {
         <div>
             <div className="container">
                 <div className="row">
-                    {siteMode === "special" && <SpecialSettings themeCl={themeCl}/>}
+                    {/*{siteMode === "special" && <SpecialSettings themeCl={themeCl} siteMode={siteMode} switchSiteMode={switchSiteMode}/>}*/}
+                    <SpecialSettings themeCl={themeCl}/>
 
                     <div className={siteMode === "default" && "space"}>
                         {siteMode === "special" && <div className="navigation__logo">
                                 <NavLink to="/"><img src={`./Images/${logo}.gif`} alt='logoImage'/></NavLink>
                             </div>
                             }
-                            <button className={"focus"} onClick={() => switchSiteMode(modeToDispatch)}>
-                                {siteMode === "default" ? "Версия для слабовидящих" : "Обычная версия сайта"}
-                            </button>}
+                            {/*<button className={"focus"} onClick={() => switchSiteMode(modeToDispatch)}>*/}
+                            {/*    {siteMode === "default" ? "Версия для слабовидящих" : "Обычная версия сайта"}*/}
+                            {/*</button>}*/}
                     </div>
 
                     <nav role="navigation" className={`navbar navbar-inverse ${classHandler('navigation')} ${themeCl.back} ${themeCl.pills} ${themeCl.borders}`}>
