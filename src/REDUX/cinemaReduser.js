@@ -5,7 +5,7 @@ let initialState = {
         {
             title: 'Душа',
             beginDate: 'с 21 января',
-            endDate: 'по 10 февраля',
+            endDate: 'по 17 февраля',
             kind: `Мультфильм, фэнтези, комедия`,
             director: `Пит Доктер, Кемп Пауэрс`,
             duration: '100 мин.',
@@ -51,7 +51,7 @@ let initialState = {
         {
             title: 'Охотник на монстров',
             beginDate: 'с 28 января',
-            endDate: 'по 17 февраля',
+            endDate: 'по 10 февраля',
             kind: `Фэнтези, боевик, приключения`,
             director: `Пол У. С. Андерсон`,
             duration: '99 мин.',
