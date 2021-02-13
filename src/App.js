@@ -46,7 +46,7 @@ const App = ({createActualDatesArr, initialActiveKey, initialButtonTitle, create
                     <hr className="line_5px"/>
                 </div>
             </div>
-
+            
             <div className="separator"/>
 
             <div className="container wrapper">
