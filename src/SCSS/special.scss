@@ -14,7 +14,7 @@
     color: $elemsColor;
   }
   .theme__#{$theme}__elements a, .theme__#{$theme}__elements h1, .theme__#{$theme}__elements h2,
-  .theme__#{$theme}__elements h3, .theme__#{$theme}__elements h4, .theme__#{$theme}__elements p, {
+  .theme__#{$theme}__elements h3, .theme__#{$theme}__elements h4, .theme__#{$theme}__elements p {
     color: $elemsColor;
   }
   .theme__#{$theme}__borders {
@@ -72,13 +72,20 @@
 }
 
 // Стили для верхней панели настроек
+.specialSettings__container {
+  background-color: #aaadb1;
+  padding: 0.5% 1%;
+}
+
 .specialSettings__flex {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  align-items: flex-end;
 }
-.specialSettings__item {
+.specialSettings__flex__item {
   position: relative;
+  // align-items: flex-end;
   //width: 240px;
   //@media (max-width: 1200px) {
   //  width: 200px;
@@ -88,6 +95,34 @@
   //  width: 155px;
   //}
 }
+.specialSettings__flex__modeButton {
+  align-self: center;
+  & button {
+    background-color: black; 
+  }   
+  & span {
+    color: white;
+    font-size: 120%;
+    // font-weight: bold;
+  }
+}
+
+.specialSettings__flex__fontButtons {
+  height: 40px;
+  & button {
+    background-color: black;
+    padding: 6px 12px;
+  }  
+  & span {
+    color: white;
+    font-size: 150%;
+    font-weight: bold;
+  }
+}
+// .MuiSwitch-switchBase {
+//   color: purple !important;
+  
+// }
 
 @mixin themeButton ($theme, $backColor, $elemsColor) {
   .#{$theme} {
@@ -106,8 +141,25 @@
 //.focus:focus, .focus a:focus, .focus button:focus {
 //  outline: 1px solid white;
 //}
-//.focusImg a:focus {
-//  border: 5px solid green;
-//}
+.focusImg {
+  -o-transform: translateX(-10px);
+  -ms-transform: translateX(-10px);
+  -moz-transform: translateX(-10px);
+  -webkit-transform: translateX(-10px);
+  transform: translateX(-10px);
+  transition: ease 300ms;
+}
+.focusUp {
+  -o-transform: translateY(-10px);
+  -ms-transform: translateY(-10px);
+  -moz-transform: translateY(-10px);
+  -webkit-transform: translateY(-10px);
+  transform: translateY(-10px);
+  transition: ease 300ms;
+}
+.focusNone {
+  transition: ease 300ms;
+}
+
 
 

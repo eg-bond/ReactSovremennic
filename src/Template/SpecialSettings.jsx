@@ -3,70 +3,89 @@ import {compose} from "redux";
 import {connect} from "react-redux";
 import {switchSiteMode, switchSiteTheme, switchImagesVisibility, switchFontSize} from "../REDUX/specialReduser";
 import Switch from "@material-ui/core/Switch";
+import { withStyles } from '@material-ui/core/styles';
+import { black } from '@material-ui/core/colors';
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import AdjustIcon from '@material-ui/icons/Adjust';
 import RemoveRedEyeOutlinedIcon from '@material-ui/icons/RemoveRedEyeOutlined';
+import Brightness1Icon from '@material-ui/icons/Brightness1';
 
 
-function SpecialSettings({switchSiteTheme, switchImagesVisibility, switchFontSize, imgHidden, siteMode, switchSiteMode}) {
+function SpecialSettings({switchSiteTheme, switchImagesVisibility, switchFontSize, imgHidden, siteMode, switchSiteMode, themeCl}) {
 
     let modeToDispatch = siteMode === 'default' ? 'special' : 'default'
 
     const handleImgSwitch = () => imgHidden ? switchImagesVisibility(false) : switchImagesVisibility(true)
     const handleImgSwitch_Enter = (key) => key === 'Enter' && handleImgSwitch()
 
+    // const PurpleSwitch = withStyles({
+    //     switchBase: {
+    //       color: '#000',
+    //       '&$checked': {
+    //         color: '#000',
+    //       },
+    //       '&$checked + $track': {
+    //         backgroundColor: '#000',
+    //       },
+    //     },
+    //     checked: {},
+    //     track: {},
+    //   })(Switch);
+
     return (
-        <div className={"focus"}>
+        <div className="specialSettings__container">
             <div className={`specialSettings__flex`}>
-                <div className='specialSettings__item'>
+                <div className='specialSettings__flex__item'>
                     <div>Цветовая схема</div>
+                    
                     <IconButton onClick={() => switchSiteTheme('blackWhite')} className="themeBW" >
-                        <AdjustIcon />
+                        <Brightness1Icon />
                     </IconButton>
                     <IconButton onClick={() => switchSiteTheme('whiteBlack')} className={'themeWB'} >
-                        <AdjustIcon />
+                        <Brightness1Icon />
                     </IconButton>
                     <IconButton onClick={() => switchSiteTheme('blackRed')} className={'themeBR'} >
-                        <AdjustIcon />
+                        <Brightness1Icon />
                     </IconButton>
                     <IconButton onClick={() => switchSiteTheme('yellowBrown')} className={'themeYB'}>
-                        <AdjustIcon />
+                        <Brightness1Icon />
                     </IconButton>
                     <IconButton onClick={() => switchSiteTheme('blueGreen')} size={"medium"} className={'themeBG'} >
-                        <AdjustIcon />
+                        <Brightness1Icon />
                     </IconButton>
+                    
+                    
                 </div>
 
-                <div className='specialSettings__item'>
+                <div className={`specialSettings__flex__item`}>
                     <div>Размер шрифта</div>
-                    <ButtonGroup size="large" variant="contained" color="primary" aria-label="contained primary button group">
+                    <ButtonGroup className={`specialSettings__flex__fontButtons`} size="large" variant="contained" aria-label="contained primary button group">
                         <Button onClick={() => switchFontSize('100')}>100%</Button>
                         <Button onClick={() => switchFontSize('150')}>150%</Button>
                         <Button onClick={() => switchFontSize('200')}>200%</Button>
                     </ButtonGroup>
                 </div>
 
-                <div className='specialSettings__item'>
+                <div className='specialSettings__flex__item'>
                     <div>Изображения</div>
                     <span>Выкл.</span>
                     <Switch
                         onClick={handleImgSwitch}
                         checked={!imgHidden}
                         onKeyPress={(e) => handleImgSwitch_Enter(e.key)}
-                        color="primary"
+                        color="das"
                         name="imgSwitcher"
                         inputProps={{ 'aria-label': 'primary checkbox'  }}
                     />
                     <span>Вкл.</span>
                 </div>
 
-                <div className='specialSettings__item'>
+                <div className='specialSettings__flex__item specialSettings__flex__modeButton'>
                     <Button
                         onClick={() => switchSiteMode(modeToDispatch)}
                         variant="contained"
-                        color="secondary"
                         // className={classes.button}
                         startIcon={<RemoveRedEyeOutlinedIcon />}
                     >

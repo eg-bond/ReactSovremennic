@@ -50,6 +50,7 @@ const Sushi = ({themeCl, siteMode}) => {
 
     let [key, setKey] = useState('sushi');
     let [activeKey, setActiveKey] = useState('sushi');
+    let [focusReg, switchFocusReg] = useState('focusNone')
 
     let swiperArr = ['brand_rolls', 'hot_dishes']
     let defaultSushiArr = [
@@ -139,8 +140,10 @@ const Sushi = ({themeCl, siteMode}) => {
                         <Col lg={9} md={9} sm={9}>
 
                             <Media query="(min-width: 768px) and (min-height: 500px)">
-                                <div className="sushiAdv sushiAdv--1">
-                                    <a href="http://www.region47.sbor.net/"><img src="./Images/region47_wide.gif" alt=""/></a>
+                                <div className={`sushiAdv sushiAdv--1 ${focusReg}`}>
+                                    <a href="http://www.region47.sbor.net/" onFocus={() => switchFocusReg('focusUp')} onBlur={() => switchFocusReg('focusNone')}>
+                                        <img src="./Images/region47_wide.gif" alt=""/>
+                                    </a>
                                 </div>
                             </Media>
 

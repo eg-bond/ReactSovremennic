@@ -3,13 +3,17 @@ import {NavLink} from "react-router-dom";
 import SpecialSettings from "./SpecialSettings";
 import {modifiedClass, themeLogo} from "../helpers";
 
-function Navigation({siteMode, switchSiteMode, themeCl, fontSize, theme}) {
-    // let modeToDispatch = siteMode === 'default' ? 'special' : 'default'
+function Navigation({siteMode, themeCl, fontSize, theme}) {
+
     const classHandler = (cl) => modifiedClass(cl, siteMode)
     let fsAdditionClass = fontSize === '150'
         ? 'navigation__menu__special__fsAdd-150'
         : fontSize === '200'
             ? 'navigation__menu__special__fsAdd-200' : ''
+    let fsAdditionClassLogo = fontSize === '150'
+        ? 'navigation__logo__special__fsAdd-150'
+        : fontSize === '200'
+            ? 'navigation__logo__special__fsAdd-200' : ''
     let logo = themeLogo(theme)
 
     return (
@@ -20,19 +24,18 @@ function Navigation({siteMode, switchSiteMode, themeCl, fontSize, theme}) {
                     <SpecialSettings themeCl={themeCl}/>
 
                     <div className={siteMode === "default" && "space"}>
-                        {siteMode === "special" && <div className="navigation__logo">
-                                <NavLink to="/"><img src={`./Images/${logo}.gif`} alt='logoImage'/></NavLink>
-                            </div>
-                            }
-                            {/*<button className={"focus"} onClick={() => switchSiteMode(modeToDispatch)}>*/}
-                            {/*    {siteMode === "default" ? "Версия для слабовидящих" : "Обычная версия сайта"}*/}
-                            {/*</button>}*/}
+                        {/*{siteMode === "special" && <div className="navigation__logo">*/}
+                        {/*        <NavLink to="/"><img src={`./Images/${logo}.gif`} alt='logoImage'/></NavLink>*/}
+                        {/*    </div>}*/}
                     </div>
 
                     <nav role="navigation" className={`navbar navbar-inverse ${classHandler('navigation')} ${themeCl.back} ${themeCl.pills} ${themeCl.borders}`}>
-                        {siteMode === "default" && <div className="navigation__logo">
-                            <NavLink to="/"><img src="./Images/logo.gif" alt='logoImage'/></NavLink>
-                        </div>}
+                        {/*{siteMode === "default" && <div className="navigation__logo">*/}
+                        {/*    <NavLink to="/"><img src={`./Images/${logo}.gif`} alt='logoImage'/></NavLink>*/}
+                        {/*</div>}*/}
+                        <div className={`navigation__logo ${siteMode === "default" ? "navigation__logo__default" : "navigation__logo__special"} ${fsAdditionClassLogo}`}>
+                            <NavLink activeClassName={''} to="/"><img  src={`./Images/${logo}.gif`} alt='logoImage'/></NavLink>
+                        </div>
                         <div className={`${classHandler('navigation__menu')} ${fsAdditionClass} focus`}>
                             <ul>
                                 <li><NavLink to="seans" activeClassName="active">Расписание</NavLink></li>
