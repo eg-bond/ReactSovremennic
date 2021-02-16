@@ -2,7 +2,7 @@ import React from 'react';
 import {DescriptionTrailer} from "./DescriptionTrailer";
 import Media from 'react-media';
 
-function SelectedFilm({siteMode, ...props}) {
+function SelectedFilm({siteMode, themeCl, ...props}) {
 
     let filmImg = `Images/description/${props.film['link']}_D.jpg`;
 
@@ -18,9 +18,9 @@ function SelectedFilm({siteMode, ...props}) {
                     </div>
 
                     <div className="filmFlex2">
-                        <div className="description_h">
-                            <h2>{props.film['title']}</h2>
-                            <p>Смотрите {`${props.film['beginDate']} ${props.film['endDate']}`}</p>
+                        <div className={`description_h`}>
+                            <h2 className={siteMode === 'special' && themeCl.elems}>{props.film['title']}</h2>
+                            <p className={siteMode === 'special' && themeCl.elems}>Смотрите {`${props.film['beginDate']} ${props.film['endDate']}`}</p>
                         </div>
                         <table className="description_table">
                             <tbody>

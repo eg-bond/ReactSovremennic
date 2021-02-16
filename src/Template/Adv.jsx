@@ -11,7 +11,7 @@ function Adv() {
                     <img src="./Images/region47.gif" alt="Регион47"/>
                 </a>
             </div>
-            <div className="desktopAdv desktopAdv--2"><img src="./Images/jsb1.gif" alt="Подарочный сертивикат"/></div>
+            <div className="desktopAdv desktopAdv--2 focusNone"><img src="./Images/jsb1.gif" alt="Подарочный сертивикат"/></div>
             <div className={`desktopAdv desktopAdv--3 ${focusSushi}`}>
                 <NavLink onFocus={() => switchFocusSushi('focusImg')} onBlur={() => switchFocusSushi('focusNone')}  to="sushi">
                     <img src="./Images/72.gif" alt="Суши-бар"/>

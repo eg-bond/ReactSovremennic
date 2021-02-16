@@ -11,7 +11,7 @@
     }
   }
   .theme__#{$theme}__elements {
-    color: $elemsColor;
+    color: $elemsColor !important;
   }
   .theme__#{$theme}__elements a, .theme__#{$theme}__elements h1, .theme__#{$theme}__elements h2,
   .theme__#{$theme}__elements h3, .theme__#{$theme}__elements h4, .theme__#{$theme}__elements p {
@@ -103,7 +103,6 @@
   & span {
     color: white;
     font-size: 120%;
-    // font-weight: bold;
   }
 }
 
@@ -116,13 +115,9 @@
   & span {
     color: white;
     font-size: 150%;
-    font-weight: bold;
+    //font-weight: bold;
   }
 }
-// .MuiSwitch-switchBase {
-//   color: purple !important;
-  
-// }
 
 @mixin themeButton ($theme, $backColor, $elemsColor) {
   .#{$theme} {

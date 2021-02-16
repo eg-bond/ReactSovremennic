@@ -88,7 +88,7 @@ const App = ({createActualDatesArr, initialActiveKey, initialButtonTitle, create
                     <Route exact path="/sushi"><Sushi themeCl={themeCl} siteMode={siteMode}/></Route>
                     {siteMode === "special" && <Route exact path="/films"><FilmsSpecialPage films={films}/></Route>}
                     <Route exact path="/advertising"><Advertising /></Route>
-                    <Cinema films={films} filmsToday={filmsToday} siteMode={siteMode}/>
+                    <Cinema films={films} filmsToday={filmsToday} siteMode={siteMode} themeCl={themeCl}/>
 
                     <Media query="(min-width: 768px) and (min-height: 500px)">
                         {id !== "sushi" && <Adv/>}

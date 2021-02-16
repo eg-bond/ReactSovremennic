@@ -142,7 +142,7 @@ const Sushi = ({themeCl, siteMode}) => {
                             <Media query="(min-width: 768px) and (min-height: 500px)">
                                 <div className={`sushiAdv sushiAdv--1 ${focusReg}`}>
                                     <a href="http://www.region47.sbor.net/" onFocus={() => switchFocusReg('focusUp')} onBlur={() => switchFocusReg('focusNone')}>
-                                        <img src="./Images/region47_wide.gif" alt=""/>
+                                        <img src="./Images/region47_wide.gif" alt="region47"/>
                                     </a>
                                 </div>
                             </Media>
@@ -152,7 +152,7 @@ const Sushi = ({themeCl, siteMode}) => {
                                 : swiperArr.includes(key)
                                     ? swiperSushiElem(key)
                                     : <SushiContentWrapper>
-                                        <div><img src={`./Images/sushi/${key}.gif`} alt={key}/></div>
+                                        <div><img className={'sushi__page__img'} src={`./Images/sushi/${key}.gif`} alt={key}/></div>
                                     </SushiContentWrapper>}
 
                         </Col>
