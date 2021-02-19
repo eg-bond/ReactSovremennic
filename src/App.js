@@ -45,7 +45,7 @@ const App = ({createActualDatesArr, initialActiveKey, initialButtonTitle, create
     let currentFS = currentFontSizeClass(fontSize) || 'fontSize__100'
 
     return (
-        <div className={`${classHandler("mainContainer")} ${themeCl.back} ${themeCl.elems} ${currentFS}`}>
+        <div className={`${classHandler("mainContainer")} ${siteMode === 'special' ? themeCl.back : ''} ${themeCl.elems} ${currentFS}`}>
             <Media query="(max-width: 767.5px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)">
                 <ScrollToTop/>
             </Media>

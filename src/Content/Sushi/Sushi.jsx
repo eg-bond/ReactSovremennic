@@ -48,9 +48,12 @@ function SushiModal() {
 
 const Sushi = ({themeCl, siteMode}) => {
 
+    console.log('render')
+
     let [key, setKey] = useState('sushi');
     let [activeKey, setActiveKey] = useState('sushi');
     let [focusReg, switchFocusReg] = useState('focusNone')
+    let [opacityCl, switchOpacityCl] = useState('opacity_1')
 
     let swiperArr = ['brand_rolls', 'hot_dishes']
     let defaultSushiArr = [
@@ -92,11 +95,12 @@ const Sushi = ({themeCl, siteMode}) => {
     ]
 
     const desktopMenuItem = (key, title) =>
-        <button key={key} className={activeKey === key && 'active'}
-                onClick={(e) => sushiImageChange(e, key)}>{title}</button>
+        <button key={key} className={activeKey === key ? 'active' : ''}
+                onClick={(e) => sushiImageChange(e, key)}
+                >{title}</button>
 
     const SushiContentWrapper = (props) =>
-        <div className='sushi_page__content' style={{paddingBottom: "30px"}}>{props.children}</div>
+        <div className={`sushi_page__content ${opacityCl}`} style={{paddingBottom: "30px"}}>{props.children}</div>
 
     const firstSushiImage = (key) =>
         <SushiContentWrapper>
@@ -110,9 +114,13 @@ const Sushi = ({themeCl, siteMode}) => {
             {key === 'brand_rolls' ? <BrandRollsSwiper/> : <HotDishesSwiper/>}
         </SushiContentWrapper>
 
+    // let [focusElem, switchFocusElem] = useState(' ')
+
     const sushiImageChange = (e, key) => {
+        // switchOpacityCl('focusUp')
         setKey(key)
         setActiveKey(key)
+        // switchOpacityCl('opacity_1')
         e.target.className = 'active'
     }
 
@@ -146,6 +154,9 @@ const Sushi = ({themeCl, siteMode}) => {
                                     </a>
                                 </div>
                             </Media>
+                            {/*<div className={`sushi_page__content ${opacityCl}`} style={{paddingBottom: "30px"}}>*/}
+                            {/*    <div><img className={'sushi__page__img'} src={`./Images/sushi/${key}.gif`} alt={key}/></div>*/}
+                            {/*</div>*/}
 
                             {key === 'sushi'
                                 ? firstSushiImage(key)

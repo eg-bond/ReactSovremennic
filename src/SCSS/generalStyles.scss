@@ -67,7 +67,6 @@ a:focus {
 
 .mainContainer__default {
   background: #172f51 no-repeat top center url("/Images/main_image.jpg");
-  //background-image: url("/Images/main_image.jpg");
   @media (max-width: 1200px) {
     background-size: 1600px 950px;
   }
@@ -84,6 +83,7 @@ a:focus {
 }
 
 .space {
+  position: relative;
   text-align: center;
   opacity: 1;
   height: 245px;
@@ -156,12 +156,12 @@ hr {
 
 .opacity_0 {
   opacity: 0;
-  transition: all 0.35s;
+  transition: ease 300ms;
 }
 
 .opacity_1 {
   opacity: 1;
-  transition: all 0.35s;
+  transition: ease 300ms;
 }
 
 .opacity {

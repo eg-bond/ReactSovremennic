@@ -20,21 +20,11 @@ function Navigation({siteMode, themeCl, fontSize, theme}) {
         <div>
             <div className="container">
                 <div className="row">
-                    {/*{siteMode === "special" && <SpecialSettings themeCl={themeCl} siteMode={siteMode} switchSiteMode={switchSiteMode}/>}*/}
                     <SpecialSettings themeCl={themeCl}/>
 
-                    <div className={siteMode === "default" && "space"}>
-                        {/*{siteMode === "special" && <div className="navigation__logo">*/}
-                        {/*        <NavLink to="/"><img src={`./Images/${logo}.gif`} alt='logoImage'/></NavLink>*/}
-                        {/*    </div>}*/}
-                    </div>
-
                     <nav role="navigation" className={`navbar navbar-inverse ${classHandler('navigation')} ${themeCl.back} ${themeCl.pills} ${themeCl.borders}`}>
-                        {/*{siteMode === "default" && <div className="navigation__logo">*/}
-                        {/*    <NavLink to="/"><img src={`./Images/${logo}.gif`} alt='logoImage'/></NavLink>*/}
-                        {/*</div>}*/}
                         <div className={`navigation__logo ${siteMode === "default" ? "navigation__logo__default" : "navigation__logo__special"} ${fsAdditionClassLogo}`}>
-                            <NavLink activeClassName={''} to="/"><img  src={`./Images/${logo}.gif`} alt='logoImage'/></NavLink>
+                            <NavLink activeClassName={''} to="/"><img src={`./Images/${logo}.png`} alt='logoImage'/></NavLink>
                         </div>
                         <div className={`${classHandler('navigation__menu')} ${fsAdditionClass} focus`}>
                             <ul>

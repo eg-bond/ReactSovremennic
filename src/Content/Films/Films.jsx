@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import {NavLink} from "react-router-dom";
 
 function Films({films, page}) {
+
+    console.log('filmsRender')
     let mainClassname = page === 'index' ? 'filmsSpecial__indexPage' : 'filmsSpecial__cinemaPage'
 
     // let [focusReg, switchFocusReg] = useState(' ')

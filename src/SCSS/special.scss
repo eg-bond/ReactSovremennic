@@ -1,4 +1,5 @@
 @import "variables";
+@import "fonts";
 
 @mixin theme ($theme, $backColor, $elemsColor){
   .theme__#{$theme}__background {
@@ -73,8 +74,9 @@
 
 // Стили для верхней панели настроек
 .specialSettings__container {
-  background-color: #aaadb1;
+  background-color: #94a6af;
   padding: 0.5% 1%;
+  height: 78px;
 }
 
 .specialSettings__flex {
@@ -85,21 +87,41 @@
 }
 .specialSettings__flex__item {
   position: relative;
-  // align-items: flex-end;
-  //width: 240px;
-  //@media (max-width: 1200px) {
-  //  width: 200px;
-  //}
-  //@media (max-width: 992px) {
-  //  margin-left: 3.5%;
-  //  width: 155px;
-  //}
+  //font-family: $robotoFont;
+  font-family: $playFont;
+  color: black;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+.specialSettings__flex__title {
+  //font-family: 'Play-regular';
+  padding-bottom: 4%;
+  font-weight: bold;
 }
 .specialSettings__flex__modeButton {
   align-self: center;
   & button {
-    background-color: black; 
-  }   
+    background-color: black;
+  }
+  & button:hover {
+    background-color: black !important;
+  }
+  & span {
+    color: white;
+    font-size: 120%;
+  }
+}
+.space {
+  & button {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    background-color: black;
+  }
+  & button:hover {
+    background-color: black !important;
+  }
   & span {
     color: white;
     font-size: 120%;
@@ -111,13 +133,28 @@
   & button {
     background-color: black;
     padding: 6px 12px;
-  }  
+  }
+  & button:hover {
+    background-color: black !important;
+  }
   & span {
     color: white;
     font-size: 150%;
     //font-weight: bold;
   }
 }
+
+//.specialSettings__switchOff {
+//  border: 2px black solid;
+//  border-radius: 5px;
+//  padding: 5px;
+//}
+//
+//.specialSettings__switchOn {
+//  border: 2px black solid;
+//  border-radius: 5px;
+//  padding: 5px 10px;
+//}
 
 @mixin themeButton ($theme, $backColor, $elemsColor) {
   .#{$theme} {
