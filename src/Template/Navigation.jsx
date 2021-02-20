@@ -9,7 +9,7 @@ function Navigation() {
                     <div className="space"/>
                     <nav role="navigation" className="navbar navbar-inverse navigation">
                         <div className="navigation__logo">
-                            <NavLink to="/"><img src="./Images/logo.gif" alt='logoImage'/></NavLink>
+                            <NavLink to="/"><img src="./Images/logo.png" alt='logoImage'/></NavLink>
                         </div>
                         <div className="navigation__menu">
                             <ul>
