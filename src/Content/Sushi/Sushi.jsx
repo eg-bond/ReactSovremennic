@@ -48,8 +48,6 @@ function SushiModal() {
 
 const Sushi = ({themeCl, siteMode}) => {
 
-    console.log('render')
-
     let [key, setKey] = useState('sushi');
     let [activeKey, setActiveKey] = useState('sushi');
     let [focusReg, switchFocusReg] = useState('focusNone')
@@ -100,7 +98,7 @@ const Sushi = ({themeCl, siteMode}) => {
                 >{title}</button>
 
     const SushiContentWrapper = (props) =>
-        <div className={`sushi_page__content ${opacityCl}`} style={{paddingBottom: "30px"}}>{props.children}</div>
+        <div className={`sushi_page__content`} style={{paddingBottom: "30px"}}>{props.children}</div>
 
     const firstSushiImage = (key) =>
         <SushiContentWrapper>
@@ -114,14 +112,16 @@ const Sushi = ({themeCl, siteMode}) => {
             {key === 'brand_rolls' ? <BrandRollsSwiper/> : <HotDishesSwiper/>}
         </SushiContentWrapper>
 
-    // let [focusElem, switchFocusElem] = useState(' ')
+    let delay = (ms) => {return new Promise(res => setTimeout(() => res(), ms))}
 
-    const sushiImageChange = (e, key) => {
-        // switchOpacityCl('focusUp')
+    async function sushiImageChange(e, key) {
+        // switchOpacityCl('opacity_0')
+        // setActiveKey(key)
+        await delay(220)
         setKey(key)
-        setActiveKey(key)
+        // e.target.className = 'active'
+        await delay(80)
         // switchOpacityCl('opacity_1')
-        e.target.className = 'active'
     }
 
     return (
@@ -145,7 +145,7 @@ const Sushi = ({themeCl, siteMode}) => {
                             </Col>
                         </Media>
 
-                        <Col lg={9} md={9} sm={9}>
+                        <Col className={`${opacityCl}`} lg={9} md={9} sm={9}>
 
                             <Media query="(min-width: 768px) and (min-height: 500px)">
                                 <div className={`sushiAdv sushiAdv--1 ${focusReg}`}>
@@ -154,16 +154,13 @@ const Sushi = ({themeCl, siteMode}) => {
                                     </a>
                                 </div>
                             </Media>
-                            {/*<div className={`sushi_page__content ${opacityCl}`} style={{paddingBottom: "30px"}}>*/}
-                            {/*    <div><img className={'sushi__page__img'} src={`./Images/sushi/${key}.gif`} alt={key}/></div>*/}
-                            {/*</div>*/}
 
                             {key === 'sushi'
                                 ? firstSushiImage(key)
                                 : swiperArr.includes(key)
                                     ? swiperSushiElem(key)
                                     : <SushiContentWrapper>
-                                        <div><img className={'sushi__page__img'} src={`./Images/sushi/${key}.gif`} alt={key}/></div>
+                                        <div><img  className={'sushi__page__img'} src={`./Images/sushi/${key}.gif`} alt={key}/></div>
                                     </SushiContentWrapper>}
 
                         </Col>
