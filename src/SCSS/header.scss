@@ -80,7 +80,7 @@
     padding-left: 0;
   }
   @media (max-width: 992px) {
-    //padding-left: 6%;
+    padding-left: 2%;
   }
 }
 .navigation__menu__special__fsAdd-150 {
@@ -159,14 +159,14 @@
 .navigation__menu a {
   font-weight: 900;
   border-radius: 5px;
-  padding: 10px 14px;
+  padding: 9px 14px;
   text-decoration: none;
   @media (max-width: 992px) {
     font-size: 85%;
-    padding: 10px 8.5px;
+    padding: 8px 6px;
   }
   @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
-    padding: 11px 4.5px;
+    padding: 10px 4.5px;
   }
 }
 //.navigation__menu a.active {

@@ -9,12 +9,10 @@ import {connect} from "react-redux";
 import {CreateTable} from "./CreateTable";
 import Media from 'react-media';
 
-
+let table = CreateTable();
+let finalTable = [...table];
 
 const Seans = React.memo(({initialActiveKey, initialButtonTitle, themeCl, fontSize, ...props}) => {
-
-    let table = CreateTable();
-    let finalTable = [...table];
 
     useEffect(() => {
         return () => {

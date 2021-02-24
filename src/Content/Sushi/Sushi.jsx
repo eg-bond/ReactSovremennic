@@ -46,56 +46,50 @@ function SushiModal() {
     );
 }
 
+const swiperArr = ['brand_rolls', 'hot_dishes']
+const defaultSushiArr = [
+    ['sushi', 'Суши'],
+    ['rolls', 'Роллы'],
+    ['black_rolls', 'Цветные/черные роллы'],
+    ['hot_rolls', 'Запеченые роллы'],
+    ['brand_rolls', 'Фирменные роллы'],
+    ['mini_rolls', 'Мини-роллы'],
+    ['sets', 'Наборы'],
+    ['salads', 'Салаты'],
+    ['soups', 'Супы'],
+    ['hot_dishes', 'Горячие блюда'],
+    ['garnish', 'Гарниры'],
+    ['dessert', 'Десерты'],
+    ['gruzia', 'Грузинская кухня'],
+    ['pizza', 'Пицца']
+]
+const specialSushiArr = [
+    ['sushi', 'Суши'],
+    ['rolls', 'Роллы'],
+    ['black_rolls', 'Цветные/черные роллы'],
+    ['hot_rolls', 'Запеченые роллы'],
+    ['brand_rolls1', 'Фирменные роллы 1'],
+    ['brand_rolls2', 'Фирменные роллы 2'],
+    ['brand_rolls3', 'Фирменные роллы 3'],
+    ['mini_rolls', 'Мини-роллы'],
+    ['sets', 'Наборы'],
+    ['salads', 'Салаты'],
+    ['soups', 'Супы'],
+    ['hot_dishes1', 'Горячие блюда 1'],
+    ['hot_dishes2', 'Горячие блюда 2'],
+    ['hot_dishes3', 'Горячие блюда 3'],
+    ['hot_dishes4', 'Горячие блюда 4'],
+    ['garnish', 'Гарниры'],
+    ['dessert', 'Десерты'],
+    ['gruzia', 'Грузинская кухня'],
+    ['pizza', 'Пицца']
+]
+
 const Sushi = ({themeCl, siteMode}) => {
 
-    let [key, setKey] = useState('sushi');
-    let [activeKey, setActiveKey] = useState('sushi');
+    let [activeKey, setActiveKey] = useState('sushi')
     let [focusReg, switchFocusReg] = useState('focusNone')
     let [opacityCl, switchOpacityCl] = useState('opacity_1')
-
-    let swiperArr = ['brand_rolls', 'hot_dishes']
-    let defaultSushiArr = [
-        ['sushi', 'Суши'],
-        ['rolls', 'Роллы'],
-        ['black_rolls', 'Цветные/черные роллы'],
-        ['hot_rolls', 'Запеченые роллы'],
-        ['brand_rolls', 'Фирменные роллы'],
-        ['mini_rolls', 'Мини-роллы'],
-        ['sets', 'Наборы'],
-        ['salads', 'Салаты'],
-        ['soups', 'Супы'],
-        ['hot_dishes', 'Горячие блюда'],
-        ['garnish', 'Гарниры'],
-        ['dessert', 'Десерты'],
-        ['gruzia', 'Грузинская кухня'],
-        ['pizza', 'Пицца']
-    ]
-    let specialSushiArr = [
-        ['sushi', 'Суши'],
-        ['rolls', 'Роллы'],
-        ['black_rolls', 'Цветные/черные роллы'],
-        ['hot_rolls', 'Запеченые роллы'],
-        ['brand_rolls1', 'Фирменные роллы 1'],
-        ['brand_rolls2', 'Фирменные роллы 2'],
-        ['brand_rolls3', 'Фирменные роллы 3'],
-        ['mini_rolls', 'Мини-роллы'],
-        ['sets', 'Наборы'],
-        ['salads', 'Салаты'],
-        ['soups', 'Супы'],
-        ['hot_dishes1', 'Горячие блюда 1'],
-        ['hot_dishes2', 'Горячие блюда 2'],
-        ['hot_dishes3', 'Горячие блюда 3'],
-        ['hot_dishes4', 'Горячие блюда 4'],
-        ['garnish', 'Гарниры'],
-        ['dessert', 'Десерты'],
-        ['gruzia', 'Грузинская кухня'],
-        ['pizza', 'Пицца']
-    ]
-
-    const desktopMenuItem = (key, title) =>
-        <button key={key} className={activeKey === key ? 'active' : ''}
-                onClick={(e) => sushiImageChange(e, key)}
-                >{title}</button>
 
     const SushiContentWrapper = (props) =>
         <div className={`sushi_page__content`} style={{paddingBottom: "30px"}}>{props.children}</div>
@@ -107,6 +101,11 @@ const Sushi = ({themeCl, siteMode}) => {
             </div>
         </SushiContentWrapper>
 
+    const sushiElem = (key) =>
+        <SushiContentWrapper>
+            <div><img className={'sushi__page__img'} src={`./Images/sushi/${key}.gif`} alt={key}/></div>
+        </SushiContentWrapper>
+
     const swiperSushiElem = (key) =>
         <SushiContentWrapper>
             {key === 'brand_rolls' ? <BrandRollsSwiper/> : <HotDishesSwiper/>}
@@ -114,14 +113,19 @@ const Sushi = ({themeCl, siteMode}) => {
 
     let delay = (ms) => {return new Promise(res => setTimeout(() => res(), ms))}
 
+    const desktopMenuItem = (key, title) =>
+        <button key={key} className={activeKey === key ? 'active' : ''}
+                onClick={(e) => sushiImageChange(e, key)}
+        >{title}</button>
+
     async function sushiImageChange(e, key) {
-        // switchOpacityCl('opacity_0')
-        // setActiveKey(key)
-        await delay(220)
-        setKey(key)
-        // e.target.className = 'active'
-        await delay(80)
-        // switchOpacityCl('opacity_1')
+        if (key !== activeKey) {
+            switchOpacityCl('opacity_0')
+            await delay(180)
+            setActiveKey(key)
+            await delay(50)
+            switchOpacityCl('opacity_1')
+        }
     }
 
     return (
@@ -145,7 +149,7 @@ const Sushi = ({themeCl, siteMode}) => {
                             </Col>
                         </Media>
 
-                        <Col className={`${opacityCl}`} lg={9} md={9} sm={9}>
+                        <Col lg={9} md={9} sm={9}>
 
                             <Media query="(min-width: 768px) and (min-height: 500px)">
                                 <div className={`sushiAdv sushiAdv--1 ${focusReg}`}>
@@ -155,13 +159,13 @@ const Sushi = ({themeCl, siteMode}) => {
                                 </div>
                             </Media>
 
-                            {key === 'sushi'
-                                ? firstSushiImage(key)
-                                : swiperArr.includes(key)
-                                    ? swiperSushiElem(key)
-                                    : <SushiContentWrapper>
-                                        <div><img  className={'sushi__page__img'} src={`./Images/sushi/${key}.gif`} alt={key}/></div>
-                                    </SushiContentWrapper>}
+                            <div className={`${opacityCl}`}>
+                                {activeKey === 'sushi'
+                                    ? firstSushiImage(activeKey)
+                                    : swiperArr.includes(activeKey)
+                                        ? swiperSushiElem(activeKey)
+                                        : sushiElem(activeKey)}
+                            </div>
 
                         </Col>
                     </div>

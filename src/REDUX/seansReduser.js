@@ -6,13 +6,13 @@ const CREATE_ACTUAL_DATES_ARR = "CREATE_ACTUAL_DATES_ARR";
 
 let initialState = {
     datesArr: [
-        ["day0", "Воскресенье", "7 сентября"],
-        ["day1", "Понедельник", "1 сентября"],
-        ["day2", "Вторник", "2 сентября"],
-        ["day3", "Среда", "3 сентября"],
-        ["day4", "Четверг", "4 сентября"],
-        ["day5", "Пятница", "5 сентября"],
-        ["day6", "Суббота", "6 сентября"]
+        ["day0", "Воскресенье", "28 февраля"],
+        ["day1", "Понедельник", "22 февраля"],
+        ["day2", "Вторник", "23 февраля"],
+        ["day3", "Среда", "24 февраля"],
+        ["day4", "Четверг", "25 февраля"],
+        ["day5", "Пятница", "26 февраля"],
+        ["day6", "Суббота", "27 февраля"]
     ],
     actualDatesArr: [], // массив с датами, расположенными в правильном порядке
     beginDate: "monday", // monday либо любое другое значение
@@ -20,9 +20,7 @@ let initialState = {
     buttonTitle: "Дата"
 }
 
-
 export const seansReduser = (state = initialState, action) => {
-    window.seansState = state
     switch (action.type) {
         case INITIAL_ACTIVE_KEY:
             let date = new Date();
