@@ -1,50 +1,13 @@
 import React, {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import Nav from "react-bootstrap/lib/Nav";
-import {Button, Col, Modal, NavItem} from "react-bootstrap";
+import {Col, Modal, Nav, NavItem} from "react-bootstrap";
 import HotDishesSwiper from "./HotDishesSwiper";
 import Media from 'react-media';
 import BrandRollsSwiper from "./BrandRollsSwiper";
-
-function SushiModal() {
-
-    let [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
-    return (
-        <div className="modal-container">
-            <Button onClick={handleShow} className='seans_button_xs '>
-                <span className="seans_button_xs__title">Меню</span> <span className="glyphicon glyphicon-chevron-down" aria-hidden="true"/>
-            </Button>
-
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Меню</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Nav bsStyle="tabs" className='seans-tab-xs sushi-tab-xs' stacked>
-                        <NavItem eventKey="sushi" onClick={handleClose}>Суши</NavItem>
-                        <NavItem eventKey="rolls" onClick={handleClose}>Роллы</NavItem>
-                        <NavItem eventKey="black_rolls" onClick={handleClose}>Цветные/черные роллы</NavItem>
-                        <NavItem eventKey="hot_rolls" onClick={handleClose}>Запеченые роллы</NavItem>
-                        <NavItem eventKey="brand_rolls" onClick={handleClose}>Фирменные роллы</NavItem>
-                        <NavItem eventKey="mini_rolls" onClick={handleClose}>Мини-роллы</NavItem>
-                        <NavItem eventKey="sets" onClick={handleClose}>Наборы, сашими</NavItem>
-                        <NavItem eventKey="salads" onClick={handleClose}>Салаты</NavItem>
-                        <NavItem eventKey="soups" onClick={handleClose}>Супы</NavItem>
-                        <NavItem eventKey="hot_dishes" onClick={handleClose}>Горячие блюда</NavItem>
-                        <NavItem eventKey="garnish" onClick={handleClose}>Гарниры</NavItem>
-                        <NavItem eventKey="dessert" onClick={handleClose}>Десерты</NavItem>
-                        <NavItem eventKey="gruzia" onClick={handleClose}>Грузинская кухня</NavItem>
-                        <NavItem eventKey="pizza" onClick={handleClose}>Пицца</NavItem>
-                    </Nav>
-                </Modal.Body>
-            </Modal>
-        </div>
-    );
-}
+import Button from '@material-ui/core/Button';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import NavItems from "../Seans/NavItems";
 
 const swiperArr = ['brand_rolls', 'hot_dishes']
 const defaultSushiArr = [
@@ -85,6 +48,36 @@ const specialSushiArr = [
     ['pizza', 'Пицца']
 ]
 
+function SushiModal({sushiImageChange}) {
+
+    let [show, setShow] = useState(false);
+    const handleClose = (key) => {
+        sushiImageChange(key)
+        setShow(false);
+    }
+
+    const handleShow = () => setShow(true);
+
+    return (
+        <div className="modal-container">
+            <button onClick={handleShow} className='seans_button_xs '>
+                <span className="seans_button_xs__title">Меню</span> <span className="glyphicon glyphicon-chevron-down" aria-hidden="true"/>
+            </button>
+
+            <Modal show={show} onHide={() => setShow(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Меню</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Nav bsStyle="tabs" className='seans-tab-xs sushi-tab-xs' stacked>
+                        {defaultSushiArr.map(d => <NavItem key={d[0]} eventKey={d[0]} onClick={() => handleClose(d[0])}>{d[1]}</NavItem>)}
+                    </Nav>
+                </Modal.Body>
+            </Modal>
+        </div>
+    );
+}
+
 const Sushi = ({themeCl, siteMode}) => {
 
     let [activeKey, setActiveKey] = useState('sushi')
@@ -115,10 +108,10 @@ const Sushi = ({themeCl, siteMode}) => {
 
     const desktopMenuItem = (key, title) =>
         <button key={key} className={activeKey === key ? 'active' : ''}
-                onClick={(e) => sushiImageChange(e, key)}
+                onClick={() => sushiImageChange(key)}
         >{title}</button>
 
-    async function sushiImageChange(e, key) {
+    async function sushiImageChange(key) {
         if (key !== activeKey) {
             switchOpacityCl('opacity_0')
             await delay(180)
@@ -135,13 +128,13 @@ const Sushi = ({themeCl, siteMode}) => {
                     <div>
                         <Media query="(max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)">
                             <div className="sushi_menu_xs padding_15xs">
-                                <SushiModal/>
+                                <SushiModal sushiImageChange={sushiImageChange}/>
                             </div>
                         </Media>
 
                         <Media query="(min-width: 768px) and (min-height: 500px)">
                             <Col lg={3} md={3} sm={3}>
-                                <div className={`sushi_page__menuButtons ${themeCl.navs}`}>
+                                <div className={`sushi_page__menuButtons ${siteMode === 'special' ? themeCl.navs : ''}`}>
                                     {siteMode === 'default'
                                         ? defaultSushiArr.map(item => desktopMenuItem(item[0], item[1]))
                                         : specialSushiArr.map(item => desktopMenuItem(item[0], item[1]))}

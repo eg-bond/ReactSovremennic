@@ -56,7 +56,19 @@
   justify-content: space-between;
   font-family: $arialFont;
 }
+.sushi_page__menuButtons .active {
+  color: black;
+  background-color: $linesColor;
+}
+.sushi_page__menuButtons button:hover {
+  color: black;
+  background-color: $linesColor;
+  transition: ease 600ms;
+}
 .sushi_page__menuButtons button {
+  background-color: black;
+  border: none;
+  outline: none;
   margin: 1% 0;
   padding: 4% 0 4% 3%;
   border-radius: 5px;

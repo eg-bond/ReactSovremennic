@@ -20,11 +20,20 @@
 
 .navigation__default {
   border-radius: 20px 20px 0 0;
+  border-color: $linesColor;
   @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
     border-radius: 0;
     border-width: 0;
   }
 }
+
+.navigation__default a:hover, .navigation__default a.active {
+  color: black !important;
+  background-color: white !important;
+}
+//.theme__#{$theme}__pills:focus, .theme__#{$theme}__pills a:focus, .theme__#{$theme}__pills button:focus, .theme__#{$theme}__navs button:focus {
+//  outline: 2px solid $elemsColor;
+//}
 .navigation__special {
   border-radius: 0;
   border-bottom: none;

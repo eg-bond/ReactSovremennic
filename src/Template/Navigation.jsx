@@ -21,8 +21,8 @@ function Navigation({siteMode, themeCl, fontSize, theme}) {
             <div className="container">
                 <div className="row">
                     <SpecialSettings themeCl={themeCl}/>
-
-                    <nav role="navigation" className={`navbar navbar-inverse ${classHandler('navigation')} ${themeCl.back} ${themeCl.pills} ${themeCl.borders}`}>
+                    {/*${themeCl.pills} ${themeCl.borders}*/}
+                    <nav role="navigation" className={`navbar navbar-inverse ${classHandler('navigation')} ${themeCl.back} ${siteMode === 'special' ? themeCl.pills + ' ' + themeCl.borders : ''}`}>
                         <div className={`navigation__logo ${siteMode === "default" ? "navigation__logo__default" : "navigation__logo__special"} ${fsAdditionClassLogo}`}>
                             <NavLink activeClassName={''} to="/"><img src={`./Images/${logo}.png`} alt='logoImage'/></NavLink>
                         </div>

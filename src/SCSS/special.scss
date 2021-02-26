@@ -30,16 +30,16 @@
     outline: 2px solid $elemsColor;
   }
   .theme__#{$theme}__navs .active {
-    color: $backColor;
-    background-color: $elemsColor;
+    color: $backColor !important;
+    background-color: $elemsColor !important;
   }
   .theme__#{$theme}__navs button {
-    background-color: $backColor;
-    border: none;
+    background-color: $backColor !important;
+    border: none !important;
   }
   .theme__#{$theme}__navs button:hover {
-    color: $backColor;
-    background-color: $elemsColor;
+    color: $backColor !important;
+    background-color: $elemsColor !important;
     transition: ease 600ms;
   }
 }

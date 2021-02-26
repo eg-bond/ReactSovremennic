@@ -12,6 +12,9 @@
   font-family: $arialFont;
   margin: 0 -2px;
   > button {
+    background-color: black;
+    border: none;
+    outline: none;
     padding: 7px 9px;
     margin: 1px 2px;
     text-align: left;
@@ -24,6 +27,15 @@
       padding: 4px 4.4px;
     }
   }
+}
+.seans-tabs .active {
+  color: black;
+  background-color: $linesColor;
+}
+.seans-tabs button:hover {
+  color: black;
+  background-color: $linesColor;
+  transition: ease 600ms;
 }
 
 .table_custom {

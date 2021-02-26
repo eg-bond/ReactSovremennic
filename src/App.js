@@ -84,7 +84,7 @@ const App = ({createActualDatesArr, initialActiveKey, initialButtonTitle, create
                     <Route exact path="/"><IndexContent siteMode={siteMode} films={films}/></Route>
                     <Route exact path="/about"><About siteMode={siteMode}/></Route>
                     <Route exact path="/rules"><Rules/></Route>
-                    <Route exact path="/seans"><Seans themeCl={themeCl}/></Route>
+                    <Route exact path="/seans"><Seans themeCl={themeCl} siteMode={siteMode}/></Route>
                     <Route exact path="/sushi"><Sushi themeCl={themeCl} siteMode={siteMode}/></Route>
                     {siteMode === "special" && <Route exact path="/films"><FilmsSpecialPage films={films}/></Route>}
                     <Route exact path="/advertising"><Advertising /></Route>
