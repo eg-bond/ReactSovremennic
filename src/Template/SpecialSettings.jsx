@@ -1,22 +1,18 @@
 import React from 'react';
 import {compose} from "redux";
 import {connect} from "react-redux";
-import {switchSiteMode, switchSiteTheme, switchImagesVisibility, switchFontSize} from "../REDUX/specialReduser";
+import {switchSiteTheme, switchImagesVisibility, switchFontSize} from "../REDUX/specialReduser";
 import Switch from "@material-ui/core/Switch";
-import { withStyles } from '@material-ui/core/styles';
-import { black } from '@material-ui/core/colors';
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
-import AdjustIcon from '@material-ui/icons/Adjust';
 import RemoveRedEyeOutlinedIcon from '@material-ui/icons/RemoveRedEyeOutlined';
 import Brightness1Icon from '@material-ui/icons/Brightness1';
 
-
-function SpecialSettings({switchSiteTheme, switchImagesVisibility, switchFontSize, imgHidden, siteMode, switchSiteMode, themeCl}) {
+function SpecialSettings({switchSiteTheme, switchImagesVisibility, switchFontSize, imgHidden, siteMode, switchSiteMode}) {
 
     let modeToDispatch = siteMode === 'default' ? 'special' : 'default'
-
+    
     const handleImgSwitch = () => imgHidden ? switchImagesVisibility(false) : switchImagesVisibility(true)
     const handleImgSwitch_Enter = (key) => key === 'Enter' && handleImgSwitch()
 
@@ -107,5 +103,5 @@ let mapStateToProps = (state) => ({
 });
 
 export default compose(
-    connect(mapStateToProps, {switchSiteMode ,switchSiteTheme, switchImagesVisibility, switchFontSize})
+    connect(mapStateToProps, {switchSiteTheme, switchImagesVisibility, switchFontSize})
 )(SpecialSettings);

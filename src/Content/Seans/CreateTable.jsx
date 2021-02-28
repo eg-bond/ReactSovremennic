@@ -35,7 +35,6 @@ export const CreateTable = () => {
                 </table>
             </Tab.Pane>);
     }
-    console.log('table created')
     return table;
 };
 

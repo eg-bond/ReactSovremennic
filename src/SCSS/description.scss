@@ -22,7 +22,6 @@
   position: relative;
   width: 100%;
   padding-bottom: 140%;
-  //background-color: black;
   border: solid 1px;
   border-radius: 8px;
 }
@@ -32,7 +31,6 @@
   height:100%;
   border-radius: 8px;
 }
-
 
 .filmFlex2 {
   width: 100%;
@@ -49,8 +47,11 @@
     color: #e41b2b;
   }
 }
+.description_h_200 {
+  margin-top: -2.5%;
+  font-weight: bold;  
+}
 .description_table {
-  //color: white;
   text-align: left;
   margin-bottom: 3%;
   font-family: $lusidaFont;

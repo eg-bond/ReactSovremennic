@@ -1,13 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import {Col, Modal, Nav, NavItem} from "react-bootstrap";
+import { Modal, Nav, NavItem } from "react-bootstrap";
 import HotDishesSwiper from "./HotDishesSwiper";
 import Media from 'react-media';
 import BrandRollsSwiper from "./BrandRollsSwiper";
-import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import NavItems from "../Seans/NavItems";
+import { queries } from '../../helpers';
 
 const swiperArr = ['brand_rolls', 'hot_dishes']
 const defaultSushiArr = [
@@ -48,7 +45,7 @@ const specialSushiArr = [
     ['pizza', 'Пицца']
 ]
 
-function SushiModal({sushiImageChange}) {
+function SushiModal({ sushiImageChange, activeKey }) {
 
     let [show, setShow] = useState(false);
     const handleClose = (key) => {
@@ -61,7 +58,7 @@ function SushiModal({sushiImageChange}) {
     return (
         <div className="modal-container">
             <button onClick={handleShow} className='seans_button_xs '>
-                <span className="seans_button_xs__title">Меню</span> <span className="glyphicon glyphicon-chevron-down" aria-hidden="true"/>
+                <span className="seans_button_xs__title">Меню</span> <span className="glyphicon glyphicon-chevron-down" aria-hidden="true" />
             </button>
 
             <Modal show={show} onHide={() => setShow(false)}>
@@ -70,7 +67,7 @@ function SushiModal({sushiImageChange}) {
                 </Modal.Header>
                 <Modal.Body>
                     <Nav bsStyle="tabs" className='seans-tab-xs sushi-tab-xs' stacked>
-                        {defaultSushiArr.map(d => <NavItem key={d[0]} eventKey={d[0]} onClick={() => handleClose(d[0])}>{d[1]}</NavItem>)}
+                        {defaultSushiArr.map(d => <NavItem className={activeKey === d[0] && 'active'} key={d[0]} eventKey={d[0]} onClick={() => handleClose(d[0])}>{d[1]}</NavItem>)}
                     </Nav>
                 </Modal.Body>
             </Modal>
@@ -78,37 +75,37 @@ function SushiModal({sushiImageChange}) {
     );
 }
 
-const Sushi = ({themeCl, siteMode}) => {
+const Sushi = ({ themeCl, siteMode }) => {
 
     let [activeKey, setActiveKey] = useState('sushi')
     let [focusReg, switchFocusReg] = useState('focusNone')
     let [opacityCl, switchOpacityCl] = useState('opacity_1')
 
     const SushiContentWrapper = (props) =>
-        <div className={`sushi_page__content`} style={{paddingBottom: "30px"}}>{props.children}</div>
+        <div className={`sushi_page__content`} style={{ paddingBottom: "30px" }}>{props.children}</div>
 
     const firstSushiImage = (key) =>
         <SushiContentWrapper>
             <div className="sushiEmptyImg">
-                <img className="sushiFirstImg" src={`./Images/sushi/${key}.gif`} alt="sushi"/>
+                <img className="sushiFirstImg" src={`./Images/sushi/${key}.gif`} alt="sushi" />
             </div>
         </SushiContentWrapper>
 
     const sushiElem = (key) =>
         <SushiContentWrapper>
-            <div><img className={'sushi__page__img'} src={`./Images/sushi/${key}.gif`} alt={key}/></div>
+            <div><img className={'sushi__page__img'} src={`./Images/sushi/${key}.gif`} alt={key} /></div>
         </SushiContentWrapper>
 
     const swiperSushiElem = (key) =>
         <SushiContentWrapper>
-            {key === 'brand_rolls' ? <BrandRollsSwiper/> : <HotDishesSwiper/>}
+            {key === 'brand_rolls' ? <BrandRollsSwiper /> : <HotDishesSwiper />}
         </SushiContentWrapper>
 
-    let delay = (ms) => {return new Promise(res => setTimeout(() => res(), ms))}
+    let delay = (ms) => { return new Promise(res => setTimeout(() => res(), ms)) }
 
     const desktopMenuItem = (key, title) =>
         <button key={key} className={activeKey === key ? 'active' : ''}
-                onClick={() => sushiImageChange(key)}
+            onClick={() => sushiImageChange(key)}
         >{title}</button>
 
     async function sushiImageChange(key) {
@@ -125,43 +122,42 @@ const Sushi = ({themeCl, siteMode}) => {
         <div>
             {/*<ScrollToTop/>*/}
             <div className="sushi_page">
-                    <div>
-                        <Media query="(max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)">
-                            <div className="sushi_menu_xs padding_15xs">
-                                <SushiModal sushiImageChange={sushiImageChange}/>
+                <div>
+                    <Media query={queries.mobile}>
+                        <div className="sushi_menu_xs padding_15xs">
+                            <SushiModal activeKey={activeKey} sushiImageChange={sushiImageChange} />
+                        </div>
+                    </Media>
+
+                    <Media query={queries.desktop}>
+                        <div className="col-lg-3 col-md-3 col-sm-3">
+                            <div className={`sushi_page__menuButtons ${siteMode === 'special' ? themeCl.navs : ''}`}>
+                                {siteMode === 'default'
+                                    ? defaultSushiArr.map(item => desktopMenuItem(item[0], item[1]))
+                                    : specialSushiArr.map(item => desktopMenuItem(item[0], item[1]))}
+                            </div>
+                        </div>
+                    </Media>
+
+                    <div className="col-lg-9 col-md-9 col-sm-9">
+                        <Media query={queries.desktop}>
+                            <div className={`sushiAdv sushiAdv--1 ${focusReg}`}>
+                                <a href="http://www.region47.sbor.net/" onFocus={() => switchFocusReg('focusUp')} onBlur={() => switchFocusReg('focusNone')}>
+                                    <img src="./Images/region47_wide.gif" alt="region47" />
+                                </a>
                             </div>
                         </Media>
 
-                        <Media query="(min-width: 768px) and (min-height: 500px)">
-                            <Col lg={3} md={3} sm={3}>
-                                <div className={`sushi_page__menuButtons ${siteMode === 'special' ? themeCl.navs : ''}`}>
-                                    {siteMode === 'default'
-                                        ? defaultSushiArr.map(item => desktopMenuItem(item[0], item[1]))
-                                        : specialSushiArr.map(item => desktopMenuItem(item[0], item[1]))}
-                                </div>
-                            </Col>
-                        </Media>
-
-                        <Col lg={9} md={9} sm={9}>
-
-                            <Media query="(min-width: 768px) and (min-height: 500px)">
-                                <div className={`sushiAdv sushiAdv--1 ${focusReg}`}>
-                                    <a href="http://www.region47.sbor.net/" onFocus={() => switchFocusReg('focusUp')} onBlur={() => switchFocusReg('focusNone')}>
-                                        <img src="./Images/region47_wide.gif" alt="region47"/>
-                                    </a>
-                                </div>
-                            </Media>
-
-                            <div className={`${opacityCl}`}>
-                                {activeKey === 'sushi'
-                                    ? firstSushiImage(activeKey)
-                                    : swiperArr.includes(activeKey)
-                                        ? swiperSushiElem(activeKey)
-                                        : sushiElem(activeKey)}
-                            </div>
-
-                        </Col>
+                        <div className={`${opacityCl}`}>
+                            {activeKey === 'sushi'
+                                ? firstSushiImage(activeKey)
+                                : swiperArr.includes(activeKey)
+                                    ? swiperSushiElem(activeKey)
+                                    : sushiElem(activeKey)}
+                        </div>
                     </div>
+
+                </div>
             </div>
         </div>
     );

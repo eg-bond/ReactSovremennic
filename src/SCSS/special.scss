@@ -55,7 +55,6 @@
 
 .hideImages img{
   opacity: 0;
-  //transition: all 0.35s;
 }
 
 // отдельные классы (для футера)
@@ -87,7 +86,6 @@
 }
 .specialSettings__flex__item {
   position: relative;
-  //font-family: $robotoFont;
   font-family: $playFont;
   color: black;
   text-align: center;
@@ -95,7 +93,6 @@
   font-weight: bold;
 }
 .specialSettings__flex__title {
-  //font-family: 'Play-regular';
   padding-bottom: 4%;
   font-weight: bold;
 }
@@ -144,18 +141,6 @@
   }
 }
 
-//.specialSettings__switchOff {
-//  border: 2px black solid;
-//  border-radius: 5px;
-//  padding: 5px;
-//}
-//
-//.specialSettings__switchOn {
-//  border: 2px black solid;
-//  border-radius: 5px;
-//  padding: 5px 10px;
-//}
-
 @mixin themeButton ($theme, $backColor, $elemsColor) {
   .#{$theme} {
     background-color: $backColor !important;
@@ -168,11 +153,6 @@
 @include themeButton(themeYB, $yellowBrownBackground, $yellowBrownElements);
 @include themeButton(themeBG, $blueGreenBackground, $blueGreenElements);
 
-
-
-//.focus:focus, .focus a:focus, .focus button:focus {
-//  outline: 1px solid white;
-//}
 .focusImg {
   -o-transform: translateX(-10px);
   -ms-transform: translateX(-10px);

@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {NavLink} from "react-router-dom";
 
-function Adv() {
+function Adv() {    
     let [focusReg, switchFocusReg] = useState('focusNone')
     let [focusSushi, switchFocusSushi] = useState('focusNone')
     return (<div className="col-lg-3 col-md-3 col-sm-3">

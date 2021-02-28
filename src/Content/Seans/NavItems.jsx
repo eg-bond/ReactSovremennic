@@ -13,7 +13,7 @@ const NavItems = (props) => {
         return (
             <div className='seans-tabs'>
                 {props.datesArr.map(d =>
-                    <button value={`${d[1]} ${d[2]}`} key={d[0]} className={props.activeKey === d[0] && 'active'}
+                    <button value={`${d[1]} ${d[2]}`} key={d[0]} className={props.activeKey === d[0] ? 'active' : ''}
                             onClick={(e) => switchSeanstable(e, d[0])}>{d[1]}<br/>{d[2]}
                     </button>)}
             </div>

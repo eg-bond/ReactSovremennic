@@ -3,7 +3,7 @@ import {NavLink} from "react-router-dom";
 import SpecialSettings from "./SpecialSettings";
 import {modifiedClass, themeLogo} from "../helpers";
 
-function Navigation({siteMode, themeCl, fontSize, theme}) {
+function Navigation({siteMode, themeCl, fontSize, theme, ...props}) {
 
     const classHandler = (cl) => modifiedClass(cl, siteMode)
     let fsAdditionClass = fontSize === '150'
@@ -20,8 +20,7 @@ function Navigation({siteMode, themeCl, fontSize, theme}) {
         <div>
             <div className="container">
                 <div className="row">
-                    <SpecialSettings themeCl={themeCl}/>
-                    {/*${themeCl.pills} ${themeCl.borders}*/}
+                    <SpecialSettings themeCl={themeCl} id={props.id} switchSiteMode={props.switchSiteMode} />
                     <nav role="navigation" className={`navbar navbar-inverse ${classHandler('navigation')} ${themeCl.back} ${siteMode === 'special' ? themeCl.pills + ' ' + themeCl.borders : ''}`}>
                         <div className={`navigation__logo ${siteMode === "default" ? "navigation__logo__default" : "navigation__logo__special"} ${fsAdditionClassLogo}`}>
                             <NavLink activeClassName={''} to="/"><img src={`./Images/${logo}.png`} alt='logoImage'/></NavLink>

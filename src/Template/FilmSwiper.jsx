@@ -52,7 +52,7 @@ const FilmSwiper = (props) => {
     };
 
     return (<>
-                <div onMouseEnter={() => turnAutoplay("stop")} onMouseLeave={() => turnAutoplay("start")}
+                <div onMouseEnter={() => turnAutoplay("stop")} onMouseLeave={() => turnAutoplay("start")}                
                      className={`cinemaSlider ${opacity===1 ? 'opacity_1' : 'opacity_0'}`}>
                     <Media query="(max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)"><h4>Фильмы</h4></Media>
                     <Swiper getSwiper={updateSwiper} {...params}>

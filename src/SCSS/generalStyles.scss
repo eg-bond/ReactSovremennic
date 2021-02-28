@@ -1,9 +1,5 @@
 @import "variables";
 
-//:root {
-//  --defaultFontSize: 14px;
-//}
-
 a, h1, h2, h4, p {
   font-family: $arialFont;
   color: white;
@@ -18,9 +14,6 @@ h1 {
     font-size: 22px;
   }
 }
-
-
-
 
 a:focus {
   outline: none;
@@ -43,30 +36,24 @@ a:focus {
 }
 
 .fontSize__100 {
-  //--defaultFontSize: 14px;
   font-size: 14px;
 }
 .fontSize__150 {
-  //--defaultFontSize: 21px;
   font-size: 21px;
 }
 .fontSize__200 {
-  //--defaultFontSize: 28px;
   font-size: 28px;
 }
 
 .mainContainer {
-  //font-size: var(--defaultFontSize);
   color: #000;
   margin: 0;
   padding: 0;
-  //background: #172f51 no-repeat top center;
   height: 100%;
-  //transition: ease 600ms;
 }
 
 .mainContainer__default {
-  background: #172f51 no-repeat top center url("/Images/main_image.jpg");
+  background: #990805 no-repeat top center url("/Images/main_image.jpg");
   @media (max-width: 1200px) {
     background-size: 1600px 950px;
   }
@@ -78,9 +65,9 @@ a:focus {
   }
 }
 
-.mainContainer__special {
-  //background-color: black;
-}
+// .mainContainer__special {
+
+// }
 
 .space {
   position: relative;
@@ -183,19 +170,10 @@ hr {
 
 .wrapper {
   height: 100% ;
-  //background-color: black;
   border: $border5px;
   border-top: none;
+  padding-bottom: 15px;
 }
-
-
-//.copyClass {
-//  color: black;
-//  background-color: white;
-//}
-//.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
-//  @extend .copyClass;
-//}
 
 .modal-dialog {
   h4 {
@@ -223,10 +201,7 @@ hr {
 //  border: none;
 //}
 
-
 .nav a:focus, .nav a:hover {
-  //background-color: #fff;
-  //color: black;
   text-decoration: none;
   transition: ease 650ms ;
 }

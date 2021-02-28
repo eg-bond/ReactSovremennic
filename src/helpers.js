@@ -30,3 +30,8 @@ export const themeLogo = (theme) => {
             return 'logo'
     }
 }
+// Медиа запросы
+export const queries = {
+    desktop: '(min-width: 768px) and (min-height: 500px)',
+    mobile: '(max-width: 767.5px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)'
+}
