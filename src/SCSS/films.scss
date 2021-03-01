@@ -1,4 +1,7 @@
 // Основные стили
+.filmsSpecial {
+  padding-left: 0%;
+}
 .filmsSpecial__h1 {
   padding-left: 1%;
 }
@@ -6,15 +9,25 @@
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+  margin: 0 -25px;
+  padding-left: 1%;
+  @media (max-width: 1200px) {
+    margin: 1% -18px;
+  }
+  @media (max-width: 992px) {
+    margin: 1% -13px;
+  }
 }
 .filmsSpecial__flex__item {
   position: relative;
   width: 240px;
+  margin: 0 25px;
   @media (max-width: 1200px) {
+    margin: 1% 18px;
     width: 200px;
   }
   @media (max-width: 992px) {
-    margin-left: 3.5%;
+    margin: 1% 13px;
     width: 155px;
   }
 }
@@ -48,7 +61,6 @@
     font-size: 75%;
   }
 }
-
 .filmsSpecial__flex__title p {
   font-size: 80%;
   @media (max-width: 1200px) {
@@ -58,56 +70,3 @@
     font-size: 62%;
   }
 }
-// -------------------------------
-
-.filmsSpecial__indexPage {
-  padding-left: 2%;
-
-  .filmsSpecial__flex {
-    margin: 1% -15px;
-    padding-left: 4%;
-    @media (max-width: 1200px) {
-      margin: 1% -11px;
-    }
-    @media (max-width: 992px) {
-      padding-left: 1%;
-    }
-  }
-  .filmsSpecial__flex__item {
-    margin: 1% 15px;
-    @media (max-width: 1200px) {
-      margin: 1% 11px;
-    }
-  }
-}
-
-.filmsSpecial__cinemaPage {
-  padding-left: 1%;
-
-  .filmsSpecial__flex {
-    margin: 0 -25px;
-    padding-left: 1%;
-    @media (max-width: 1200px) {
-      margin: 1% -18px;
-    }
-    @media (max-width: 992px) {
-      margin: 1% -13px;
-    }
-  }
-  .filmsSpecial__flex__item {
-    margin: 1% 25px;
-    @media (max-width: 1200px) {
-      margin: 1% 18px;
-    }
-    @media (max-width: 992px) {
-      margin: 1% 13px;
-    }
-  }
-}
-
-
-
-
-
-
-

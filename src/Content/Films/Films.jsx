@@ -1,14 +1,12 @@
-import React, {useState} from 'react';
-import {NavLink} from "react-router-dom";
+import React, { useState } from 'react';
+import { NavLink } from "react-router-dom";
 
-function Films({films, page}) {
-
-    let mainClassname = page === 'index' ? 'filmsSpecial__indexPage' : 'filmsSpecial__cinemaPage'
+function Films({ films }) {
 
     let [focusElem, switchFocusElem] = useState(' ')
 
     return (
-        <div className={mainClassname}>
+        <div className='filmsSpecial'>
             <h1 className={"filmsSpecial__h1"}>Фильмы</h1>
             <div className={"filmsSpecial__flex"}>
                 {
@@ -16,7 +14,7 @@ function Films({films, page}) {
                         <div className="filmsSpecial__flex__item" key={f.link}>
                             <div className={`filmsSpecial__flex__item__img ${focusElem === f.link ? 'focusUp' : 'focusNone'}`}>
                                 <NavLink tabIndex={-1} to={f.link}>
-                                    <img src={`./Images/top_menu/${f.link}.gif`} alt={f.title}/>
+                                    <img src={`./Images/top_menu/${f.link}.gif`} alt={f.title} />
                                 </NavLink>
                             </div>
                             <div className={"filmsSpecial__flex__title"}>

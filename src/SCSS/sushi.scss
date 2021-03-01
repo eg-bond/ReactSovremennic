@@ -199,7 +199,6 @@
       font-size: xx-large;
     }
   }
-
 }
 
 @mixin sushi($buttonFontSize, $modalFontSize, $aFontSize, $swiperBuM, $swiperBuH, $swFractionFS, $swFractionMB, $maxWidth) {
@@ -241,7 +240,6 @@
 }
 
 @media (max-width: 590px) {
-
   .modal-dialog {
     padding: 9.5% 0.9% 0 0.9%;
   }

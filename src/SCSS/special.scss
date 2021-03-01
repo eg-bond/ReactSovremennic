@@ -1,6 +1,7 @@
 @import "variables";
 @import "fonts";
 
+//Миксин для классов тем
 @mixin theme ($theme, $backColor, $elemsColor){
   .theme__#{$theme}__background {
     background-color: $backColor;
@@ -51,8 +52,18 @@
 @include theme(yellowBrown, $yellowBrownBackground, $yellowBrownElements);
 @include theme(blueGreen, $blueGreenBackground, $blueGreenElements);
 
-// Скрываем все изображения на сайте
+// Дефолтные размеры шрифтов
+.fontSize__100 {
+  font-size: 14px;
+}
+.fontSize__150 {
+  font-size: 21px;
+}
+.fontSize__200 {
+  font-size: 28px;
+}
 
+// Скрываем все изображения на сайте
 .hideImages img{
   opacity: 0;
 }
@@ -77,7 +88,6 @@
   padding: 0.5% 1%;
   height: 78px;
 }
-
 .specialSettings__flex {
   display: flex;
   justify-content: space-between;
@@ -124,7 +134,6 @@
     font-size: 120%;
   }
 }
-
 .specialSettings__flex__fontButtons {
   height: 40px;
   & button {
@@ -137,7 +146,6 @@
   & span {
     color: white;
     font-size: 150%;
-    //font-weight: bold;
   }
 }
 
@@ -152,7 +160,9 @@
 @include themeButton(themeBR, $blackRedBackground, $blackRedElements);
 @include themeButton(themeYB, $yellowBrownBackground, $yellowBrownElements);
 @include themeButton(themeBG, $blueGreenBackground, $blueGreenElements);
+//--------------------------------------------------------------------------
 
+// Анимации движений для фокуса
 .focusImg {
   -o-transform: translateX(-10px);
   -ms-transform: translateX(-10px);

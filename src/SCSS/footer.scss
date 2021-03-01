@@ -2,21 +2,12 @@
 
 .footer {
   text-align: center;
-  //background-color: $linesColor;
   padding: 2%;
 
-  a {
-    //color: black;
-    //text-decoration: none;
-    font: normal 100% 'century gothic', arial;
-
-    //&:hover {
-    //  color: #ff0000;
-    //}
+  a {    
+    font: normal 100% 'century gothic', arial;   
   }
 }
-
-
 
 @for $i from 6 to -1 {
   $maxWidth: 320px + $i*111.9px;

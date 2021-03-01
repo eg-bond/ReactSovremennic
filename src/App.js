@@ -1,53 +1,49 @@
-import React, { useEffect } from 'react';
-import '../node_modules/bootstrap/dist/css/bootstrap.css';
-import About from "./Content/About/About";
-import FilmSwiper from "./Template/FilmSwiper";
-import { Route, useParams } from "react-router-dom";
-import CinemaRoutes from "./Content/Cinema/Cinema";
-import Navigation from "./Template/Navigation";
-import Rules from "./Content/Rules/Rules";
-import Advertising from "./Content/Advertising/Advertising";
-import BottomSwiper from "./Template/BottomSwiper";
-import Footer from "./Template/Footer";
-import Seans from "./Content/Seans/Seans";
-import Sushi from "./Content/Sushi/Sushi";
-import '../node_modules/swiper/css/swiper.css';
-import IndexContent from "./Content/IndexContent/IndexContent";
-import './SCSS/style.scss';
-import Media from 'react-media';
-import AdvXS from "./Template/AdvXS";
-import { initialButtonTitle, initialActiveKey, createActualDatesArr } from "./REDUX/seansReduser";
-import { compose } from "redux";
-import { connect } from "react-redux";
-import Adv from "./Template/Adv";
-import ScrollToTop from "./Template/ScrollToTop";
-import { createFilmsTodayArr } from "./REDUX/cinemaReduser";
-import { switchFontSize, switchSiteMode } from "./REDUX/specialReduser";
-import { currentFontSizeClass, modifiedClass, themeClasses, queries } from "./helpers";
-import FilmsSpecialPage from "./Content/Films/FilmsSpecialPage";
-import { useResizeDetector } from 'react-resize-detector';
-import { useCallback } from 'react';
+import React, { useEffect } from 'react'
+import '../node_modules/bootstrap/dist/css/bootstrap.css'
+import About from "./Content/About/About"
+import FilmSwiper from "./Template/FilmSwiper"
+import { Route, useParams } from "react-router-dom"
+import CinemaRoutes from "./Content/Cinema/Cinema"
+import Navigation from "./Template/Navigation"
+import Rules from "./Content/Rules/Rules"
+import Advertising from "./Content/Advertising/Advertising"
+import BottomSwiper from "./Template/BottomSwiper"
+import Footer from "./Template/Footer"
+import Seans from "./Content/Seans/Seans"
+import Sushi from "./Content/Sushi/Sushi"
+import '../node_modules/swiper/css/swiper.css'
+import IndexContent from "./Content/IndexContent/IndexContent"
+import './SCSS/style.scss'
+import Media from 'react-media'
+import AdvXS from "./Template/AdvXS"
+import { initialButtonTitle, initialActiveKey, createActualDatesArr } from "./REDUX/seansReduser"
+import { compose } from "redux"
+import { connect } from "react-redux"
+import Adv from "./Template/Adv"
+import ScrollToTop from "./Template/ScrollToTop"
+import { createFilmsTodayArr } from "./REDUX/cinemaReduser"
+import { switchFontSize, switchSiteMode } from "./REDUX/specialReduser"
+import { currentFontSizeClass, themeClasses, queries } from "./helpers"
+import FilmsSpecialPage from "./Content/Films/FilmsSpecialPage"
+import { useResizeDetector } from 'react-resize-detector'
+import { useCallback } from 'react'
 
 const App = React.memo(({ createActualDatesArr, initialActiveKey, initialButtonTitle, createFilmsTodayArr,
     films, filmsToday, filmsTodaySlides, switchSiteMode, siteMode, theme, imgHidden, fontSize }) => {
 
     let { id } = useParams();
     let currentFS = currentFontSizeClass(fontSize) || 'fontSize__100'
-    const classHandler = (cl) => modifiedClass(cl, siteMode)
     const themeCl = themeClasses(theme)
 
     // библиотека для удобного наблюдения за ресайзом DOM элемента
     const { width, ref: observedRef } = useResizeDetector();
 
-    const switchSiteModeHandler = useCallback(
-        (mode) => {
-            if (id === 'films') {
-                window.location.hash = '#/'
-            }
-            switchSiteMode(mode);
-        },
-        [switchSiteMode, id],
-    );
+    const switchSiteModeHandler = useCallback(mode => {
+        if (id === 'films') {
+            window.location.hash = '#/'
+        }
+        switchSiteMode(mode);
+    }, [switchSiteMode, id],);
 
     // Инициализационные эффекты
     useEffect(() => {
@@ -65,7 +61,7 @@ const App = React.memo(({ createActualDatesArr, initialActiveKey, initialButtonT
     }, [width, siteMode, switchSiteModeHandler])
 
     return (
-        <div className={`${classHandler("mainContainer")} ${siteMode === 'special' ? themeCl.back : ''} ${themeCl.elems} ${currentFS}`}>
+        <div className={`${siteMode === 'special' ? themeCl.back : 'mainContainer'} ${themeCl.elems} ${currentFS}`}>
 
             <Media query={queries.mobile}>
                 <ScrollToTop />
@@ -73,11 +69,8 @@ const App = React.memo(({ createActualDatesArr, initialActiveKey, initialButtonT
 
             <Navigation siteMode={siteMode} switchSiteMode={switchSiteModeHandler} theme={theme} themeCl={themeCl} fontSize={fontSize} />
 
-            <div id="menu_anchor" className="container line_container">
-                <div className="row">
-                    {/*<hr className="line_5px"/>*/}
-                </div>
-            </div>
+            {/*Отступ навигации в мобильной версии*/}
+            <div className="line_container" />
 
             <div className="separator" />
 
@@ -90,10 +83,10 @@ const App = React.memo(({ createActualDatesArr, initialActiveKey, initialButtonT
                             <div className="separator" />
                         </div>
                     </Media>
-                   
+
                     {siteMode === "default" && <Media query={queries.desktop}>
                         <FilmSwiper films={films} />
-                    </Media>} 
+                    </Media>}
 
                     <Route exact path="/">
                         <Media query={queries.mobile}>

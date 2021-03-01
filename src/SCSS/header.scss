@@ -17,7 +17,6 @@
     z-index: 10;
   }
 }
-
 .navigation__default {
   border-radius: 20px 20px 0 0;
   border-color: $linesColor;
@@ -26,14 +25,10 @@
     border-width: 0;
   }
 }
-
 .navigation__default a:hover, .navigation__default a.active {
   color: black !important;
   background-color: white !important;
 }
-//.theme__#{$theme}__pills:focus, .theme__#{$theme}__pills a:focus, .theme__#{$theme}__pills button:focus, .theme__#{$theme}__navs button:focus {
-//  outline: 2px solid $elemsColor;
-//}
 .navigation__special {
   border-radius: 0;
   border-bottom: none;
@@ -178,13 +173,9 @@
     padding: 10px 4.5px;
   }
 }
-//.navigation__menu a.active {
-//
-//}
 .navigation__menu a:hover {
   transition: ease 650ms;
 }
-
 
 @mixin navigationXS ($navigationHeight, $logoWidth, $menuFS) {
   .navigation {
