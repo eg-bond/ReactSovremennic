@@ -5,7 +5,7 @@ let initialState = {
         {
             title: 'Родные',
             beginDate: 'с 11 февраля',
-            endDate: 'по 10 марта',
+            endDate: 'по 3 марта',
             kind: `Комедия, драма`,
             director: `Илья Аксенов`,
             duration: '100 мин.',
@@ -73,7 +73,7 @@ let initialState = {
         {
             title: 'Том и Джерри',
             beginDate: 'с 25 февраля',
-            endDate: 'по 3 марта',
+            endDate: 'по 8 марта',
             kind: `Комедия, приключения, семейный, мультфильм`,
             director: `Тим Стори`,
             duration: '101 мин.',
