@@ -1,18 +1,18 @@
-const INITIAL_ACTIVE_KEY = "INITIAL_ACTIVE_KEY";
-const CHANGE_ACTIVE_KEY = "CHANGE_ACTIVE_KEY";
-const INITIAL_BUTTON_TITLE = "INITIAL_BUTTON_TITLE";
-const CHANGE_BUTTON_TITLE = "CHANGE_BUTTON_TITLE";
-const CREATE_ACTUAL_DATES_ARR = "CREATE_ACTUAL_DATES_ARR";
+const INITIAL_ACTIVE_KEY = "INITIAL_ACTIVE_KEY"
+const CHANGE_ACTIVE_KEY = "CHANGE_ACTIVE_KEY"
+const INITIAL_BUTTON_TITLE = "INITIAL_BUTTON_TITLE"
+const CHANGE_BUTTON_TITLE = "CHANGE_BUTTON_TITLE"
+const CREATE_ACTUAL_DATES_ARR = "CREATE_ACTUAL_DATES_ARR"
 
 let initialState = {
     datesArr: [
-        ["day0", "Воскресенье", "28 февраля"],
-        ["day1", "Понедельник", "1 марта"],
-        ["day2", "Вторник", "2 марта"],
-        ["day3", "Среда", "3 марта"],
-        ["day4", "Четверг", "25 февраля"],
-        ["day5", "Пятница", "26 февраля"],
-        ["day6", "Суббота", "27 февраля"]
+        ["day0", "Воскресенье", "7 марта"],
+        ["day1", "Понедельник", "8 марта"],
+        ["day2", "Вторник", "9 марта"],
+        ["day3", "Среда", "10 марта"],
+        ["day4", "Четверг", "4 марта"],
+        ["day5", "Пятница", "5 марта"],
+        ["day6", "Суббота", "6 марта"]
     ],
     actualDatesArr: [], // массив с датами, расположенными в правильном порядке
     beginDate: "th", // monday либо любое другое значение
