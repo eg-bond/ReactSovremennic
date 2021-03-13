@@ -28,7 +28,7 @@ let initialState = {
         {
             title: 'Том и Джерри',
             beginDate: 'с 25 февраля',
-            endDate: 'по 8 марта',
+            endDate: 'по 14 марта',
             kind: `Комедия, приключения, семейный, мультфильм`,
             director: `Тим Стори`,
             duration: '101 мин.',

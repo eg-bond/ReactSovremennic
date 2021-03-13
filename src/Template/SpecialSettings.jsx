@@ -19,8 +19,7 @@ function SpecialSettings({ switchSiteTheme, switchImagesVisibility, switchFontSi
     
     if (siteMode === 'default') {
         return (
-            <div className={`space`}>
-                <ScrollToTop />
+            <div className={`space`}>                
                 <Button
                     onClick={() => switchSiteMode(modeToDispatch)}
                     variant="contained"

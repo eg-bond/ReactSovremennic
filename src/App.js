@@ -38,10 +38,11 @@ const App = React.memo(({ createActualDatesArr, initialActiveKey, initialButtonT
     // библиотека для удобного наблюдения за ресайзом DOM элемента
     const { width, ref: observedRef } = useResizeDetector();
 
-    const switchSiteModeHandler = useCallback(mode => {
-        if (id === 'films') {
-            window.location.hash = '#/'
-        }
+    if (id === 'films' && siteMode === 'default') {
+        window.location.hash = '#/'
+    } 
+
+    const switchSiteModeHandler = useCallback(mode => {        
         switchSiteMode(mode);
     }, [switchSiteMode, id],);
 
@@ -103,7 +104,7 @@ const App = React.memo(({ createActualDatesArr, initialActiveKey, initialButtonT
                     <Route exact path="/sushi"><Sushi themeCl={themeCl} siteMode={siteMode} /></Route>
                     <Route exact path="/advertising"><Advertising /></Route>
                     <CinemaRoutes films={films} filmsToday={filmsToday} siteMode={siteMode} themeCl={themeCl} fontSize={fontSize} />
-                    {siteMode === "special" && <Route exact path="/films"><FilmsSpecialPage films={films} /></Route>}
+                    {siteMode === "special" && <Route exact path="/films"><FilmsSpecialPage films={films} url_Id={id} siteMode={siteMode}/></Route>}
 
                     <Media query={queries.desktop}>
                         {id !== "sushi" && <Adv />}

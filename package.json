@@ -2,7 +2,7 @@
   "name": "react_sovremennik",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://sovremennik.sbor.net/special",
+  "homepage": "http://sovremennik.sbor.net",
   "dependencies": {
     "3": "^2.1.0",
     "@material-ui/core": "^4.11.3",
