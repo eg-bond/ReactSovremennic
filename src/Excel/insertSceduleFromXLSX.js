@@ -18,7 +18,7 @@ const finalData = `let scedule = ${JSON.stringify(scedule)}
 export default scedule;`;
 
 //Записываем получившиеся данные в файл
-fs.writeFileSync('src/Excel/scedule.js', finalData);
+fs.writeFileSync('src/Excel/scedule.mjs', finalData);
 
 
 
