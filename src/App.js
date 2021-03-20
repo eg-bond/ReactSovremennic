@@ -25,7 +25,6 @@ import { createFilmsTodayArr } from "./REDUX/cinemaReduser"
 import { switchFontSize, switchSiteMode } from "./REDUX/specialReduser"
 import { currentFontSizeClass, themeClasses, queries } from "./helpers"
 import FilmsSpecialPage from "./Content/Films/FilmsSpecialPage"
-import { useResizeDetector } from 'react-resize-detector'
 import { useCallback } from 'react'
 
 const App = React.memo(({ createActualDatesArr, initialActiveKey, initialButtonTitle, createFilmsTodayArr,
@@ -34,17 +33,14 @@ const App = React.memo(({ createActualDatesArr, initialActiveKey, initialButtonT
     let { id } = useParams();
     let currentFS = currentFontSizeClass(fontSize) || 'fontSize__100'
     const themeCl = themeClasses(theme)
-
-    // библиотека для удобного наблюдения за ресайзом DOM элемента
-    const { width, ref: observedRef } = useResizeDetector();
-
+ 
     if (id === 'films' && siteMode === 'default') {
         window.location.hash = '#/'
     } 
 
     const switchSiteModeHandler = useCallback(mode => {        
         switchSiteMode(mode);
-    }, [switchSiteMode, id],);
+    }, [switchSiteMode],);
 
     // Инициализационные эффекты
     useEffect(() => {
@@ -53,13 +49,11 @@ const App = React.memo(({ createActualDatesArr, initialActiveKey, initialButtonT
         initialButtonTitle();
         createFilmsTodayArr();
     }, [createActualDatesArr, initialActiveKey, initialButtonTitle, createFilmsTodayArr]);
-
-    // Переключение на стандартную версию сайта при переходе в мобильный режим
-    useEffect(() => {
-        if (siteMode === 'special') {
-            window.matchMedia(queries.mobile).matches && switchSiteModeHandler('default')
-        }
-    }, [width, siteMode, switchSiteModeHandler])
+    
+    const ResizeFunc = () => {
+        window.matchMedia(queries.mobile).matches && switchSiteModeHandler('default')
+        return null
+    }
 
     return (
         <div className={`${siteMode === 'special' ? themeCl.back : 'mainContainer'} ${themeCl.elems} ${currentFS}`}>
@@ -68,6 +62,10 @@ const App = React.memo(({ createActualDatesArr, initialActiveKey, initialButtonT
                 <ScrollToTop />
             </Media>
 
+            <Media query={queries.mobile}>
+                <ResizeFunc />               
+            </Media> 
+
             <Navigation siteMode={siteMode} switchSiteMode={switchSiteModeHandler} theme={theme} themeCl={themeCl} fontSize={fontSize} />
 
             {/*Отступ навигации в мобильной версии*/}
@@ -75,7 +73,7 @@ const App = React.memo(({ createActualDatesArr, initialActiveKey, initialButtonT
 
             <div className="separator" />
 
-            <div ref={observedRef} className={`container wrapper ${themeCl.back} ${themeCl.borders} ${imgHidden && 'hideImages'}`}>
+            <div className={`container wrapper ${themeCl.back} ${themeCl.borders} ${imgHidden && 'hideImages'}`}>
                 <div className="row">
 
                     <Media query={queries.mobile}>

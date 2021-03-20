@@ -1,5 +1,7 @@
-const xlsx =  require('xlsx');
-const fs = require('fs');
+// const xlsx =  require('xlsx');
+// const fs = require('fs');
+import xlsx from 'xlsx';
+import fs from 'fs';
 
 //Вытаскиваем JS объект с расписанием из екселя
 let workBook = xlsx.readFile("src/Excel/macros.xlsm");

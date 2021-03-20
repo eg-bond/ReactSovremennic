@@ -33,7 +33,10 @@ a:focus {
 }
 
 .mainContainer {
-  background: #990805 no-repeat top center url("/Images/main_image.jpg");
+  // background: #990805 no-repeat top center url("/Images/main_image.jpg");
+  background: linear-gradient(90deg, #26aca1, #c91a15);
+  background-image:  url("/Images/main_image1.jpg");
+  background-position: top center;
   height: 100%;
   @media (max-width: 1200px) {
     background-size: 1600px 950px;
