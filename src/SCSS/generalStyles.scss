@@ -32,10 +32,9 @@ a:focus {
   text-decoration: underline;
 }
 
-.mainContainer {
-  // background: #990805 no-repeat top center url("/Images/main_image.jpg");
-  background: linear-gradient(90deg, #26aca1, #c91a15);
-  background-image:  url("/Images/main_image1.jpg");
+.mainContainer {  
+  background: black;
+  background-image:  url("/Images/main_image.jpg");
   background-position: top center;
   height: 100%;
   @media (max-width: 1200px) {

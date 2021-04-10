@@ -1,33 +1,38 @@
 // подключаем скрипт для корректной работы с JSON
 #include json2.js
 
+// Функция для работы с внешним json файлом ---------------------------------------------------
+function loadJson(relPath) {
+    var script = new File($.fileName)
+    var jsonFile = new File(script.path + '/' + relPath)
 
-var titlesArr = [
-    'Конёк-горбунок 2D',
-    'Райя и последний дракон 2D',
-    'Том и Джерри 2D',
-    'Рашн Юг 2D',
-    'Пара из будущего 2D'
-]
+    jsonFile.open('r')
+    var str = jsonFile.read()
+    jsonFile.close()
 
-var scedule = {
-    'Конёк-горбунок 2D': [['10:00', 'Конёк-горбунок 2D', 220, 0]],
-    'Райя и последний дракон 2D': [
-        ['12:20', 'Райя и последний дракон 2D', 260, 1],
-        ['16:50', 'Райя и последний дракон 2D', 340, 3],
-        ['23:40', 'Райя и последний дракон 2D', 330, 6]
-    ],
-    'Том и Джерри 2D': [['14:40', 'Том и Джерри 2D', 300, 2]],
-    'Рашн Юг 2D': [['19:10', 'Рашн Юг 2D', 370, 4]],
-    'Пара из будущего 2D': [['21:30', 'Пара из будущего 2D', 370, 5]]
+    return JSON.parse(str)
 }
 
-let preparedPSscedule = { "day0": { "titles": ["Райя и последний дракон 2D", "Конёк-горбунок 2D", "Том и Джерри 2D", "Пара из будущего 2D", "Рашн Юг 2D"], "seansScedule": { "Райя и последний дракон 2D": [["10:00", "Райя и последний дракон  2D", 220, 0], ["14:35", "Райя и последний дракон  2D", 300, 2]], "Конёк-горбунок 2D": [["12:15", "Конёк-горбунок  2D", 260, 1]], "Том и Джерри 2D": [["16:50", "Том и Джерри  2D", 340, 3]], "Пара из будущего 2D": [["18:55", "Пара из будущего  2D", 370, 4], ["23:30", "Пара из будущего  2D", 280, 6]], "Рашн Юг 2D": [["21:10", "Рашн Юг  2D", 370, 5]] } }, "day1": { "titles": ["Райя и последний дракон 2D", "Конёк-горбунок 2D", "Рашн Юг 2D", "Пара из будущего 2D"], "seansScedule": { "Рашн Юг 2D": [["12:00", "Рашн Юг  2D", 200, 0]], "Райя и последний дракон 2D": [["14:20", "Райя и последний дракон  2D", 240, 1], ["20:50", "Райя и последний дракон  2D", 320, 4]], "Конёк-горбунок 2D": [["16:25", "Конёк-горбунок  2D", 280, 2]], "Пара из будущего 2D": [["18:35", "Пара из будущего  2D", 320, 3], ["23:00", "Пара из будущего  2D", 280, 5]] } }, "day2": { "titles": ["Райя и последний дракон 2D", "Конёк-горбунок 2D", "Пара из будущего 2D", "Рашн Юг 2D"], "seansScedule": { "Пара из будущего 2D": [["12:10", "Пара из будущего  2D", 200, 0], ["20:50", "Пара из будущего  2D", 320, 4]], "Райя и последний дракон 2D": [["14:20", "Райя и последний дракон  2D", 240, 1], ["18:40", "Райя и последний дракон  2D", 320, 3]], "Конёк-горбунок 2D": [["16:30", "Конёк-горбунок  2D", 280, 2]], "Рашн Юг 2D": [["23:00", "Рашн Юг  2D", 280, 5]] } } }
+// Функция для сохранения JPEG файла ----------------------------------------------------------------
+function saveJpeg(name) {
+    var doc = app.activeDocument
+    var file = new File(doc.path + '/' + name + '.jpg')
 
+    var opts = new JPEGSaveOptions()
+    opts.quality = 12
 
-var makeSceduleItem = function (titleLayer, timeLayerSet, priceLayerSet, filmIndex) {
-    var filmTitle = titlesArr[filmIndex]
-    var filmSceduleItem = scedule[filmTitle]
+    doc.saveAs(file, opts, true)
+}
+
+// Функция, формирующая расписания для конкретного фильма
+var makeFilmItem = function (filmSet, sceduleItemKey, dayTitlesArr, filmIndex) {
+    // создаем переменные для заголовка и папок с временем и ценой   
+    var titleLayer = filmSet.layers.getByName('title')
+    var timeLayerSet = filmSet.layerSets.getByName('time')
+    var priceLayerSet = filmSet.layerSets.getByName('price')
+
+    var filmTitle = dayTitlesArr[filmIndex]
+    var filmSceduleItem = preparedPSscedule[sceduleItemKey]["seansScedule"][filmTitle]
 
     // делаем невидимым время
     for (var i = 0; i <= 7; i++) {
@@ -55,14 +60,37 @@ var makeSceduleItem = function (titleLayer, timeLayerSet, priceLayerSet, filmInd
         timeLayerSet.layers[seansIndex].textItem.contents = filmSceduleItem[j][0]
         priceLayerSet.layers[seansIndex].textItem.contents = filmSceduleItem[j][2] + 'р.'
     }
+
+    // Сохраняем файл
+    var filename = sceduleItemKey + '-2021'
+    saveJpeg(filename)
 }
 
-for (var i = 0; i < titlesArr.length; i++) {
-    // выбираем папку фильма
-    var filmSet = app.activeDocument.layerSets.getByName('film_' + i)
-    // создаем переменные для заголовка и папок с временем и ценой   
-    var titleLayer = filmSet.layers.getByName('title')
-    var timeLayerSet = filmSet.layerSets.getByName('time')
-    var priceLayerSet = filmSet.layerSets.getByName('price')
-    makeSceduleItem(titleLayer, timeLayerSet, priceLayerSet, filmIndex = i)
+// Главный цикл -----------------------------------------------------------------
+// Подготовленное для фотошопа расписание сеансов
+var preparedPSscedule = loadJson('psScedule.json')
+
+// Массив с ключами дней недели, для которых необходимо сформировать расписание
+var dayKeysRanges = {
+    firstHalf: ["day1", "day2", "day3"],
+    secondHalf: ["day4", "day5", "day6", "day0"],
+    weekEnd: ["day6", "day0"],
+    allWeek: ["day1", "day2", "day3", "day4", "day5", "day6", "day0"],
 }
+// Это единственный изменяемый параметр 
+var dayKeysArr = dayKeysRanges.firstHalf
+
+// Цикл, пробегающийся по выбранным в dayKeysArr фильмам
+for (var i = 0; i < dayKeysArr.length; i++) {
+    // Стринговый ключ конкретного дня
+    var sceduleItemKey = dayKeysArr[i]
+    // Массив названий фильмов, отсортированный в порядке возрастания возраста
+    var dayTitlesArr = preparedPSscedule[sceduleItemKey]["titles"]
+    // Цикл, заполняющий по отдельности каждый фильм
+    for (var j = 0; j < dayTitlesArr.length; j++) {
+        // выбираем папку фильма
+        var filmSet = app.activeDocument.layerSets.getByName('film_' + j)        
+        makeFilmItem(filmSet, sceduleItemKey, dayTitlesArr, filmIndex = j)
+    }     
+}
+

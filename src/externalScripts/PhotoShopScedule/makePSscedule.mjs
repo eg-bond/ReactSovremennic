@@ -3,6 +3,7 @@ import { filmsArray } from '../../REDUX/filmsArray.js'
 import fs from 'fs'
 
 
+
 const prepareSceduleForPS = (sceduleKeysArray) => {
     let preparedPSscedule = {} // тут будет храниться итоговое расписание для PhotoShop
 
@@ -20,6 +21,8 @@ const prepareSceduleForPS = (sceduleKeysArray) => {
                 filmsObject[filmTitle] = [item]
             }
         })
+
+       
 
         // Формируем массив фильмов, отсортированный в порядке возрастания возраста
         const findFilmAge = (title, filmsObj) => {
@@ -44,10 +47,10 @@ const prepareSceduleForPS = (sceduleKeysArray) => {
 
 
         // Формируем двумерный массив, каждый элемент которого содержит название фильма и возрастное ограничение в числовом формате
-        let filmTitlesArr = Object.keys(filmsObject)
-        let filmTitlesAndAgesArr = filmTitlesArr.map(item => findFilmAge(item, filmsArray))
-
+        let filmTitlesArr = Object.keys(filmsObject)        
+        let filmTitlesAndAgesArr = filmTitlesArr.map(item => findFilmAge(item, filmsArray))  
         let numerizedArr = agesToNumber(filmTitlesAndAgesArr)
+
         // сортируем названия фильмов по возрастанию возраста
         let sortedArr = numerizedArr.sort(function (a, b) {
             return a[1] - b[1];
@@ -59,16 +62,12 @@ const prepareSceduleForPS = (sceduleKeysArray) => {
             titles: filmTitlesFinal,
             seansScedule: filmsObject
         }
+        
     })
 
-    
-    //Формируем данные для записи в файл расписания в строковом формате
-    const finalData = `let preparedPSscedule = ${JSON.stringify(preparedPSscedule)}
-    export default preparedPSscedule;`;
-
-    //Записываем получившиеся данные в файл
-    fs.writeFileSync('./src/externalScripts/PhotoShopScedule/psScedule.js', finalData);
+    // Выносим подготовленное для фотошопа расписание в отдельный JSON файл
+    fs.writeFileSync('./src/externalScripts/PhotoShopScedule/psScedule.json', JSON.stringify(preparedPSscedule));
 }
 
-prepareSceduleForPS(['day0', 'day1', 'day2'])
+prepareSceduleForPS(Object.keys(scedule))
 

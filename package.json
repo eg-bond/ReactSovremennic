@@ -27,8 +27,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "scrapper": "node src/Scrapper/scrapper.mjs",
-    "scedulePS": "node src/externalScripts/PhotoShopScedule/makePSscedule.mjs",
-    "getScedule": "node src/Excel/insertSceduleFromXLSX",
+    "make_ps": "node src/externalScripts/PhotoShopScedule/makePSscedule.mjs",
+    "get_scedule": "node src/Excel/insertSceduleFromXLSX",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },

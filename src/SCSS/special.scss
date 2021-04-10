@@ -124,13 +124,13 @@
     position: absolute;
     right: 10px;
     bottom: 10px;
-    background-color: black;
+    background-color: white;
   }
   & button:hover {
-    background-color: black !important;
+    background-color: white !important;
   }
   & span {
-    color: white;
+    color: black;
     font-size: 120%;
   }
 }
