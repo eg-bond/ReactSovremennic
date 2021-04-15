@@ -20,7 +20,7 @@ const BottomSwiper = (props) => {
 
     const params = {
         slidesPerView: props.slidesPerView,
-        spaceBetween: props.slidesPerView === 2 ? 100 : 20,
+        spaceBetween: props.slidesPerView === 3 ? 55 : 20,
         centeredSlides: false,
         loop: true,
         containerClass: `bottomSwiper swiper-container ${opacity===1 ? 'opacity_1' : 'opacity_0'}`,

@@ -1,8 +1,8 @@
-@import "variables";
-@import "fonts";
+@import 'variables';
+@import 'fonts';
 
 //Миксин для классов тем
-@mixin theme ($theme, $backColor, $elemsColor){
+@mixin theme($theme, $backColor, $elemsColor) {
   .theme__#{$theme}__background {
     background-color: $backColor;
   }
@@ -15,19 +15,27 @@
   .theme__#{$theme}__elements {
     color: $elemsColor !important;
   }
-  .theme__#{$theme}__elements a, .theme__#{$theme}__elements h1, .theme__#{$theme}__elements h2,
-  .theme__#{$theme}__elements h3, .theme__#{$theme}__elements h4, .theme__#{$theme}__elements p {
+  .theme__#{$theme}__elements a,
+  .theme__#{$theme}__elements h1,
+  .theme__#{$theme}__elements h2,
+  .theme__#{$theme}__elements h3,
+  .theme__#{$theme}__elements h4,
+  .theme__#{$theme}__elements p {
     color: $elemsColor;
   }
   .theme__#{$theme}__borders {
     border-color: $elemsColor !important;
   }
   .theme__#{$theme}__pills li.active > a,
-  .theme__#{$theme}__pills a:hover, .theme__#{$theme}__pills a.active {
+  .theme__#{$theme}__pills a:hover,
+  .theme__#{$theme}__pills a.active {
     color: $backColor !important;
     background-color: $elemsColor !important;
   }
-  .theme__#{$theme}__pills:focus, .theme__#{$theme}__pills a:focus, .theme__#{$theme}__pills button:focus, .theme__#{$theme}__navs button:focus {
+  .theme__#{$theme}__pills:focus,
+  .theme__#{$theme}__pills a:focus,
+  .theme__#{$theme}__pills button:focus,
+  .theme__#{$theme}__navs button:focus {
     outline: 2px solid $elemsColor;
   }
   .theme__#{$theme}__navs .active {
@@ -64,7 +72,7 @@
 }
 
 // Скрываем все изображения на сайте
-.hideImages img{
+.hideImages img {
   opacity: 0;
 }
 
@@ -124,13 +132,13 @@
     position: absolute;
     right: 10px;
     bottom: 10px;
-    background-color: white;
+    background-color: black;
   }
   & button:hover {
-    background-color: white !important;
+    background-color: black !important;
   }
   & span {
-    color: black;
+    color: white;
     font-size: 120%;
   }
 }
@@ -149,7 +157,7 @@
   }
 }
 
-@mixin themeButton ($theme, $backColor, $elemsColor) {
+@mixin themeButton($theme, $backColor, $elemsColor) {
   .#{$theme} {
     background-color: $backColor !important;
     color: $elemsColor !important;
@@ -182,6 +190,3 @@
 .focusNone {
   transition: ease 300ms;
 }
-
-
-

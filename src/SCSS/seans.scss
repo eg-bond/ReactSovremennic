@@ -10,14 +10,14 @@
   justify-content: flex-start;
   flex-wrap: wrap;
   font-family: $arialFont;
-  margin: 0 -9px;
+  margin: 0 -7px;
   > button {
     background-color: black;
     border: none;
     outline: none;
     padding: 7px 9px;
     // 2px нужно для отступов сверху и снизу, чтобы кнопки не сливались при 200% шрифте
-    margin: 2px 9px;
+    margin: 2px 7px;
     text-align: left;
     border-radius: 5px;
     @media (max-width: 1200px) {

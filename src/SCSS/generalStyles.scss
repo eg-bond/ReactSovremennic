@@ -1,11 +1,15 @@
-@import "variables";
+@import 'variables';
 
-*{
+* {
   margin: 0;
   padding: 0;
 }
 
-a, h1, h2, h4, p {
+a,
+h1,
+h2,
+h4,
+p {
   font-family: $arialFont;
   color: white;
 }
@@ -32,10 +36,11 @@ a:focus {
   text-decoration: underline;
 }
 
-.mainContainer {  
-  background: black;
-  background-image:  url("/Images/main_image.jpg");
+.mainContainer {
+  background: #7e9f96;
+  background-image: url('/Images/main_image1.jpg');
   background-position: top center;
+  background-repeat: no-repeat;
   height: 100%;
   @media (max-width: 1200px) {
     background-size: 1600px 950px;
@@ -43,7 +48,8 @@ a:focus {
   @media (max-width: 992px) {
     background-size: 1220px 765px;
   }
-  @media (max-width: 767.5px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+  @media (max-width: 767.5px),
+    (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
     background-image: none !important;
   }
 }
@@ -66,7 +72,8 @@ a:focus {
   @media (max-width: 992px) {
     height: 198px;
   }
-  @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+  @media (max-width: 767.8px),
+    (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
     display: none;
   }
 }
@@ -81,7 +88,7 @@ hr {
 .line_5px {
   border-top: $border5px;
   @media (max-width: 992px) {
-    border-top: $border3px; 
+    border-top: $border3px;
   }
 }
 
@@ -99,24 +106,24 @@ hr {
   opacity: 1;
 
   &:hover {
-    opacity:0.82;
+    opacity: 0.82;
   }
 }
 
-.modal-dialog h4 {   
-    color: black;  
+.modal-dialog h4 {
+  color: black;
 }
 
-
 // Для модальных окон
-.nav-tabs>li>a {
+.nav-tabs > li > a {
   border: none !important;
 }
 //------------------------
 
-.nav a:focus, .nav a:hover {
+.nav a:focus,
+.nav a:hover {
   text-decoration: none;
-  transition: ease 650ms ;
+  transition: ease 650ms;
 }
 
 .margin-top-1 {
@@ -126,8 +133,8 @@ hr {
   margin-top: 2%;
 }
 
-@media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
-
+@media (max-width: 767.8px),
+  (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
   body {
     background-color: white;
   }
