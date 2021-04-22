@@ -2,7 +2,7 @@ export const filmsArray = [
   {
     title: '100% Волк',
     beginDate: 'с 8 апреля',
-    endDate: 'по 21 апреля',
+    endDate: 'по 25 апреля',
     kind: 'Мультфильм, фэнтези, комедия, приключения, семейный',
     director: 'Алекс Стадерманн',
     duration: '96 мин. / 01:36',
