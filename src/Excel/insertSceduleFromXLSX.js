@@ -1,5 +1,7 @@
-const xlsx =  require('xlsx');
-const fs = require('fs');
+// const xlsx =  require('xlsx');
+// const fs = require('fs');
+import xlsx from 'xlsx';
+import fs from 'fs';
 
 //Вытаскиваем JS объект с расписанием из екселя
 let workBook = xlsx.readFile("src/Excel/macros.xlsm");
@@ -18,7 +20,7 @@ const finalData = `let scedule = ${JSON.stringify(scedule)}
 export default scedule;`;
 
 //Записываем получившиеся данные в файл
-fs.writeFileSync('src/Excel/scedule.js', finalData);
+fs.writeFileSync('src/Excel/scedule.mjs', finalData);
 
 
 

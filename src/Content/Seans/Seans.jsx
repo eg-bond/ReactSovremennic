@@ -8,11 +8,12 @@ import {compose} from "redux";
 import {connect} from "react-redux";
 import {CreateTable} from "./CreateTable";
 import Media from 'react-media';
+import { queries } from '../../helpers';
 
 let table = CreateTable();
 let finalTable = [...table];
 
-const Seans = React.memo(({initialActiveKey, initialButtonTitle, ...props}) => {
+const Seans = React.memo(({initialActiveKey, initialButtonTitle, themeCl, fontSize, ...props}) => {
 
     useEffect(() => {
         return () => {
@@ -25,15 +26,16 @@ const Seans = React.memo(({initialActiveKey, initialButtonTitle, ...props}) => {
         <div className="col-lg-9 col-md-9 col-sm-9">
             <Tab.Container id='table' activeKey={props.activeKey} onSelect={k => props.changeActiveKey(k)}>
                 <div>
-
-                    <Media query="(min-width: 768px) and (min-height: 500px)">
-                        <div className="seans-menu">
+                    <Media query={queries.desktop}>
+                        <div className={`seans-menu ${props.siteMode === 'special' ? themeCl.navs : ''} `}>
                             <NavItems deviceType={"notMobile"} datesArr={props.datesArr}
-                                      changeButtonTitle={props.changeButtonTitle}/>
+                                      changeButtonTitle={props.changeButtonTitle}
+                                      changeActiveKey={props.changeActiveKey} activeKey={props.activeKey}
+                                      />
                         </div>
                     </Media>
 
-                    <Media query="(max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)">
+                    <Media query={queries.mobile}>
                         <div className="sushi_menu_xs">
                             <SeansModal datesArr={props.datesArr} buttonTitle={props.buttonTitle}
                                         changeButtonTitle={props.changeButtonTitle}
@@ -45,7 +47,8 @@ const Seans = React.memo(({initialActiveKey, initialButtonTitle, ...props}) => {
                         {finalTable}
                     </Tab.Content>
                 </div>
-            </Tab.Container>;
+            </Tab.Container>
+
             <div className="separator-special"/>
         </div>
     );
@@ -54,7 +57,8 @@ const Seans = React.memo(({initialActiveKey, initialButtonTitle, ...props}) => {
 let mapStateToProps = (state) => ({
     datesArr: state.seansPage.actualDatesArr,
     activeKey: state.seansPage.activeKey,
-    buttonTitle: state.seansPage.buttonTitle
+    buttonTitle: state.seansPage.buttonTitle,
+    fontSize: state.special.fontSize
 });
 
 export default compose(

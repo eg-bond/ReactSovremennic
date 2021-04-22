@@ -1,24 +1,14 @@
 @import "variables";
 
-.sushi-tab {
-  @media (max-width: 1200px) {
-    font-size: 85%;
-  }
-  @media (max-width: 992px) {
-    font-size: 80%;
-  }
-}
-
 .sushiAdv {
   position: relative;
   width: 100%;
-  background-color: black;
-  border: solid 1px white;
+  border: solid 1px;
   border-radius: 3px;
   margin-bottom: 3%;
   padding-bottom: 10%;
-
 }
+
 .sushiAdv img {
   position:absolute;
   width:100%;
@@ -29,19 +19,68 @@
   margin-top: 2%;
 }
 
-.sushi_page img{
+.sushi_page__content {
+  min-height: 1100px;
+  @media (max-width: 1200px) {
+    min-height: 800px;
+  }
+  @media (max-width: 992px) {
+    min-height: 650px;
+  }
+  @media (max-width: 768px) {
+    min-height: 400px;
+  }
+}
+
+.sushi_page__content img{
   width: 100%;
   border-radius: 3px;
+  border: 1px solid;
+  min-height: 750px;
+  @media (max-width: 1200px) {
+    min-height: 600px;
+  }
+  @media (max-width: 992px) {
+    min-height: 450px;
+  }
+}
+.sushi_page__menuButtons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: $arialFont;
+}
+.sushi_page__menuButtons .active {
+  color: black;
+  background-color: $linesColor;
+}
+.sushi_page__menuButtons button:hover {
+  color: black;
+  background-color: $linesColor;
+  transition: ease 600ms;
+}
+.sushi_page__menuButtons button {
+  background-color: black;
+  border: none;
+  outline: none;
+  margin: 1% 0;
+  padding: 4% 0 4% 3%;
+  border-radius: 5px;
+  text-align: left;
+  @media (max-width: 1200px) {
+    font-size: 85%;
+  }
+  @media (max-width: 992px) {
+    font-size: 70%;
+  }
 }
 
 .sushiEmptyImg {
   position: relative;
   width: 100%;
-  background-color: black;
   padding-bottom: 155%;
   margin-bottom: 2%;
 }
-
 .sushiFirstImg {
   position: absolute;
   width: 100%;
@@ -55,28 +94,20 @@
   margin-bottom: 20px;
   cursor: grab;
 }
-
 .swiper-button-next, .swiper-button-prev {
   color: black;
 }
-
 .swiper-container-sushi>.swiper-pagination-bullets {
   margin: 0 10px 20px 0;
 }
-
 .swiper-pagination-fraction {
+  color: black;
   font-weight: bold;
   @media (max-width: 1200px) {
     font-size: 90%;
   }
   @media (max-width: 992px) {
     font-size: 80%;
-  }
-}
-
-@media (max-width: 992px)  {
-  .sushi_page ul>li>a {
-    padding: 8.5px 7px;
   }
 }
 
@@ -138,6 +169,7 @@
 
         &:hover {
           color: #f00;
+          background-color: white;
           border: none;
           text-decoration: none;
         }
@@ -167,7 +199,6 @@
       font-size: xx-large;
     }
   }
-
 }
 
 @mixin sushi($buttonFontSize, $modalFontSize, $aFontSize, $swiperBuM, $swiperBuH, $swFractionFS, $swFractionMB, $maxWidth) {
@@ -209,7 +240,6 @@
 }
 
 @media (max-width: 590px) {
-
   .modal-dialog {
     padding: 9.5% 0.9% 0 0.9%;
   }

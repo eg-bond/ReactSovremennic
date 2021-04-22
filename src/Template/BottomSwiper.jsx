@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Swiper from 'react-id-swiper';
 import {NavLink} from "react-router-dom";
+import Media from "react-media";
 
 const BottomSwiper = (props) => {
 
@@ -19,7 +20,7 @@ const BottomSwiper = (props) => {
 
     const params = {
         slidesPerView: props.slidesPerView,
-        spaceBetween: props.slidesPerView === 2 ? 100 : 20,
+        spaceBetween: props.slidesPerView === 3 ? 55 : 20,
         centeredSlides: false,
         loop: true,
         containerClass: `bottomSwiper swiper-container ${opacity===1 ? 'opacity_1' : 'opacity_0'}`,
@@ -35,22 +36,24 @@ const BottomSwiper = (props) => {
     };
 
     return (
-        <div>
-            <div className="swiper_bar"><h2>Сегодня в кино</h2></div>
-            <div onMouseEnter={() => turnAutoplay("stop")} onMouseLeave={() => turnAutoplay("start")}>
-                <Swiper getSwiper={updateSwiper} {...params}>
-                    {
-                        props.films.map( f => <div key={f.link}>
-                            <NavLink to={f.link}>
-                                <img className="opacity" src={`./Images/description/${f.link}_D.jpg`} alt=""/>
-                                <h1>{f.title}</h1>
-                                <p>{f.kind.split(", ")[0]}</p>
-                            </NavLink>
-                        </div>)
-                    }
-                </Swiper>
+        <Media query="(min-width: 768px) and (min-height: 500px)">
+            <div>
+                <div className="swiper_bar"><h1>Сегодня в кино</h1></div>
+                <div onMouseEnter={() => turnAutoplay("stop")} onMouseLeave={() => turnAutoplay("start")}>
+                    <Swiper getSwiper={updateSwiper} {...params}>
+                        {
+                            props.films.map( f => <div key={f.link}>
+                                <NavLink to={f.link}>
+                                    <img className="opacity" src={`./Images/description/${f.link}_D.jpg`} alt=""/>
+                                    <h1>{f.title}</h1>
+                                    <p>{f.kind.split(", ")[0]}</p>
+                                </NavLink>
+                            </div>)
+                        }
+                    </Swiper>
+                </div>
             </div>
-        </div>
+        </Media>
     )
 };
 

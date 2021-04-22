@@ -25,7 +25,7 @@ export const CreateTable = () => {
             <Tab.Pane key={elem} eventKey={elem}>
                 <table className="table_custom">
                     <tbody>
-                        <tr className="table_head">
+                        <tr className={`table_head`}>
                             <th>Сеанс</th>
                             <th>Фильм</th>
                             <th>Цена, руб</th>

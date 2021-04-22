@@ -7,21 +7,36 @@
 .seans-tabs {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  border: 0;
-  font-size: 96%;
-  > li > a {
-    padding: 7px 8px;
-    border-radius: 4px;
-    font-weight: bold;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  font-family: $arialFont;
+  margin: 0 -7px;
+  > button {
+    background-color: black;
+    border: none;
+    outline: none;
+    padding: 7px 9px;
+    // 2px нужно для отступов сверху и снизу, чтобы кнопки не сливались при 200% шрифте
+    margin: 2px 7px;
+    text-align: left;
+    border-radius: 5px;
     @media (max-width: 1200px) {
-      font-size: 84%;
+      font-size: 75%;
     }
     @media (max-width: 992px) {
-      font-size: 65%;
-      margin-top: 5%;
+      font-size: 62%;
+      padding: 4px 4.4px;
     }
   }
+}
+.seans-tabs .active {
+  color: black;
+  background-color: $linesColor;
+}
+.seans-tabs button:hover {
+  color: black;
+  background-color: $linesColor;
+  transition: ease 600ms;
 }
 
 .table_custom {
@@ -30,13 +45,13 @@
   font-weight: 900;
   border-radius: 5px;
   width: 100%;
-  height: 500px;
+  // height: 500px;
   @media (max-width: 1200px) {
-    height: 400px;
+    // height: 400px;
     font-size: 85%;
   }
   @media (max-width: 992px) {
-    height: 300px;
+    // height: 300px;
     font-size: 68%;
   }
 }
@@ -68,7 +83,8 @@
 @include seansTable(8%, 48%, 12%, 2%);
 
 .table_custom th, .table_custom td {
-  padding: 1.8% 0 1.8% 1%;
+  padding: 2.7% 0 2.7% 1%; 
+  // padding: 1.8% 0 1.8% 1%; 
 }
 
 .table_head {
@@ -95,7 +111,7 @@
 
   .table_custom {
     width: 100%;
-    min-height: 350px;
+    // min-height: 350px;
     margin: 2% 0 4% 0;
   }
 

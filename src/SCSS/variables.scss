@@ -1,9 +1,30 @@
 $lusidaFont: Lucida Console, monospace;
 $arialFont: Arial Black, sans-serif;
+$robotoFont: "Roboto", "Helvetica", "Arial", sans-serif;
+$playFont: 'Play', serif;
 
 $linesColor: white;
-$border1px: solid 1px #dcdcdc;
-$border2px: solid 2px #dcdcdc;
-$border3px: solid 3px $linesColor;
-$border5px: solid 5px $linesColor;
+$border1px: solid 1px;
+$border2px: solid 2px;
+$border3px: solid 3px;
+$border5px: solid 5px;
+
+// Переменные сайта для слабовидящих
+// Цветовые темы
+$blackWhiteBackground: black;
+$blackWhiteElements: #f3f5f0;
+
+$whiteBlackBackground: #e9ebe6;
+$whiteBlackElements: black;
+
+$blackRedBackground: black;
+$blackRedElements: #df233e;
+
+$yellowBrownBackground: #f5dda1;
+$yellowBrownElements: #800025;
+
+$blueGreenBackground: #b4e5ee;
+$blueGreenElements: #5e4005;
+
+
 

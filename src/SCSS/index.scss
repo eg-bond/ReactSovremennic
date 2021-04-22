@@ -10,36 +10,27 @@
 }
 
 .news {
-  padding: 0 0 2% 3%;
+  padding: 0 0 2% 1%;
   color: white;
   text-align: justify;
   @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
     padding: 1%;
   }
 }
-.news h2 {
-  font-family: $lusidaFont;
-  font-weight: bold;
-  font-size: 230%;
-  @media (max-width: 1200px) {
-    font-size: 175%;
-  }
-  @media (max-width: 992px) {
-    font-size: 160%;
-  }
+.news h1 {
   @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+    font-size: 150%;
     margin-top: 1.5%;
   }
 }
 .news p {
   font-family: $lusidaFont;
-  padding: 1%;
+  padding: 1% 1% 0 0.5%;
   font-size: 135%;
   @media (max-width: 1200px) {
     font-size: 115%;
   }
   @media (max-width: 992px) {
-    padding: 0.5%;
     font-size: 95%;
   }
   @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
@@ -47,13 +38,11 @@
   }
 }
 
-
 //Реклама справа в десктопной версии
 .desktopAdv {
   position: relative;
   width: 100%;
-  background-color: black;
-  border: solid 1px white;
+  border: $border1px;
   border-radius: 3px;
   margin: 7.8% 0;
   @media (max-width: 1200px) {
@@ -69,6 +58,7 @@
   height:100%;
   border-radius: 3px;
 }
+
 .desktopAdv--1 {
   padding-bottom: 50%;
 }
@@ -107,20 +97,13 @@
 .swiper_bar {
   color: white;
   width: 45%;
-  margin-left: 3%;
-  h2 {
-    font-weight: 900;
-    @media (max-width: 1200px) {
-      font-size: 24px;
-    }
-    @media (max-width: 992px) {
-      font-size: 20px;
-    }
+  margin-left: 2%;
+  @media (max-width: 992px) {
+    margin-left: 2.8%;
   }
 }
 
 @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
-
   .trailers {
     background-color: black;
     padding-bottom: 1%;

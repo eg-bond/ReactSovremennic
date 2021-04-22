@@ -1,45 +1,73 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import Nav from "react-bootstrap/lib/Nav";
-import {Button, Col, Modal, NavItem, Tab} from "react-bootstrap";
+import { Modal, Nav, NavItem } from "react-bootstrap";
 import HotDishesSwiper from "./HotDishesSwiper";
 import Media from 'react-media';
 import BrandRollsSwiper from "./BrandRollsSwiper";
-import ScrollToTop from "../../Template/ScrollToTop";
+import { queries } from '../../helpers';
 
-function SushiModal() {
+const swiperArr = ['brand_rolls', 'hot_dishes']
+const defaultSushiArr = [
+    ['sushi', 'Суши'],
+    ['rolls', 'Роллы'],
+    ['black_rolls', 'Цветные/черные роллы'],
+    ['hot_rolls', 'Запеченые роллы'],
+    ['brand_rolls', 'Фирменные роллы'],
+    ['mini_rolls', 'Мини-роллы'],
+    ['sets', 'Наборы'],
+    ['salads', 'Салаты'],
+    ['soups', 'Супы'],
+    ['hot_dishes', 'Горячие блюда'],
+    ['garnish', 'Гарниры'],
+    ['dessert', 'Десерты'],
+    ['gruzia', 'Грузинская кухня'],
+    ['pizza', 'Пицца']
+]
+const specialSushiArr = [
+    ['sushi', 'Суши'],
+    ['rolls', 'Роллы'],
+    ['black_rolls', 'Цветные/черные роллы'],
+    ['hot_rolls', 'Запеченые роллы'],
+    ['brand_rolls1', 'Фирменные роллы 1'],
+    ['brand_rolls2', 'Фирменные роллы 2'],
+    ['brand_rolls3', 'Фирменные роллы 3'],
+    ['mini_rolls', 'Мини-роллы'],
+    ['sets', 'Наборы'],
+    ['salads', 'Салаты'],
+    ['soups', 'Супы'],
+    ['hot_dishes1', 'Горячие блюда 1'],
+    ['hot_dishes2', 'Горячие блюда 2'],
+    ['hot_dishes3', 'Горячие блюда 3'],
+    ['hot_dishes4', 'Горячие блюда 4'],
+    ['garnish', 'Гарниры'],
+    ['dessert', 'Десерты'],
+    ['gruzia', 'Грузинская кухня'],
+    ['pizza', 'Пицца']
+]
+
+function SushiModal({ sushiImageChange, activeKey }) {
 
     let [show, setShow] = useState(false);
+    const handleClose = (key) => {
+        sushiImageChange(key)
+        setShow(false);
+    }
 
-    const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     return (
         <div className="modal-container">
-            <Button onClick={handleShow} className='seans_button_xs '>
-                <span className="seans_button_xs__title">Меню</span> <span className="glyphicon glyphicon-chevron-down" aria-hidden="true"/>
-            </Button>
+            <button onClick={handleShow} className='seans_button_xs '>
+                <span className="seans_button_xs__title">Меню</span> <span className="glyphicon glyphicon-chevron-down" aria-hidden="true" />
+            </button>
 
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={show} onHide={() => setShow(false)}>
                 <Modal.Header closeButton>
                     <Modal.Title>Меню</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Nav bsStyle="tabs" className='seans-tab-xs sushi-tab-xs' stacked>
-                        <NavItem eventKey="sushi" onClick={handleClose}>Суши</NavItem>
-                        <NavItem eventKey="rolls" onClick={handleClose}>Роллы</NavItem>
-                        <NavItem eventKey="black_rolls" onClick={handleClose}>Цветные/черные роллы</NavItem>
-                        <NavItem eventKey="hot_rolls" onClick={handleClose}>Запеченые роллы</NavItem>
-                        <NavItem eventKey="brand_rolls" onClick={handleClose}>Фирменные роллы</NavItem>
-                        <NavItem eventKey="mini_rolls" onClick={handleClose}>Мини-роллы</NavItem>
-                        <NavItem eventKey="sets" onClick={handleClose}>Наборы, сашими</NavItem>
-                        <NavItem eventKey="salads" onClick={handleClose}>Салаты</NavItem>
-                        <NavItem eventKey="soups" onClick={handleClose}>Супы</NavItem>
-                        <NavItem eventKey="hot_dishes" onClick={handleClose}>Горячие блюда</NavItem>
-                        <NavItem eventKey="garnish" onClick={handleClose}>Гарниры</NavItem>
-                        <NavItem eventKey="dessert" onClick={handleClose}>Десерты</NavItem>
-                        <NavItem eventKey="gruzia" onClick={handleClose}>Грузинская кухня</NavItem>
-                        <NavItem eventKey="pizza" onClick={handleClose}>Пицца</NavItem>
+                        {defaultSushiArr.map(d => <NavItem className={activeKey === d[0] && 'active'} key={d[0]} eventKey={d[0]} onClick={() => handleClose(d[0])}>{d[1]}</NavItem>)}
                     </Nav>
                 </Modal.Body>
             </Modal>
@@ -47,79 +75,89 @@ function SushiModal() {
     );
 }
 
-function Sushi() {
+const Sushi = ({ themeCl, siteMode }) => {
+
+    let [activeKey, setActiveKey] = useState('sushi')
+    let [focusReg, switchFocusReg] = useState('focusNone')
+    let [opacityCl, switchOpacityCl] = useState('opacity_1')
+
+    const SushiContentWrapper = (props) =>
+        <div className={`sushi_page__content`} style={{ paddingBottom: "30px" }}>{props.children}</div>
+
+    const firstSushiImage = (key) =>
+        <SushiContentWrapper>
+            <div className="sushiEmptyImg">
+                <img className="sushiFirstImg" src={`./Images/sushi/${key}.gif`} alt="sushi" />
+            </div>
+        </SushiContentWrapper>
+
+    const sushiElem = (key) =>
+        <SushiContentWrapper>
+            <div><img className={'sushi__page__img'} src={`./Images/sushi/${key}.gif`} alt={key} /></div>
+        </SushiContentWrapper>
+
+    const swiperSushiElem = (key) =>
+        <SushiContentWrapper>
+            {key === 'brand_rolls' ? <BrandRollsSwiper /> : <HotDishesSwiper />}
+        </SushiContentWrapper>
+
+    let delay = (ms) => { return new Promise(res => setTimeout(() => res(), ms)) }
+
+    const desktopMenuItem = (key, title) =>
+        <button key={key} className={activeKey === key ? 'active' : ''}
+            onClick={() => sushiImageChange(key)}
+        >{title}</button>
+
+    async function sushiImageChange(key) {
+        if (key !== activeKey) {
+            switchOpacityCl('opacity_0')
+            await delay(180)
+            setActiveKey(key)
+            await delay(50)
+            switchOpacityCl('opacity_1')
+        }
+    }
+
     return (
         <div>
-            <ScrollToTop/>
+            {/*<ScrollToTop/>*/}
             <div className="sushi_page">
-                <Tab.Container defaultActiveKey="sushi" id='sushiTab'>
-                    <div>
+                <div>
+                    <Media query={queries.mobile}>
+                        <div className="sushi_menu_xs padding_15xs">
+                            <SushiModal activeKey={activeKey} sushiImageChange={sushiImageChange} />
+                        </div>
+                    </Media>
 
-                        <Media query="(max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)">
-                            <div className="sushi_menu_xs padding_15xs">
-                                <SushiModal/>
+                    <Media query={queries.desktop}>
+                        <div className="col-lg-3 col-md-3 col-sm-3">
+                            <div className={`sushi_page__menuButtons ${siteMode === 'special' ? themeCl.navs : ''}`}>
+                                {siteMode === 'default'
+                                    ? defaultSushiArr.map(item => desktopMenuItem(item[0], item[1]))
+                                    : specialSushiArr.map(item => desktopMenuItem(item[0], item[1]))}
+                            </div>
+                        </div>
+                    </Media>
+
+                    <div className="col-lg-9 col-md-9 col-sm-9">
+                        <Media query={queries.desktop}>
+                            <div className={`sushiAdv sushiAdv--1 ${focusReg}`}>
+                                <a href="http://www.region47.sbor.net/" onFocus={() => switchFocusReg('focusUp')} onBlur={() => switchFocusReg('focusNone')}>
+                                    <img src="./Images/region47_wide.gif" alt="region47" />
+                                </a>
                             </div>
                         </Media>
 
-                        <Media query="(min-width: 768px) and (min-height: 500px)">
-                            <Col lg={3} md={3} sm={3}>
-                                <Nav bsStyle="pills" stacked>
-                                    <NavItem className='sushi-tab' eventKey="sushi">Суши</NavItem>
-                                    <NavItem className='sushi-tab' eventKey="rolls">Роллы</NavItem>
-                                    <NavItem className='sushi-tab' eventKey="black_rolls">Цветные/черные роллы</NavItem>
-                                    <NavItem className='sushi-tab' eventKey="hot_rolls">Запеченые роллы</NavItem>
-                                    <NavItem className='sushi-tab' eventKey="brand_rolls">Фирменные роллы</NavItem>
-                                    <NavItem className='sushi-tab' eventKey="mini_rolls">Мини-роллы</NavItem>
-                                    <NavItem className='sushi-tab' eventKey="sets">Наборы, сашими</NavItem>
-                                    <NavItem className='sushi-tab' eventKey="salads">Салаты</NavItem>
-                                    <NavItem className='sushi-tab' eventKey="soups">Супы</NavItem>
-                                    <NavItem className='sushi-tab' eventKey="hot_dishes">Горячие блюда</NavItem>
-                                    <NavItem className='sushi-tab' eventKey="garnish">Гарниры</NavItem>
-                                    <NavItem className='sushi-tab' eventKey="dessert">Десерты</NavItem>
-                                    <NavItem className='sushi-tab' eventKey="gruzia">Грузинская кухня</NavItem>
-                                    <NavItem className='sushi-tab' eventKey="pizza">Пицца</NavItem>
-                                </Nav>
-                            </Col>
-                        </Media>
-
-                        <Col lg={9} md={9} sm={9}>
-
-                            <Media query="(min-width: 768px) and (min-height: 500px)">
-                                <div className="sushiAdv sushiAdv--1">
-                                    <a href="http://www.region47.sbor.net/"><img src="./Images/region47_wide.gif" alt=""/></a>
-                                </div>
-                            </Media>
-
-                            <Tab.Content animation>
-                                <Tab.Pane eventKey="sushi">
-                                    <div className="sushiEmptyImg">
-                                        <img className="sushiFirstImg" src="./Images/sushi/sushi.gif" alt=""/>
-                                    </div>
-                                </Tab.Pane>
-                                <Tab.Pane eventKey="rolls"><img src="./Images/sushi/rolls.gif" alt=""/></Tab.Pane>
-                                <Tab.Pane eventKey="black_rolls"> <img src="./Images/sushi/black_rolls.gif"
-                                                                       alt=""/></Tab.Pane>
-                                <Tab.Pane eventKey="hot_rolls"> <img src="./Images/sushi/hot_rolls.gif"
-                                                                     alt=""/></Tab.Pane>
-                                <Tab.Pane eventKey="brand_rolls">
-                                    <BrandRollsSwiper/>
-                                </Tab.Pane>
-                                <Tab.Pane eventKey="mini_rolls"> <img src="./Images/sushi/mini_rolls.gif"
-                                                                       alt=""/></Tab.Pane>
-                                <Tab.Pane eventKey="sets"> <img src="./Images/sushi/sets.gif" alt=""/></Tab.Pane>
-                                <Tab.Pane eventKey="salads"> <img src="./Images/sushi/salads.gif" alt=""/></Tab.Pane>
-                                <Tab.Pane eventKey="soups"> <img src="./Images/sushi/soups.gif" alt=""/></Tab.Pane>
-                                <Tab.Pane eventKey="hot_dishes">
-                                    <HotDishesSwiper/>
-                                </Tab.Pane>
-                                <Tab.Pane eventKey="garnish"> <img src="./Images/sushi/garnish.gif" alt=""/></Tab.Pane>
-                                <Tab.Pane eventKey="dessert"> <img src="./Images/sushi/dessert.gif" alt=""/></Tab.Pane>
-                                <Tab.Pane eventKey="gruzia"> <img src="./Images/sushi/gruzia.gif" alt=""/></Tab.Pane>
-                                <Tab.Pane eventKey="pizza"> <img src="./Images/sushi/pizza.jpg" alt=""/></Tab.Pane>
-                            </Tab.Content>
-                        </Col>
+                        <div className={`${opacityCl}`}>
+                            {activeKey === 'sushi'
+                                ? firstSushiImage(activeKey)
+                                : swiperArr.includes(activeKey)
+                                    ? swiperSushiElem(activeKey)
+                                    : sushiElem(activeKey)}
+                        </div>
                     </div>
-                </Tab.Container>;
+
+                </div>
             </div>
         </div>
     );

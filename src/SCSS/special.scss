@@ -1,0 +1,192 @@
+@import 'variables';
+@import 'fonts';
+
+//Миксин для классов тем
+@mixin theme($theme, $backColor, $elemsColor) {
+  .theme__#{$theme}__background {
+    background-color: $backColor;
+  }
+  .theme__#{$theme}__footer {
+    background-color: $elemsColor;
+    & a {
+      color: $backColor !important;
+    }
+  }
+  .theme__#{$theme}__elements {
+    color: $elemsColor !important;
+  }
+  .theme__#{$theme}__elements a,
+  .theme__#{$theme}__elements h1,
+  .theme__#{$theme}__elements h2,
+  .theme__#{$theme}__elements h3,
+  .theme__#{$theme}__elements h4,
+  .theme__#{$theme}__elements p {
+    color: $elemsColor;
+  }
+  .theme__#{$theme}__borders {
+    border-color: $elemsColor !important;
+  }
+  .theme__#{$theme}__pills li.active > a,
+  .theme__#{$theme}__pills a:hover,
+  .theme__#{$theme}__pills a.active {
+    color: $backColor !important;
+    background-color: $elemsColor !important;
+  }
+  .theme__#{$theme}__pills:focus,
+  .theme__#{$theme}__pills a:focus,
+  .theme__#{$theme}__pills button:focus,
+  .theme__#{$theme}__navs button:focus {
+    outline: 2px solid $elemsColor;
+  }
+  .theme__#{$theme}__navs .active {
+    color: $backColor !important;
+    background-color: $elemsColor !important;
+  }
+  .theme__#{$theme}__navs button {
+    background-color: $backColor !important;
+    border: none !important;
+  }
+  .theme__#{$theme}__navs button:hover {
+    color: $backColor !important;
+    background-color: $elemsColor !important;
+    transition: ease 600ms;
+  }
+}
+
+// Цветовые темы
+@include theme(blackWhite, $blackWhiteBackground, $blackWhiteElements);
+@include theme(whiteBlack, $whiteBlackBackground, $whiteBlackElements);
+@include theme(blackRed, $blackRedBackground, $blackRedElements);
+@include theme(yellowBrown, $yellowBrownBackground, $yellowBrownElements);
+@include theme(blueGreen, $blueGreenBackground, $blueGreenElements);
+
+// Дефолтные размеры шрифтов
+.fontSize__100 {
+  font-size: 14px;
+}
+.fontSize__150 {
+  font-size: 21px;
+}
+.fontSize__200 {
+  font-size: 28px;
+}
+
+// Скрываем все изображения на сайте
+.hideImages img {
+  opacity: 0;
+}
+
+// отдельные классы (для футера)
+.bc__black {
+  background-color: $blackWhiteBackground;
+}
+.bc__white {
+  background-color: $whiteBlackBackground;
+}
+.bc__yellow {
+  background-color: $yellowBrownBackground;
+}
+.bc__blue {
+  background-color: $blueGreenBackground;
+}
+
+// Стили для верхней панели настроек
+.specialSettings__container {
+  background-color: #94a6af;
+  padding: 0.5% 1%;
+  height: 78px;
+}
+.specialSettings__flex {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+.specialSettings__flex__item {
+  position: relative;
+  font-family: $playFont;
+  color: black;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+.specialSettings__flex__title {
+  padding-bottom: 4%;
+  font-weight: bold;
+}
+.specialSettings__flex__modeButton {
+  align-self: center;
+  & button {
+    background-color: black;
+  }
+  & button:hover {
+    background-color: black !important;
+  }
+  & span {
+    color: white;
+    font-size: 120%;
+  }
+}
+.space {
+  & button {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    background-color: black;
+  }
+  & button:hover {
+    background-color: black !important;
+  }
+  & span {
+    color: white;
+    font-size: 120%;
+  }
+}
+.specialSettings__flex__fontButtons {
+  height: 40px;
+  & button {
+    background-color: black;
+    padding: 6px 12px;
+  }
+  & button:hover {
+    background-color: black !important;
+  }
+  & span {
+    color: white;
+    font-size: 150%;
+  }
+}
+
+@mixin themeButton($theme, $backColor, $elemsColor) {
+  .#{$theme} {
+    background-color: $backColor !important;
+    color: $elemsColor !important;
+  }
+}
+@include themeButton(themeBW, $blackWhiteBackground, $blackWhiteElements);
+@include themeButton(themeWB, $whiteBlackBackground, $whiteBlackElements);
+@include themeButton(themeBR, $blackRedBackground, $blackRedElements);
+@include themeButton(themeYB, $yellowBrownBackground, $yellowBrownElements);
+@include themeButton(themeBG, $blueGreenBackground, $blueGreenElements);
+//--------------------------------------------------------------------------
+
+// Анимации движений для фокуса
+.focusImg {
+  -o-transform: translateX(-10px);
+  -ms-transform: translateX(-10px);
+  -moz-transform: translateX(-10px);
+  -webkit-transform: translateX(-10px);
+  transform: translateX(-10px);
+  transition: ease 300ms;
+}
+.focusUp {
+  -o-transform: translateY(-10px);
+  -ms-transform: translateY(-10px);
+  -moz-transform: translateY(-10px);
+  -webkit-transform: translateY(-10px);
+  transform: translateY(-10px);
+  transition: ease 300ms;
+}
+.focusNone {
+  transition: ease 300ms;
+}
