@@ -7,15 +7,15 @@ const CREATE_ACTUAL_DATES_ARR = 'CREATE_ACTUAL_DATES_ARR'
 let initialState = {
   datesArr: [
     ['day0', 'Воскресенье', '25 апреля'],
-    ['day1', 'Понедельник', '19 апреля'],
-    ['day2', 'Вторник', '20 апреля'],
-    ['day3', 'Среда', '21 апреля'],
+    ['day1', 'Понедельник', '26 апреля'],
+    ['day2', 'Вторник', '27 апреля'],
+    ['day3', 'Среда', '28 апреля'],
     ['day4', 'Четверг', '22 апреля'],
     ['day5', 'Пятница', '23 апреля'],
     ['day6', 'Суббота', '24 апреля'],
   ],
   actualDatesArr: [], // массив с датами, расположенными в правильном порядке
-  beginDate: 'monday', // monday либо любое другое значение
+  beginDate: 'th', // monday либо любое другое значение
   activeKey: '',
   buttonTitle: 'Дата',
 }
@@ -35,7 +35,7 @@ export const seansReduser = (state = initialState, action) => {
         activeKey: action.activeKey,
       }
     case INITIAL_BUTTON_TITLE:
-      let todayItem = state.datesArr.find((item) => item[0] === state.activeKey)
+      let todayItem = state.datesArr.find(item => item[0] === state.activeKey)
       return {
         ...state,
         buttonTitle: todayItem[1] + ' ' + todayItem[2],
@@ -69,35 +69,16 @@ export const seansReduser = (state = initialState, action) => {
   }
 }
 
-export const initialActiveKey = () => {
-  return {
-    type: INITIAL_ACTIVE_KEY,
-  }
-}
-export const changeActiveKey = (activeKey) => {
-  return {
-    type: CHANGE_ACTIVE_KEY,
-    activeKey,
-  }
-}
-
-export const initialButtonTitle = () => {
-  return {
-    type: INITIAL_BUTTON_TITLE,
-  }
-}
-
-export const changeButtonTitle = (buttonTitle) => {
-  return {
-    type: CHANGE_BUTTON_TITLE,
-    buttonTitle,
-  }
-}
-
-export const createActualDatesArr = () => {
-  return {
-    type: CREATE_ACTUAL_DATES_ARR,
-  }
-}
+export const initialActiveKey = () => ({ type: INITIAL_ACTIVE_KEY })
+export const changeActiveKey = activeKey => ({
+  type: CHANGE_ACTIVE_KEY,
+  activeKey,
+})
+export const initialButtonTitle = () => ({ type: INITIAL_BUTTON_TITLE })
+export const changeButtonTitle = buttonTitle => ({
+  type: CHANGE_BUTTON_TITLE,
+  buttonTitle,
+})
+export const createActualDatesArr = () => ({ type: CREATE_ACTUAL_DATES_ARR })
 
 export default seansReduser

@@ -29,6 +29,7 @@ import { switchFontSize, switchSiteMode } from './REDUX/specialReduser'
 import { currentFontSizeClass, themeClasses, queries } from './helpers'
 import FilmsSpecialPage from './Content/Films/FilmsSpecialPage'
 import { useCallback } from 'react'
+import { SpecialContextProvider } from './SpecialContext'
 
 const App = React.memo(
   ({
@@ -54,7 +55,7 @@ const App = React.memo(
     }
 
     const switchSiteModeHandler = useCallback(
-      (mode) => {
+      mode => {
         switchSiteMode(mode)
       },
       [switchSiteMode]
@@ -80,117 +81,111 @@ const App = React.memo(
     }
 
     return (
-      <div
-        className={`${
-          siteMode === 'special' ? themeCl.back : 'mainContainer'
-        } ${themeCl.elems} ${currentFS}`}
-      >
-        <Media query={queries.mobile}>
-          <ScrollToTop />
-        </Media>
-
-        <Media query={queries.mobile}>
-          <ResizeFunc />
-        </Media>
-
-        <Navigation
-          siteMode={siteMode}
-          switchSiteMode={switchSiteModeHandler}
-          theme={theme}
-          themeCl={themeCl}
-          fontSize={fontSize}
-        />
-
-        {/*Отступ навигации в мобильной версии*/}
-        <div className='line_container' />
-
-        <div className='separator' />
-
+      <SpecialContextProvider>
         <div
-          className={`container wrapper ${themeCl.back} ${themeCl.borders} ${
-            imgHidden && 'hideImages'
-          }`}
-        >
-          <div className='row'>
-            <Media query={queries.mobile}>
-              <div>
-                <AdvXS />
-                <div className='separator' />
-              </div>
-            </Media>
+          className={`${
+            siteMode === 'special' ? themeCl.back : 'mainContainer'
+          } ${themeCl.elems} ${currentFS}`}>
+          <Media query={queries.mobile}>
+            <ScrollToTop />
+          </Media>
 
-            {siteMode === 'default' && (
-              <Media query={queries.desktop}>
-                <FilmSwiper films={films} />
-              </Media>
-            )}
+          <Media query={queries.mobile}>
+            <ResizeFunc />
+          </Media>
 
-            <Route exact path='/'>
+          <Navigation />
+
+          {/*Отступ навигации в мобильной версии*/}
+          <div className='line_container' />
+
+          <div className='separator' />
+
+          <div
+            className={`container wrapper ${themeCl.back} ${themeCl.borders} ${
+              imgHidden && 'hideImages'
+            }`}>
+            <div className='row'>
               <Media query={queries.mobile}>
-                <FilmSwiper films={films} />
-              </Media>
-            </Route>
-
-            <hr className={`line_5px hidden-xs ${themeCl.borders}`} />
-
-            <Route exact path='/'>
-              <IndexContent siteMode={siteMode} films={films} />
-            </Route>
-            <Route exact path='/about'>
-              <About siteMode={siteMode} />
-            </Route>
-            <Route exact path='/rules'>
-              <Rules />
-            </Route>
-            <Route exact path='/seans'>
-              <Seans themeCl={themeCl} siteMode={siteMode} />
-            </Route>
-            <Route exact path='/sushi'>
-              <Sushi themeCl={themeCl} siteMode={siteMode} />
-            </Route>
-            <CinemaRoutes
-              films={films}
-              filmsToday={filmsToday}
-              siteMode={siteMode}
-              themeCl={themeCl}
-              fontSize={fontSize}
-            />
-            {siteMode === 'special' && (
-              <Route exact path='/films'>
-                <FilmsSpecialPage
-                  films={films}
-                  url_Id={id}
-                  siteMode={siteMode}
-                />
-              </Route>
-            )}
-
-            <Media query={queries.desktop}>{id !== 'sushi' && <Adv />}</Media>
-
-            {siteMode === 'default' && filmsToday !== [] && (
-              <BottomSwiper
-                films={filmsToday}
-                slidesPerView={filmsTodaySlides}
-              />
-            )}
-
-            {id != null && (
-              <Media query={queries.mobile}>
-                <div>
+                <>
+                  <AdvXS />
                   <div className='separator' />
-                  <FilmSwiper films={films} />
-                </div>
+                </>
               </Media>
-            )}
+
+              {siteMode === 'default' && (
+                <Media query={queries.desktop}>
+                  <FilmSwiper films={films} />
+                </Media>
+              )}
+
+              <Route exact path='/'>
+                <Media query={queries.mobile}>
+                  <FilmSwiper films={films} />
+                </Media>
+              </Route>
+
+              <hr className={`line_5px hidden-xs ${themeCl.borders}`} />
+
+              <Route exact path='/'>
+                <IndexContent siteMode={siteMode} films={films} />
+              </Route>
+              <Route exact path='/about'>
+                <About siteMode={siteMode} />
+              </Route>
+              <Route exact path='/rules'>
+                <Rules />
+              </Route>
+              <Route exact path='/seans'>
+                <Seans themeCl={themeCl} siteMode={siteMode} />
+              </Route>
+              <Route exact path='/sushi'>
+                <Sushi themeCl={themeCl} siteMode={siteMode} />
+              </Route>
+              <CinemaRoutes
+                films={films}
+                filmsToday={filmsToday}
+                siteMode={siteMode}
+                themeCl={themeCl}
+                fontSize={fontSize}
+              />
+              {siteMode === 'special' && (
+                <Route exact path='/films'>
+                  <FilmsSpecialPage
+                    films={films}
+                    url_Id={id}
+                    siteMode={siteMode}
+                  />
+                </Route>
+              )}
+
+              <Media query={queries.desktop}>{id !== 'sushi' && <Adv />}</Media>
+
+              {siteMode === 'default' && filmsToday !== [] && (
+                <BottomSwiper
+                  films={filmsToday}
+                  slidesPerView={filmsTodaySlides}
+                />
+              )}
+
+              {id != null && (
+                <Media query={queries.mobile}>
+                  <div>
+                    <div className='separator' />
+                    <FilmSwiper films={films} />
+                  </div>
+                </Media>
+              )}
+            </div>
           </div>
+          <Footer themeCl={themeCl} />
         </div>
-        <Footer themeCl={themeCl} />
-      </div>
+      </SpecialContextProvider>
     )
   }
 )
 
-let mapStateToProps = (state) => ({
+let mapStateToProps = state => ({
   films: state.cinema.films,
   filmsToday: state.cinema.filmsToday,
   filmsTodaySlides: state.cinema.filmsTodaySlides,
