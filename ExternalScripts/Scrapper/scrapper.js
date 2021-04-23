@@ -1,6 +1,6 @@
 import fs from 'fs'
 import cherio from 'cherio'
-import { getPageContent } from './puppeteer.mjs'
+import { getPageContent } from './puppeteer.js'
 
 const SITE = 'https://www.kinopoisk.ru/film/'
 const cinemaIds = ['885628', '1354105']
@@ -117,5 +117,5 @@ Promise.all(filmsArr).then((data) => {
   //Формируем данные для записи в файл расписания в строковом формате
   const finalData = `let filmsArray = ${JSON.stringify(data)}`
   //Записываем получившиеся данные в файл
-  fs.writeFileSync('src/Scrapper/filmsArray.js', finalData)
+  fs.writeFileSync('ExternalScripts/Scrapper/filmsArray.js', finalData)
 })
