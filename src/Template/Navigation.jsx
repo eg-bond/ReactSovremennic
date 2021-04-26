@@ -4,14 +4,8 @@ import SpecialSettings from './SpecialSettings'
 import { modifiedClass, themeLogo } from '../helpers'
 import { useSpecialContext } from '../SpecialContext'
 
-function Navigation({ id }) {
-  const {
-    siteMode,
-    themeCl,
-    fontSize,
-    theme,
-    switchSiteMode,
-  } = useSpecialContext()
+function Navigation() {
+  const { siteMode, themeCl, fontSize, theme } = useSpecialContext()
 
   const classHandler = cl => modifiedClass(cl, siteMode)
   let fsAdditionClass =

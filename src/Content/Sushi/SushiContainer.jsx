@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
 import { Modal, Nav, NavItem } from 'react-bootstrap'
 import HotDishesSwiper from './HotDishesSwiper'
+import Media from 'react-media'
 import BrandRollsSwiper from './BrandRollsSwiper'
+import { queries } from '../../helpers'
 
 const swiperArr = ['brand_rolls', 'hot_dishes']
 const defaultSushiArr = [
@@ -81,32 +83,16 @@ function SushiModal({ sushiImageChange, activeKey }) {
   )
 }
 
-const Sushi = ({ themeCl, siteMode, Q }) => {
+const SushiContainer = ({ themeCl, siteMode, children }) => {
   let [activeKey, setActiveKey] = useState('sushi')
   let [focusReg, switchFocusReg] = useState('focusNone')
   let [opacityCl, switchOpacityCl] = useState('opacity_1')
 
-  const SushiContentWrapper = ({ children, ...props }) => (
+  const SushiContentWrapper = ({ children }) => (
     <div className={`sushi_page__content`} style={{ paddingBottom: '30px' }}>
       {children}
     </div>
   )
-
-  // const WrappedElem = Elem => (
-  //   <div className={`sushi_page__content`} style={{ paddingBottom: '30px' }}>
-  //     <Elem {...props} />
-  //   </div>
-  // )
-  // const FirstSushiImage = ({ key }) => (
-  //   <div className='sushiEmptyImg'>
-  //     <img
-  //       className='sushiFirstImg'
-  //       src={`./Images/sushi/${key}.gif`}
-  //       alt='sushi'
-  //     />
-  //   </div>
-  // )
-  // const wrappedSushiImage = WrappedElem(<FirstSushiImage key={activeKey} />)
 
   const firstSushiImage = key => (
     <SushiContentWrapper>
@@ -122,13 +108,11 @@ const Sushi = ({ themeCl, siteMode, Q }) => {
 
   const sushiElem = key => (
     <SushiContentWrapper>
-      <div>
-        <img
-          className={'sushi__page__img'}
-          src={`./Images/sushi/${key}.gif`}
-          alt={key}
-        />
-      </div>
+      <img
+        className={'sushi__page__img'}
+        src={`./Images/sushi/${key}.gif`}
+        alt={key}
+      />
     </SushiContentWrapper>
   )
 
@@ -142,7 +126,7 @@ const Sushi = ({ themeCl, siteMode, Q }) => {
     return new Promise(res => setTimeout(() => res(), ms))
   }
 
-  const desktopMenuItem = (key, title) => (
+  const desktopMenuButton = (key, title) => (
     <button
       key={key}
       className={activeKey === key ? 'active' : ''}
@@ -163,19 +147,19 @@ const Sushi = ({ themeCl, siteMode, Q }) => {
 
   return (
     <div>
-      {/*<ScrollToTop/>*/}
-      <div className='sushi_page'>
+      {children}
+      {/* <div className='sushi_page'>
         <div>
-          {Q.mobile && (
+          <Media query={queries.mobile}>
             <div className='sushi_menu_xs padding_15xs'>
               <SushiModal
                 activeKey={activeKey}
                 sushiImageChange={sushiImageChange}
               />
             </div>
-          )}
+          </Media>
 
-          {Q.desktop && (
+          <Media query={queries.desktop}>
             <div className='col-lg-3 col-md-3 col-sm-3'>
               <div
                 className={`sushi_page__menuButtons ${
@@ -183,17 +167,17 @@ const Sushi = ({ themeCl, siteMode, Q }) => {
                 }`}>
                 {siteMode === 'default'
                   ? defaultSushiArr.map(item =>
-                      desktopMenuItem(item[0], item[1])
+                      desktopMenuButton(item[0], item[1])
                     )
                   : specialSushiArr.map(item =>
-                      desktopMenuItem(item[0], item[1])
+                      desktopMenuButton(item[0], item[1])
                     )}
               </div>
             </div>
-          )}
+          </Media>
 
           <div className='col-lg-9 col-md-9 col-sm-9'>
-            {Q.desktop && (
+            <Media query={queries.desktop}>
               <div className={`sushiAdv sushiAdv--1 ${focusReg}`}>
                 <a
                   href='http://www.region47.sbor.net/'
@@ -202,7 +186,7 @@ const Sushi = ({ themeCl, siteMode, Q }) => {
                   <img src='./Images/region47_wide.gif' alt='region47' />
                 </a>
               </div>
-            )}
+            </Media>
 
             <div className={`${opacityCl}`}>
               {activeKey === 'sushi'
@@ -213,9 +197,9 @@ const Sushi = ({ themeCl, siteMode, Q }) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
 
-export default Sushi
+export default SushiContainer
