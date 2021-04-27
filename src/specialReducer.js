@@ -50,14 +50,3 @@ export const useSpecialReduser = () => {
 
   return [state, actionCreators]
 }
-
-// const switchSiteMode = mode => ({ type: SWITCH_SITE_MODE, mode })
-// const switchSiteTheme = theme => ({ type: SWITCH_SITE_THEME, theme })
-// const switchImagesVisibility = value => ({
-//   type: SWITCH_IMAGES_VISIBILITY,
-//   value,
-// })
-// const switchFontSize = fontSize => ({
-//   type: SWITCH_FONT_SIZE,
-//   fontSize,
-// })

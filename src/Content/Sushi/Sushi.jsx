@@ -1,168 +1,95 @@
 import React, { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
-import { Modal, Nav, NavItem } from 'react-bootstrap'
 import HotDishesSwiper from './HotDishesSwiper'
 import BrandRollsSwiper from './BrandRollsSwiper'
+import { useSpecialContext } from '../../SpecialContext'
+import { SushiModal } from './SushiModal'
 
-const swiperArr = ['brand_rolls', 'hot_dishes']
-const defaultSushiArr = [
-  ['sushi', 'Суши'],
-  ['rolls', 'Роллы'],
-  ['black_rolls', 'Цветные/черные роллы'],
-  ['hot_rolls', 'Запеченые роллы'],
-  ['brand_rolls', 'Фирменные роллы'],
-  ['mini_rolls', 'Мини-роллы'],
-  ['sets', 'Наборы'],
-  ['salads', 'Салаты'],
-  ['soups', 'Супы'],
-  ['hot_dishes', 'Горячие блюда'],
-  ['garnish', 'Гарниры'],
-  ['dessert', 'Десерты'],
-  ['gruzia', 'Грузинская кухня'],
-  ['pizza', 'Пицца'],
-]
-const specialSushiArr = [
-  ['sushi', 'Суши'],
-  ['rolls', 'Роллы'],
-  ['black_rolls', 'Цветные/черные роллы'],
-  ['hot_rolls', 'Запеченые роллы'],
-  ['brand_rolls1', 'Фирменные роллы 1'],
-  ['brand_rolls2', 'Фирменные роллы 2'],
-  ['brand_rolls3', 'Фирменные роллы 3'],
-  ['mini_rolls', 'Мини-роллы'],
-  ['sets', 'Наборы'],
-  ['salads', 'Салаты'],
-  ['soups', 'Супы'],
-  ['hot_dishes1', 'Горячие блюда 1'],
-  ['hot_dishes2', 'Горячие блюда 2'],
-  ['hot_dishes3', 'Горячие блюда 3'],
-  ['hot_dishes4', 'Горячие блюда 4'],
-  ['garnish', 'Гарниры'],
-  ['dessert', 'Десерты'],
-  ['gruzia', 'Грузинская кухня'],
-  ['pizza', 'Пицца'],
-]
+const firstSushiImage = showImg => (
+  <div className='sushiEmptyImg'>
+    <img
+      style={{ backgroundColor: 'white' }}
+      onLoad={showImg}
+      className='sushiFirstImg'
+      src={`./Images/sushi/sushi.gif`}
+      alt='sushi'
+    />
+  </div>
+)
 
-function SushiModal({ sushiImageChange, activeKey }) {
-  let [show, setShow] = useState(false)
-  const handleClose = key => {
-    sushiImageChange(key)
-    setShow(false)
-  }
+const sushiImage = (key, showImg) => (
+  <img
+    onLoad={showImg}
+    className={'sushi__page__img'}
+    src={`./Images/sushi/${key}.gif`}
+    alt={key}
+  />
+)
 
-  const handleShow = () => setShow(true)
+const swiperSushiImage = (key, showImg) =>
+  key === 'brand_rolls' ? (
+    <BrandRollsSwiper showImg={showImg} />
+  ) : (
+    <HotDishesSwiper showImg={showImg} />
+  )
 
-  return (
-    <div className='modal-container'>
-      <button onClick={handleShow} className='seans_button_xs '>
-        <span className='seans_button_xs__title'>Меню</span>{' '}
-        <span className='glyphicon glyphicon-chevron-down' aria-hidden='true' />
+const Sushi = ({
+  Q,
+  sushiElems,
+  sushiImageChange,
+  opacityCl,
+  activeKey,
+  hideImg,
+  showImg,
+}) => {
+  const { themeCl, siteMode } = useSpecialContext()
+  let [focusCl, switchFocusCl] = useState('focusNone')
+
+  const desktopMenuButton = (key, title, activeKey) => {
+    console.log('button render')
+    return (
+      <button
+        key={key}
+        className={activeKey === key ? 'active' : ''}
+        onClick={() => hideImg(key)}>
+        {title}
       </button>
-
-      <Modal show={show} onHide={() => setShow(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Меню</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Nav bsStyle='tabs' className='seans-tab-xs sushi-tab-xs' stacked>
-            {defaultSushiArr.map(d => (
-              <NavItem
-                className={activeKey === d[0] && 'active'}
-                key={d[0]}
-                eventKey={d[0]}
-                onClick={() => handleClose(d[0])}>
-                {d[1]}
-              </NavItem>
-            ))}
-          </Nav>
-        </Modal.Body>
-      </Modal>
-    </div>
-  )
-}
-
-const Sushi = ({ themeCl, siteMode, Q }) => {
-  let [activeKey, setActiveKey] = useState('sushi')
-  let [focusReg, switchFocusReg] = useState('focusNone')
-  let [opacityCl, switchOpacityCl] = useState('opacity_1')
-
-  const SushiContentWrapper = ({ children, ...props }) => (
-    <div className={`sushi_page__content`} style={{ paddingBottom: '30px' }}>
-      {children}
-    </div>
-  )
-
-  // const WrappedElem = Elem => (
-  //   <div className={`sushi_page__content`} style={{ paddingBottom: '30px' }}>
-  //     <Elem {...props} />
-  //   </div>
-  // )
-  // const FirstSushiImage = ({ key }) => (
-  //   <div className='sushiEmptyImg'>
-  //     <img
-  //       className='sushiFirstImg'
-  //       src={`./Images/sushi/${key}.gif`}
-  //       alt='sushi'
-  //     />
-  //   </div>
-  // )
-  // const wrappedSushiImage = WrappedElem(<FirstSushiImage key={activeKey} />)
-
-  const firstSushiImage = key => (
-    <SushiContentWrapper>
-      <div className='sushiEmptyImg'>
-        <img
-          className='sushiFirstImg'
-          src={`./Images/sushi/${key}.gif`}
-          alt='sushi'
-        />
-      </div>
-    </SushiContentWrapper>
-  )
-
-  const sushiElem = key => (
-    <SushiContentWrapper>
-      <div>
-        <img
-          className={'sushi__page__img'}
-          src={`./Images/sushi/${key}.gif`}
-          alt={key}
-        />
-      </div>
-    </SushiContentWrapper>
-  )
-
-  const swiperSushiElem = key => (
-    <SushiContentWrapper>
-      {key === 'brand_rolls' ? <BrandRollsSwiper /> : <HotDishesSwiper />}
-    </SushiContentWrapper>
-  )
-
-  let delay = ms => {
-    return new Promise(res => setTimeout(() => res(), ms))
+    )
   }
 
-  const desktopMenuItem = (key, title) => (
-    <button
-      key={key}
-      className={activeKey === key ? 'active' : ''}
-      onClick={() => sushiImageChange(key)}>
-      {title}
-    </button>
-  )
+  const DesktopButtons = () => {
+    return (
+      <>
+        {Q.desktop && (
+          <div className='col-lg-3 col-md-3 col-sm-3'>
+            <div
+              className={`sushi_page__menuButtons ${
+                siteMode === 'special' ? themeCl.navs : ''
+              }`}>
+              {siteMode === 'default'
+                ? sushiElems.default.map(item =>
+                    desktopMenuButton(item[0], item[1], activeKey)
+                  )
+                : sushiElems.special.map(item =>
+                    desktopMenuButton(item[0], item[1], activeKey)
+                  )}
+            </div>
+          </div>
+        )}
+      </>
+    )
+  }
 
-  async function sushiImageChange(key) {
-    if (key !== activeKey) {
-      switchOpacityCl('opacity_0')
-      await delay(180)
-      setActiveKey(key)
-      await delay(50)
-      switchOpacityCl('opacity_1')
-    }
+  const currentImage = (activeKey, showImg) => {
+    // activeKey === 'sushi'
+    //   ? firstSushiImage(showImg)
+    //   : sushiElems.swiperKeys.includes(activeKey)
+    //   ? swiperSushiImage(activeKey, showImg)
+    //   : sushiImage(activeKey, showImg)
   }
 
   return (
-    <div>
+    <>
       {/*<ScrollToTop/>*/}
       <div className='sushi_page'>
         <div>
@@ -171,50 +98,54 @@ const Sushi = ({ themeCl, siteMode, Q }) => {
               <SushiModal
                 activeKey={activeKey}
                 sushiImageChange={sushiImageChange}
+                defaultSushiArr={sushiElems.default}
               />
             </div>
           )}
 
-          {Q.desktop && (
+          {/* {Q.desktop && (
             <div className='col-lg-3 col-md-3 col-sm-3'>
               <div
                 className={`sushi_page__menuButtons ${
                   siteMode === 'special' ? themeCl.navs : ''
                 }`}>
                 {siteMode === 'default'
-                  ? defaultSushiArr.map(item =>
-                      desktopMenuItem(item[0], item[1])
+                  ? sushiElems.default.map(item =>
+                      desktopMenuButton(item[0], item[1])
                     )
-                  : specialSushiArr.map(item =>
-                      desktopMenuItem(item[0], item[1])
+                  : sushiElems.special.map(item =>
+                      desktopMenuButton(item[0], item[1])
                     )}
               </div>
             </div>
-          )}
+          )} */}
+          <DesktopButtons />
 
           <div className='col-lg-9 col-md-9 col-sm-9'>
             {Q.desktop && (
-              <div className={`sushiAdv sushiAdv--1 ${focusReg}`}>
+              <div className={`sushiAdv sushiAdv--1 ${focusCl}`}>
                 <a
                   href='http://www.region47.sbor.net/'
-                  onFocus={() => switchFocusReg('focusUp')}
-                  onBlur={() => switchFocusReg('focusNone')}>
+                  onFocus={() => switchFocusCl('focusUp')}
+                  onBlur={() => switchFocusCl('focusNone')}>
                   <img src='./Images/region47_wide.gif' alt='region47' />
                 </a>
               </div>
             )}
 
-            <div className={`${opacityCl}`}>
+            <div
+              className={`${opacityCl} sushi_page__content`}
+              style={{ paddingBottom: '30px' }}>
               {activeKey === 'sushi'
-                ? firstSushiImage(activeKey)
-                : swiperArr.includes(activeKey)
-                ? swiperSushiElem(activeKey)
-                : sushiElem(activeKey)}
+                ? firstSushiImage(showImg)
+                : sushiElems.swiperKeys.includes(activeKey)
+                ? swiperSushiImage(activeKey, showImg)
+                : sushiImage(activeKey, showImg)}
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

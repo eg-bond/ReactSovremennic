@@ -28,6 +28,7 @@ import { queries } from './helpers'
 import FilmsSpecialPage from './Content/Films/FilmsSpecialPage'
 import { useSpecialContext } from './SpecialContext'
 import { useMediaQuery } from '@material-ui/core'
+import SushiContainer from './Content/Sushi/SushiContainer'
 
 const App = React.memo(
   ({
@@ -139,8 +140,11 @@ const App = React.memo(
                 Q={Q}
               />
             </Route>
-            <Route exact path='/sushi'>
+            {/* <Route exact path='/sushi'>
               <Sushi themeCl={themeCl} siteMode={siteMode} Q={Q} />
+            </Route> */}
+            <Route exact path='/sushi'>
+              <SushiContainer Q={Q} />
             </Route>
             <CinemaRoutes films={films} Q={Q} />
             {siteMode === 'special' && (
