@@ -47,7 +47,7 @@ const specialSushiArr = [
 
 function SushiModal({ sushiImageChange, activeKey }) {
   let [show, setShow] = useState(false)
-  const handleClose = (key) => {
+  const handleClose = key => {
     sushiImageChange(key)
     setShow(false)
   }
@@ -67,13 +67,12 @@ function SushiModal({ sushiImageChange, activeKey }) {
         </Modal.Header>
         <Modal.Body>
           <Nav bsStyle='tabs' className='seans-tab-xs sushi-tab-xs' stacked>
-            {defaultSushiArr.map((d) => (
+            {defaultSushiArr.map(d => (
               <NavItem
                 className={activeKey === d[0] && 'active'}
                 key={d[0]}
                 eventKey={d[0]}
-                onClick={() => handleClose(d[0])}
-              >
+                onClick={() => handleClose(d[0])}>
                 {d[1]}
               </NavItem>
             ))}
@@ -89,13 +88,13 @@ const Sushi = ({ themeCl, siteMode }) => {
   let [focusReg, switchFocusReg] = useState('focusNone')
   let [opacityCl, switchOpacityCl] = useState('opacity_1')
 
-  const SushiContentWrapper = (props) => (
+  const SushiContentWrapper = props => (
     <div className={`sushi_page__content`} style={{ paddingBottom: '30px' }}>
       {props.children}
     </div>
   )
 
-  const firstSushiImage = (key) => (
+  const firstSushiImage = key => (
     <SushiContentWrapper>
       <div className='sushiEmptyImg'>
         <img
@@ -104,11 +103,10 @@ const Sushi = ({ themeCl, siteMode }) => {
           alt='sushi'
         />
       </div>
-      xd
     </SushiContentWrapper>
   )
 
-  const sushiElem = (key) => (
+  const sushiElem = key => (
     <SushiContentWrapper>
       <div>
         <img
@@ -120,22 +118,21 @@ const Sushi = ({ themeCl, siteMode }) => {
     </SushiContentWrapper>
   )
 
-  const swiperSushiElem = (key) => (
+  const swiperSushiElem = key => (
     <SushiContentWrapper>
       {key === 'brand_rolls' ? <BrandRollsSwiper /> : <HotDishesSwiper />}
     </SushiContentWrapper>
   )
 
-  let delay = (ms) => {
-    return new Promise((res) => setTimeout(() => res(), ms))
+  let delay = ms => {
+    return new Promise(res => setTimeout(() => res(), ms))
   }
 
   const desktopMenuItem = (key, title) => (
     <button
       key={key}
       className={activeKey === key ? 'active' : ''}
-      onClick={() => sushiImageChange(key)}
-    >
+      onClick={() => sushiImageChange(key)}>
       {title}
     </button>
   )
@@ -169,13 +166,12 @@ const Sushi = ({ themeCl, siteMode }) => {
               <div
                 className={`sushi_page__menuButtons ${
                   siteMode === 'special' ? themeCl.navs : ''
-                }`}
-              >
+                }`}>
                 {siteMode === 'default'
-                  ? defaultSushiArr.map((item) =>
+                  ? defaultSushiArr.map(item =>
                       desktopMenuItem(item[0], item[1])
                     )
-                  : specialSushiArr.map((item) =>
+                  : specialSushiArr.map(item =>
                       desktopMenuItem(item[0], item[1])
                     )}
               </div>
@@ -188,8 +184,7 @@ const Sushi = ({ themeCl, siteMode }) => {
                 <a
                   href='http://www.region47.sbor.net/'
                   onFocus={() => switchFocusReg('focusUp')}
-                  onBlur={() => switchFocusReg('focusNone')}
-                >
+                  onBlur={() => switchFocusReg('focusNone')}>
                   <img src='./Images/region47_wide.gif' alt='region47' />
                 </a>
               </div>
