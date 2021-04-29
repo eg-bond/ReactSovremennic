@@ -41,12 +41,12 @@ const Sushi = ({
   activeKey,
   hideImg,
   showImg,
+  defaultButtons,
 }) => {
   const { themeCl, siteMode } = useSpecialContext()
   let [focusCl, switchFocusCl] = useState('focusNone')
 
   const desktopMenuButton = (key, title, activeKey) => {
-    console.log('button render')
     return (
       <button
         key={key}
@@ -67,9 +67,7 @@ const Sushi = ({
                 siteMode === 'special' ? themeCl.navs : ''
               }`}>
               {siteMode === 'default'
-                ? sushiElems.default.map(item =>
-                    desktopMenuButton(item[0], item[1], activeKey)
-                  )
+                ? defaultButtons
                 : sushiElems.special.map(item =>
                     desktopMenuButton(item[0], item[1], activeKey)
                   )}

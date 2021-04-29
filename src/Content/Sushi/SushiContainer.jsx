@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import { Hidden } from '@material-ui/core'
+import React, { useCallback, useState } from 'react'
 import Sushi from './Sushi'
 
 const sushiElems = {
@@ -42,17 +43,17 @@ const sushiElems = {
   swiperKeys: ['brand_rolls', 'hot_dishes'],
 }
 
-// const desktopMenuButton = (key, title, activeKey) => {
-//   console.log('button render')
-//   return (
-//     <button
-//       key={key}
-//       className={activeKey === key ? 'active' : ''}
-//       onClick={() => hideImg(key)}>
-//       {title}
-//     </button>
-//   )
-// }
+const desktopMenuButton = (key, title, activeKey, hideImg) => {
+  console.log('button render')
+  return (
+    <button
+      key={key}
+      className={activeKey === key ? 'active' : ''}
+      onClick={() => hideImg(key)}>
+      {title}
+    </button>
+  )
+}
 
 // const defaultMenuButtons = () => {
 //   sushiElems.default.map(item => desktopMenuButton(item[0], item[1]))
@@ -65,6 +66,13 @@ const SushiContainer = ({ Q }) => {
   const delay = ms => {
     return new Promise(res => setTimeout(() => res(), ms))
   }
+
+  const defaultMenuButtons = useCallback(() => {
+    console.log('defButtonsCreated')
+    return sushiElems.default.map(item =>
+      desktopMenuButton(item[0], item[1], activeKey, hideImg)
+    )
+  }, [])
 
   // async function sushiImageChange(key) {
   //   if (key !== activeKey) {
@@ -98,6 +106,7 @@ const SushiContainer = ({ Q }) => {
         activeKey={activeKey}
         hideImg={hideImg}
         showImg={showImg}
+        defaultButtons={defaultMenuButtons()}
       />
     </div>
   )
