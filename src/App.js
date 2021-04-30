@@ -9,7 +9,6 @@ import Rules from './Content/Rules/Rules'
 import BottomSwiper from './Template/BottomSwiper'
 import Footer from './Template/Footer'
 import Seans from './Content/Seans/Seans'
-import Sushi from './Content/Sushi/Sushi'
 import '../node_modules/swiper/css/swiper.css'
 import IndexContent from './Content/IndexContent/IndexContent'
 import './SCSS/style.scss'
@@ -144,7 +143,7 @@ const App = React.memo(
               <Sushi themeCl={themeCl} siteMode={siteMode} Q={Q} />
             </Route> */}
             <Route exact path='/sushi'>
-              <SushiContainer Q={Q} />
+              <SushiContainer Q={Q} siteMode={siteMode} />
             </Route>
             <CinemaRoutes films={films} Q={Q} />
             {siteMode === 'special' && (

@@ -1,5 +1,4 @@
-import { Hidden } from '@material-ui/core'
-import React, { useCallback, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Sushi from './Sushi'
 
 const sushiElems = {
@@ -44,7 +43,6 @@ const sushiElems = {
 }
 
 const desktopMenuButton = (key, title, activeKey, hideImg) => {
-  console.log('button render')
   return (
     <button
       key={key}
@@ -55,33 +53,20 @@ const desktopMenuButton = (key, title, activeKey, hideImg) => {
   )
 }
 
-// const defaultMenuButtons = () => {
-//   sushiElems.default.map(item => desktopMenuButton(item[0], item[1]))
-// }
+const delay = ms => {
+  return new Promise(res => setTimeout(() => res(), ms))
+}
 
-const SushiContainer = ({ Q }) => {
+const SushiContainer = ({ Q, siteMode }) => {
   const [activeKey, setActiveKey] = useState('sushi')
-  const [opacityCl, switchOpacityCl] = useState('opacity_1')
+  const [opacityCl, switchOpacityCl] = useState('opacity_0')
+  const [menuButtons, setButtons] = useState([])
 
-  const delay = ms => {
-    return new Promise(res => setTimeout(() => res(), ms))
-  }
-
-  const defaultMenuButtons = useCallback(() => {
-    console.log('defButtonsCreated')
-    return sushiElems.default.map(item =>
+  const createMenuButtons = () => {
+    return sushiElems[siteMode].map(item =>
       desktopMenuButton(item[0], item[1], activeKey, hideImg)
     )
-  }, [])
-
-  // async function sushiImageChange(key) {
-  //   if (key !== activeKey) {
-  //     switchOpacityCl('opacity_0')
-  //     await delay(200)
-  //     setActiveKey(key)
-  //     switchOpacityCl('opacity_1')
-  //   }
-  // }
+  }
 
   async function hideImg(key) {
     if (activeKey !== key) {
@@ -94,19 +79,25 @@ const SushiContainer = ({ Q }) => {
     switchOpacityCl('opacity_1')
   }
 
-  console.log('conainer render')
+  useEffect(() => {
+    setButtons(createMenuButtons())
+  }, [activeKey])
+
+  useEffect(() => {
+    setButtons(createMenuButtons())
+    setActiveKey('sushi')
+  }, [siteMode])
 
   return (
     <div>
       <Sushi
         sushiElems={sushiElems}
-        // sushiImageChange={sushiImageChange}
         opacityCl={opacityCl}
         Q={Q}
         activeKey={activeKey}
         hideImg={hideImg}
         showImg={showImg}
-        defaultButtons={defaultMenuButtons()}
+        menuButtons={menuButtons}
       />
     </div>
   )

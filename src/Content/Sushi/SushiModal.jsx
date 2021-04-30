@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { Modal, Nav, NavItem } from 'react-bootstrap'
 
-export function SushiModal({ sushiImageChange, activeKey, defaultSushiArr }) {
+export function SushiModal({ hideImg, activeKey, defaultSushiArr }) {
   let [show, setShow] = useState(false)
   const handleClose = key => {
-    sushiImageChange(key)
+    hideImg(key)
     setShow(false)
   }
 

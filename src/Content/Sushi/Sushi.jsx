@@ -5,86 +5,34 @@ import BrandRollsSwiper from './BrandRollsSwiper'
 import { useSpecialContext } from '../../SpecialContext'
 import { SushiModal } from './SushiModal'
 
-const firstSushiImage = showImg => (
-  <div className='sushiEmptyImg'>
+const sushiImage = (key, showImg, swiperKeys) => {
+  // prettier-ignore
+  if (swiperKeys.includes(key)) {    
+    return key === 'brand_rolls'
+      ? <BrandRollsSwiper showImg={showImg} />
+      : <HotDishesSwiper showImg={showImg} />
+  }
+  return (
     <img
-      style={{ backgroundColor: 'white' }}
       onLoad={showImg}
-      className='sushiFirstImg'
-      src={`./Images/sushi/sushi.gif`}
-      alt='sushi'
+      className={'sushi__page__img'}
+      src={`./Images/sushi/${key}.gif`}
+      alt={key}
     />
-  </div>
-)
-
-const sushiImage = (key, showImg) => (
-  <img
-    onLoad={showImg}
-    className={'sushi__page__img'}
-    src={`./Images/sushi/${key}.gif`}
-    alt={key}
-  />
-)
-
-const swiperSushiImage = (key, showImg) =>
-  key === 'brand_rolls' ? (
-    <BrandRollsSwiper showImg={showImg} />
-  ) : (
-    <HotDishesSwiper showImg={showImg} />
   )
+}
 
 const Sushi = ({
   Q,
   sushiElems,
-  sushiImageChange,
   opacityCl,
   activeKey,
   hideImg,
   showImg,
-  defaultButtons,
+  menuButtons,
 }) => {
   const { themeCl, siteMode } = useSpecialContext()
-  let [focusCl, switchFocusCl] = useState('focusNone')
-
-  const desktopMenuButton = (key, title, activeKey) => {
-    return (
-      <button
-        key={key}
-        className={activeKey === key ? 'active' : ''}
-        onClick={() => hideImg(key)}>
-        {title}
-      </button>
-    )
-  }
-
-  const DesktopButtons = () => {
-    return (
-      <>
-        {Q.desktop && (
-          <div className='col-lg-3 col-md-3 col-sm-3'>
-            <div
-              className={`sushi_page__menuButtons ${
-                siteMode === 'special' ? themeCl.navs : ''
-              }`}>
-              {siteMode === 'default'
-                ? defaultButtons
-                : sushiElems.special.map(item =>
-                    desktopMenuButton(item[0], item[1], activeKey)
-                  )}
-            </div>
-          </div>
-        )}
-      </>
-    )
-  }
-
-  const currentImage = (activeKey, showImg) => {
-    // activeKey === 'sushi'
-    //   ? firstSushiImage(showImg)
-    //   : sushiElems.swiperKeys.includes(activeKey)
-    //   ? swiperSushiImage(activeKey, showImg)
-    //   : sushiImage(activeKey, showImg)
-  }
+  const [focusCl, switchFocusCl] = useState('focusNone')
 
   return (
     <>
@@ -95,29 +43,22 @@ const Sushi = ({
             <div className='sushi_menu_xs padding_15xs'>
               <SushiModal
                 activeKey={activeKey}
-                sushiImageChange={sushiImageChange}
+                hideImg={hideImg}
                 defaultSushiArr={sushiElems.default}
               />
             </div>
           )}
 
-          {/* {Q.desktop && (
+          {Q.desktop && (
             <div className='col-lg-3 col-md-3 col-sm-3'>
               <div
                 className={`sushi_page__menuButtons ${
                   siteMode === 'special' ? themeCl.navs : ''
                 }`}>
-                {siteMode === 'default'
-                  ? sushiElems.default.map(item =>
-                      desktopMenuButton(item[0], item[1])
-                    )
-                  : sushiElems.special.map(item =>
-                      desktopMenuButton(item[0], item[1])
-                    )}
+                {menuButtons}
               </div>
             </div>
-          )} */}
-          <DesktopButtons />
+          )}
 
           <div className='col-lg-9 col-md-9 col-sm-9'>
             {Q.desktop && (
@@ -134,11 +75,7 @@ const Sushi = ({
             <div
               className={`${opacityCl} sushi_page__content`}
               style={{ paddingBottom: '30px' }}>
-              {activeKey === 'sushi'
-                ? firstSushiImage(showImg)
-                : sushiElems.swiperKeys.includes(activeKey)
-                ? swiperSushiImage(activeKey, showImg)
-                : sushiImage(activeKey, showImg)}
+              {sushiImage(activeKey, showImg, sushiElems.swiperKeys)}
             </div>
           </div>
         </div>
