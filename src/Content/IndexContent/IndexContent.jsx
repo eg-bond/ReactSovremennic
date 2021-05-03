@@ -47,9 +47,7 @@ function IndexContent({ siteMode, films, Q }) {
           </p>
         </div>
 
-        {siteMode === 'special' && Q.desktop && (
-          <Films films={films} page={'index'} />
-        )}
+        {siteMode === 'special' && Q.desktop && <Films films={films} />}
 
         <div className='separator-xs' />
       </div>

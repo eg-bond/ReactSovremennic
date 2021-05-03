@@ -171,7 +171,7 @@
 //--------------------------------------------------------------------------
 
 // Анимации движений для фокуса
-.focusImg {
+@mixin shiftLeft {
   -o-transform: translateX(-10px);
   -ms-transform: translateX(-10px);
   -moz-transform: translateX(-10px);

@@ -3,7 +3,7 @@ import Swiper from 'react-id-swiper'
 import { NavLink } from 'react-router-dom'
 
 const BottomSwiper = props => {
-  const [opacity, turnOpacity] = useState(0)
+  const [opacity, turnOpacity] = useState('opacity_0')
   const [bottomSwiper, updateSwiper] = useState(null)
 
   const turnAutoplay = action => {
@@ -23,9 +23,7 @@ const BottomSwiper = props => {
     spaceBetween: props.slidesPerView === 3 ? 55 : 20,
     centeredSlides: false,
     loop: true,
-    containerClass: `bottomSwiper swiper-container ${
-      opacity === 1 ? 'opacity_1' : 'opacity_0'
-    }`,
+    containerClass: `bottomSwiper swiper-container ${opacity}`,
     wrapperClass: 'swiper-wrapper ',
     slideClass: 'swiper-slide',
     autoplay: {
@@ -33,9 +31,7 @@ const BottomSwiper = props => {
       disableOnInteraction: false,
     },
     on: {
-      imagesReady: () => {
-        turnOpacity(1)
-      },
+      imagesReady: () => turnOpacity('opacity_1'),
     },
   }
 

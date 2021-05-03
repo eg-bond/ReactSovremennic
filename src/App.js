@@ -73,23 +73,59 @@ const App = React.memo(
       desktop: useMediaQuery(queries.desktop),
     }
 
-    const ResizeFunc = () => {
-      if (
-        window.matchMedia(queries.mobile).matches &
-        (siteMode === 'special')
-      ) {
-        switchSiteMode('default')
-      }
-      return null
+    // const ResizeFunc = () => {
+    //   if (
+    //     window.matchMedia(queries.mobile).matches &
+    //     (siteMode === 'special')
+    //   ) {
+    //     switchSiteMode('default')
+    //   }
+
+    //   return null
+    // }
+
+    const switchModeOnResize = () => {
+      Q.mobile && siteMode === 'special' && switchSiteMode('default')
     }
 
+    const routes = () => (
+      <>
+        <Route exact path='/'>
+          <IndexContent siteMode={siteMode} films={films} Q={Q} />
+        </Route>
+        <Route exact path='/about'>
+          <About siteMode={siteMode} />
+        </Route>
+        <Route exact path='/rules'>
+          <Rules />
+        </Route>
+        <Route exact path='/seans'>
+          <Seans
+            themeCl={themeCl}
+            siteMode={siteMode}
+            fontSize={fontSize}
+            Q={Q}
+          />
+        </Route>
+        <Route exact path='/sushi'>
+          <SushiContainer Q={Q} siteMode={siteMode} />
+        </Route>
+        <CinemaRoutes films={films} Q={Q} />
+        {siteMode === 'special' && (
+          <Route exact path='/films'>
+            <FilmsSpecialPage films={films} />
+          </Route>
+        )}
+      </>
+    )
+    console.log('App render')
     return (
       <div
         className={`${
           siteMode === 'special' ? themeCl.back : 'mainContainer'
         } ${themeCl.elems} ${currentFS}`}>
         {Q.mobile && <ScrollToTop />}
-        {Q.mobile && <ResizeFunc />}
+        {/* {Q.mobile && <ResizeFunc />} */}
 
         <Navigation />
 
@@ -122,35 +158,7 @@ const App = React.memo(
 
             <hr className={`line_5px hidden-xs ${themeCl.borders}`} />
 
-            <Route exact path='/'>
-              <IndexContent siteMode={siteMode} films={films} Q={Q} />
-            </Route>
-            <Route exact path='/about'>
-              <About siteMode={siteMode} />
-            </Route>
-            <Route exact path='/rules'>
-              <Rules />
-            </Route>
-            <Route exact path='/seans'>
-              <Seans
-                themeCl={themeCl}
-                siteMode={siteMode}
-                fontSize={fontSize}
-                Q={Q}
-              />
-            </Route>
-            {/* <Route exact path='/sushi'>
-              <Sushi themeCl={themeCl} siteMode={siteMode} Q={Q} />
-            </Route> */}
-            <Route exact path='/sushi'>
-              <SushiContainer Q={Q} siteMode={siteMode} />
-            </Route>
-            <CinemaRoutes films={films} Q={Q} />
-            {siteMode === 'special' && (
-              <Route exact path='/films'>
-                <FilmsSpecialPage films={films} />
-              </Route>
-            )}
+            {routes()}
 
             {Q.desktop && id !== 'sushi' && <Adv />}
 
@@ -163,10 +171,10 @@ const App = React.memo(
             )}
 
             {id != null && Q.mobile && (
-              <div>
+              <>
                 <div className='separator' />
                 <FilmSwiper films={films} mobile={Q.mobile} />
-              </div>
+              </>
             )}
           </div>
         </div>

@@ -3,7 +3,7 @@ import Swiper from 'react-id-swiper'
 import { NavLink } from 'react-router-dom'
 
 const FilmSwiper = props => {
-  const [opacity, turnOpacity] = useState(0)
+  const [opacity, turnOpacity] = useState('opacity_0')
   const [filmSwiper, updateSwiper] = useState(null)
   const mobile = props.mobile
 
@@ -47,9 +47,7 @@ const FilmSwiper = props => {
       },
     },
     on: {
-      imagesReady: function () {
-        turnOpacity(1)
-      },
+      imagesReady: () => turnOpacity('opacity_1'),
     },
   }
 
@@ -58,7 +56,7 @@ const FilmSwiper = props => {
       <div
         onMouseEnter={() => turnAutoplay('stop')}
         onMouseLeave={() => turnAutoplay('start')}
-        className={`cinemaSlider ${opacity === 1 ? 'opacity_1' : 'opacity_0'}`}>
+        className={`cinemaSlider ${opacity}`}>
         {mobile && <h4>Фильмы</h4>}
         <Swiper getSwiper={updateSwiper} {...params}>
           {props.films.map(f => (

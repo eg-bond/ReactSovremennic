@@ -1,4 +1,4 @@
-@import "variables";
+@import 'variables';
 
 .sushiAdv {
   position: relative;
@@ -10,9 +10,9 @@
 }
 
 .sushiAdv img {
-  position:absolute;
-  width:100%;
-  height:100%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .sushi_page {
@@ -32,7 +32,7 @@
   }
 }
 
-.sushi_page__content img{
+.sushi_page__content img {
   width: 100%;
   border-radius: 3px;
   border: 1px solid;
@@ -81,11 +81,6 @@
   padding-bottom: 155%;
   margin-bottom: 2%;
 }
-.sushiFirstImg {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
 
 .swiper-container-sushi {
   width: 100%;
@@ -94,10 +89,11 @@
   margin-bottom: 20px;
   cursor: grab;
 }
-.swiper-button-next, .swiper-button-prev {
+.swiper-button-next,
+.swiper-button-prev {
   color: black;
 }
-.swiper-container-sushi>.swiper-pagination-bullets {
+.swiper-container-sushi > .swiper-pagination-bullets {
   margin: 0 10px 20px 0;
 }
 .swiper-pagination-fraction {
@@ -111,13 +107,13 @@
   }
 }
 
-@media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
-
+@media (max-width: 767.8px),
+  (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
   .sushi_page {
     margin-top: 0;
   }
 
-  .sushi_page>.col-xs-12 {
+  .sushi_page > .col-xs-12 {
     padding-right: 0;
     padding-left: 0;
   }
@@ -177,12 +173,14 @@
     }
   }
 
-  .sushi-tab-xs>li.active>a, .sushi-tab-xs>li.active>a:focus, .sushi-tab-xs>li.active>a:hover {
+  .sushi-tab-xs > li.active > a,
+  .sushi-tab-xs > li.active > a:focus,
+  .sushi-tab-xs > li.active > a:hover {
     color: #f00;
     border: none;
   }
 
-  .sushi_page img{
+  .sushi_page img {
     width: 100%;
     margin-top: 2%;
   }
@@ -194,15 +192,24 @@
     margin-bottom: 0;
   }
 
-  .swiper-button-next, .swiper-button-prev {
+  .swiper-button-next,
+  .swiper-button-prev {
     &::after {
       font-size: xx-large;
     }
   }
 }
 
-@mixin sushi($buttonFontSize, $modalFontSize, $aFontSize, $swiperBuM, $swiperBuH, $swFractionFS, $swFractionMB, $maxWidth) {
-
+@mixin sushi(
+  $buttonFontSize,
+  $modalFontSize,
+  $aFontSize,
+  $swiperBuM,
+  $swiperBuH,
+  $swFractionFS,
+  $swFractionMB,
+  $maxWidth
+) {
   @media (max-width: $maxWidth) {
     .sushi_menu_xs > button {
       font-size: $buttonFontSize;
@@ -227,16 +234,25 @@
 }
 
 @for $i from 4 to -1 {
-  $maxWidth: 320px + $i*111.9px;
-  $buttonFontSize: 72%+7%*$i;
-  $modalFontSize: 95%+ 2.5*$i;
-  $aFontSize: 82% + 4.5*$i;
-  $swiperBuM: -4.5% + 0.8*$i;
-  $swiperBuH: 10px + 3.75*$i;
-  $swFractionFS: 55% + 8.75*$i;
-  $swFractionMB: -3% + 0.7%*$i;
+  $maxWidth: 320px + $i * 111.9px;
+  $buttonFontSize: 72%+7% * $i;
+  $modalFontSize: 95%+ 2.5 * $i;
+  $aFontSize: 82% + 4.5 * $i;
+  $swiperBuM: -4.5% + 0.8 * $i;
+  $swiperBuH: 10px + 3.75 * $i;
+  $swFractionFS: 55% + 8.75 * $i;
+  $swFractionMB: -3% + 0.7% * $i;
 
-  @include sushi ($buttonFontSize, $modalFontSize, $aFontSize, $swiperBuM, $swiperBuH, $swFractionFS, $swFractionMB, $maxWidth);
+  @include sushi(
+    $buttonFontSize,
+    $modalFontSize,
+    $aFontSize,
+    $swiperBuM,
+    $swiperBuH,
+    $swFractionFS,
+    $swFractionMB,
+    $maxWidth
+  );
 }
 
 @media (max-width: 590px) {
@@ -244,4 +260,3 @@
     padding: 9.5% 0.9% 0 0.9%;
   }
 }
-

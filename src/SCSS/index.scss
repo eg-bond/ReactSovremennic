@@ -1,4 +1,4 @@
-@import "variables";
+@import 'variables';
 
 .embed-responsive {
   border: $border1px;
@@ -13,12 +13,14 @@
   padding: 0 0 2% 1%;
   color: white;
   text-align: justify;
-  @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+  @media (max-width: 767.8px),
+    (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
     padding: 1%;
   }
 }
 .news h1 {
-  @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+  @media (max-width: 767.8px),
+    (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
     font-size: 150%;
     margin-top: 1.5%;
   }
@@ -33,18 +35,21 @@
   @media (max-width: 992px) {
     font-size: 95%;
   }
-  @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+  @media (max-width: 767.8px),
+    (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
     font-size: 95%;
   }
 }
 
 //Реклама справа в десктопной версии
+
 .desktopAdv {
   position: relative;
   width: 100%;
   border: $border1px;
   border-radius: 3px;
   margin: 7.8% 0;
+  transition: ease 300ms;
   @media (max-width: 1200px) {
     margin-top: 10%;
   }
@@ -53,10 +58,14 @@
   }
 }
 .desktopAdv img {
-  position:absolute;
-  width:100%;
-  height:100%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
   border-radius: 3px;
+}
+
+.linkWrapper:focus .desktopAdv {
+  @include shiftLeft;
 }
 
 .desktopAdv--1 {
@@ -70,30 +79,6 @@
 }
 //------------------------
 
-.barNewImages {
-  display: flex;
-  justify-content: space-between;
-  margin: 1.5% -1.8%;
-}
-.barNew__title {
-  margin-top: 0;
-}
-.barNewImage {
-  flex: 1;
-  padding: 0.5% 1.5%;
-}
-.barNewImage__container {
-  position: relative;
-  background-color: black;
-  border: solid 1px white;
-  padding-bottom: 80%;
-}
-.barNewImage__img {
-  position:absolute;
-  width:100%;
-  height:100%;
-}
-
 .swiper_bar {
   color: white;
   width: 45%;
@@ -103,7 +88,8 @@
   }
 }
 
-@media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+@media (max-width: 767.8px),
+  (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
   .trailers {
     background-color: black;
     padding-bottom: 1%;
@@ -155,18 +141,16 @@
     padding-bottom: 13%;
   }
   .advXS__img img {
-    position:absolute;
-    width:100%;
-    height:100%;
+    position: absolute;
+    width: 100%;
+    height: 100%;
     border-radius: 3px;
   }
   //------------------------------
 }
 
-@mixin indexXS ($trailersHeadFS, $trailersHeadPL, $newsFS, $maxWidth) {
-
+@mixin indexXS($trailersHeadFS, $trailersHeadPL, $newsFS, $maxWidth) {
   @media (max-width: $maxWidth) {
-
     .trailers h4 {
       font-size: $trailersHeadFS;
       padding-left: $trailersHeadPL;
@@ -178,9 +162,9 @@
 }
 
 @for $i from 4 to -1 {
-  $maxWidth: 320px + $i*111.9px;
-  $trailersHeadFS: 65% + 11.25%*$i;
-  $trailersHeadPL: 3.5% - 0.375%*$i;
-  $newsFS: 60% + 10%*$i;
-  @include indexXS ($trailersHeadFS, $trailersHeadPL, $newsFS, $maxWidth);
+  $maxWidth: 320px + $i * 111.9px;
+  $trailersHeadFS: 65% + 11.25% * $i;
+  $trailersHeadPL: 3.5% - 0.375% * $i;
+  $newsFS: 60% + 10% * $i;
+  @include indexXS($trailersHeadFS, $trailersHeadPL, $newsFS, $maxWidth);
 }
