@@ -4,7 +4,7 @@ const CREATE_FILMS_TODAY_ARR = 'CREATE_FILMS_TODAY_ARR'
 let initialState = {
   films: filmsArray,
   filmsToday: [],
-  filmsTodaySlides: 3,
+  filmsTodaySlides: 4,
 }
 
 export const cinemaReduser = (state = initialState, action) => {

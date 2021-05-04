@@ -1,4 +1,4 @@
-@import "variables";
+@import 'variables';
 
 .cinemaSlider {
   margin-top: 10px;
@@ -24,14 +24,14 @@
   overflow: hidden;
 }
 .filmSwiper h1:before {
-  content: "";
+  content: '';
   display: block;
-  height: 20px;
+  height: 21px;
   width: 72px;
   position: relative;
-  left: 88%;
+  left: 84%;
   margin-top: -20px;
-  background-image: linear-gradient(to right, transparent, black 25%)
+  background-image: linear-gradient(to right, transparent, black 25%);
 }
 .filmSwiper p {
   padding-left: 2.5%;
@@ -59,8 +59,7 @@
   background-color: white;
 }
 
-@mixin filmSwiperDesktop ($swiperHeight, $beforeElem, $fontSize, $imgHeight) {
-
+@mixin filmSwiperDesktop($swiperHeight, $beforeElem, $fontSize, $imgHeight) {
   .filmSwiper .swiper-wrapper {
     height: $swiperHeight;
   }
@@ -70,26 +69,26 @@
   .filmSwiper .swiper-slide {
     font-size: $fontSize;
   }
-  .filmSwiper img{
+  .filmSwiper img {
     height: $imgHeight;
   }
 }
 
-@include filmSwiperDesktop (318px, 24px, 12px, 250px);
+@include filmSwiperDesktop(318px, 24px, 12px, 250px);
 
 @media (max-width: 1200px) {
-  @include filmSwiperDesktop (270px, 21px, 76%, 210px);
+  @include filmSwiperDesktop(270px, 21px, 76%, 210px);
 }
 
 @media (max-width: 992px) {
   .cinemaSlider h4 {
-      padding-left: 1.5%;
+    padding-left: 1.5%;
   }
-  @include filmSwiperDesktop (226px, 21px, 72%, 170px);
+  @include filmSwiperDesktop(226px, 21px, 72%, 170px);
 }
 
-@media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
-
+@media (max-width: 767.8px),
+  (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
   .cinemaSlider {
     width: 100%;
     padding-left: 10px;
@@ -115,7 +114,7 @@
     color: white;
   }
   .filmSwiper h1:before {
-    content: "";
+    content: '';
     display: block;
     height: 20px;
     width: 72px;
@@ -123,7 +122,7 @@
     left: 85%;
     top: 15px;
     margin-top: -20px;
-    background-image: linear-gradient(to right, transparent, black 25%)
+    background-image: linear-gradient(to right, transparent, black 25%);
   }
   .filmSwiper p {
     letter-spacing: 0.01em;
@@ -141,8 +140,14 @@
   }
 }
 
-@mixin filmSwiperXS ($swiperHeight, $mainHeadFS, $mainHeadPL, $filmTitleFS, $filmDateFS, $maxWidth) {
-
+@mixin filmSwiperXS(
+  $swiperHeight,
+  $mainHeadFS,
+  $mainHeadPL,
+  $filmTitleFS,
+  $filmDateFS,
+  $maxWidth
+) {
   @media (max-width: $maxWidth) {
     .cinemaSlider {
       height: $swiperHeight;
@@ -167,11 +172,18 @@
 }
 
 @for $i from 4 to -1 {
-  $maxWidth: 320px + $i*111.9px;
-  $swiperHeight: 164px + 37px*$i;
-  $mainHeadFS: 65% + 11.25%*$i;
-  $mainHeadPL: 3.5% - 0.375%*$i;
-  $filmTitleFS: 75% + 9%*$i;
-  $filmDateFS: 75% + 3%*$i;
-  @include filmSwiperXS ($swiperHeight, $mainHeadFS, $mainHeadPL, $filmTitleFS, $filmDateFS, $maxWidth);
+  $maxWidth: 320px + $i * 111.9px;
+  $swiperHeight: 164px + 37px * $i;
+  $mainHeadFS: 65% + 11.25% * $i;
+  $mainHeadPL: 3.5% - 0.375% * $i;
+  $filmTitleFS: 75% + 9% * $i;
+  $filmDateFS: 75% + 3% * $i;
+  @include filmSwiperXS(
+    $swiperHeight,
+    $mainHeadFS,
+    $mainHeadPL,
+    $filmTitleFS,
+    $filmDateFS,
+    $maxWidth
+  );
 }
