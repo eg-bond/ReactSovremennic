@@ -1,8 +1,7 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function Adv() {
-  console.log('adv render')
   return (
     <div className='col-lg-3 col-md-3 col-sm-3'>
       <a className={'linkWrapper'} href='http://www.region47.sbor.net'>
@@ -14,11 +13,11 @@ function Adv() {
       <div className='desktopAdv desktopAdv--2'>
         <img src='./Images/jsb1.gif' alt='Подарочный сертификат' />
       </div>
-      <NavLink className={'linkWrapper'} to='sushi'>
+      <Link className={'linkWrapper'} to='sushi'>
         <div className={'desktopAdv desktopAdv--3'}>
           <img src='./Images/72.gif' alt='Суши-бар' />
         </div>
-      </NavLink>
+      </Link>
     </div>
   )
 }

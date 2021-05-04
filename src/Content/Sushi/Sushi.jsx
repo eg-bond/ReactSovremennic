@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
 import HotDishesSwiper from './HotDishesSwiper'
 import BrandRollsSwiper from './BrandRollsSwiper'
 import { useSpecialContext } from '../../SpecialContext'
 import { SushiModal } from './SushiModal'
 
-const sushiImage = (key, showImg, swiperKeys) => {
+const SushiImage = ({ activeKey, showImg, swiperKeys }) => {
   // prettier-ignore
-  if (swiperKeys.includes(key)) {    
-    return key === 'brand_rolls'
+  if (swiperKeys.includes(activeKey)) {    
+    return activeKey === 'brand_rolls'
       ? <BrandRollsSwiper showImg={showImg} />
       : <HotDishesSwiper showImg={showImg} />
   }
@@ -16,8 +16,8 @@ const sushiImage = (key, showImg, swiperKeys) => {
     <img
       onLoad={showImg}
       className={'sushi__page__img'}
-      src={`./Images/sushi/${key}.gif`}
-      alt={key}
+      src={`./Images/sushi/${activeKey}.gif`}
+      alt={activeKey}
     />
   )
 }
@@ -32,11 +32,9 @@ const Sushi = ({
   menuButtons,
 }) => {
   const { themeCl, siteMode } = useSpecialContext()
-  const [focusCl, switchFocusCl] = useState('focusNone')
 
   return (
     <>
-      {/*<ScrollToTop/>*/}
       <div className='sushi_page'>
         <div>
           {Q.mobile && (
@@ -62,20 +60,21 @@ const Sushi = ({
 
           <div className='col-lg-9 col-md-9 col-sm-9'>
             {Q.desktop && (
-              <div className={`sushiAdv sushiAdv--1 ${focusCl}`}>
-                <a
-                  href='http://www.region47.sbor.net/'
-                  onFocus={() => switchFocusCl('focusUp')}
-                  onBlur={() => switchFocusCl('focusNone')}>
+              <a className={'linkWrapper'} href='http://www.region47.sbor.net/'>
+                <div className={'sushiAdv sushiAdv--1'}>
                   <img src='./Images/region47_wide.gif' alt='region47' />
-                </a>
-              </div>
+                </div>
+              </a>
             )}
 
             <div
               className={`${opacityCl} sushi_page__content`}
               style={{ paddingBottom: '30px' }}>
-              {sushiImage(activeKey, showImg, sushiElems.swiperKeys)}
+              <SushiImage
+                activeKey={activeKey}
+                showImg={showImg}
+                swiperKeys={sushiElems.swiperKeys}
+              />
             </div>
           </div>
         </div>

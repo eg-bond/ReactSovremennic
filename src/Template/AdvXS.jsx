@@ -1,7 +1,6 @@
 import React from 'react'
 
 function AdvXS() {
-  console.log('xsAdv render')
   return (
     <div className='container advXS'>
       <div className='advXS__img'>

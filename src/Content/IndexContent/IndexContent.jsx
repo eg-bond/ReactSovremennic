@@ -1,11 +1,11 @@
 import React from 'react'
 import IndexAdvXS from '../../Template/IndexAdvXS'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Films from '../Films/Films'
 
 function IndexContent({ siteMode, films, Q }) {
   return (
-    <div>
+    <>
       <div className='separator' />
 
       <div className='container col-lg-9 col-md-9 col-sm-9 col-xs-12 padding_15xs'>
@@ -35,9 +35,9 @@ function IndexContent({ siteMode, films, Q }) {
             понедельник-четверг с 12:00 до 23:00, пятница-суббота с 12:00 до
             01:00, воскресенье с 12:00 до 23:00. Доставка осуществляется в часы
             работы ресторана, телефон 2-000-8, доставка бесплатная. Меню на{' '}
-            <NavLink to='sushi' className={'vk_ref'}>
+            <Link to='sushi' className={'vk_ref'}>
               странице
-            </NavLink>{' '}
+            </Link>{' '}
             сайта и в группе{' '}
             <a
               href='https://vk.com/album-46510864_166402327'
@@ -53,7 +53,7 @@ function IndexContent({ siteMode, films, Q }) {
       </div>
 
       {Q.mobile && <IndexAdvXS />}
-    </div>
+    </>
   )
 }
 

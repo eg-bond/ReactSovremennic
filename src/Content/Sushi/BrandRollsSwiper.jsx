@@ -1,5 +1,6 @@
 import React from 'react'
 import Swiper from 'react-id-swiper'
+import { SwiperSlide } from './HotDishesSwiper'
 
 const BrandRollsSwiper = ({ showImg }) => {
   const params = {
@@ -14,19 +15,16 @@ const BrandRollsSwiper = ({ showImg }) => {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
     },
+    on: {
+      imagesReady: () => showImg(),
+    },
   }
 
   return (
     <Swiper {...params}>
-      <div>
-        <img onLoad={showImg} src='./Images/sushi/brand_rolls1.gif' alt='' />
-      </div>
-      <div>
-        <img src='./Images/sushi/brand_rolls2.gif' alt='' />
-      </div>
-      <div>
-        <img src='./Images/sushi/brand_rolls3.gif' alt='' />
-      </div>
+      <SwiperSlide slideKey='brand_rolls1' />
+      <SwiperSlide slideKey='brand_rolls2' />
+      <SwiperSlide slideKey='brand_rolls3' />
     </Swiper>
   )
 }

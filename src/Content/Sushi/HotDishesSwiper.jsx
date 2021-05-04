@@ -1,6 +1,14 @@
 import React from 'react'
 import Swiper from 'react-id-swiper'
 
+export const SwiperSlide = ({ slideKey }) => {
+  return (
+    <div className='swiper-slide'>
+      <img src={`./Images/sushi/${slideKey}.gif`} alt={slideKey} />
+    </div>
+  )
+}
+
 const HotDishesSwiper = ({ showImg }) => {
   const params = {
     spaceBetween: 30,
@@ -14,22 +22,17 @@ const HotDishesSwiper = ({ showImg }) => {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
     },
+    on: {
+      imagesReady: () => showImg(),
+    },
   }
 
   return (
     <Swiper {...params}>
-      <div>
-        <img onLoad={showImg} src='./Images/sushi/hot_dishes1.gif' alt='' />
-      </div>
-      <div>
-        <img src='./Images/sushi/hot_dishes2.gif' alt='' />
-      </div>
-      <div>
-        <img src='./Images/sushi/hot_dishes3.gif' alt='' />
-      </div>
-      <div>
-        <img src='./Images/sushi/hot_dishes4.gif' alt='' />
-      </div>
+      <SwiperSlide slideKey='hot_dishes1' />
+      <SwiperSlide slideKey='hot_dishes2' />
+      <SwiperSlide slideKey='hot_dishes3' />
+      <SwiperSlide slideKey='hot_dishes4' />
     </Swiper>
   )
 }

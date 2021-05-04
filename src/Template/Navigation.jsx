@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import SpecialSettings from './SpecialSettings'
 import { modifiedClass, themeLogo } from '../helpers'
 import { useSpecialContext } from '../SpecialContext'
@@ -42,9 +42,9 @@ function Navigation() {
                   ? 'navigation__logo__default'
                   : 'navigation__logo__special'
               } ${fsAdditionClassLogo}`}>
-              <NavLink activeClassName={''} to='/'>
+              <Link to='/'>
                 <img src={`./Images/${logo}.png`} alt='logoImage' />
-              </NavLink>
+              </Link>
             </div>
             <div
               className={`${classHandler(

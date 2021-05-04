@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Swiper from 'react-id-swiper'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const FilmSwiper = props => {
   const [opacity, turnOpacity] = useState('opacity_0')
@@ -61,7 +61,7 @@ const FilmSwiper = props => {
         <Swiper getSwiper={updateSwiper} {...params}>
           {props.films.map(f => (
             <div key={f.link}>
-              <NavLink to={f.link}>
+              <Link to={f.link}>
                 <img
                   className='opacity'
                   src={`./Images/top_menu/${f.link}.gif`}
@@ -69,7 +69,7 @@ const FilmSwiper = props => {
                 />
                 <h1>{f.title}</h1>
                 <p>{f.beginDate}</p>
-              </NavLink>
+              </Link>
             </div>
           ))}
         </Swiper>
