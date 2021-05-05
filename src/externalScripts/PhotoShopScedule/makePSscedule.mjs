@@ -53,7 +53,6 @@ const prepareSceduleForPS = sceduleKeysArray => {
       ...item,
       i,
     ])
-    console.log(indexedSceduleItem)
     // Формируем объект вида "Название фильма": [Массив сеансов]
     let dailySeansObject = {}
     indexedSceduleItem.forEach(item => {
