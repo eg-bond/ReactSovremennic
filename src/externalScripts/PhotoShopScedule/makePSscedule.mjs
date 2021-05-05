@@ -11,7 +11,9 @@ const findFilmAge = (titlesArr, filmsArr) => {
     return title.substr(0, title.length - 3)
   })
   filmsArr.forEach(film => {
-    if (modifiedTitles.includes(film.title)) {
+    let titleReg = new RegExp(film.title.slice(0, 8), 'i')
+
+    if (titleReg.test(modifiedTitles)) {
       result.push([film.title + ' 2D', film.age])
     }
   })
@@ -51,7 +53,7 @@ const prepareSceduleForPS = sceduleKeysArray => {
       ...item,
       i,
     ])
-
+    console.log(indexedSceduleItem)
     // Формируем объект вида "Название фильма": [Массив сеансов]
     let dailySeansObject = {}
     indexedSceduleItem.forEach(item => {
@@ -65,6 +67,7 @@ const prepareSceduleForPS = sceduleKeysArray => {
 
     // Формируем двумерный массив, каждый элемент которого содержит название фильма и возрастное ограничение в числовом формате
     const titlesArr = Object.keys(dailySeansObject)
+
     let seansTitlesAndAgesArr = agesToNumber(findFilmAge(titlesArr, filmsArray))
 
     // сортируем названия фильмов по возрастанию возрасных ограничений
