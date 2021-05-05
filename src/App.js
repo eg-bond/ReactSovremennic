@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
 import About from './Content/About/About'
 import FilmSwiper from './Template/FilmSwiper'
-import { Route, useParams } from 'react-router-dom'
+import { Redirect, Route, useLocation } from 'react-router-dom'
 import CinemaRoutes from './Content/Cinema/Cinema'
 import Navigation from './Template/Navigation'
 import Rules from './Content/Rules/Rules'
@@ -21,9 +21,8 @@ import {
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import Adv from './Template/Adv'
-import ScrollToTop from './Template/ScrollToTop'
 import { createFilmsTodayArr } from './REDUX/cinemaReduser'
-import { queries } from './helpers'
+import { queries, scrollToTop } from './helpers'
 import FilmsSpecialPage from './Content/Films/FilmsSpecialPage'
 import { useSpecialContext } from './SpecialContext'
 import { useMediaQuery } from '@material-ui/core'
@@ -39,8 +38,6 @@ const App = React.memo(
     filmsToday,
     filmsTodaySlides,
   }) => {
-    let { id } = useParams()
-
     // Инициализационные эффекты
     useEffect(() => {
       createActualDatesArr()
@@ -62,30 +59,23 @@ const App = React.memo(
       imgHidden,
     } = useSpecialContext()
 
-    let currentFS = `fontSize__${fontSize}` || 'fontSize__100'
+    let { pathname } = useLocation()
 
-    if (id === 'films' && siteMode === 'default') {
-      window.location.hash = '#/'
-    }
+    let mainContainerClasses = [
+      siteMode === 'special' ? themeCl.back : 'mainContainer',
+      themeCl.elems,
+      `fontSize__${fontSize}` || 'fontSize__100',
+    ].join(' ')
 
     const Q = {
       mobile: useMediaQuery(queries.mobile),
       desktop: useMediaQuery(queries.desktop),
     }
 
-    // const ResizeFunc = () => {
-    //   if (
-    //     window.matchMedia(queries.mobile).matches &
-    //     (siteMode === 'special')
-    //   ) {
-    //     switchSiteMode('default')
-    //   }
-
-    //   return null
-    // }
-
-    const switchModeOnResize = () => {
-      Q.mobile && siteMode === 'special' && switchSiteMode('default')
+    const switchModeIfMobile = () => {
+      if (Q.mobile && siteMode === 'special') {
+        switchSiteMode('default')
+      }
     }
 
     const routes = () => (
@@ -111,27 +101,30 @@ const App = React.memo(
           <SushiContainer Q={Q} siteMode={siteMode} />
         </Route>
         <CinemaRoutes films={films} Q={Q} />
-        {siteMode === 'special' && (
-          <Route exact path='/films'>
-            <FilmsSpecialPage films={films} />
-          </Route>
-        )}
+        {/* prettier-ignore */}
+        <Route exact path='/films'> 
+          {siteMode === 'special' 
+            ? <FilmsSpecialPage films={films} />
+            : <Redirect to='/' />}
+        </Route>
       </>
     )
-    console.log('App render')
-    return (
-      <div
-        className={`${
-          siteMode === 'special' ? themeCl.back : 'mainContainer'
-        } ${themeCl.elems} ${currentFS}`}>
-        {Q.mobile && <ScrollToTop />}
-        {/* {Q.mobile && <ResizeFunc />} */}
 
+    // ----------------------------------------
+    switchModeIfMobile()
+    if (Q.mobile || siteMode === 'special') {
+      scrollToTop()
+    }
+    //-----------------------------------------
+
+    console.log('App render')
+
+    return (
+      <div className={mainContainerClasses}>
         <Navigation />
 
         {/*Отступ навигации в мобильной версии*/}
         <div className='line_container' />
-
         <div className='separator' />
 
         <div
@@ -139,12 +132,7 @@ const App = React.memo(
             imgHidden && 'hideImages'
           }`}>
           <div className='row'>
-            {Q.mobile && (
-              <>
-                <AdvXS />
-                <div className='separator' />
-              </>
-            )}
+            {Q.mobile && <AdvXS />}
 
             {siteMode === 'default' && Q.desktop && (
               <FilmSwiper films={films} mobile={Q.mobile} />
@@ -152,7 +140,7 @@ const App = React.memo(
 
             {Q.mobile && (
               <Route exact path='/'>
-                <FilmSwiper films={films} />
+                <FilmSwiper films={films} mobile={Q.mobile} />
               </Route>
             )}
 
@@ -160,17 +148,17 @@ const App = React.memo(
 
             {routes()}
 
-            {Q.desktop && id !== 'sushi' && <Adv />}
+            {Q.desktop && pathname !== '/sushi' && <Adv />}
 
-            {siteMode === 'default' && filmsToday !== [] && (
+            {siteMode === 'default' && (
               <BottomSwiper
-                films={filmsToday}
+                filmsToday={filmsToday}
                 slidesPerView={filmsTodaySlides}
                 desktop={Q.desktop}
               />
             )}
 
-            {id != null && Q.mobile && (
+            {pathname !== '/' && Q.mobile && (
               <>
                 <div className='separator' />
                 <FilmSwiper films={films} mobile={Q.mobile} />

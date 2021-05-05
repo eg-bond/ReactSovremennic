@@ -5,7 +5,6 @@ import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 import RemoveRedEyeOutlinedIcon from '@material-ui/icons/RemoveRedEyeOutlined'
 import Brightness1Icon from '@material-ui/icons/Brightness1'
-import ScrollToTop from './ScrollToTop'
 import { useSpecialContext } from '../SpecialContext'
 
 function SpecialSettings() {
@@ -41,8 +40,6 @@ function SpecialSettings() {
     return (
       <div className='specialSettings__container'>
         <div className={`specialSettings__flex`}>
-          <ScrollToTop />
-
           <div className='specialSettings__flex__item'>
             <div className={'specialSettings__flex__title'}>Цветовая схема</div>
 

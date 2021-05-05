@@ -3,20 +3,18 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
-import { HashRouter, Route } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import store from './REDUX/store'
 import { SpecialContextProvider } from './SpecialContext'
 
 ReactDOM.render(
   <HashRouter>
-    <Route path='/:id?'>
-      <Provider store={store}>
-        <SpecialContextProvider>
-          <App />
-        </SpecialContextProvider>
-      </Provider>
-    </Route>
+    <Provider store={store}>
+      <SpecialContextProvider>
+        <App />
+      </SpecialContextProvider>
+    </Provider>
   </HashRouter>,
   document.getElementById('root')
 )

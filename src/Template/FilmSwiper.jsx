@@ -2,10 +2,9 @@ import React, { useState } from 'react'
 import Swiper from 'react-id-swiper'
 import { Link } from 'react-router-dom'
 
-const FilmSwiper = props => {
+const FilmSwiper = ({ mobile, films }) => {
   const [opacity, turnOpacity] = useState('opacity_0')
   const [filmSwiper, updateSwiper] = useState(null)
-  const mobile = props.mobile
 
   const turnAutoplay = action => {
     if (filmSwiper !== null) {
@@ -52,29 +51,27 @@ const FilmSwiper = props => {
   }
 
   return (
-    <>
-      <div
-        onMouseEnter={() => turnAutoplay('stop')}
-        onMouseLeave={() => turnAutoplay('start')}
-        className={`cinemaSlider ${opacity}`}>
-        {mobile && <h4>Фильмы</h4>}
-        <Swiper getSwiper={updateSwiper} {...params}>
-          {props.films.map(f => (
-            <div key={f.link}>
-              <Link to={f.link}>
-                <img
-                  className='opacity'
-                  src={`./Images/top_menu/${f.link}.gif`}
-                  alt={f.title}
-                />
-                <h1>{f.title}</h1>
-                <p>{f.beginDate}</p>
-              </Link>
-            </div>
-          ))}
-        </Swiper>
-      </div>
-    </>
+    <div
+      onMouseEnter={() => turnAutoplay('stop')}
+      onMouseLeave={() => turnAutoplay('start')}
+      className={`cinemaSlider ${opacity}`}>
+      {mobile && <h4>Фильмы</h4>}
+      <Swiper getSwiper={updateSwiper} {...params}>
+        {films.map(f => (
+          <div key={f.link}>
+            <Link to={f.link}>
+              <img
+                className='opacity'
+                src={`./Images/top_menu/${f.link}.gif`}
+                alt={f.title}
+              />
+              <h1>{f.title}</h1>
+              <p>{f.beginDate}</p>
+            </Link>
+          </div>
+        ))}
+      </Swiper>
+    </div>
   )
 }
 

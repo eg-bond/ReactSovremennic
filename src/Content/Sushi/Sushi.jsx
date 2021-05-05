@@ -37,16 +37,6 @@ const Sushi = ({
     <>
       <div className='sushi_page'>
         <div>
-          {Q.mobile && (
-            <div className='sushi_menu_xs padding_15xs'>
-              <SushiModal
-                activeKey={activeKey}
-                hideImg={hideImg}
-                defaultSushiArr={sushiElems.default}
-              />
-            </div>
-          )}
-
           {Q.desktop && (
             <div className='col-lg-3 col-md-3 col-sm-3'>
               <div
@@ -59,6 +49,16 @@ const Sushi = ({
           )}
 
           <div className='col-lg-9 col-md-9 col-sm-9'>
+            {Q.mobile && (
+              <div className='sushi_menu_xs'>
+                <SushiModal
+                  activeKey={activeKey}
+                  hideImg={hideImg}
+                  defaultSushiArr={sushiElems.default}
+                />
+              </div>
+            )}
+
             {Q.desktop && (
               <a className={'linkWrapper'} href='http://www.region47.sbor.net/'>
                 <div className={'sushiAdv sushiAdv--1'}>

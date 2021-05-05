@@ -8,7 +8,7 @@ function IndexContent({ siteMode, films, Q }) {
     <>
       <div className='separator' />
 
-      <div className='container col-lg-9 col-md-9 col-sm-9 col-xs-12 padding_15xs'>
+      <div className='container col-lg-9 col-md-9 col-sm-9 col-xs-12'>
         {siteMode === 'default' && (
           <div className='trailers'>
             {Q.mobile && <h4>Трейлеры</h4>}

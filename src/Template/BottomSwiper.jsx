@@ -14,7 +14,7 @@ const BottomSwiper = props => {
     }
   }
 
-  if (props.films[0] === undefined) {
+  if (props.filmsToday[0] === undefined) {
     return null
   }
 
@@ -46,7 +46,7 @@ const BottomSwiper = props => {
             onMouseEnter={() => turnAutoplay('stop')}
             onMouseLeave={() => turnAutoplay('start')}>
             <Swiper getSwiper={updateSwiper} {...params}>
-              {props.films.map(f => (
+              {props.filmsToday.map(f => (
                 <div key={f.link}>
                   <Link to={f.link}>
                     <img

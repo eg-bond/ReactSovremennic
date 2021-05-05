@@ -1,6 +1,5 @@
 import React from 'react'
 import { DescriptionTrailer } from './DescriptionTrailer'
-import ScrollToTop from '../../Template/ScrollToTop'
 import { useSpecialContext } from '../../SpecialContext'
 
 function SelectedFilm({ filmItem, desktop }) {
@@ -21,8 +20,6 @@ function SelectedFilm({ filmItem, desktop }) {
 
   return (
     <div className='film_info'>
-      {siteMode === 'special' && <ScrollToTop />}
-
       <FilmImg />
 
       <div className='filmFlex2'>

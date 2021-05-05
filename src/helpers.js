@@ -36,3 +36,5 @@ export const queries = {
   mobile:
     '(max-width: 767.5px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)',
 }
+
+export const scrollToTop = () => window.scrollTo(0, 0)

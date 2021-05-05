@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 function IndexAdvXS() {
   return (
-    <div className='container padding_15xs'>
+    <div className='container'>
       <div className='row'>
         <div className='indexAdvXS'>
           <div className='indexAdvXS__item1'>
