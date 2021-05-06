@@ -2,6 +2,7 @@ import React from 'react'
 import IndexAdvXS from '../../Template/IndexAdvXS'
 import { Link } from 'react-router-dom'
 import Films from '../Films/Films'
+import LiteYouTubeEmbed from 'react-lite-youtube-embed'
 
 function IndexContent({ siteMode, films, Q }) {
   return (
@@ -14,10 +15,12 @@ function IndexContent({ siteMode, films, Q }) {
             {Q.mobile && <h4>Трейлеры</h4>}
 
             <div className='embed-responsive embed-responsive-16by9'>
-              <iframe
-                className='embed-responsive-item'
-                title='trailers_desktop'
-                src='http://www.youtube.com/embed/PKSxTsuCQ4? ype=playlist&list=PLfrc7TOjXulMiQWLR1Jr8ZiZ2b7hWqSZf'
+              <LiteYouTubeEmbed
+                id='PLfrc7TOjXulMiQWLR1Jr8ZiZ2b7hWqSZf'
+                playlist={true}
+                playlistCoverId='E75ubQCSdCI'
+                title='index_trailers_playlist'
+                poster='maxresdefault'
               />
             </div>
           </div>

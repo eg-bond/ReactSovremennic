@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
+import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 import About from './Content/About/About'
 import FilmSwiper from './Template/FilmSwiper'
 import { Redirect, Route, useLocation } from 'react-router-dom'
@@ -21,7 +22,7 @@ import {
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import Adv from './Template/Adv'
-import { createFilmsTodayArr } from './REDUX/cinemaReduser'
+import { createFilmsTodayArr, createFilmsObject } from './REDUX/cinemaReduser'
 import { queries, scrollToTop } from './helpers'
 import FilmsSpecialPage from './Content/Films/FilmsSpecialPage'
 import { useSpecialContext } from './SpecialContext'
@@ -38,6 +39,8 @@ const App = React.memo(
     films,
     filmsToday,
     filmsTodaySlides,
+    filmsObject,
+    createFilmsObject,
   }) => {
     // Инициализационные эффекты
     useEffect(() => {
@@ -102,8 +105,12 @@ const App = React.memo(
           <SushiContainer Q={Q} siteMode={siteMode} />
         </Route>
         <CinemaRoutes films={films} Q={Q} />
-        <Route exact path='/cinema/:film'>
-          <SelectedFilmNew films={films} Q={Q} siteMode={siteMode} />
+        <Route exact path='/cinema/:film_id'>
+          <SelectedFilmNew
+            filmsObject={filmsObject}
+            createFilmsObject={createFilmsObject}
+            Q={Q}
+          />
         </Route>
         {/* prettier-ignore */}
         <Route exact path='/films'> 
@@ -180,6 +187,7 @@ let mapStateToProps = state => ({
   films: state.cinema.films,
   filmsToday: state.cinema.filmsToday,
   filmsTodaySlides: state.cinema.filmsTodaySlides,
+  filmsObject: state.cinema.filmsObject,
 })
 
 export default compose(
@@ -188,5 +196,6 @@ export default compose(
     initialButtonTitle,
     createActualDatesArr,
     createFilmsTodayArr,
+    createFilmsObject,
   })
 )(App)

@@ -52,29 +52,29 @@ function Navigation() {
               )} ${fsAdditionClass} focus`}>
               <ul>
                 <li>
-                  <NavLink to='seans' activeClassName='active'>
+                  <NavLink to='/seans' activeClassName='active'>
                     Расписание
                   </NavLink>
                 </li>
                 {siteMode === 'special' && (
                   <li>
-                    <NavLink to='films' activeClassName='active'>
+                    <NavLink to='/films' activeClassName='active'>
                       Фильмы
                     </NavLink>
                   </li>
                 )}
                 <li>
-                  <NavLink to='about' activeClassName='active'>
+                  <NavLink to='/about' activeClassName='active'>
                     О кинотеатре
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to='rules' activeClassName='active'>
+                  <NavLink to='/rules' activeClassName='active'>
                     Правила работы
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to='sushi' activeClassName='active'>
+                  <NavLink to='/sushi' activeClassName='active'>
                     Суши-бар "КИН-НО"
                   </NavLink>
                 </li>

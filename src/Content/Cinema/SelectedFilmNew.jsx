@@ -3,11 +3,20 @@ import { DescriptionTrailer } from './DescriptionTrailer'
 import { useSpecialContext } from '../../SpecialContext'
 import { useParams } from 'react-router'
 
-function SelectedFilmNew({ films, Q }) {
+function SelectedFilmNew({ filmsObject, createFilmsObject, Q }) {
   const { siteMode, themeCl, fontSize } = useSpecialContext()
-  const match = useParams()
+  const { film_id } = useParams()
 
-  let filmItem = films.find(film => film.link === match.film)
+  if (!filmsObject) {
+    createFilmsObject()
+    return (
+      <div className={`padding_15xs `}>
+        <div className='col-lg-9 col-md-9 col-sm-9 margin-top-2'></div>
+      </div>
+    )
+  }
+
+  let filmItem = filmsObject[film_id]
   let filmImgPath = `Images/description/${filmItem['link']}_D.jpg`
 
   const FilmImg = () => (

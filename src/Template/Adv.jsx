@@ -13,7 +13,7 @@ function Adv() {
       <div className='desktopAdv desktopAdv--2'>
         <img src='./Images/jsb1.gif' alt='Подарочный сертификат' />
       </div>
-      <Link className={'linkWrapper'} to='sushi'>
+      <Link className={'linkWrapper'} to='/sushi'>
         <div className={'desktopAdv desktopAdv--3'}>
           <img src='./Images/72.gif' alt='Суши-бар' />
         </div>

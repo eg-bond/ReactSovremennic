@@ -48,7 +48,7 @@ const BottomSwiper = props => {
             <Swiper getSwiper={updateSwiper} {...params}>
               {props.filmsToday.map(f => (
                 <div key={f.link}>
-                  <Link to={f.link}>
+                  <Link to={`/cinema/${f.link}`}>
                     <img
                       className='opacity'
                       src={`./Images/description/${f.link}_D.jpg`}

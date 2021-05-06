@@ -59,7 +59,7 @@ const FilmSwiper = ({ mobile, films }) => {
       <Swiper getSwiper={updateSwiper} {...params}>
         {films.map(f => (
           <div key={f.link}>
-            <Link to={f.link}>
+            <Link to={`/cinema/${f.link}`}>
               <img
                 className='opacity'
                 src={`./Images/top_menu/${f.link}.gif`}
