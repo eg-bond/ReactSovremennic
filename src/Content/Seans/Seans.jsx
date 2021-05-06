@@ -12,19 +12,15 @@ import {
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { CreateTable } from './CreateTable'
+import { useSpecialContext } from '../../SpecialContext'
 
 let table = CreateTable()
 let finalTable = [...table]
 
 const Seans = React.memo(
-  ({
-    initialActiveKey,
-    initialButtonTitle,
-    themeCl,
-    fontSize,
-    Q,
-    ...props
-  }) => {
+  ({ initialActiveKey, initialButtonTitle, Q, ...props }) => {
+    const { siteMode, themeCl } = useSpecialContext()
+
     useEffect(() => {
       return () => {
         initialActiveKey()
@@ -42,7 +38,7 @@ const Seans = React.memo(
             {Q.desktop && (
               <div
                 className={`seans-menu ${
-                  props.siteMode === 'special' ? themeCl.navs : ''
+                  siteMode === 'special' ? themeCl.navs : ''
                 } `}>
                 <NavItems
                   deviceType={'notMobile'}

@@ -1,15 +1,11 @@
 import React, { useEffect } from 'react'
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
-import About from './Content/About/About'
 import FilmSwiper from './Template/FilmSwiper'
-import { Redirect, Route, useLocation } from 'react-router-dom'
+import { Route, useLocation } from 'react-router-dom'
 import Navigation from './Template/Navigation'
-import Rules from './Content/Rules/Rules'
 import BottomSwiper from './Template/BottomSwiper'
 import Footer from './Template/Footer'
-import Seans from './Content/Seans/Seans'
 import '../node_modules/swiper/css/swiper.css'
-import IndexContent from './Content/IndexContent/IndexContent'
 import './SCSS/style.scss'
 import AdvXS from './Template/AdvXS'
 import {
@@ -22,11 +18,10 @@ import { connect } from 'react-redux'
 import Adv from './Template/Adv'
 import { createFilmsTodayArr, createFilmsObject } from './REDUX/cinemaReduser'
 import { queries, scrollToTop } from './helpers'
-import FilmsSpecialPage from './Content/Films/FilmsSpecialPage'
 import { useSpecialContext } from './SpecialContext'
 import { useMediaQuery } from '@material-ui/core'
-import SushiContainer from './Content/Sushi/SushiContainer'
-import SelectedMovie from './Content/Cinema/SelectedMovie'
+
+import Content from './Content/Content'
 
 const App = React.memo(
   ({
@@ -80,44 +75,6 @@ const App = React.memo(
       }
     }
 
-    const routes = () => (
-      <>
-        <Route exact path='/'>
-          <IndexContent siteMode={siteMode} films={films} Q={Q} />
-        </Route>
-        <Route exact path='/about'>
-          <About siteMode={siteMode} />
-        </Route>
-        <Route exact path='/rules'>
-          <Rules />
-        </Route>
-        <Route exact path='/seans'>
-          <Seans
-            themeCl={themeCl}
-            siteMode={siteMode}
-            fontSize={fontSize}
-            Q={Q}
-          />
-        </Route>
-        <Route exact path='/sushi'>
-          <SushiContainer Q={Q} siteMode={siteMode} />
-        </Route>
-        <Route exact path='/movies/:film_id'>
-          <SelectedMovie
-            filmsObject={filmsObject}
-            createFilmsObject={createFilmsObject}
-            Q={Q}
-          />
-        </Route>
-        {/* prettier-ignore */}
-        <Route exact path='/films'> 
-          {siteMode === 'special' 
-            ? <FilmsSpecialPage />
-            : <Redirect to='/' />}
-        </Route>
-      </>
-    )
-
     // ----------------------------------------
     switchModeIfMobile()
     if (Q.mobile || siteMode === 'special') {
@@ -154,7 +111,12 @@ const App = React.memo(
 
             <hr className={`line_5px hidden-xs ${themeCl.borders}`} />
 
-            {routes()}
+            <Content
+              siteMode={siteMode}
+              Q={Q}
+              filmsObject={filmsObject}
+              createFilmsObject={createFilmsObject}
+            />
 
             {Q.desktop && pathname !== '/sushi' && <Adv />}
 
