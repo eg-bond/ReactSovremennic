@@ -27,6 +27,7 @@ import FilmsSpecialPage from './Content/Films/FilmsSpecialPage'
 import { useSpecialContext } from './SpecialContext'
 import { useMediaQuery } from '@material-ui/core'
 import SushiContainer from './Content/Sushi/SushiContainer'
+import SelectedFilmNew from './Content/Cinema/SelectedFilmNew'
 
 const App = React.memo(
   ({
@@ -101,6 +102,9 @@ const App = React.memo(
           <SushiContainer Q={Q} siteMode={siteMode} />
         </Route>
         <CinemaRoutes films={films} Q={Q} />
+        <Route exact path='/cinema/:film'>
+          <SelectedFilmNew films={films} Q={Q} siteMode={siteMode} />
+        </Route>
         {/* prettier-ignore */}
         <Route exact path='/films'> 
           {siteMode === 'special' 
