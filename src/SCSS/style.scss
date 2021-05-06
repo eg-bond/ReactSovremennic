@@ -1,25 +1,26 @@
 // Общие стили
-@import "generalStyles";
+@import 'generalStyles';
 // Стили сайта для слабовидящих
-@import "special";
+@import 'special';
+// Стили для react-lite-youtube-embed
+@import 'youtube_lite';
 // Стили вернего меню + пустая область сверху
-@import "header";
+@import 'header';
 // Стили для главной страницы
-@import "index";
+@import 'index';
 // Стили для компонента с фильмами версии для слабовидящих
-@import "films";
+@import 'films';
 // Свайпер со всеми фильмами
-@import "filmSwiper";
+@import 'filmSwiper';
 // Свайпер "сегодня в кино"
-@import "swiperBottom";
+@import 'swiperBottom';
 // Стили для страницы с расписанием сеансов
-@import "seans";
+@import 'seans';
 // Стили для страницы с описаниями фильмов
-@import "description";
+@import 'description';
 // Стили для сушибара
-@import "sushi";
+@import 'sushi';
 // Стили для "правил работы" и "о кинотеатре"
-@import "rules_about";
+@import 'rules_about';
 // Футер
-@import "footer";
-
+@import 'footer';

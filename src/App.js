@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react'
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
-import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 import About from './Content/About/About'
 import FilmSwiper from './Template/FilmSwiper'
 import { Redirect, Route, useLocation } from 'react-router-dom'
-import CinemaRoutes from './Content/Cinema/Cinema'
 import Navigation from './Template/Navigation'
 import Rules from './Content/Rules/Rules'
 import BottomSwiper from './Template/BottomSwiper'
@@ -28,7 +26,7 @@ import FilmsSpecialPage from './Content/Films/FilmsSpecialPage'
 import { useSpecialContext } from './SpecialContext'
 import { useMediaQuery } from '@material-ui/core'
 import SushiContainer from './Content/Sushi/SushiContainer'
-import SelectedFilmNew from './Content/Cinema/SelectedFilmNew'
+import SelectedMovie from './Content/Cinema/SelectedMovie'
 
 const App = React.memo(
   ({
@@ -104,9 +102,8 @@ const App = React.memo(
         <Route exact path='/sushi'>
           <SushiContainer Q={Q} siteMode={siteMode} />
         </Route>
-        <CinemaRoutes films={films} Q={Q} />
-        <Route exact path='/cinema/:film_id'>
-          <SelectedFilmNew
+        <Route exact path='/movies/:film_id'>
+          <SelectedMovie
             filmsObject={filmsObject}
             createFilmsObject={createFilmsObject}
             Q={Q}
@@ -115,7 +112,7 @@ const App = React.memo(
         {/* prettier-ignore */}
         <Route exact path='/films'> 
           {siteMode === 'special' 
-            ? <FilmsSpecialPage films={films} />
+            ? <FilmsSpecialPage />
             : <Redirect to='/' />}
         </Route>
       </>

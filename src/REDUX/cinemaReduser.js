@@ -1,6 +1,6 @@
 import { filmsArray } from './filmsArray'
-const CREATE_FILMS_TODAY_ARR = 'CREATE_FILMS_TODAY_ARR'
-const CREATE_FILMS_OBJECT = 'CREATE_FILMS_OBJECT'
+const CREATE_FILMS_TODAY_ARR = 'CREATE_MOVIES_TODAY_ARR'
+const CREATE_FILMS_OBJECT = 'CREATE_MOVIES_OBJECT'
 
 let initialState = {
   films: filmsArray,
@@ -16,7 +16,6 @@ export const cinemaReduser = (state = initialState, action) => {
       for (let i = 0; i < state.filmsTodaySlides; i++) {
         filmsToday[i] = state.films[i] // тут регулируем, с какого фильма начнется нижний слайдер
       }
-
       return {
         ...state,
         filmsToday: filmsToday,
