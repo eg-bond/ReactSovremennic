@@ -6,14 +6,11 @@ import * as serviceWorker from './serviceWorker'
 import { HashRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import store from './REDUX/store'
-import { SpecialContextProvider } from './SpecialContext'
 
 ReactDOM.render(
   <HashRouter>
     <Provider store={store}>
-      <SpecialContextProvider>
-        <App />
-      </SpecialContextProvider>
+      <App />
     </Provider>
   </HashRouter>,
   document.getElementById('root')

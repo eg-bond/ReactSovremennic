@@ -12,14 +12,14 @@ import {
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { CreateTable } from './CreateTable'
-import { useSpecialContext } from '../../SpecialContext'
+import { themeClasses } from '../../helpers'
 
 let table = CreateTable()
 let finalTable = [...table]
 
 const Seans = React.memo(
-  ({ initialActiveKey, initialButtonTitle, Q, ...props }) => {
-    const { siteMode, themeCl } = useSpecialContext()
+  ({ initialActiveKey, initialButtonTitle, Q, siteMode, theme, ...props }) => {
+    const themeCl = themeClasses(theme)
 
     useEffect(() => {
       return () => {
@@ -77,6 +77,8 @@ let mapStateToProps = state => ({
   datesArr: state.seansPage.actualDatesArr,
   activeKey: state.seansPage.activeKey,
   buttonTitle: state.seansPage.buttonTitle,
+  siteMode: state.special.siteMode,
+  theme: state.special.theme,
 })
 
 export default compose(

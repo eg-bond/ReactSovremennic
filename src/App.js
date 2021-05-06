@@ -17,10 +17,9 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import Adv from './Template/Adv'
 import { createFilmsTodayArr, createFilmsObject } from './REDUX/cinemaReduser'
-import { queries, scrollToTop } from './helpers'
-import { useSpecialContext } from './SpecialContext'
+import { switchSiteMode, switchFontSize } from './REDUX/specialReduser'
+import { queries, scrollToTop, themeClasses } from './helpers'
 import { useMediaQuery } from '@material-ui/core'
-
 import Content from './Content/Content'
 
 const App = React.memo(
@@ -34,6 +33,11 @@ const App = React.memo(
     filmsTodaySlides,
     filmsObject,
     createFilmsObject,
+    switchSiteMode,
+    siteMode,
+    theme,
+    imgHidden,
+    fontSize,
   }) => {
     // Инициализационные эффекты
     useEffect(() => {
@@ -47,15 +51,7 @@ const App = React.memo(
       initialButtonTitle,
       createFilmsTodayArr,
     ])
-
-    const {
-      switchSiteMode,
-      siteMode,
-      themeCl,
-      fontSize,
-      imgHidden,
-    } = useSpecialContext()
-
+    const themeCl = themeClasses(theme)
     let { pathname } = useLocation()
 
     let mainContainerClasses = [
@@ -81,8 +77,6 @@ const App = React.memo(
       scrollToTop()
     }
     //-----------------------------------------
-
-    console.log('App render')
 
     return (
       <div className={mainContainerClasses}>
@@ -116,6 +110,8 @@ const App = React.memo(
               Q={Q}
               filmsObject={filmsObject}
               createFilmsObject={createFilmsObject}
+              themeCl={themeCl}
+              fontSize={fontSize}
             />
 
             {Q.desktop && pathname !== '/sushi' && <Adv />}
@@ -147,6 +143,10 @@ let mapStateToProps = state => ({
   filmsToday: state.cinema.filmsToday,
   filmsTodaySlides: state.cinema.filmsTodaySlides,
   filmsObject: state.cinema.filmsObject,
+  siteMode: state.special.siteMode,
+  theme: state.special.theme,
+  imgHidden: state.special.imgHidden,
+  fontSize: state.special.fontSize,
 })
 
 export default compose(
@@ -156,5 +156,7 @@ export default compose(
     createActualDatesArr,
     createFilmsTodayArr,
     createFilmsObject,
+    switchSiteMode,
+    switchFontSize,
   })
 )(App)

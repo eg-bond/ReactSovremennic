@@ -57,7 +57,7 @@ const delay = ms => {
   return new Promise(res => setTimeout(() => res(), ms))
 }
 
-const SushiContainer = ({ Q, siteMode }) => {
+const SushiContainer = ({ Q, siteMode, themeCl }) => {
   const [activeKey, setActiveKey] = useState('sushi')
   const [opacityCl, switchOpacityCl] = useState('opacity_0')
   const [menuButtons, setButtons] = useState([])
@@ -98,6 +98,8 @@ const SushiContainer = ({ Q, siteMode }) => {
         hideImg={hideImg}
         showImg={showImg}
         menuButtons={menuButtons}
+        siteMode={siteMode}
+        themeCl={themeCl}
       />
     </div>
   )

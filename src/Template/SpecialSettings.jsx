@@ -5,18 +5,23 @@ import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 import RemoveRedEyeOutlinedIcon from '@material-ui/icons/RemoveRedEyeOutlined'
 import Brightness1Icon from '@material-ui/icons/Brightness1'
-import { useSpecialContext } from '../SpecialContext'
+import {
+  switchSiteMode,
+  switchSiteTheme,
+  switchImagesVisibility,
+  switchFontSize,
+} from '../REDUX/specialReduser'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
 
-function SpecialSettings() {
-  const {
-    switchSiteTheme,
-    switchImagesVisibility,
-    switchFontSize,
-    imgHidden,
-    siteMode,
-    switchSiteMode,
-  } = useSpecialContext()
-
+function SpecialSettings({
+  switchSiteTheme,
+  switchImagesVisibility,
+  switchFontSize,
+  imgHidden,
+  siteMode,
+  switchSiteMode,
+}) {
   let modeToDispatch = siteMode === 'default' ? 'special' : 'default'
 
   const handleImgSwitch = () =>
@@ -114,4 +119,16 @@ function SpecialSettings() {
   }
 }
 
-export default SpecialSettings
+let mapStateToProps = state => ({
+  siteMode: state.special.siteMode,
+  imgHidden: state.special.imgHidden,
+})
+
+export default compose(
+  connect(mapStateToProps, {
+    switchSiteMode,
+    switchSiteTheme,
+    switchImagesVisibility,
+    switchFontSize,
+  })
+)(SpecialSettings)

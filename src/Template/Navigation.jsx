@@ -1,12 +1,11 @@
 import React from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import SpecialSettings from './SpecialSettings'
-import { modifiedClass, themeLogo } from '../helpers'
-import { useSpecialContext } from '../SpecialContext'
+import { modifiedClass, themeClasses, themeLogo } from '../helpers'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
 
-function Navigation() {
-  const { siteMode, themeCl, fontSize, theme } = useSpecialContext()
-
+function Navigation({ siteMode, fontSize, theme }) {
   const classHandler = cl => modifiedClass(cl, siteMode)
   let fsAdditionClass =
     fontSize === '150'
@@ -20,7 +19,8 @@ function Navigation() {
       : fontSize === '200'
       ? 'navigation__logo__special__fsAdd-200'
       : ''
-  let logo = themeLogo(theme)
+  const logo = themeLogo(theme)
+  const themeCl = themeClasses(theme)
 
   return (
     <div>
@@ -87,4 +87,10 @@ function Navigation() {
   )
 }
 
-export default Navigation
+let mapStateToProps = state => ({
+  siteMode: state.special.siteMode,
+  theme: state.special.theme,
+  fontSize: state.special.fontSize,
+})
+
+export default compose(connect(mapStateToProps, {}))(Navigation)

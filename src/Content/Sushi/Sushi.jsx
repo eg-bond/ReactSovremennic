@@ -2,7 +2,6 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
 import HotDishesSwiper from './HotDishesSwiper'
 import BrandRollsSwiper from './BrandRollsSwiper'
-import { useSpecialContext } from '../../SpecialContext'
 import { SushiModal } from './SushiModal'
 
 const SushiImage = ({ activeKey, showImg, swiperKeys }) => {
@@ -30,9 +29,9 @@ const Sushi = ({
   hideImg,
   showImg,
   menuButtons,
+  siteMode,
+  themeCl,
 }) => {
-  const { themeCl, siteMode } = useSpecialContext()
-
   return (
     <>
       <div className='sushi_page'>

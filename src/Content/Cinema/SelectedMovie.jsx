@@ -1,11 +1,16 @@
 import React from 'react'
 import { DescriptionTrailer } from './DescriptionTrailer'
-import { useSpecialContext } from '../../SpecialContext'
 import { useParams } from 'react-router'
 import Films from '../Films/Films'
 
-function SelectedMovie({ filmsObject, createFilmsObject, Q }) {
-  const { siteMode, themeCl, fontSize } = useSpecialContext()
+function SelectedMovie({
+  filmsObject,
+  createFilmsObject,
+  Q,
+  siteMode,
+  themeCl,
+  fontSize,
+}) {
   const { film_id } = useParams()
 
   if (!filmsObject) {
