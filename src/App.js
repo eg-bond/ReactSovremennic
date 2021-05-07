@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, Suspense, lazy } from 'react'
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
+import './SCSS/style.scss'
+import '../node_modules/swiper/css/swiper.css'
 import FilmSwiper from './Template/FilmSwiper'
 import { Route, useLocation } from 'react-router-dom'
 import Navigation from './Template/Navigation'
-import BottomSwiper from './Template/BottomSwiper'
+// import BottomSwiper from './Template/BottomSwiper'
 import Footer from './Template/Footer'
-import '../node_modules/swiper/css/swiper.css'
-import './SCSS/style.scss'
 import AdvXS from './Template/AdvXS'
 import {
   initialButtonTitle,
@@ -20,7 +20,10 @@ import { createFilmsTodayArr, createFilmsObject } from './REDUX/cinemaReduser'
 import { switchSiteMode, switchFontSize } from './REDUX/specialReduser'
 import { queries, scrollToTop, themeClasses } from './helpers'
 import { useMediaQuery } from '@material-ui/core'
+// import useMediaQuery from './hooks/useMediaQuery'
 import Content from './Content/Content'
+
+const BottomSwiper = lazy(() => import('./Template/BottomSwiper'))
 
 const App = React.memo(
   ({
@@ -117,11 +120,13 @@ const App = React.memo(
             {Q.desktop && pathname !== '/sushi' && <Adv />}
 
             {siteMode === 'default' && (
-              <BottomSwiper
-                filmsToday={filmsToday}
-                slidesPerView={filmsTodaySlides}
-                desktop={Q.desktop}
-              />
+              <Suspense fallback={<div>Загрузка</div>}>
+                <BottomSwiper
+                  filmsToday={filmsToday}
+                  slidesPerView={filmsTodaySlides}
+                  desktop={Q.desktop}
+                />
+              </Suspense>
             )}
 
             {pathname !== '/' && Q.mobile && (
