@@ -37,16 +37,16 @@ a:focus {
 }
 
 .mainContainer {
-  background: #7e9f96;
-  background-image: url('/Images/main_image1.jpg');
+  background: #ff060e;
+  background-image: url('/Images/main_image3.jpg');
   background-position: top center;
   background-repeat: no-repeat;
   height: 100%;
   @media (max-width: 1200px) {
-    background-size: 1600px 950px;
+    background-size: 1600px 250px;
   }
   @media (max-width: 992px) {
-    background-size: 1220px 765px;
+    background-size: 1220px 200px;
   }
   @media (max-width: 767.5px),
     (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
@@ -94,11 +94,11 @@ hr {
 
 .opacity_0 {
   opacity: 0;
-  transition: ease 200ms;
+  transition: ease 150ms;
 }
 .opacity_1 {
   opacity: 1;
-  transition: ease 200ms;
+  transition: ease 130ms;
 }
 
 .opacity {

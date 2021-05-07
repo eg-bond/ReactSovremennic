@@ -71,7 +71,7 @@ const SushiContainer = ({ Q, siteMode, themeCl }) => {
   async function hideImg(key) {
     if (activeKey !== key) {
       switchOpacityCl('opacity_0')
-      await delay(200)
+      await delay(150)
       setActiveKey(key)
     }
   }
