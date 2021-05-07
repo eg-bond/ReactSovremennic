@@ -43,7 +43,7 @@ function Navigation({ siteMode, fontSize, theme }) {
         <nav role='navigation' className={navClasses}>
           <div className={`${modifyCl('navigation__logo')} ${fsAddLogo}`}>
             <Link to='/'>
-              <img src={`./Images/${logo}.png`} alt='logoImage' />
+              <img src={`./Images/${logo}.png`} alt='logoImg' />
             </Link>
           </div>
           <div className={`${modifyCl('navigation__menu')} ${fsAddCl} focus`}>
