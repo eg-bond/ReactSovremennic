@@ -51,8 +51,9 @@ const App = React.memo(
       initialButtonTitle,
       createFilmsTodayArr,
     ])
-    const themeCl = themeClasses(theme)
+
     let { pathname } = useLocation()
+    const themeCl = themeClasses(theme)
 
     let mainContainerClasses = [
       siteMode === 'special' ? themeCl.back : 'mainContainer',
@@ -79,7 +80,7 @@ const App = React.memo(
 
     return (
       <div className={mainContainerClasses}>
-        <Navigation />
+        <Navigation siteMode={siteMode} fontSize={fontSize} theme={theme} />
 
         {/*Отступ навигации в мобильной версии*/}
         <div className='line_container' />

@@ -1,3 +1,4 @@
+// Хелперы для сайта "для слабовидящих"
 export const modifiedClass = (cl, siteMode) =>
   `${cl} ${siteMode === 'default' ? cl + '__default' : cl + '__special'}`
 
@@ -11,8 +12,6 @@ export const themeClasses = theme => {
     footer: `theme__${theme}__footer`,
   }
 }
-
-export const currentFontSizeClass = fontSize => `fontSize__${fontSize}`
 
 export const themeLogo = theme => {
   switch (theme) {
@@ -30,11 +29,12 @@ export const themeLogo = theme => {
       return 'logo'
   }
 }
+//-------------------------------------
 // Медиа запросы
 export const queries = {
   desktop: '(min-width: 768px) and (min-height: 500px)',
   mobile:
     '(max-width: 767.5px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)',
 }
-
+// Функция для прокрутки наверх
 export const scrollToTop = () => window.scrollTo(0, 0)
