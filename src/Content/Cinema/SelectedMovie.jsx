@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { DescriptionTrailer } from './DescriptionTrailer'
 import { useParams } from 'react-router'
 import Films from '../Films/Films'
@@ -12,9 +12,12 @@ function SelectedMovie({
   fontSize,
 }) {
   const { film_id } = useParams()
+  // Формирует объект фильмов если он отсутстует
+  useEffect(() => {
+    !filmsObject && createFilmsObject()
+  }, [createFilmsObject, filmsObject])
 
   if (!filmsObject) {
-    createFilmsObject()
     return (
       <div className={`padding_15xs`}>
         <div className='col-lg-9 col-md-9 col-sm-9 margin-top-2'></div>
@@ -40,9 +43,7 @@ function SelectedMovie({
       <div className={`padding_15xs `}>
         <div className='col-lg-9 col-md-9 col-sm-9 margin-top-2'>
           <div className='film_info'>
-            {fontSize !== '200' && (
-              <FilmImg link={filmItem.link} title={filmItem.title} />
-            )}
+            {fontSize !== '200' && <FilmImg />}
 
             <div className='filmFlex2'>
               <div className={`description_h`}>

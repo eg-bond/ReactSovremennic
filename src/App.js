@@ -60,23 +60,22 @@ const App = React.memo(
       `fontSize__${fontSize}` || 'fontSize__100',
     ].join(' ')
 
+    // Queries
     const Q = {
       mobile: useMediaQuery(queries.mobile),
       desktop: useMediaQuery(queries.desktop),
     }
-
-    const switchModeIfMobile = () => {
+    // Меняет версию сайта на 'default' при переходе с десктопной версии в мобильную
+    useEffect(() => {
       if (Q.mobile && siteMode === 'special') {
         switchSiteMode('default')
       }
-    }
+    }, [Q.mobile, switchSiteMode, siteMode])
 
-    // ----------------------------------------
-    switchModeIfMobile()
+    // Автоматический скролл наверх для мобильной версии
     if (Q.mobile || siteMode === 'special') {
       scrollToTop()
     }
-    //-----------------------------------------
 
     return (
       <div className={mainContainerClasses}>
