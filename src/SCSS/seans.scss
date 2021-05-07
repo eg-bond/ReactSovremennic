@@ -1,4 +1,4 @@
-@import "variables";
+@import 'variables';
 
 .seans-menu {
   margin-top: 3.2%;
@@ -10,14 +10,14 @@
   justify-content: flex-start;
   flex-wrap: wrap;
   font-family: $arialFont;
-  margin: 0 -7px;
+  margin: 0 -11px;
   > button {
     background-color: black;
     border: none;
     outline: none;
     padding: 7px 9px;
     // 2px нужно для отступов сверху и снизу, чтобы кнопки не сливались при 200% шрифте
-    margin: 2px 7px;
+    margin: 2px 11px;
     text-align: left;
     border-radius: 5px;
     @media (max-width: 1200px) {
@@ -57,22 +57,27 @@
 }
 
 @mixin seansTable($leftColumnW, $centerColumnW, $rightColumnW, $paddingRight) {
-
   @if ($leftColumnW != null) {
-    .table_custom table, .table_custom td:nth-of-type(1), table th:nth-of-type(1) {
+    .table_custom table,
+    .table_custom td:nth-of-type(1),
+    table th:nth-of-type(1) {
       width: $leftColumnW;
       text-align: center;
     }
   }
 
   @if ($centerColumnW != null) {
-    .table_custom table, .table_custom td:nth-of-type(2), table th:nth-of-type(2) {
+    .table_custom table,
+    .table_custom td:nth-of-type(2),
+    table th:nth-of-type(2) {
       width: $centerColumnW;
     }
   }
 
   @if ($rightColumnW != null) {
-    .table_custom table, .table_custom td:nth-of-type(3), table th:nth-of-type(3) {
+    .table_custom table,
+    .table_custom td:nth-of-type(3),
+    table th:nth-of-type(3) {
       width: $rightColumnW;
       text-align: center;
       padding-right: $paddingRight;
@@ -82,9 +87,10 @@
 
 @include seansTable(8%, 48%, 12%, 2%);
 
-.table_custom th, .table_custom td {
-  padding: 2.7% 0 2.7% 1%; 
-  // padding: 1.8% 0 1.8% 1%; 
+.table_custom th,
+.table_custom td {
+  padding: 2.7% 0 2.7% 1%;
+  // padding: 1.8% 0 1.8% 1%;
 }
 
 .table_head {
@@ -103,8 +109,8 @@
   background-color: #2b2831;
 }
 
-@media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
-
+@media (max-width: 767.8px),
+  (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
   .seans_button_xs__title {
     font-weight: 900;
   }
@@ -121,9 +127,9 @@
 }
 
 @for $i from 4 to -1 {
-  $maxWidth: 320px + $i*111.9px;
-  $tableFontSize: 48%+9%*$i;
-  $buttonTitleFontSize: 75%+6%*$i;
+  $maxWidth: 320px + $i * 111.9px;
+  $tableFontSize: 48%+9% * $i;
+  $buttonTitleFontSize: 75%+6% * $i;
 
   @media (max-width: $maxWidth) {
     .table_custom {
