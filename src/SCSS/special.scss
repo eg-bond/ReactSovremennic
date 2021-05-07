@@ -171,7 +171,7 @@
 //--------------------------------------------------------------------------
 
 // Анимации движений для фокуса
-.focusImg {
+@mixin shiftLeft {
   -o-transform: translateX(-10px);
   -ms-transform: translateX(-10px);
   -moz-transform: translateX(-10px);
@@ -179,14 +179,11 @@
   transform: translateX(-10px);
   transition: ease 300ms;
 }
-.focusUp {
+@mixin shiftUp {
   -o-transform: translateY(-10px);
   -ms-transform: translateY(-10px);
   -moz-transform: translateY(-10px);
   -webkit-transform: translateY(-10px);
   transform: translateY(-10px);
-  transition: ease 300ms;
-}
-.focusNone {
   transition: ease 300ms;
 }

@@ -7,15 +7,15 @@ const CREATE_ACTUAL_DATES_ARR = 'CREATE_ACTUAL_DATES_ARR'
 let initialState = {
   datesArr: [
     ['day0', 'Воскресенье', '9 мая'],
-    ['day1', 'Понедельник', '3 мая'],
-    ['day2', 'Вторник', '4 мая'],
-    ['day3', 'Среда', '5 мая'],
+    ['day1', 'Понедельник', '10 мая'],
+    ['day2', 'Вторник', '11 мая'],
+    ['day3', 'Среда', '12 мая'],
     ['day4', 'Четверг', '6 мая'],
     ['day5', 'Пятница', '7 мая'],
     ['day6', 'Суббота', '8 мая'],
   ],
   actualDatesArr: [], // массив с датами, расположенными в правильном порядке
-  beginDate: 'monday', // monday либо любое другое значение
+  beginDate: 'th', // monday либо любое другое значение
   activeKey: '',
   buttonTitle: 'Дата',
 }
@@ -69,35 +69,16 @@ export const seansReduser = (state = initialState, action) => {
   }
 }
 
-export const initialActiveKey = () => {
-  return {
-    type: INITIAL_ACTIVE_KEY,
-  }
-}
-export const changeActiveKey = activeKey => {
-  return {
-    type: CHANGE_ACTIVE_KEY,
-    activeKey,
-  }
-}
-
-export const initialButtonTitle = () => {
-  return {
-    type: INITIAL_BUTTON_TITLE,
-  }
-}
-
-export const changeButtonTitle = buttonTitle => {
-  return {
-    type: CHANGE_BUTTON_TITLE,
-    buttonTitle,
-  }
-}
-
-export const createActualDatesArr = () => {
-  return {
-    type: CREATE_ACTUAL_DATES_ARR,
-  }
-}
+export const initialActiveKey = () => ({ type: INITIAL_ACTIVE_KEY })
+export const changeActiveKey = activeKey => ({
+  type: CHANGE_ACTIVE_KEY,
+  activeKey,
+})
+export const initialButtonTitle = () => ({ type: INITIAL_BUTTON_TITLE })
+export const changeButtonTitle = buttonTitle => ({
+  type: CHANGE_BUTTON_TITLE,
+  buttonTitle,
+})
+export const createActualDatesArr = () => ({ type: CREATE_ACTUAL_DATES_ARR })
 
 export default seansReduser

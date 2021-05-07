@@ -1,13 +1,18 @@
-import React from "react";
+import React from 'react'
 
 function AdvXS() {
-    return (
-        <div className="container advXS">
-            <div className="advXS__img">
-                <a href="http://www.region47.sbor.net/"><img src="./Images/region47_wide.gif" alt="Подарочный сертификат"/></a>
-            </div>
+  return (
+    <>
+      <div className='container advXS'>
+        <div className='advXS__img'>
+          <a href='http://www.region47.sbor.net/'>
+            <img src='./Images/region47_wide.gif' alt='region47' />
+          </a>
         </div>
-    );
+      </div>
+      <div className='separator' />
+    </>
+  )
 }
 
-export default AdvXS;
+export default AdvXS
