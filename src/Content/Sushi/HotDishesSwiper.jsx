@@ -4,7 +4,8 @@ import Swiper from 'react-id-swiper'
 export const SwiperSlide = ({ slideKey }) => {
   return (
     <div className='swiper-slide'>
-      <img src={`./Images/sushi/${slideKey}.gif`} alt={slideKey} />
+      <img src={require(`../../images/sushi/${slideKey}.gif`)} alt={slideKey} />
+      {/* <img src={`./Images/sushi/${slideKey}.gif`} alt={slideKey} /> */}
     </div>
   )
 }

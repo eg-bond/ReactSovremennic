@@ -62,7 +62,8 @@ const FilmSwiper = ({ mobile, films }) => {
             <Link to={`/movies/${f.link}`}>
               <img
                 className='opacity'
-                src={`./Images/top_menu/${f.link}.gif`}
+                // `./Images/top_menu/${f.link}.gif`
+                src={require(`../images/top_menu/${f.link}.gif`)}
                 alt={f.title}
               />
               <h1>{f.title}</h1>

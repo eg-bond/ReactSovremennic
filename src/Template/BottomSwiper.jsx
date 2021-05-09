@@ -51,7 +51,8 @@ const BottomSwiper = props => {
                   <Link to={`/movies/${f.link}`}>
                     <img
                       className='opacity'
-                      src={`./Images/description/${f.link}_D.jpg`}
+                      // src={`./Images/description/${f.link}_D.jpg`}
+                      src={require(`../images/description/${f.link}_D.jpg`)}
                       alt=''
                     />
                     <h1>{f.title}</h1>

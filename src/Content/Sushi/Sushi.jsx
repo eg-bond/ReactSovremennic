@@ -15,7 +15,8 @@ const SushiImage = ({ activeKey, showImg, swiperKeys }) => {
     <img
       onLoad={showImg}
       className={'sushi__page__img'}
-      src={`./Images/sushi/${activeKey}.gif`}
+      src={require(`../../images/sushi/${activeKey}.gif`)}
+      // src={`./Images/sushi/${activeKey}.gif`}
       alt={activeKey}
     />
   )

@@ -1,7 +1,7 @@
 import React, { useEffect, Suspense, lazy } from 'react'
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
-import './SCSS/style.scss'
 import '../node_modules/swiper/css/swiper.css'
+import './SCSS/style.scss'
 import FilmSwiper from './Template/FilmSwiper'
 import { Route, useLocation } from 'react-router-dom'
 import Navigation from './Template/Navigation'

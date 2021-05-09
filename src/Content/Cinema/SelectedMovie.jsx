@@ -31,7 +31,8 @@ function SelectedMovie({
     <div className='filmFlex1 row-xs'>
       <div className='descImg'>
         <img
-          src={`Images/description/${filmItem.link}_D.jpg`}
+          src={require(`../../images/description/${filmItem.link}_D.jpg`)}
+          // src={`Images/description/${filmItem.link}_D.jpg`}
           alt={filmItem.title}
         />
       </div>
