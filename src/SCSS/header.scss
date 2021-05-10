@@ -1,4 +1,4 @@
-@import "variables";
+@import 'variables';
 
 .navigation {
   display: flex;
@@ -8,7 +8,8 @@
   @media (max-width: 992px) {
     border: $border3px;
   }
-  @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+  @media (max-width: 767.8px),
+    (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
     border-radius: 0;
     border-width: 0;
     position: fixed;
@@ -20,12 +21,14 @@
 .navigation__default {
   border-radius: 20px 20px 0 0;
   border-color: $linesColor;
-  @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+  @media (max-width: 767.8px),
+    (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
     border-radius: 0;
     border-width: 0;
   }
 }
-.navigation__default a:hover, .navigation__default a.active {
+.navigation__default a:hover,
+.navigation__default a.active {
   color: black !important;
   background-color: white !important;
 }
@@ -35,8 +38,8 @@
 }
 
 .navigation__logo {
-  display: flex;
-  justify-content: flex-start;
+  // display: flex;
+  // justify-content: flex-start;
   text-decoration: none;
   flex: 1;
   img {
@@ -48,24 +51,28 @@
       width: 135px;
     }
   }
-  @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
-    padding: 0.5% 0 0.5% 1.5%;
-  }
+  // @media (max-width: 767.8px),
+  //   (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+  //   padding: 0.5% 0 0.5% 1.5%;
+  // }
 }
 .navigation__logo a:hover {
   background-color: transparent !important;
 }
 .navigation__logo__default {
-  padding: 0.5% 0 0.5% 2%;
+  // padding: 0.5% 0 0.5% 2%;
+  margin: 0.5% 0 0.5% 2%;
 }
 .navigation__logo__special {
-  padding: 0.5% 0 0.5% 2%;
+  // padding: 0.5% 0 0.5% 2%;
+  margin: 0.5% 0 0.5% 2%;
   @media (max-width: 1200px) {
     flex: 0.8;
   }
   @media (max-width: 992px) {
     flex: 0.7;
-    padding: 0.5% 0 0.5% 1%;
+    // padding: 0.5% 0 0.5% 1%;
+    margin: 0.5% 0 0.5% 1%;
   }
 }
 
@@ -75,27 +82,35 @@
   box-shadow: none;
 }
 .navigation__menu__default {
-  padding-top: 1%;
+  // padding-top: 1%;
+  margin-top: 1%;
+  @media (max-width: 992px) {
+    margin-top: 1.5%;
+  }
 }
 .navigation__menu__special {
-  padding-left: 2%;
-  padding-top: 1%;
+  // padding-left: 2%;
+  margin-left: 2%;
+  // padding-top: 1%;
+  margin-top: 1%;
   @media (max-width: 1200px) {
-    padding-left: 0;
+    // padding-left: 0;
+    margin-left: 0;
   }
   @media (max-width: 992px) {
-    padding-left: 2%;
+    // padding-left: 2%;
+    margin-left: 2%;
   }
 }
 .navigation__menu__special__fsAdd-150 {
-   padding-left: 13.5% !important;
-   @media (max-width: 1200px) {
-     padding-left: 7% !important;
-   }
-   @media (max-width: 992px) {
-     padding-left: 7% !important;
-   }
- }
+  padding-left: 13.5% !important;
+  @media (max-width: 1200px) {
+    padding-left: 7% !important;
+  }
+  @media (max-width: 992px) {
+    padding-left: 7% !important;
+  }
+}
 .navigation__menu__special__fsAdd-200 {
   padding-left: 7% !important;
   @media (max-width: 1200px) {
@@ -103,17 +118,16 @@
   }
   @media (max-width: 992px) {
     padding-left: 0 !important;
+    margin-left: 0;
   }
 }
 .navigation__logo__special__fsAdd-150 {
-  padding-top: 1.5%;
+  padding-top: 1%;
   padding-left: 10%;
   @media (max-width: 1200px) {
-    padding-top: 2%;
     padding-left: 7%;
   }
   @media (max-width: 992px) {
-    padding-top: 2%;
     padding-left: 5%;
   }
   & img {
@@ -127,14 +141,13 @@
   }
 }
 .navigation__logo__special__fsAdd-200 {
-  padding-top: 1.5%;
-  padding-left: 5%;
+  padding-top: 1%;
+  padding-left: 4%;
   @media (max-width: 1200px) {
-    padding-top: 2.5%;
     padding-left: 1.5%;
   }
   @media (max-width: 992px) {
-    padding-top: 3.5%;
+    padding-top: 3%;
   }
   & img {
     width: 300px;
@@ -152,7 +165,8 @@
   justify-content: flex-start;
   flex-wrap: wrap;
   list-style: none;
-  @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+  @media (max-width: 767.8px),
+    (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
     justify-content: space-between;
     padding: 0 1.5%;
   }
@@ -169,7 +183,8 @@
     font-size: 85%;
     padding: 8px 6px;
   }
-  @media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+  @media (max-width: 767.8px),
+    (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
     padding: 10px 4.5px;
   }
 }
@@ -177,7 +192,7 @@
   transition: ease 650ms;
 }
 
-@mixin navigationXS ($navigationHeight, $logoWidth, $menuFS) {
+@mixin navigationXS($navigationHeight, $logoWidth, $menuFS) {
   .navigation {
     height: $navigationHeight;
   }
@@ -185,32 +200,33 @@
     margin-top: $navigationHeight;
   }
   .navigation__logo img {
-      width: $logoWidth;
+    width: $logoWidth;
   }
   .navigation__menu a {
     font-size: $menuFS;
   }
 }
 
-@media (max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
-  @include navigationXS (55px, 140px, 80%);
+@media (max-width: 767.8px),
+  (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+  @include navigationXS(55px, 140px, 80%);
 }
 
 @media (max-width: 656px) {
-  @include navigationXS (50px, 125px, 68%);
+  @include navigationXS(50px, 125px, 67%);
 }
 
 @media (max-width: 544px) {
   .navigation {
     flex-direction: column;
   }
-  @include navigationXS (97px, 120px, 72%);
+  @include navigationXS(97px, 120px, 72%);
 }
 
 @media (max-width: 432px) {
-  @include navigationXS (90px, 110px, 60%);
+  @include navigationXS(90px, 110px, 59%);
 }
 
 @media (max-width: 365px) {
-  @include navigationXS (82px, 100px, 50%);
+  @include navigationXS(82px, 100px, 50%);
 }
