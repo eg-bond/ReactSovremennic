@@ -19,11 +19,14 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
     "redux": "^4.0.5",
+    "source-map-explorer": "^2.5.2",
     "swiper": "^5.3.6"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "analyze_js": "source-map-explorer 'build/static/js/*.js'",
+    "analyze_css": "source-map-explorer 'build/static/css/*.css'",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "scrapper": "node ExternalScripts/Scrapper/scrapper",
