@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import 'bootstrap/dist/css/bootstrap.css'
 import { Tab } from 'react-bootstrap'
 import NavItems from './NavItems'
 import SeansModal from './SeansModal'

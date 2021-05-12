@@ -1,5 +1,4 @@
 import React from 'react'
-import 'bootstrap/dist/css/bootstrap.css'
 import HotDishesSwiper from './HotDishesSwiper'
 import BrandRollsSwiper from './BrandRollsSwiper'
 import { SushiModal } from './SushiModal'

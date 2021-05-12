@@ -1,5 +1,4 @@
 import React from 'react'
-import 'bootstrap/dist/css/bootstrap.css'
 import { Tab } from 'react-bootstrap'
 import scedule from './scedule.js'
 
@@ -13,8 +12,7 @@ export const CreateTable = () => {
       children.push(
         <tr
           key={`${elem}${j}`}
-          className={j % 2 === 0 ? 'table_gray' : 'table_white'}
-        >
+          className={j % 2 === 0 ? 'table_gray' : 'table_white'}>
           <td>{scedule[elem][j][0]}</td>
           <td>{scedule[elem][j][1]}</td>
           <td>{scedule[elem][j][2]}</td>

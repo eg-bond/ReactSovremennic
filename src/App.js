@@ -1,5 +1,6 @@
 import React, { useEffect, Suspense, lazy } from 'react'
-import '../node_modules/bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/less/grid.less'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import '../node_modules/swiper/css/swiper.css'
 import './SCSS/style.scss'
 import FilmSwiper from './Template/FilmSwiper'
