@@ -1,64 +1,51 @@
-import React, { useState } from 'react'
-import Swiper from 'react-id-swiper'
+import React, { useRef, useState } from 'react'
+import SwiperCore, { Pagination, Autoplay } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/react'
 import { Link } from 'react-router-dom'
+
+SwiperCore.use([Pagination, Autoplay])
 
 const FilmSwiper = ({ mobile, films }) => {
   const [opacity, turnOpacity] = useState('opacity_0')
-  const [filmSwiper, updateSwiper] = useState(null)
-
-  const turnAutoplay = action => {
-    if (filmSwiper !== null) {
-      action === 'stop'
-        ? filmSwiper.autoplay.stop()
-        : filmSwiper.autoplay.start()
-    }
-  }
+  const swiperRef = useRef(null)
 
   const params = {
     slidesPerView: 5.5,
-    spaceBetween: 15,
-    centeredSlides: false,
+    spaceBetween: 10,
+    className: 'filmSwiper',
     observer: true,
     observeParents: true,
-    containerClass: 'filmSwiper swiper-container',
-    wrapperClass: 'swiper-wrapper',
-    slideClass: 'swiper-slide',
+    onSwiper: swiper => (swiperRef.current = swiper),
+    onImagesReady: () => turnOpacity('opacity_1'),
+    autoplay: {
+      delay: 1000,
+      disableOnInteraction: false,
+    },
     pagination: {
-      el: '.swiper-pagination',
       dynamicBullets: true,
       clickable: true,
     },
-
     breakpoints: {
+      768: {
+        freeMode: false,
+      },
       250: {
         slidesPerView: 3.5,
         spaceBetween: 9,
         freeMode: true,
       },
-      768: {
-        slidesPerView: 5.5,
-        spaceBetween: 8,
-        freeMode: false,
-        autoplay: {
-          delay: 2000,
-          disableOnInteraction: false,
-        },
-      },
-    },
-    on: {
-      imagesReady: () => turnOpacity('opacity_1'),
     },
   }
 
   return (
     <div
-      onMouseEnter={() => turnAutoplay('stop')}
-      onMouseLeave={() => turnAutoplay('start')}
+      onMouseEnter={() => swiperRef.current.autoplay.stop()}
+      onMouseLeave={() => swiperRef.current.autoplay.start()}
       className={`cinemaSlider ${opacity}`}>
       {mobile && <h4>Фильмы</h4>}
-      <Swiper getSwiper={updateSwiper} {...params}>
+      <Swiper {...params}>
         {films.map(f => (
-          <div key={f.link}>
+          <SwiperSlide key={f.link}>
             <Link to={`/movies/${f.link}`}>
               <img
                 className='opacity'
@@ -69,7 +56,7 @@ const FilmSwiper = ({ mobile, films }) => {
               <h1>{f.title}</h1>
               <p>{f.beginDate}</p>
             </Link>
-          </div>
+          </SwiperSlide>
         ))}
       </Swiper>
     </div>

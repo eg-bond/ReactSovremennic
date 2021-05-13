@@ -1,14 +1,11 @@
 import React from 'react'
-import HotDishesSwiper from './HotDishesSwiper'
-import BrandRollsSwiper from './BrandRollsSwiper'
 import { SushiModal } from './SushiModal'
+import SushiSwipers from './SushiSwipers'
 
 const SushiImage = ({ activeKey, showImg, swiperKeys }) => {
   // prettier-ignore
-  if (swiperKeys.includes(activeKey)) {    
-    return activeKey === 'brand_rolls'
-      ? <BrandRollsSwiper showImg={showImg} />
-      : <HotDishesSwiper showImg={showImg} />
+  if (swiperKeys.includes(activeKey)) {
+    return <SushiSwipers swiperKey={activeKey} showImg={showImg}/>
   }
   return (
     <img

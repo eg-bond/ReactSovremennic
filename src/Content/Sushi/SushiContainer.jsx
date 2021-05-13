@@ -76,7 +76,7 @@ const SushiContainer = ({ Q, siteMode, themeCl }) => {
     }
   }
   const showImg = () => {
-    switchOpacityCl('opacity_1')
+    opacityCl === 'opacity_0' && switchOpacityCl('opacity_1')
   }
 
   useEffect(() => {

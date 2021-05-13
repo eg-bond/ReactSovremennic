@@ -1,7 +1,8 @@
 import React, { useEffect, Suspense, lazy } from 'react'
-import 'bootstrap/less/grid.less'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import '../node_modules/swiper/css/swiper.css'
+import 'swiper/swiper.scss'
+import 'swiper/components/navigation/navigation.scss'
+import 'swiper/components/pagination/pagination.scss'
 import './SCSS/style.scss'
 import FilmSwiper from './Template/FilmSwiper'
 import { Route, useLocation } from 'react-router-dom'
@@ -21,7 +22,6 @@ import { createFilmsTodayArr, createFilmsObject } from './REDUX/cinemaReduser'
 import { switchSiteMode, switchFontSize } from './REDUX/specialReduser'
 import { queries, scrollToTop, themeClasses } from './helpers'
 import { useMediaQuery } from '@material-ui/core'
-// import useMediaQuery from './hooks/useMediaQuery'
 import Content from './Content/Content'
 
 const BottomSwiper = lazy(() => import('./Template/BottomSwiper'))
@@ -84,7 +84,12 @@ const App = React.memo(
 
     return (
       <div className={mainContainerClasses}>
-        <Navigation siteMode={siteMode} fontSize={fontSize} theme={theme} />
+        <Navigation
+          siteMode={siteMode}
+          fontSize={fontSize}
+          theme={theme}
+          Q={Q}
+        />
 
         {/*Отступ навигации в мобильной версии*/}
         <div className='line_container' />

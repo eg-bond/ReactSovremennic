@@ -1,18 +1,13 @@
-import React, { useState } from 'react'
-import Swiper from 'react-id-swiper'
+import React, { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import SwiperCore, { Autoplay } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/react'
+
+SwiperCore.use([Autoplay])
 
 const BottomSwiper = props => {
   const [opacity, turnOpacity] = useState('opacity_0')
-  const [bottomSwiper, updateSwiper] = useState(null)
-
-  const turnAutoplay = action => {
-    if (bottomSwiper !== null) {
-      action === 'stop'
-        ? bottomSwiper.autoplay.stop()
-        : bottomSwiper.autoplay.start()
-    }
-  }
+  const swiperRef = useRef(null)
 
   if (props.filmsToday[0] === undefined) {
     return null
@@ -21,17 +16,13 @@ const BottomSwiper = props => {
   const params = {
     slidesPerView: props.slidesPerView,
     spaceBetween: props.slidesPerView === 3 ? 55 : 20,
-    centeredSlides: false,
+    className: `bottomSwiper ${opacity}`,
     loop: true,
-    containerClass: `bottomSwiper swiper-container ${opacity}`,
-    wrapperClass: 'swiper-wrapper ',
-    slideClass: 'swiper-slide',
+    onSwiper: swiper => (swiperRef.current = swiper),
+    onImagesReady: () => turnOpacity('opacity_1'),
     autoplay: {
       delay: 2000,
       disableOnInteraction: false,
-    },
-    on: {
-      imagesReady: () => turnOpacity('opacity_1'),
     },
   }
 
@@ -43,11 +34,11 @@ const BottomSwiper = props => {
             <h1>Сегодня в кино</h1>
           </div>
           <div
-            onMouseEnter={() => turnAutoplay('stop')}
-            onMouseLeave={() => turnAutoplay('start')}>
-            <Swiper getSwiper={updateSwiper} {...params}>
+            onMouseEnter={() => swiperRef.current.autoplay.stop()}
+            onMouseLeave={() => swiperRef.current.autoplay.start()}>
+            <Swiper {...params}>
               {props.filmsToday.map(f => (
-                <div key={f.link}>
+                <SwiperSlide key={f.link}>
                   <Link to={`/movies/${f.link}`}>
                     <img
                       className='opacity'
@@ -58,7 +49,7 @@ const BottomSwiper = props => {
                     <h1>{f.title}</h1>
                     <p>{f.kind.split(', ')[0]}</p>
                   </Link>
-                </div>
+                </SwiperSlide>
               ))}
             </Swiper>
           </div>
