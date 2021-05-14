@@ -7,7 +7,7 @@ import './SCSS/style.scss'
 import FilmSwiper from './Template/FilmSwiper'
 import { Route, useLocation } from 'react-router-dom'
 import Navigation from './Template/Navigation'
-// import BottomSwiper from './Template/BottomSwiper'
+import BottomSwiper from './Template/BottomSwiper'
 import Footer from './Template/Footer'
 import AdvXS from './Template/AdvXS'
 import {
@@ -24,7 +24,7 @@ import { queries, scrollToTop, themeClasses } from './helpers'
 import { useMediaQuery } from '@material-ui/core'
 import Content from './Content/Content'
 
-const BottomSwiper = lazy(() => import('./Template/BottomSwiper'))
+// const BottomSwiper = lazy(() => import('./Template/BottomSwiper'))
 
 const App = React.memo(
   ({
@@ -82,6 +82,8 @@ const App = React.memo(
       scrollToTop()
     }
 
+    debugger
+
     return (
       <div className={mainContainerClasses}>
         <Navigation
@@ -102,15 +104,17 @@ const App = React.memo(
           <div className='row'>
             {Q.mobile && <AdvXS />}
 
-            {siteMode === 'default' && Q.desktop && (
-              <FilmSwiper films={films} mobile={Q.mobile} />
-            )}
-
-            {Q.mobile && (
-              <Route exact path='/'>
+            <div className='filmSwiperContainer'>
+              {siteMode === 'default' && Q.desktop && (
                 <FilmSwiper films={films} mobile={Q.mobile} />
-              </Route>
-            )}
+              )}
+
+              {Q.mobile && (
+                <Route exact path='/'>
+                  <FilmSwiper films={films} mobile={Q.mobile} />
+                </Route>
+              )}
+            </div>
 
             <hr className={`line_5px hidden-xs ${themeCl.borders}`} />
 
@@ -125,15 +129,17 @@ const App = React.memo(
 
             {Q.desktop && pathname !== '/sushi' && <Adv />}
 
-            {siteMode === 'default' && (
-              <Suspense fallback={<div>Загрузка</div>}>
-                <BottomSwiper
-                  filmsToday={filmsToday}
-                  slidesPerView={filmsTodaySlides}
-                  desktop={Q.desktop}
-                />
-              </Suspense>
-            )}
+            <div className='bottomSwiperContainer'>
+              {siteMode === 'default' && (
+                <Suspense fallback={null}>
+                  <BottomSwiper
+                    filmsToday={filmsToday}
+                    slidesPerView={filmsTodaySlides}
+                    desktop={Q.desktop}
+                  />
+                </Suspense>
+              )}
+            </div>
 
             {pathname !== '/' && Q.mobile && (
               <>

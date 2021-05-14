@@ -1,7 +1,7 @@
-import React, { Suspense, lazy } from 'react'
+import React from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { modifiedClass, themeClasses, themeLogo } from '../helpers'
-const SpecialSettings = lazy(() => import('./SpecialSettings'))
+import SpecialSettings from './SpecialSettings'
 
 const NavItem = ({ url, title }) => (
   <li>
@@ -39,11 +39,7 @@ function Navigation({ siteMode, fontSize, theme, Q }) {
   return (
     <div className='container'>
       <div className='row'>
-        {Q.desktop && (
-          <Suspense fallback={<div>Загрузка</div>}>
-            <SpecialSettings />
-          </Suspense>
-        )}
+        <SpecialSettings />
         <nav role='navigation' className={navClasses}>
           <div className={`${modifyCl('navigation__logo')} ${fsAddLogo}`}>
             <Link to='/'>

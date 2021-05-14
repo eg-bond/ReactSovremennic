@@ -63,21 +63,6 @@ a:focus {
   }
 }
 
-.space {
-  position: relative;
-  text-align: center;
-  opacity: 1;
-  height: 245px;
-
-  @media (max-width: 992px) {
-    height: 198px;
-  }
-  @media (max-width: 767.8px),
-    (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
-    display: none;
-  }
-}
-
 hr {
   margin-top: 0;
   margin-bottom: 0;
