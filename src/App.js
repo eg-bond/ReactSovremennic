@@ -91,7 +91,7 @@ const App = React.memo(
             imgHidden && 'hideImages'
           }`}>
           <div className='row'>
-            {Q.mobile && <AdvXS />}
+            {/* {Q.mobile && <AdvXS />} */}
 
             {siteMode === 'default' && Q.desktop && (
               <FilmSwiper films={films} mobile={Q.mobile} />

@@ -58,13 +58,13 @@ const Sushi = ({
               </div>
             )}
 
-            {Q.desktop && (
+            {/* {Q.desktop && (
               <a className={'linkWrapper'} href='http://www.region47.sbor.net/'>
                 <div className={'sushiAdv sushiAdv--1'}>
                   <img src='./Images/region47_wide.gif' alt='region47' />
                 </div>
               </a>
-            )}
+            )} */}
 
             <div
               className={`${opacityCl} sushi_page__content`}

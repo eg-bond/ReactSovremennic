@@ -52,10 +52,10 @@ function IndexContent({ siteMode, films, Q }) {
 
         {siteMode === 'special' && Q.desktop && <Films films={films} />}
 
-        <div className='separator-xs' />
+        {/* <div className='separator-xs' /> */}
       </div>
 
-      {Q.mobile && <IndexAdvXS />}
+      {/* {Q.mobile && <IndexAdvXS />} */}
     </>
   )
 }
