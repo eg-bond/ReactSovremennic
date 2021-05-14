@@ -82,8 +82,6 @@ const App = React.memo(
       scrollToTop()
     }
 
-    debugger
-
     return (
       <div className={mainContainerClasses}>
         <Navigation
@@ -104,7 +102,8 @@ const App = React.memo(
           <div className='row'>
             {Q.mobile && <AdvXS />}
 
-            <div className='filmSwiperContainer'>
+            <div
+              className={siteMode === 'default' ? 'filmSwiperContainer' : ''}>
               {siteMode === 'default' && Q.desktop && (
                 <FilmSwiper films={films} mobile={Q.mobile} />
               )}
@@ -129,7 +128,8 @@ const App = React.memo(
 
             {Q.desktop && pathname !== '/sushi' && <Adv />}
 
-            <div className='bottomSwiperContainer'>
+            <div
+              className={siteMode === 'default' ? 'bottomSwiperContainer' : ''}>
               {siteMode === 'default' && (
                 <Suspense fallback={null}>
                   <BottomSwiper
