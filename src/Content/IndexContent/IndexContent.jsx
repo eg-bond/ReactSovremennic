@@ -1,5 +1,5 @@
 import React from 'react'
-import IndexAdvXS from '../../Template/IndexAdvXS'
+// import IndexAdvXS from '../../Template/IndexAdvXS'
 import { Link } from 'react-router-dom'
 import Films from '../Films/Films'
 import LiteYouTubeEmbed from 'react-lite-youtube-embed'

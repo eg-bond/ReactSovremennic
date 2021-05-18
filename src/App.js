@@ -7,7 +7,7 @@ import { Route, useLocation } from 'react-router-dom'
 import Navigation from './Template/Navigation'
 import BottomSwiper from './Template/BottomSwiper'
 import Footer from './Template/Footer'
-import AdvXS from './Template/AdvXS'
+// import AdvXS from './Template/AdvXS'
 import {
   initialButtonTitle,
   initialActiveKey,
