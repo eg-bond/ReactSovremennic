@@ -32,7 +32,7 @@ export const filmsArray = [
   {
     title: 'Пила: Спираль',
     beginDate: 'с 13 мая',
-    endDate: 'по 19 мая',
+    endDate: 'по 26 мая',
     kind: 'Ужасы, детектив, триллер',
     director: 'Даррен Линн Боусман',
     duration: '93 мин. / 01:33',
