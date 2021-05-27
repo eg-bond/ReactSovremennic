@@ -1,5 +1,5 @@
-import React, { useEffect, Suspense, lazy } from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import React, { useEffect, Suspense } from 'react'
+import './bootstrap3_grid.css'
 import 'swiper/swiper.scss'
 import 'swiper/components/navigation/navigation.scss'
 import 'swiper/components/pagination/pagination.scss'
