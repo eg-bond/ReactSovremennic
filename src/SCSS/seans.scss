@@ -130,8 +130,28 @@
     z-index: 2;
   }
 
+  .paper {
+    margin-top: 16px;
+    border: solid white 1.7px;
+    border-radius: 21px;
+    color: white;
+    background-color: black;
+  }
+  .paper li.active {
+    color: red;
+  }
+
   .MuiMenuItem-root {
     justify-content: center !important;
+    border-bottom: solid 1px !important;
+    margin: 0 10px !important;
+    min-height: 43px !important;
+  }
+  .MuiMenuItem-root:last-child {
+    border-bottom: none !important;
+  }
+  .MuiList-padding {
+    padding: 0 !important;
   }
 }
 

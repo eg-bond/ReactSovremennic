@@ -1,5 +1,5 @@
 import React from 'react'
-import { SushiModal } from './SushiModal'
+import { MobileSushiNavigation, SushiModal } from './MobileSushiNavigation'
 import SushiSwipers from './SushiSwipers'
 
 const SushiImage = ({ activeKey, showImg, swiperKeys }) => {
@@ -47,7 +47,7 @@ const Sushi = ({
           <div className='col-lg-9 col-md-9 col-sm-9'>
             {Q.mobile && (
               <div className='sushi_menu_xs'>
-                <SushiModal
+                <MobileSushiNavigation
                   activeKey={activeKey}
                   hideImg={hideImg}
                   defaultSushiArr={sushiElems.default}

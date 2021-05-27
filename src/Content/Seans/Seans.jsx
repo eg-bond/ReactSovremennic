@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import NavItems from './NavItems'
-import { SeansModal, MenuListComposition } from './SeansModal'
+// import NavItems from './NavItems'
+import { MobileSeanceNavigation } from './MobileSeanceNavigation'
 import {
   changeActiveKey,
   changeButtonTitle,
@@ -27,6 +27,11 @@ const Seans = React.memo(
   }) => {
     const themeCl = themeClasses(theme)
 
+    const switchSeanstable = (key, title) => {
+      props.changeButtonTitle(title)
+      props.changeActiveKey(key)
+    }
+
     useEffect(() => {
       return () => {
         initialActiveKey()
@@ -46,31 +51,27 @@ const Seans = React.memo(
                 className={`seans-menu ${
                   siteMode === 'special' ? themeCl.navs : ''
                 } `}>
-                <NavItems
-                  deviceType={'notMobile'}
-                  datesArr={props.datesArr}
-                  changeButtonTitle={props.changeButtonTitle}
-                  changeActiveKey={props.changeActiveKey}
-                  activeKey={activeKey}
-                />
+                <div className='seans-tabs'>
+                  {props.datesArr.map(d => (
+                    <button
+                      key={d[0] + 'd'}
+                      className={activeKey === d[0] ? 'active' : ''}
+                      onClick={e => switchSeanstable(d[0], `${d[1]} ${d[2]}`)}>
+                      {d[1]} <br /> {d[2]}
+                    </button>
+                  ))}
+                </div>
               </div>
             )}
 
             {Q.mobile && (
               <div className='sushi_menu_xs'>
-                {/* <SeansModal
-                  datesArr={props.datesArr}
-                  buttonTitle={props.buttonTitle}
-                  changeButtonTitle={props.changeButtonTitle}
-                  initialButtonTitle={props.initialButtonTitle}
-                /> */}
-                <MenuListComposition
+                <MobileSeanceNavigation
                   activeKey={activeKey}
                   datesArr={props.datesArr}
                   buttonTitle={props.buttonTitle}
                   changeButtonTitle={props.changeButtonTitle}
                   changeActiveKey={props.changeActiveKey}
-                  initialButtonTitle={props.initialButtonTitle}
                 />
               </div>
             )}

@@ -1,12 +1,11 @@
 import React, { useState, useRef } from 'react'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import Grow from '@material-ui/core/Grow'
-import Paper from '@material-ui/core/Paper'
 import Popper from '@material-ui/core/Popper'
 import MenuItem from '@material-ui/core/MenuItem'
 import MenuList from '@material-ui/core/MenuList'
 
-export function MenuListComposition(props) {
+export function MobileSeanceNavigation(props) {
   const [open, setOpen] = useState(false)
   const anchorRef = useRef(null)
 
@@ -52,10 +51,15 @@ export function MenuListComposition(props) {
         transition
         placement={'bottom-start'}
         className={'seansPopper'}
-        disablePortal>
-        {({ TransitionProps, placement }) => (
+        disablePortal
+        modifiers={{
+          flip: {
+            enabled: false,
+          },
+        }}>
+        {({ TransitionProps }) => (
           <Grow {...TransitionProps}>
-            <Paper className={`paper`}>
+            <div className={`paper`}>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList
                   autoFocusItem={open}
@@ -73,43 +77,10 @@ export function MenuListComposition(props) {
                   ))}
                 </MenuList>
               </ClickAwayListener>
-            </Paper>
+            </div>
           </Grow>
         )}
       </Popper>
     </div>
   )
 }
-
-export const SeansModal = props => {
-  let [show, setShow] = useState(false)
-
-  const selectModalItem = e => {
-    props.changeButtonTitle(e.target.text)
-    setShow(false)
-  }
-
-  return (
-    <div className='modal-container'>
-      {/* <Button onClick={() => setShow(true)} className='seans_button_xs'>
-        <span className='seans_button_xs__title'>{props.buttonTitle}</span>{' '}
-        <span className='glyphicon glyphicon-chevron-down' aria-hidden='true' />
-      </Button>
-
-      <Modal show={show} onHide={() => setShow(false)}>
-        <Modal.Header closeButton>
-          <Modal.Title>Дата</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <NavItems
-            datesArr={props.datesArr}
-            deviceType={'Mobile'}
-            selectModalItem={selectModalItem}
-          />
-        </Modal.Body>
-      </Modal> */}
-    </div>
-  )
-}
-
-// export default SeansModal
