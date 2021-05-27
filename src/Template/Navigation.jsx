@@ -29,8 +29,6 @@ function Navigation({ siteMode, fontSize, theme, Q }) {
   const themeCl = themeClasses(theme)
 
   let navClasses = [
-    'navbar',
-    'navbar-inverse',
     modifyCl('navigation'),
     themeCl.back,
     siteMode === 'special' ? `${themeCl.pills} ${themeCl.borders}` : '',

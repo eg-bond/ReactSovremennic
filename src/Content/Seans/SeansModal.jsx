@@ -1,8 +1,136 @@
 import React, { useState } from 'react'
-import { Button, Modal } from 'react-bootstrap'
+// import { Button, Modal } from 'react-bootstrap'
 import NavItems from './NavItems'
 
-function SeansModal(props) {
+import Popover from '@material-ui/core/Popover'
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
+import ClickAwayListener from '@material-ui/core/ClickAwayListener'
+import Grow from '@material-ui/core/Grow'
+import Paper from '@material-ui/core/Paper'
+import Popper from '@material-ui/core/Popper'
+import MenuItem from '@material-ui/core/MenuItem'
+import MenuList from '@material-ui/core/MenuList'
+import { makeStyles } from '@material-ui/core/styles'
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: 'flex',
+  },
+  paper: {
+    marginRight: theme.spacing(2),
+  },
+}))
+
+export function MenuListComposition(props) {
+  const classes = useStyles()
+  const [open, setOpen] = React.useState(false)
+  const anchorRef = React.useRef(null)
+
+  const handleToggle = () => {
+    setOpen(prevOpen => !prevOpen)
+  }
+
+  const handleClose = event => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return
+    }
+
+    setOpen(false)
+  }
+
+  function handleListKeyDown(event) {
+    if (event.key === 'Tab') {
+      event.preventDefault()
+      setOpen(false)
+    }
+  }
+
+  // return focus to the button when we transitioned from !open -> open
+  const prevOpen = React.useRef(open)
+  React.useEffect(() => {
+    if (prevOpen.current === true && open === false) {
+      anchorRef.current.focus()
+    }
+
+    prevOpen.current = open
+  }, [open])
+
+  return (
+    <div className={classes.root}>
+      <Paper className={classes.paper}>
+        <MenuList>
+          <MenuItem>Profile</MenuItem>
+          <MenuItem>My account</MenuItem>
+          <MenuItem>Logout</MenuItem>
+        </MenuList>
+      </Paper>
+      <div>
+        <Button
+          ref={anchorRef}
+          aria-controls={open ? 'menu-list-grow' : undefined}
+          aria-haspopup='true'
+          onClick={handleToggle}>
+          Toggle Menu Grow
+        </Button>
+        <Popper
+          open={open}
+          anchorEl={anchorRef.current}
+          role={undefined}
+          transition
+          disablePortal>
+          {({ TransitionProps, placement }) => (
+            <Grow
+              {...TransitionProps}
+              style={{
+                transformOrigin:
+                  placement === 'bottom' ? 'center top' : 'center bottom',
+              }}>
+              <Paper>
+                <ClickAwayListener onClickAway={handleClose}>
+                  <MenuList
+                    autoFocusItem={open}
+                    id='menu-list-grow'
+                    onKeyDown={handleListKeyDown}>
+                    <MenuItem onClick={handleClose}>Profile</MenuItem>
+                    <MenuItem onClick={handleClose}>My account</MenuItem>
+                    <MenuItem onClick={handleClose}>Logout</MenuItem>
+                  </MenuList>
+                </ClickAwayListener>
+              </Paper>
+            </Grow>
+          )}
+        </Popper>
+      </div>
+    </div>
+  )
+}
+
+{
+  /* <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}>
+        <NavItems
+          deviceType={'Mobile'}
+          datesArr={props.datesArr}
+          changeButtonTitle={props.changeButtonTitle}
+          changeActiveKey={props.changeActiveKey}
+          activeKey={props.activeKey}
+        />
+      </Popover> */
+}
+
+export const SeansModal = props => {
   let [show, setShow] = useState(false)
 
   const selectModalItem = e => {
@@ -12,7 +140,7 @@ function SeansModal(props) {
 
   return (
     <div className='modal-container'>
-      <Button onClick={() => setShow(true)} className='seans_button_xs'>
+      {/* <Button onClick={() => setShow(true)} className='seans_button_xs'>
         <span className='seans_button_xs__title'>{props.buttonTitle}</span>{' '}
         <span className='glyphicon glyphicon-chevron-down' aria-hidden='true' />
       </Button>
@@ -28,9 +156,9 @@ function SeansModal(props) {
             selectModalItem={selectModalItem}
           />
         </Modal.Body>
-      </Modal>
+      </Modal> */}
     </div>
   )
 }
 
-export default SeansModal
+// export default SeansModal

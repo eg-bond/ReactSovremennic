@@ -159,31 +159,53 @@
     font-weight: 900;
   }
 
-  .sushi-tab-xs {
-    > li {
-      border-bottom: solid 1px black;
-      > a {
-        color: black;
-        font-family: Lucida Console, monospace;
-        font-weight: bold;
-        outline: none;
+  // .sushi-tab-xs {
+  //   > li {
+  //     border-bottom: solid 1px black;
+  //     > a {
+  //       color: black;
+  //       font-family: Lucida Console, monospace;
+  //       font-weight: bold;
+  //       outline: none;
 
-        &:hover {
-          color: #f00;
-          background-color: white;
-          border: none;
-          text-decoration: none;
-        }
+  //       &:hover {
+  //         color: #f00;
+  //         background-color: white;
+  //         border: none;
+  //         text-decoration: none;
+  //       }
+  //     }
+  //   }
+  // }
+
+  .sushi-tab-xs {
+    button {
+      border-bottom: solid 1px black;
+      color: black;
+      font-family: Lucida Console, monospace;
+      font-weight: bold;
+      outline: none;
+
+      &:hover {
+        color: #f00;
+        background-color: white;
+        border: none;
+        text-decoration: none;
       }
     }
   }
 
-  .sushi-tab-xs > li.active > a,
-  .sushi-tab-xs > li.active > a:focus,
-  .sushi-tab-xs > li.active > a:hover {
-    color: #f00;
-    border: none;
-  }
+  // .sushi-tab-xs > li.active > a,
+  // .sushi-tab-xs > li.active > a:focus,
+  // .sushi-tab-xs > li.active > a:hover {
+  //   color: #f00;
+  //   border: none;
+  // }
+
+  // .sushi-tab-xs button {
+  //   color: #f00;
+  //   border: none;
+  // }
 
   .sushi_page img {
     width: 100%;

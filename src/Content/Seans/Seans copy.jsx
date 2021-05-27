@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
+import { Tab } from 'react-bootstrap'
 import NavItems from './NavItems'
-import { SeansModal, MenuListComposition } from './SeansModal'
+import SeansModal from './SeansModal'
 import {
   changeActiveKey,
   changeButtonTitle,
@@ -9,22 +10,14 @@ import {
 } from '../../REDUX/seansReduser'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { SeansTableContent } from './CreateTable'
+import { CreateTable } from './CreateTable'
 import { themeClasses } from '../../helpers'
 
-let tableContent = SeansTableContent()
-let finalTableContent = [...tableContent]
+let table = CreateTable()
+let finalTable = [...table]
 
 const Seans = React.memo(
-  ({
-    initialActiveKey,
-    initialButtonTitle,
-    Q,
-    siteMode,
-    theme,
-    activeKey,
-    ...props
-  }) => {
+  ({ initialActiveKey, initialButtonTitle, Q, siteMode, theme, ...props }) => {
     const themeCl = themeClasses(theme)
 
     useEffect(() => {
@@ -36,9 +29,9 @@ const Seans = React.memo(
 
     return (
       <div className='col-lg-9 col-md-9 col-sm-9'>
-        <div
+        <Tab.Container
           id='table'
-          activeKey={activeKey}
+          activeKey={props.activeKey}
           onSelect={k => props.changeActiveKey(k)}>
           <div>
             {Q.desktop && (
@@ -51,44 +44,27 @@ const Seans = React.memo(
                   datesArr={props.datesArr}
                   changeButtonTitle={props.changeButtonTitle}
                   changeActiveKey={props.changeActiveKey}
-                  activeKey={activeKey}
+                  activeKey={props.activeKey}
                 />
               </div>
             )}
 
             {Q.mobile && (
               <div className='sushi_menu_xs'>
-                {/* <SeansModal
+                <SeansModal
                   datesArr={props.datesArr}
                   buttonTitle={props.buttonTitle}
                   changeButtonTitle={props.changeButtonTitle}
-                  initialButtonTitle={props.initialButtonTitle}
-                /> */}
-                <MenuListComposition
-                  activeKey={activeKey}
-                  datesArr={props.datesArr}
-                  buttonTitle={props.buttonTitle}
-                  changeButtonTitle={props.changeButtonTitle}
-                  changeActiveKey={props.changeActiveKey}
                   initialButtonTitle={props.initialButtonTitle}
                 />
               </div>
             )}
 
-            <div>
-              <table className='table_custom'>
-                <tbody>
-                  <tr className={`table_head`}>
-                    <th>Сеанс</th>
-                    <th>Фильм</th>
-                    <th>Цена, руб</th>
-                  </tr>
-                  {finalTableContent[activeKey.slice(3)]}
-                </tbody>
-              </table>
-            </div>
+            <Tab.Content className='xs350px' animation>
+              {finalTable}
+            </Tab.Content>
           </div>
-        </div>
+        </Tab.Container>
 
         <div className='separator-special' />
       </div>
