@@ -124,6 +124,15 @@
   .seans-tab-xs {
     font-size: 90%;
   }
+
+  .seansPopper {
+    right: 30px !important;
+    z-index: 2;
+  }
+
+  .MuiMenuItem-root {
+    justify-content: center !important;
+  }
 }
 
 @for $i from 4 to -1 {

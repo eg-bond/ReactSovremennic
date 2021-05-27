@@ -17,10 +17,6 @@ const FilmSwiper = ({ mobile, films }) => {
     observeParents: true,
     onSwiper: swiper => (swiperRef.current = swiper),
     onImagesReady: () => turnOpacity('opacity_1'),
-    autoplay: {
-      delay: 1000,
-      disableOnInteraction: false,
-    },
     pagination: {
       dynamicBullets: true,
       clickable: true,
@@ -28,6 +24,10 @@ const FilmSwiper = ({ mobile, films }) => {
     breakpoints: {
       768: {
         freeMode: false,
+        autoplay: {
+          delay: 1000,
+          disableOnInteraction: false,
+        },
       },
       250: {
         slidesPerView: 3.5,

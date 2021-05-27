@@ -1,41 +1,32 @@
-import React, { useState } from 'react'
-// import { Button, Modal } from 'react-bootstrap'
-import NavItems from './NavItems'
-
-import Popover from '@material-ui/core/Popover'
-import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button'
+import React, { useState, useRef } from 'react'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import Grow from '@material-ui/core/Grow'
 import Paper from '@material-ui/core/Paper'
 import Popper from '@material-ui/core/Popper'
 import MenuItem from '@material-ui/core/MenuItem'
 import MenuList from '@material-ui/core/MenuList'
-import { makeStyles } from '@material-ui/core/styles'
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: 'flex',
-  },
-  paper: {
-    marginRight: theme.spacing(2),
-  },
-}))
 
 export function MenuListComposition(props) {
-  const classes = useStyles()
-  const [open, setOpen] = React.useState(false)
-  const anchorRef = React.useRef(null)
+  const [open, setOpen] = useState(false)
+  const anchorRef = useRef(null)
 
   const handleToggle = () => {
     setOpen(prevOpen => !prevOpen)
+  }
+
+  const switchSeanstable = (event, key, title) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return
+    }
+    props.changeButtonTitle(title)
+    props.changeActiveKey(key)
+    setOpen(false)
   }
 
   const handleClose = event => {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return
     }
-
     setOpen(false)
   }
 
@@ -46,88 +37,48 @@ export function MenuListComposition(props) {
     }
   }
 
-  // return focus to the button when we transitioned from !open -> open
-  const prevOpen = React.useRef(open)
-  React.useEffect(() => {
-    if (prevOpen.current === true && open === false) {
-      anchorRef.current.focus()
-    }
-
-    prevOpen.current = open
-  }, [open])
-
   return (
-    <div className={classes.root}>
-      <Paper className={classes.paper}>
-        <MenuList>
-          <MenuItem>Profile</MenuItem>
-          <MenuItem>My account</MenuItem>
-          <MenuItem>Logout</MenuItem>
-        </MenuList>
-      </Paper>
-      <div>
-        <Button
-          ref={anchorRef}
-          aria-controls={open ? 'menu-list-grow' : undefined}
-          aria-haspopup='true'
-          onClick={handleToggle}>
-          Toggle Menu Grow
-        </Button>
-        <Popper
-          open={open}
-          anchorEl={anchorRef.current}
-          role={undefined}
-          transition
-          disablePortal>
-          {({ TransitionProps, placement }) => (
-            <Grow
-              {...TransitionProps}
-              style={{
-                transformOrigin:
-                  placement === 'bottom' ? 'center top' : 'center bottom',
-              }}>
-              <Paper>
-                <ClickAwayListener onClickAway={handleClose}>
-                  <MenuList
-                    autoFocusItem={open}
-                    id='menu-list-grow'
-                    onKeyDown={handleListKeyDown}>
-                    <MenuItem onClick={handleClose}>Profile</MenuItem>
-                    <MenuItem onClick={handleClose}>My account</MenuItem>
-                    <MenuItem onClick={handleClose}>Logout</MenuItem>
-                  </MenuList>
-                </ClickAwayListener>
-              </Paper>
-            </Grow>
-          )}
-        </Popper>
-      </div>
+    <div>
+      <button
+        className='seans_button_xs'
+        ref={anchorRef}
+        onClick={handleToggle}>
+        <span className='seans_button_xs__title'>{props.buttonTitle}</span>{' '}
+        <span className='glyphicon glyphicon-chevron-down' aria-hidden='true' />
+      </button>
+      <Popper
+        open={open}
+        anchorEl={anchorRef.current}
+        transition
+        placement={'bottom-start'}
+        className={'seansPopper'}
+        disablePortal>
+        {({ TransitionProps, placement }) => (
+          <Grow {...TransitionProps}>
+            <Paper className={`paper`}>
+              <ClickAwayListener onClickAway={handleClose}>
+                <MenuList
+                  autoFocusItem={open}
+                  id='menu-list-grow'
+                  onKeyDown={handleListKeyDown}>
+                  {props.datesArr.map(d => (
+                    <MenuItem
+                      className={props.activeKey === d[0] ? 'active' : ''}
+                      key={`${d[0]}_s`}
+                      onClick={e =>
+                        switchSeanstable(e, d[0], `${d[1]} ${d[2]}`)
+                      }>
+                      {d[1]} {d[2]}
+                    </MenuItem>
+                  ))}
+                </MenuList>
+              </ClickAwayListener>
+            </Paper>
+          </Grow>
+        )}
+      </Popper>
     </div>
   )
-}
-
-{
-  /* <Popover
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'center',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'center',
-        }}>
-        <NavItems
-          deviceType={'Mobile'}
-          datesArr={props.datesArr}
-          changeButtonTitle={props.changeButtonTitle}
-          changeActiveKey={props.changeActiveKey}
-          activeKey={props.activeKey}
-        />
-      </Popover> */
 }
 
 export const SeansModal = props => {

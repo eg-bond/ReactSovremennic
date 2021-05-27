@@ -158,6 +158,16 @@
     font-family: $arialFont;
     font-weight: 900;
   }
+  .paper {
+    margin-top: 20px;
+    border: solid white 1px !important;
+    border-radius: 15px !important;
+    color: white !important;
+    background-color: black !important;
+  }
+  .paper li.active {
+    color: red;
+  }
 
   // .sushi-tab-xs {
   //   > li {
