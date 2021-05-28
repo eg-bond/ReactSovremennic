@@ -1,20 +1,20 @@
-@import "variables";
+@import 'variables';
 
 .footer {
   text-align: center;
   padding: 2%;
 
-  a {    
-    font: normal 100% 'century gothic', arial;   
-  }
+  // a {
+  //   font: normal 100%;
+  // }
 }
 
 @for $i from 6 to -1 {
-  $maxWidth: 320px + $i*111.9px;
+  $maxWidth: 320px + $i * 111.9px;
 
   @media (max-width: $maxWidth) {
     .footer a {
-      font-size: 73% + 3.33*$i;
+      font-size: 73% + 3.33 * $i;
     }
   }
 }

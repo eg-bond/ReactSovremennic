@@ -1,7 +1,7 @@
-@import "variables";
+@import 'variables';
 
-.rules h3, .rules h4 {
-  font-family: $lusidaFont;
+.rules h3,
+.rules h4 {
   text-align: center;
   font-size: 160%;
   font-weight: bold;
@@ -20,7 +20,6 @@
 }
 
 .rules p {
-  font-family: $lusidaFont;
   font-size: 120%;
   text-align: justify;
 
@@ -34,7 +33,6 @@
     font-size: 70%;
   }
 }
-
 
 //"О кинотеатре"
 .aboutImages {
@@ -54,9 +52,7 @@
   }
 }
 .aboutImages__image img {
-  position:absolute;
-  width:100%;
-  height:100%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
-
-

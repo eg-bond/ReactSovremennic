@@ -13,7 +13,7 @@ export const DescriptionTrailer = ({ description, trailer_src, siteMode }) => {
   )
   return (
     <div className={`padding_15xs `}>
-      <p className='lucida_font description'>{description}</p>
+      <p className='description'>{description}</p>
 
       {siteMode === 'default' && <YouTubeFrame />}
     </div>

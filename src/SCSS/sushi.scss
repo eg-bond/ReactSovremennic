@@ -53,7 +53,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  font-family: $arialFont;
 }
 .sushi_page__menuButtons .active {
   color: black;
@@ -126,7 +125,6 @@
   .seans_button_xs {
     padding: 2% 2% 2% 4.5%;
     margin: 3.4% 0 1.5% 0;
-    font-family: $arialFont;
     background-color: black;
     border: solid 1.7px white;
     color: white;
