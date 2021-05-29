@@ -10,6 +10,9 @@ const NavItem = ({ url, title }) => (
     </NavLink>
   </li>
 )
+{
+  /*className={'btn btn-2'}*/
+}
 
 function Navigation({ siteMode, fontSize, theme, Q }) {
   const modifyCl = cl => modifiedClass(cl, siteMode)
@@ -47,11 +50,16 @@ function Navigation({ siteMode, fontSize, theme, Q }) {
           </div>
           <div className={`${modifyCl('navigation__menu')} ${fsAddCl} focus`}>
             <ul>
-              <NavItem url='/seans' title='Расписание' />
+              <NavItem url='/seans' title='РАСПИСАНИЕ' />
+              {siteMode == 'special' && <NavItem url='/films' title='ФИЛЬМЫ' />}
+              <NavItem url='/about' title='О КИНОТЕАТРЕ' />
+              <NavItem url='/rules' title='ПРАВИЛА РАБОТЫ' />
+              <NavItem url='/sushi' title='СУШИ-БАР "КИН-НО"' />
+              {/* <NavItem url='/seans' title='Расписание' />
               {siteMode == 'special' && <NavItem url='/films' title='Фильмы' />}
               <NavItem url='/about' title='О кинотеатре' />
               <NavItem url='/rules' title='Правила работы' />
-              <NavItem url='/sushi' title='Суши-бар "КИН-НО"' />
+              <NavItem url='/sushi' title='Суши-бар "КИН-НО"' /> */}
             </ul>
           </div>
         </nav>

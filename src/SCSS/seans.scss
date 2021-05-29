@@ -9,7 +9,6 @@
   flex-direction: row;
   justify-content: flex-start;
   flex-wrap: wrap;
-  font-family: $arialFont;
   margin: 0 -11px;
   > button {
     background-color: black;
@@ -41,7 +40,6 @@
 
 .table_custom {
   margin-top: 3%;
-  font-family: $lusidaFont;
   font-weight: 900;
   border-radius: 5px;
   width: 100%;

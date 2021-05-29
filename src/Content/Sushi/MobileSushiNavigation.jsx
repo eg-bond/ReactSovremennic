@@ -38,7 +38,7 @@ export function MobileSushiNavigation({ hideImg, activeKey, defaultSushiArr }) {
         className='seans_button_xs'
         ref={anchorRef}
         onClick={handleToggle}>
-        <span className='seans_button_xs__title'>Меню</span>{' '}
+        <span className='seans_button_xs__title'>МЕНЮ</span>{' '}
         <span className='glyphicon glyphicon-chevron-down' aria-hidden='true' />
       </button>
       <Popper

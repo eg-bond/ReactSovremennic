@@ -1,4 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Jost:wght@700&family=Neucha&display=swap');
 @font-face {
   font-family: 'Play';
-  src: local('Play'), url("./fonts/Play-Regular.ttf");
+  src: local('Play'), url('./fonts/Play-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: local('Roboto'),
+    url(https://fonts.googleapis.com/css?family=Roboto:400,100,900);
 }

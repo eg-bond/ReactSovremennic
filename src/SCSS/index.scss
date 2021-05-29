@@ -26,7 +26,6 @@
   }
 }
 .news p {
-  font-family: $lusidaFont;
   padding: 1% 1% 0 0.5%;
   font-size: 135%;
   @media (max-width: 1200px) {
@@ -94,7 +93,6 @@
     background-color: black;
     padding-bottom: 1%;
     h4 {
-      font-family: $arialFont;
       padding-left: 1%;
       color: white;
     }
