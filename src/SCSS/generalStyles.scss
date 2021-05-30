@@ -105,15 +105,6 @@ hr {
   transition: ease 130ms;
 }
 
-.opacity {
-  transition: all 0.3s;
-  opacity: 1;
-
-  &:hover {
-    opacity: 0.82;
-  }
-}
-
 .modal-dialog h4 {
   color: black;
 }

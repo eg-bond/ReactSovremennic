@@ -34,7 +34,9 @@ const Sushi = ({
       <div className='sushi_page'>
         <div>
           {Q.desktop && (
-            <div className='col-lg-3 col-md-3 col-sm-3'>
+            <div
+              style={{ paddingRight: '0' }}
+              className='col-lg-3 col-md-3 col-sm-3'>
               <div
                 className={`sushi_page__menuButtons ${
                   siteMode === 'special' ? themeCl.navs : ''

@@ -45,7 +45,7 @@ const FilmSwiper = ({ mobile, films }) => {
       {mobile && <h4>Фильмы</h4>}
       <Swiper {...params}>
         {films.map(f => (
-          <SwiperSlide key={f.link}>
+          <SwiperSlide className={'sliderSlide'} key={f.link}>
             <Link to={`/movies/${f.link}`}>
               <img
                 className='opacity'

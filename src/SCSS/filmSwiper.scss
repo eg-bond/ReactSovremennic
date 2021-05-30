@@ -30,7 +30,6 @@
   font-size: 101%;
   font-weight: bold;
   padding-left: 2%;
-  // font-family: $lusidaFont;
   margin: 5% 0 2% 0;
   white-space: pre;
   overflow: hidden;
@@ -51,7 +50,6 @@
   letter-spacing: 0.01em;
   color: white;
   font-weight: normal;
-  // font-family: $lusidaFont;
 }
 .filmSwiper a {
   color: white;
@@ -59,11 +57,16 @@
   cursor: pointer;
   font-weight: normal;
 }
-.filmSwiper a:hover {
-  color: #d8d1d1;
+.sliderSlide * {
   transition: all 0.3s;
   cursor: pointer;
-  font-weight: normal;
+}
+.sliderSlide:hover img {
+  opacity: 0.85;
+}
+.sliderSlide:hover h1,
+.sliderSlide:hover p {
+  color: red;
 }
 
 .swiper-pagination-bullet {
@@ -120,7 +123,6 @@
   }
   .filmSwiper h1 {
     font-weight: bold;
-    // font-family: $lusidaFont;
     margin: 5% 0 2% 0;
     white-space: nowrap;
     color: white;

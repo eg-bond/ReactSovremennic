@@ -38,7 +38,7 @@ const BottomSwiper = props => {
             onMouseLeave={() => swiperRef.current.autoplay.start()}>
             <Swiper {...params}>
               {props.filmsToday.map(f => (
-                <SwiperSlide key={f.link}>
+                <SwiperSlide className={'sliderSlide'} key={f.link}>
                   <Link to={`/movies/${f.link}`}>
                     <img
                       className='opacity'

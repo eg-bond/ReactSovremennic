@@ -46,9 +46,9 @@ const desktopMenuButton = (key, title, activeKey, hideImg) => {
   return (
     <button
       key={key}
-      className={activeKey === key ? 'active' : ''}
+      className={`fill_button ${activeKey === key ? 'active' : ''}`}
       onClick={() => hideImg(key)}>
-      {title}
+      {title.toUpperCase()}
     </button>
   )
 }

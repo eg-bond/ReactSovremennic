@@ -5,7 +5,7 @@ import SpecialSettings from './SpecialSettings'
 
 const NavItem = ({ url, title }) => (
   <li>
-    <NavLink to={url} activeClassName='active'>
+    <NavLink className={'fill_button'} to={url} activeClassName='active'>
       {title}
     </NavLink>
   </li>

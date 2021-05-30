@@ -11,7 +11,6 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { SeansTableContent } from './CreateTable'
 import { themeClasses } from '../../helpers'
-import '../../SCSS/buttons.scss'
 
 let tableContent = SeansTableContent()
 let finalTableContent = [...tableContent]
@@ -53,18 +52,10 @@ const Seans = React.memo(
                   siteMode === 'special' ? themeCl.navs : ''
                 } `}>
                 <div className='seans-tabs'>
-                  {/* {props.datesArr.map(d => (
-                    <button
-                      key={d[0] + 'd'}
-                      className={activeKey === d[0] ? 'active' : ''}
-                      onClick={e => switchSeanstable(d[0], `${d[1]} ${d[2]}`)}>
-                      {d[1]} <br /> {d[2]}
-                    </button>
-                  ))} */}
                   {props.datesArr.map(d => (
                     <button
                       key={d[0] + 'd11'}
-                      className={`fill button_new ${
+                      className={`fill_button ${
                         activeKey === d[0] ? 'active' : ''
                       }`}
                       onClick={e => switchSeanstable(d[0], `${d[1]} ${d[2]}`)}>

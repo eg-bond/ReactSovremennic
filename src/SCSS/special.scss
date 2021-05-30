@@ -30,7 +30,8 @@
   .theme__#{$theme}__pills a:hover,
   .theme__#{$theme}__pills a.active {
     color: $backColor !important;
-    background-color: $elemsColor !important;
+    // background-color: $elemsColor !important;
+    box-shadow: inset 0 0 1.5em 2em $elemsColor !important;
   }
   .theme__#{$theme}__pills:focus,
   .theme__#{$theme}__pills a:focus,
