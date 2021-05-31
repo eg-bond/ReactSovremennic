@@ -62,6 +62,7 @@ export function MobileSeanceNavigation(props) {
             <div className={`paper`}>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList
+                  className='jost_font'
                   autoFocusItem={open}
                   id='menu-list-grow'
                   onKeyDown={handleListKeyDown}>

@@ -31,9 +31,12 @@ a:focus {
   outline: none;
 }
 
-.lucida_font {
-  font-family: $robotoFont;
-  // font-family: $lusidaFont;
+.jost_font {
+  font-family: $jostFont !important;
+  button,
+  li {
+    font-family: $jostFont !important;
+  }
 }
 
 .vk_ref {

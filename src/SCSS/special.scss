@@ -30,8 +30,8 @@
   .theme__#{$theme}__pills a:hover,
   .theme__#{$theme}__pills a.active {
     color: $backColor !important;
-    // background-color: $elemsColor !important;
-    box-shadow: inset 0 0 1.5em 2em $elemsColor !important;
+    background-color: $elemsColor !important;
+    box-shadow: inset 0 0 1.5em 2em $elemsColor;
   }
   .theme__#{$theme}__pills:focus,
   .theme__#{$theme}__pills a:focus,
@@ -49,7 +49,7 @@
   // }
   .theme__#{$theme}__navs button:hover {
     color: $backColor !important;
-    background-color: $elemsColor !important;
+    // background-color: $elemsColor !important;
     box-shadow: inset 0 0 1.5em 2em $elemsColor !important;
   }
 }
@@ -95,7 +95,13 @@
 .specialSettings__container {
   background-color: #94a6af;
   padding: 0.5% 1%;
-  height: 78px;
+  height: 88px;
+  border: 5px solid;
+  border-bottom: none;
+  @media (max-width: 992px) {
+    border-width: 3px;
+    height: 82px;
+  }
 }
 .specialSettings__flex {
   display: flex;
@@ -145,6 +151,7 @@
 }
 .specialSettings__flex__fontButtons {
   height: 40px;
+  width: 175px;
   & button {
     background-color: black;
     padding: 6px 12px;

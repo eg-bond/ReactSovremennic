@@ -6,9 +6,10 @@
 
 .fill_button {
   border-radius: 30px;
-  transition: 0.4s;
+  transition: ease 0.3s;
   background: none;
   &:hover {
+    color: black;
     box-shadow: inset 0 0 1.5em 2em white;
   }
 }
@@ -46,10 +47,10 @@
   color: black;
   background-color: $linesColor;
 }
-.seans-tabs button:hover {
-  color: black;
-  background-color: $linesColor;
-}
+// .seans-tabs button:hover {
+//   color: black;
+//   background-color: $linesColor;
+// }
 
 .table_custom {
   margin-top: 3%;

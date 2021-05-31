@@ -13,11 +13,13 @@ import {
 } from '../REDUX/specialReduser'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
+import '../SCSS/switch.scss'
 
 const SiteModeButton = ({ siteMode, switchSiteMode }) => {
   let modeToDispatch = siteMode === 'default' ? 'special' : 'default'
   return (
     <Button
+      className='jost_font'
       onClick={() => switchSiteMode(modeToDispatch)}
       variant='contained'
       startIcon={<RemoveRedEyeOutlinedIcon />}>
@@ -35,6 +37,7 @@ function SpecialSettings({
   imgHidden,
   siteMode,
   switchSiteMode,
+  theme,
 }) {
   const ThemeButton = ({ theme, cl }) => (
     <IconButton onClick={() => switchSiteTheme(theme)} className={cl}>
@@ -54,7 +57,7 @@ function SpecialSettings({
   }
 
   return (
-    <div className='specialSettings__container'>
+    <div className={`specialSettings__container 'theme__${theme}__borders'`}>
       <div className={`specialSettings__flex`}>
         <div className='specialSettings__flex__item'>
           <div className={'specialSettings__flex__title'}>Цветовая схема</div>
@@ -68,7 +71,7 @@ function SpecialSettings({
         <div className={`specialSettings__flex__item`}>
           <div className={'specialSettings__flex__title'}>Размер шрифта</div>
           <ButtonGroup
-            className={`specialSettings__flex__fontButtons`}
+            className={'specialSettings__flex__fontButtons jost_font'}
             size='large'
             variant='contained'
             aria-label='contained primary button group'>
@@ -103,6 +106,7 @@ function SpecialSettings({
 let mapStateToProps = state => ({
   siteMode: state.special.siteMode,
   imgHidden: state.special.imgHidden,
+  theme: state.special.theme,
 })
 
 export default compose(
