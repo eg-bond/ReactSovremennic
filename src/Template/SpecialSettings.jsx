@@ -13,7 +13,6 @@ import {
 } from '../REDUX/specialReduser'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import '../SCSS/switch.scss'
 
 const SiteModeButton = ({ siteMode, switchSiteMode }) => {
   let modeToDispatch = siteMode === 'default' ? 'special' : 'default'
