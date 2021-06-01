@@ -2,7 +2,7 @@ export const filmsArray = [
   {
     title: 'Кролик Питер 2',
     beginDate: 'с 13 мая',
-    endDate: 'по 2 июня',
+    endDate: 'по 9 июня',
     kind: 'Мультфильм, фэнтези, комедия, приключения, семейный',
     director: 'Уилл Глак',
     duration: '93 мин. / 01:33',
