@@ -5,7 +5,11 @@ import Popper from '@material-ui/core/Popper'
 import MenuItem from '@material-ui/core/MenuItem'
 import MenuList from '@material-ui/core/MenuList'
 
-export function MobileSushiNavigation({ hideImg, activeKey, defaultSushiArr }) {
+export function MobileSushiNavigation({
+  changeImage,
+  imageKey,
+  defaultSushiArr,
+}) {
   const [open, setOpen] = useState(false)
   const anchorRef = useRef(null)
 
@@ -14,7 +18,7 @@ export function MobileSushiNavigation({ hideImg, activeKey, defaultSushiArr }) {
   }
 
   const switchSushiImage = key => {
-    hideImg(key)
+    changeImage(key)
     setOpen(false)
   }
 
@@ -64,7 +68,7 @@ export function MobileSushiNavigation({ hideImg, activeKey, defaultSushiArr }) {
                   onKeyDown={handleListKeyDown}>
                   {defaultSushiArr.map(d => (
                     <MenuItem
-                      className={activeKey === d[0] ? 'active' : ''}
+                      className={imageKey === d[0] ? 'active' : ''}
                       key={d[0]}
                       onClick={() => switchSushiImage(d[0])}>
                       {d[1]}

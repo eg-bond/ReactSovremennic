@@ -1,18 +1,14 @@
 import React from 'react'
 import SwiperCore, { Navigation, Pagination } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import Grow from '@material-ui/core/Grow'
 
 SwiperCore.use([Navigation, Pagination])
 
-const sushiSwiperSlide = (slideKey, showImg) => {
+const sushiSwiperSlide = slideKey => {
   return (
     <SwiperSlide key={slideKey}>
-      <img
-        onLoad={showImg}
-        src={require(`../../images/sushi/${slideKey}.gif`)}
-        alt={slideKey}
-      />
-      {/* <img src={`./Images/sushi/${slideKey}.gif`} alt={slideKey} /> */}
+      <img src={require(`../../images/sushi/${slideKey}.gif`)} alt={slideKey} />
     </SwiperSlide>
   )
 }
@@ -22,7 +18,7 @@ const slideKeys = {
   brand_rolls: ['brand_rolls1', 'brand_rolls2', 'brand_rolls3'],
 }
 
-export const SushiSwipers = ({ swiperKey, showImg }) => {
+export const SushiSwipers = ({ swiperKey, imgVisible }) => {
   const params = {
     spaceBetween: 30,
     pagination: {
@@ -32,11 +28,11 @@ export const SushiSwipers = ({ swiperKey, showImg }) => {
   }
 
   return (
-    <Swiper {...params}>
-      {slideKeys[swiperKey].map(swiperKey =>
-        sushiSwiperSlide(swiperKey, showImg)
-      )}
-    </Swiper>
+    <Grow in={imgVisible} timeout={250}>
+      <Swiper className='jost_font' {...params}>
+        {slideKeys[swiperKey].map(swiperKey => sushiSwiperSlide(swiperKey))}
+      </Swiper>
+    </Grow>
   )
 }
 

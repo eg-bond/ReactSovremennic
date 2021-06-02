@@ -38,3 +38,8 @@ export const queries = {
 }
 // Функция для прокрутки наверх
 export const scrollToTop = () => window.scrollTo(0, 0)
+
+// Промис - задержка
+export const delay = ms => {
+  return new Promise(res => setTimeout(() => res(), ms))
+}

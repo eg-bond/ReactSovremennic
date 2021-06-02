@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Sushi from './Sushi'
+import { delay } from '../../helpers'
 
 const sushiElems = {
   default: [
@@ -42,64 +43,80 @@ const sushiElems = {
   swiperKeys: ['brand_rolls', 'hot_dishes'],
 }
 
-const desktopMenuButton = (key, title, activeKey, hideImg) => {
+const desktopMenuButton = (key, title, imageKey, changeImage) => {
   return (
     <button
       key={key}
-      className={`fill_button ${activeKey === key ? 'active' : ''}`}
-      onClick={() => hideImg(key)}>
+      className={`fill_button ${imageKey === key ? 'active' : ''}`}
+      onClick={() => changeImage(key)}>
       {title.toUpperCase()}
     </button>
   )
 }
 
-const delay = ms => {
-  return new Promise(res => setTimeout(() => res(), ms))
-}
-
 const SushiContainer = ({ Q, siteMode, themeCl }) => {
-  const [activeKey, setActiveKey] = useState('sushi')
-  const [opacityCl, switchOpacityCl] = useState('opacity_0')
+  const [imageKey, setImageKey] = useState('sushi')
+  const [imgVisible, switchVisibility] = useState(true)
   const [menuButtons, setButtons] = useState([])
 
   const createMenuButtons = () => {
     return sushiElems[siteMode].map(item =>
-      desktopMenuButton(item[0], item[1], activeKey, hideImg)
+      desktopMenuButton(item[0], item[1], imageKey, changeImage)
     )
   }
 
-  async function hideImg(key) {
-    if (activeKey !== key) {
-      switchOpacityCl('opacity_0')
-      await delay(150)
-      setActiveKey(key)
+  const preloadImg = imgKey => {
+    let key
+    imgKey === 'brand_rolls'
+      ? (key = 'brand_rolls1')
+      : imgKey === 'hot_dishes'
+      ? (key = 'hot_dishes1')
+      : (key = imgKey)
+
+    return new Promise(res => {
+      let img = new window.Image()
+      img.src = require(`../../images/sushi/${key}.gif`)
+      img.onload = () => res()
+    })
+  }
+
+  function fadeoutHandler(key) {
+    return new Promise(res => {
+      switchVisibility(false)
+      delay(250).then(() => {
+        setImageKey(key)
+        res()
+      })
+    })
+  }
+
+  async function changeImage(key) {
+    if (imageKey !== key) {
+      await Promise.all([fadeoutHandler(key), preloadImg(key)])
+      switchVisibility(true)
     }
   }
-  const showImg = () => {
-    opacityCl === 'opacity_0' && switchOpacityCl('opacity_1')
-  }
 
   useEffect(() => {
     setButtons(createMenuButtons())
-  }, [activeKey])
+  }, [imageKey])
 
   useEffect(() => {
     setButtons(createMenuButtons())
-    setActiveKey('sushi')
+    setImageKey('sushi')
   }, [siteMode])
 
   return (
     <div>
       <Sushi
         sushiElems={sushiElems}
-        opacityCl={opacityCl}
         Q={Q}
-        activeKey={activeKey}
-        hideImg={hideImg}
-        showImg={showImg}
+        imageKey={imageKey}
+        changeImage={changeImage}
         menuButtons={menuButtons}
         siteMode={siteMode}
         themeCl={themeCl}
+        imgVisible={imgVisible}
       />
     </div>
   )
