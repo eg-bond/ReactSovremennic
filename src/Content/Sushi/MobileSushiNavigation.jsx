@@ -58,6 +58,7 @@ export function MobileSushiNavigation({ hideImg, activeKey, defaultSushiArr }) {
             <div className={`paper`}>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList
+                  className='jost_font'
                   autoFocusItem={open}
                   id='menu-list-grow'
                   onKeyDown={handleListKeyDown}>

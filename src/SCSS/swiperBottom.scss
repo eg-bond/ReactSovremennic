@@ -1,12 +1,12 @@
 @import 'variables';
 
 .bottomSwiperContainer {
-  min-height: 1432px;
+  min-height: 1265px;
   @media (max-width: 1200px) {
-    min-height: 1188px;
+    min-height: 1045px;
   }
   @media (max-width: 992px) {
-    min-height: 905px;
+    min-height: 795px;
   }
   @media (max-width: 767.8px),
     (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {

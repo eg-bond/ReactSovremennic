@@ -1,12 +1,12 @@
-import React, { Suspense, lazy } from 'react'
+import React, { Suspense, lazy, useRef } from 'react'
 import { Redirect, Route } from 'react-router-dom'
 import SelectedMovie from './Cinema/SelectedMovie'
 import IndexContent from './IndexContent/IndexContent'
 import Seans from './Seans/Seans'
 import SushiContainer from './Sushi/SushiContainer'
+import FilmsSpecialPage from './Films/FilmsSpecialPage'
 
 const Rules = lazy(() => import('./Rules/Rules'))
-const FilmsSpecialPage = lazy(() => import('./Films/FilmsSpecialPage'))
 const About = lazy(() => import('./About/About'))
 
 const Content = ({
@@ -18,6 +18,9 @@ const Content = ({
   themeCl,
   fontSize,
 }) => {
+  const aboutLoaded = useRef(false)
+  const rulesLoaded = useRef(false)
+
   return (
     <>
       <Route exact path='/'>
@@ -39,15 +42,15 @@ const Content = ({
           fontSize={fontSize}
         />
       </Route>
+      <Route exact path='/films'>
+        {siteMode === 'special' ? <FilmsSpecialPage /> : <Redirect to='/' />}
+      </Route>
       <Suspense fallback={<div className='col-lg-9 col-md-9 col-sm-9'></div>}>
         <Route exact path='/about'>
-          <About siteMode={siteMode} />
+          <About siteMode={siteMode} loaded={aboutLoaded} />
         </Route>
         <Route exact path='/rules'>
-          <Rules />
-        </Route>
-        <Route exact path='/films'>
-          {siteMode === 'special' ? <FilmsSpecialPage /> : <Redirect to='/' />}
+          <Rules loaded={rulesLoaded} />
         </Route>
       </Suspense>
     </>

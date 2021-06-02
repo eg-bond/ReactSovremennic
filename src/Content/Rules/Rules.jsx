@@ -1,10 +1,11 @@
 import React from 'react'
+import Fade from '@material-ui/core/Fade'
 
-function Rules() {
+function RulesContent(props) {
   return (
-    <>
-      <div className='col-lg-9 col-md-9 col-sm-9'>
-        <div className='rules white'>
+    <div className='col-lg-9 col-md-9 col-sm-9' {...props}>
+      <div className='rules'>
+        <div>
           <h3>Правила Кинотеатра «Современник»</h3>
           <p>
             {' '}
@@ -115,6 +116,8 @@ function Rules() {
             право проходить на сеанс (0+) по билету сопровождающего, однако, в
             этом случае ребенок не должен занимать отдельного кресла.
           </p>
+        </div>
+        <div>
           <h4>
             2. Правила поведения посетителей/зрителей в зале Кинотеатра
             «Современник».
@@ -181,7 +184,21 @@ function Rules() {
           </p>
         </div>
       </div>
-    </>
+    </div>
+  )
+}
+
+function Rules({ loaded }) {
+  if (loaded.current) {
+    return <RulesContent />
+  }
+
+  return (
+    <Fade in={true}>
+      <div onTransitionEnd={() => (loaded.current = true)}>
+        <RulesContent />
+      </div>
+    </Fade>
   )
 }
 
