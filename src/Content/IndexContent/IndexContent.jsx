@@ -14,7 +14,7 @@ function IndexContent({ siteMode, films, Q }) {
           <div className='trailers'>
             {Q.mobile && <h4>Трейлеры</h4>}
 
-            <div className='embed-responsive embed-responsive-16by9'>
+            <div className='embed-responsive'>
               <LiteYouTubeEmbed
                 id='PLfrc7TOjXulMiQWLR1Jr8ZiZ2b7hWqSZf'
                 playlist={true}

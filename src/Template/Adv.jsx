@@ -11,13 +11,11 @@ function Adv() {
       </a> */}
       <Link className={'linkWrapper'} to='/sushi'>
         <div className={'desktopAdv desktopAdv--3'}>
-          {/* <img src='./Images/72.gif' alt='Суши-бар' /> */}
-          <img src={require(`../images/72.gif`)} alt='Суши-бар' />
+          <img src='./Images/72.gif' alt='Суши-бар' />
         </div>
       </Link>
       <div className='desktopAdv desktopAdv--2'>
-        {/* <img src='./Images/jsb1.gif' alt='Подарочный сертификат' /> */}
-        <img src={require(`../images/jsb1.gif`)} alt='Подарочный сертификат' />
+        <img src='./Images/jsb1.gif' alt='Подарочный сертификат' />
       </div>
     </div>
   )

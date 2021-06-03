@@ -17,8 +17,13 @@ export function MobileSeanceNavigation(props) {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return
     }
-    props.changeButtonTitle(title)
-    props.changeActiveKey(key)
+    props.switchVisibility(false)
+    setTimeout(() => {
+      props.changeButtonTitle(title)
+      props.changeActiveKey(key)
+      props.switchVisibility(true)
+    }, 200)
+
     setOpen(false)
   }
 
