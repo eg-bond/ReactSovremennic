@@ -39,8 +39,18 @@ a:focus {
   }
 }
 
-.vk_ref {
+.ref {
   text-decoration: underline;
+  transition: ease 0.3s;
+  &:hover {
+    color: red;
+  }
+}
+
+.vk_ref {
+  &:hover {
+    color: rgb(45, 140, 230) !important;
+  }
 }
 
 .mainContainer {
