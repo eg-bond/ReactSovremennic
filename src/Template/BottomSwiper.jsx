@@ -25,7 +25,6 @@ const BottomSwiper = props => {
       disableOnInteraction: false,
     },
   }
-
   return (
     <>
       {props.desktop && (

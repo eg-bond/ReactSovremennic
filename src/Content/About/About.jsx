@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import aboutImg1 from '../../images/about1.gif'
 import aboutImg2 from '../../images/about2.gif'
 import aboutImg3 from '../../images/about3.gif'

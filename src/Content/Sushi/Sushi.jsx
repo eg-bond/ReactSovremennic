@@ -1,5 +1,5 @@
 import React from 'react'
-import { MobileSushiNavigation, SushiModal } from './MobileSushiNavigation'
+import { MobileSushiNavigation } from './MobileSushiNavigation'
 import SushiSwipers from './SushiSwipers'
 import Grow from '@material-ui/core/Grow'
 import { SushiLinearProgress } from './SushiLinearProgress'
