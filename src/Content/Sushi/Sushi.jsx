@@ -1,7 +1,8 @@
 import React from 'react'
-import { MobileSushiNavigation, SushiModal } from './MobileSushiNavigation'
+import { MobileSushiNavigation } from './MobileSushiNavigation'
 import SushiSwipers from './SushiSwipers'
 import Grow from '@material-ui/core/Grow'
+import { SushiLinearProgress } from './SushiLinearProgress'
 
 const SushiImage = ({ imageKey, swiperKeys, imgVisible }) => {
   if (swiperKeys.includes(imageKey)) {
@@ -27,7 +28,9 @@ const Sushi = ({
   siteMode,
   themeCl,
   imgVisible,
+  progressBar,
 }) => {
+  console.log('render')
   return (
     <div className='sushi_page'>
       {Q.desktop && (
@@ -65,6 +68,7 @@ const Sushi = ({
         <div
           className={`sushi_page__content`}
           style={{ paddingBottom: '30px' }}>
+          {progressBar && <SushiLinearProgress />}
           <SushiImage
             imageKey={imageKey}
             swiperKeys={sushiElems.swiperKeys}

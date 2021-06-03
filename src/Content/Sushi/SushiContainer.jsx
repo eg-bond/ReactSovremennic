@@ -58,6 +58,7 @@ const SushiContainer = ({ Q, siteMode, themeCl }) => {
   const [imageKey, setImageKey] = useState('sushi')
   const [imgVisible, switchVisibility] = useState(true)
   const [menuButtons, setButtons] = useState([])
+  const [progressBar, showProgressBar] = useState(false)
 
   const createMenuButtons = () => {
     return sushiElems[siteMode].map(item =>
@@ -85,6 +86,7 @@ const SushiContainer = ({ Q, siteMode, themeCl }) => {
       switchVisibility(false)
       delay(250).then(() => {
         setImageKey(key)
+        showProgressBar(true)
         res()
       })
     })
@@ -94,6 +96,7 @@ const SushiContainer = ({ Q, siteMode, themeCl }) => {
     if (imageKey !== key) {
       await Promise.all([fadeoutHandler(key), preloadImg(key)])
       switchVisibility(true)
+      showProgressBar(false)
     }
   }
 
@@ -117,6 +120,7 @@ const SushiContainer = ({ Q, siteMode, themeCl }) => {
         siteMode={siteMode}
         themeCl={themeCl}
         imgVisible={imgVisible}
+        progressBar={progressBar}
       />
     </div>
   )

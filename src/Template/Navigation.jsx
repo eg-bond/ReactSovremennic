@@ -10,9 +10,6 @@ const NavItem = ({ url, title }) => (
     </NavLink>
   </li>
 )
-{
-  /*className={'btn btn-2'}*/
-}
 
 function Navigation({ siteMode, fontSize, theme, Q }) {
   const modifyCl = cl => modifiedClass(cl, siteMode)

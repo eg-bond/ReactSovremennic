@@ -38,13 +38,13 @@ function IndexContent({ siteMode, films, Q }) {
             понедельник-четверг с 12:00 до 23:00, пятница-суббота с 12:00 до
             01:00, воскресенье с 12:00 до 23:00. Доставка осуществляется в часы
             работы ресторана, телефон 2-000-8, доставка бесплатная. Меню на{' '}
-            <Link to='sushi' className={'vk_ref'}>
+            <Link to='sushi' className='ref'>
               странице
             </Link>{' '}
             сайта и в группе{' '}
             <a
               href='https://vk.com/album-46510864_166402327'
-              className={'vk_ref'}>
+              className='ref vk_ref'>
               Вконтакте
             </a>
           </p>
