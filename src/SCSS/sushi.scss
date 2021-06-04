@@ -25,29 +25,16 @@
 }
 
 .sushi_page__content {
-  min-height: 1100px;
-  padding-bottom: 30px;
-  @media (max-width: 1200px) {
-    min-height: 800px;
-  }
-  @media (max-width: 992px) {
-    min-height: 650px;
-  }
+  padding-bottom: 20px;
+
   @media (max-width: 768px) {
-    min-height: 400px;
+    padding-bottom: 0;
   }
 }
 
 .sushi_page__content img {
   width: 100%;
   border-radius: $imagesBR;
-  min-height: 750px;
-  @media (max-width: 1200px) {
-    min-height: 600px;
-  }
-  @media (max-width: 992px) {
-    min-height: 450px;
-  }
 }
 .sushi_page__menuButtons {
   display: flex;
@@ -126,7 +113,7 @@
     padding: 2% 2% 2% 4.5%;
     margin: 3.4% 0 1.5% 0;
     background-color: black;
-    border: solid 1.7px white;
+    border: solid 2px white;
     color: white;
     border-radius: $buttonsBR;
     width: 100%;
@@ -139,7 +126,7 @@
     transition: ease 650ms;
   }
   .seans_button_xs:focus {
-    border: solid 1.7px white;
+    border: solid 2px white;
     background-color: black;
     color: white;
   }
@@ -147,6 +134,21 @@
   .glyphicon-chevron-down {
     float: right;
     margin-top: 0.5%;
+  }
+
+  .popper__sushi {
+    z-index: 2;
+    position: fixed !important;
+    top: 16% !important;
+    left: 3% !important;
+    right: 3% !important;
+  }
+  .popper__sushi li {
+    min-height: 34px !important;
+    @media (max-width: 360px),
+      (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+      min-height: 28px !important;
+    }
   }
 
   .sushi_page img {

@@ -52,10 +52,10 @@ export function MobileSeanceNavigation(props) {
       </button>
       <Popper
         open={open}
-        anchorEl={anchorRef.current}
+        // anchorEl={anchorRef.current}
         transition
-        placement={'bottom-start'}
-        className={'seansPopper'}
+        placement='top-start'
+        className='popper__seance'
         disablePortal
         modifiers={{
           flip: {
@@ -64,7 +64,7 @@ export function MobileSeanceNavigation(props) {
         }}>
         {({ TransitionProps }) => (
           <Grow {...TransitionProps}>
-            <div className={`paper`}>
+            <div className='popper'>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList
                   className='jost_font'

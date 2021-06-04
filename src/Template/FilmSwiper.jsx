@@ -10,7 +10,6 @@ const FilmSwiper = ({ mobile, films }) => {
   const swiperRef = useRef(null)
 
   const params = {
-    slidesPerView: 5.5,
     spaceBetween: 10,
     className: 'filmSwiper',
     observer: true,
@@ -24,6 +23,7 @@ const FilmSwiper = ({ mobile, films }) => {
     breakpoints: {
       768: {
         freeMode: false,
+        slidesPerView: 5.5,
         autoplay: {
           delay: 1000,
           disableOnInteraction: false,

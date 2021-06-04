@@ -1,11 +1,11 @@
-import React, { useEffect, Suspense } from 'react'
+import React, { useEffect, Suspense, useState } from 'react'
 import './bootstrap3_grid.css'
 import 'swiper/swiper.scss'
 import 'swiper/components/navigation/navigation.scss'
 import 'swiper/components/pagination/pagination.scss'
 import './SCSS/style.scss'
 import FilmSwiper from './Template/FilmSwiper'
-import { Route, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import Navigation from './Template/Navigation'
 import BottomSwiper from './Template/BottomSwiper'
 import Footer from './Template/Footer'
@@ -47,6 +47,8 @@ const App = React.memo(
       initialActiveKey()
       initialButtonTitle()
       createFilmsTodayArr()
+      console.log('mounted')
+      window.addEventListener('load', () => setLoaded(true))
     }, [
       createActualDatesArr,
       initialActiveKey,
@@ -56,11 +58,13 @@ const App = React.memo(
 
     let { pathname } = useLocation()
     const themeCl = themeClasses(theme)
+    const [loaded, setLoaded] = useState(0)
 
     let mainContainerClasses = [
       siteMode === 'special' ? themeCl.back : 'mainContainer',
       themeCl.elems,
       `fontSize__${fontSize}` || 'fontSize__100',
+      'flex-wrapper',
     ].join(' ')
 
     // Queries
@@ -80,75 +84,88 @@ const App = React.memo(
       scrollToTop()
     }
 
+    // if (!loaded) {
+    //   return <div className='preloader'>loading</div>
+    // }
+
     return (
+      // <div className={'preloader'} style={{ opacity: loaded }}>
       <div className={mainContainerClasses}>
-        <Navigation
-          siteMode={siteMode}
-          fontSize={fontSize}
-          theme={theme}
-          Q={Q}
-        />
+        {/* <div class='flex-wrapper'> */}
+        <div>
+          <Navigation
+            siteMode={siteMode}
+            fontSize={fontSize}
+            theme={theme}
+            Q={Q}
+          />
 
-        {/*Отступ навигации в мобильной версии*/}
-        <div className='line_container' />
-        <div className='separator' />
+          {/*Отступ навигации в мобильной версии*/}
+          <div className='line_container' />
+          <div className='separator' />
 
-        <div
-          className={`container wrapper ${themeCl.back} ${themeCl.borders} ${
-            imgHidden && 'hideImages'
-          }`}>
-          <div className='row'>
-            {/* {Q.mobile && <AdvXS />} */}
+          <div
+            className={`container wrapper ${themeCl.back} ${themeCl.borders} ${
+              imgHidden && 'hideImages'
+            }`}>
+            <div className='row'>
+              {/* {Q.mobile && <AdvXS />} */}
 
-            <div
-              className={siteMode === 'default' ? 'filmSwiperContainer' : ''}>
-              {siteMode === 'default' && Q.desktop && (
-                <FilmSwiper films={films} mobile={Q.mobile} />
-              )}
+              <div
+                className={siteMode === 'default' ? 'filmSwiperContainer' : ''}>
+                {siteMode === 'default' && (
+                  <FilmSwiper films={films} mobile={Q.mobile} />
+                )}
 
-              {Q.mobile && (
+                {/* {Q.mobile && (
                 <Route exact path='/'>
                   <FilmSwiper films={films} mobile={Q.mobile} />
                 </Route>
-              )}
-            </div>
+              )} */}
+              </div>
 
-            <hr className={`line_5px hidden-xs ${themeCl.borders}`} />
+              <div className='separator' />
 
-            <Content
-              siteMode={siteMode}
-              Q={Q}
-              filmsObject={filmsObject}
-              createFilmsObject={createFilmsObject}
-              themeCl={themeCl}
-              fontSize={fontSize}
-            />
+              <hr className={`line_5px hidden-xs ${themeCl.borders}`} />
 
-            {Q.desktop && pathname !== '/sushi' && <Adv />}
+              <Content
+                siteMode={siteMode}
+                Q={Q}
+                filmsObject={filmsObject}
+                createFilmsObject={createFilmsObject}
+                themeCl={themeCl}
+                fontSize={fontSize}
+              />
 
-            <div
-              className={siteMode === 'default' ? 'bottomSwiperContainer' : ''}>
-              {siteMode === 'default' && (
-                <Suspense fallback={null}>
-                  <BottomSwiper
-                    filmsToday={filmsToday}
-                    slidesPerView={filmsTodaySlides}
-                    desktop={Q.desktop}
-                  />
-                </Suspense>
-              )}
-            </div>
+              {Q.desktop && pathname !== '/sushi' && <Adv />}
 
-            {pathname !== '/' && Q.mobile && (
+              <div
+                className={
+                  siteMode === 'default' ? 'bottomSwiperContainer' : ''
+                }>
+                {siteMode === 'default' && (
+                  <Suspense fallback={null}>
+                    <BottomSwiper
+                      filmsToday={filmsToday}
+                      slidesPerView={filmsTodaySlides}
+                      desktop={Q.desktop}
+                    />
+                  </Suspense>
+                )}
+              </div>
+
+              {/* {pathname !== '/' && Q.mobile && (
               <>
                 <div className='separator' />
                 <FilmSwiper films={films} mobile={Q.mobile} />
               </>
-            )}
+            )} */}
+            </div>
           </div>
         </div>
         <Footer themeCl={themeCl} />
       </div>
+      // </div>
     )
   }
 )

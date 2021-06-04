@@ -40,7 +40,7 @@ export function MobileSushiNavigation({
     <div>
       <button
         className='seans_button_xs'
-        ref={anchorRef}
+        // ref={anchorRef}
         onClick={handleToggle}>
         <span className='seans_button_xs__title'>МЕНЮ</span>{' '}
         <span className='glyphicon glyphicon-chevron-down' aria-hidden='true' />
@@ -49,8 +49,8 @@ export function MobileSushiNavigation({
         open={open}
         anchorEl={anchorRef.current}
         transition
-        placement={'bottom-start'}
-        className={'seansPopper'}
+        placement='bottom-start'
+        className='popper__sushi'
         disablePortal
         modifiers={{
           flip: {
@@ -59,7 +59,7 @@ export function MobileSushiNavigation({
         }}>
         {({ TransitionProps }) => (
           <Grow {...TransitionProps}>
-            <div className={`paper`}>
+            <div className='popper'>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList
                   className='jost_font'

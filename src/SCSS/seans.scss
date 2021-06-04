@@ -135,30 +135,33 @@
     font-size: 90%;
   }
 
-  .seansPopper {
-    right: 30px !important;
-    z-index: 2;
-  }
-
-  .paper {
+  .popper {
     margin-top: 16px;
-    border: solid white 1.7px;
-    border-radius: 21px;
+    border: solid white 2px;
+    border-radius: $buttonsBR;
     color: white;
     background-color: black;
   }
-  .paper li.active {
+  .popper li {
+    justify-content: center;
+    border-bottom: solid 1px;
+    margin: 0 10px;
+    &:last-child {
+      border-bottom: none !important;
+    }
+  }
+  .popper li.active {
     color: red;
   }
-
-  .MuiMenuItem-root {
-    justify-content: center !important;
-    border-bottom: solid 1px !important;
-    margin: 0 10px !important;
-    min-height: 43px !important;
+  .popper__seance {
+    z-index: 2;
+    position: fixed !important;
+    top: 25% !important;
+    left: 3% !important;
+    width: 94%;
   }
-  .MuiMenuItem-root:last-child {
-    border-bottom: none !important;
+  .popper__seance li {
+    min-height: 40px !important;
   }
   .MuiList-padding {
     padding: 0 !important;

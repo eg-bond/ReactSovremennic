@@ -7,11 +7,13 @@ import { Provider } from 'react-redux'
 import store from './REDUX/store'
 
 ReactDOM.render(
+  // <div onLoad={() => console.log('loader')} className={'loader'}>
   <HashRouter>
     <Provider store={store}>
       <App />
     </Provider>
   </HashRouter>,
+  // </div>
   document.getElementById('root')
 )
 
