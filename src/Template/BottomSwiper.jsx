@@ -28,7 +28,8 @@ const BottomSwiper = props => {
   return (
     <>
       {props.desktop && (
-        <div className='bottomSwiperContainer'>
+        // <div className='bottomSwiperContainer'>
+        <>
           <div className='swiper_bar'>
             <h1>Сегодня в кино</h1>
           </div>
@@ -52,7 +53,8 @@ const BottomSwiper = props => {
               ))}
             </Swiper>
           </div>
-        </div>
+          {/* </div> */}
+        </>
       )}
     </>
   )

@@ -30,7 +30,6 @@ const Sushi = ({
   imgVisible,
   progressBar,
 }) => {
-  console.log('render')
   return (
     <div className='sushi_page'>
       {Q.desktop && (

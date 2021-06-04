@@ -12,6 +12,15 @@
   justify-content: space-between;
 }
 
+.contentDiv {
+  // min-height: 500px;
+}
+
+.synteticDiv {
+  float: left;
+  opacity: 0;
+}
+
 a,
 h1,
 h2,
@@ -157,6 +166,11 @@ hr {
   //подкрутка
   .container {
     width: auto;
+    padding-bottom: 0 !important;
+  }
+
+  .wrapper {
+    padding-bottom: 0 !important;
   }
 
   .col-sm-9 {

@@ -110,19 +110,17 @@ const SushiContainer = ({ Q, siteMode, themeCl }) => {
   }, [siteMode])
 
   return (
-    <div>
-      <Sushi
-        sushiElems={sushiElems}
-        Q={Q}
-        imageKey={imageKey}
-        changeImage={changeImage}
-        menuButtons={menuButtons}
-        siteMode={siteMode}
-        themeCl={themeCl}
-        imgVisible={imgVisible}
-        progressBar={progressBar}
-      />
-    </div>
+    <Sushi
+      sushiElems={sushiElems}
+      Q={Q}
+      imageKey={imageKey}
+      changeImage={changeImage}
+      menuButtons={menuButtons}
+      siteMode={siteMode}
+      themeCl={themeCl}
+      imgVisible={imgVisible}
+      progressBar={progressBar}
+    />
   )
 }
 

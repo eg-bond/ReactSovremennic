@@ -94,15 +94,6 @@
 }
 //------------------------
 
-.swiper_bar {
-  color: white;
-  width: 45%;
-  margin-left: 2%;
-  @media (max-width: 992px) {
-    margin-left: 2.8%;
-  }
-}
-
 @media (max-width: 767.8px),
   (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
   .trailers {
