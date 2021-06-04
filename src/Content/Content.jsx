@@ -17,12 +17,16 @@ const Content = ({
   siteMode,
   themeCl,
   fontSize,
+  pathname,
 }) => {
   const aboutLoaded = useRef(false)
   const rulesLoaded = useRef(false)
 
   return (
-    <>
+    <div
+      className={
+        pathname === '/sushi' ? 'sushi_page' : 'content__gridLeftItem--3fr'
+      }>
       <Route exact path='/'>
         <IndexContent siteMode={siteMode} films={films} Q={Q} />
       </Route>
@@ -45,7 +49,8 @@ const Content = ({
       <Route exact path='/films'>
         {siteMode === 'special' ? <FilmsSpecialPage /> : <Redirect to='/' />}
       </Route>
-      <Suspense fallback={<div className='col-lg-9 col-md-9 col-sm-9'></div>}>
+      <Suspense fallback={<div className='content__gridItem'></div>}>
+        {/* <Suspense fallback={<div className='col-lg-9 col-md-9 col-sm-9'></div>}> */}
         <Route exact path='/about'>
           <About siteMode={siteMode} loaded={aboutLoaded} />
         </Route>
@@ -53,7 +58,7 @@ const Content = ({
           <Rules loaded={rulesLoaded} />
         </Route>
       </Suspense>
-    </>
+    </div>
   )
 }
 

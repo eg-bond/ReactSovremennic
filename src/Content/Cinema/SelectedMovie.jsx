@@ -20,7 +20,8 @@ function SelectedMovie({
   if (!filmsObject) {
     return (
       <div className={`padding_15xs`}>
-        <div className='col-lg-9 col-md-9 col-sm-9 margin-top-2'></div>
+        <div className='margin-top-2'></div>
+        {/* <div className='col-lg-9 col-md-9 col-sm-9 margin-top-2'></div> */}
       </div>
     )
   }
@@ -42,7 +43,8 @@ function SelectedMovie({
   return (
     <>
       <div className={`padding_15xs `}>
-        <div className='col-lg-9 col-md-9 col-sm-9 margin-top-2'>
+        {/* <div className='col-lg-9 col-md-9 col-sm-9 margin-top-2'> */}
+        <div className='margin-top-2'>
           <div className='film_info'>
             {fontSize !== '200' && <FilmImg />}
 

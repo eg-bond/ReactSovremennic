@@ -125,10 +125,11 @@ const App = React.memo(
                   createFilmsObject={createFilmsObject}
                   themeCl={themeCl}
                   fontSize={fontSize}
+                  pathname={pathname}
                 />
 
                 {Q.desktop && pathname !== '/sushi' && <Adv />}
-                <div className='synteticDiv'>.</div>
+                {/* <div className='synteticDiv'>.</div> */}
               </div>
 
               <div

@@ -3,7 +3,8 @@ import Fade from '@material-ui/core/Fade'
 
 function RulesContent(props) {
   return (
-    <div className='col-lg-9 col-md-9 col-sm-9' {...props}>
+    <div className='' {...props}>
+      {/* <div className='col-lg-9 col-md-9 col-sm-9' {...props}> */}
       <div className='rules'>
         <div>
           <h3>Правила Кинотеатра «Современник»</h3>

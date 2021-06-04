@@ -7,7 +7,8 @@ import LiteYouTubeEmbed from 'react-lite-youtube-embed'
 function IndexContent({ siteMode, films, Q }) {
   return (
     <div>
-      <div className='container col-lg-9 col-md-9 col-sm-9 col-xs-12'>
+      <div className='container'>
+        {/* <div className='container col-lg-9 col-md-9 col-sm-9 col-xs-12'> */}
         {siteMode === 'default' && (
           <div className='trailers'>
             {Q.mobile && <h4>Трейлеры</h4>}

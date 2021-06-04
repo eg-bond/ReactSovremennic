@@ -6,7 +6,8 @@ import aboutImg4 from '../../images/about4.gif'
 import Fade from '@material-ui/core/Fade'
 
 const AboutContent = ({ siteMode, ...props }) => (
-  <div className='col-lg-9 col-md-9 col-sm-9 rules' {...props}>
+  // <div className='col-lg-9 col-md-9 col-sm-9 rules' {...props}>
+  <div className='rules' {...props}>
     <div>
       <h3>О кинотеатре «Современник»</h3>
       <p>

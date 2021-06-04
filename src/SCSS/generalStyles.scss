@@ -13,7 +13,33 @@
 }
 
 .contentDiv {
-  // min-height: 500px;
+  display: grid;
+  grid-template: 100% / repeat(4, 1fr);
+}
+.content__gridItem {
+  margin: 0 15px;
+}
+.content__gridLeftItem {
+  margin-left: 15px;
+}
+.content__gridRightItem {
+  margin-right: 15px;
+}
+.content__gridLeftItem--3fr {
+  grid-column: 1/4;
+  margin: 0 15px;
+}
+.content__gridRightItem--1fr {
+  grid-column: 4/5;
+  margin-right: 15px;
+}
+.content__gridLeftItem--1fr {
+  grid-column: 1/2;
+  margin: 0 15px;
+}
+.content__gridRightItem--3fr {
+  grid-column: 2/5;
+  margin-right: 15px;
 }
 
 .synteticDiv {

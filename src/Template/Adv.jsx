@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 
 function Adv() {
   return (
-    <div className='col-lg-3 col-md-3 col-sm-3'>
+    <div className='content__gridRightItem--1fr'>
+      {/* <div className='col-lg-3 col-md-3 col-sm-3'> */}
       {/* <a className={'linkWrapper'} href='http://www.region47.sbor.net'>
         <div className={'desktopAdv desktopAdv--1'}>
           <img src='./Images/region47.gif' alt='Регион47' />
