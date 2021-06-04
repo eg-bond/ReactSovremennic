@@ -29,12 +29,14 @@ const Seans = React.memo(
     const themeCl = themeClasses(theme)
 
     const switchSeanstable = (key, title) => {
-      switchVisibility(false)
-      setTimeout(() => {
-        props.changeButtonTitle(title)
-        props.changeActiveKey(key)
-        switchVisibility(true)
-      }, 200)
+      if (key !== activeKey) {
+        switchVisibility(false)
+        setTimeout(() => {
+          props.changeButtonTitle(title)
+          props.changeActiveKey(key)
+          switchVisibility(true)
+        }, 200)
+      }
     }
 
     useEffect(() => {

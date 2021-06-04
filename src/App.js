@@ -24,8 +24,6 @@ import { queries, scrollToTop, themeClasses } from './helpers'
 import { useMediaQuery } from '@material-ui/core'
 import Content from './Content/Content'
 
-// const BottomSwiper = lazy(() => import('./Template/BottomSwiper'))
-
 const App = React.memo(
   ({
     createActualDatesArr,

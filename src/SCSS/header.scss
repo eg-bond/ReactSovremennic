@@ -164,7 +164,7 @@
 }
 .navigation__menu a {
   font-weight: 900;
-  border-radius: 30px;
+  border-radius: $buttonsBR;
   padding: 9px 14px;
   text-decoration: none;
   @media (max-width: 992px) {

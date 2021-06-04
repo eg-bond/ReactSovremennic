@@ -65,9 +65,7 @@ const Sushi = ({
               </a>
             )} */}
 
-        <div
-          className={`sushi_page__content`}
-          style={{ paddingBottom: '30px' }}>
+        <div className={`sushi_page__content`}>
           {progressBar && <SushiLinearProgress />}
           <SushiImage
             imageKey={imageKey}

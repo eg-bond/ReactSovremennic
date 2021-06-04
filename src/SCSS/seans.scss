@@ -5,7 +5,7 @@
 }
 
 .fill_button {
-  border-radius: 30px;
+  border-radius: $buttonsBR;
   transition: ease 0.3s;
   background: none;
   &:hover {
@@ -56,6 +56,8 @@
   margin-top: 3%;
   width: 100%;
   font-size: 115%;
+  overflow: hidden;
+  border-radius: $imagesBR;
   @media (max-width: 1200px) {
     font-size: 92%;
   }
