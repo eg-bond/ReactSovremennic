@@ -129,18 +129,21 @@ const App = React.memo(
                 {/* <div className='synteticDiv'>.</div> */}
               </div>
 
-              <div
-                className={
-                  siteMode === 'default' ? 'bottomSwiperContainer' : ''
-                }>
+              <div>
                 {siteMode === 'default' && (
-                  // <Suspense fallback={null}>
-                  <BottomSwiper
-                    filmsToday={filmsToday}
-                    slidesPerView={filmsTodaySlides}
-                    desktop={Q.desktop}
-                  />
-                  // </Suspense>
+                  <>
+                    <h1 className='bottomSwiper__bar'>Сегодня в кино</h1>
+                    <hr className={`bottomSwiper__border ${themeCl.borders}`} />
+                    {/* <Suspense fallback={null}> */}
+                    <BottomSwiper
+                      filmsToday={filmsToday}
+                      slidesPerView={filmsTodaySlides}
+                      desktop={Q.desktop}
+                      themeCl={themeCl}
+                    />
+
+                    {/* </Suspense> */}
+                  </>
                 )}
               </div>
             </div>

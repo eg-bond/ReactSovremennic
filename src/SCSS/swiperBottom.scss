@@ -1,12 +1,13 @@
 @import 'variables';
 
-.bottomSwiperContainer {
-  min-height: 542px;
+.bottomSwiper__bar {
+  font-size: 250%;
+  margin: 2% 0 10px 20px;
   @media (max-width: 1200px) {
-    min-height: 462px;
+    font-size: 200%;
   }
   @media (max-width: 992px) {
-    min-height: 350px;
+    font-size: 165%;
   }
   @media (max-width: 767.8px),
     (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
@@ -14,49 +15,54 @@
   }
 }
 
-.swiper_bar {
-  color: white;
-  width: 45%;
-  margin-left: 2%;
-  float: left;
-  @media (max-width: 992px) {
-    margin-left: 2.8%;
-  }
-}
-
 .bottomSwiper {
-  padding: 0.5px 0 0 0;
-  width: 100%;
-  background-color: black;
-  border-top: $border5px;
-  cursor: grab;
+  min-height: 453px;
+  @media (max-width: 1200px) {
+    min-height: 367px;
+  }
   @media (max-width: 992px) {
-    border-top: solid 2px $linesColor;
+    min-height: 282px;
+  }
+  @media (max-width: 767.8px),
+    (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+    display: none;
   }
 }
 
-.bottomSwiper .swiper-slide {
-  font-size: 14px;
+.bottomSwiper__border {
+  border-top: $border5px;
+  margin-left: -1px;
+  @media (max-width: 992px) {
+    border-top: $border3px;
+  }
+  @media (max-width: 767.8px),
+    (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+    display: none;
+  }
 }
+
+.bottomSwiper__container {
+  width: 100%;
+  cursor: grab;
+}
+
 .bottomSwiper img {
   width: 100%;
 }
 .bottomSwiper h1 {
   font-size: 140%;
-  font-weight: bold;
   padding-left: 2%;
+  margin: 3% 0;
   @media (max-width: 1200px) {
     font-size: 115%;
   }
   @media (max-width: 992px) {
     font-size: 87%;
-    margin: 5% 0 4% 0;
   }
 }
 .bottomSwiper p {
   padding-left: 2%;
-  letter-spacing: 0.02em;
-  // font: normal 100% 'century gothic', arial;
+  margin-bottom: 1.5%;
   @media (max-width: 1200px) {
     font-size: 78%;
   }
