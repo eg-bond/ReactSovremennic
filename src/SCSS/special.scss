@@ -62,7 +62,7 @@
 @include theme(blueGreen, $blueGreenBackground, $blueGreenElements);
 
 // Дефолтные размеры шрифтов
-.fontSize__100 {
+.fontSize__100 * {
   font-size: 14px;
 }
 .fontSize__150 {

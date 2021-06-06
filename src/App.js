@@ -106,12 +106,9 @@ const App = React.memo(
             <div className='row'>
               {/* {Q.mobile && <AdvXS />} */}
 
-              <div
-                className={siteMode === 'default' ? 'filmSwiperContainer' : ''}>
-                {siteMode === 'default' && (
-                  <FilmSwiper films={films} mobile={Q.mobile} />
-                )}
-              </div>
+              {siteMode === 'default' && (
+                <FilmSwiper films={films} mobile={Q.mobile} />
+              )}
 
               <div className='separator' />
 

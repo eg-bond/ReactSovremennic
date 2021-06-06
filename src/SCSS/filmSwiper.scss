@@ -1,58 +1,42 @@
 @import 'variables';
 
-.filmSwiperContainer {
-  // min-height: 322px;
-  // @media (max-width: 1200px) {
-  //   min-height: 271px;
-  // }
-  // @media (max-width: 992px) {
-  //   min-height: 227px;
-  // }
-  @media (max-width: 767.8px),
-    (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
-    // min-height: 100%;
-    height: auto !important;
-  }
-}
 .cinemaSlider {
+  width: 100%;
   cursor: grab;
   height: auto;
 }
-.filmSwiper {
-  width: 98%;
-  margin: 0.5% 0 0 1%;
+.cinemaSlider__container {
+  padding: 7px 7px 0 7px;
 }
-.filmSwiper img {
+.cinemaSlider img {
   height: 250px;
   width: 100%;
   border-radius: $imagesBR;
 }
-.filmSwiper h1 {
-  font-size: 101%;
+.cinemaSlider h1 {
   font-weight: bold;
   padding-left: 2%;
   margin: 5% 0 2% 0;
   white-space: pre;
   overflow: hidden;
+  color: white;
 }
-.filmSwiper h1:before {
+.cinemaSlider h1::before {
   content: '';
-  display: block;
-  height: 21px;
-  width: 72px;
-  position: relative;
-  left: 84%;
-  margin-top: -20px;
-  background-image: linear-gradient(to right, transparent, black 25%);
+  width: 20px;
+  position: absolute;
+  right: -2px;
+  bottom: 0;
+  top: 0;
+  background-image: linear-gradient(to right, transparent, black 100%);
 }
-.filmSwiper p {
+.cinemaSlider p {
   padding-left: 2.5%;
-  font-size: 90%;
   letter-spacing: 0.01em;
   color: white;
   font-weight: normal;
 }
-.filmSwiper a {
+.cinemaSlider a {
   color: white;
   text-decoration: none;
   cursor: pointer;
@@ -74,130 +58,63 @@
   background: #000;
   background-color: white;
 }
+.cinemaSlider .swiper-pagination-bullets {
+  bottom: 5px !important;
+  @media (max-width: 992px) {
+    bottom: 2px !important;
+  }
+}
 
-@mixin filmSwiperDesktop($swiperHeight, $beforeElem, $fontSize, $imgHeight) {
-  .filmSwiper .swiper-wrapper {
+@mixin filmSwiperDesktop($swiperHeight, $fontSizeH1, $fontSizeP, $imgHeight) {
+  .cinemaSlider .swiper-wrapper {
     height: $swiperHeight;
   }
-  .filmSwiper h1:before {
-    top: $beforeElem;
+  .cinemaSlider h1 {
+    font-size: $fontSizeH1;
   }
-  .filmSwiper .swiper-slide {
-    font-size: $fontSize;
+  .cinemaSlider p {
+    font-size: $fontSizeP;
   }
-  .filmSwiper img {
+  .cinemaSlider img {
     height: $imgHeight;
   }
 }
 
-@include filmSwiperDesktop(318px, 24px, 12px, 250px);
+@include filmSwiperDesktop(324px, 100%, 80%, 250px);
 
 @media (max-width: 1200px) {
-  @include filmSwiperDesktop(270px, 21px, 76%, 210px);
+  @include filmSwiperDesktop(272px, 85%, 70%, 210px);
 }
 
 @media (max-width: 992px) {
-  .cinemaSlider h4 {
-    padding-left: 1.5%;
-  }
-  @include filmSwiperDesktop(226px, 21px, 72%, 170px);
+  @include filmSwiperDesktop(224px, 70%, 58%, 170px);
 }
 
 @media (max-width: 767.8px),
   (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
   .cinemaSlider {
-    width: 100%;
-    padding-left: 10px;
     h4 {
-      // font-family: $arialFont;
       color: white;
-      margin: 1% 0 2% 0;
+      font-size: 3.2vw;
+      margin: 1vw 0 1vw 15px;
     }
   }
-
-  .filmSwiper .swiper-slide {
-    font-size: 11px;
+  .cinemaSlider__container {
+    padding: 0 15px 0 15px;
   }
-  .filmSwiper img {
-    width: 100%;
+  .cinemaSlider .swiper-wrapper {
+    height: auto;
   }
-  .filmSwiper h1 {
-    font-weight: bold;
-    margin: 5% 0 2% 0;
-    white-space: nowrap;
-    color: white;
+  .cinemaSlider img {
+    height: 34vw;
   }
-  .filmSwiper h1:before {
-    content: '';
-    display: block;
-    height: 20px;
-    width: 72px;
-    position: relative;
-    left: 85%;
-    top: 15px;
-    margin-top: -20px;
-    background-image: linear-gradient(to right, transparent, black 25%);
+  .cinemaSlider h1 {
+    font-size: 2.4vw;
   }
-  .filmSwiper p {
-    letter-spacing: 0.01em;
-    // font-family: $lusidaFont;
-    color: white;
+  .cinemaSlider p {
+    font-size: 2vw;
   }
-  .filmSwiper a {
-    color: white;
-    text-decoration: none;
-    cursor: pointer;
-  }
-
   .swiper-pagination-bullet {
     display: none;
   }
-}
-
-@mixin filmSwiperXS(
-  $swiperHeight,
-  $mainHeadFS,
-  $mainHeadPL,
-  $filmTitleFS,
-  $filmDateFS,
-  $maxWidth
-) {
-  @media (max-width: $maxWidth) {
-    .cinemaSlider {
-      height: $swiperHeight;
-    }
-    .cinemaSlider h4 {
-      font-size: $mainHeadFS;
-      padding-left: $mainHeadPL;
-    }
-    .filmSwiper .swiper-wrapper {
-      height: $swiperHeight/1.1;
-    }
-    .filmSwiper img {
-      height: $swiperHeight/1.35;
-    }
-    .filmSwiper h1 {
-      font-size: $filmTitleFS;
-    }
-    .filmSwiper p {
-      font-size: $filmDateFS;
-    }
-  }
-}
-
-@for $i from 4 to -1 {
-  $maxWidth: 320px + $i * 111.9px;
-  $swiperHeight: 164px + 37px * $i;
-  $mainHeadFS: 65% + 11.25% * $i;
-  $mainHeadPL: 3.5% - 0.375% * $i;
-  $filmTitleFS: 75% + 9% * $i;
-  $filmDateFS: 75% + 3% * $i;
-  @include filmSwiperXS(
-    $swiperHeight,
-    $mainHeadFS,
-    $mainHeadPL,
-    $filmTitleFS,
-    $filmDateFS,
-    $maxWidth
-  );
 }

@@ -11,7 +11,7 @@ const FilmSwiper = ({ mobile, films }) => {
 
   const params = {
     spaceBetween: 10,
-    className: 'filmSwiper',
+    className: 'cinemaSlider__container',
     observer: true,
     observeParents: true,
     onSwiper: swiper => (swiperRef.current = swiper),
@@ -21,6 +21,11 @@ const FilmSwiper = ({ mobile, films }) => {
       clickable: true,
     },
     breakpoints: {
+      250: {
+        slidesPerView: 3.5,
+        spaceBetween: 9,
+        freeMode: true,
+      },
       768: {
         freeMode: false,
         slidesPerView: 5.5,
@@ -28,11 +33,6 @@ const FilmSwiper = ({ mobile, films }) => {
           delay: 1000,
           disableOnInteraction: false,
         },
-      },
-      250: {
-        slidesPerView: 3.5,
-        spaceBetween: 9,
-        freeMode: true,
       },
     },
   }
@@ -53,7 +53,9 @@ const FilmSwiper = ({ mobile, films }) => {
                 src={require(`../images/top_menu/${f.link}.gif`)}
                 alt={f.title}
               />
-              <h1>{f.title}</h1>
+              <div style={{ position: 'relative' }}>
+                <h1>{f.title}</h1>
+              </div>
               <p>{f.beginDate}</p>
             </Link>
           </SwiperSlide>
