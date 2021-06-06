@@ -19,15 +19,18 @@
 .content__gridItem {
   margin: 0 15px;
 }
-.content__gridLeftItem {
-  margin-left: 15px;
-}
-.content__gridRightItem {
-  margin-right: 15px;
+.grid__4fr {
+  grid-column: 1/5;
+  margin: 0 15px;
 }
 .content__gridLeftItem--3fr {
   grid-column: 1/4;
   margin: 0 15px;
+  @media (max-width: 767.8px),
+    (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+    grid-column: 1/5;
+    margin: 0 15px;
+  }
 }
 .content__gridRightItem--1fr {
   grid-column: 4/5;
@@ -40,6 +43,11 @@
 .content__gridRightItem--3fr {
   grid-column: 2/5;
   margin-right: 15px;
+  @media (max-width: 767.8px),
+    (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+    grid-column: 1/5;
+    margin: 0 15px;
+  }
 }
 
 .synteticDiv {
@@ -146,6 +154,7 @@ hr {
 .line_5px {
   border-top: $border5px;
   margin-left: -1px;
+  margin-bottom: 15px;
   @media (max-width: 992px) {
     border-top: $border3px;
   }

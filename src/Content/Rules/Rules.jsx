@@ -1,9 +1,23 @@
 import React from 'react'
 import Fade from '@material-ui/core/Fade'
 
-function RulesContent(props) {
+function Rules({ loaded }) {
+  if (loaded.current) {
+    return <RulesContent cl={'content__gridLeftItem--3fr'} />
+  }
+
   return (
-    <div className='' {...props}>
+    <Fade className='content__gridLeftItem--3fr' in={true}>
+      <div onTransitionEnd={() => (loaded.current = true)}>
+        <RulesContent cl={''} />
+      </div>
+    </Fade>
+  )
+}
+
+function RulesContent({ cl, ...props }) {
+  return (
+    <div className={cl} {...props}>
       {/* <div className='col-lg-9 col-md-9 col-sm-9' {...props}> */}
       <div className='rules'>
         <div>
@@ -186,20 +200,6 @@ function RulesContent(props) {
         </div>
       </div>
     </div>
-  )
-}
-
-function Rules({ loaded }) {
-  if (loaded.current) {
-    return <RulesContent />
-  }
-
-  return (
-    <Fade in={true}>
-      <div onTransitionEnd={() => (loaded.current = true)}>
-        <RulesContent />
-      </div>
-    </Fade>
   )
 }
 

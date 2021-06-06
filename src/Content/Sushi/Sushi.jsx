@@ -37,7 +37,7 @@ const Sushi = ({
         <div
           style={{ paddingRight: '0' }}
           // className='col-lg-3 col-md-3 col-sm-3'>
-          className='content__gridLeftItem--1fr'>
+          className='sushi_page content__gridLeftItem--1fr'>
           <div
             className={`sushi_page__menuButtons ${
               siteMode === 'special' ? themeCl.navs : ''
@@ -47,7 +47,7 @@ const Sushi = ({
         </div>
       )}
 
-      <div className='content__gridRightItem--3fr'>
+      <div className='sushi_page content__gridRightItem--3fr'>
         {/* <div className='col-lg-9 col-md-9 col-sm-9'> */}
         {Q.mobile && (
           <div className='sushi_menu_xs'>

@@ -12,8 +12,8 @@ export const DescriptionTrailer = ({ description, trailer_src, siteMode }) => {
     </div>
   )
   return (
-    <div className={`padding_15xs `}>
-      <p className='description'>{description}</p>
+    <div className={`descTrailer--grid`}>
+      <p className='selectedMovie__description'>{description}</p>
 
       {siteMode === 'default' && <YouTubeFrame />}
     </div>

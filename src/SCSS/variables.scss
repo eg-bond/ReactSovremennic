@@ -30,3 +30,17 @@ $yellowBrownElements: #810026;
 
 $blueGreenBackground: #b4e5ee;
 $blueGreenElements: #5e4005;
+
+//Переиспользуемые классы
+.imgContainer {
+  position: relative;
+  width: 100%;
+  border: solid 1px;
+  border-radius: $imagesBR;
+  overflow: hidden;
+  & img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+}

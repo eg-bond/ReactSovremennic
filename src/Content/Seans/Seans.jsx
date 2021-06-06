@@ -47,7 +47,7 @@ const Seans = React.memo(
     }, [initialActiveKey, initialButtonTitle])
 
     return (
-      <div className=''>
+      <div className='content__gridLeftItem--3fr'>
         {/* <div className='col-lg-9 col-md-9 col-sm-9'> */}
         {Q.desktop && (
           <div
