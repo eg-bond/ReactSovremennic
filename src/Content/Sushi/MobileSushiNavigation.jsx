@@ -51,31 +51,38 @@ export function MobileSushiNavigation({
         transition
         placement='bottom-start'
         className='popper__sushi'
-        disablePortal
-        modifiers={{
-          flip: {
-            enabled: false,
-          },
-        }}>
+        // disablePortal
+        // modifiers={{
+        //   flip: {
+        //     enabled: false,
+        //   },
+        //   preventOverflow: {
+        //     enabled: true,
+        //     boundariesElement: 'viewport',
+        //   },
+        // }}
+      >
         {({ TransitionProps }) => (
           <Grow {...TransitionProps}>
-            <div className='popper'>
-              <ClickAwayListener onClickAway={handleClose}>
-                <MenuList
-                  className='jost_font'
-                  autoFocusItem={open}
-                  id='menu-list-grow'
-                  onKeyDown={handleListKeyDown}>
-                  {defaultSushiArr.map(d => (
-                    <MenuItem
-                      className={imageKey === d[0] ? 'active' : ''}
-                      key={d[0]}
-                      onClick={() => switchSushiImage(d[0])}>
-                      {d[1]}
-                    </MenuItem>
-                  ))}
-                </MenuList>
-              </ClickAwayListener>
+            <div className='backdrop'>
+              <div className='popper'>
+                <ClickAwayListener onClickAway={handleClose}>
+                  <MenuList
+                    className='jost_font'
+                    autoFocusItem={open}
+                    id='menu-list-grow'
+                    onKeyDown={handleListKeyDown}>
+                    {defaultSushiArr.map(d => (
+                      <MenuItem
+                        className={imageKey === d[0] ? 'active' : ''}
+                        key={d[0]}
+                        onClick={() => switchSushiImage(d[0])}>
+                        {d[1]}
+                      </MenuItem>
+                    ))}
+                  </MenuList>
+                </ClickAwayListener>
+              </div>
             </div>
           </Grow>
         )}

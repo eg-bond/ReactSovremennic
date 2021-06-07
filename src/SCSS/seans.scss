@@ -55,14 +55,16 @@
 .table_custom {
   margin-top: 3%;
   width: 100%;
-  font-size: 115%;
   overflow: hidden;
   border-radius: $imagesBR;
-  @media (max-width: 1200px) {
-    font-size: 92%;
-  }
-  @media (max-width: 992px) {
-    font-size: 75%;
+  & * {
+    font-size: 110%;
+    @media (max-width: 1200px) {
+      font-size: 105%;
+    }
+    @media (max-width: 992px) {
+      font-size: 95%;
+    }
   }
 }
 
@@ -127,6 +129,9 @@
   .table_custom {
     width: 100%;
     margin: 2% 0 4% 0;
+    & * {
+      font-size: $paragraphsFS;
+    }
   }
 
   .seans-tab-xs {

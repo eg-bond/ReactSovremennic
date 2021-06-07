@@ -92,11 +92,6 @@
     margin-top: 0;
   }
 
-  .sushi_page > .col-xs-12 {
-    padding-right: 0;
-    padding-left: 0;
-  }
-
   .seans_button_xs {
     padding: 2% 2% 2% 4.5%;
     margin: 3.4% 0 1.5% 0;
@@ -124,12 +119,27 @@
     margin-top: 0.5%;
   }
 
+  .backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 1000;
+  }
+  .popper {
+    position: relative !important;
+    width: auto;
+    margin: 15% 40%;
+    z-index: 900;
+  }
   .popper__sushi {
-    z-index: 2;
-    position: fixed !important;
-    top: 16% !important;
-    left: 3% !important;
-    right: 3% !important;
+    // top: 16% !important;
+    // left: 3% !important;
+    // right: 3% !important;
+    // overflow: visible;
   }
   .popper__sushi li {
     min-height: 34px !important;
