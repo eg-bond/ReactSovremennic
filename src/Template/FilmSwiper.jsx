@@ -29,10 +29,10 @@ const FilmSwiper = ({ mobile, films }) => {
       768: {
         freeMode: false,
         slidesPerView: 5.5,
-        autoplay: {
-          delay: 1000,
-          disableOnInteraction: false,
-        },
+        // autoplay: {
+        //   delay: 1000,
+        //   disableOnInteraction: false,
+        // },
       },
     },
   }

@@ -5,6 +5,16 @@
   padding: 0;
 }
 
+.fill_button {
+  border-radius: $buttonsBR;
+  transition: ease 0.3s;
+  background: none;
+  &:hover {
+    color: black;
+    box-shadow: inset 0 0 1.5em 2em white;
+  }
+}
+
 .embed-responsive {
   position: relative;
   border: $border1px;
@@ -210,11 +220,14 @@ hr {
   body {
     background-color: black;
   }
+  .hidden-xs {
+    display: none;
+  }
 
   //подкрутка
   .container {
     width: auto;
-    padding-bottom: 0 !important;
+    // padding-bottom: 0 !important;
   }
 
   .wrapper {
@@ -254,7 +267,7 @@ hr {
   .contentSeparator {
     @media (max-width: 767.8px),
       (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
-      margin-bottom: 1vw;
+      margin-bottom: 2vw;
     }
   }
 

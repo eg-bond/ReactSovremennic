@@ -67,11 +67,11 @@ function AboutContent({ siteMode, cl, ...props }) {
         <div className='aboutImages__image hidden-xs'>
           <img src={aboutImg2} alt='фото кинотеатра 2' />
         </div>
-        <div className='aboutImages__image'>
-          <img src={aboutImg3} alt='фото кинотеатра 3' />
-        </div>
         <div className='aboutImages__image hidden-xs'>
           <img src={aboutImg4} alt='фото кинотеатра 4' />
+        </div>
+        <div className='aboutImages__image'>
+          <img src={aboutImg3} alt='фото кинотеатра 3' />
         </div>
       </div>
       <div>

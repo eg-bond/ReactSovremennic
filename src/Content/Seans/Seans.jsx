@@ -54,7 +54,7 @@ const Seans = React.memo(
             className={`seans-menu ${
               siteMode === 'special' ? themeCl.navs : ''
             } `}>
-            <div className='seans-tabs'>
+            <div className='seanse__buttons'>
               {props.datesArr.map(d => (
                 <button
                   key={d[0] + 'd11'}
@@ -84,7 +84,7 @@ const Seans = React.memo(
 
         <Grow in={tableVisible} timeout={200}>
           <div>
-            <table className='table_custom'>
+            <table className='seanse__table'>
               <tbody>
                 <tr className={`table_head`}>
                   <th>Сеанс</th>

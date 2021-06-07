@@ -1,20 +1,6 @@
 @import 'variables';
 
-.seans-menu {
-  // margin-top: 3.2%;
-}
-
-.fill_button {
-  border-radius: $buttonsBR;
-  transition: ease 0.3s;
-  background: none;
-  &:hover {
-    color: black;
-    box-shadow: inset 0 0 1.5em 2em white;
-  }
-}
-
-.seans-tabs {
+.seanse__buttons {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -43,7 +29,7 @@
   }
 }
 
-.seans-tabs .active {
+.seanse__buttons .active {
   color: black;
   background-color: $linesColor;
 }
@@ -52,12 +38,27 @@
 //   background-color: $linesColor;
 // }
 
-.table_custom {
+.seanse__table {
   margin-top: 3%;
   width: 100%;
   overflow: hidden;
   border-radius: $imagesBR;
-  & * {
+  th,
+  td {
+    padding: 2.7% 0;
+    &:nth-of-type(1) {
+      width: 8%;
+      text-align: center;
+    }
+    &:nth-of-type(2) {
+      width: 48%;
+    }
+    &:nth-of-type(3) {
+      width: 12%;
+      text-align: center;
+    }
+  }
+  * {
     font-size: 110%;
     @media (max-width: 1200px) {
       font-size: 105%;
@@ -67,54 +68,14 @@
     }
   }
 }
-
-@mixin seansTable($leftColumnW, $centerColumnW, $rightColumnW, $paddingRight) {
-  @if ($leftColumnW != null) {
-    .table_custom table,
-    .table_custom td:nth-of-type(1),
-    table th:nth-of-type(1) {
-      width: $leftColumnW;
-      text-align: center;
-    }
-  }
-
-  @if ($centerColumnW != null) {
-    .table_custom table,
-    .table_custom td:nth-of-type(2),
-    table th:nth-of-type(2) {
-      width: $centerColumnW;
-    }
-  }
-
-  @if ($rightColumnW != null) {
-    .table_custom table,
-    .table_custom td:nth-of-type(3),
-    table th:nth-of-type(3) {
-      width: $rightColumnW;
-      text-align: center;
-      padding-right: $paddingRight;
-    }
-  }
-}
-
-@include seansTable(8%, 48%, 12%, 2%);
-
-.table_custom th,
-.table_custom td {
-  padding: 2.7% 0 2.7% 1%;
-}
-
 .table_head {
   background-color: #e41b2b;
   color: white;
-  border-color: #ea2222;
 }
-
 .table_white {
   color: black;
   background-color: white;
 }
-
 .table_gray {
   color: white;
   background-color: #2b2831;
@@ -122,33 +83,70 @@
 
 @media (max-width: 767.8px),
   (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+  .seans_button_xs {
+    padding: 2% 2% 2% 4.5%;
+    margin: 1vw 0;
+    background-color: black;
+    border: solid 2px white;
+    color: white;
+    border-radius: $buttonsBR;
+    width: 100%;
+    outline: none !important;
+  }
+  .seans_button_xs:hover {
+    background-color: black !important;
+    border-color: red !important;
+    color: red !important;
+    transition: ease 650ms;
+  }
+  // .seans_button_xs:focus {
+  //   border: solid 2px white;
+  //   background-color: black;
+  //   color: white;
+  // }
   .seans_button_xs__title {
-    font-weight: 900;
+    font-size: 2.8vw;
+  }
+  .glyphicon-chevron-down {
+    float: right;
+    margin-top: 0.5%;
   }
 
-  .table_custom {
-    width: 100%;
-    margin: 2% 0 4% 0;
-    & * {
+  .seanse__table {
+    margin-top: 2.1vw;
+    * {
       font-size: $paragraphsFS;
     }
   }
 
-  .seans-tab-xs {
-    font-size: 90%;
-  }
-
   .popper {
-    margin-top: 16px;
+    z-index: 2;
+  }
+  .popper__backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 5;
+  }
+  .popper__content {
     border: solid white 2px;
     border-radius: $buttonsBR;
     color: white;
     background-color: black;
+    position: relative !important;
+    width: auto;
+    margin: 30vh 2% 0 2%;
+    z-index: 5;
   }
   .popper li {
     justify-content: center;
     border-bottom: solid 1px;
     margin: 0 10px;
+    font-size: $paragraphsFS;
     &:last-child {
       border-bottom: none !important;
     }
@@ -156,40 +154,10 @@
   .popper li.active {
     color: red;
   }
-  .popper__seance {
-    z-index: 2;
-    position: fixed !important;
-    top: 25% !important;
-    left: 3% !important;
-    width: 94%;
-  }
   .popper__seance li {
-    min-height: 40px !important;
+    min-height: 10vw !important;
   }
   .MuiList-padding {
     padding: 0 !important;
   }
-}
-
-@for $i from 4 to -1 {
-  $maxWidth: 320px + $i * 111.9px;
-  $tableFontSize: 48%+9% * $i;
-  $buttonTitleFontSize: 75%+6% * $i;
-
-  @media (max-width: $maxWidth) {
-    .table_custom {
-      font-size: $tableFontSize;
-    }
-    .seans_button_xs__title {
-      font-size: $buttonTitleFontSize;
-    }
-  }
-}
-
-@media (max-width: 544px) {
-  @include seansTable(null, null, 13%, 0.5%);
-}
-
-@media (max-width: 432px) {
-  @include seansTable(null, null, 16%, 0.5%);
 }

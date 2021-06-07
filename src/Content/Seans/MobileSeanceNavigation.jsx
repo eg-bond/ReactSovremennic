@@ -55,7 +55,7 @@ export function MobileSeanceNavigation(props) {
         // anchorEl={anchorRef.current}
         transition
         placement='top-start'
-        className='popper__seance'
+        className='popper popper__seance'
         disablePortal
         modifiers={{
           flip: {
@@ -64,25 +64,27 @@ export function MobileSeanceNavigation(props) {
         }}>
         {({ TransitionProps }) => (
           <Grow {...TransitionProps}>
-            <div className='popper'>
-              <ClickAwayListener onClickAway={handleClose}>
-                <MenuList
-                  className='jost_font'
-                  autoFocusItem={open}
-                  id='menu-list-grow'
-                  onKeyDown={handleListKeyDown}>
-                  {props.datesArr.map(d => (
-                    <MenuItem
-                      className={props.activeKey === d[0] ? 'active' : ''}
-                      key={`${d[0]}_s`}
-                      onClick={e =>
-                        switchSeanstable(e, d[0], `${d[1]} ${d[2]}`)
-                      }>
-                      {d[1]} {d[2]}
-                    </MenuItem>
-                  ))}
-                </MenuList>
-              </ClickAwayListener>
+            <div className='popper__backdrop'>
+              <div className='popper__content'>
+                <ClickAwayListener onClickAway={handleClose}>
+                  <MenuList
+                    className='jost_font'
+                    autoFocusItem={open}
+                    id='menu-list-grow'
+                    onKeyDown={handleListKeyDown}>
+                    {props.datesArr.map(d => (
+                      <MenuItem
+                        className={props.activeKey === d[0] ? 'active' : ''}
+                        key={`${d[0]}_s`}
+                        onClick={e =>
+                          switchSeanstable(e, d[0], `${d[1]} ${d[2]}`)
+                        }>
+                        {d[1]} {d[2]}
+                      </MenuItem>
+                    ))}
+                  </MenuList>
+                </ClickAwayListener>
+              </div>
             </div>
           </Grow>
         )}

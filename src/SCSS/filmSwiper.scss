@@ -8,11 +8,16 @@
 .cinemaSlider__container {
   padding: 7px 7px 0 7px;
 }
+.cinemaSlider .swiper-slide {
+  position: relative;
+  z-index: 1;
+}
 .cinemaSlider img {
   height: 250px;
   width: 100%;
   border-radius: $imagesBR;
   position: relative;
+  z-index: 1;
 }
 .cinemaSlider h1 {
   font-weight: bold;
