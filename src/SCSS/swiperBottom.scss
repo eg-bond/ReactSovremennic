@@ -1,14 +1,8 @@
 @import 'variables';
 
 .bottomSwiper__bar {
-  font-size: 250%;
   margin: 2% 0 10px 20px;
-  @media (max-width: 1200px) {
-    font-size: 200%;
-  }
-  @media (max-width: 992px) {
-    font-size: 165%;
-  }
+  @extend %titlesFS;
   @media (max-width: 767.8px),
     (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
     display: none;

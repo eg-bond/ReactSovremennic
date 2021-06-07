@@ -110,7 +110,7 @@ const App = React.memo(
                 <FilmSwiper films={films} mobile={Q.mobile} />
               )}
 
-              <div className='separator' />
+              <div className='separator contentSeparator' />
 
               <hr className={`line_5px hidden-xs ${themeCl.borders}`} />
 

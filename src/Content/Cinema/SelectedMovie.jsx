@@ -42,7 +42,7 @@ function SelectedMovie({
 
   return (
     <>
-      <div className={`content__gridLeftItem--3fr padding_15xs`}>
+      <div className={`content__gridLeftItem--3fr`}>
         <div className='selectedMovie'>
           {fontSize !== '200' && <FilmImg />}
 

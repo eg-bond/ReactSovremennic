@@ -1,55 +1,14 @@
 @import 'variables';
 
-.embed-responsive {
-  position: relative;
-  border: $border1px;
-  border-radius: $imagesBR;
-  overflow: hidden;
-}
-
-.embed-responsive .embed-responsive-item,
-.embed-responsive embed,
-.embed-responsive iframe {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-  border-radius: $imagesBR;
-}
-
-.embed-responsive-16by9 {
-  padding-bottom: 56.25%;
-}
-
 .news {
-  padding: 0 0 2% 0;
   text-align: justify;
-  @media (max-width: 767.8px),
-    (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
-    padding: 1%;
-  }
 }
-
 .news h1 {
-  font-size: 250%;
   margin: 2% 0 1% 5px;
-  @media (max-width: 1200px) {
-    font-size: 200%;
-  }
-  @media (max-width: 992px) {
-    font-size: 165%;
-  }
-  @media (max-width: 767.8px),
-    (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
-    font-size: 150%;
-    margin-top: 1.5%;
-  }
+  @extend %titlesFS;
 }
 .news p {
-  padding: 1% 1% 0 1.5%;
+  margin: 2% 1% 0 1.5%;
   font-size: 135%;
   @media (max-width: 1200px) {
     font-size: 115%;
@@ -90,26 +49,14 @@
 // }
 
 //Реклама справа в десктопной версии
-
 .desktopAdv {
-  position: relative;
-  width: 100%;
-  border: $border1px;
-  border-radius: $imagesBR;
+  @extend %imgContainer;
   margin-bottom: 8%;
   transition: ease 300ms;
-  overflow: hidden;
 }
-.desktopAdv img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
 .linkWrapper:focus .desktopAdv {
   @include shiftLeft;
 }
-
 .desktopAdv--1 {
   padding-bottom: 50%;
 }
@@ -124,14 +71,23 @@
 @media (max-width: 767.8px),
   (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
   .trailers {
-    background-color: black;
-    padding-bottom: 1%;
     h4 {
-      padding-left: 1%;
+      font-size: $titlesFS;
+      margin: 0 0 1vw 0;
       color: white;
     }
     .embed-responsive {
       margin: 2% 0 2% 0;
+    }
+  }
+  .news {
+    h1 {
+      font-size: $titlesFS !important;
+      margin: 1vw 0 1vw 0;
+    }
+    p {
+      font-size: $paragraphsFS !important;
+      margin: 0 0 1.5% 0.5%;
     }
   }
 
@@ -159,7 +115,6 @@
       margin-bottom: 10%;
     }
   }
-  //------------------------------
 
   //реклама на остальных страницах в мобильной версии
   .advXS {
@@ -167,37 +122,8 @@
     background-color: black;
   }
   .advXS__img {
-    position: relative;
-    width: 100%;
+    @extend %imgContainerXs;
     background-color: black;
-    border: $border1px;
-    border-radius: $imagesBR;
     padding-bottom: 13%;
   }
-  .advXS__img img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-  }
-  //------------------------------
-}
-
-@mixin indexXS($trailersHeadFS, $trailersHeadPL, $newsFS, $maxWidth) {
-  @media (max-width: $maxWidth) {
-    .trailers h4 {
-      font-size: $trailersHeadFS;
-      padding-left: $trailersHeadPL;
-    }
-    .news {
-      font-size: $newsFS;
-    }
-  }
-}
-
-@for $i from 4 to -1 {
-  $maxWidth: 320px + $i * 111.9px;
-  $trailersHeadFS: 65% + 11.25% * $i;
-  $trailersHeadPL: 3.5% - 0.375% * $i;
-  $newsFS: 60% + 10% * $i;
-  @include indexXS($trailersHeadFS, $trailersHeadPL, $newsFS, $maxWidth);
 }

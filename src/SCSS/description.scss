@@ -30,7 +30,7 @@
 
 .selectedMovie__image {
   padding-bottom: 140%;
-  @extend .imgContainer;
+  @extend %imgContainer;
 }
 
 .selectedMovie__title {
@@ -42,13 +42,9 @@
   }
   h2 {
     margin-top: 0;
-    font-size: 250%;
+    @extend %titlesFS;
   }
 }
-// .description_h_200 {
-//   margin-top: -2.5%;
-//   font-weight: bold;
-// }
 
 .selectedMovie__table {
   text-align: left;
@@ -106,7 +102,7 @@
 //1200px
 @include mediaDesc(
   0,
-  $descHead: 205%,
+  $descHead: 200%,
   $descDate: 90%,
   $descTable: 85%,
   $descFS: 85%,
@@ -116,38 +112,40 @@
 //992px
 @include mediaDesc(
   1%,
-  $descHead: 170%,
+  $descHead: 165%,
   $descDate: 75%,
   $descTable: 77%,
   $descFS: 77%,
   $maxWidth: 992px
 );
 
-//768px и меньше
 @media (max-width: 767.8px),
   (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
-  .film_info {
-    margin: 0 -15px 0 -15px !important;
+  .selectedMovie__image {
+    margin-top: 0.5vw;
   }
-
-  .embed-responsive {
-    margin: 3% 0 3% 0;
+  .selectedMovie__title {
+    h2 {
+      font-size: $titlesFS !important;
+    }
+    p {
+      font-size: $paragraphsFS;
+    }
   }
-}
-
-@for $i from 4 to -1 {
-  $maxWidth: 320px + $i * 111.9px;
-  $imgPT: 3.5% - 0.9% * $i;
-  $descHead: 80% + 13% * $i;
-  $descDate: 60% + 4% * $i;
-  $descTable: 55% + 5% * $i;
-  $descFS: 55% + 5% * $i;
-  @include mediaDesc(
-    $imgPT,
-    $descHead,
-    $descDate,
-    $descTable,
-    $descFS,
-    $maxWidth
-  );
+  .selectedMovie__table {
+    td {
+      &:nth-of-type(1) {
+        width: 26%;
+      }
+      &:nth-of-type(2) {
+        width: 50%;
+      }
+    }
+    & * {
+      font-size: $paragraphsFS;
+    }
+  }
+  .selectedMovie__description {
+    font-size: $paragraphsFS;
+  }
 }

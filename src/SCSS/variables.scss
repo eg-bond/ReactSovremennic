@@ -11,6 +11,10 @@ $border2px: solid 2px;
 $border3px: solid 3px;
 $border5px: solid 5px;
 
+//для мобильной версии
+$paragraphsFS: 2.3vw;
+$titlesFS: 3.2vw;
+
 // Переменные сайта для слабовидящих
 // Цветовые темы
 $blackWhiteBackground: black;
@@ -29,15 +33,40 @@ $blueGreenBackground: #b4e5ee;
 $blueGreenElements: #5e4005;
 
 //Переиспользуемые классы
-.imgContainer {
+%imgContainer {
   position: relative;
   width: 100%;
-  border: solid 1px;
+  border: $border1px;
   border-radius: $imagesBR;
   overflow: hidden;
   & img {
     position: absolute;
     width: 100%;
     height: 100%;
+  }
+}
+@media (max-width: 767.8px),
+  (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+  %imgContainerXs {
+    position: relative;
+    width: 100%;
+    border: $border1px;
+    border-radius: $imagesBR;
+    overflow: hidden;
+    & img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+%titlesFS {
+  font-size: 250%;
+  @media (max-width: 1200px) {
+    font-size: 200%;
+  }
+  @media (max-width: 992px) {
+    font-size: 165%;
   }
 }

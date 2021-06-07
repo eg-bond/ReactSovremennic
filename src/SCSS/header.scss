@@ -52,6 +52,13 @@
     @media (max-width: 992px) {
       width: 135px;
     }
+    @media (max-width: 767.8px),
+      (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+      width: 21vw;
+    }
+    @media (max-width: 544px) {
+      width: 25vw;
+    }
   }
 
   @media (max-width: 767.8px),
@@ -77,7 +84,6 @@
 .navigation__menu {
   flex: 3.5;
   border-top: none;
-  // box-shadow: none;
 }
 .navigation__menu__default {
   margin-top: 1%;
@@ -156,14 +162,19 @@
   @media (max-width: 767.8px),
     (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
     justify-content: space-between;
-    padding: 0 1.5%;
+    padding: 0 1%;
+    &:first-child {
+      padding-left: 0;
+    }
+    &:last-child {
+      padding-right: 0;
+    }
   }
 }
 .navigation__menu li {
   margin: 1.5% 0.5%;
 }
 .navigation__menu a {
-  font-weight: 900;
   border-radius: $buttonsBR;
   padding: 9px 14px;
   text-decoration: none;
@@ -173,26 +184,48 @@
   }
   @media (max-width: 767.8px),
     (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
-    padding: 10px 4.5px;
+    padding: 10px 3px;
+    font-size: 1.85vw;
+  }
+  @media (max-width: 544px) {
+    font-size: 2.3vw;
   }
 }
 .navigation__menu a:hover {
   transition: ease 650ms;
 }
 
-@mixin navigationXS($navigationHeight, $logoWidth, $menuFS) {
+@media (max-width: 767.8px),
+  (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
   .navigation {
-    height: $navigationHeight;
+    height: 8.5vw;
   }
   .line_container {
-    margin-top: $navigationHeight;
+    margin-top: 8.5vw;
   }
-  .navigation__logo img {
-    width: $logoWidth;
+}
+@media (max-width: 544px) {
+  .navigation {
+    height: 19vw;
   }
-  .navigation__menu a {
-    font-size: $menuFS;
+  .line_container {
+    margin-top: 19vw;
   }
+}
+
+@mixin navigationXS($navigationHeight, $logoWidth, $menuFS) {
+  // .navigation {
+  //   height: $navigationHeight;
+  // }
+  // .line_container {
+  //   margin-top: $navigationHeight;
+  // }
+  // .navigation__logo img {
+  //   width: $logoWidth;
+  // }
+  // .navigation__menu a {
+  //   font-size: $menuFS;
+  // }
 }
 
 @media (max-width: 767.8px),
