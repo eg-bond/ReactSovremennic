@@ -11,14 +11,14 @@
   }
   .theme__#{$theme}__elements {
     color: $elemsColor !important;
-  }
-  .theme__#{$theme}__elements a,
-  .theme__#{$theme}__elements h1,
-  .theme__#{$theme}__elements h2,
-  .theme__#{$theme}__elements h3,
-  .theme__#{$theme}__elements h4,
-  .theme__#{$theme}__elements p {
-    color: $elemsColor;
+    a,
+    h1,
+    h2,
+    h3,
+    h4,
+    p {
+      color: $elemsColor;
+    }
   }
   .theme__#{$theme}__borders {
     border-color: $elemsColor !important;
@@ -40,15 +40,15 @@
     color: $backColor !important;
     background-color: $elemsColor !important;
   }
-  // .theme__#{$theme}__navs button {
-  //   background-color: $backColor !important;
-  //   border: none !important;
-  // }
   .theme__#{$theme}__navs button:hover {
     color: $backColor !important;
     // background-color: $elemsColor !important;
     box-shadow: inset 0 0 1.5em 2em $elemsColor !important;
   }
+  // .theme__#{$theme}__navs button {
+  //   background-color: $backColor !important;
+  //   border: none !important;
+  // }
 }
 
 // Цветовые темы

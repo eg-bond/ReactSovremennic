@@ -76,7 +76,7 @@ function SpecialSettings({
             aria-label='contained primary button group'>
             <Button onClick={() => switchFontSize('14px')}>100%</Button>
             <Button onClick={() => switchFontSize('21px')}>150%</Button>
-            <Button onClick={() => switchFontSize('28px')}>200%</Button>
+            <Button onClick={() => switchFontSize('26px')}>200%</Button>
           </ButtonGroup>
         </div>
 

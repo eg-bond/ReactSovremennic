@@ -14,15 +14,15 @@ const NavItem = ({ url, title }) => (
 function Navigation({ siteMode, fontSize, theme, Q }) {
   const modifyCl = cl => modifiedClass(cl, siteMode)
   let fsAddCl =
-    fontSize === '150'
+    fontSize === '21px'
       ? 'navigation__menu__special__fsAdd-150'
-      : fontSize === '200'
+      : fontSize === '26px'
       ? 'navigation__menu__special__fsAdd-200'
       : ''
   let fsAddLogo =
-    fontSize === '150'
+    fontSize === '21px'
       ? 'navigation__logo__special__fsAdd-150'
-      : fontSize === '200'
+      : fontSize === '26px'
       ? 'navigation__logo__special__fsAdd-200'
       : ''
   const logo = themeLogo(theme)
@@ -41,7 +41,11 @@ function Navigation({ siteMode, fontSize, theme, Q }) {
         <div className={`${modifyCl('navigation__logo')} ${fsAddLogo}`}>
           <Link to='/'>
             {/* <img src={`./Images/${logo}.png`} alt='logoImg' /> */}
-            <img src={require(`../images/${logo}.png`)} alt='logoImg' />
+            <img
+              className='navigation__logo__img'
+              src={require(`../images/${logo}.png`)}
+              alt='logoImg'
+            />
           </Link>
         </div>
         <div className={`${modifyCl('navigation__menu')} ${fsAddCl} focus`}>
