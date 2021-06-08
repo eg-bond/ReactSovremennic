@@ -8,7 +8,7 @@
     outline: none;
     padding: 8px 15px;
     margin: 2px 6px;
-    font-size: 115%;
+    font-size: 1.15rem;
     &:first-child {
       margin-left: 0;
     }
@@ -17,10 +17,10 @@
     }
     @media (max-width: 1200px) {
       padding: 8px 12px;
-      font-size: 92%;
+      font-size: 0.92rem;
     }
     @media (max-width: 992px) {
-      font-size: 75%;
+      font-size: 0.75rem;
       padding: 4px 8px;
       margin: 2px 4px;
     }
@@ -43,8 +43,10 @@
   overflow: hidden;
   border-radius: $imagesBR;
   th,
-  td {
+  td,
+  tr {
     padding: 2.7% 0;
+    @extend %desktopP_FS;
     &:nth-of-type(1) {
       width: 8%;
       text-align: center;
@@ -56,15 +58,6 @@
     &:nth-of-type(3) {
       width: 12%;
       text-align: center;
-    }
-  }
-  * {
-    font-size: 110%;
-    @media (max-width: 1200px) {
-      font-size: 105%;
-    }
-    @media (max-width: 992px) {
-      font-size: 95%;
     }
   }
 }

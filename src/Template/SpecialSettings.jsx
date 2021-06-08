@@ -18,6 +18,7 @@ const SiteModeButton = ({ siteMode, switchSiteMode }) => {
   let modeToDispatch = siteMode === 'default' ? 'special' : 'default'
   return (
     <Button
+      className='specialSettings__modeButton'
       onClick={() => switchSiteMode(modeToDispatch)}
       variant='contained'
       startIcon={<RemoveRedEyeOutlinedIcon />}>
@@ -58,7 +59,7 @@ function SpecialSettings({
     <div className={`specialSettings__container 'theme__${theme}__borders'`}>
       <div className={`specialSettings__flex`}>
         <div className='specialSettings__flex__item'>
-          <div className={'specialSettings__flex__title'}>Цветовая схема</div>
+          <div className={'specialSettings__flex__title'}>ЦВЕТОВАЯ СХЕМА</div>
           <ThemeButton theme='blackWhite' cl='themeBW' />
           <ThemeButton theme='whiteBlack' cl='themeWB' />
           <ThemeButton theme='blackRed' cl='themeBR' />
@@ -67,20 +68,20 @@ function SpecialSettings({
         </div>
 
         <div className={`specialSettings__flex__item`}>
-          <div className={'specialSettings__flex__title'}>Размер шрифта</div>
+          <div className={'specialSettings__flex__title'}>РАЗМЕР ШРИФТА</div>
           <ButtonGroup
             className={'specialSettings__flex__fontButtons jost_font'}
             size='large'
             variant='contained'
             aria-label='contained primary button group'>
-            <Button onClick={() => switchFontSize('100')}>100%</Button>
-            <Button onClick={() => switchFontSize('150')}>150%</Button>
-            <Button onClick={() => switchFontSize('200')}>200%</Button>
+            <Button onClick={() => switchFontSize('14px')}>100%</Button>
+            <Button onClick={() => switchFontSize('21px')}>150%</Button>
+            <Button onClick={() => switchFontSize('28px')}>200%</Button>
           </ButtonGroup>
         </div>
 
         <div className='specialSettings__flex__item'>
-          <div className={'specialSettings__flex__title'}>Изображения</div>
+          <div className={'specialSettings__flex__title'}>ИЗОБРАЖЕНИЯ</div>
           <span className={'specialSettings__switchOff'}>Выкл.</span>
           <Switch
             onClick={handleImgSwitch}

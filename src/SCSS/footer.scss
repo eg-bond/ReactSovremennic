@@ -4,15 +4,8 @@
 
   @media #{$mediaQueryMobile} {
     width: 100%;
-  }
-}
-
-@for $i from 6 to -1 {
-  $maxWidth: 320px + $i * 111.9px;
-
-  @media (max-width: $maxWidth) {
-    .footer a {
-      font-size: 73% + 3.33 * $i;
+    & a {
+      font-size: $paragraphsFS;
     }
   }
 }

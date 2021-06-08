@@ -58,16 +58,16 @@
 @include theme(yellowBrown, $yellowBrownBackground, $yellowBrownElements);
 @include theme(blueGreen, $blueGreenBackground, $blueGreenElements);
 
-// Дефолтные размеры шрифтов
-.fontSize__100 * {
-  font-size: 14px;
-}
-.fontSize__150 {
-  font-size: 21px;
-}
-.fontSize__200 {
-  font-size: 28px;
-}
+// // Дефолтные размеры шрифтов
+// .fontSize__100 * {
+//   font-size: 14px;
+// }
+// .fontSize__150 {
+//   font-size: 21px;
+// }
+// .fontSize__200 {
+//   font-size: 28px;
+// }
 
 // Скрываем все изображения на сайте
 .hideImages img {
@@ -92,12 +92,10 @@
 .specialSettings__container {
   background-color: #94a6af;
   padding: 0.5% 1%;
-  height: 88px;
   border: 5px solid;
   border-bottom: none;
   @media (max-width: 992px) {
     border-width: 3px;
-    height: 82px;
   }
 }
 .specialSettings__flex {
@@ -111,8 +109,16 @@
   font-family: $jostFont;
   color: black;
   text-align: center;
-  font-size: 16px;
   font-weight: bold;
+  * {
+    font-size: 16px !important;
+    @media (max-width: 1200px) {
+      font-size: 15px !important;
+    }
+    @media (max-width: 992px) {
+      font-size: 13px !important;
+    }
+  }
 }
 .specialSettings__flex__title {
   padding-bottom: 4%;
@@ -128,7 +134,15 @@
   }
   & span {
     color: white;
-    font-size: 120%;
+  }
+}
+.specialSettings__modeButton * {
+  font-size: 14px !important;
+  @media (max-width: 1200px) {
+    font-size: 13px !important;
+  }
+  @media (max-width: 992px) {
+    font-size: 11px !important;
   }
 }
 .space {
@@ -143,7 +157,6 @@
   }
   & span {
     color: white;
-    font-size: 120%;
   }
 }
 .specialSettings__flex__fontButtons {
@@ -158,7 +171,6 @@
   }
   & span {
     color: white;
-    font-size: 150%;
   }
 }
 

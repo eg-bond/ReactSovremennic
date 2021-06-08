@@ -7,15 +7,16 @@
 }
 .news p {
   margin: 2% 1% 0 1.5%;
-  font-size: 135%;
+}
+.news p,
+.news a {
+  margin: 2% 1% 0 1.5%;
+  font-size: 1.35rem;
   @media (max-width: 1200px) {
-    font-size: 115%;
+    font-size: 1.15rem;
   }
   @media (max-width: 992px) {
-    font-size: 95%;
-  }
-  @media #{$mediaQueryMobile} {
-    font-size: 95%;
+    font-size: 0.95rem;
   }
 }
 .ref {
@@ -30,20 +31,6 @@
     color: rgb(45, 140, 230) !important;
   }
 }
-
-// .news a {
-//   font-size: 135%;
-//   @media (max-width: 1200px) {
-//     font-size: 115%;
-//   }
-//   @media (max-width: 992px) {
-//     font-size: 95%;
-//   }
-//   @media (max-width: 767.8px),
-//     (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
-//     font-size: 95%;
-//   }
-// }
 
 //Реклама справа в десктопной версии
 .desktopAdv {
@@ -78,12 +65,15 @@
   }
   .news {
     h1 {
-      font-size: $titlesFS !important;
+      font-size: $titlesFS;
       margin: 1vw 0 1vw 0;
     }
     p {
-      font-size: $paragraphsFS !important;
+      font-size: $paragraphsFS;
       margin: 0 0 1.5% 0.5%;
+    }
+    a {
+      font-size: $paragraphsFS;
     }
   }
 

@@ -45,10 +45,10 @@
     margin-top: 0;
   }
   @media (max-width: 1200px) {
-    font-size: 85%;
+    font-size: 0.85rem;
   }
   @media (max-width: 992px) {
-    font-size: 70%;
+    font-size: 0.7rem;
   }
 }
 
@@ -66,10 +66,16 @@
 .swiper-pagination-fraction {
   color: black;
   @media (max-width: 1200px) {
-    font-size: 90%;
+    font-size: 0.9rem;
+    span {
+      font-size: 0.9rem;
+    }
   }
   @media (max-width: 992px) {
-    font-size: 80%;
+    font-size: 0.8rem;
+    span {
+      font-size: 0.8rem;
+    }
   }
 }
 

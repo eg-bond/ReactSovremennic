@@ -62,7 +62,8 @@ const App = React.memo(
     let mainContainerClasses = [
       siteMode === 'special' ? themeCl.back : 'mainContainer',
       themeCl.elems,
-      `fontSize__${fontSize}` || 'fontSize__100',
+      // 'fontSize__100',
+      // `fontSize__${fontSize}` || 'fontSize__100',
       'flex-wrapper',
     ].join(' ')
 
@@ -82,6 +83,11 @@ const App = React.memo(
     if (Q.mobile || siteMode === 'special') {
       scrollToTop()
     }
+
+    // Изменение размера шрифта
+    useEffect(() => {
+      document.documentElement.style.setProperty('--htmlFontSize', fontSize)
+    }, [fontSize])
 
     return (
       // <div className={'preloader'} style={{ opacity: loaded }}>
