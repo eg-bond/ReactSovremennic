@@ -1,5 +1,4 @@
 import React, { useEffect, Suspense, useState } from 'react'
-import './bootstrap3_grid.css'
 import 'swiper/swiper.scss'
 import 'swiper/components/navigation/navigation.scss'
 import 'swiper/components/pagination/pagination.scss'
@@ -110,11 +109,11 @@ const App = React.memo(
                 <FilmSwiper films={films} mobile={Q.mobile} />
               )}
 
-              <div className='separator contentSeparator' />
+              <div className='separator separator--MB' />
 
               <hr className={`line_5px hidden-xs ${themeCl.borders}`} />
 
-              <div className={'contentDiv'}>
+              <div className={'mainContainer__content'}>
                 <Content
                   siteMode={siteMode}
                   Q={Q}
@@ -126,7 +125,6 @@ const App = React.memo(
                 />
 
                 {Q.desktop && pathname !== '/sushi' && <Adv />}
-                {/* <div className='synteticDiv'>.</div> */}
               </div>
 
               <div>

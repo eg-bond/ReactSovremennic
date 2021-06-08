@@ -18,12 +18,7 @@ function SelectedMovie({
   }, [createFilmsObject, filmsObject])
 
   if (!filmsObject) {
-    return (
-      <div className={`padding_15xs`}>
-        <div className='margin-top-2'></div>
-        {/* <div className='col-lg-9 col-md-9 col-sm-9 margin-top-2'></div> */}
-      </div>
-    )
+    return <div className='selectedMovie'></div>
   }
 
   let filmItem = filmsObject[film_id]
@@ -32,8 +27,7 @@ function SelectedMovie({
     <div className='selectedMovie--leftFr'>
       <div className='selectedMovie__image'>
         <img
-          src={require(`../../images/description/${filmItem.link}_D.jpg`)}
-          // src={`Images/description/${filmItem.link}_D.jpg`}
+          src={`./Images/description/${filmItem.link}_D.jpg`}
           alt={filmItem.title}
         />
       </div>

@@ -7,16 +7,16 @@ import MenuList from '@material-ui/core/MenuList'
 
 export function MobileSeanceNavigation(props) {
   const [open, setOpen] = useState(false)
-  const anchorRef = useRef(null)
+  // const anchorRef = useRef(null)
 
   const handleToggle = () => {
     setOpen(prevOpen => !prevOpen)
   }
 
   const switchSeanstable = (event, key, title) => {
-    if (anchorRef.current && anchorRef.current.contains(event.target)) {
-      return
-    }
+    // if (anchorRef.current && anchorRef.current.contains(event.target)) {
+    //   return
+    // }
     props.switchVisibility(false)
     setTimeout(() => {
       props.changeButtonTitle(title)
@@ -28,9 +28,9 @@ export function MobileSeanceNavigation(props) {
   }
 
   const handleClose = event => {
-    if (anchorRef.current && anchorRef.current.contains(event.target)) {
-      return
-    }
+    // if (anchorRef.current && anchorRef.current.contains(event.target)) {
+    //   return
+    // }
     setOpen(false)
   }
 
@@ -45,7 +45,7 @@ export function MobileSeanceNavigation(props) {
     <div>
       <button
         className='seans_button_xs'
-        ref={anchorRef}
+        // ref={anchorRef}
         onClick={handleToggle}>
         <span className='seans_button_xs__title'>{props.buttonTitle}</span>{' '}
         <span className='glyphicon glyphicon-chevron-down' aria-hidden='true' />
@@ -54,7 +54,7 @@ export function MobileSeanceNavigation(props) {
         open={open}
         // anchorEl={anchorRef.current}
         transition
-        placement='top-start'
+        // placement='top-start'
         className='popper popper__seance'
         disablePortal
         modifiers={{
@@ -68,7 +68,6 @@ export function MobileSeanceNavigation(props) {
               <div className='popper__content'>
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList
-                    className='jost_font'
                     autoFocusItem={open}
                     id='menu-list-grow'
                     onKeyDown={handleListKeyDown}>

@@ -25,7 +25,7 @@ function IndexContent({ siteMode, films, Q }) {
           </div>
         )}
 
-        <div className='separator-xs' />
+        <div className='separator separator--index' />
 
         <div className={'news'}>
           <h1>Информация</h1>
@@ -49,7 +49,7 @@ function IndexContent({ siteMode, films, Q }) {
 
         {siteMode === 'special' && Q.desktop && <Films films={films} />}
 
-        <div className='separator-xs' />
+        <div className='separator separator--index' />
       </div>
 
       {Q.mobile && <IndexAdvXS />}

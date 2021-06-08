@@ -18,7 +18,6 @@ const SiteModeButton = ({ siteMode, switchSiteMode }) => {
   let modeToDispatch = siteMode === 'default' ? 'special' : 'default'
   return (
     <Button
-      className='jost_font'
       onClick={() => switchSiteMode(modeToDispatch)}
       variant='contained'
       startIcon={<RemoveRedEyeOutlinedIcon />}>

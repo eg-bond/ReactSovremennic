@@ -11,7 +11,7 @@ export function MobileSushiNavigation({
   defaultSushiArr,
 }) {
   const [open, setOpen] = useState(false)
-  const anchorRef = useRef(null)
+  // const anchorRef = useRef(null)
 
   const handleToggle = () => {
     setOpen(prevOpen => !prevOpen)
@@ -23,17 +23,10 @@ export function MobileSushiNavigation({
   }
 
   const handleClose = event => {
-    if (anchorRef.current && anchorRef.current.contains(event.target)) {
-      return
-    }
+    // if (anchorRef.current && anchorRef.current.contains(event.target)) {
+    //   return
+    // }
     setOpen(false)
-  }
-
-  function handleListKeyDown(event) {
-    if (event.key === 'Tab') {
-      event.preventDefault()
-      setOpen(false)
-    }
   }
 
   return (
@@ -48,7 +41,8 @@ export function MobileSushiNavigation({
       <Popper
         open={open}
         transition
-        placement='bottom-start'
+        // anchorEl={anchorRef.current}
+        // placement='top-start'
         className='popper popper__sushi'
         disablePortal>
         {({ TransitionProps }) => (
@@ -56,11 +50,7 @@ export function MobileSushiNavigation({
             <div className='popper__backdrop'>
               <div className='popper__content'>
                 <ClickAwayListener onClickAway={handleClose}>
-                  <MenuList
-                    className='jost_font'
-                    autoFocusItem={open}
-                    id='menu-list-grow'
-                    onKeyDown={handleListKeyDown}>
+                  <MenuList autoFocusItem={open} id='menu-list-grow'>
                     {defaultSushiArr.map(d => (
                       <MenuItem
                         className={imageKey === d[0] ? 'active' : ''}

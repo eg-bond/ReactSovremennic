@@ -36,26 +36,24 @@ function Navigation({ siteMode, fontSize, theme, Q }) {
 
   return (
     <div className='container'>
-      <div className='row'>
-        <SpecialSettings />
-        <nav role='navigation' className={navClasses}>
-          <div className={`${modifyCl('navigation__logo')} ${fsAddLogo}`}>
-            <Link to='/'>
-              {/* <img src={`./Images/${logo}.png`} alt='logoImg' /> */}
-              <img src={require(`../images/${logo}.png`)} alt='logoImg' />
-            </Link>
-          </div>
-          <div className={`${modifyCl('navigation__menu')} ${fsAddCl} focus`}>
-            <ul>
-              <NavItem url='/seans' title='РАСПИСАНИЕ' />
-              {siteMode == 'special' && <NavItem url='/films' title='ФИЛЬМЫ' />}
-              <NavItem url='/about' title='О КИНОТЕАТРЕ' />
-              <NavItem url='/rules' title='ПРАВИЛА РАБОТЫ' />
-              <NavItem url='/sushi' title='СУШИ-БАР "КИН-НО"' />
-            </ul>
-          </div>
-        </nav>
-      </div>
+      <SpecialSettings />
+      <nav role='navigation' className={navClasses}>
+        <div className={`${modifyCl('navigation__logo')} ${fsAddLogo}`}>
+          <Link to='/'>
+            {/* <img src={`./Images/${logo}.png`} alt='logoImg' /> */}
+            <img src={require(`../images/${logo}.png`)} alt='logoImg' />
+          </Link>
+        </div>
+        <div className={`${modifyCl('navigation__menu')} ${fsAddCl} focus`}>
+          <ul>
+            <NavItem url='/seans' title='РАСПИСАНИЕ' />
+            {siteMode == 'special' && <NavItem url='/films' title='ФИЛЬМЫ' />}
+            <NavItem url='/about' title='О КИНОТЕАТРЕ' />
+            <NavItem url='/rules' title='ПРАВИЛА РАБОТЫ' />
+            <NavItem url='/sushi' title='СУШИ-БАР "КИН-НО"' />
+          </ul>
+        </div>
+      </nav>
     </div>
   )
 }

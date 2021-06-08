@@ -29,7 +29,7 @@ export const SushiSwipers = ({ swiperKey, imgVisible }) => {
 
   return (
     <Grow in={imgVisible} timeout={250}>
-      <Swiper className='swiper-container-sushi jost_font' {...params}>
+      <Swiper className='swiper-container-sushi' {...params}>
         {slideKeys[swiperKey].map(swiperKey => sushiSwiperSlide(swiperKey))}
       </Swiper>
     </Grow>

@@ -1,6 +1,3 @@
-@import 'variables';
-@import 'fonts';
-
 //Миксин для классов тем
 @mixin theme($theme, $backColor, $elemsColor) {
   .theme__#{$theme}__background {

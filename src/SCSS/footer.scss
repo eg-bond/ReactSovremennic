@@ -1,11 +1,8 @@
-@import 'variables';
-
 .footer {
   text-align: center;
   padding: 2%;
 
-  @media (max-width: 767.8px),
-    (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+  @media #{$mediaQueryMobile} {
     width: 100%;
   }
 }

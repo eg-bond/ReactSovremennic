@@ -1,4 +1,10 @@
 @import-normalize;
+// Переменные
+@import 'variables';
+// Шрифты
+@import 'fonts';
+// Бутстраповские стили
+@import 'bootstrap3_classes';
 // Общие стили
 @import 'generalStyles';
 // Стили сайта для слабовидящих

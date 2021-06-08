@@ -12,7 +12,8 @@ $border3px: solid 3px;
 $border5px: solid 5px;
 
 //для мобильной версии
-$paragraphsFS: 2.3vw;
+$mediaQueryMobile: '(max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)';
+$paragraphsFS: 2.4vw;
 $titlesFS: 3.2vw;
 
 // Переменные сайта для слабовидящих
@@ -45,8 +46,7 @@ $blueGreenElements: #5e4005;
     height: 100%;
   }
 }
-@media (max-width: 767.8px),
-  (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+@media #{$mediaQueryMobile} {
   %imgContainerXs {
     position: relative;
     width: 100%;
@@ -68,5 +68,15 @@ $blueGreenElements: #5e4005;
   }
   @media (max-width: 992px) {
     font-size: 165%;
+  }
+}
+
+%desktopP_FS {
+  font-size: 120% !important;
+  @media (max-width: 1200px) {
+    font-size: 105% !important;
+  }
+  @media (max-width: 992px) {
+    font-size: 90% !important;
   }
 }

@@ -1,6 +1,5 @@
-@import 'variables';
-
 .navigation {
+  // height: 100px;
   display: flex;
   flex-direction: row;
   margin-bottom: 0;
@@ -53,13 +52,9 @@
 
 .navigation__menu {
   flex: 3.5;
-  // border-top: none;
 }
 .navigation__menu__default {
-  margin-top: 1%;
-  @media (max-width: 992px) {
-    margin-top: 1.5%;
-  }
+  margin: 1% 0;
 }
 .navigation__menu__special {
   margin-left: 2%;
@@ -151,8 +146,7 @@
   transition: ease 650ms;
 }
 
-@media (max-width: 767.8px),
-  (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+@media #{$mediaQueryMobile} {
   .navigation {
     border-radius: 0;
     border-width: 0;
@@ -185,12 +179,16 @@
     }
   }
   .navigation__menu__default {
-    margin-top: 1.1vw;
+    align-self: center;
+    @media (max-width: 544px) {
+      align-self: stretch;
+    }
     @media (max-width: 390px) {
       margin-top: 0;
     }
   }
   .navigation__menu ul {
+    top: 0;
     justify-content: space-between;
     &:first-child {
       padding-left: 0.4%;
