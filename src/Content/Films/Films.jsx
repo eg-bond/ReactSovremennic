@@ -5,7 +5,10 @@ import { connect } from 'react-redux'
 
 let filmsSpecial = null
 
-function Films({ films }) {
+function Films({ films, ...props }) {
+  let titleCl =
+    props.pathname === '/films' ? 'filmsSpecialPage__h1' : 'filmsSpecial__h1'
+
   if (!filmsSpecial) {
     filmsSpecial = films.map(f => (
       <div className='filmsSpecial__flex__item' key={f.link}>
@@ -28,7 +31,7 @@ function Films({ films }) {
 
   return (
     <div className='filmsSpecial'>
-      <h1 className={'filmsSpecial__h1'}>Фильмы</h1>
+      <h1 className={titleCl}>Фильмы</h1>
       <div className={'filmsSpecial__flex'}>{filmsSpecial}</div>
     </div>
   )

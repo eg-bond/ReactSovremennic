@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink, Link } from 'react-router-dom'
-import { modifiedClass, themeClasses, themeLogo } from '../helpers'
+import { themeLogoFile, modifiedClass } from '../helpers'
 import SpecialSettings from './SpecialSettings'
 
 const NavItem = ({ url, title }) => (
@@ -13,42 +13,31 @@ const NavItem = ({ url, title }) => (
 
 function Navigation({ siteMode, fontSize, theme, Q }) {
   const modifyCl = cl => modifiedClass(cl, siteMode)
-  let fsAddCl =
+  let fsNavCl =
     fontSize === '21px'
-      ? 'navigation__menu__special__fsAdd-150'
+      ? 'navigation--fs150'
       : fontSize === '26px'
-      ? 'navigation__menu__special__fsAdd-200'
+      ? 'navigation--fs200'
       : ''
-  let fsAddLogo =
-    fontSize === '21px'
-      ? 'navigation__logo__special__fsAdd-150'
-      : fontSize === '26px'
-      ? 'navigation__logo__special__fsAdd-200'
-      : ''
-  const logo = themeLogo(theme)
-  const themeCl = themeClasses(theme)
 
-  let navClasses = [
-    modifyCl('navigation'),
-    themeCl.back,
-    siteMode === 'special' ? `${themeCl.pills} ${themeCl.borders}` : '',
-  ].join(' ')
+  const logo = themeLogoFile
+  let navClasses = [modifyCl('navigation'), fsNavCl].join(' ')
 
   return (
     <div className='container'>
       <SpecialSettings />
       <nav role='navigation' className={navClasses}>
-        <div className={`${modifyCl('navigation__logo')} ${fsAddLogo}`}>
+        <div className={`${modifyCl('navigation__logo')}`}>
           <Link to='/'>
             {/* <img src={`./Images/${logo}.png`} alt='logoImg' /> */}
             <img
               className='navigation__logo__img'
-              src={require(`../images/${logo}.png`)}
+              src={require(`../images/${logo[theme]}`)}
               alt='logoImg'
             />
           </Link>
         </div>
-        <div className={`${modifyCl('navigation__menu')} ${fsAddCl} focus`}>
+        <div className={`${modifyCl('navigation__menu')} focus`}>
           <ul>
             <NavItem url='/seans' title='РАСПИСАНИЕ' />
             {siteMode == 'special' && <NavItem url='/films' title='ФИЛЬМЫ' />}

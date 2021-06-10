@@ -54,7 +54,7 @@ const desktopMenuButton = (key, title, imageKey, changeImage) => {
   )
 }
 
-const SushiContainer = ({ Q, siteMode, themeCl }) => {
+const SushiContainer = ({ Q, siteMode }) => {
   const [imageKey, setImageKey] = useState('sushi')
   const [imgVisible, switchVisibility] = useState(true)
   const [menuButtons, setButtons] = useState([])
@@ -117,7 +117,6 @@ const SushiContainer = ({ Q, siteMode, themeCl }) => {
       changeImage={changeImage}
       menuButtons={menuButtons}
       siteMode={siteMode}
-      themeCl={themeCl}
       imgVisible={imgVisible}
       progressBar={progressBar}
     />

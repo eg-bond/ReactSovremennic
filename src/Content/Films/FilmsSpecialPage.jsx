@@ -1,10 +1,10 @@
 import React from 'react'
 import Films from './Films'
 
-function FilmsSpecialPage() {
+function FilmsSpecialPage({ pathname }) {
   return (
     <div className='content__gridLeftItem--3fr'>
-      <Films />
+      <Films pathname={pathname} />
     </div>
   )
 }

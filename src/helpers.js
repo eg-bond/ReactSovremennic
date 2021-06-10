@@ -1,16 +1,48 @@
 // Хелперы для сайта "для слабовидящих"
 export const modifiedClass = (cl, siteMode) =>
-  `${cl} ${siteMode === 'default' ? cl + '__default' : cl + '__special'}`
+  `${cl} ${siteMode === 'default' ? cl + '--default' : cl + '--special'}`
 
-export const themeClasses = theme => {
-  return {
-    back: `theme__${theme}__background`,
-    elems: `theme__${theme}__elements`,
-    borders: `theme__${theme}__borders`,
-    pills: `theme__${theme}__pills`,
-    navs: `theme__${theme}__navs`,
-    footer: `theme__${theme}__footer`,
+const themeAppColors = {
+  blackWhite: {
+    main: 'black',
+    secondary: '#ebece9',
+  },
+  whiteBlack: {
+    main: '#ebece9',
+    secondary: 'black',
+  },
+  blackRed: {
+    main: 'black',
+    secondary: '#df233e',
+  },
+  yellowBrown: {
+    main: '#f5dda1',
+    secondary: '#810026',
+  },
+  blueGreen: {
+    main: '#b4e5ee',
+    secondary: '#5e4005',
+  },
+}
+
+export const changeAppColors = (theme, siteMode) => {
+  const docStyle = document.documentElement.style
+
+  docStyle.setProperty('--mainClr', themeAppColors[theme].main)
+  docStyle.setProperty('--secondaryClr', themeAppColors[theme].secondary)
+  if (siteMode === 'default') {
+    docStyle.setProperty('--movieTitlesClr', '#e41b2b')
+  } else {
+    docStyle.setProperty('--movieTitlesClr', themeAppColors[theme].secondary)
   }
+}
+
+export const themeLogoFile = {
+  blackWhite: 'logo.png',
+  whiteBlack: 'logoWB.png',
+  blackRed: 'logoBR.png',
+  yellowBrown: 'logoYB.png',
+  blueGreen: 'logoBG.png',
 }
 
 export const themeLogo = theme => {

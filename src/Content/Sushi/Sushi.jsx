@@ -26,7 +26,6 @@ const Sushi = ({
   changeImage,
   menuButtons,
   siteMode,
-  themeCl,
   imgVisible,
   progressBar,
 }) => {
@@ -38,12 +37,7 @@ const Sushi = ({
           style={{ paddingRight: '0' }}
           // className='col-lg-3 col-md-3 col-sm-3'>
           className='sushi_page content__gridLeftItem--1fr'>
-          <div
-            className={`sushi_page__menuButtons ${
-              siteMode === 'special' ? themeCl.navs : ''
-            }`}>
-            {menuButtons}
-          </div>
+          <div className={`sushi_page__menuButtons `}>{menuButtons}</div>
         </div>
       )}
 

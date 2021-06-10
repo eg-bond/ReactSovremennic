@@ -2,6 +2,10 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-template-rows: auto auto;
+  grid-auto-flow: column;
+}
+.selectedMovie--fullFr {
+  grid-column: 1/4;
 }
 .selectedMovie--leftFr {
   margin: 0 15px 10px 0;
@@ -9,12 +13,9 @@
   @media #{$mediaQueryMobile} {
     grid-row: 1/2;
   }
-  // @media (max-width: 432px) {
-  //   flex: 0.65;
-  // }
 }
 .selectedMovie--rightFr {
-  grid-column: 2/4;
+  grid-column: 2/ 4;
 }
 .descTrailer--grid {
   grid-column: 2/4;
@@ -32,16 +33,17 @@
 .selectedMovie__title {
   h2 {
     margin-top: 0;
-    color: #e41b2b;
+    color: var(--movieTitlesClr);
     @extend %titlesFS;
   }
   p {
-    color: #e41b2b;
+    color: var(--movieTitlesClr);
     @extend %desktopP_FS;
   }
 }
 
 .selectedMovie__table {
+  color: var(--secondaryClr);
   text-align: left;
   margin-bottom: 3%;
 }

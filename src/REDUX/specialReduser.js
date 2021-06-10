@@ -6,7 +6,6 @@ const SWITCH_FONT_SIZE = 'SWITCH_FONT_SIZE'
 let initialState = {
   siteMode: 'default',
   theme: 'blackWhite',
-  fontStyle: 'Times',
   fontSize: '14px',
   imgHidden: false,
 }

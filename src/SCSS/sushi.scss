@@ -26,21 +26,22 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-bottom: 20px;
 }
 .sushi_page__menuButtons .active {
-  color: black;
-  background-color: $linesColor;
+  color: var(--mainClr);
+  background-color: var(--secondaryClr);
 }
 .sushi_page__menuButtons button:hover {
-  color: black;
-  background-color: $linesColor;
+  color: var(--mainClr);
+  background-color: var(--secondaryClr);
   transition: ease 600ms;
 }
 .sushi_page__menuButtons button {
   border: 2px solid;
   outline: none;
   margin: 1% 0;
-  padding: 4% 0 4% 3%;
+  padding: 5% 2%;
   font-size: 1rem;
   &:first-child {
     margin-top: 0;
@@ -59,13 +60,13 @@
 }
 .swiper-button-next,
 .swiper-button-prev {
-  color: black;
+  color: var(--mainClr);
 }
 .swiper-container-sushi > .swiper-pagination-bullets {
   margin: 0 10px 20px 0;
 }
 .swiper-pagination-fraction {
-  color: black;
+  color: var(--mainClr);
   @media (max-width: 1200px) {
     font-size: 0.9rem;
     span {

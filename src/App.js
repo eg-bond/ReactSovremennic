@@ -19,7 +19,7 @@ import { connect } from 'react-redux'
 import Adv from './Template/Adv'
 import { createFilmsTodayArr, createFilmsObject } from './REDUX/cinemaReduser'
 import { switchSiteMode, switchFontSize } from './REDUX/specialReduser'
-import { queries, scrollToTop, themeClasses } from './helpers'
+import { changeAppColors, modifiedClass, queries, scrollToTop } from './helpers'
 import { useMediaQuery } from '@material-ui/core'
 import Content from './Content/Content'
 
@@ -46,7 +46,6 @@ const App = React.memo(
       initialActiveKey()
       initialButtonTitle()
       createFilmsTodayArr()
-      // console.log('mounted')
       // window.addEventListener('load', () => setLoaded(true))
     }, [
       createActualDatesArr,
@@ -56,16 +55,7 @@ const App = React.memo(
     ])
 
     let { pathname } = useLocation()
-    const themeCl = themeClasses(theme)
     // const [loaded, setLoaded] = useState(0)
-
-    let mainContainerClasses = [
-      siteMode === 'special' ? themeCl.back : 'mainContainer',
-      themeCl.elems,
-      // 'fontSize__100',
-      // `fontSize__${fontSize}` || 'fontSize__100',
-      'flex-wrapper',
-    ].join(' ')
 
     // Queries
     const Q = {
@@ -77,20 +67,31 @@ const App = React.memo(
       if (Q.mobile && siteMode === 'special') {
         switchSiteMode('default')
       }
-    }, [Q.mobile, switchSiteMode, siteMode])
+      if (fontSize !== '14px') {
+        switchFontSize('14px')
+      }
+    }, [Q.mobile, switchSiteMode, siteMode, fontSize, switchFontSize])
 
     // Автоматический скролл наверх для мобильной версии
     if (Q.mobile || siteMode === 'special') {
       scrollToTop()
     }
 
+    let mainContainerClasses = [
+      modifiedClass('mainContainer', siteMode),
+      'flex-wrapper',
+    ].join(' ')
+
     // Изменение размера шрифта
     useEffect(() => {
       document.documentElement.style.setProperty('--htmlFontSize', fontSize)
     }, [fontSize])
+    // Изменение цветовых схем
+    useEffect(() => {
+      changeAppColors(theme, siteMode)
+    }, [theme, siteMode, changeAppColors])
 
     return (
-      // <div className={'preloader'} style={{ opacity: loaded }}>
       <div className={mainContainerClasses}>
         <div>
           <Navigation
@@ -104,10 +105,7 @@ const App = React.memo(
           <div className='line_container' />
           <div className='separator' />
 
-          <div
-            className={`container wrapper ${themeCl.back} ${themeCl.borders} ${
-              imgHidden && 'hideImages'
-            }`}>
+          <div className={`container wrapper ${imgHidden ? 'hideImages' : ''}`}>
             <div className='row'>
               {/* {Q.mobile && <AdvXS />} */}
 
@@ -117,7 +115,7 @@ const App = React.memo(
 
               <div className='separator separator--MB' />
 
-              <hr className={`line_5px hidden-xs ${themeCl.borders}`} />
+              <hr className={`line_5px hidden-xs`} />
 
               <div className={'mainContainer__content'}>
                 <Content
@@ -125,7 +123,6 @@ const App = React.memo(
                   Q={Q}
                   filmsObject={filmsObject}
                   createFilmsObject={createFilmsObject}
-                  themeCl={themeCl}
                   fontSize={fontSize}
                   pathname={pathname}
                 />
@@ -137,13 +134,12 @@ const App = React.memo(
                 {siteMode === 'default' && (
                   <>
                     <h1 className='bottomSwiper__bar'>Сегодня в кино</h1>
-                    <hr className={`bottomSwiper__border ${themeCl.borders}`} />
+                    <hr className={`bottomSwiper__border`} />
                     {/* <Suspense fallback={null}> */}
                     <BottomSwiper
                       filmsToday={filmsToday}
                       slidesPerView={filmsTodaySlides}
                       desktop={Q.desktop}
-                      themeCl={themeCl}
                     />
 
                     {/* </Suspense> */}
@@ -153,7 +149,7 @@ const App = React.memo(
             </div>
           </div>
         </div>
-        <Footer themeCl={themeCl} />
+        <Footer />
       </div>
     )
   }

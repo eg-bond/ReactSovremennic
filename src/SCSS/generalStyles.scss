@@ -12,12 +12,14 @@ hr {
   margin-bottom: 0;
 }
 a {
+  color: var(--secondaryClr);
   text-decoration: none;
   &:focus {
     outline: none;
   }
 }
 p {
+  color: var(--secondaryClr);
   margin: 0 0 10px;
 }
 
@@ -35,11 +37,12 @@ p {
   border: $border5px;
   border-top: none !important;
   padding-bottom: 0 !important;
+  background-color: var(--mainClr);
   @media (max-width: 992px) {
     border: $border3px;
   }
   @media #{$mediaQueryMobile} {
-    background-color: black !important;
+    background-color: var(--mainClr) !important;
     border-width: 0;
   }
 }
@@ -98,8 +101,6 @@ $backImgHeight992: 200px;
 }
 
 .mainContainer {
-  background-image: url('../images/main_image.jpg'),
-    linear-gradient(to right, white 50%, #111514 50%);
   background-position: top center;
   background-repeat: no-repeat;
   background-size: 100% $backImgHeight + 1, 100%;
@@ -109,8 +110,15 @@ $backImgHeight992: 200px;
   }
   @media #{$mediaQueryMobile} {
     background-image: none !important;
-    background-color: #000000;
+    background-color: var(--mainClr);
   }
+}
+.mainContainer--default {
+  background-image: url('../images/main_image.jpg'),
+    linear-gradient(to right, white 50%, #111514 50%);
+}
+.mainContainer--special {
+  background-color: var(--mainClr);
 }
 
 .line_5px {
@@ -130,8 +138,8 @@ $backImgHeight992: 200px;
   transition: ease 0.3s;
   background: none;
   &:hover {
-    color: black;
-    box-shadow: inset 0 0 1.5em 2em white;
+    color: var(--mainClr);
+    box-shadow: inset 0 0 1.5em 2em var(--secondaryClr);
   }
 }
 
@@ -162,7 +170,7 @@ $backImgHeight992: 200px;
 
 @media #{$mediaQueryMobile} {
   body {
-    background-color: black;
+    background-color: var(--mainClr);
   }
   .hidden-xs {
     display: none;
@@ -175,7 +183,7 @@ $backImgHeight992: 200px;
 
   .separator {
     height: 5px;
-    background-color: #292e33;
+    background-color: var(--sepearatorsClr);
   }
   .separator--index {
     margin: 0 -15px 0 -15px;

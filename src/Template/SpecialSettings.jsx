@@ -14,12 +14,19 @@ import {
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 
-const SiteModeButton = ({ siteMode, switchSiteMode }) => {
+const SiteModeButton = ({ siteMode, switchSiteMode, fontSize }) => {
   let modeToDispatch = siteMode === 'default' ? 'special' : 'default'
+  const siteModeHandler = () => {
+    if (fontSize !== '14px') {
+      switchFontSize('14px')
+    }
+    switchSiteMode(modeToDispatch)
+  }
+
   return (
     <Button
       className='specialSettings__modeButton'
-      onClick={() => switchSiteMode(modeToDispatch)}
+      onClick={() => siteModeHandler()}
       variant='contained'
       startIcon={<RemoveRedEyeOutlinedIcon />}>
       {siteMode === 'default'
@@ -37,8 +44,11 @@ function SpecialSettings({
   siteMode,
   switchSiteMode,
   theme,
+  fontSize,
 }) {
   const ThemeButton = ({ theme, cl }) => (
+    // changeAppColors(theme, siteMode)
+
     <IconButton onClick={() => switchSiteTheme(theme)} className={cl}>
       <Brightness1Icon />
     </IconButton>
@@ -50,7 +60,11 @@ function SpecialSettings({
   if (siteMode === 'default') {
     return (
       <div className={`space`}>
-        <SiteModeButton siteMode={siteMode} switchSiteMode={switchSiteMode} />
+        <SiteModeButton
+          siteMode={siteMode}
+          switchSiteMode={switchSiteMode}
+          fontSize={fontSize}
+        />
       </div>
     )
   }
@@ -70,7 +84,7 @@ function SpecialSettings({
         <div className={`specialSettings__flex__item`}>
           <div className={'specialSettings__flex__title'}>РАЗМЕР ШРИФТА</div>
           <ButtonGroup
-            className={'specialSettings__flex__fontButtons jost_font'}
+            className={'specialSettings__flex__fontButtons'}
             size='large'
             variant='contained'
             aria-label='contained primary button group'>
@@ -95,7 +109,11 @@ function SpecialSettings({
         </div>
 
         <div className='specialSettings__flex__item specialSettings__flex__modeButton'>
-          <SiteModeButton siteMode={siteMode} switchSiteMode={switchSiteMode} />
+          <SiteModeButton
+            siteMode={siteMode}
+            switchSiteMode={switchSiteMode}
+            fontSize={fontSize}
+          />
         </div>
       </div>
     </div>
@@ -106,6 +124,7 @@ let mapStateToProps = state => ({
   siteMode: state.special.siteMode,
   imgHidden: state.special.imgHidden,
   theme: state.special.theme,
+  fontSize: state.special.fontSize,
 })
 
 export default compose(

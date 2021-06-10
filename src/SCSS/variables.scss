@@ -6,10 +6,10 @@ $jostFont: 'Jost', sans-serif;
 $linesColor: #ebece9;
 $imagesBR: 10px;
 $buttonsBR: 30px;
-$border1px: solid 1px;
-$border2px: solid 2px;
-$border3px: solid 3px;
-$border5px: solid 5px;
+$border1px: solid 1px var(--secondaryClr);
+$border2px: solid 2px var(--secondaryClr);
+$border3px: solid 3px var(--secondaryClr);
+$border5px: solid 5px var(--secondaryClr);
 
 //для мобильной версии
 $mediaQueryMobile: '(max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)';

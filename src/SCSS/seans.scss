@@ -28,13 +28,9 @@
 }
 
 .seanse__buttons .active {
-  color: black;
-  background-color: $linesColor;
+  color: var(--mainClr);
+  background-color: var(--secondaryClr);
 }
-// .seans-tabs button:hover {
-//   color: black;
-//   background-color: $linesColor;
-// }
 
 .seanse__table {
   border-spacing: 0;
@@ -79,24 +75,19 @@
     position: relative;
     padding: 2%;
     margin: 1vw 0;
-    background-color: black;
-    border: solid 2px white;
-    color: white;
+    background-color: var(--mainClr);
+    border: $border2px;
+    color: var(--secondaryClr);
     border-radius: $buttonsBR;
     width: 100%;
     outline: none !important;
   }
   .seans_button_xs:hover {
-    background-color: black !important;
+    background-color: var(--mainClr) !important;
     border-color: red !important;
     color: red !important;
     transition: ease 650ms;
   }
-  // .seans_button_xs:focus {
-  //   border: solid 2px white;
-  //   background-color: black;
-  //   color: white;
-  // }
   .seans_button_xs span {
     font-size: 2.8vw;
   }
@@ -130,10 +121,10 @@
     z-index: 5;
   }
   .popper__content {
-    border: solid $linesColor 2px;
+    border: $border2px;
     border-radius: $buttonsBR;
-    color: white;
-    background-color: black;
+    color: var(--secondaryClr);
+    background-color: var(--mainClr);
     position: relative !important;
     width: auto;
     margin: 25vh 2% 0 2%;

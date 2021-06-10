@@ -9,7 +9,6 @@ import {
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { SeansTableContent } from './CreateTable'
-import { themeClasses } from '../../helpers'
 import Grow from '@material-ui/core/Grow'
 
 let tableContent = SeansTableContent()
@@ -26,7 +25,6 @@ const Seans = React.memo(
     ...props
   }) => {
     const [tableVisible, switchVisibility] = useState(true)
-    const themeCl = themeClasses(theme)
 
     const switchSeanstable = (key, title) => {
       if (key !== activeKey) {
@@ -50,10 +48,7 @@ const Seans = React.memo(
       <div className='content__gridLeftItem--3fr'>
         {/* <div className='col-lg-9 col-md-9 col-sm-9'> */}
         {Q.desktop && (
-          <div
-            className={`seans-menu ${
-              siteMode === 'special' ? themeCl.navs : ''
-            } `}>
+          <div className={`seans-menu`}>
             <div className='seanse__buttons'>
               {props.datesArr.map(d => (
                 <button

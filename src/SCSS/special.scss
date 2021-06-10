@@ -1,98 +1,13 @@
-//Миксин для классов тем
-@mixin theme($theme, $backColor, $elemsColor) {
-  .theme__#{$theme}__background {
-    background-color: $backColor;
-  }
-  .theme__#{$theme}__footer {
-    background-color: $elemsColor;
-    & a {
-      color: $backColor !important;
-    }
-  }
-  .theme__#{$theme}__elements {
-    color: $elemsColor !important;
-    a,
-    h1,
-    h2,
-    h3,
-    h4,
-    p {
-      color: $elemsColor;
-    }
-  }
-  .theme__#{$theme}__borders {
-    border-color: $elemsColor !important;
-  }
-  .theme__#{$theme}__pills li.active > a,
-  .theme__#{$theme}__pills a:hover,
-  .theme__#{$theme}__pills a.active {
-    color: $backColor !important;
-    background-color: $elemsColor !important;
-    box-shadow: inset 0 0 1.5em 2em $elemsColor;
-  }
-  .theme__#{$theme}__pills:focus,
-  .theme__#{$theme}__pills a:focus,
-  .theme__#{$theme}__pills button:focus,
-  .theme__#{$theme}__navs button:focus {
-    outline: 2px solid $elemsColor;
-  }
-  .theme__#{$theme}__navs .active {
-    color: $backColor !important;
-    background-color: $elemsColor !important;
-  }
-  .theme__#{$theme}__navs button:hover {
-    color: $backColor !important;
-    // background-color: $elemsColor !important;
-    box-shadow: inset 0 0 1.5em 2em $elemsColor !important;
-  }
-  // .theme__#{$theme}__navs button {
-  //   background-color: $backColor !important;
-  //   border: none !important;
-  // }
-}
-
-// Цветовые темы
-@include theme(blackWhite, $blackWhiteBackground, $blackWhiteElements);
-@include theme(whiteBlack, $whiteBlackBackground, $whiteBlackElements);
-@include theme(blackRed, $blackRedBackground, $blackRedElements);
-@include theme(yellowBrown, $yellowBrownBackground, $yellowBrownElements);
-@include theme(blueGreen, $blueGreenBackground, $blueGreenElements);
-
-// // Дефолтные размеры шрифтов
-// .fontSize__100 * {
-//   font-size: 14px;
-// }
-// .fontSize__150 {
-//   font-size: 21px;
-// }
-// .fontSize__200 {
-//   font-size: 28px;
-// }
-
 // Скрываем все изображения на сайте
 .hideImages img {
-  opacity: 0;
-}
-
-// отдельные классы (для футера)
-.bc__black {
-  background-color: $blackWhiteBackground;
-}
-.bc__white {
-  background-color: $whiteBlackBackground;
-}
-.bc__yellow {
-  background-color: $yellowBrownBackground;
-}
-.bc__blue {
-  background-color: $blueGreenBackground;
+  opacity: 0 !important;
 }
 
 // Стили для верхней панели настроек
 .specialSettings__container {
   background-color: #94a6af;
   padding: 0.5% 1%;
-  border: 5px solid;
+  border: $border5px;
   border-bottom: none;
   @media (max-width: 992px) {
     border-width: 3px;
@@ -187,20 +102,19 @@
 @include themeButton(themeBG, $blueGreenBackground, $blueGreenElements);
 //--------------------------------------------------------------------------
 
+$trLength: -6px;
 // Анимации движений для фокуса
 @mixin shiftLeft {
-  -o-transform: translateX(-10px);
-  -ms-transform: translateX(-10px);
-  -moz-transform: translateX(-10px);
-  -webkit-transform: translateX(-10px);
-  transform: translateX(-10px);
-  transition: ease 300ms;
+  -o-transform: translateX($trLength);
+  -ms-transform: translateX($trLength);
+  -moz-transform: translateX($trLength);
+  -webkit-transform: translateX($trLength);
+  transform: translateX($trLength);
 }
 @mixin shiftUp {
-  -o-transform: translateY(-10px);
-  -ms-transform: translateY(-10px);
-  -moz-transform: translateY(-10px);
-  -webkit-transform: translateY(-10px);
-  transform: translateY(-10px);
-  transition: ease 300ms;
+  -o-transform: translateY($trLength);
+  -ms-transform: translateY($trLength);
+  -moz-transform: translateY($trLength);
+  -webkit-transform: translateY($trLength);
+  transform: translateY($trLength);
 }

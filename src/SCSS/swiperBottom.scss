@@ -1,4 +1,5 @@
 .bottomSwiper__bar {
+  color: var(--secondaryClr);
   margin: 2% 0 10px 20px;
   @extend %titlesFS;
   @media #{$mediaQueryMobile} {
@@ -7,6 +8,7 @@
 }
 
 .bottomSwiper {
+  background-color: var(--mainClr);
   min-height: 453px;
   @media (max-width: 1200px) {
     min-height: 367px;

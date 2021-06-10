@@ -1,6 +1,10 @@
 .footer {
   text-align: center;
   padding: 2%;
+  background-color: var(--secondaryClr);
+  a {
+    color: var(--mainClr);
+  }
 
   @media #{$mediaQueryMobile} {
     width: 100%;

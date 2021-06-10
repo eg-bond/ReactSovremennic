@@ -8,7 +8,6 @@ function SelectedMovie({
   createFilmsObject,
   Q,
   siteMode,
-  themeCl,
   fontSize,
 }) {
   const { film_id } = useParams()
@@ -22,6 +21,8 @@ function SelectedMovie({
   }
 
   let filmItem = filmsObject[film_id]
+  let gridClass =
+    fontSize !== '26px' ? 'selectedMovie--rightFr' : 'selectedMovie--fullFr'
 
   const FilmImg = () => (
     <div className='selectedMovie--leftFr'>
@@ -38,14 +39,12 @@ function SelectedMovie({
     <>
       <div className={`content__gridLeftItem--3fr`}>
         <div className='selectedMovie'>
-          {fontSize !== '200' && <FilmImg />}
+          {fontSize !== '26px' && <FilmImg />}
 
-          <div className='selectedMovie--rightFr'>
+          <div className={gridClass}>
             <div className='selectedMovie__title'>
-              <h2 className={siteMode === 'special' ? themeCl.elems : ''}>
-                {filmItem['title']}
-              </h2>
-              <p className={siteMode === 'special' ? themeCl.elems : ''}>
+              <h2>{filmItem['title']}</h2>
+              <p>
                 Смотрите {`${filmItem['beginDate']} ${filmItem['endDate']}`}
               </p>
             </div>
@@ -79,6 +78,7 @@ function SelectedMovie({
             description={filmItem['description']}
             trailer_src={filmItem['playerCode']}
             siteMode={siteMode}
+            fontSize={fontSize}
           />
         </div>
         {siteMode === 'special' && <Films />}

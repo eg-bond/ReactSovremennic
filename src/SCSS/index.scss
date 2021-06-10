@@ -5,6 +5,9 @@
   margin: 2% 0 1% 5px;
   @extend %titlesFS;
 }
+.index__h1--special {
+  margin-top: 0 !important;
+}
 .news p {
   margin: 2% 1% 0 1.5%;
 }
@@ -38,6 +41,9 @@
   margin-bottom: 8%;
   transition: ease 300ms;
 }
+.linkWrapper img {
+  transition: all 0.3s;
+}
 .linkWrapper:focus .desktopAdv {
   @include shiftLeft;
 }
@@ -57,7 +63,7 @@
     h4 {
       font-size: $titlesFS;
       margin: 0 0 1vw 0;
-      color: white;
+      color: var(--secondaryClr);
     }
     .embed-responsive {
       margin: 2% 0 2% 0;
@@ -105,11 +111,9 @@
   //реклама на остальных страницах в мобильной версии
   .advXS {
     margin: 3% 0 3.7% 0;
-    background-color: black;
   }
   .advXS__img {
     @extend %imgContainerXs;
-    background-color: black;
     padding-bottom: 13%;
   }
 }

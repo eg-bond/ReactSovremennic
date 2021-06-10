@@ -1,7 +1,15 @@
 import React from 'react'
 import LiteYouTubeEmbed from 'react-lite-youtube-embed'
 
-export const DescriptionTrailer = ({ description, trailer_src, siteMode }) => {
+export const DescriptionTrailer = ({
+  description,
+  trailer_src,
+  siteMode,
+  fontSize,
+}) => {
+  let gridClass =
+    fontSize !== '26px' ? 'descTrailer--grid' : 'selectedMovie--fullFr'
+
   const YouTubeFrame = () => (
     <div className='embed-responsive'>
       <LiteYouTubeEmbed
@@ -12,7 +20,7 @@ export const DescriptionTrailer = ({ description, trailer_src, siteMode }) => {
     </div>
   )
   return (
-    <div className={`descTrailer--grid`}>
+    <div className={gridClass}>
       <p className='selectedMovie__description'>{description}</p>
 
       {siteMode === 'default' && <YouTubeFrame />}

@@ -15,7 +15,6 @@ const Content = ({
   filmsObject,
   createFilmsObject,
   siteMode,
-  themeCl,
   fontSize,
   pathname,
 }) => {
@@ -31,7 +30,7 @@ const Content = ({
         <Seans Q={Q} />
       </Route>
       <Route exact path='/sushi'>
-        <SushiContainer Q={Q} siteMode={siteMode} themeCl={themeCl} />
+        <SushiContainer Q={Q} siteMode={siteMode} />
       </Route>
       <Route exact path='/movies/:film_id'>
         <SelectedMovie
@@ -39,12 +38,14 @@ const Content = ({
           createFilmsObject={createFilmsObject}
           Q={Q}
           siteMode={siteMode}
-          themeCl={themeCl}
           fontSize={fontSize}
         />
       </Route>
-      <Route exact path='/films'>
-        {siteMode === 'special' ? <FilmsSpecialPage /> : <Redirect to='/' />}
+      {/* prettier-ignore */}
+      <Route exact path='/films'>        
+        {siteMode === 'special' 
+          ? <FilmsSpecialPage pathname={pathname}/> 
+          : <Redirect to='/' />}
       </Route>
       <Suspense fallback={<div className='content__gridLeftItem--3fr'></div>}>
         <Route exact path='/about'>
