@@ -4,7 +4,7 @@ import SelectedMovie from './Cinema/SelectedMovie'
 import IndexContent from './IndexContent/IndexContent'
 import Seans from './Seans/Seans'
 import SushiContainer from './Sushi/SushiContainer'
-import FilmsSpecialPage from './Films/FilmsSpecialPage'
+import FilmsSpecialPage from './FilmsSpecial/FilmsSpecialPage'
 
 const Rules = lazy(() => import('./Rules/Rules'))
 const About = lazy(() => import('./About/About'))

@@ -22,7 +22,6 @@ export const DescriptionTrailer = ({
   return (
     <div className={gridClass}>
       <p className='selectedMovie__description'>{description}</p>
-
       {siteMode === 'default' && <YouTubeFrame />}
     </div>
   )

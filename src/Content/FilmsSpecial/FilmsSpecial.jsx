@@ -5,20 +5,13 @@ import { connect } from 'react-redux'
 
 let filmsSpecial = null
 
-function Films({ films, ...props }) {
-  let titleCl =
-    props.pathname === '/films' ? 'filmsSpecialPage__h1' : 'filmsSpecial__h1'
-
+function FilmsSpecial({ films, ...props }) {
   if (!filmsSpecial) {
     filmsSpecial = films.map(f => (
       <div className='filmsSpecial__flex__item' key={f.link}>
         <Link className={'linkWrapper'} to={`/movies/${f.link}`}>
           <div className={`filmsSpecial__flex__item__img`}>
-            <img
-              src={require(`../../images/top_menu/${f.link}.gif`)}
-              alt={f.title}
-            />
-            {/* // <img src={`./Images/top_menu/${f.link}.gif`} alt={f.title} /> */}
+            <img src={`./Images/top_menu/${f.link}.gif`} alt={f.title} />
           </div>
           <div className={'filmsSpecial__flex__title'}>
             <h2>{f.title}</h2>
@@ -28,6 +21,9 @@ function Films({ films, ...props }) {
       </div>
     ))
   }
+
+  let titleCl =
+    props.pathname === '/films' ? 'filmsSpecialPage__h1' : 'filmsSpecial__h1'
 
   return (
     <div className='filmsSpecial'>
@@ -41,4 +37,4 @@ let mapStateToProps = state => ({
   films: state.cinema.films,
 })
 
-export default compose(connect(mapStateToProps, {}))(Films)
+export default compose(connect(mapStateToProps, {}))(FilmsSpecial)

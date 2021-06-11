@@ -1,60 +1,57 @@
 import React from 'react'
-import IndexAdvXS from '../../Template/IndexAdvXS'
+// import IndexAdvXS from '../../Template/IndexAdvXS'
 import { Link } from 'react-router-dom'
-import Films from '../Films/Films'
+import FilmsSpecial from '../FilmsSpecial/FilmsSpecial'
 import LiteYouTubeEmbed from 'react-lite-youtube-embed'
 
 function IndexContent({ siteMode, films, Q }) {
   return (
     <div className='content__gridLeftItem--3fr'>
-      <div className=''>
-        {/* <div className='container col-lg-9 col-md-9 col-sm-9 col-xs-12'> */}
-        {siteMode === 'default' && (
-          <div className='trailers'>
-            {Q.mobile && <h4>Трейлеры</h4>}
+      {siteMode === 'default' && (
+        <div className='trailers'>
+          {Q.mobile && <h4>Трейлеры</h4>}
 
-            <div className='embed-responsive'>
-              <LiteYouTubeEmbed
-                id='PLfrc7TOjXulMiQWLR1Jr8ZiZ2b7hWqSZf'
-                playlist={true}
-                playlistCoverId='uyPLu4E45So'
-                title='index_trailers_playlist'
-                poster='maxresdefault'
-              />
-            </div>
+          <div className='embed-responsive'>
+            <LiteYouTubeEmbed
+              id='PLfrc7TOjXulMiQWLR1Jr8ZiZ2b7hWqSZf'
+              playlist={true}
+              playlistCoverId='uyPLu4E45So'
+              title='index_trailers_playlist'
+              poster='maxresdefault'
+            />
           </div>
-        )}
-
-        <div className='separatorMobile separatorMobile--index' />
-
-        <div className={'news'}>
-          <h1 className={siteMode === 'special' ? 'index__h1--special' : ''}>
-            Информация
-          </h1>
-          <p>• Расписание сеансов можно узнать по телефону 2-12-32</p>
-          <p>
-            • Суши-бар "КИН-НО" работает в полном объеме! Время работы:
-            понедельник-четверг с 12:00 до 23:00, пятница-суббота с 12:00 до
-            01:00, воскресенье с 12:00 до 23:00. Доставка осуществляется в часы
-            работы ресторана, телефон 2-000-8, доставка бесплатная. Меню на
-            <Link to='sushi' className='ref'>
-              странице
-            </Link>
-            сайта и в группе
-            <a
-              href='https://vk.com/album-46510864_166402327'
-              className='ref vk_ref'>
-              Вконтакте
-            </a>
-          </p>
         </div>
+      )}
 
-        {siteMode === 'special' && Q.desktop && <Films films={films} />}
+      <div className='separatorMobile separatorMobile--index' />
 
-        <div className='separatorMobile separatorMobile--index' />
+      <div className={'news'}>
+        <h1 className={siteMode === 'special' ? 'index__h1--special' : ''}>
+          Информация
+        </h1>
+        <p>• Расписание сеансов можно узнать по телефону 2-12-32</p>
+        <p>
+          • Суши-бар "КИН-НО" работает в полном объеме! Время работы:
+          понедельник-четверг с 12:00 до 23:00, пятница-суббота с 12:00 до
+          01:00, воскресенье с 12:00 до 23:00. Доставка осуществляется в часы
+          работы ресторана, телефон 2-000-8, доставка бесплатная. Меню на
+          <Link to='sushi' className='ref'>
+            странице
+          </Link>
+          сайта и в группе
+          <a
+            href='https://vk.com/album-46510864_166402327'
+            className='ref vk_ref'>
+            Вконтакте
+          </a>
+        </p>
       </div>
 
-      {Q.mobile && <IndexAdvXS />}
+      {siteMode === 'special' && Q.desktop && <FilmsSpecial films={films} />}
+
+      {/* <div className='separatorMobile separatorMobile--index' /> */}
+
+      {/* {Q.mobile && <IndexAdvXS />} */}
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, Suspense, useState } from 'react'
+import React, { useEffect, Suspense, lazy } from 'react'
 import 'swiper/swiper.scss'
 import 'swiper/components/navigation/navigation.scss'
 import 'swiper/components/pagination/pagination.scss'
@@ -8,7 +8,6 @@ import { useLocation } from 'react-router-dom'
 import Navigation from './Template/Navigation'
 import BottomSwiper from './Template/BottomSwiper'
 import Footer from './Template/Footer'
-// import AdvXS from './Template/AdvXS'
 import {
   initialButtonTitle,
   initialActiveKey,
@@ -46,7 +45,6 @@ const App = React.memo(
       initialActiveKey()
       initialButtonTitle()
       createFilmsTodayArr()
-      // window.addEventListener('load', () => setLoaded(true))
     }, [
       createActualDatesArr,
       initialActiveKey,
@@ -55,7 +53,6 @@ const App = React.memo(
     ])
 
     let { pathname } = useLocation()
-    // const [loaded, setLoaded] = useState(0)
 
     // Queries
     const Q = {
@@ -77,11 +74,6 @@ const App = React.memo(
       scrollToTop()
     }
 
-    let mainContainerClasses = [
-      modifiedClass('mainContainer', siteMode),
-      'flex-wrapper',
-    ].join(' ')
-
     // Изменение размера шрифта
     useEffect(() => {
       document.documentElement.style.setProperty('--htmlFontSize', fontSize)
@@ -90,6 +82,11 @@ const App = React.memo(
     useEffect(() => {
       changeAppColors(theme, siteMode)
     }, [theme, siteMode, changeAppColors])
+
+    let mainContainerClasses = [
+      modifiedClass('mainContainer', siteMode),
+      'flex-wrapper',
+    ].join(' ')
 
     return (
       <div className={mainContainerClasses}>
@@ -102,12 +99,10 @@ const App = React.memo(
           />
 
           {/*Отступ навигации в мобильной версии*/}
-          <div className='line_container' />
+          <div className='navigation__containerXs' />
           <div className='separatorMobile' />
 
           <div className={`container wrapper ${imgHidden ? 'hideImages' : ''}`}>
-            {/* {Q.mobile && <AdvXS />} */}
-
             {siteMode === 'default' && (
               <FilmSwiper films={films} mobile={Q.mobile} />
             )}
@@ -127,22 +122,17 @@ const App = React.memo(
               {Q.desktop && pathname !== '/sushi' && <Adv />}
             </div>
 
-            <div>
-              {siteMode === 'default' && (
-                <>
-                  <h1 className='bottomSwiper__bar'>Сегодня в кино</h1>
-                  <hr className={`bottomSwiper__border`} />
-                  {/* <Suspense fallback={null}> */}
-                  <BottomSwiper
-                    filmsToday={filmsToday}
-                    slidesPerView={filmsTodaySlides}
-                    desktop={Q.desktop}
-                  />
-
-                  {/* </Suspense> */}
-                </>
-              )}
-            </div>
+            {siteMode === 'default' && (
+              <div>
+                <h1 className='bottomSwiper__bar'>Сегодня в кино</h1>
+                <hr className={`bottomSwiper__border`} />
+                <BottomSwiper
+                  filmsToday={filmsToday}
+                  slidesPerView={filmsTodaySlides}
+                  desktop={Q.desktop}
+                />
+              </div>
+            )}
           </div>
         </div>
         <Footer />
