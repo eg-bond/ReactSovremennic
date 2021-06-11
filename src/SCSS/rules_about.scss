@@ -1,29 +1,22 @@
 .rules h3 {
   text-align: center;
   font-size: 1.6rem;
-  // font-size: 160%;
   &:first-child {
     margin-top: 0;
   }
   @media (max-width: 992px) {
     font-size: 1.1rem;
-    // font-size: 110%;
   }
   @media #{$mediaQueryMobile} {
-    font-size: $titlesFS;
+    font-size: $mobileTitlesFS;
     margin: 1vw 0 1vw 0;
   }
 }
 .rules p {
-  font-size: 1.2rem;
-  // font-size: 120%;
   text-align: justify;
-  @media (max-width: 992px) {
-    font-size: 0.9rem;
-    // font-size: 90%;
-  }
+  @extend %desktopParagraphsFS;
   @media #{$mediaQueryMobile} {
-    font-size: $paragraphsFS;
+    font-size: $mobileParagraphsFS;
   }
 }
 

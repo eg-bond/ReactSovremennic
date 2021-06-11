@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 SwiperCore.use([Autoplay])
 
 const BottomSwiper = props => {
-  // const [opacity, turnOpacity] = useState('opacity_0')
+  const [opacity, turnOpacity] = useState('opacity_0')
   const swiperRef = useRef(null)
 
   if (props.filmsToday[0] === undefined) {
@@ -19,7 +19,7 @@ const BottomSwiper = props => {
     className: `bottomSwiper__container`,
     loop: true,
     onSwiper: swiper => (swiperRef.current = swiper),
-    // onImagesReady: () => turnOpacity('opacity_1'),
+    onImagesReady: () => turnOpacity('opacity_1'),
     autoplay: {
       delay: 2000,
       disableOnInteraction: false,
@@ -29,7 +29,7 @@ const BottomSwiper = props => {
     <>
       {props.desktop && (
         <div
-          className='bottomSwiper'
+          className={`bottomSwiper ${opacity}`}
           onMouseEnter={() => swiperRef.current.autoplay.stop()}
           onMouseLeave={() => swiperRef.current.autoplay.start()}>
           <Swiper {...params}>
@@ -37,7 +37,6 @@ const BottomSwiper = props => {
               <SwiperSlide className={'sliderSlide'} key={f.link}>
                 <Link to={`/movies/${f.link}`}>
                   <img
-                    // className='opacity'
                     // src={`./Images/description/${f.link}_D.jpg`}
                     src={require(`../images/description/${f.link}_D.jpg`)}
                     alt=''

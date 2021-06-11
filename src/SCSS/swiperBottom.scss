@@ -1,20 +1,18 @@
 .bottomSwiper__bar {
-  color: var(--secondaryClr);
   margin: 2% 0 10px 20px;
-  @extend %titlesFS;
+  @extend %desktopTitlesFS;
   @media #{$mediaQueryMobile} {
     display: none;
   }
 }
 
 .bottomSwiper {
-  background-color: var(--mainClr);
-  min-height: 453px;
+  min-height: 462px;
   @media (max-width: 1200px) {
-    min-height: 367px;
+    min-height: 380px;
   }
   @media (max-width: 992px) {
-    min-height: 282px;
+    min-height: 290px;
   }
   @media #{$mediaQueryMobile} {
     display: none;
@@ -41,25 +39,20 @@
   width: 100%;
 }
 .bottomSwiper h1 {
-  font-size: 1.4rem;
   padding-left: 2%;
   margin: 3% 0;
+  font-size: 1.8rem;
   @media (max-width: 1200px) {
-    font-size: 1.15rem;
+    font-size: 1.5rem;
   }
   @media (max-width: 992px) {
-    font-size: 0.87rem;
+    font-size: 1.2rem;
   }
 }
 .bottomSwiper p {
   padding-left: 2%;
   margin-bottom: 1.5%;
-  @media (max-width: 1200px) {
-    font-size: 0.78rem;
-  }
-  @media (max-width: 992px) {
-    font-size: 0.68rem;
-  }
+  @extend %desktopParagraphsFS;
 }
 .bottomSwiper a {
   text-decoration: none;

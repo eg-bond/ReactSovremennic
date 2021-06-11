@@ -11,7 +11,7 @@ function AdvXS() {
           </a>
         </div>
       </div>
-      <div className='separator' />
+      <div className='separatorMobile' />
     </>
   )
 }

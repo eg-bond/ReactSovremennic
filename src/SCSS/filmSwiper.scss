@@ -2,7 +2,15 @@
   width: 100%;
   cursor: grab;
   height: auto;
-  background-color: var(--mainClr);
+}
+.cinemaSlider .swiper-wrapper {
+  height: 325px;
+  @media (max-width: 1200px) {
+    height: 275px;
+  }
+  @media (max-width: 992px) {
+    height: 225px;
+  }
 }
 .cinemaSlider__container {
   padding: 7px 7px 0 7px;
@@ -17,14 +25,19 @@
   border-radius: $imagesBR;
   position: relative;
   z-index: 1;
+  @media (max-width: 1200px) {
+    height: 210px;
+  }
+  @media (max-width: 992px) {
+    height: 170px;
+  }
 }
 .cinemaSlider h1 {
-  font-weight: bold;
   padding-left: 2%;
   margin: 5% 0 2% 0;
   white-space: pre;
   overflow: hidden;
-  color: var(--secondaryClr);
+  @extend %desktopParagraphsFS;
 }
 .cinemaSlider h1::before {
   content: '';
@@ -38,8 +51,14 @@
 .cinemaSlider p {
   padding-left: 2.5%;
   letter-spacing: 0.01em;
-  color: var(--secondaryClr);
   font-weight: normal;
+  font-size: 0.9rem;
+  @media (max-width: 1200px) {
+    font-size: 0.8rem;
+  }
+  @media (max-width: 992px) {
+    font-size: 0.7rem;
+  }
 }
 .cinemaSlider a {
   color: var(--secondaryClr);
@@ -64,42 +83,14 @@
   background-color: var(--secondaryClr);
 }
 .cinemaSlider .swiper-pagination-bullets {
-  bottom: 5px !important;
-  @media (max-width: 992px) {
-    bottom: 2px !important;
-  }
-}
-
-@mixin filmSwiperDesktop($swiperHeight, $fontSizeH1, $fontSizeP, $imgHeight) {
-  .cinemaSlider .swiper-wrapper {
-    height: $swiperHeight;
-  }
-  .cinemaSlider h1 {
-    font-size: $fontSizeH1;
-  }
-  .cinemaSlider p {
-    font-size: $fontSizeP;
-  }
-  .cinemaSlider img {
-    height: $imgHeight;
-  }
-}
-
-@include filmSwiperDesktop(324px, 100%, 80%, 250px);
-
-@media (max-width: 1200px) {
-  @include filmSwiperDesktop(272px, 85%, 70%, 210px);
-}
-
-@media (max-width: 992px) {
-  @include filmSwiperDesktop(224px, 70%, 58%, 170px);
+  bottom: 10px !important;
 }
 
 @media #{$mediaQueryMobile} {
   .cinemaSlider {
     h4 {
       color: white;
-      font-size: $titlesFS;
+      font-size: $mobileTitlesFS;
       margin: 1vw 0 1vw 15px;
     }
   }

@@ -1,9 +1,5 @@
-$lusidaFont: Lucida Console, monospace;
-$arialFont: Arial Black, sans-serif;
-$robotoFont: 'Roboto', sans-serif;
 $jostFont: 'Jost', sans-serif;
-
-$linesColor: #ebece9;
+// $linesColor: #ebece9;
 $imagesBR: 10px;
 $buttonsBR: 30px;
 $border1px: solid 1px var(--secondaryClr);
@@ -11,10 +7,10 @@ $border2px: solid 2px var(--secondaryClr);
 $border3px: solid 3px var(--secondaryClr);
 $border5px: solid 5px var(--secondaryClr);
 
-//для мобильной версии
+// Переменные для мобильной версии
 $mediaQueryMobile: '(max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)';
-$paragraphsFS: 2.4vw;
-$titlesFS: 3.2vw;
+$mobileParagraphsFS: 2.4vw;
+$mobileTitlesFS: 3.2vw;
 
 // Переменные сайта для слабовидящих
 // Цветовые темы
@@ -25,7 +21,7 @@ $whiteBlackBackground: #ebece9;
 $whiteBlackElements: black;
 
 $blackRedBackground: black;
-$blackRedElements: #df233e;
+$blackRedElements: #ab1919;
 
 $yellowBrownBackground: #f5dda1;
 $yellowBrownElements: #810026;
@@ -33,7 +29,8 @@ $yellowBrownElements: #810026;
 $blueGreenBackground: #b4e5ee;
 $blueGreenElements: #5e4005;
 
-//Переиспользуемые классы
+// Переиспользуемые классы
+// Контейнер для изображений, который держит форму
 %imgContainer {
   position: relative;
   width: 100%;
@@ -61,7 +58,7 @@ $blueGreenElements: #5e4005;
   }
 }
 
-%titlesFS {
+%desktopTitlesFS {
   font-size: 2.5rem;
   @media (max-width: 1200px) {
     font-size: 2rem;
@@ -71,12 +68,19 @@ $blueGreenElements: #5e4005;
   }
 }
 
-%desktopP_FS {
+%desktopParagraphsFS {
   font-size: 1.2rem;
   @media (max-width: 1200px) {
     font-size: 1.05rem;
   }
   @media (max-width: 992px) {
     font-size: 0.9rem;
+  }
+}
+
+%desktopBorders {
+  border: $border5px;
+  @media (max-width: 992px) {
+    border: $border3px;
   }
 }

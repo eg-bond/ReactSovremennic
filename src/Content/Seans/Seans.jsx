@@ -92,7 +92,7 @@ const Seans = React.memo(
           </div>
         </Grow>
 
-        <div className='separator-special' />
+        <div className='separatorMobile-special' />
       </div>
     )
   }

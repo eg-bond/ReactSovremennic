@@ -3,7 +3,7 @@
 }
 .news h1 {
   margin: 2% 0 1% 5px;
-  @extend %titlesFS;
+  @extend %desktopTitlesFS;
 }
 .index__h1--special {
   margin-top: 0 !important;
@@ -11,17 +11,14 @@
 .news p {
   margin: 2% 1% 0 1.5%;
 }
+.news a {
+  margin: 0 1%;
+}
 .news p,
 .news a {
-  margin: 2% 1% 0 1.5%;
-  font-size: 1.35rem;
-  @media (max-width: 1200px) {
-    font-size: 1.15rem;
-  }
-  @media (max-width: 992px) {
-    font-size: 0.95rem;
-  }
+  @extend %desktopParagraphsFS;
 }
+
 .ref {
   text-decoration: underline;
   transition: ease 0.3s;
@@ -45,7 +42,7 @@
   transition: all 0.3s;
 }
 .linkWrapper:focus .desktopAdv {
-  @include shiftLeft;
+  @include shiftUp;
 }
 .desktopAdv--1 {
   padding-bottom: 50%;
@@ -61,7 +58,7 @@
 @media #{$mediaQueryMobile} {
   .trailers {
     h4 {
-      font-size: $titlesFS;
+      font-size: $mobileTitlesFS;
       margin: 0 0 1vw 0;
       color: var(--secondaryClr);
     }
@@ -71,15 +68,15 @@
   }
   .news {
     h1 {
-      font-size: $titlesFS;
+      font-size: $mobileTitlesFS;
       margin: 1vw 0 1vw 0;
     }
     p {
-      font-size: $paragraphsFS;
+      font-size: $mobileParagraphsFS;
       margin: 0 0 1.5% 0.5%;
     }
     a {
-      font-size: $paragraphsFS;
+      font-size: $mobileParagraphsFS;
     }
   }
 

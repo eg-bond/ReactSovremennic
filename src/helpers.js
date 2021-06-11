@@ -13,7 +13,7 @@ const themeAppColors = {
   },
   blackRed: {
     main: 'black',
-    secondary: '#df233e',
+    secondary: '#ab1919',
   },
   yellowBrown: {
     main: '#f5dda1',

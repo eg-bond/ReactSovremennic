@@ -103,49 +103,45 @@ const App = React.memo(
 
           {/*Отступ навигации в мобильной версии*/}
           <div className='line_container' />
-          <div className='separator' />
+          <div className='separatorMobile' />
 
           <div className={`container wrapper ${imgHidden ? 'hideImages' : ''}`}>
-            <div className='row'>
-              {/* {Q.mobile && <AdvXS />} */}
+            {/* {Q.mobile && <AdvXS />} */}
 
+            {siteMode === 'default' && (
+              <FilmSwiper films={films} mobile={Q.mobile} />
+            )}
+
+            <div className='separatorMobile separatorMobile--MB' />
+            <hr className={`separator hidden-xs`} />
+
+            <div className={'mainContainer__content'}>
+              <Content
+                siteMode={siteMode}
+                Q={Q}
+                filmsObject={filmsObject}
+                createFilmsObject={createFilmsObject}
+                fontSize={fontSize}
+                pathname={pathname}
+              />
+              {Q.desktop && pathname !== '/sushi' && <Adv />}
+            </div>
+
+            <div>
               {siteMode === 'default' && (
-                <FilmSwiper films={films} mobile={Q.mobile} />
+                <>
+                  <h1 className='bottomSwiper__bar'>Сегодня в кино</h1>
+                  <hr className={`bottomSwiper__border`} />
+                  {/* <Suspense fallback={null}> */}
+                  <BottomSwiper
+                    filmsToday={filmsToday}
+                    slidesPerView={filmsTodaySlides}
+                    desktop={Q.desktop}
+                  />
+
+                  {/* </Suspense> */}
+                </>
               )}
-
-              <div className='separator separator--MB' />
-
-              <hr className={`line_5px hidden-xs`} />
-
-              <div className={'mainContainer__content'}>
-                <Content
-                  siteMode={siteMode}
-                  Q={Q}
-                  filmsObject={filmsObject}
-                  createFilmsObject={createFilmsObject}
-                  fontSize={fontSize}
-                  pathname={pathname}
-                />
-
-                {Q.desktop && pathname !== '/sushi' && <Adv />}
-              </div>
-
-              <div>
-                {siteMode === 'default' && (
-                  <>
-                    <h1 className='bottomSwiper__bar'>Сегодня в кино</h1>
-                    <hr className={`bottomSwiper__border`} />
-                    {/* <Suspense fallback={null}> */}
-                    <BottomSwiper
-                      filmsToday={filmsToday}
-                      slidesPerView={filmsTodaySlides}
-                      desktop={Q.desktop}
-                    />
-
-                    {/* </Suspense> */}
-                  </>
-                )}
-              </div>
             </div>
           </div>
         </div>

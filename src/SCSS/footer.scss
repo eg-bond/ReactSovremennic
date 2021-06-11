@@ -4,12 +4,16 @@
   background-color: var(--secondaryClr);
   a {
     color: var(--mainClr);
+    @extend %desktopParagraphsFS;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   @media #{$mediaQueryMobile} {
     width: 100%;
-    & a {
-      font-size: $paragraphsFS;
+    a {
+      font-size: $mobileParagraphsFS;
     }
   }
 }

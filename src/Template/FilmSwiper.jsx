@@ -48,7 +48,6 @@ const FilmSwiper = ({ mobile, films }) => {
           <SwiperSlide className={'sliderSlide'} key={f.link}>
             <Link to={`/movies/${f.link}`}>
               <img
-                className='opacity'
                 // `./Images/top_menu/${f.link}.gif`
                 src={require(`../images/top_menu/${f.link}.gif`)}
                 alt={f.title}

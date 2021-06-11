@@ -42,7 +42,7 @@
   td,
   tr {
     padding: 2.7% 0;
-    @extend %desktopP_FS;
+    @extend %desktopParagraphsFS;
     &:nth-of-type(1) {
       width: 8%;
       text-align: center;
@@ -77,15 +77,14 @@
     margin: 1vw 0;
     background-color: var(--mainClr);
     border: $border2px;
-    color: var(--secondaryClr);
     border-radius: $buttonsBR;
     width: 100%;
     outline: none !important;
   }
   .seans_button_xs:hover {
     background-color: var(--mainClr) !important;
-    border-color: red !important;
-    color: red !important;
+    border-color: #e41b2b !important;
+    color: #e41b2b !important;
     transition: ease 650ms;
   }
   .seans_button_xs span {
@@ -102,8 +101,10 @@
 
   .seanse__table {
     margin: 2.1vw auto;
-    * {
-      font-size: $paragraphsFS;
+    th,
+    td,
+    tr {
+      font-size: $mobileParagraphsFS;
     }
   }
 
@@ -134,14 +135,14 @@
     justify-content: center;
     border-bottom: solid 1px;
     margin: 0 10px;
-    font-size: $paragraphsFS;
+    font-size: $mobileParagraphsFS;
     font-family: $jostFont;
     &:last-child {
       border-bottom: none !important;
     }
   }
   .popper li.active {
-    color: red;
+    color: #e41b2b;
   }
   .popper__seance li {
     min-height: 10vw !important;

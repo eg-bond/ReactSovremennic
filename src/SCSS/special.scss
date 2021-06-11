@@ -5,13 +5,10 @@
 
 // Стили для верхней панели настроек
 .specialSettings__container {
-  background-color: #94a6af;
+  background-color: #95905e;
   padding: 0.5% 1%;
-  border: $border5px;
-  border-bottom: none;
-  @media (max-width: 992px) {
-    border-width: 3px;
-  }
+  border-bottom: none !important;
+  @extend %desktopBorders;
 }
 .specialSettings__flex {
   display: flex;
@@ -89,21 +86,22 @@
   }
 }
 
-@mixin themeButton($theme, $backColor, $elemsColor) {
+// Классы кнопок изменения цветовых схем
+@mixin themeButtonCl($theme, $backColor, $elemsColor) {
   .#{$theme} {
     background-color: $backColor !important;
     color: $elemsColor !important;
   }
 }
-@include themeButton(themeBW, $blackWhiteBackground, $blackWhiteElements);
-@include themeButton(themeWB, $whiteBlackBackground, $whiteBlackElements);
-@include themeButton(themeBR, $blackRedBackground, $blackRedElements);
-@include themeButton(themeYB, $yellowBrownBackground, $yellowBrownElements);
-@include themeButton(themeBG, $blueGreenBackground, $blueGreenElements);
+@include themeButtonCl(themeBW, $blackWhiteBackground, $blackWhiteElements);
+@include themeButtonCl(themeWB, $whiteBlackBackground, $whiteBlackElements);
+@include themeButtonCl(themeBR, $blackRedBackground, $blackRedElements);
+@include themeButtonCl(themeYB, $yellowBrownBackground, $yellowBrownElements);
+@include themeButtonCl(themeBG, $blueGreenBackground, $blueGreenElements);
 //--------------------------------------------------------------------------
 
-$trLength: -6px;
 // Анимации движений для фокуса
+$trLength: -6px;
 @mixin shiftLeft {
   -o-transform: translateX($trLength);
   -ms-transform: translateX($trLength);

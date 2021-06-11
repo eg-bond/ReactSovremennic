@@ -3,14 +3,24 @@
   padding: 0;
   font-family: $jostFont;
 }
-img {
-  vertical-align: middle;
+html {
+  --mainClr: black;
+  --secondaryClr: #ebece9;
+  --movieTitlesClr: #e41b2b;
+  --mobileSeparatorClr: #292e33;
+  --htmlFontSize: 14px;
+
+  background-color: var(--mainClr);
+  font-size: var(--htmlFontSize);
+  -webkit-tap-highlight-color: var(--mainClr);
 }
+
 hr {
   border: 0;
   margin-top: 0;
   margin-bottom: 0;
 }
+
 a {
   color: var(--secondaryClr);
   text-decoration: none;
@@ -18,9 +28,25 @@ a {
     outline: none;
   }
 }
+
 p {
   color: var(--secondaryClr);
   margin: 0 0 10px;
+}
+
+button,
+table {
+  color: var(--secondaryClr);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1;
+  color: var(--secondaryClr);
 }
 
 .opacity_0 {
@@ -30,21 +56,6 @@ p {
 .opacity_1 {
   opacity: 1;
   transition: ease 150ms;
-}
-
-.wrapper {
-  height: 100%;
-  border: $border5px;
-  border-top: none !important;
-  padding-bottom: 0 !important;
-  background-color: var(--mainClr);
-  @media (max-width: 992px) {
-    border: $border3px;
-  }
-  @media #{$mediaQueryMobile} {
-    background-color: var(--mainClr) !important;
-    border-width: 0;
-  }
 }
 
 // Флекс для прижатия футера к нижней части экрана
@@ -105,31 +116,37 @@ $backImgHeight992: 200px;
   background-repeat: no-repeat;
   background-size: 100% $backImgHeight + 1, 100%;
   height: 100%;
+  background-color: var(--mainClr);
   @media (max-width: 992px) {
     background-size: 100% $backImgHeight992 + 1, 100%;
   }
   @media #{$mediaQueryMobile} {
     background-image: none !important;
-    background-color: var(--mainClr);
   }
 }
 .mainContainer--default {
   background-image: url('../images/main_image.jpg'),
     linear-gradient(to right, white 50%, #111514 50%);
 }
-.mainContainer--special {
+
+.wrapper {
+  height: 100%;
+  min-height: 100vh;
+  border-top: none !important;
+  border-bottom: none !important;
   background-color: var(--mainClr);
+  @extend %desktopBorders;
+  @media #{$mediaQueryMobile} {
+    border-width: 0;
+  }
 }
 
-.line_5px {
+.separator {
   border-top: $border5px;
   margin-left: -1px;
   margin-bottom: 15px;
   @media (max-width: 992px) {
     border-top: $border3px;
-  }
-  @media #{$mediaQueryMobile} {
-    display: none;
   }
 }
 
@@ -169,26 +186,17 @@ $backImgHeight992: 200px;
 }
 
 @media #{$mediaQueryMobile} {
-  body {
-    background-color: var(--mainClr);
-  }
   .hidden-xs {
     display: none;
   }
-
-  //подкрутка (убрать в BT)
-  .container {
-    width: auto;
-  }
-
-  .separator {
+  .separatorMobile {
     height: 5px;
-    background-color: var(--sepearatorsClr);
+    background-color: var(--mobileSeparatorClr);
   }
-  .separator--index {
+  .separatorMobile--index {
     margin: 0 -15px 0 -15px;
   }
-  .separator--MB {
+  .separatorMobile--MB {
     margin-bottom: 2vw;
   }
 }
