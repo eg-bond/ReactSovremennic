@@ -2,13 +2,14 @@ import React from 'react'
 import SwiperCore, { Navigation, Pagination } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import Grow from '@material-ui/core/Grow'
+import { trDuration } from './SushiContainer'
 
 SwiperCore.use([Navigation, Pagination])
 
 const sushiSwiperSlide = slideKey => {
   return (
     <SwiperSlide key={slideKey}>
-      <img src={require(`../../images/sushi/${slideKey}.gif`)} alt={slideKey} />
+      <img src={`./Images/sushi/${slideKey}.gif`} alt={slideKey} />
     </SwiperSlide>
   )
 }
@@ -28,7 +29,7 @@ export const SushiSwipers = ({ swiperKey, imgVisible }) => {
   }
 
   return (
-    <Grow in={imgVisible} timeout={250}>
+    <Grow in={imgVisible} timeout={trDuration}>
       <Swiper className='swiper-container-sushi' {...params}>
         {slideKeys[swiperKey].map(swiperKey => sushiSwiperSlide(swiperKey))}
       </Swiper>

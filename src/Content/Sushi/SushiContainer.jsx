@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Sushi from './Sushi'
 import { delay } from '../../helpers'
+import { useRef } from 'react'
 
 const sushiElems = {
   default: [
@@ -54,6 +55,8 @@ const desktopMenuButton = (key, title, imageKey, changeImage) => {
   )
 }
 
+export const trDuration = 250
+
 const SushiContainer = ({ Q, siteMode }) => {
   const [imageKey, setImageKey] = useState('sushi')
   const [imgVisible, switchVisibility] = useState(true)
@@ -76,27 +79,34 @@ const SushiContainer = ({ Q, siteMode }) => {
 
     return new Promise(res => {
       let img = new window.Image()
-      img.src = require(`../../images/sushi/${key}.gif`)
+      img.src = `./Images/sushi/${key}.gif`
       img.onload = () => res()
     })
   }
 
-  function fadeoutHandler(key) {
+  function fadeOutHandler(key) {
     return new Promise(res => {
       switchVisibility(false)
-      delay(250).then(() => {
+      delay(trDuration).then(() => {
         setImageKey(key)
         showProgressBar(true)
         res()
       })
     })
   }
+  const changeImageCalled = useRef(0)
 
   async function changeImage(key) {
+    changeImageCalled.current += 1
     if (imageKey !== key) {
-      await Promise.all([fadeoutHandler(key), preloadImg(key)])
-      switchVisibility(true)
-      showProgressBar(false)
+      await Promise.all([fadeOutHandler(key), preloadImg(key)])
+      if (changeImageCalled.current > 1) {
+        changeImageCalled.current -= 1
+      } else {
+        switchVisibility(true)
+        showProgressBar(false)
+        changeImageCalled.current -= 1
+      }
     }
   }
 
