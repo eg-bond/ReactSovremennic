@@ -11,7 +11,7 @@ const NavItem = ({ url, title }) => (
   </li>
 )
 
-function Navigation({ siteMode, fontSize, theme, Q }) {
+function Navigation({ siteMode, fontSize, theme }) {
   const modifyCl = cl => modifiedClass(cl, siteMode)
   let fsNavCl =
     fontSize === '21px'
@@ -50,4 +50,4 @@ function Navigation({ siteMode, fontSize, theme, Q }) {
   )
 }
 
-export default Navigation
+export default React.memo(Navigation)

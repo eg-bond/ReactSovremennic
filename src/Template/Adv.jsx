@@ -22,4 +22,4 @@ function Adv() {
   )
 }
 
-export default Adv
+export default React.memo(Adv)

@@ -45,7 +45,7 @@ const FilmSwiper = ({ mobile, films }) => {
       {mobile && <h4>Фильмы</h4>}
       <Swiper {...params}>
         {films.map(f => (
-          <SwiperSlide className={'sliderSlide'} key={f.link}>
+          <SwiperSlide className={'sliderSlide'} key={f.link + 'FS'}>
             <Link to={`/movies/${f.link}`}>
               <img src={`./Images/top_menu/${f.link}.gif`} alt={f.title} />
               <div style={{ position: 'relative' }}>
@@ -60,4 +60,4 @@ const FilmSwiper = ({ mobile, films }) => {
   )
 }
 
-export default FilmSwiper
+export default React.memo(FilmSwiper)

@@ -22,124 +22,122 @@ import { changeAppColors, modifiedClass, queries, scrollToTop } from './helpers'
 import { useMediaQuery } from '@material-ui/core'
 import Content from './Content/Content'
 
-const App = React.memo(
-  ({
+const App = ({
+  createActualDatesArr,
+  setTodaySceduleItem,
+  initialButtonTitle,
+  createFilmsTodayArr,
+  films,
+  filmsToday,
+  filmsTodaySlides,
+  filmsObject,
+  createFilmsObject,
+  switchSiteMode,
+  siteMode,
+  theme,
+  imgHidden,
+  fontSize,
+}) => {
+  // Инициализационные эффекты
+  useEffect(() => {
+    createActualDatesArr()
+    setTodaySceduleItem()
+    initialButtonTitle()
+    createFilmsTodayArr()
+  }, [
     createActualDatesArr,
     setTodaySceduleItem,
     initialButtonTitle,
     createFilmsTodayArr,
-    films,
-    filmsToday,
-    filmsTodaySlides,
-    filmsObject,
-    createFilmsObject,
-    switchSiteMode,
-    siteMode,
-    theme,
-    imgHidden,
-    fontSize,
-  }) => {
-    // Инициализационные эффекты
-    useEffect(() => {
-      createActualDatesArr()
-      setTodaySceduleItem()
-      initialButtonTitle()
-      createFilmsTodayArr()
-    }, [
-      createActualDatesArr,
-      setTodaySceduleItem,
-      initialButtonTitle,
-      createFilmsTodayArr,
-    ])
+  ])
 
-    let { pathname } = useLocation()
+  let { pathname } = useLocation()
 
-    // Queries
-    const Q = {
-      mobile: useMediaQuery(queries.mobile),
-      desktop: useMediaQuery(queries.desktop),
+  // const Q = {
+  //   mobile: useMediaQuery(queries.mobile),
+  //   desktop: useMediaQuery(queries.desktop),
+  // }
+
+  // Queries
+  let mobileQ = useMediaQuery(queries.mobile)
+  let desktopQ = useMediaQuery(queries.desktop)
+
+  // Меняет версию сайта на 'default' при переходе с десктопной версии в мобильную
+  useEffect(() => {
+    if (mobileQ && siteMode === 'special') {
+      switchSiteMode('default')
     }
-    // Меняет версию сайта на 'default' при переходе с десктопной версии в мобильную
-    useEffect(() => {
-      if (Q.mobile && siteMode === 'special') {
-        switchSiteMode('default')
-      }
-      if (fontSize !== '14px') {
-        switchFontSize('14px')
-      }
-    }, [Q.mobile, switchSiteMode, siteMode, fontSize, switchFontSize])
-
-    // Автоматический скролл наверх для мобильной версии
-    if (Q.mobile || siteMode === 'special') {
-      scrollToTop()
+    if (fontSize !== '14px') {
+      switchFontSize('14px')
     }
+  }, [mobileQ, switchSiteMode, siteMode, fontSize, switchFontSize])
 
-    // Изменение размера шрифта
-    useEffect(() => {
-      document.documentElement.style.setProperty('--htmlFontSize', fontSize)
-    }, [fontSize])
-    // Изменение цветовых схем
-    useEffect(() => {
-      changeAppColors(theme, siteMode)
-    }, [theme, siteMode, changeAppColors])
-
-    let mainContainerClasses = [
-      modifiedClass('mainContainer', siteMode),
-      'flex-wrapper',
-    ].join(' ')
-
-    return (
-      <div className={mainContainerClasses}>
-        <div>
-          <Navigation
-            siteMode={siteMode}
-            fontSize={fontSize}
-            theme={theme}
-            Q={Q}
-          />
-
-          {/*Отступ навигации в мобильной версии*/}
-          <div className='navigation__containerXs' />
-          <div className='separatorMobile' />
-
-          <div className={`container wrapper ${imgHidden ? 'hideImages' : ''}`}>
-            {siteMode === 'default' && (
-              <FilmSwiper films={films} mobile={Q.mobile} />
-            )}
-
-            <div className='separatorMobile separatorMobile--MB' />
-            <hr className={`separator hidden-xs`} />
-
-            <div className={'mainContainer__content'}>
-              <Content
-                siteMode={siteMode}
-                Q={Q}
-                filmsObject={filmsObject}
-                createFilmsObject={createFilmsObject}
-                fontSize={fontSize}
-                pathname={pathname}
-              />
-              {Q.desktop && pathname !== '/sushi' && <Adv />}
-            </div>
-
-            {siteMode === 'default' && (
-              <div>
-                <h1 className='bottomSwiper__bar'>Сегодня в кино</h1>
-                <hr className={`bottomSwiper__border`} />
-                <BottomSwiper
-                  filmsToday={filmsToday}
-                  slidesPerView={filmsTodaySlides}
-                  desktop={Q.desktop}
-                />
-              </div>
-            )}
-          </div>
-        </div>
-        <Footer />
-      </div>
-    )
+  // Автоматический скролл наверх для мобильной версии
+  if (mobileQ || siteMode === 'special') {
+    scrollToTop()
   }
-)
+
+  // Изменение размера шрифта
+  useEffect(() => {
+    document.documentElement.style.setProperty('--htmlFontSize', fontSize)
+  }, [fontSize])
+  // Изменение цветовых схем
+  useEffect(() => {
+    changeAppColors(theme, siteMode)
+  }, [theme, siteMode, changeAppColors])
+
+  let mainContainerClasses = [
+    modifiedClass('mainContainer', siteMode),
+    'flex-wrapper',
+  ].join(' ')
+
+  return (
+    <div className={mainContainerClasses}>
+      <div>
+        <Navigation siteMode={siteMode} fontSize={fontSize} theme={theme} />
+
+        {/*Отступ навигации в мобильной версии*/}
+        <div className='navigation__containerXs' />
+        <div className='separatorMobile' />
+
+        <div className={`container wrapper ${imgHidden ? 'hideImages' : ''}`}>
+          {siteMode === 'default' && (
+            <FilmSwiper films={films} mobile={mobileQ} />
+          )}
+
+          <div className='separatorMobile separatorMobile--MB' />
+          <hr className={`separator hidden-xs`} />
+
+          <div className={'mainContainer__content'}>
+            <Content
+              siteMode={siteMode}
+              mobileQ={mobileQ}
+              desktopQ={desktopQ}
+              filmsObject={filmsObject}
+              createFilmsObject={createFilmsObject}
+              fontSize={fontSize}
+              // pathname={pathname}
+            />
+            {desktopQ && pathname !== '/sushi' && <Adv />}
+          </div>
+
+          {siteMode === 'default' && (
+            <div>
+              <h1 className='bottomSwiper__bar'>Сегодня в кино</h1>
+              <hr className={`bottomSwiper__border`} />
+              <BottomSwiper
+                filmsToday={filmsToday}
+                slidesPerView={filmsTodaySlides}
+                desktop={desktopQ}
+              />
+            </div>
+          )}
+        </div>
+      </div>
+      <Footer />
+    </div>
+  )
+}
 
 let mapStateToProps = state => ({
   films: state.cinema.films,

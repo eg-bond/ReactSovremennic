@@ -10,7 +10,8 @@ const Rules = lazy(() => import('./Rules/Rules'))
 const About = lazy(() => import('./About/About'))
 
 const Content = ({
-  Q,
+  desktopQ,
+  mobileQ,
   films,
   filmsObject,
   createFilmsObject,
@@ -24,19 +25,23 @@ const Content = ({
   return (
     <>
       <Route exact path='/'>
-        <IndexContent siteMode={siteMode} films={films} Q={Q} />
+        <IndexContent
+          siteMode={siteMode}
+          films={films}
+          mobileQ={mobileQ}
+          desktopQ={desktopQ}
+        />
       </Route>
       <Route exact path='/seans'>
-        <Seans Q={Q} />
+        <Seans mobileQ={mobileQ} desktopQ={desktopQ} />
       </Route>
       <Route exact path='/sushi'>
-        <SushiContainer Q={Q} siteMode={siteMode} />
+        <SushiContainer siteMode={siteMode} />
       </Route>
       <Route exact path='/movies/:film_id'>
         <SelectedMovie
           filmsObject={filmsObject}
           createFilmsObject={createFilmsObject}
-          Q={Q}
           siteMode={siteMode}
           fontSize={fontSize}
         />
@@ -59,4 +64,4 @@ const Content = ({
   )
 }
 
-export default Content
+export default React.memo(Content)

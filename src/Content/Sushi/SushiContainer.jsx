@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback, useRef } from 'react'
 import Sushi from './Sushi'
 import { delay } from '../../helpers'
-import { useRef } from 'react'
 
 const sushiElems = {
   default: [
@@ -58,7 +57,7 @@ const desktopMenuButton = (key, title, currentImgKey, changeImage) => {
 // Длительность анимации Grow
 export const trDuration = 250
 
-const SushiContainer = ({ Q, siteMode }) => {
+const SushiContainer = ({ siteMode }) => {
   const [currentImgKey, setCurrentImg] = useState('sushi')
   const [imgVisible, switchVisibility] = useState(true)
   const [menuButtons, setButtons] = useState([])
@@ -124,7 +123,6 @@ const SushiContainer = ({ Q, siteMode }) => {
   return (
     <Sushi
       sushiElems={sushiElems}
-      Q={Q}
       currentImgKey={currentImgKey}
       changeImage={changeImage}
       menuButtons={menuButtons}

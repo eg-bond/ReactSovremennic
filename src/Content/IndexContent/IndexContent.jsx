@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom'
 import FilmsSpecial from '../FilmsSpecial/FilmsSpecial'
 import LiteYouTubeEmbed from 'react-lite-youtube-embed'
 
-function IndexContent({ siteMode, films, Q }) {
+function IndexContent({ siteMode, films, mobileQ, desktopQ }) {
   return (
     <div className='content__gridLeftItem--3fr'>
       {siteMode === 'default' && (
         <div className='trailers'>
-          {Q.mobile && <h4>Трейлеры</h4>}
+          {mobileQ && <h4>Трейлеры</h4>}
 
           <div className='embed-responsive'>
             <LiteYouTubeEmbed
@@ -47,7 +47,7 @@ function IndexContent({ siteMode, films, Q }) {
         </p>
       </div>
 
-      {siteMode === 'special' && Q.desktop && <FilmsSpecial films={films} />}
+      {siteMode === 'special' && desktopQ && <FilmsSpecial films={films} />}
 
       {/* <div className='separatorMobile separatorMobile--index' /> */}
 

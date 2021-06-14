@@ -4,6 +4,8 @@ import SushiSwipers from './SushiSwipers'
 import Grow from '@material-ui/core/Grow'
 import { SushiLinearProgress } from './SushiLinearProgress'
 import { trDuration } from './SushiContainer'
+import { useMediaQuery } from '@material-ui/core'
+import { queries } from '../../helpers'
 
 const SushiImage = ({ currentImgKey, swiperKeys, imgVisible }) => {
   if (swiperKeys.includes(currentImgKey)) {
@@ -21,7 +23,6 @@ const SushiImage = ({ currentImgKey, swiperKeys, imgVisible }) => {
 }
 
 const Sushi = ({
-  Q,
   sushiElems,
   currentImgKey,
   changeImage,
@@ -29,9 +30,12 @@ const Sushi = ({
   imgVisible,
   progressBar,
 }) => {
+  let mobileQ = useMediaQuery(queries.mobile)
+  let desktopQ = useMediaQuery(queries.desktop)
+
   return (
     <>
-      {Q.desktop && (
+      {desktopQ && (
         <div
           style={{ paddingRight: '0' }}
           className='sushi_page content__gridLeftItem--1fr'>
@@ -40,7 +44,7 @@ const Sushi = ({
       )}
 
       <div className='sushi_page content__gridRightItem--3fr'>
-        {Q.mobile && (
+        {mobileQ && (
           <div className='sushi_menu_xs'>
             <MobileSushiNavigation
               currentImgKey={currentImgKey}
@@ -50,7 +54,7 @@ const Sushi = ({
           </div>
         )}
 
-        {/* {Q.desktop && (
+        {/* {desktopQ && (
               <a className={'linkWrapper'} href='http://www.region47.sbor.net/'>
                 <div className={'sushiAdv sushiAdv--1'}>
                   <img src='./Images/region47_wide.gif' alt='region47' />

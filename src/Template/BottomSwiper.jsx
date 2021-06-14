@@ -21,10 +21,11 @@ const BottomSwiper = props => {
     onSwiper: swiper => (swiperRef.current = swiper),
     onImagesReady: () => turnOpacity('opacity_1'),
     autoplay: {
-      delay: 2000,
+      delay: 3000,
       disableOnInteraction: false,
     },
   }
+
   return (
     <>
       {props.desktop && (
@@ -34,7 +35,7 @@ const BottomSwiper = props => {
           onMouseLeave={() => swiperRef.current.autoplay.start()}>
           <Swiper {...params}>
             {props.filmsToday.map(f => (
-              <SwiperSlide className={'sliderSlide'} key={f.link}>
+              <SwiperSlide className={'sliderSlide'} key={f.link + 'BS'}>
                 <Link to={`/movies/${f.link}`}>
                   <img
                     src={`./Images/description/${f.link}_D.jpg`}
@@ -52,4 +53,4 @@ const BottomSwiper = props => {
   )
 }
 
-export default BottomSwiper
+export default React.memo(BottomSwiper)

@@ -3,13 +3,7 @@ import { DescriptionTrailer } from './DescriptionTrailer'
 import { useParams } from 'react-router'
 import FilmsSpecial from '../FilmsSpecial/FilmsSpecial'
 
-function SelectedMovie({
-  filmsObject,
-  createFilmsObject,
-  Q,
-  siteMode,
-  fontSize,
-}) {
+function SelectedMovie({ filmsObject, createFilmsObject, siteMode, fontSize }) {
   const { film_id } = useParams()
 
   // Формирует объект фильмов если он отсутстует

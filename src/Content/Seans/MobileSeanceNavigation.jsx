@@ -44,12 +44,7 @@ export function MobileSeanceNavigation(props) {
         open={open}
         transition
         className='popper popper__seance'
-        disablePortal
-        modifiers={{
-          flip: {
-            enabled: false,
-          },
-        }}>
+        disablePortal>
         {({ TransitionProps }) => (
           <Grow {...TransitionProps}>
             <div className='popper__backdrop'>

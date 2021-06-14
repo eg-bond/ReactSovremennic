@@ -17,10 +17,11 @@ import scedule from './scedule'
 const Seans = ({
   setTodaySceduleItem,
   initialButtonTitle,
-  Q,
   siteMode,
   theme,
   activeSceduleItemKey,
+  mobileQ,
+  desktopQ,
   ...props
 }) => {
   const [tableVisible, switchVisibility] = useState(true)
@@ -64,7 +65,7 @@ const Seans = ({
 
   return (
     <div className='content__gridLeftItem--3fr'>
-      {Q.desktop && (
+      {desktopQ && (
         <div className={`seans-menu`}>
           <div className='seanse__buttons'>
             {props.datesArr.map(d => (
@@ -81,7 +82,7 @@ const Seans = ({
         </div>
       )}
 
-      {Q.mobile && (
+      {mobileQ && (
         <div className='sushi_menu_xs'>
           <MobileSeanceNavigation
             activeSceduleItemKey={activeSceduleItemKey}
@@ -127,4 +128,5 @@ export default compose(
     initialButtonTitle,
     setTodaySceduleItem,
   })
-)(React.memo(Seans))
+)(Seans)
+// )(React.memo(Seans))
