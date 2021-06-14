@@ -29,10 +29,9 @@ function Navigation({ siteMode, fontSize, theme, Q }) {
       <nav role='navigation' className={navClasses}>
         <div className={`${modifyCl('navigation__logo')}`}>
           <Link to='/'>
-            {/* <img src={`./Images/${logo}.png`} alt='logoImg' /> */}
             <img
               className='navigation__logo__img'
-              src={require(`../images/${logo[theme]}`)}
+              src={`./Images/${logo[theme]}`}
               alt='logoImg'
             />
           </Link>
@@ -40,7 +39,7 @@ function Navigation({ siteMode, fontSize, theme, Q }) {
         <div className={`${modifyCl('navigation__menu')} focus`}>
           <ul>
             <NavItem url='/seans' title='РАСПИСАНИЕ' />
-            {siteMode == 'special' && <NavItem url='/films' title='ФИЛЬМЫ' />}
+            {siteMode === 'special' && <NavItem url='/films' title='ФИЛЬМЫ' />}
             <NavItem url='/about' title='О КИНОТЕАТРЕ' />
             <NavItem url='/rules' title='ПРАВИЛА РАБОТЫ' />
             <NavItem url='/sushi' title='СУШИ-БАР "КИН-НО"' />

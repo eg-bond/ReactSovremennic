@@ -1,37 +1,38 @@
 import React, { useEffect, useState } from 'react'
 import { MobileSeanceNavigation } from './MobileSeanceNavigation'
 import {
-  changeActiveKey,
+  changeSceduleItemKey,
   changeButtonTitle,
-  initialActiveKey,
+  setTodaySceduleItem,
   initialButtonTitle,
 } from '../../REDUX/seansReduser'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { SeansTableContent } from './CreateTable'
 import Grow from '@material-ui/core/Grow'
+import scedule from './scedule'
 
-let tableContent = SeansTableContent()
-let finalTableContent = [...tableContent]
+// let tableContent = SeansTableContent()
+// let finalTableContent = [...tableContent]
 
 const Seans = React.memo(
   ({
-    initialActiveKey,
+    setTodaySceduleItem,
     initialButtonTitle,
     Q,
     siteMode,
     theme,
-    activeKey,
+    activeSceduleItemKey,
     ...props
   }) => {
     const [tableVisible, switchVisibility] = useState(true)
 
     const switchSeanstable = (key, title) => {
-      if (key !== activeKey) {
+      if (key !== activeSceduleItemKey) {
         switchVisibility(false)
         setTimeout(() => {
           props.changeButtonTitle(title)
-          props.changeActiveKey(key)
+          props.changeSceduleItemKey(key)
           switchVisibility(true)
         }, 200)
       }
@@ -39,22 +40,36 @@ const Seans = React.memo(
 
     useEffect(() => {
       return () => {
-        initialActiveKey()
+        setTodaySceduleItem()
         initialButtonTitle()
       }
-    }, [initialActiveKey, initialButtonTitle])
+    }, [setTodaySceduleItem, initialButtonTitle])
+
+    let tableContent
+    if (scedule[activeSceduleItemKey]) {
+      tableContent = scedule[activeSceduleItemKey].map((seanse, index) => {
+        return (
+          <tr
+            key={seanse[0]}
+            className={index % 2 === 0 ? 'table_gray' : 'table_white'}>
+            <td>{seanse[0]}</td>
+            <td>{seanse[1]}</td>
+            <td>{seanse[2]}</td>
+          </tr>
+        )
+      })
+    }
 
     return (
       <div className='content__gridLeftItem--3fr'>
-        {/* <div className='col-lg-9 col-md-9 col-sm-9'> */}
         {Q.desktop && (
           <div className={`seans-menu`}>
             <div className='seanse__buttons'>
               {props.datesArr.map(d => (
                 <button
-                  key={d[0] + 'd11'}
+                  key={d[0] + 'desc'}
                   className={`fill_button ${
-                    activeKey === d[0] ? 'active' : ''
+                    activeSceduleItemKey === d[0] ? 'active' : ''
                   }`}
                   onClick={() => switchSeanstable(d[0], `${d[1]} ${d[2]}`)}>
                   {d[1]} <br /> {d[2]}
@@ -67,11 +82,11 @@ const Seans = React.memo(
         {Q.mobile && (
           <div className='sushi_menu_xs'>
             <MobileSeanceNavigation
-              activeKey={activeKey}
+              activeSceduleItemKey={activeSceduleItemKey}
               datesArr={props.datesArr}
               buttonTitle={props.buttonTitle}
               changeButtonTitle={props.changeButtonTitle}
-              changeActiveKey={props.changeActiveKey}
+              changeSceduleItemKey={props.changeSceduleItemKey}
               switchVisibility={switchVisibility}
             />
           </div>
@@ -86,7 +101,7 @@ const Seans = React.memo(
                   <th>Фильм</th>
                   <th>Цена, руб</th>
                 </tr>
-                {finalTableContent[activeKey.slice(3)]}
+                {tableContent}
               </tbody>
             </table>
           </div>
@@ -100,7 +115,7 @@ const Seans = React.memo(
 
 let mapStateToProps = state => ({
   datesArr: state.seansPage.actualDatesArr,
-  activeKey: state.seansPage.activeKey,
+  activeSceduleItemKey: state.seansPage.activeSceduleItemKey,
   buttonTitle: state.seansPage.buttonTitle,
   siteMode: state.special.siteMode,
   theme: state.special.theme,
@@ -109,8 +124,8 @@ let mapStateToProps = state => ({
 export default compose(
   connect(mapStateToProps, {
     changeButtonTitle,
-    changeActiveKey,
+    changeSceduleItemKey,
     initialButtonTitle,
-    initialActiveKey,
+    setTodaySceduleItem,
   })
 )(Seans)

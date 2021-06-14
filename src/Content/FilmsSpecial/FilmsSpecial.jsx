@@ -10,7 +10,7 @@ function FilmsSpecial({ films, ...props }) {
     filmsSpecial = films.map(f => (
       <div className='filmsSpecial__flex__item' key={f.link}>
         <Link className={'linkWrapper'} to={`/movies/${f.link}`}>
-          <div className={`filmsSpecial__flex__item__img`}>
+          <div className='filmsSpecial__flex__item__img'>
             <img src={`./Images/top_menu/${f.link}.gif`} alt={f.title} />
           </div>
           <div className={'filmsSpecial__flex__title'}>

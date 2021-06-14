@@ -3,7 +3,6 @@ import SwiperCore, { Navigation, Pagination } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import Grow from '@material-ui/core/Grow'
 import { trDuration } from './SushiContainer'
-
 SwiperCore.use([Navigation, Pagination])
 
 const sushiSwiperSlide = slideKey => {
@@ -19,22 +18,44 @@ const slideKeys = {
   brand_rolls: ['brand_rolls1', 'brand_rolls2', 'brand_rolls3'],
 }
 
-export const SushiSwipers = ({ swiperKey, imgVisible }) => {
-  const params = {
-    spaceBetween: 30,
-    pagination: {
-      type: 'fraction',
-    },
-    navigation: true,
-  }
+const swiperParams = {
+  spaceBetween: 30,
+  pagination: {
+    type: 'fraction',
+  },
+  navigation: true,
+}
 
+export const SushiSwipers = ({ swiperKey, imgVisible }) => {
   return (
+    // prettier-ignore
     <Grow in={imgVisible} timeout={trDuration}>
-      <Swiper className='swiper-container-sushi' {...params}>
-        {slideKeys[swiperKey].map(swiperKey => sushiSwiperSlide(swiperKey))}
-      </Swiper>
+      {swiperKey === 'brand_rolls' 
+        ? <BrandRollsSwiper swiperKey={swiperKey} />
+        : <HotDishesSwiper swiperKey={swiperKey} />}      
     </Grow>
   )
 }
-
 export default SushiSwipers
+
+function BrandRollsSwiper({ swiperKey, ...growProps }) {
+  return (
+    <Swiper
+      className={`swiper-container-sushi`}
+      {...swiperParams}
+      {...growProps}>
+      {slideKeys[swiperKey].map(sushiSwiperSlide)}
+    </Swiper>
+  )
+}
+
+function HotDishesSwiper({ swiperKey, ...growProps }) {
+  return (
+    <Swiper
+      className={`swiper-container-sushi`}
+      {...swiperParams}
+      {...growProps}>
+      {slideKeys[swiperKey].map(sushiSwiperSlide)}
+    </Swiper>
+  )
+}

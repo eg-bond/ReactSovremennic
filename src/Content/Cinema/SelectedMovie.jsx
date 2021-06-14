@@ -38,7 +38,7 @@ function SelectedMovie({
     fontSize !== '26px' ? 'selectedMovie--rightFr' : 'selectedMovie--fullFr'
 
   return (
-    <div className={`content__gridLeftItem--3fr`}>
+    <div className='content__gridLeftItem--3fr'>
       <div className='selectedMovie'>
         {fontSize !== '26px' && <FilmImg />}
 

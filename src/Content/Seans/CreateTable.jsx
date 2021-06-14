@@ -16,6 +16,5 @@ export const SeansTableContent = () => {
     ))
     return contentItem
   })
-
   return tableContent
 }

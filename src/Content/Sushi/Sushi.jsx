@@ -5,16 +5,16 @@ import Grow from '@material-ui/core/Grow'
 import { SushiLinearProgress } from './SushiLinearProgress'
 import { trDuration } from './SushiContainer'
 
-const SushiImage = ({ imageKey, swiperKeys, imgVisible }) => {
-  if (swiperKeys.includes(imageKey)) {
-    return <SushiSwipers swiperKey={imageKey} imgVisible={imgVisible} />
+const SushiImage = ({ currentImgKey, swiperKeys, imgVisible }) => {
+  if (swiperKeys.includes(currentImgKey)) {
+    return <SushiSwipers swiperKey={currentImgKey} imgVisible={imgVisible} />
   }
   return (
     <Grow in={imgVisible} timeout={trDuration}>
       <img
         className={'sushi__page__img'}
-        src={`./Images/sushi/${imageKey}.gif`}
-        alt={imageKey}
+        src={`./Images/sushi/${currentImgKey}.gif`}
+        alt={currentImgKey}
       />
     </Grow>
   )
@@ -23,16 +23,14 @@ const SushiImage = ({ imageKey, swiperKeys, imgVisible }) => {
 const Sushi = ({
   Q,
   sushiElems,
-  imageKey,
+  currentImgKey,
   changeImage,
   menuButtons,
-  siteMode,
   imgVisible,
   progressBar,
 }) => {
   return (
     <>
-      {/* <div className='sushi_page'> */}
       {Q.desktop && (
         <div
           style={{ paddingRight: '0' }}
@@ -45,7 +43,7 @@ const Sushi = ({
         {Q.mobile && (
           <div className='sushi_menu_xs'>
             <MobileSushiNavigation
-              imageKey={imageKey}
+              currentImgKey={currentImgKey}
               changeImage={changeImage}
               defaultSushiArr={sushiElems.default}
             />
@@ -63,7 +61,7 @@ const Sushi = ({
         <div className={`sushi_page__content`}>
           {progressBar && <SushiLinearProgress />}
           <SushiImage
-            imageKey={imageKey}
+            currentImgKey={currentImgKey}
             swiperKeys={sushiElems.swiperKeys}
             imgVisible={imgVisible}
           />

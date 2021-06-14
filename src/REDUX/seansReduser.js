@@ -1,5 +1,5 @@
-const INITIAL_ACTIVE_KEY = 'INITIAL_ACTIVE_KEY'
-const CHANGE_ACTIVE_KEY = 'CHANGE_ACTIVE_KEY'
+const SET_TODAY_SCEDULE_ITEM = 'SET_TODAY_SCEDULE_ITEM'
+const CHANGE_SCEDULE_ITEM_KEY = 'CHANGE_SCEDULE_ITEM_KEY'
 const INITIAL_BUTTON_TITLE = 'INITIAL_BUTTON_TITLE'
 const CHANGE_BUTTON_TITLE = 'CHANGE_BUTTON_TITLE'
 const CREATE_ACTUAL_DATES_ARR = 'CREATE_ACTUAL_DATES_ARR'
@@ -15,27 +15,29 @@ let initialState = {
     ['day6', 'Суббота', '29 мая'],
   ],
   actualDatesArr: [], // массив с датами, расположенными в правильном порядке
-  beginDate: 'th', // monday либо любое другое значение
-  activeKey: '',
-  buttonTitle: 'Дата',
+  weekStartsFrom: 'th', // monday либо любое другое значение
+  activeSceduleItemKey: '',
+  buttonTitle: null,
 }
 
 export const seansReduser = (state = initialState, action) => {
   switch (action.type) {
-    case INITIAL_ACTIVE_KEY:
+    case SET_TODAY_SCEDULE_ITEM:
       let date = new Date()
       let day = date.getDay()
       return {
         ...state,
-        activeKey: state.datesArr[day][0],
+        activeSceduleItemKey: state.datesArr[day][0],
       }
-    case CHANGE_ACTIVE_KEY:
+    case CHANGE_SCEDULE_ITEM_KEY:
       return {
         ...state,
-        activeKey: action.activeKey,
+        activeSceduleItemKey: action.activeSceduleItemKey,
       }
     case INITIAL_BUTTON_TITLE:
-      let todayItem = state.datesArr.find(item => item[0] === state.activeKey)
+      let todayItem = state.datesArr.find(
+        item => item[0] === state.activeSceduleItemKey
+      )
       return {
         ...state,
         buttonTitle: todayItem[1] + ' ' + todayItem[2],
@@ -47,7 +49,7 @@ export const seansReduser = (state = initialState, action) => {
       }
     case CREATE_ACTUAL_DATES_ARR:
       let newArr = []
-      if (state.beginDate === 'monday') {
+      if (state.weekStartsFrom === 'monday') {
         newArr = [...state.datesArr, state.datesArr[0]]
         newArr.shift()
       } else {
@@ -69,10 +71,10 @@ export const seansReduser = (state = initialState, action) => {
   }
 }
 
-export const initialActiveKey = () => ({ type: INITIAL_ACTIVE_KEY })
-export const changeActiveKey = activeKey => ({
-  type: CHANGE_ACTIVE_KEY,
-  activeKey,
+export const setTodaySceduleItem = () => ({ type: SET_TODAY_SCEDULE_ITEM })
+export const changeSceduleItemKey = activeSceduleItemKey => ({
+  type: CHANGE_SCEDULE_ITEM_KEY,
+  activeSceduleItemKey,
 })
 export const initialButtonTitle = () => ({ type: INITIAL_BUTTON_TITLE })
 export const changeButtonTitle = buttonTitle => ({

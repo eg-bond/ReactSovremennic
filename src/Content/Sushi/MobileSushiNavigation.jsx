@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import Grow from '@material-ui/core/Grow'
 import Popper from '@material-ui/core/Popper'
@@ -7,11 +7,10 @@ import MenuList from '@material-ui/core/MenuList'
 
 export function MobileSushiNavigation({
   changeImage,
-  imageKey,
+  currentImgKey,
   defaultSushiArr,
 }) {
   const [open, setOpen] = useState(false)
-  // const anchorRef = useRef(null)
 
   const handleToggle = () => {
     setOpen(prevOpen => !prevOpen)
@@ -22,27 +21,19 @@ export function MobileSushiNavigation({
     setOpen(false)
   }
 
-  const handleClose = event => {
-    // if (anchorRef.current && anchorRef.current.contains(event.target)) {
-    //   return
-    // }
+  const handleClose = () => {
     setOpen(false)
   }
 
   return (
     <div>
-      <button
-        className='seans_button_xs'
-        // ref={anchorRef}
-        onClick={handleToggle}>
+      <button className='seans_button_xs' onClick={handleToggle}>
         <span className='seans_button_xs__title'>Меню</span>{' '}
         <span className='glyphicon glyphicon-chevron-down' aria-hidden='true' />
       </button>
       <Popper
         open={open}
         transition
-        // anchorEl={anchorRef.current}
-        // placement='top-start'
         className='popper popper__sushi'
         disablePortal>
         {({ TransitionProps }) => (
@@ -50,13 +41,13 @@ export function MobileSushiNavigation({
             <div className='popper__backdrop'>
               <div className='popper__content'>
                 <ClickAwayListener onClickAway={handleClose}>
-                  <MenuList autoFocusItem={open} id='menu-list-grow'>
-                    {defaultSushiArr.map(d => (
+                  <MenuList>
+                    {defaultSushiArr.map(item => (
                       <MenuItem
-                        className={imageKey === d[0] ? 'active' : ''}
-                        key={d[0]}
-                        onClick={() => switchSushiImage(d[0])}>
-                        {d[1]}
+                        className={currentImgKey === item[0] ? 'active' : ''}
+                        key={item[0]}
+                        onClick={() => switchSushiImage(item[0])}>
+                        {item[1]}
                       </MenuItem>
                     ))}
                   </MenuList>

@@ -1,4 +1,4 @@
-import React, { useEffect, Suspense, lazy } from 'react'
+import React, { useEffect } from 'react'
 import 'swiper/swiper.scss'
 import 'swiper/components/navigation/navigation.scss'
 import 'swiper/components/pagination/pagination.scss'
@@ -10,7 +10,7 @@ import BottomSwiper from './Template/BottomSwiper'
 import Footer from './Template/Footer'
 import {
   initialButtonTitle,
-  initialActiveKey,
+  setTodaySceduleItem,
   createActualDatesArr,
 } from './REDUX/seansReduser'
 import { compose } from 'redux'
@@ -25,7 +25,7 @@ import Content from './Content/Content'
 const App = React.memo(
   ({
     createActualDatesArr,
-    initialActiveKey,
+    setTodaySceduleItem,
     initialButtonTitle,
     createFilmsTodayArr,
     films,
@@ -42,12 +42,12 @@ const App = React.memo(
     // Инициализационные эффекты
     useEffect(() => {
       createActualDatesArr()
-      initialActiveKey()
+      setTodaySceduleItem()
       initialButtonTitle()
       createFilmsTodayArr()
     }, [
       createActualDatesArr,
-      initialActiveKey,
+      setTodaySceduleItem,
       initialButtonTitle,
       createFilmsTodayArr,
     ])
@@ -154,7 +154,7 @@ let mapStateToProps = state => ({
 
 export default compose(
   connect(mapStateToProps, {
-    initialActiveKey,
+    setTodaySceduleItem,
     initialButtonTitle,
     createActualDatesArr,
     createFilmsTodayArr,

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import Grow from '@material-ui/core/Grow'
 import Popper from '@material-ui/core/Popper'
@@ -7,30 +7,23 @@ import MenuList from '@material-ui/core/MenuList'
 
 export function MobileSeanceNavigation(props) {
   const [open, setOpen] = useState(false)
-  // const anchorRef = useRef(null)
 
   const handleToggle = () => {
     setOpen(prevOpen => !prevOpen)
   }
 
-  const switchSeanstable = (event, key, title) => {
-    // if (anchorRef.current && anchorRef.current.contains(event.target)) {
-    //   return
-    // }
+  const switchSeanstable = (key, title) => {
     props.switchVisibility(false)
     setTimeout(() => {
       props.changeButtonTitle(title)
-      props.changeActiveKey(key)
+      props.changeSceduleItemKey(key)
       props.switchVisibility(true)
     }, 200)
 
     setOpen(false)
   }
 
-  const handleClose = event => {
-    // if (anchorRef.current && anchorRef.current.contains(event.target)) {
-    //   return
-    // }
+  const handleClose = () => {
     setOpen(false)
   }
 
@@ -43,18 +36,13 @@ export function MobileSeanceNavigation(props) {
 
   return (
     <div>
-      <button
-        className='seans_button_xs'
-        // ref={anchorRef}
-        onClick={handleToggle}>
+      <button className='seans_button_xs' onClick={handleToggle}>
         <span className='seans_button_xs__title'>{props.buttonTitle}</span>{' '}
         <span className='glyphicon glyphicon-chevron-down' aria-hidden='true' />
       </button>
       <Popper
         open={open}
-        // anchorEl={anchorRef.current}
         transition
-        // placement='top-start'
         className='popper popper__seance'
         disablePortal
         modifiers={{
@@ -73,10 +61,12 @@ export function MobileSeanceNavigation(props) {
                     onKeyDown={handleListKeyDown}>
                     {props.datesArr.map(d => (
                       <MenuItem
-                        className={props.activeKey === d[0] ? 'active' : ''}
+                        className={
+                          props.activeSceduleItemKey === d[0] ? 'active' : ''
+                        }
                         key={`${d[0]}_s`}
-                        onClick={e =>
-                          switchSeanstable(e, d[0], `${d[1]} ${d[2]}`)
+                        onClick={() =>
+                          switchSeanstable(d[0], `${d[1]} ${d[2]}`)
                         }>
                         {d[1]} {d[2]}
                       </MenuItem>

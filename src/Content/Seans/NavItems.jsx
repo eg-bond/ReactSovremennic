@@ -3,7 +3,7 @@
 // const NavItems = props => {
 //   const switchSeanstable = (e, key) => {
 //     props.changeButtonTitle(e.target.value)
-//     props.changeActiveKey(key)
+//     props.changeSceduleItemKey(key)
 //   }
 
 //   const desktopNavs = () => {
