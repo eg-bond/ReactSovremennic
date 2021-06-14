@@ -37,9 +37,8 @@ const BottomSwiper = props => {
               <SwiperSlide className={'sliderSlide'} key={f.link}>
                 <Link to={`/movies/${f.link}`}>
                   <img
-                    // src={`./Images/description/${f.link}_D.jpg`}
-                    src={require(`../images/description/${f.link}_D.jpg`)}
-                    alt=''
+                    src={`./Images/description/${f.link}_D.jpg`}
+                    alt={f.title}
                   />
                   <h1>{f.title}</h1>
                   <p>{f.kind.split(', ')[0]}</p>

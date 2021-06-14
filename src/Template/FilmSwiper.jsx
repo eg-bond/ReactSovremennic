@@ -47,11 +47,7 @@ const FilmSwiper = ({ mobile, films }) => {
         {films.map(f => (
           <SwiperSlide className={'sliderSlide'} key={f.link}>
             <Link to={`/movies/${f.link}`}>
-              <img
-                // `./Images/top_menu/${f.link}.gif`
-                src={require(`../images/top_menu/${f.link}.gif`)}
-                alt={f.title}
-              />
+              <img src={`./Images/top_menu/${f.link}.gif`} alt={f.title} />
               <div style={{ position: 'relative' }}>
                 <h1>{f.title}</h1>
               </div>

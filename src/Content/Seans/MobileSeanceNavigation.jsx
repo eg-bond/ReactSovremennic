@@ -12,7 +12,7 @@ export function MobileSeanceNavigation(props) {
     setOpen(prevOpen => !prevOpen)
   }
 
-  const switchSeanstable = (key, title) => {
+  const changeTableContent = (key, title) => {
     props.switchVisibility(false)
     setTimeout(() => {
       props.changeButtonTitle(title)
@@ -55,10 +55,7 @@ export function MobileSeanceNavigation(props) {
             <div className='popper__backdrop'>
               <div className='popper__content'>
                 <ClickAwayListener onClickAway={handleClose}>
-                  <MenuList
-                    autoFocusItem={open}
-                    id='menu-list-grow'
-                    onKeyDown={handleListKeyDown}>
+                  <MenuList autoFocusItem={open} onKeyDown={handleListKeyDown}>
                     {props.datesArr.map(d => (
                       <MenuItem
                         className={
@@ -66,7 +63,7 @@ export function MobileSeanceNavigation(props) {
                         }
                         key={`${d[0]}_s`}
                         onClick={() =>
-                          switchSeanstable(d[0], `${d[1]} ${d[2]}`)
+                          changeTableContent(d[0], `${d[1]} ${d[2]}`)
                         }>
                         {d[1]} {d[2]}
                       </MenuItem>

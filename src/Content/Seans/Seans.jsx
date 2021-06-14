@@ -8,50 +8,50 @@ import {
 } from '../../REDUX/seansReduser'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { SeansTableContent } from './CreateTable'
 import Grow from '@material-ui/core/Grow'
 import scedule from './scedule'
 
 // let tableContent = SeansTableContent()
 // let finalTableContent = [...tableContent]
 
-const Seans = React.memo(
-  ({
-    setTodaySceduleItem,
-    initialButtonTitle,
-    Q,
-    siteMode,
-    theme,
-    activeSceduleItemKey,
-    ...props
-  }) => {
-    const [tableVisible, switchVisibility] = useState(true)
+const Seans = ({
+  setTodaySceduleItem,
+  initialButtonTitle,
+  Q,
+  siteMode,
+  theme,
+  activeSceduleItemKey,
+  ...props
+}) => {
+  const [tableVisible, switchVisibility] = useState(true)
 
-    const switchSeanstable = (key, title) => {
-      if (key !== activeSceduleItemKey) {
-        switchVisibility(false)
-        setTimeout(() => {
-          props.changeButtonTitle(title)
-          props.changeSceduleItemKey(key)
-          switchVisibility(true)
-        }, 200)
-      }
+  const trDuration = 200
+  const changeTableContent = (key, title) => {
+    if (key !== activeSceduleItemKey) {
+      switchVisibility(false)
+      setTimeout(() => {
+        props.changeSceduleItemKey(key)
+        props.changeButtonTitle(title)
+        switchVisibility(true)
+      }, trDuration)
     }
+  }
 
-    useEffect(() => {
-      return () => {
-        setTodaySceduleItem()
-        initialButtonTitle()
-      }
-    }, [setTodaySceduleItem, initialButtonTitle])
+  useEffect(() => {
+    return () => {
+      setTodaySceduleItem()
+      initialButtonTitle()
+    }
+  }, [setTodaySceduleItem, initialButtonTitle])
 
-    let tableContent
+  const tableContent = () => {
+    let content
     if (scedule[activeSceduleItemKey]) {
-      tableContent = scedule[activeSceduleItemKey].map((seanse, index) => {
+      content = scedule[activeSceduleItemKey].map((seanse, i) => {
         return (
           <tr
             key={seanse[0]}
-            className={index % 2 === 0 ? 'table_gray' : 'table_white'}>
+            className={i % 2 === 0 ? 'table_gray' : 'table_white'}>
             <td>{seanse[0]}</td>
             <td>{seanse[1]}</td>
             <td>{seanse[2]}</td>
@@ -59,59 +59,58 @@ const Seans = React.memo(
         )
       })
     }
-
-    return (
-      <div className='content__gridLeftItem--3fr'>
-        {Q.desktop && (
-          <div className={`seans-menu`}>
-            <div className='seanse__buttons'>
-              {props.datesArr.map(d => (
-                <button
-                  key={d[0] + 'desc'}
-                  className={`fill_button ${
-                    activeSceduleItemKey === d[0] ? 'active' : ''
-                  }`}
-                  onClick={() => switchSeanstable(d[0], `${d[1]} ${d[2]}`)}>
-                  {d[1]} <br /> {d[2]}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {Q.mobile && (
-          <div className='sushi_menu_xs'>
-            <MobileSeanceNavigation
-              activeSceduleItemKey={activeSceduleItemKey}
-              datesArr={props.datesArr}
-              buttonTitle={props.buttonTitle}
-              changeButtonTitle={props.changeButtonTitle}
-              changeSceduleItemKey={props.changeSceduleItemKey}
-              switchVisibility={switchVisibility}
-            />
-          </div>
-        )}
-
-        <Grow in={tableVisible} timeout={200}>
-          <div>
-            <table className='seanse__table'>
-              <tbody>
-                <tr className={`table_head`}>
-                  <th>Сеанс</th>
-                  <th>Фильм</th>
-                  <th>Цена, руб</th>
-                </tr>
-                {tableContent}
-              </tbody>
-            </table>
-          </div>
-        </Grow>
-
-        <div className='separatorMobile-special' />
-      </div>
-    )
+    return content
   }
-)
+
+  return (
+    <div className='content__gridLeftItem--3fr'>
+      {Q.desktop && (
+        <div className={`seans-menu`}>
+          <div className='seanse__buttons'>
+            {props.datesArr.map(d => (
+              <button
+                key={d[0] + 'desc'}
+                className={`fill_button ${
+                  activeSceduleItemKey === d[0] ? 'active' : ''
+                }`}
+                onClick={() => changeTableContent(d[0], `${d[1]} ${d[2]}`)}>
+                {d[1]} <br /> {d[2]}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {Q.mobile && (
+        <div className='sushi_menu_xs'>
+          <MobileSeanceNavigation
+            activeSceduleItemKey={activeSceduleItemKey}
+            datesArr={props.datesArr}
+            buttonTitle={props.buttonTitle}
+            changeButtonTitle={props.changeButtonTitle}
+            changeSceduleItemKey={props.changeSceduleItemKey}
+            switchVisibility={switchVisibility}
+          />
+        </div>
+      )}
+
+      <Grow in={tableVisible} timeout={trDuration}>
+        <table className='seanse__table'>
+          <tbody>
+            <tr className={`table_head`}>
+              <th>Сеанс</th>
+              <th>Фильм</th>
+              <th>Цена, руб</th>
+            </tr>
+            {tableContent()}
+          </tbody>
+        </table>
+      </Grow>
+
+      <div className='separatorMobile-special' />
+    </div>
+  )
+}
 
 let mapStateToProps = state => ({
   datesArr: state.seansPage.actualDatesArr,
@@ -128,4 +127,4 @@ export default compose(
     initialButtonTitle,
     setTodaySceduleItem,
   })
-)(Seans)
+)(React.memo(Seans))
