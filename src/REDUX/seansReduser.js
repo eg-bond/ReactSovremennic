@@ -1,7 +1,5 @@
 const SET_TODAY_SCEDULE_ITEM = 'SET_TODAY_SCEDULE_ITEM'
-const CHANGE_SCEDULE_ITEM_KEY = 'CHANGE_SCEDULE_ITEM_KEY'
-const INITIAL_BUTTON_TITLE = 'INITIAL_BUTTON_TITLE'
-const CHANGE_BUTTON_TITLE = 'CHANGE_BUTTON_TITLE'
+const CHANGE_SCEDULE_ITEM = 'CHANGE_SCEDULE_ITEM'
 const CREATE_ACTUAL_DATES_ARR = 'CREATE_ACTUAL_DATES_ARR'
 
 let initialState = {
@@ -25,26 +23,16 @@ export const seansReduser = (state = initialState, action) => {
     case SET_TODAY_SCEDULE_ITEM:
       let date = new Date()
       let day = date.getDay()
+
       return {
         ...state,
         activeSceduleItemKey: state.datesArr[day][0],
+        buttonTitle: state.datesArr[day][1] + ' ' + state.datesArr[day][2],
       }
-    case CHANGE_SCEDULE_ITEM_KEY:
+    case CHANGE_SCEDULE_ITEM:
       return {
         ...state,
         activeSceduleItemKey: action.activeSceduleItemKey,
-      }
-    case INITIAL_BUTTON_TITLE:
-      let todayItem = state.datesArr.find(
-        item => item[0] === state.activeSceduleItemKey
-      )
-      return {
-        ...state,
-        buttonTitle: todayItem[1] + ' ' + todayItem[2],
-      }
-    case CHANGE_BUTTON_TITLE:
-      return {
-        ...state,
         buttonTitle: action.buttonTitle,
       }
     case CREATE_ACTUAL_DATES_ARR:
@@ -72,13 +60,9 @@ export const seansReduser = (state = initialState, action) => {
 }
 
 export const setTodaySceduleItem = () => ({ type: SET_TODAY_SCEDULE_ITEM })
-export const changeSceduleItemKey = activeSceduleItemKey => ({
-  type: CHANGE_SCEDULE_ITEM_KEY,
+export const changeSceduleItem = (activeSceduleItemKey, buttonTitle) => ({
+  type: CHANGE_SCEDULE_ITEM,
   activeSceduleItemKey,
-})
-export const initialButtonTitle = () => ({ type: INITIAL_BUTTON_TITLE })
-export const changeButtonTitle = buttonTitle => ({
-  type: CHANGE_BUTTON_TITLE,
   buttonTitle,
 })
 export const createActualDatesArr = () => ({ type: CREATE_ACTUAL_DATES_ARR })

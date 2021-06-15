@@ -43,31 +43,14 @@ const sushiElems = {
   swiperKeys: ['brand_rolls', 'hot_dishes'],
 }
 
-const desktopMenuButton = (key, title, currentImgKey, changeImage) => {
-  return (
-    <button
-      key={key}
-      className={`fill_button ${currentImgKey === key ? 'active' : ''}`}
-      onClick={() => changeImage(key)}>
-      {title.toUpperCase()}
-    </button>
-  )
-}
-
 // Длительность анимации Grow
-export const trDuration = 250
+export const trDuration = 300
 
 const SushiContainer = ({ siteMode }) => {
-  const [currentImgKey, setCurrentImg] = useState('sushi')
+  const currentImgKey = useRef('sushi')
   const [imgVisible, switchVisibility] = useState(true)
-  const [menuButtons, setButtons] = useState([])
   const [progressBar, showProgressBar] = useState(false)
-
-  const createMenuButtons = () => {
-    return sushiElems[siteMode].map(item =>
-      desktopMenuButton(item[0], item[1], currentImgKey, changeImage)
-    )
-  }
+  const imgPreloaded = useRef(false)
 
   const preloadImg = imgKey => {
     let key
@@ -78,7 +61,10 @@ const SushiContainer = ({ siteMode }) => {
     return new Promise(res => {
       let img = new window.Image()
       img.src = `./Images/sushi/${key}.gif`
-      img.onload = () => res()
+      img.onload = () => {
+        imgPreloaded.current = true
+        res()
+      }
     })
   }
 
@@ -86,8 +72,10 @@ const SushiContainer = ({ siteMode }) => {
     return new Promise(res => {
       switchVisibility(false)
       delay(trDuration).then(() => {
-        setCurrentImg(key)
-        showProgressBar(true)
+        currentImgKey.current = key
+        if (!imgPreloaded.current) {
+          showProgressBar(true)
+        }
         res()
       })
     })
@@ -96,10 +84,11 @@ const SushiContainer = ({ siteMode }) => {
   // Счетчик вызванных функций changeImage
   const funcCalled = useRef(0)
 
-  async function changeImage(key) {
-    if (currentImgKey !== key) {
+  const changeImage = useCallback(async key => {
+    if (currentImgKey.current !== key) {
       funcCalled.current += 1
       await Promise.all([fadeOutHandler(key), preloadImg(key)])
+      imgPreloaded.current = false
 
       if (funcCalled.current > 1) {
         funcCalled.current -= 1
@@ -109,26 +98,21 @@ const SushiContainer = ({ siteMode }) => {
         funcCalled.current -= 1
       }
     }
-  }
+  }, [])
 
   useEffect(() => {
-    setButtons(createMenuButtons())
-  }, [currentImgKey])
-
-  useEffect(() => {
-    setButtons(createMenuButtons())
-    setCurrentImg('sushi')
+    currentImgKey.current !== 'sushi' && changeImage('sushi')
   }, [siteMode])
 
   return (
     <Sushi
       sushiElems={sushiElems}
-      currentImgKey={currentImgKey}
+      currentImgKey={currentImgKey.current}
       changeImage={changeImage}
-      menuButtons={menuButtons}
       siteMode={siteMode}
       imgVisible={imgVisible}
       progressBar={progressBar}
+      siteMode={siteMode}
     />
   )
 }

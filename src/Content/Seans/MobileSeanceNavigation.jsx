@@ -15,8 +15,7 @@ export function MobileSeanceNavigation(props) {
   const changeTableContent = (key, title) => {
     props.switchVisibility(false)
     setTimeout(() => {
-      props.changeButtonTitle(title)
-      props.changeSceduleItemKey(key)
+      props.changeSceduleItem(key, title)
       props.switchVisibility(true)
     }, 200)
 
@@ -25,13 +24,6 @@ export function MobileSeanceNavigation(props) {
 
   const handleClose = () => {
     setOpen(false)
-  }
-
-  function handleListKeyDown(event) {
-    if (event.key === 'Tab') {
-      event.preventDefault()
-      setOpen(false)
-    }
   }
 
   return (
@@ -50,7 +42,7 @@ export function MobileSeanceNavigation(props) {
             <div className='popper__backdrop'>
               <div className='popper__content'>
                 <ClickAwayListener onClickAway={handleClose}>
-                  <MenuList autoFocusItem={open} onKeyDown={handleListKeyDown}>
+                  <MenuList>
                     {props.datesArr.map(d => (
                       <MenuItem
                         className={

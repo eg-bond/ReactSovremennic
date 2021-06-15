@@ -8,11 +8,7 @@ import { useLocation } from 'react-router-dom'
 import Navigation from './Template/Navigation'
 import BottomSwiper from './Template/BottomSwiper'
 import Footer from './Template/Footer'
-import {
-  initialButtonTitle,
-  setTodaySceduleItem,
-  createActualDatesArr,
-} from './REDUX/seansReduser'
+import { setTodaySceduleItem, createActualDatesArr } from './REDUX/seansReduser'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import Adv from './Template/Adv'
@@ -25,7 +21,6 @@ import Content from './Content/Content'
 const App = ({
   createActualDatesArr,
   setTodaySceduleItem,
-  initialButtonTitle,
   createFilmsTodayArr,
   films,
   filmsToday,
@@ -42,14 +37,8 @@ const App = ({
   useEffect(() => {
     createActualDatesArr()
     setTodaySceduleItem()
-    initialButtonTitle()
     createFilmsTodayArr()
-  }, [
-    createActualDatesArr,
-    setTodaySceduleItem,
-    initialButtonTitle,
-    createFilmsTodayArr,
-  ])
+  }, [createActualDatesArr, setTodaySceduleItem, createFilmsTodayArr])
 
   let { pathname } = useLocation()
 
@@ -153,7 +142,6 @@ let mapStateToProps = state => ({
 export default compose(
   connect(mapStateToProps, {
     setTodaySceduleItem,
-    initialButtonTitle,
     createActualDatesArr,
     createFilmsTodayArr,
     createFilmsObject,

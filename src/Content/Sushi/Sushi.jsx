@@ -22,13 +22,33 @@ const SushiImage = ({ currentImgKey, swiperKeys, imgVisible }) => {
   )
 }
 
+const desktopMenuButton = (key, title, currentImgKey, changeImage) => {
+  return (
+    <button
+      key={key + 'btn'}
+      className={`fill_button ${currentImgKey === key ? 'active' : ''}`}
+      onClick={() => changeImage(key)}>
+      {title.toUpperCase()}
+    </button>
+  )
+}
+
+const CreateMenuButtons = React.memo(
+  ({ siteMode, sushiElems, currentImgKey, changeImage }) => {
+    return sushiElems[siteMode].map(item =>
+      desktopMenuButton(item[0], item[1], currentImgKey, changeImage)
+    )
+  }
+)
+
 const Sushi = ({
   sushiElems,
   currentImgKey,
   changeImage,
-  menuButtons,
+  // menuButtons,
   imgVisible,
   progressBar,
+  siteMode,
 }) => {
   let mobileQ = useMediaQuery(queries.mobile)
   let desktopQ = useMediaQuery(queries.desktop)
@@ -39,7 +59,15 @@ const Sushi = ({
         <div
           style={{ paddingRight: '0' }}
           className='sushi_page content__gridLeftItem--1fr'>
-          <div className={`sushi_page__menuButtons `}>{menuButtons}</div>
+          <div className={`sushi_page__menuButtons `}>
+            <CreateMenuButtons
+              siteMode={siteMode}
+              sushiElems={sushiElems}
+              currentImgKey={currentImgKey}
+              changeImage={changeImage}
+            />
+            {/* {menuButtons} */}
+          </div>
         </div>
       )}
 
