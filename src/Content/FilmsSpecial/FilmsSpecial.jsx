@@ -1,12 +1,13 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useRouteMatch } from 'react-router-dom'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { useParams } from 'react-router'
 
 let filmsSpecial = null
 
-function FilmsSpecial({ films, ...props }) {
+function FilmsSpecial({ films }) {
+  let match = useRouteMatch('/:firstId?')
+
   if (!filmsSpecial) {
     filmsSpecial = films.map(f => (
       <div className='filmsSpecial__flex__item' key={f.link}>
@@ -24,7 +25,9 @@ function FilmsSpecial({ films, ...props }) {
   }
 
   let titleCl =
-    props.pathname === '/films' ? 'filmsSpecialPage__h1' : 'filmsSpecial__h1'
+    match.params.firstId === 'films'
+      ? 'filmsSpecialPage__h1'
+      : 'filmsSpecial__h1'
 
   return (
     <div className='filmsSpecial'>

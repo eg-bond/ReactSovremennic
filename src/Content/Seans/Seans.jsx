@@ -87,6 +87,8 @@ const Seans = ({
     }
   }, [setTodaySceduleItem])
 
+  console.log('seanse render')
+
   return (
     <div className='content__gridLeftItem--3fr'>
       {desktopQ && (

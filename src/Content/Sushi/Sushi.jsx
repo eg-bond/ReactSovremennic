@@ -45,7 +45,6 @@ const Sushi = ({
   sushiElems,
   currentImgKey,
   changeImage,
-  // menuButtons,
   imgVisible,
   progressBar,
   siteMode,
@@ -53,6 +52,7 @@ const Sushi = ({
   let mobileQ = useMediaQuery(queries.mobile)
   let desktopQ = useMediaQuery(queries.desktop)
 
+  console.log('sushi rend')
   return (
     <>
       {desktopQ && (

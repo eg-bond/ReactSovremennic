@@ -36,6 +36,12 @@ const SiteModeButton = ({ siteMode, switchSiteMode, fontSize }) => {
   )
 }
 
+const ThemeButton = React.memo(({ theme, cl, switchSiteTheme }) => (
+  <IconButton onClick={() => switchSiteTheme(theme)} className={cl}>
+    <Brightness1Icon />
+  </IconButton>
+))
+
 function SpecialSettings({
   switchSiteTheme,
   switchImagesVisibility,
@@ -46,14 +52,6 @@ function SpecialSettings({
   theme,
   fontSize,
 }) {
-  const ThemeButton = ({ theme, cl }) => (
-    // changeAppColors(theme, siteMode)
-
-    <IconButton onClick={() => switchSiteTheme(theme)} className={cl}>
-      <Brightness1Icon />
-    </IconButton>
-  )
-
   const handleImgSwitch = () =>
     imgHidden ? switchImagesVisibility(false) : switchImagesVisibility(true)
 
@@ -74,11 +72,31 @@ function SpecialSettings({
       <div className={`specialSettings__flex`}>
         <div className='specialSettings__flex__item'>
           <div className={'specialSettings__flex__title'}>ЦВЕТОВАЯ СХЕМА</div>
-          <ThemeButton theme='blackWhite' cl='themeBW' />
-          <ThemeButton theme='whiteBlack' cl='themeWB' />
-          <ThemeButton theme='blackRed' cl='themeBR' />
-          <ThemeButton theme='yellowBrown' cl='themeYB' />
-          <ThemeButton theme='blueGreen' cl='themeBG' />
+          <ThemeButton
+            theme='blackWhite'
+            cl='themeBW'
+            switchSiteTheme={switchSiteTheme}
+          />
+          <ThemeButton
+            theme='whiteBlack'
+            cl='themeWB'
+            switchSiteTheme={switchSiteTheme}
+          />
+          <ThemeButton
+            theme='blackRed'
+            cl='themeBR'
+            switchSiteTheme={switchSiteTheme}
+          />
+          <ThemeButton
+            theme='yellowBrown'
+            cl='themeYB'
+            switchSiteTheme={switchSiteTheme}
+          />
+          <ThemeButton
+            theme='blueGreen'
+            cl='themeBG'
+            switchSiteTheme={switchSiteTheme}
+          />
         </div>
 
         <div className={`specialSettings__flex__item`}>
@@ -134,4 +152,4 @@ export default compose(
     switchImagesVisibility,
     switchFontSize,
   })
-)(SpecialSettings)
+)(React.memo(SpecialSettings))

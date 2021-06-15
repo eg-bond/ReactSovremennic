@@ -1,5 +1,5 @@
 import React, { Suspense, lazy, useRef } from 'react'
-import { Redirect, Route } from 'react-router-dom'
+import { Redirect, Route, Switch } from 'react-router-dom'
 import SelectedMovie from './Cinema/SelectedMovie'
 import IndexContent from './IndexContent/IndexContent'
 import Seans from './Seans/Seans'
@@ -17,39 +17,43 @@ const Content = ({
   createFilmsObject,
   siteMode,
   fontSize,
-  pathname,
+  // pathname,
 }) => {
   const aboutLoaded = useRef(false)
   const rulesLoaded = useRef(false)
 
   return (
     <>
-      <Route exact path='/'>
-        <IndexContent
-          siteMode={siteMode}
-          films={films}
-          mobileQ={mobileQ}
-          desktopQ={desktopQ}
-        />
-      </Route>
-      <Route exact path='/seans'>
-        <Seans mobileQ={mobileQ} desktopQ={desktopQ} />
-      </Route>
-      <Route exact path='/sushi'>
-        <SushiContainer siteMode={siteMode} />
-      </Route>
-      <Route exact path='/movies/:film_id'>
-        <SelectedMovie
-          filmsObject={filmsObject}
-          createFilmsObject={createFilmsObject}
-          siteMode={siteMode}
-          fontSize={fontSize}
-        />
-      </Route>
+      <Switch>
+        <Route exact path='/'>
+          <IndexContent
+            siteMode={siteMode}
+            films={films}
+            mobileQ={mobileQ}
+            desktopQ={desktopQ}
+          />
+        </Route>
+        <Route exact path='/seans'>
+          <Seans mobileQ={mobileQ} desktopQ={desktopQ} />
+        </Route>
+        <Route exact path='/sushi'>
+          <SushiContainer siteMode={siteMode} />
+        </Route>
+        <Route exact path='/movies/:film_id'>
+          {/* <Route exact path='/movies/:film_id'> */}
+          <SelectedMovie
+            filmsObject={filmsObject}
+            createFilmsObject={createFilmsObject}
+            siteMode={siteMode}
+            fontSize={fontSize}
+            // pathname={pathname}
+          />
+        </Route>
+      </Switch>
       {/* prettier-ignore */}
       <Route exact path='/films'>        
         {siteMode === 'special' 
-          ? <FilmsSpecialPage pathname={pathname}/> 
+          ? <FilmsSpecialPage /> 
           : <Redirect to='/' />}
       </Route>
       <Suspense fallback={<div className='content__gridLeftItem--3fr'></div>}>

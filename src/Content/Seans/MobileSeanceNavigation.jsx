@@ -1,9 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import Grow from '@material-ui/core/Grow'
 import Popper from '@material-ui/core/Popper'
 import MenuItem from '@material-ui/core/MenuItem'
 import MenuList from '@material-ui/core/MenuList'
+
+const PopperContent = React.memo(
+  ({ activeSceduleItemKey, datesArr, handleClose, changeTableContent }) => {
+    return (
+      <div className='popper__content'>
+        <ClickAwayListener onClickAway={handleClose}>
+          <MenuList>
+            {datesArr.map(d => (
+              <MenuItem
+                className={activeSceduleItemKey === d[0] ? 'active' : ''}
+                key={`${d[0]}_s`}
+                onClick={() => changeTableContent(d[0], `${d[1]} ${d[2]}`)}>
+                {d[1]} {d[2]}
+              </MenuItem>
+            ))}
+          </MenuList>
+        </ClickAwayListener>
+      </div>
+    )
+  }
+)
 
 export function MobileSeanceNavigation(props) {
   const [open, setOpen] = useState(false)
@@ -12,7 +33,7 @@ export function MobileSeanceNavigation(props) {
     setOpen(prevOpen => !prevOpen)
   }
 
-  const changeTableContent = (key, title) => {
+  const changeTableContent = useCallback((key, title) => {
     props.switchVisibility(false)
     setTimeout(() => {
       props.changeSceduleItem(key, title)
@@ -20,11 +41,11 @@ export function MobileSeanceNavigation(props) {
     }, 200)
 
     setOpen(false)
-  }
+  }, [])
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setOpen(false)
-  }
+  }, [])
 
   return (
     <div>
@@ -40,24 +61,12 @@ export function MobileSeanceNavigation(props) {
         {({ TransitionProps }) => (
           <Grow {...TransitionProps}>
             <div className='popper__backdrop'>
-              <div className='popper__content'>
-                <ClickAwayListener onClickAway={handleClose}>
-                  <MenuList>
-                    {props.datesArr.map(d => (
-                      <MenuItem
-                        className={
-                          props.activeSceduleItemKey === d[0] ? 'active' : ''
-                        }
-                        key={`${d[0]}_s`}
-                        onClick={() =>
-                          changeTableContent(d[0], `${d[1]} ${d[2]}`)
-                        }>
-                        {d[1]} {d[2]}
-                      </MenuItem>
-                    ))}
-                  </MenuList>
-                </ClickAwayListener>
-              </div>
+              <PopperContent
+                activeSceduleItemKey={props.activeSceduleItemKey}
+                datesArr={props.datesArr}
+                handleClose={handleClose}
+                changeTableContent={changeTableContent}
+              />
             </div>
           </Grow>
         )}

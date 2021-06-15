@@ -40,13 +40,6 @@ const App = ({
     createFilmsTodayArr()
   }, [createActualDatesArr, setTodaySceduleItem, createFilmsTodayArr])
 
-  let { pathname } = useLocation()
-
-  // const Q = {
-  //   mobile: useMediaQuery(queries.mobile),
-  //   desktop: useMediaQuery(queries.desktop),
-  // }
-
   // Queries
   let mobileQ = useMediaQuery(queries.mobile)
   let desktopQ = useMediaQuery(queries.desktop)
@@ -80,6 +73,8 @@ const App = ({
     'flex-wrapper',
   ].join(' ')
 
+  console.log('app render')
+
   return (
     <div className={mainContainerClasses}>
       <div>
@@ -95,7 +90,7 @@ const App = ({
           )}
 
           <div className='separatorMobile separatorMobile--MB' />
-          <hr className={`separator hidden-xs`} />
+          <hr className='separator hidden-xs' />
 
           <div className={'mainContainer__content'}>
             <Content
@@ -107,7 +102,7 @@ const App = ({
               fontSize={fontSize}
               // pathname={pathname}
             />
-            {desktopQ && pathname !== '/sushi' && <Adv />}
+            {desktopQ && <Adv />}
           </div>
 
           {siteMode === 'default' && (

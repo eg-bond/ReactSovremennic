@@ -1,29 +1,50 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import Grow from '@material-ui/core/Grow'
 import Popper from '@material-ui/core/Popper'
 import MenuItem from '@material-ui/core/MenuItem'
 import MenuList from '@material-ui/core/MenuList'
 
-export function MobileSushiNavigation({
+const PopperContent = React.memo(
+  ({ defaultSushiArr, handleClose, currentImgKey, switchSushiImage }) => {
+    return (
+      <div className='popper__content'>
+        <ClickAwayListener onClickAway={handleClose}>
+          <MenuList>
+            {defaultSushiArr.map(item => (
+              <MenuItem
+                className={currentImgKey === item[0] ? 'active' : ''}
+                key={item[0]}
+                onClick={() => switchSushiImage(item[0])}>
+                {item[1]}
+              </MenuItem>
+            ))}
+          </MenuList>
+        </ClickAwayListener>
+      </div>
+    )
+  }
+)
+
+export const MobileSushiNavigation = ({
   changeImage,
   currentImgKey,
   defaultSushiArr,
-}) {
+}) => {
   const [open, setOpen] = useState(false)
 
   const handleToggle = () => {
     setOpen(prevOpen => !prevOpen)
   }
 
-  const switchSushiImage = key => {
+  const switchSushiImage = useCallback(key => {
     changeImage(key)
     setOpen(false)
-  }
+  }, [])
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setOpen(false)
-  }
+  }, [])
 
   return (
     <div>
@@ -39,20 +60,12 @@ export function MobileSushiNavigation({
         {({ TransitionProps }) => (
           <Grow {...TransitionProps}>
             <div className='popper__backdrop'>
-              <div className='popper__content'>
-                <ClickAwayListener onClickAway={handleClose}>
-                  <MenuList>
-                    {defaultSushiArr.map(item => (
-                      <MenuItem
-                        className={currentImgKey === item[0] ? 'active' : ''}
-                        key={item[0]}
-                        onClick={() => switchSushiImage(item[0])}>
-                        {item[1]}
-                      </MenuItem>
-                    ))}
-                  </MenuList>
-                </ClickAwayListener>
-              </div>
+              <PopperContent
+                defaultSushiArr={defaultSushiArr}
+                handleClose={handleClose}
+                currentImgKey={currentImgKey}
+                switchSushiImage={switchSushiImage}
+              />
             </div>
           </Grow>
         )}
