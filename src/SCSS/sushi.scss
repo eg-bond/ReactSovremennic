@@ -82,7 +82,8 @@
 
 @media #{$mediaQueryMobile} {
   .popper__sushi li {
-    min-height: 8vw !important;
+    padding: 1.5vw 0;
+    // min-height: 8vw !important;
   }
 
   .sushi_page__content {

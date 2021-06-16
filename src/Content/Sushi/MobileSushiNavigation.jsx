@@ -1,27 +1,22 @@
-import React, { useState, useCallback, useEffect } from 'react'
+import React, { useState, useCallback } from 'react'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import Grow from '@material-ui/core/Grow'
-import Popper from '@material-ui/core/Popper'
-import MenuItem from '@material-ui/core/MenuItem'
-import MenuList from '@material-ui/core/MenuList'
 import { useRef } from 'react'
 
 const PopperContent = React.memo(
-  ({ defaultSushiArr, handleClose, switchSushiImage, activeImgKey }) => {
+  ({ defaultSushiArr, switchSushiImage, currentImgKey }) => {
     return (
       <div className='popper__content'>
-        <ClickAwayListener onClickAway={handleClose}>
-          <MenuList>
-            {defaultSushiArr.map(item => (
-              <MenuItem
-                className={activeImgKey === item[0] ? 'active' : ''}
-                key={item[0]}
-                onClick={() => switchSushiImage(item[0])}>
-                {item[1]}
-              </MenuItem>
-            ))}
-          </MenuList>
-        </ClickAwayListener>
+        <ul>
+          {defaultSushiArr.map(item => (
+            <li
+              className={currentImgKey === item[0] ? 'active' : ''}
+              key={item[0]}
+              onClick={() => switchSushiImage(item[0])}>
+              {item[1]}
+            </li>
+          ))}
+        </ul>
       </div>
     )
   }
@@ -30,7 +25,8 @@ const PopperContent = React.memo(
 export const MobileSushiNavigation = React.memo(
   ({ changeImage, currentImgKey, defaultSushiArr }) => {
     const [open, setOpen] = useState(false)
-    const prevImgKey = useRef(currentImgKey)
+    // clickAwayActive нужен для того, чтобы ClickAwayListener был неактивен когда Popper скрыт
+    const clickAwayActive = useRef(false)
 
     const handleToggle = () => {
       setOpen(prevOpen => !prevOpen)
@@ -41,14 +37,11 @@ export const MobileSushiNavigation = React.memo(
       setOpen(false)
     }, [])
 
-    const handleClose = useCallback(() => {
-      setOpen(false)
-    }, [])
-
-    // Оптимизирует рендеринг PopperContent
-    useEffect(() => {
-      prevImgKey.current = currentImgKey
-    }, [currentImgKey])
+    const handleClose = () => {
+      if (clickAwayActive.current) {
+        setOpen(false)
+      }
+    }
 
     return (
       <div>
@@ -59,24 +52,22 @@ export const MobileSushiNavigation = React.memo(
             aria-hidden='true'
           />
         </button>
-        <Popper
-          open={open}
-          transition
-          className='popper popper__sushi'
-          disablePortal>
-          {({ TransitionProps }) => (
-            <Grow {...TransitionProps}>
-              <div className='popper__backdrop'>
+        <Grow
+          in={open}
+          onEntered={() => (clickAwayActive.current = true)}
+          onExited={() => (clickAwayActive.current = false)}>
+          <div className='popper__backdrop'>
+            <ClickAwayListener onClickAway={handleClose}>
+              <div className='popper popper__sushi'>
                 <PopperContent
                   defaultSushiArr={defaultSushiArr}
-                  handleClose={handleClose}
-                  activeImgKey={prevImgKey.current}
+                  currentImgKey={currentImgKey}
                   switchSushiImage={switchSushiImage}
                 />
               </div>
-            </Grow>
-          )}
-        </Popper>
+            </ClickAwayListener>
+          </div>
+        </Grow>
       </div>
     )
   }
