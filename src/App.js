@@ -39,7 +39,7 @@ const App = ({
     createFilmsTodayArr()
   }, [createActualDatesArr, setTodaySceduleItem, createFilmsTodayArr])
 
-  // Queries
+  // Queries.
   let mobileQ = useMediaQuery(queries.mobile)
   let desktopQ = useMediaQuery(queries.desktop)
 
