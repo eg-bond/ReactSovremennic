@@ -23,7 +23,9 @@
     "build": "react-scripts build",
     "analyze_js": "source-map-explorer 'build/static/js/*.js'",
     "analyze_css": "source-map-explorer 'build/static/css/*.css' --no-border-checks",
-    "test": "react-scripts test",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "eject": "react-scripts eject",
     "scrapper": "node ExternalScripts/Scrapper/scrapper",
     "make_ps": "node ExternalScripts/PhotoShopScedule/makePSscedule",
@@ -47,11 +49,33 @@
     ]
   },
   "devDependencies": {
+    "babel-jest": "^24.9.0",
     "cherio": "^1.0.0-rc.2",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "enzyme-to-json": "^3.6.2",
     "fs": "^0.0.1-security",
     "gh-pages": "^2.2.0",
     "puppeteer": "^8.0.0",
     "source-map-explorer": "^2.5.2",
     "xlsx": "^0.16.8"
+  },
+  "jest": {
+    "verbose": true,
+    "clearMocks": true,
+    "collectCoverage": true,
+    "setupFilesAfterEnv": [
+      "./config/setupTest.js"
+    ],
+    "snapshotSerializers": [
+      "./node_modules/enzyme-to-json/serializer"
+    ],
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    },
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "./__mocks__/fileMock.js",
+      "\\.(css|scss)$": "identity-obj-proxy"
+    }
   }
 }
