@@ -93,6 +93,16 @@ const App = React.memo(
           <div className='row'>
             {/* {Q.mobile && <AdvXS />} */}
 
+            {Q.desktop && (
+              <div className='breaking'>
+                Уважаемые посетители! В связи с отключением электроснабжения на
+                территории г. Сосновый Бор, в субботу 26.06.2021 сеанс "Бендер:
+                Начало", запланированный на 23:40, проведен не будет!
+              </div>
+            )}
+
+            <hr className={`line_5px hidden-xs ${themeCl.borders}`} />
+
             {siteMode === 'default' && Q.desktop && (
               <FilmSwiper films={films} mobile={Q.mobile} />
             )}
