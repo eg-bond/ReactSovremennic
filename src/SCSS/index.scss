@@ -9,21 +9,6 @@
   }
 }
 
-.breaking {
-  font-size: 140%;
-  font-weight: bold;
-  text-align: justify;
-  padding: 5px 10px;
-  letter-spacing: 1.7px;
-  @media (max-width: 1200px) {
-    font-size: 113%;
-  }
-  @media (max-width: 992px) {
-    font-size: 105%;
-    letter-spacing: 0;
-  }
-}
-
 .news {
   padding: 0 0 2% 1%;
   color: white;
