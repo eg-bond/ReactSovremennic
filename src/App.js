@@ -74,6 +74,10 @@ const App = ({
 
   console.log('app render')
 
+  if (filmsToday[0] === undefined) {
+    return null
+  }
+
   return (
     <div className={mainContainerClasses}>
       <div>
