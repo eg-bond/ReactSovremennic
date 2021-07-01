@@ -72,15 +72,26 @@ const App = ({
     'flex-wrapper',
   ].join(' ')
 
-  console.log('app render')
+  console.log('desq: ' + desktopQ)
+  console.log('mobile: ' + mobileQ)
+  console.log(filmsToday[0])
 
   if (filmsToday[0] === undefined) {
     return null
+  }
+  const logg = () => {
+    console.log('desc rendered')
   }
 
   return (
     <div className={mainContainerClasses}>
       <div>
+        {desktopQ && logg()}
+        {desktopQ && <div>Hello</div>}
+
+        {mobileQ && <div>Hello mobile</div>}
+        <div>Hello!!!</div>
+
         <Navigation siteMode={siteMode} fontSize={fontSize} theme={theme} />
 
         {/*Отступ навигации в мобильной версии*/}
