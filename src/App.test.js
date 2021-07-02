@@ -1,6 +1,8 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import App from './App'
+import Footer from './Template/Footer'
+import BottomSwiper from './Template/BottomSwiper'
 import { HashRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import store from './REDUX/store'
@@ -22,48 +24,14 @@ export const withRouterAndStore = component => {
   )
 }
 
+export const withStore = component => {
+  return <Provider store={store}>{component}</Provider>
+}
+
+export const withRouter = component => {
+  return <HashRouter>{component}</HashRouter>
+}
+
 describe('App:', () => {
-  beforeAll(() => {
-    Object.defineProperty(window, 'matchMedia', {
-      writable: true,
-      value: jest.fn().mockImplementation(query => ({
-        matches: false,
-        media: query,
-        onchange: null,
-        addListener: jest.fn(), // deprecated
-        removeListener: jest.fn(), // deprecated
-        addEventListener: jest.fn(),
-        removeEventListener: jest.fn(),
-        dispatchEvent: jest.fn(),
-      })),
-    })
-  })
-
-  // it('App indexPage renders', () => {
-  //   render(
-  //     <HashRouter>
-  //       <Provider store={store}>
-  //         <App />
-  //       </Provider>
-  //     </HashRouter>
-  //   )
-  //   // render(withRouterAndStore(<App />))
-
-  //   expect(screen.getByText(/информация/i)).toBeInTheDocument()
-  // })
-
-  it('Bottom swiper renders', async () => {
-    // render(withRouterAndStore(<App />))
-    render(
-      <HashRouter>
-        <Provider store={store}>
-          <App />
-        </Provider>
-      </HashRouter>
-    )
-
-    // expect(await screen.findByTestId(/bottom_swiper/i)).toBeInTheDocument()
-
-    screen.debug()
-  })
+  it('App ...', () => {})
 })

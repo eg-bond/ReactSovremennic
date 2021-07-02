@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import 'swiper/swiper.scss'
 import 'swiper/components/navigation/navigation.scss'
 import 'swiper/components/pagination/pagination.scss'
@@ -72,26 +72,15 @@ const App = ({
     'flex-wrapper',
   ].join(' ')
 
-  console.log('desq: ' + desktopQ)
-  console.log('mobile: ' + mobileQ)
-  console.log(filmsToday[0])
+  //-----------------------------------
 
   if (filmsToday[0] === undefined) {
     return null
-  }
-  const logg = () => {
-    console.log('desc rendered')
   }
 
   return (
     <div className={mainContainerClasses}>
       <div>
-        {desktopQ && logg()}
-        {desktopQ && <div>Hello</div>}
-
-        {mobileQ && <div>Hello mobile</div>}
-        <div>Hello!!!</div>
-
         <Navigation siteMode={siteMode} fontSize={fontSize} theme={theme} />
 
         {/*Отступ навигации в мобильной версии*/}
