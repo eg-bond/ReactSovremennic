@@ -9,17 +9,33 @@ const FilmSwiper = ({ mobile, films }) => {
   const [opacity, turnOpacity] = useState('opacity_0')
   const swiperRef = useRef(null)
 
+  let apOptionsFunc = () => {
+    if (mobile === false) {
+      return {
+        delay: 1000,
+        pauseOnMouseEnter: true,
+        disableOnInteraction: false,
+      }
+    } else {
+      return false
+    }
+  }
+
   const params = {
     spaceBetween: 10,
     className: 'cinemaSlider__container',
     observer: true,
     observeParents: true,
     onSwiper: swiper => (swiperRef.current = swiper),
-    onImagesReady: () => turnOpacity('opacity_1'),
+    onImagesReady: () => {
+      turnOpacity('opacity_1')
+      console.log('img load')
+    },
     pagination: {
       dynamicBullets: true,
       clickable: true,
     },
+    autoplay: apOptionsFunc(),
     breakpoints: {
       250: {
         slidesPerView: 3.5,
@@ -29,20 +45,12 @@ const FilmSwiper = ({ mobile, films }) => {
       768: {
         freeMode: false,
         slidesPerView: 5.5,
-        // autoplay: {
-        //   delay: 1000,
-        //   disableOnInteraction: false,
-        // },
       },
     },
   }
 
   return (
-    <div
-      onMouseEnter={() => swiperRef.current.autoplay.stop()}
-      onMouseLeave={() => swiperRef.current.autoplay.start()}
-      className={`cinemaSlider ${opacity}`}>
-      {mobile && <h4>Фильмы</h4>}
+    <div className={`cinemaSlider ${opacity}`}>
       <Swiper {...params}>
         {films.map(f => (
           <SwiperSlide className={'sliderSlide'} key={f.link + 'FS'}>
