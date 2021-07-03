@@ -89,6 +89,7 @@ const Seans = ({
 
   return (
     <div className='content__gridLeftItem--3fr'>
+      <div>{activeSceduleItemKey + 'hello'}</div>
       {desktopQ && (
         <CreateSeanseButtons
           datesArr={datesArr}
@@ -129,9 +130,14 @@ let mapStateToProps = state => ({
   buttonTitle: state.seansPage.buttonTitle,
 })
 
-export default compose(
-  connect(mapStateToProps, {
-    changeSceduleItem,
-    setTodaySceduleItem,
-  })
-)(Seans)
+// export default compose(
+//   connect(mapStateToProps, {
+//     changeSceduleItem,
+//     setTodaySceduleItem,
+//   })
+// )(Seans)
+
+export default connect(mapStateToProps, {
+  changeSceduleItem,
+  setTodaySceduleItem,
+})(Seans)
