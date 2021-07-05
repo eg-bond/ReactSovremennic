@@ -77,10 +77,7 @@ const Seans = ({
 
   const changeTableContent = useCallback(
     (key, title) => {
-      console.log('not working')
       if (key !== activeSceduleItemKey) {
-        console.log('key: ' + key)
-        console.log('activeSceduleItemKey: ' + activeSceduleItemKey)
         switchVisibility(false)
         setTimeout(() => {
           changeSceduleItem(key, title)

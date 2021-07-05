@@ -6,17 +6,12 @@ import '@testing-library/jest-dom/extend-expect'
 import scedule from './scedule'
 
 import {
-  changeSceduleItem,
   createActualDatesArr,
   setTodaySceduleItem,
 } from '../../REDUX/seansReduser'
 import { Provider } from 'react-redux'
 import store from '../../REDUX/store'
 import { delay } from '../../helpers'
-
-export const withStore = component => {
-  return <Provider store={store}>{component}</Provider>
-}
 
 describe('Seanse tests:', () => {
   const renderWithRedux = component => {

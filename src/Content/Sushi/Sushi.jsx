@@ -6,6 +6,7 @@ import { SushiLinearProgress } from './SushiLinearProgress'
 import { trDuration } from './SushiContainer'
 import { useMediaQuery } from '@material-ui/core'
 import { queries } from '../../helpers'
+import { test_object } from '../../test_object'
 
 const SushiImage = ({ currentImgKey, swiperKeys, imgVisible }) => {
   if (swiperKeys.includes(currentImgKey)) {
@@ -52,7 +53,6 @@ const Sushi = ({
   let mobileQ = useMediaQuery(queries.mobile)
   let desktopQ = useMediaQuery(queries.desktop)
 
-  console.log('sushi rend')
   return (
     <>
       {desktopQ && (
@@ -66,7 +66,6 @@ const Sushi = ({
               currentImgKey={currentImgKey}
               changeImage={changeImage}
             />
-            {/* {menuButtons} */}
           </div>
         </div>
       )}
