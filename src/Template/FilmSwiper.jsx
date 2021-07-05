@@ -27,10 +27,7 @@ const FilmSwiper = ({ mobile, films }) => {
     observer: true,
     observeParents: true,
     onSwiper: swiper => (swiperRef.current = swiper),
-    onImagesReady: () => {
-      turnOpacity('opacity_1')
-      console.log('img load')
-    },
+    onImagesReady: () => turnOpacity('opacity_1'),
     pagination: {
       dynamicBullets: true,
       clickable: true,

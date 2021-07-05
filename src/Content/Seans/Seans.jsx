@@ -13,9 +13,12 @@ import { useCallback } from 'react'
 const desktopBtn = (d, activeSceduleItemKey, changeTableContent) => {
   return (
     <button
+      data-testid={d[0]}
       key={d[0] + 'desc'}
       className={`fill_button ${activeSceduleItemKey === d[0] ? 'active' : ''}`}
-      onClick={() => changeTableContent(d[0], `${d[1]} ${d[2]}`)}>
+      onClick={() => {
+        changeTableContent(d[0], `${d[1]} ${d[2]}`)
+      }}>
       {d[1]}
       <br />
       {d[2]}
@@ -71,15 +74,22 @@ const Seans = ({
   const [tableVisible, switchVisibility] = useState(true)
 
   const trDuration = 200
-  const changeTableContent = useCallback((key, title) => {
-    if (key !== activeSceduleItemKey) {
-      switchVisibility(false)
-      setTimeout(() => {
-        changeSceduleItem(key, title)
-        switchVisibility(true)
-      }, trDuration)
-    }
-  }, [])
+
+  const changeTableContent = useCallback(
+    (key, title) => {
+      console.log('not working')
+      if (key !== activeSceduleItemKey) {
+        console.log('key: ' + key)
+        console.log('activeSceduleItemKey: ' + activeSceduleItemKey)
+        switchVisibility(false)
+        setTimeout(() => {
+          changeSceduleItem(key, title)
+          switchVisibility(true)
+        }, trDuration)
+      }
+    },
+    [activeSceduleItemKey]
+  )
 
   useEffect(() => {
     return () => {
@@ -89,7 +99,6 @@ const Seans = ({
 
   return (
     <div className='content__gridLeftItem--3fr'>
-      <div>{activeSceduleItemKey + 'hello'}</div>
       {desktopQ && (
         <CreateSeanseButtons
           datesArr={datesArr}
