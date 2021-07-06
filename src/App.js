@@ -13,7 +13,7 @@ import { connect } from 'react-redux'
 import Adv from './Template/Adv'
 import { createFilmsTodayArr, createFilmsObject } from './REDUX/cinemaReduser'
 import { switchSiteMode, switchFontSize } from './REDUX/specialReduser'
-import { changeAppColors, modifiedClass, queries, scrollToTop } from './helpers'
+import { changeAppColors, modifiedClass, queries } from './helpers'
 import { useMediaQuery } from '@material-ui/core'
 import Content from './Content/Content'
 
@@ -49,11 +49,6 @@ const App = ({
       switchSiteMode('default')
     }
   }, [mobileQ, switchSiteMode, siteMode])
-
-  // Автоматический скролл наверх для мобильной версии
-  if (mobileQ || siteMode === 'special') {
-    scrollToTop()
-  }
 
   // Изменение размера шрифта
   useEffect(() => {
@@ -99,7 +94,6 @@ const App = ({
               filmsObject={filmsObject}
               createFilmsObject={createFilmsObject}
               fontSize={fontSize}
-              // pathname={pathname}
             />
             {desktopQ && <Adv />}
           </div>
@@ -117,7 +111,7 @@ const App = ({
           )}
         </div>
       </div>
-      <Footer />
+      <Footer mobileQ={mobileQ} siteMode={siteMode} />
     </div>
   )
 }

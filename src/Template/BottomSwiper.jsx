@@ -2,16 +2,13 @@ import React, { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import SwiperCore, { Autoplay } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { scrollToNavigation } from '../helpers'
 
 SwiperCore.use([Autoplay])
 
 const BottomSwiper = props => {
   const [opacity, turnOpacity] = useState('opacity_0')
   const swiperRef = useRef(null)
-
-  // if (props.filmsToday[0] === undefined) {
-  //   return null
-  // }
 
   const params = {
     slidesPerView: props.slidesPerView,
@@ -37,7 +34,7 @@ const BottomSwiper = props => {
           <Swiper {...params}>
             {props.filmsToday.map(f => (
               <SwiperSlide className={'sliderSlide'} key={f.link + 'BS'}>
-                <Link to={`/movies/${f.link}`}>
+                <Link onClick={scrollToNavigation} to={`/movies/${f.link}`}>
                   <img
                     src={`./Images/description/${f.link}_D.jpg`}
                     alt={f.title}

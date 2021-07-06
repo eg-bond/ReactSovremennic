@@ -1,10 +1,22 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
+import { scrollToTop } from '../helpers'
+import { ScrollToTop } from './ScrollToTop'
 
-function Footer() {
+function Footer({ mobileQ, siteMode }) {
+  // Автоматический скролл наверх для мобильной версии
+  const { pathname } = useLocation()
+  useEffect(() => {
+    if (mobileQ || siteMode === 'special') {
+      scrollToTop()
+    }
+  }, [pathname])
+
   return (
     <div className={`footer container`}>
-      <Link to='/'>Кинотеатр «Современник» © 2005</Link>
+      <Link onClick={scrollToTop} to='/'>
+        Кинотеатр «Современник» © 2005
+      </Link>
     </div>
   )
 }

@@ -69,8 +69,9 @@ export const queries = {
     '(max-width: 767.5px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)',
 }
 
-// Функция для прокрутки наверх
+// Функциb для прокрутки наверх
 export const scrollToTop = () => window.scrollTo(0, 0)
+export const scrollToNavigation = () => window.scrollTo(0, 200)
 
 // Промис - задержка
 export const delay = ms => {
