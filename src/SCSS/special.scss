@@ -5,7 +5,7 @@
 
 // Стили для верхней панели настроек
 .specialSettings__container {
-  background-color: #95905e;
+  background-color: #a08d5f;
   padding: 0.5% 1%;
   border-bottom: none !important;
   @extend %desktopBorders;
@@ -95,7 +95,7 @@
 }
 @include themeButtonCl(themeBW, $blackWhiteBackground, $blackWhiteElements);
 @include themeButtonCl(themeWB, $whiteBlackBackground, $whiteBlackElements);
-@include themeButtonCl(themeBR, $blackRedBackground, $blackRedElements);
+@include themeButtonCl(themeBR, $blackBlueBackground, $blackBlueElements);
 @include themeButtonCl(themeYB, $yellowBrownBackground, $yellowBrownElements);
 @include themeButtonCl(themeBG, $blueGreenBackground, $blueGreenElements);
 //--------------------------------------------------------------------------

@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 import RemoveRedEyeOutlinedIcon from '@material-ui/icons/RemoveRedEyeOutlined'
 import Brightness1Icon from '@material-ui/icons/Brightness1'
+import { scrollToTop } from '../helpers'
 
 export const SiteModeButton = React.memo(({ siteMode, switchSiteMode }) => {
   let modeToDispatch = siteMode === 'default' ? 'special' : 'default'
@@ -12,7 +13,10 @@ export const SiteModeButton = React.memo(({ siteMode, switchSiteMode }) => {
   return (
     <Button
       className='specialSettings__modeButton'
-      onClick={() => switchSiteMode(modeToDispatch)}
+      onClick={() => {
+        switchSiteMode(modeToDispatch)
+        scrollToTop()
+      }}
       variant='contained'
       startIcon={<RemoveRedEyeOutlinedIcon />}>
       {siteMode === 'default'
@@ -33,7 +37,7 @@ export const ThemeButtons = React.memo(({ switchSiteTheme }) => {
       <div className={'specialSettings__flex__title'}>ЦВЕТОВАЯ СХЕМА</div>
       <ThemeButton theme='blackWhite' cl='themeBW' swST={switchSiteTheme} />
       <ThemeButton theme='whiteBlack' cl='themeWB' swST={switchSiteTheme} />
-      <ThemeButton theme='blackRed' cl='themeBR' swST={switchSiteTheme} />
+      <ThemeButton theme='blackBlue' cl='themeBR' swST={switchSiteTheme} />
       <ThemeButton theme='yellowBrown' cl='themeYB' swST={switchSiteTheme} />
       <ThemeButton theme='blueGreen' cl='themeBG' swST={switchSiteTheme} />
     </div>

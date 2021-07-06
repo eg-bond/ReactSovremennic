@@ -11,10 +11,11 @@ const themeAppColors = {
     main: '#ebece9',
     secondary: 'black',
   },
-  blackRed: {
+  blackBlue: {
     main: 'black',
-    secondary: '#ab1919',
+    secondary: '#7ba2d5',
   },
+  //  #ab1919
   yellowBrown: {
     main: '#f5dda1',
     secondary: '#810026',
@@ -40,7 +41,7 @@ export const changeAppColors = (theme, siteMode) => {
 export const themeLogoFile = {
   blackWhite: 'logo.png',
   whiteBlack: 'logoWB.png',
-  blackRed: 'logoBR.png',
+  blackBlue: 'logoBB.png',
   yellowBrown: 'logoYB.png',
   blueGreen: 'logoBG.png',
 }
@@ -51,8 +52,8 @@ export const themeLogo = theme => {
       return 'logo'
     case 'whiteBlack':
       return 'logoWB'
-    case 'blackRed':
-      return 'logoBR'
+    case 'blackBlue':
+      return 'logoBB'
     case 'yellowBrown':
       return 'logoYB'
     case 'blueGreen':
