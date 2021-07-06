@@ -76,9 +76,3 @@ export const scrollToTop = () => window.scrollTo(0, 0)
 export const delay = ms => {
   return new Promise(res => setTimeout(() => res(), ms))
 }
-
-// Для тестирования
-export const testObj = {
-  log: () => console.log('test log'),
-  sum: (a, b) => a + b,
-}

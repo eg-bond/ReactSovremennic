@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react'
 import Sushi from './Sushi'
 import { delay } from '../../helpers'
+import { preloadImg } from './preload'
 
 const sushiElems = {
   default: [
@@ -43,6 +44,20 @@ const sushiElems = {
   swiperKeys: ['brand_rolls', 'hot_dishes'],
 }
 
+// export let preloadImg = (imgKey, imgPreloaded) => {
+//   let key
+//   sushiElems.swiperKeys.includes(imgKey) ? (key = imgKey + '1') : (key = imgKey)
+//   console.log('original prom')
+//   return new Promise(res => {
+//     let img = new window.Image()
+//     img.src = `./Images/sushi/${key}.gif`
+//     img.onload = () => {
+//       imgPreloaded.current = true
+//       res()
+//     }
+//   })
+// }
+
 // Длительность анимации Grow
 export const trDuration = 300
 
@@ -52,25 +67,10 @@ const SushiContainer = ({ siteMode }) => {
   const [progressBar, showProgressBar] = useState(false)
   const imgPreloaded = useRef(false)
 
-  const preloadImg = imgKey => {
-    let key
-    sushiElems.swiperKeys.includes(imgKey)
-      ? (key = imgKey + '1')
-      : (key = imgKey)
-
-    return new Promise(res => {
-      let img = new window.Image()
-      img.src = `./Images/sushi/${key}.gif`
-      img.onload = () => {
-        imgPreloaded.current = true
-        res()
-      }
-    })
-  }
-
   function fadeOutHandler(key) {
     return new Promise(res => {
       switchVisibility(false)
+
       delay(trDuration).then(() => {
         currentImgKey.current = key
         if (!imgPreloaded.current) {
@@ -87,9 +87,10 @@ const SushiContainer = ({ siteMode }) => {
   const changeImage = useCallback(async key => {
     if (currentImgKey.current !== key) {
       funcCalled.current += 1
-      await Promise.all([fadeOutHandler(key), preloadImg(key)])
+      // console.log('here')
+      await Promise.all([fadeOutHandler(key), preloadImg(key, imgPreloaded)])
       imgPreloaded.current = false
-
+      // console.log('loaded')
       if (funcCalled.current > 1) {
         funcCalled.current -= 1
       } else {
@@ -112,7 +113,6 @@ const SushiContainer = ({ siteMode }) => {
       siteMode={siteMode}
       imgVisible={imgVisible}
       progressBar={progressBar}
-      siteMode={siteMode}
     />
   )
 }

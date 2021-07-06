@@ -6,7 +6,6 @@ import { SushiLinearProgress } from './SushiLinearProgress'
 import { trDuration } from './SushiContainer'
 import { useMediaQuery } from '@material-ui/core'
 import { queries } from '../../helpers'
-import { test_object } from '../../test_object'
 
 const SushiImage = ({ currentImgKey, swiperKeys, imgVisible }) => {
   if (swiperKeys.includes(currentImgKey)) {
@@ -26,6 +25,7 @@ const SushiImage = ({ currentImgKey, swiperKeys, imgVisible }) => {
 const desktopMenuButton = (key, title, currentImgKey, changeImage) => {
   return (
     <button
+      data-testid={key}
       key={key + 'btn'}
       className={`fill_button ${currentImgKey === key ? 'active' : ''}`}
       onClick={() => changeImage(key)}>
