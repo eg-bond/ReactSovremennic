@@ -42,7 +42,6 @@ const sushiElems = {
 export let preloadImg = (imgKey, imgPreloaded) => {
   let key
   sushiElems.swiperKeys.includes(imgKey) ? (key = imgKey + '1') : (key = imgKey)
-  console.log('original prom')
   return new Promise(res => {
     let img = new window.Image()
     img.src = `./Images/sushi/${key}.gif`

@@ -2,20 +2,9 @@ import React, { useEffect } from 'react'
 import { DescriptionTrailer } from './DescriptionTrailer'
 import { useParams } from 'react-router'
 import FilmsSpecial from '../FilmsSpecial/FilmsSpecial'
-import { useRouteMatch } from 'react-router-dom'
 
-function SelectedMovie({
-  filmsObject,
-  createFilmsObject,
-  siteMode,
-  fontSize,
-  // pathname,
-}) {
+function SelectedMovie({ filmsObject, createFilmsObject, siteMode, fontSize }) {
   const { film_id } = useParams()
-  // let film_id = pathname.split('/')[2]
-  // let match = useRouteMatch('/movies/:id')
-  // let film_id = match.params.id
-  // console.log(lol)
 
   // Формирует объект фильмов если он отсутстует
   useEffect(() => {

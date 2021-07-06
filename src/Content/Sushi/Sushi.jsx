@@ -7,7 +7,7 @@ import { trDuration } from './SushiContainer'
 import { useMediaQuery } from '@material-ui/core'
 import { queries } from '../../helpers'
 
-const SushiImage = ({ currentImgKey, swiperKeys, imgVisible }) => {
+const SushiImage = React.memo(({ currentImgKey, swiperKeys, imgVisible }) => {
   if (swiperKeys.includes(currentImgKey)) {
     return <SushiSwipers swiperKey={currentImgKey} imgVisible={imgVisible} />
   }
@@ -20,7 +20,7 @@ const SushiImage = ({ currentImgKey, swiperKeys, imgVisible }) => {
       />
     </Grow>
   )
-}
+})
 
 const desktopMenuButton = (key, title, currentImgKey, changeImage) => {
   return (

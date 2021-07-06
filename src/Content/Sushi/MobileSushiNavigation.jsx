@@ -32,10 +32,13 @@ export const MobileSushiNavigation = React.memo(
       setOpen(prevOpen => !prevOpen)
     }
 
-    const switchSushiImage = useCallback(key => {
-      changeImage(key)
-      setOpen(false)
-    }, [])
+    const switchSushiImage = useCallback(
+      key => {
+        changeImage(key)
+        setOpen(false)
+      },
+      [changeImage]
+    )
 
     const handleClose = () => {
       if (clickAwayActive.current) {

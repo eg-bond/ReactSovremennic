@@ -1,10 +1,9 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { act, render, screen } from '@testing-library/react'
 import Seans from './Seans'
 import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom/extend-expect'
 import scedule from './scedule'
-
 import {
   createActualDatesArr,
   setTodaySceduleItem,
@@ -36,12 +35,12 @@ describe('Seanse tests:', () => {
     it('Menu items activation works fine', async () => {
       const thButton = screen.getByText(/четверг/i)
       userEvent.click(thButton)
-      await delay(250)
+      await act(() => delay(250))
       expect(thButton).toHaveClass('active')
 
       const sunButton = screen.getByText(/воскресенье/i)
       userEvent.click(sunButton)
-      await delay(250)
+      await act(() => delay(250))
       expect(sunButton).toHaveClass('active')
       expect(thButton).not.toHaveClass('active')
     })
@@ -52,15 +51,15 @@ describe('Seanse tests:', () => {
 
       const sredaBtn = screen.getByTestId('day3')
       userEvent.click(sredaBtn)
-      await delay(250)
+      await act(() => delay(250))
       expect(screen.getByText(scedule['day3'][3][0])).toBeInTheDocument()
       expect(screen.getByText(scedule['day3'][4][0])).toBeInTheDocument()
 
       const todayBtn = screen.getByTestId(activeSIKey)
       userEvent.click(todayBtn)
-      await delay(250)
+      await act(() => delay(250))
+      expect(screen.getByText(scedule[activeSIKey][4][0])).toBeInTheDocument()
       expect(screen.getByText(scedule[activeSIKey][5][0])).toBeInTheDocument()
-      expect(screen.getByText(scedule[activeSIKey][6][0])).toBeInTheDocument()
     })
 
     it('Multiple clicks on navItems processed properly', async () => {
@@ -108,7 +107,7 @@ describe('Seanse tests:', () => {
       expect(screen.getByTestId(activeSIKey + '_xs')).toHaveClass('active')
 
       userEvent.click(screen.getByTestId('day0_xs'))
-      await delay(250)
+      await act(() => delay(250))
       userEvent.click(xsMenuBtn)
       expect(screen.getByTestId('day0_xs')).toHaveClass('active')
       expect(screen.getByTestId(activeSIKey + '_xs')).not.toHaveClass('active')
@@ -127,7 +126,7 @@ describe('Seanse tests:', () => {
       userEvent.click(screen.getByTestId('day3_xs'))
       userEvent.click(screen.getByTestId('day2_xs'))
       userEvent.click(screen.getByTestId('day4_xs'))
-      await delay(300)
+      await act(() => delay(300))
       expect(screen.getByText(scedule['day4'][3][0])).toBeInTheDocument()
       expect(screen.getByText(scedule['day4'][4][0])).toBeInTheDocument()
     })

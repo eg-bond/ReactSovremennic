@@ -36,7 +36,7 @@ function Navigation({ siteMode, fontSize, theme }) {
             />
           </Link>
         </div>
-        <div className={`${modifyCl('navigation__menu')} focus`}>
+        <div className={`${modifyCl('navigation__menu')}`}>
           <ul>
             <NavItem url='/seans' title='РАСПИСАНИЕ' />
             {siteMode === 'special' && <NavItem url='/films' title='ФИЛЬМЫ' />}

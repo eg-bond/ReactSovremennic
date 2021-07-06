@@ -38,15 +38,18 @@ export const MobileSeanceNavigation = React.memo(
       setOpen(prevOpen => !prevOpen)
     }
 
-    const changeTableContent = useCallback((key, title) => {
-      switchVisibility(false)
-      setTimeout(() => {
-        changeSceduleItem(key, title)
-        switchVisibility(true)
-      }, 200)
+    const changeTableContent = useCallback(
+      (key, title) => {
+        switchVisibility(false)
+        setTimeout(() => {
+          changeSceduleItem(key, title)
+          switchVisibility(true)
+        }, 200)
 
-      setOpen(false)
-    }, [])
+        setOpen(false)
+      },
+      [changeSceduleItem, switchVisibility]
+    )
 
     const handleClose = () => {
       if (clickAwayActive.current) {

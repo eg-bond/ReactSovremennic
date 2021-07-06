@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import 'swiper/swiper.scss'
 import 'swiper/components/navigation/navigation.scss'
 import 'swiper/components/pagination/pagination.scss'
@@ -39,7 +39,7 @@ const App = ({
     createFilmsTodayArr()
   }, [createActualDatesArr, setTodaySceduleItem, createFilmsTodayArr])
 
-  // Queries.
+  // Media queries.
   let mobileQ = useMediaQuery(queries.mobile)
   let desktopQ = useMediaQuery(queries.desktop)
 
@@ -48,10 +48,7 @@ const App = ({
     if (mobileQ && siteMode === 'special') {
       switchSiteMode('default')
     }
-    if (fontSize !== '14px') {
-      switchFontSize('14px')
-    }
-  }, [mobileQ, switchSiteMode, siteMode, fontSize, switchFontSize])
+  }, [mobileQ, switchSiteMode, siteMode])
 
   // Автоматический скролл наверх для мобильной версии
   if (mobileQ || siteMode === 'special') {
@@ -65,13 +62,12 @@ const App = ({
   // Изменение цветовых схем
   useEffect(() => {
     changeAppColors(theme, siteMode)
-  }, [theme, siteMode, changeAppColors])
+  }, [theme, siteMode])
 
   let mainContainerClasses = [
     modifiedClass('mainContainer', siteMode),
     'flex-wrapper',
   ].join(' ')
-
   //-----------------------------------
 
   if (filmsToday[0] === undefined) {

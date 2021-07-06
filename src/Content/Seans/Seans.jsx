@@ -4,7 +4,6 @@ import {
   changeSceduleItem,
   setTodaySceduleItem,
 } from '../../REDUX/seansReduser'
-import { compose } from 'redux'
 import { connect } from 'react-redux'
 import Grow from '@material-ui/core/Grow'
 import scedule from './scedule'
@@ -62,6 +61,8 @@ const TableContent = React.memo(({ scedule, activeSceduleItemKey }) => {
   return null
 })
 
+let trDurationSeance = 0
+
 const Seans = ({
   setTodaySceduleItem,
   datesArr,
@@ -73,8 +74,6 @@ const Seans = ({
 }) => {
   const [tableVisible, switchVisibility] = useState(true)
 
-  const trDuration = 200
-
   const changeTableContent = useCallback(
     (key, title) => {
       if (key !== activeSceduleItemKey) {
@@ -82,10 +81,10 @@ const Seans = ({
         setTimeout(() => {
           changeSceduleItem(key, title)
           switchVisibility(true)
-        }, trDuration)
+        }, trDurationSeance)
       }
     },
-    [activeSceduleItemKey]
+    [activeSceduleItemKey, changeSceduleItem]
   )
 
   useEffect(() => {
@@ -93,6 +92,13 @@ const Seans = ({
       setTodaySceduleItem()
     }
   }, [setTodaySceduleItem])
+
+  useEffect(() => {
+    trDurationSeance = 200
+    return () => {
+      trDurationSeance = 0
+    }
+  }, [])
 
   return (
     <div className='content__gridLeftItem--3fr'>
@@ -116,7 +122,7 @@ const Seans = ({
         </div>
       )}
 
-      <Grow in={tableVisible} timeout={trDuration}>
+      <Grow in={tableVisible} timeout={trDurationSeance}>
         <table className='seanse__table'>
           <TableContent
             activeSceduleItemKey={activeSceduleItemKey}
@@ -135,13 +141,6 @@ let mapStateToProps = state => ({
   activeSceduleItemKey: state.seansPage.activeSceduleItemKey,
   buttonTitle: state.seansPage.buttonTitle,
 })
-
-// export default compose(
-//   connect(mapStateToProps, {
-//     changeSceduleItem,
-//     setTodaySceduleItem,
-//   })
-// )(Seans)
 
 export default connect(mapStateToProps, {
   changeSceduleItem,

@@ -42,12 +42,22 @@ const sushiElems = {
     ['pizza', 'Пицца'],
   ],
   swiperKeys: ['brand_rolls', 'hot_dishes'],
+  allPossibleSwiperKeys: [
+    'brand_rolls',
+    'brand_rolls1',
+    'brand_rolls2',
+    'brand_rolls3',
+    'hot_dishes',
+    'hot_dishes1',
+    'hot_dishes2',
+    'hot_dishes3',
+    'hot_dishes4',
+  ],
 }
 
 // export let preloadImg = (imgKey, imgPreloaded) => {
 //   let key
 //   sushiElems.swiperKeys.includes(imgKey) ? (key = imgKey + '1') : (key = imgKey)
-//   console.log('original prom')
 //   return new Promise(res => {
 //     let img = new window.Image()
 //     img.src = `./Images/sushi/${key}.gif`
@@ -59,7 +69,7 @@ const sushiElems = {
 // }
 
 // Длительность анимации Grow
-export const trDuration = 300
+export let trDuration = 0
 
 const SushiContainer = ({ siteMode }) => {
   const currentImgKey = useRef('sushi')
@@ -87,10 +97,8 @@ const SushiContainer = ({ siteMode }) => {
   const changeImage = useCallback(async key => {
     if (currentImgKey.current !== key) {
       funcCalled.current += 1
-      // console.log('here')
       await Promise.all([fadeOutHandler(key), preloadImg(key, imgPreloaded)])
       imgPreloaded.current = false
-      // console.log('loaded')
       if (funcCalled.current > 1) {
         funcCalled.current -= 1
       } else {
@@ -102,8 +110,17 @@ const SushiContainer = ({ siteMode }) => {
   }, [])
 
   useEffect(() => {
-    currentImgKey.current !== 'sushi' && changeImage('sushi')
-  }, [siteMode])
+    sushiElems.allPossibleSwiperKeys.includes(currentImgKey.current) &&
+      changeImage('sushi')
+  }, [siteMode, changeImage])
+
+  // При первом рендере Grow не анимируется
+  useEffect(() => {
+    trDuration = 300
+    return () => {
+      trDuration = 0
+    }
+  }, [])
 
   return (
     <Sushi

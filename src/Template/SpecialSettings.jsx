@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import {
   switchSiteMode,
   switchSiteTheme,
@@ -22,14 +22,7 @@ function SpecialSettings({
   siteMode,
   switchSiteMode,
   theme,
-  fontSize,
 }) {
-  useEffect(() => {
-    if (fontSize !== '14px' && siteMode === 'default') {
-      switchFontSize('14px')
-    }
-  }, [siteMode])
-
   if (siteMode === 'default') {
     return (
       <div className={`space`}>
