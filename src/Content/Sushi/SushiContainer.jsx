@@ -5,10 +5,11 @@ import { preloadImg } from './preload'
 
 const sushiElems = {
   default: [
+    ['new', 'Новинки меню'],
     ['sushi', 'Суши'],
     ['rolls', 'Роллы'],
     ['black_rolls', 'Цветные/черные роллы'],
-    ['hot_rolls', 'Запеченые роллы'],
+    ['hot_rolls', 'Запеченные роллы'],
     ['brand_rolls', 'Фирменные роллы'],
     ['mini_rolls', 'Мини-роллы'],
     ['sets', 'Наборы'],
@@ -72,7 +73,7 @@ const sushiElems = {
 export let trDuration = 0
 
 const SushiContainer = ({ siteMode }) => {
-  const currentImgKey = useRef('sushi')
+  const currentImgKey = useRef('new')
   const [imgVisible, switchVisibility] = useState(true)
   const [progressBar, showProgressBar] = useState(false)
   const imgPreloaded = useRef(false)
@@ -111,7 +112,7 @@ const SushiContainer = ({ siteMode }) => {
 
   useEffect(() => {
     sushiElems.allPossibleSwiperKeys.includes(currentImgKey.current) &&
-      changeImage('sushi')
+      changeImage('new')
   }, [siteMode, changeImage])
 
   // При первом рендере Grow не анимируется

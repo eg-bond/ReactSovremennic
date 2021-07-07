@@ -1,9 +1,10 @@
 const sushiElems = {
   default: [
+    ['new', 'Новинки меню'],
     ['sushi', 'Суши'],
     ['rolls', 'Роллы'],
     ['black_rolls', 'Цветные/черные роллы'],
-    ['hot_rolls', 'Запеченые роллы'],
+    ['hot_rolls', 'Запеченные роллы'],
     ['brand_rolls', 'Фирменные роллы'],
     ['mini_rolls', 'Мини-роллы'],
     ['sets', 'Наборы'],
@@ -37,6 +38,17 @@ const sushiElems = {
     ['pizza', 'Пицца'],
   ],
   swiperKeys: ['brand_rolls', 'hot_dishes'],
+  allPossibleSwiperKeys: [
+    'brand_rolls',
+    'brand_rolls1',
+    'brand_rolls2',
+    'brand_rolls3',
+    'hot_dishes',
+    'hot_dishes1',
+    'hot_dishes2',
+    'hot_dishes3',
+    'hot_dishes4',
+  ],
 }
 
 export let preloadImg = (imgKey, imgPreloaded) => {
