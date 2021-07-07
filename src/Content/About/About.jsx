@@ -1,8 +1,4 @@
 import React from 'react'
-import aboutImg1 from '../../images/about1.gif'
-import aboutImg2 from '../../images/about2.gif'
-import aboutImg3 from '../../images/about3.gif'
-import aboutImg4 from '../../images/about4.gif'
 import Fade from '@material-ui/core/Fade'
 
 function About({ siteMode, loaded }) {
@@ -57,16 +53,16 @@ function AboutContent({ siteMode, cl, ...props }) {
       </div>
       <div className='aboutImages'>
         <div className='aboutImages__image'>
-          <img src={aboutImg1} alt='фото кинотеатра 1' />
+          <img src='./Images/about1.gif' alt='фото кинотеатра 1' />
         </div>
         <div className='aboutImages__image hidden-xs'>
-          <img src={aboutImg2} alt='фото кинотеатра 2' />
+          <img src='./Images/about2.gif' alt='фото кинотеатра 2' />
         </div>
         <div className='aboutImages__image hidden-xs'>
-          <img src={aboutImg4} alt='фото кинотеатра 4' />
+          <img src='./Images/about4.gif' alt='фото кинотеатра 4' />
         </div>
         <div className='aboutImages__image'>
-          <img src={aboutImg3} alt='фото кинотеатра 3' />
+          <img src='./Images/about3.gif' alt='фото кинотеатра 3' />
         </div>
       </div>
       <div>

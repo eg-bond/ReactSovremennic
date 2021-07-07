@@ -15,7 +15,7 @@ function IndexContent({ siteMode, films, mobileQ, desktopQ }) {
             <LiteYouTubeEmbed
               id='PLfrc7TOjXulMiQWLR1Jr8ZiZ2b7hWqSZf'
               playlist={true}
-              playlistCoverId='uyPLu4E45So'
+              playlistCoverId='u-7OatrGbkg'
               title='index_trailers_playlist'
               poster='maxresdefault'
             />
@@ -49,7 +49,7 @@ function IndexContent({ siteMode, films, mobileQ, desktopQ }) {
 
       {siteMode === 'special' && desktopQ && <FilmsSpecial films={films} />}
 
-      {/* <div className='separatorMobile separatorMobile--index' /> */}
+      <div className='separatorMobile separatorMobile--index' />
 
       {/* {Q.mobile && <IndexAdvXS />} */}
     </div>
