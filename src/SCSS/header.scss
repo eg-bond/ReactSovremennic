@@ -19,7 +19,7 @@
 .navigation--fs150 {
   .navigation__menu {
     flex: 1.8;
-    @media (max-width: 1200px) {
+    @media ($mediaQuery1200) {
       flex: 1.5;
       li {
         margin: 1.7% 0.5%;
@@ -30,7 +30,7 @@
     text-align: right;
     img {
       width: 60%;
-      @media (max-width: 992px) {
+      @media ($mediaQuery992) {
         width: 170px;
       }
     }
@@ -44,7 +44,7 @@
     text-align: right;
     img {
       width: 90%;
-      @media (max-width: 992px) {
+      @media ($mediaQuery992) {
         width: 220px;
       }
     }
@@ -65,13 +65,13 @@
   box-shadow: none !important;
 }
 .navigation__logo--special {
-  @media (max-width: 1200px) {
+  @media ($mediaQuery1200) {
     flex: 0.8;
     img {
       width: 90%;
     }
   }
-  @media (max-width: 992px) {
+  @media ($mediaQuery992) {
     flex: 0.7;
   }
 }
@@ -94,10 +94,10 @@
   padding: 9px 11px;
   text-decoration: none;
   font-size: 1.2rem;
-  @media (max-width: 1200px) {
+  @media ($mediaQuery1200) {
     font-size: 1.05rem;
   }
-  @media (max-width: 992px) {
+  @media ($mediaQuery992) {
     font-size: 0.86rem;
     padding: 8px 6px;
   }

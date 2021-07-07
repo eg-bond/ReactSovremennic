@@ -24,10 +24,10 @@
   font-weight: bold;
   * {
     font-size: 16px !important;
-    @media (max-width: 1200px) {
+    @media ($mediaQuery1200) {
       font-size: 15px !important;
     }
-    @media (max-width: 992px) {
+    @media ($mediaQuery992) {
       font-size: 13px !important;
     }
   }
@@ -50,10 +50,10 @@
 }
 .specialSettings__modeButton * {
   font-size: 14px !important;
-  @media (max-width: 1200px) {
+  @media ($mediaQuery1200) {
     font-size: 13px !important;
   }
-  @media (max-width: 992px) {
+  @media ($mediaQuery992) {
     font-size: 11px !important;
   }
 }

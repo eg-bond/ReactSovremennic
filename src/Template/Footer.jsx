@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { scrollToTop } from '../helpers'
-import { ScrollToTop } from './ScrollToTop'
 
 function Footer({ mobileQ, siteMode }) {
   // Автоматический скролл наверх для мобильной версии
@@ -10,7 +9,7 @@ function Footer({ mobileQ, siteMode }) {
     if (mobileQ || siteMode === 'special') {
       scrollToTop()
     }
-  }, [pathname])
+  }, [pathname, mobileQ, siteMode])
 
   return (
     <div className={`footer container`}>

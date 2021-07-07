@@ -5,10 +5,10 @@
 }
 .cinemaSlider .swiper-wrapper {
   height: 325px;
-  @media (max-width: 1200px) {
+  @media ($mediaQuery1200) {
     height: 275px;
   }
-  @media (max-width: 992px) {
+  @media ($mediaQuery992) {
     height: 225px;
   }
 }
@@ -25,10 +25,10 @@
   border-radius: $imagesBR;
   position: relative;
   z-index: 1;
-  @media (max-width: 1200px) {
+  @media ($mediaQuery1200) {
     height: 210px;
   }
-  @media (max-width: 992px) {
+  @media ($mediaQuery992) {
     height: 170px;
   }
 }
@@ -53,10 +53,10 @@
   letter-spacing: 0.01em;
   font-weight: normal;
   font-size: 0.9rem;
-  @media (max-width: 1200px) {
+  @media ($mediaQuery1200) {
     font-size: 0.8rem;
   }
-  @media (max-width: 992px) {
+  @media ($mediaQuery992) {
     font-size: 0.7rem;
   }
 }

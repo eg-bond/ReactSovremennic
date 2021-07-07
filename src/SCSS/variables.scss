@@ -9,6 +9,9 @@ $border5px: solid 5px var(--secondaryClr);
 
 // Переменные для мобильной версии
 $mediaQueryMobile: '(max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)';
+// $mediaQueryMobile: '(max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape)';
+$mediaQuery1200: 'max-width: 1200px';
+$mediaQuery992: 'max-width: 992px';
 $mobileParagraphsFS: 2.4vw;
 $mobileTitlesFS: 3.2vw;
 
@@ -60,27 +63,27 @@ $blueGreenElements: #5e4005;
 
 %desktopTitlesFS {
   font-size: 2.5rem;
-  @media (max-width: 1200px) {
+  @media ($mediaQuery1200) {
     font-size: 2rem;
   }
-  @media (max-width: 992px) {
+  @media ($mediaQuery992) {
     font-size: 1.6rem;
   }
 }
 
 %desktopParagraphsFS {
   font-size: 1.2rem;
-  @media (max-width: 1200px) {
+  @media ($mediaQuery1200) {
     font-size: 1.05rem;
   }
-  @media (max-width: 992px) {
+  @media ($mediaQuery992) {
     font-size: 0.9rem;
   }
 }
 
 %desktopBorders {
   border: $border5px;
-  @media (max-width: 992px) {
+  @media ($mediaQuery992) {
     border: $border3px;
   }
 }

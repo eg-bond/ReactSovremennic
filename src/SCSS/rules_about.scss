@@ -4,7 +4,7 @@
   &:first-child {
     margin-top: 0;
   }
-  @media (max-width: 992px) {
+  @media ($mediaQuery992) {
     font-size: 1.1rem;
   }
   @media #{$mediaQueryMobile} {

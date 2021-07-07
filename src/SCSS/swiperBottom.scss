@@ -8,10 +8,10 @@
 
 .bottomSwiper {
   min-height: 462px;
-  @media (max-width: 1200px) {
+  @media ($mediaQuery1200) {
     min-height: 380px;
   }
-  @media (max-width: 992px) {
+  @media ($mediaQuery992) {
     min-height: 290px;
   }
   @media #{$mediaQueryMobile} {
@@ -22,7 +22,7 @@
 .bottomSwiper__border {
   border-top: $border5px;
   margin-left: -1px;
-  @media (max-width: 992px) {
+  @media ($mediaQuery992) {
     border-top: $border3px;
   }
   @media #{$mediaQueryMobile} {
@@ -42,10 +42,10 @@
   padding: 0 1% 0 2%;
   margin: 3% 0;
   font-size: 1.8rem;
-  @media (max-width: 1200px) {
+  @media ($mediaQuery1200) {
     font-size: 1.5rem;
   }
-  @media (max-width: 992px) {
+  @media ($mediaQuery992) {
     font-size: 1.2rem;
   }
 }

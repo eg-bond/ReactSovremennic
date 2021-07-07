@@ -45,10 +45,10 @@
   &:first-child {
     margin-top: 0;
   }
-  @media (max-width: 1200px) {
+  @media ($mediaQuery1200) {
     font-size: 0.85rem;
   }
-  @media (max-width: 992px) {
+  @media ($mediaQuery992) {
     font-size: 0.7rem;
   }
 }
@@ -66,13 +66,13 @@
 }
 .swiper-pagination-fraction {
   color: var(--mainClr);
-  @media (max-width: 1200px) {
+  @media ($mediaQuery1200) {
     font-size: 0.9rem;
     span {
       font-size: 0.9rem;
     }
   }
-  @media (max-width: 992px) {
+  @media ($mediaQuery992) {
     font-size: 0.8rem;
     span {
       font-size: 0.8rem;
