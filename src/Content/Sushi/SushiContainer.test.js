@@ -34,24 +34,24 @@ describe('Sushi tests:', () => {
     })
 
     it('Desctop version renders correctly', () => {
-      expect(screen.getAllByRole('button')).toHaveLength(14)
+      expect(screen.getAllByRole('button')).toHaveLength(15)
       expect(screen.getByRole('img')).toBeInTheDocument()
     })
 
     it('Menu items activation works fine', async () => {
-      const sushiBtn = screen.getByText(/суши/i)
+      const newBtn = screen.getByText(/новинки меню/i)
       const saladsBtn = screen.getByText(/салаты/i)
-      expect(sushiBtn).toHaveClass('active')
+      expect(newBtn).toHaveClass('active')
 
       userEvent.click(saladsBtn)
       await act(imgChanging)
 
       expect(saladsBtn).toHaveClass('active')
-      expect(sushiBtn).not.toHaveClass('active')
+      expect(newBtn).not.toHaveClass('active')
     })
 
     it('Scedule items changes correctly', async () => {
-      expect(screen.getByAltText(/sushi/i)).toBeInTheDocument()
+      expect(screen.getByAltText(/new/i)).toBeInTheDocument()
 
       userEvent.click(screen.getByTestId('salads'))
       await act(imgChanging)

@@ -3,13 +3,10 @@
   "type": "module",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://sovremennik.sbor.net/",
+  "homepage": "http://sovremennik.sbor.net",
   "dependencies": {
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
     "node-sass": "^6.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -17,7 +14,6 @@
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
-    "react-swipeable-views": "^0.14.0",
     "redux": "^4.1.0",
     "swiper": "^6.7.1",
     "web-vitals": "^1.1.2"
@@ -58,6 +54,9 @@
     "fs": "0.0.1-security",
     "puppeteer": "^10.1.0",
     "source-map-explorer": "^2.5.2",
-    "xlsx": "^0.17.0"
+    "xlsx": "^0.17.0",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3"
   }
 }
