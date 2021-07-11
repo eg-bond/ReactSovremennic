@@ -1,5 +1,5 @@
 import React from 'react'
-// import IndexAdvXS from '../../Template/IndexAdvXS'
+import IndexAdvXS from '../../Template/IndexAdvXS'
 import { Link } from 'react-router-dom'
 import FilmsSpecial from '../FilmsSpecial/FilmsSpecial'
 import LiteYouTubeEmbed from 'react-lite-youtube-embed'
@@ -51,7 +51,7 @@ function IndexContent({ siteMode, films, mobileQ, desktopQ }) {
 
       <div className='separatorMobile separatorMobile--index' />
 
-      {/* {Q.mobile && <IndexAdvXS />} */}
+      {mobileQ && <IndexAdvXS />}
     </div>
   )
 }

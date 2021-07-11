@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 import Grow from '@material-ui/core/Grow'
 import scedule from './scedule'
 import { useCallback } from 'react'
+import IndexAdvXS from '../../Template/IndexAdvXS'
 
 const desktopBtn = (d, activeSceduleItemKey, changeTableContent) => {
   return (
@@ -131,7 +132,9 @@ const Seans = ({
         </table>
       </Grow>
 
-      <div className='separatorMobile-special' />
+      <div className='separatorMobile separatorMobile--index' />
+
+      {mobileQ && <IndexAdvXS />}
     </div>
   )
 }
