@@ -2,7 +2,7 @@ export const filmsArray = [
   {
     title: 'Чёрная Вдова',
     beginDate: 'с 8 июля',
-    endDate: 'по 21 июля',
+    endDate: 'по 28 июля',
     kind: 'Боевик, фантастика, приключения',
     director: 'Кейт Шортланд',
     duration: '133 мин. / 02:13',
@@ -32,7 +32,7 @@ export const filmsArray = [
   {
     title: 'Пороховой коктейль',
     beginDate: 'с 15 июля',
-    endDate: 'по 28 июля',
+    endDate: 'по 21 июля',
     kind: 'Боевик, триллер, приключения',
     director: 'Навот Папушадо',
     duration: '114 мин. / 01:54',
@@ -45,7 +45,7 @@ export const filmsArray = [
     link: 'milkshake',
   },
   {
-    title: 'G. I. Joe. Бросок кобры: Снейк Айз',
+    title: 'Бросок кобры: Снейк Айз',
     beginDate: 'с 22 июля',
     endDate: 'по 4 августа',
     kind: 'Фантастика, фэнтези, боевик, триллер, приключения',
