@@ -6,7 +6,7 @@
   > button {
     border: 2px solid;
     outline: none;
-    padding: 8px 15px;
+    padding: 8px 13px;
     margin: 2px 4px;
     font-size: 1.15rem;
     &:first-child {
@@ -16,12 +16,12 @@
       margin-right: 0;
     }
     @media ($mediaQuery1200) {
-      padding: 8px 12px;
+      padding: 8px 11px;
       font-size: 0.92rem;
     }
     @media ($mediaQuery992) {
-      font-size: 0.75rem;
-      padding: 4px 7px;
+      font-size: 0.7rem;
+      padding: 4px 8px;
       margin: 2px 3px;
     }
   }
