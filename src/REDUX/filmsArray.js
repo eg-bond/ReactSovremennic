@@ -2,7 +2,7 @@ export const filmsArray = [
   {
     title: 'Круиз по джунглям',
     beginDate: 'с 29 июля',
-    endDate: 'по 18 августа',
+    endDate: 'по 22 августа',
     kind: 'Приключения, комедия, фэнтези',
     director: 'Жауме Кольет-Серра',
     duration: '127 мин. / 02:07',
@@ -17,7 +17,7 @@ export const filmsArray = [
   {
     title: 'Отряд самоубийц: Миссия навылет',
     beginDate: 'с 5 августа',
-    endDate: 'по 18 августа',
+    endDate: 'по 25 августа',
     kind: 'Боевик, фантастика, комедия, приключения',
     director: 'Джеймс Ганн',
     duration: '132 мин. / 02:12',
@@ -45,7 +45,7 @@ export const filmsArray = [
     link: 'free_guy',
   },
   {
-    title: 'Босс-молокосос 2',
+    title: 'Босс-Молокосос 2',
     beginDate: 'с 19 августа',
     endDate: 'по 8 сентября',
     kind: 'Мультфильм, комедия, семейный',
