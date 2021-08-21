@@ -2,7 +2,7 @@ export const filmsArray = [
   {
     title: 'Круиз по джунглям',
     beginDate: 'с 29 июля',
-    endDate: 'по 22 августа',
+    endDate: 'по 24 августа',
     kind: 'Приключения, комедия, фэнтези',
     director: 'Жауме Кольет-Серра',
     duration: '127 мин. / 02:07',
