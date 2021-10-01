@@ -117,8 +117,11 @@ $backImgHeight992: 200px;
   background-size: 100% $backImgHeight + 1, 100%;
   height: 100%;
   background-color: var(--mainClr);
+  @media ($mediaQuery1200) {
+    background-size: 120% $backImgHeight + 1, 100%;
+  }
   @media ($mediaQuery992) {
-    background-size: 100% $backImgHeight992 + 1, 100%;
+    background-size: 110% $backImgHeight992 + 1, 100%;
   }
   @media #{$mediaQueryMobile} {
     background-image: none !important;
@@ -126,7 +129,7 @@ $backImgHeight992: 200px;
 }
 .mainContainer--default {
   background-image: url('../images/main_image.jpg'),
-    linear-gradient(#614012, #614012);
+    linear-gradient(#091221, #091221);
 }
 
 .wrapper {
