@@ -60,7 +60,7 @@ export const filmsArray = [
     link: 'drakulov',
   },
   {
-    title: 'Неиcправимый Рон',
+    title: 'Неисправимый Рон',
     beginDate: 'с 21 октября',
     endDate: 'по 10 ноября',
     kind: 'Мультфильм, фантастика, комедия, приключения, семейный',
