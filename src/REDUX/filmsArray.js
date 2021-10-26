@@ -2,7 +2,7 @@ export const filmsArray = [
   {
     title: 'Веном 2',
     beginDate: 'с 30 сентября',
-    endDate: 'по 27 октября',
+    endDate: 'по 3 ноября',
     kind: 'Фантастика, боевик, триллер',
     director: 'Энди Серкис',
     duration: '90 мин. / 01:30',
@@ -17,7 +17,7 @@ export const filmsArray = [
   {
     title: 'Не время умирать',
     beginDate: 'с 7 октрября',
-    endDate: 'по 27 октрября',
+    endDate: 'по 3 ноября',
     kind: 'Боевик, триллер, приключения',
     director: 'Кэри Дзёдзи Фукунага',
     duration: '163 мин. / 02:43',
@@ -32,7 +32,7 @@ export const filmsArray = [
   {
     title: 'Семейка Аддамс: Горящий тур',
     beginDate: 'с 14 октября',
-    endDate: 'по 27 октября',
+    endDate: 'по 3 ноября',
     kind: 'Мультфильм, ужасы, фэнтези, комедия, приключения, семейный',
     director: 'Грег Тирнан, Конрад Вернон, Лаура Бруссо',
     duration: '93 мин. / 01:33',

@@ -17,7 +17,6 @@ const Content = ({
   createFilmsObject,
   siteMode,
   fontSize,
-  // pathname,
 }) => {
   const aboutLoaded = useRef(false)
   const rulesLoaded = useRef(false)
@@ -40,13 +39,11 @@ const Content = ({
           <SushiContainer siteMode={siteMode} />
         </Route>
         <Route exact path='/movies/:film_id'>
-          {/* <Route exact path='/movies/:film_id'> */}
           <SelectedMovie
             filmsObject={filmsObject}
             createFilmsObject={createFilmsObject}
             siteMode={siteMode}
             fontSize={fontSize}
-            // pathname={pathname}
           />
         </Route>
       </Switch>

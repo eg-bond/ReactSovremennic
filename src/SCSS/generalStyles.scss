@@ -132,6 +132,28 @@ $backImgHeight992: 200px;
     linear-gradient(#091221, #091221);
 }
 
+.covidMessage {
+  border-top: $border5px;
+  @media ($mediaQuery992) {
+    border-top: $border3px;
+  }
+  @media #{$mediaQueryMobile} {
+    border-top: none;
+  }
+  padding-top: 3px;
+  margin: 0 -1px;
+  margin-bottom: 4px;
+
+  p {
+    margin: 0 15px;
+    text-align: justify;
+    @extend %desktopParagraphsFS;
+    @media #{$mediaQueryMobile} {
+      font-size: $mobileParagraphsFS;
+    }
+  }
+}
+
 .wrapper {
   height: 100%;
   min-height: 100vh;

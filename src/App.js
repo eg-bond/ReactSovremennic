@@ -3,7 +3,6 @@ import 'swiper/swiper.scss'
 import 'swiper/components/navigation/navigation.scss'
 import 'swiper/components/pagination/pagination.scss'
 import './SCSS/style.scss'
-// import './SCSS/bootstrap.css'
 import FilmSwiper from './Template/FilmSwiper'
 import Navigation from './Template/Navigation'
 import BottomSwiper from './Template/BottomSwiper'
@@ -17,6 +16,8 @@ import { switchSiteMode, switchFontSize } from './REDUX/specialReduser'
 import { changeAppColors, modifiedClass, queries } from './helpers'
 import { useMediaQuery } from '@material-ui/core'
 import Content from './Content/Content'
+import { Route } from 'react-router-dom'
+import CovidMessage from './Template/CovidMessage'
 
 const App = ({
   createActualDatesArr,
@@ -65,7 +66,7 @@ const App = ({
     'flex-wrapper',
   ].join(' ')
   //-----------------------------------
-
+  console.log('render')
   if (filmsToday[0] === undefined) {
     return null
   }
@@ -77,12 +78,17 @@ const App = ({
 
         {/*Отступ навигации в мобильной версии*/}
         <div className='navigation__containerXs' />
+
         <div className='separatorMobile' />
 
         <div className={`container wrapper ${imgHidden ? 'hideImages' : ''}`}>
           {siteMode === 'default' && (
             <FilmSwiper films={films} mobile={mobileQ} />
           )}
+
+          <Route exact path='/'>
+            <CovidMessage />
+          </Route>
 
           <div className='separatorMobile separatorMobile--MB' />
           <hr className='separator hidden-xs' />
