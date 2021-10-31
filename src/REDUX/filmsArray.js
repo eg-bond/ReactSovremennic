@@ -47,7 +47,7 @@ export const filmsArray = [
   {
     title: 'Дракулов',
     beginDate: 'с 21 октября',
-    endDate: 'по 3 ноября',
+    endDate: 'по 31 октября',
     kind: 'Комедия',
     director: 'Илья Куликов',
     duration: '87 мин. / 01:27',
