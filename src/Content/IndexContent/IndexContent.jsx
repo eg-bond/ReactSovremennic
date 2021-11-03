@@ -45,6 +45,11 @@ function IndexContent({ siteMode, films, mobileQ, desktopQ }) {
             Вконтакте
           </a>
         </p>
+        {desktopQ && (
+          <div className='barCombos'>
+            <img src='./Images/barCombos.gif' alt='Вместе дешевле' />
+          </div>
+        )}
       </div>
 
       {siteMode === 'special' && desktopQ && <FilmsSpecial films={films} />}
