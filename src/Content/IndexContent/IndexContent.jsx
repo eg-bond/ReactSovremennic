@@ -15,7 +15,7 @@ function IndexContent({ siteMode, films, mobileQ, desktopQ }) {
             <LiteYouTubeEmbed
               id='PLfrc7TOjXulMiQWLR1Jr8ZiZ2b7hWqSZf'
               playlist={true}
-              playlistCoverId='Othd8W8o3t0'
+              playlistCoverId='_oboseJViww'
               title='index_trailers_playlist'
               poster='maxresdefault'
             />
