@@ -47,7 +47,7 @@ function IndexContent({ siteMode, films, mobileQ, desktopQ }) {
         </p>
         {desktopQ && (
           <div className='barCombos'>
-            <img src='./Images/barCombos.gif' alt='Вместе дешевле' />
+            <img src='./Images/barCombo.gif' alt='Вместе дешевле' />
           </div>
         )}
       </div>
