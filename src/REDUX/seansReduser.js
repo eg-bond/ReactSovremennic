@@ -5,15 +5,15 @@ const CREATE_ACTUAL_DATES_ARR = 'CREATE_ACTUAL_DATES_ARR'
 let initialState = {
   datesArr: [
     ['day0', 'Воскресенье', '14 ноября'],
-    ['day1', 'Понедельник', '8 ноября'],
-    ['day2', 'Вторник', '9 ноября'],
-    ['day3', 'Среда', '10 ноября'],
+    ['day1', 'Понедельник', '15 ноября'],
+    ['day2', 'Вторник', '16 ноября'],
+    ['day3', 'Среда', '17 ноября'],
     ['day4', 'Четверг', '11 ноября'],
     ['day5', 'Пятница', '12 ноября'],
     ['day6', 'Суббота', '13 ноября'],
   ],
   actualDatesArr: [], // массив с датами, расположенными в правильном порядке
-  weekStartsFrom: 'monday', // monday либо любое другое значение
+  weekStartsFrom: 'th', // monday либо любое другое значение
   activeSceduleItemKey: '',
   buttonTitle: null,
 }
