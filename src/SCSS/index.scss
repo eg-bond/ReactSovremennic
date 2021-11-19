@@ -40,7 +40,7 @@
 //Реклама справа в десктопной версии
 .desktopAdv {
   @extend %imgContainer;
-  margin-bottom: 10%;
+  margin-bottom: 7%;
   transition: ease 300ms;
 }
 .linkWrapper img {
@@ -57,6 +57,9 @@
 }
 .desktopAdv--3 {
   padding-bottom: 200%;
+}
+.desktopAdv--4 {
+  padding-bottom: 115%;
 }
 //------------------------
 
