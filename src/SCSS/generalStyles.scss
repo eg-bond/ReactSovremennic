@@ -129,7 +129,8 @@ $backImgHeight992: 200px;
 }
 .mainContainer--default {
   background-image: url('../images/main_image.jpg'),
-    linear-gradient(90deg, #060201 50%, #2d1f16 50%);
+    linear-gradient(#704b1f, #704b1f);
+  // linear-gradient(90deg, #845c28 50%, #845c28 50%);
 }
 
 .covidMessage {
