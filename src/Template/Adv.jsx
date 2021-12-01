@@ -10,11 +10,6 @@ const AdvContent = React.memo(() => {
           </div>
         </a> */}
       <Link className={'linkWrapper'} to='/sushi'>
-        <div className={'desktopAdv desktopAdv--4'}>
-          <img src='./Images/sushi20.jpg' alt='суши скидки' />
-        </div>
-      </Link>
-      <Link className={'linkWrapper'} to='/sushi'>
         <div className={'desktopAdv desktopAdv--2'}>
           <img src='./Images/sushiNew.jpg' alt='Новинки суши' />
         </div>
