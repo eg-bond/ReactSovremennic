@@ -148,7 +148,13 @@ $backImgHeight992: 200px;
   p {
     margin: 0 15px;
     text-align: justify;
-    @extend %desktopParagraphsFS;
+    font-size: 1.6rem;
+    @media ($mediaQuery1200) {
+      font-size: 1.25rem;
+    }
+    @media ($mediaQuery992) {
+      font-size: 1rem;
+    }
     @media #{$mediaQueryMobile} {
       font-size: $mobileParagraphsFS;
     }

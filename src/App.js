@@ -86,7 +86,7 @@ const App = ({
             <FilmSwiper films={films} mobile={mobileQ} />
           )}
 
-          <Route exact path='/'>
+          <Route>
             <CovidMessage />
           </Route>
 

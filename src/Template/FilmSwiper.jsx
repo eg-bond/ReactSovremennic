@@ -12,7 +12,7 @@ const FilmSwiper = ({ mobile, films }) => {
   let apOptionsFunc = () => {
     if (mobile === false) {
       return {
-        delay: 1000,
+        delay: 1500,
         pauseOnMouseEnter: true,
         disableOnInteraction: false,
       }
@@ -41,7 +41,7 @@ const FilmSwiper = ({ mobile, films }) => {
       },
       768: {
         freeMode: false,
-        slidesPerView: 4.5,
+        slidesPerView: 5.5,
       },
     },
   }
