@@ -76,7 +76,7 @@ export const filmsArray = [
   },
   {
     title: 'Матрица: Воскрешение',
-    beginDate: 'с 15 декабря',
+    beginDate: 'с 16 декабря',
     endDate: 'по 29 декабря',
     kind: 'Фантастика, боевик',
     director: 'Лана Вачовски',

@@ -132,6 +132,12 @@ const Seans = ({
         </table>
       </Grow>
 
+      {desktopQ && (
+        <div className='barCombos'>
+          <img src='./Images/barCombo.gif' alt='Вместе дешевле' />
+        </div>
+      )}
+
       <div className='separatorMobile separatorMobile--index' />
 
       {mobileQ && <IndexAdvXS />}
