@@ -13,8 +13,8 @@ export const cinemaReduser = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_FILMS_TODAY_ARR:
       let filmsToday = []
-      for (let i = 0; i < state.filmsTodaySlides + 2; i++) {
-        filmsToday[i] = state.films[i % 3] // тут регулируем, с какого фильма начнется нижний слайдер
+      for (let i = 0; i < state.filmsTodaySlides; i++) {
+        filmsToday[i] = state.films[i] // тут регулируем, с какого фильма начнется нижний слайдер
       }
       return {
         ...state,
