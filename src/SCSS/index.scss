@@ -61,6 +61,9 @@
 .desktopAdv--4 {
   padding-bottom: 115%;
 }
+.desktopAdv--5 {
+  padding-bottom: 65%;
+}
 //------------------------
 
 @media #{$mediaQueryMobile} {
@@ -109,7 +112,7 @@
       width: 100%;
       border: $border1px;
       border-radius: $imagesBR;
-      margin-bottom: 10%;
+      margin-bottom: 6%;
     }
   }
 

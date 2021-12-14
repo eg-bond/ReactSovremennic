@@ -11,12 +11,15 @@ function IndexAdvXS() {
           </Link>
         </div>
         <div className='indexAdvXS__item2'>
+          <div>
+            <img src='./Images/vr_image1.jpg' alt='vr' />
+          </div>
           <Link to='/sushi'>
             <img src='./Images/sushiNew.jpg' alt='новинки суши' />
           </Link>
-          <div>
+          {/* <div>
             <img src='./Images/jsb1.gif' alt='gift' />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
