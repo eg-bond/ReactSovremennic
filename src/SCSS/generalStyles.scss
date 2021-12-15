@@ -97,9 +97,12 @@ h6 {
 }
 //--------------------------------------
 
-$backImgHeight: 245px;
+$backImgHeight: 285px;
 $backImgHeight992: 200px;
 .space {
+  background-image: url('../images/main_image_new.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
   position: relative;
   opacity: 1;
   height: $backImgHeight;
@@ -128,8 +131,9 @@ $backImgHeight992: 200px;
   }
 }
 .mainContainer--default {
-  background-image: url('../images/main_image.jpg'),
-    linear-gradient(#704b1f, #704b1f);
+  background-color: #12121e;
+  // background-image: url('../images/main_image.jpg'),
+  //   linear-gradient(#704b1f, #704b1f);
   // linear-gradient(90deg, #845c28 50%, #845c28 50%);
 }
 
