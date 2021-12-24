@@ -86,10 +86,6 @@ const App = ({
             <FilmSwiper films={films} mobile={mobileQ} />
           )}
 
-          <Route>
-            <CovidMessage />
-          </Route>
-
           <div className='separatorMobile separatorMobile--MB' />
           <hr className='separator hidden-xs' />
 
