@@ -16,8 +16,6 @@ import { switchSiteMode, switchFontSize } from './REDUX/specialReduser'
 import { changeAppColors, modifiedClass, queries } from './helpers'
 import { useMediaQuery } from '@material-ui/core'
 import Content from './Content/Content'
-import { Route } from 'react-router-dom'
-import CovidMessage from './Template/CovidMessage'
 
 const App = ({
   createActualDatesArr,
