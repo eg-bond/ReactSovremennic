@@ -2,7 +2,7 @@ export const filmsArray = [
   {
     title: 'Человек-паук: Нет пути домой',
     beginDate: 'с 15 декабря',
-    endDate: 'по 12 января',
+    endDate: 'по 26 января',
     kind: 'Фантастика, боевик, приключения',
     director: 'Джон Уоттс',
     duration: '150 мин. / 02:30',
@@ -17,7 +17,7 @@ export const filmsArray = [
   {
     title: 'Последний богатырь: Посланник Тьмы',
     beginDate: 'с 23 декабря',
-    endDate: 'по 12 января',
+    endDate: 'по 19 января',
     kind: 'Приключения',
     director: 'Дмитрий Дьяченко',
     duration: '145 мин. / 02:25',
