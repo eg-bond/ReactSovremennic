@@ -17,7 +17,7 @@ export const filmsArray = [
   {
     title: 'Последний богатырь: Посланник Тьмы',
     beginDate: 'с 23 декабря',
-    endDate: 'по 19 января',
+    endDate: 'по 26 января',
     kind: 'Приключения',
     director: 'Дмитрий Дьяченко',
     duration: '145 мин. / 02:25',
@@ -32,7 +32,7 @@ export const filmsArray = [
   {
     title: 'Чемпион мира',
     beginDate: 'с 30 декабря',
-    endDate: 'по 19 января',
+    endDate: 'по 26 января',
     kind: 'Драма',
     director: 'Алексей Сидоров',
     duration: '145 мин. / 02:25',
@@ -47,7 +47,7 @@ export const filmsArray = [
   {
     title: 'Три богатыря и Конь на троне',
     beginDate: 'с 6 января',
-    endDate: 'по 19 января',
+    endDate: 'по 26 января',
     kind: 'Мультфильм, комедия, приключения',
     director: 'Дарина Шмидт, Константин Феоктистов',
     duration: '91 мин. / 01:31',
