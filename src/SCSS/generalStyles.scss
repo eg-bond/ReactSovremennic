@@ -58,6 +58,10 @@ h6 {
   transition: ease 150ms;
 }
 
+.red {
+  color: red;
+}
+
 // Флекс для прижатия футера к нижней части экрана
 .flex-wrapper {
   display: flex;
@@ -142,12 +146,12 @@ $backImgHeight992: 200px;
 }
 
 .covidMessage {
-  border-top: $border5px;
+  border-bottom: $border5px;
   @media ($mediaQuery992) {
-    border-top: $border3px;
+    border-bottom: $border3px;
   }
   @media #{$mediaQueryMobile} {
-    border-top: none;
+    border-bottom: none;
   }
   padding-top: 3px;
   margin: 0 -1px;

@@ -16,6 +16,8 @@ import { switchSiteMode, switchFontSize } from './REDUX/specialReduser'
 import { changeAppColors, modifiedClass, queries } from './helpers'
 import { useMediaQuery } from '@material-ui/core'
 import Content from './Content/Content'
+import CovidMessage from './Template/CovidMessage'
+import { Route } from 'react-router-dom'
 
 const App = ({
   createActualDatesArr,
@@ -80,6 +82,8 @@ const App = ({
         <div className='separatorMobile' />
 
         <div className={`container wrapper ${imgHidden ? 'hideImages' : ''}`}>
+          <CovidMessage />
+
           {siteMode === 'default' && (
             <FilmSwiper films={films} mobile={mobileQ} />
           )}
