@@ -103,7 +103,7 @@ const Seans = ({
 
   return (
     <div className='content__gridLeftItem--3fr'>
-      {desktopQ && (
+      {/* {desktopQ && (
         <CreateSeanseButtons
           datesArr={datesArr}
           activeSceduleItemKey={activeSceduleItemKey}
@@ -140,7 +140,7 @@ const Seans = ({
 
       <div className='separatorMobile separatorMobile--index' />
 
-      {mobileQ && <IndexAdvXS />}
+      {mobileQ && <IndexAdvXS />} */}
     </div>
   )
 }
