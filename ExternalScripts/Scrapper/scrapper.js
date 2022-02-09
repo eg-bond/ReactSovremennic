@@ -3,7 +3,7 @@ import cherio from 'cherio'
 import { getPageContent } from './puppeteer.js'
 
 const SITE = 'https://www.kinopoisk.ru/film/'
-const cinemaIds = ['1103803', '1234853']
+const cinemaIds = ['1338453', '1172958', '1414470']
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1)
