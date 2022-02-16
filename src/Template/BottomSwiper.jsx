@@ -11,8 +11,8 @@ const BottomSwiper = props => {
   const swiperRef = useRef(null)
 
   const params = {
-    slidesPerView: props.slidesPerView,
-    spaceBetween: props.slidesPerView === 3 ? 55 : 25,
+    slidesPerView: 4,
+    spaceBetween: 25,
     className: `bottomSwiper__container`,
     loop: true,
     onSwiper: swiper => (swiperRef.current = swiper),

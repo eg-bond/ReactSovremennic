@@ -25,7 +25,6 @@ const App = ({
   createFilmsTodayArr,
   films,
   filmsToday,
-  filmsTodaySlides,
   filmsObject,
   createFilmsObject,
   switchSiteMode,
@@ -107,11 +106,7 @@ const App = ({
             <div>
               <h1 className='bottomSwiper__bar'>Сегодня в кино</h1>
               <hr className={`bottomSwiper__border`} />
-              <BottomSwiper
-                filmsToday={filmsToday}
-                slidesPerView={filmsTodaySlides}
-                desktop={desktopQ}
-              />
+              <BottomSwiper filmsToday={filmsToday} desktop={desktopQ} />
             </div>
           )}
         </div>
@@ -124,7 +119,6 @@ const App = ({
 let mapStateToProps = state => ({
   films: state.cinema.films,
   filmsToday: state.cinema.filmsToday,
-  filmsTodaySlides: state.cinema.filmsTodaySlides,
   filmsObject: state.cinema.filmsObject,
   siteMode: state.special.siteMode,
   theme: state.special.theme,

@@ -4,21 +4,10 @@ import { Link, useRouteMatch } from 'react-router-dom'
 const AdvContent = React.memo(() => {
   return (
     <div className='content__gridRightItem--1fr'>
-      {/* <a className={'linkWrapper'} href='http://www.region47.sbor.net'>
-          <div className={'desktopAdv desktopAdv--1'}>
-            <img src='./Images/region47.gif' alt='Регион47' />
-          </div>
-        </a> */}
-
       <div className={'desktopAdv desktopAdv--5'}>
         <img src='./Images/vr_image.jpg' alt='vr' />
       </div>
 
-      <Link className={'linkWrapper'} to='/sushi'>
-        <div className={'desktopAdv desktopAdv--2'}>
-          <img src='./Images/sushiNew.jpg' alt='Новинки суши' />
-        </div>
-      </Link>
       <Link className={'linkWrapper'} to='/sushi'>
         <div className={'desktopAdv desktopAdv--3'}>
           <img src='./Images/72.gif' alt='Суши-бар' />

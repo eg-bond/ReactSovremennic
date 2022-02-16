@@ -10,7 +10,7 @@ let initialState = {
   films: filmsArray,
   filmsObject: null,
   filmsToday: [],
-  filmsTodaySlides: todaySlidesAmount,
+  filmsTodayAmount: todaySlidesAmount,
 }
 
 describe('cinemaReduser tests:', () => {
