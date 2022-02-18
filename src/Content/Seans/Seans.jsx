@@ -43,6 +43,7 @@ const tableItem = (seanse, i) => {
       <td>{seanse[0]}</td>
       <td>{seanse[1]}</td>
       <td>{seanse[2]}</td>
+      <td>{seanse[3]}</td>
     </tr>
   )
 }
@@ -53,6 +54,7 @@ const TableContent = React.memo(({ scedule, activeSceduleItemKey }) => {
         <tr className={`table_head`}>
           <th>Сеанс</th>
           <th>Фильм</th>
+          <th>Возраст</th>
           <th>Цена, руб</th>
         </tr>
         {scedule[activeSceduleItemKey].map(tableItem)}
