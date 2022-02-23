@@ -62,7 +62,7 @@ var makeFilmItem = function (filmSet, sceduleItemKey, dayTitlesArr, filmIndex) {
     }
 
     // Сохраняем файл
-    var filename = sceduleItemKey + '-2021'
+    var filename = sceduleItemKey + '-2022'
     saveJpeg(filename)
 }
 
@@ -78,7 +78,7 @@ var dayKeysRanges = {
     allWeek: ["day1", "day2", "day3", "day4", "day5", "day6", "day0"],
 }
 // Это единственный изменяемый параметр 
-var dayKeysArr = ['day5']
+var dayKeysArr = ['day6', 'day0']
 
 // Цикл, пробегающийся по выбранным в dayKeysArr фильмам
 for (var i = 0; i < dayKeysArr.length; i++) {

@@ -18,8 +18,6 @@ for (let i = 0; i < 7; i++) {
   ])
 }
 
-console.log(scedule)
-
 //Формируем данные для записи в файл расписания в строковом формате
 const finalData = `let scedule = ${JSON.stringify(scedule)}
 export default scedule;`
