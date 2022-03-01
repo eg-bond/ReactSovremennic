@@ -7,7 +7,7 @@ let initialState = {
     ['day0', 'Воскресенье', '27 февраля'],
     ['day1', 'Понедельник', '28 февраля'],
     ['day2', 'Вторник', '1 марта'],
-    ['day3', 'Среда', '23 февраля'],
+    ['day3', 'Среда', '2 марта'],
     ['day4', 'Четверг', '24 февраля'],
     ['day5', 'Пятница', '25 февраля'],
     ['day6', 'Суббота', '26 февраля'],
@@ -42,11 +42,11 @@ export const seansReduser = (state = initialState, action) => {
         newArr.shift()
       } else {
         newArr = [
-          state.datesArr[3],
           ...state.datesArr,
           state.datesArr[0],
           state.datesArr[1],
           state.datesArr[2],
+          state.datesArr[3],
         ]
         newArr.splice(0, 4)
       }
