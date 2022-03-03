@@ -6,7 +6,7 @@ let initialState = {
   films: filmsArray,
   filmsObject: null,
   filmsToday: [],
-  filmsTodayAmount: 6,
+  filmsTodayAmount: 4,
 }
 
 export const cinemaReduser = (state = initialState, action) => {
@@ -15,7 +15,7 @@ export const cinemaReduser = (state = initialState, action) => {
       let filmsToday = []
 
       for (let i = 0; i < state.filmsTodayAmount * 2; i++) {
-        filmsToday[i] = state.films[i % state.filmsTodayAmount]
+        filmsToday[i] = state.films[(i % state.filmsTodayAmount) + 1]
       }
 
       return {
