@@ -41,7 +41,7 @@ const FilmSwiper = ({ mobile, films }) => {
       },
       768: {
         freeMode: false,
-        slidesPerView: 5,
+        slidesPerView: 5.5,
       },
     },
   }
