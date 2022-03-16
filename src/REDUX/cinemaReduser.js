@@ -14,8 +14,8 @@ export const cinemaReduser = (state = initialState, action) => {
     case CREATE_FILMS_TODAY_ARR:
       let filmsToday = []
 
-      for (let i = 0; i < state.filmsTodayAmount * 2; i++) {
-        filmsToday[i] = state.films[(i % state.filmsTodayAmount) + 1]
+      for (let i = 0; i < state.filmsTodayAmount; i++) {
+        filmsToday[i] = state.films[i % state.filmsTodayAmount]
       }
 
       return {
