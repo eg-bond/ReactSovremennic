@@ -1,13 +1,18 @@
-$lusidaFont: Lucida Console, monospace;
-$arialFont: Arial Black, sans-serif;
-$robotoFont: 'Roboto', 'Helvetica', 'Arial', sans-serif;
-$playFont: 'Play', serif;
+$jostFont: 'Jost', sans-serif;
+// $linesColor: #ebece9;
+$imagesBR: 10px;
+$buttonsBR: 30px;
+$border1px: solid 1px var(--secondaryClr);
+$border2px: solid 2px var(--secondaryClr);
+$border3px: solid 3px var(--secondaryClr);
+$border5px: solid 5px var(--secondaryClr);
 
-$linesColor: #ebece9;
-$border1px: solid 1px;
-$border2px: solid 2px;
-$border3px: solid 3px;
-$border5px: solid 5px;
+// Переменные для мобильной версии
+$mediaQueryMobile: '(max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)';
+$mediaQuery1200: 'max-width: 1200px';
+$mediaQuery992: 'max-width: 992px';
+$mobileParagraphsFS: 2.4vw;
+$mobileTitlesFS: 3.2vw;
 
 // Переменные сайта для слабовидящих
 // Цветовые темы
@@ -17,11 +22,67 @@ $blackWhiteElements: #ebece9;
 $whiteBlackBackground: #ebece9;
 $whiteBlackElements: black;
 
-$blackRedBackground: black;
-$blackRedElements: #df233e;
+$blackBlueBackground: black;
+$blackBlueElements: #7ba2d5;
 
 $yellowBrownBackground: #f5dda1;
-$yellowBrownElements: #800025;
+$yellowBrownElements: #810026;
 
 $blueGreenBackground: #b4e5ee;
 $blueGreenElements: #5e4005;
+
+// Переиспользуемые классы
+// Контейнер для изображений, который держит форму
+%imgContainer {
+  position: relative;
+  width: 100%;
+  border: $border1px;
+  border-radius: $imagesBR;
+  overflow: hidden;
+  & img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+}
+@media #{$mediaQueryMobile} {
+  %imgContainerXs {
+    position: relative;
+    width: 100%;
+    border: $border1px;
+    border-radius: $imagesBR;
+    overflow: hidden;
+    & img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+%desktopTitlesFS {
+  font-size: 2.5rem;
+  @media ($mediaQuery1200) {
+    font-size: 2rem;
+  }
+  @media ($mediaQuery992) {
+    font-size: 1.6rem;
+  }
+}
+
+%desktopParagraphsFS {
+  font-size: 1.2rem;
+  @media ($mediaQuery1200) {
+    font-size: 1.05rem;
+  }
+  @media ($mediaQuery992) {
+    font-size: 0.9rem;
+  }
+}
+
+%desktopBorders {
+  border: $border5px;
+  @media ($mediaQuery992) {
+    border: $border3px;
+  }
+}

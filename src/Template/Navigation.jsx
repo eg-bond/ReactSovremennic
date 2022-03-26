@@ -1,11 +1,11 @@
 import React from 'react'
 import { NavLink, Link } from 'react-router-dom'
+import { themeLogoFile, modifiedClass } from '../helpers'
 import SpecialSettings from './SpecialSettings'
-import { modifiedClass, themeClasses, themeLogo } from '../helpers'
 
 const NavItem = ({ url, title }) => (
   <li>
-    <NavLink to={url} activeClassName='active'>
+    <NavLink className={'fill_button'} to={url} activeClassName='active'>
       {title}
     </NavLink>
   </li>
@@ -13,52 +13,41 @@ const NavItem = ({ url, title }) => (
 
 function Navigation({ siteMode, fontSize, theme }) {
   const modifyCl = cl => modifiedClass(cl, siteMode)
-  let fsAddCl =
-    fontSize === '150'
-      ? 'navigation__menu__special__fsAdd-150'
-      : fontSize === '200'
-      ? 'navigation__menu__special__fsAdd-200'
+  let fsNavCl =
+    fontSize === '21px'
+      ? 'navigation--fs150'
+      : fontSize === '26px'
+      ? 'navigation--fs200'
       : ''
-  let fsAddLogo =
-    fontSize === '150'
-      ? 'navigation__logo__special__fsAdd-150'
-      : fontSize === '200'
-      ? 'navigation__logo__special__fsAdd-200'
-      : ''
-  const logo = themeLogo(theme)
-  const themeCl = themeClasses(theme)
 
-  let navClasses = [
-    'navbar',
-    'navbar-inverse',
-    modifyCl('navigation'),
-    themeCl.back,
-    siteMode === 'special' ? `${themeCl.pills} ${themeCl.borders}` : '',
-  ].join(' ')
+  const logo = themeLogoFile
+  let navClasses = [modifyCl('navigation'), fsNavCl].join(' ')
 
   return (
     <div className='container'>
-      <div className='row'>
-        <SpecialSettings />
-        <nav role='navigation' className={navClasses}>
-          <div className={`${modifyCl('navigation__logo')} ${fsAddLogo}`}>
-            <Link to='/'>
-              <img src={`./Images/${logo}.png`} alt='logoImg' />
-            </Link>
-          </div>
-          <div className={`${modifyCl('navigation__menu')} ${fsAddCl} focus`}>
-            <ul>
-              <NavItem url='/seans' title='Расписание' />
-              {siteMode == 'special' && <NavItem url='/films' title='Фильмы' />}
-              <NavItem url='/about' title='О кинотеатре' />
-              <NavItem url='/rules' title='Правила работы' />
-              <NavItem url='/sushi' title='Суши-бар "КИН-НО"' />
-            </ul>
-          </div>
-        </nav>
-      </div>
+      <SpecialSettings />
+      <nav role='navigation' className={navClasses}>
+        <div className={`${modifyCl('navigation__logo')}`}>
+          <Link to='/'>
+            <img
+              className='navigation__logo__img'
+              src={`./Images/${logo[theme]}`}
+              alt='logoImg'
+            />
+          </Link>
+        </div>
+        <div className={`${modifyCl('navigation__menu')}`}>
+          <ul>
+            <NavItem url='/seans' title='РАСПИСАНИЕ' />
+            {siteMode === 'special' && <NavItem url='/films' title='ФИЛЬМЫ' />}
+            <NavItem url='/about' title='О КИНОТЕАТРЕ' />
+            <NavItem url='/rules' title='ПРАВИЛА РАБОТЫ' />
+            <NavItem url='/sushi' title='СУШИ-БАР "КИН-НО"' />
+          </ul>
+        </div>
+      </nav>
     </div>
   )
 }
 
-export default Navigation
+export default React.memo(Navigation)

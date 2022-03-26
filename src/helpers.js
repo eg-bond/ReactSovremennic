@@ -1,16 +1,49 @@
 // Хелперы для сайта "для слабовидящих"
 export const modifiedClass = (cl, siteMode) =>
-  `${cl} ${siteMode === 'default' ? cl + '__default' : cl + '__special'}`
+  `${cl} ${siteMode === 'default' ? cl + '--default' : cl + '--special'}`
 
-export const themeClasses = theme => {
-  return {
-    back: `theme__${theme}__background`,
-    elems: `theme__${theme}__elements`,
-    borders: `theme__${theme}__borders`,
-    pills: `theme__${theme}__pills`,
-    navs: `theme__${theme}__navs`,
-    footer: `theme__${theme}__footer`,
+const themeAppColors = {
+  blackWhite: {
+    main: 'black',
+    secondary: '#ebece9',
+  },
+  whiteBlack: {
+    main: '#ebece9',
+    secondary: 'black',
+  },
+  blackBlue: {
+    main: 'black',
+    secondary: '#7ba2d5',
+  },
+  //  #ab1919
+  yellowBrown: {
+    main: '#f5dda1',
+    secondary: '#810026',
+  },
+  blueGreen: {
+    main: '#b4e5ee',
+    secondary: '#5e4005',
+  },
+}
+
+export const changeAppColors = (theme, siteMode) => {
+  const docStyle = document.documentElement.style
+
+  docStyle.setProperty('--mainClr', themeAppColors[theme].main)
+  docStyle.setProperty('--secondaryClr', themeAppColors[theme].secondary)
+  if (siteMode === 'default') {
+    docStyle.setProperty('--movieTitlesClr', '#e41b2b')
+  } else {
+    docStyle.setProperty('--movieTitlesClr', themeAppColors[theme].secondary)
   }
+}
+
+export const themeLogoFile = {
+  blackWhite: 'logo.png',
+  whiteBlack: 'logoWB.png',
+  blackBlue: 'logoBB.png',
+  yellowBrown: 'logoYB.png',
+  blueGreen: 'logoBG.png',
 }
 
 export const themeLogo = theme => {
@@ -19,8 +52,8 @@ export const themeLogo = theme => {
       return 'logo'
     case 'whiteBlack':
       return 'logoWB'
-    case 'blackRed':
-      return 'logoBR'
+    case 'blackBlue':
+      return 'logoBB'
     case 'yellowBrown':
       return 'logoYB'
     case 'blueGreen':
@@ -36,5 +69,12 @@ export const queries = {
   mobile:
     '(max-width: 767.5px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)',
 }
-// Функция для прокрутки наверх
+
+// Функциb для прокрутки наверх
 export const scrollToTop = () => window.scrollTo(0, 0)
+export const scrollToNavigation = () => window.scrollTo(0, 200)
+
+// Промис - задержка
+export const delay = ms => {
+  return new Promise(res => setTimeout(() => res(), ms))
+}

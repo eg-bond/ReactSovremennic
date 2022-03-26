@@ -1,14 +1,23 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
+import { scrollToTop } from '../helpers'
 
-function Footer({ themeCl }) {
+function Footer({ mobileQ, siteMode }) {
+  // Автоматический скролл наверх для мобильной версии
+  const { pathname } = useLocation()
+  useEffect(() => {
+    if (mobileQ || siteMode === 'special') {
+      scrollToTop()
+    }
+  }, [pathname, mobileQ, siteMode])
+
   return (
-    <div className={`footer container ${themeCl.footer}`}>
-      <Link className='lucida_font' to='/'>
-        Кинотеатр «Современник» © 2005
+    <div className={`footer container`}>
+      <Link onClick={scrollToTop} to='/'>
+        Кинотеатр «Современник» © 2005 - 2022
       </Link>
     </div>
   )
 }
 
-export default Footer
+export default React.memo(Footer)

@@ -1,4 +1,10 @@
 @import-normalize;
+// Переменные
+@import 'variables';
+// Шрифты
+@import 'fonts';
+// Бутстраповские стили
+@import 'bootstrap3_classes';
 // Общие стили
 @import 'generalStyles';
 // Стили сайта для слабовидящих
@@ -18,7 +24,7 @@
 // Стили для страницы с расписанием сеансов
 @import 'seans';
 // Стили для страницы с описаниями фильмов
-@import 'description';
+@import 'selectedMovie';
 // Стили для сушибара
 @import 'sushi';
 // Стили для "правил работы" и "о кинотеатре"

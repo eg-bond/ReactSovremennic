@@ -1,14 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useRouteMatch } from 'react-router-dom'
 
-function Adv() {
+const AdvContent = React.memo(() => {
   return (
-    <div className='col-lg-3 col-md-3 col-sm-3'>
-      {/* <a className={'linkWrapper'} href='http://www.region47.sbor.net'>
-        <div className={'desktopAdv desktopAdv--1'}>
-          <img src='./Images/region47.gif' alt='Регион47' />
-        </div>
-      </a> */}
+    <div className='content__gridRightItem--1fr'>
+      <div className={'desktopAdv desktopAdv--5'}>
+        <img src='./Images/vr_image.jpg' alt='vr' />
+      </div>
 
       <Link className={'linkWrapper'} to='/sushi'>
         <div className={'desktopAdv desktopAdv--3'}>
@@ -20,6 +18,14 @@ function Adv() {
       </div>
     </div>
   )
+})
+
+function Adv() {
+  let match = useRouteMatch('/:firsId?')
+  if (match.params.firsId !== 'sushi') {
+    return <AdvContent />
+  }
+  return null
 }
 
 export default Adv

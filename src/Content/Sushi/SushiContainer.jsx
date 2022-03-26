@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback, useRef } from 'react'
 import Sushi from './Sushi'
+import { delay } from '../../helpers'
+import { preloadImg } from './preload'
 
 const sushiElems = {
   default: [
+    ['new', 'Новинки меню'],
     ['sushi', 'Суши'],
     ['rolls', 'Роллы'],
     ['black_rolls', 'Цветные/черные роллы'],
-    ['hot_rolls', 'Запеченые роллы'],
+    ['hot_rolls', 'Запеченные роллы'],
     ['brand_rolls', 'Фирменные роллы'],
     ['mini_rolls', 'Мини-роллы'],
     ['sets', 'Наборы'],
@@ -40,68 +43,95 @@ const sushiElems = {
     ['pizza', 'Пицца'],
   ],
   swiperKeys: ['brand_rolls', 'hot_dishes'],
+  allPossibleSwiperKeys: [
+    'brand_rolls',
+    'brand_rolls1',
+    'brand_rolls2',
+    'brand_rolls3',
+    'hot_dishes',
+    'hot_dishes1',
+    'hot_dishes2',
+    'hot_dishes3',
+    'hot_dishes4',
+  ],
 }
 
-const desktopMenuButton = (key, title, activeKey, hideImg) => {
-  return (
-    <button
-      key={key}
-      className={activeKey === key ? 'active' : ''}
-      onClick={() => hideImg(key)}>
-      {title}
-    </button>
-  )
-}
+// export let preloadImg = (imgKey, imgPreloaded) => {
+//   let key
+//   sushiElems.swiperKeys.includes(imgKey) ? (key = imgKey + '1') : (key = imgKey)
+//   return new Promise(res => {
+//     let img = new window.Image()
+//     img.src = `./Images/sushi/${key}.gif`
+//     img.onload = () => {
+//       imgPreloaded.current = true
+//       res()
+//     }
+//   })
+// }
 
-const delay = ms => {
-  return new Promise(res => setTimeout(() => res(), ms))
-}
+// Длительность анимации Grow
+export let trDuration = 0
 
-const SushiContainer = ({ Q, siteMode, themeCl }) => {
-  const [activeKey, setActiveKey] = useState('sushi')
-  const [opacityCl, switchOpacityCl] = useState('opacity_0')
-  const [menuButtons, setButtons] = useState([])
+const SushiContainer = ({ siteMode }) => {
+  const currentImgKey = useRef('new')
+  const [imgVisible, switchVisibility] = useState(true)
+  const [progressBar, showProgressBar] = useState(false)
+  const imgPreloaded = useRef(false)
 
-  const createMenuButtons = () => {
-    return sushiElems[siteMode].map(item =>
-      desktopMenuButton(item[0], item[1], activeKey, hideImg)
-    )
+  function fadeOutHandler(key) {
+    return new Promise(res => {
+      switchVisibility(false)
+
+      delay(trDuration).then(() => {
+        currentImgKey.current = key
+        if (!imgPreloaded.current) {
+          showProgressBar(true)
+        }
+        res()
+      })
+    })
   }
 
-  async function hideImg(key) {
-    if (activeKey !== key) {
-      switchOpacityCl('opacity_0')
-      await delay(150)
-      setActiveKey(key)
+  // Счетчик вызванных функций changeImage
+  const funcCalled = useRef(0)
+
+  const changeImage = useCallback(async key => {
+    if (currentImgKey.current !== key) {
+      funcCalled.current += 1
+      await Promise.all([fadeOutHandler(key), preloadImg(key, imgPreloaded)])
+      imgPreloaded.current = false
+      if (funcCalled.current > 1) {
+        funcCalled.current -= 1
+      } else {
+        showProgressBar(false)
+        switchVisibility(true)
+        funcCalled.current -= 1
+      }
     }
-  }
-  const showImg = () => {
-    switchOpacityCl('opacity_1')
-  }
+  }, [])
 
   useEffect(() => {
-    setButtons(createMenuButtons())
-  }, [activeKey])
+    sushiElems.allPossibleSwiperKeys.includes(currentImgKey.current) &&
+      changeImage('new')
+  }, [siteMode, changeImage])
 
+  // При первом рендере Grow не анимируется
   useEffect(() => {
-    setButtons(createMenuButtons())
-    setActiveKey('sushi')
-  }, [siteMode])
+    trDuration = 300
+    return () => {
+      trDuration = 0
+    }
+  }, [])
 
   return (
-    <div>
-      <Sushi
-        sushiElems={sushiElems}
-        opacityCl={opacityCl}
-        Q={Q}
-        activeKey={activeKey}
-        hideImg={hideImg}
-        showImg={showImg}
-        menuButtons={menuButtons}
-        siteMode={siteMode}
-        themeCl={themeCl}
-      />
-    </div>
+    <Sushi
+      sushiElems={sushiElems}
+      currentImgKey={currentImgKey.current}
+      changeImage={changeImage}
+      siteMode={siteMode}
+      imgVisible={imgVisible}
+      progressBar={progressBar}
+    />
   )
 }
 

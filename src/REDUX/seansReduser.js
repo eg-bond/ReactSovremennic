@@ -1,53 +1,43 @@
-const INITIAL_ACTIVE_KEY = 'INITIAL_ACTIVE_KEY'
-const CHANGE_ACTIVE_KEY = 'CHANGE_ACTIVE_KEY'
-const INITIAL_BUTTON_TITLE = 'INITIAL_BUTTON_TITLE'
-const CHANGE_BUTTON_TITLE = 'CHANGE_BUTTON_TITLE'
+const SET_TODAY_SCEDULE_ITEM = 'SET_TODAY_SCEDULE_ITEM'
+const CHANGE_SCEDULE_ITEM = 'CHANGE_SCEDULE_ITEM'
 const CREATE_ACTUAL_DATES_ARR = 'CREATE_ACTUAL_DATES_ARR'
 
 let initialState = {
   datesArr: [
-    ['day0', 'Воскресенье', '11 июля'],
-    ['day1', 'Понедельник', '5 июля'],
-    ['day2', 'Вторник', '6 июля'],
-    ['day3', 'Среда', '7 июля'],
-    ['day4', 'Четверг', '8 июля'],
-    ['day5', 'Пятница', '9 июля'],
-    ['day6', 'Суббота', '10 июля'],
+    ['day0', 'Воскресенье', '27 марта'],
+    ['day1', 'Понедельник', '21 марта'],
+    ['day2', 'Вторник', '22 марта'],
+    ['day3', 'Среда', '23 марта'],
+    ['day4', 'Четверг', '24 марта'],
+    ['day5', 'Пятница', '25 марта'],
+    ['day6', 'Суббота', '26 марта'],
   ],
   actualDatesArr: [], // массив с датами, расположенными в правильном порядке
-  beginDate: 'monday', // monday либо любое другое значение
-  activeKey: '',
-  buttonTitle: 'Дата',
+  weekStartsFrom: 'monday', // monday либо любое другое значение
+  activeSceduleItemKey: '',
+  buttonTitle: null,
 }
 
 export const seansReduser = (state = initialState, action) => {
   switch (action.type) {
-    case INITIAL_ACTIVE_KEY:
+    case SET_TODAY_SCEDULE_ITEM:
       let date = new Date()
       let day = date.getDay()
+
       return {
         ...state,
-        activeKey: state.datesArr[day][0],
+        activeSceduleItemKey: state.datesArr[day][0],
+        buttonTitle: state.datesArr[day][1] + ' ' + state.datesArr[day][2],
       }
-    case CHANGE_ACTIVE_KEY:
+    case CHANGE_SCEDULE_ITEM:
       return {
         ...state,
-        activeKey: action.activeKey,
-      }
-    case INITIAL_BUTTON_TITLE:
-      let todayItem = state.datesArr.find(item => item[0] === state.activeKey)
-      return {
-        ...state,
-        buttonTitle: todayItem[1] + ' ' + todayItem[2],
-      }
-    case CHANGE_BUTTON_TITLE:
-      return {
-        ...state,
+        activeSceduleItemKey: action.activeSceduleItemKey,
         buttonTitle: action.buttonTitle,
       }
     case CREATE_ACTUAL_DATES_ARR:
       let newArr = []
-      if (state.beginDate === 'monday') {
+      if (state.weekStartsFrom === 'monday') {
         newArr = [...state.datesArr, state.datesArr[0]]
         newArr.shift()
       } else {
@@ -69,14 +59,10 @@ export const seansReduser = (state = initialState, action) => {
   }
 }
 
-export const initialActiveKey = () => ({ type: INITIAL_ACTIVE_KEY })
-export const changeActiveKey = activeKey => ({
-  type: CHANGE_ACTIVE_KEY,
-  activeKey,
-})
-export const initialButtonTitle = () => ({ type: INITIAL_BUTTON_TITLE })
-export const changeButtonTitle = buttonTitle => ({
-  type: CHANGE_BUTTON_TITLE,
+export const setTodaySceduleItem = () => ({ type: SET_TODAY_SCEDULE_ITEM })
+export const changeSceduleItem = (activeSceduleItemKey, buttonTitle) => ({
+  type: CHANGE_SCEDULE_ITEM,
+  activeSceduleItemKey,
   buttonTitle,
 })
 export const createActualDatesArr = () => ({ type: CREATE_ACTUAL_DATES_ARR })

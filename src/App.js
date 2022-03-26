@@ -1,147 +1,122 @@
 import React, { useEffect } from 'react'
-import '../node_modules/bootstrap/dist/css/bootstrap.css'
-import '../node_modules/swiper/css/swiper.css'
+import 'swiper/swiper.scss'
+import 'swiper/components/navigation/navigation.scss'
+import 'swiper/components/pagination/pagination.scss'
 import './SCSS/style.scss'
 import FilmSwiper from './Template/FilmSwiper'
-import { Route, useLocation } from 'react-router-dom'
 import Navigation from './Template/Navigation'
 import BottomSwiper from './Template/BottomSwiper'
 import Footer from './Template/Footer'
-// import AdvXS from './Template/AdvXS'
-import {
-  initialButtonTitle,
-  initialActiveKey,
-  createActualDatesArr,
-} from './REDUX/seansReduser'
+import { setTodaySceduleItem, createActualDatesArr } from './REDUX/seansReduser'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import Adv from './Template/Adv'
 import { createFilmsTodayArr, createFilmsObject } from './REDUX/cinemaReduser'
 import { switchSiteMode, switchFontSize } from './REDUX/specialReduser'
-import { queries, scrollToTop, themeClasses } from './helpers'
+import { changeAppColors, modifiedClass, queries } from './helpers'
 import { useMediaQuery } from '@material-ui/core'
 import Content from './Content/Content'
 
-const App = React.memo(
-  ({
-    createActualDatesArr,
-    initialActiveKey,
-    initialButtonTitle,
-    createFilmsTodayArr,
-    films,
-    filmsToday,
-    filmsTodaySlides,
-    filmsObject,
-    createFilmsObject,
-    switchSiteMode,
-    siteMode,
-    theme,
-    imgHidden,
-    fontSize,
-  }) => {
-    // Инициализационные эффекты
-    useEffect(() => {
-      createActualDatesArr()
-      initialActiveKey()
-      initialButtonTitle()
-      createFilmsTodayArr()
-    }, [
-      createActualDatesArr,
-      initialActiveKey,
-      initialButtonTitle,
-      createFilmsTodayArr,
-    ])
+const App = ({
+  createActualDatesArr,
+  setTodaySceduleItem,
+  createFilmsTodayArr,
+  films,
+  filmsToday,
+  filmsObject,
+  createFilmsObject,
+  switchSiteMode,
+  siteMode,
+  theme,
+  imgHidden,
+  fontSize,
+}) => {
+  // Инициализационные эффекты
+  useEffect(() => {
+    createActualDatesArr()
+    setTodaySceduleItem()
+    createFilmsTodayArr()
+  }, [createActualDatesArr, setTodaySceduleItem, createFilmsTodayArr])
 
-    let { pathname } = useLocation()
-    const themeCl = themeClasses(theme)
+  // Media queries.
+  let mobileQ = useMediaQuery(queries.mobile)
+  let desktopQ = useMediaQuery(queries.desktop)
 
-    let mainContainerClasses = [
-      siteMode === 'special' ? themeCl.back : 'mainContainer',
-      themeCl.elems,
-      `fontSize__${fontSize}` || 'fontSize__100',
-    ].join(' ')
-
-    // Queries
-    const Q = {
-      mobile: useMediaQuery(queries.mobile),
-      desktop: useMediaQuery(queries.desktop),
+  // Меняет версию сайта на 'default' при переходе с десктопной версии в мобильную
+  useEffect(() => {
+    if (mobileQ && siteMode === 'special') {
+      switchSiteMode('default')
     }
-    // Меняет версию сайта на 'default' при переходе с десктопной версии в мобильную
-    useEffect(() => {
-      if (Q.mobile && siteMode === 'special') {
-        switchSiteMode('default')
-      }
-    }, [Q.mobile, switchSiteMode, siteMode])
+  }, [mobileQ, switchSiteMode, siteMode])
 
-    // Автоматический скролл наверх для мобильной версии
-    if (Q.mobile || siteMode === 'special') {
-      scrollToTop()
-    }
+  // Изменение размера шрифта
+  useEffect(() => {
+    document.documentElement.style.setProperty('--htmlFontSize', fontSize)
+  }, [fontSize])
+  // Изменение цветовых схем
+  useEffect(() => {
+    changeAppColors(theme, siteMode)
+  }, [theme, siteMode])
 
-    return (
-      <div className={mainContainerClasses}>
+  let mainContainerClasses = [
+    modifiedClass('mainContainer', siteMode),
+    'flex-wrapper',
+  ].join(' ')
+  //-----------------------------------
+  console.log('render')
+  if (filmsToday[0] === undefined) {
+    return null
+  }
+
+  return (
+    <div className={mainContainerClasses}>
+      <div>
         <Navigation siteMode={siteMode} fontSize={fontSize} theme={theme} />
 
         {/*Отступ навигации в мобильной версии*/}
-        <div className='line_container' />
-        <div className='separator' />
+        <div className='navigation__containerXs' />
 
-        <div
-          className={`container wrapper ${themeCl.back} ${themeCl.borders} ${
-            imgHidden && 'hideImages'
-          }`}>
-          <div className='row'>
-            {/* {Q.mobile && <AdvXS />} */}
+        <div className='separatorMobile' />
 
-            {siteMode === 'default' && Q.desktop && (
-              <FilmSwiper films={films} mobile={Q.mobile} />
-            )}
+        <div className={`container wrapper ${imgHidden ? 'hideImages' : ''}`}>
+          {/* <CovidMessage /> */}
 
-            {Q.mobile && (
-              <Route exact path='/'>
-                <FilmSwiper films={films} mobile={Q.mobile} />
-              </Route>
-            )}
+          {siteMode === 'default' && (
+            <FilmSwiper films={films} mobile={mobileQ} />
+          )}
 
-            <hr className={`line_5px hidden-xs ${themeCl.borders}`} />
+          <div className='separatorMobile separatorMobile--MB' />
+          <hr className='separator hidden-xs' />
 
+          <div className={'mainContainer__content'}>
             <Content
               siteMode={siteMode}
-              Q={Q}
+              mobileQ={mobileQ}
+              desktopQ={desktopQ}
               filmsObject={filmsObject}
               createFilmsObject={createFilmsObject}
-              themeCl={themeCl}
               fontSize={fontSize}
             />
-
-            {Q.desktop && pathname !== '/sushi' && <Adv />}
-
-            {siteMode === 'default' && (
-              <BottomSwiper
-                filmsToday={filmsToday}
-                slidesPerView={filmsTodaySlides}
-                desktop={Q.desktop}
-              />
-            )}
-
-            {pathname !== '/' && Q.mobile && (
-              <>
-                <div className='separator' />
-                <FilmSwiper films={films} mobile={Q.mobile} />
-              </>
-            )}
+            {desktopQ && <Adv />}
           </div>
+
+          {siteMode === 'default' && (
+            <div>
+              <h1 className='bottomSwiper__bar'>Сегодня в кино</h1>
+              <hr className={`bottomSwiper__border`} />
+              <BottomSwiper filmsToday={filmsToday} desktop={desktopQ} />
+            </div>
+          )}
         </div>
-        <Footer themeCl={themeCl} />
       </div>
-    )
-  }
-)
+      <Footer mobileQ={mobileQ} siteMode={siteMode} />
+    </div>
+  )
+}
 
 let mapStateToProps = state => ({
   films: state.cinema.films,
   filmsToday: state.cinema.filmsToday,
-  filmsTodaySlides: state.cinema.filmsTodaySlides,
   filmsObject: state.cinema.filmsObject,
   siteMode: state.special.siteMode,
   theme: state.special.theme,
@@ -151,8 +126,7 @@ let mapStateToProps = state => ({
 
 export default compose(
   connect(mapStateToProps, {
-    initialActiveKey,
-    initialButtonTitle,
+    setTodaySceduleItem,
     createActualDatesArr,
     createFilmsTodayArr,
     createFilmsObject,

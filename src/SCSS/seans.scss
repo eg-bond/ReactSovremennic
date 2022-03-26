@@ -1,150 +1,158 @@
-@import 'variables';
-
-.seans-menu {
-  margin-top: 3.2%;
-}
-
-.seans-tabs {
+.seanse__buttons {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   flex-wrap: wrap;
-  font-family: $arialFont;
-  margin: 0 -11px;
   > button {
-    background-color: black;
-    border: none;
+    border: 2px solid;
     outline: none;
-    padding: 7px 9px;
-    // 2px нужно для отступов сверху и снизу, чтобы кнопки не сливались при 200% шрифте
-    margin: 2px 11px;
-    text-align: left;
-    border-radius: 5px;
-    @media (max-width: 1200px) {
-      font-size: 75%;
+    padding: 8px 9px;
+    margin: 2px 2.5px;
+    font-size: 1.1rem;
+    &:first-child {
+      margin-left: 0;
     }
-    @media (max-width: 992px) {
-      font-size: 62%;
-      padding: 4px 4.4px;
+    &:last-child {
+      margin-right: 0;
+    }
+    @media ($mediaQuery1200) {
+      padding: 8px 8px;
+      font-size: 0.87rem;
+    }
+    @media ($mediaQuery992) {
+      font-size: 0.67rem;
+      padding: 4px 5px;
+      margin: 2px 3px;
     }
   }
 }
-.seans-tabs .active {
-  color: black;
-  background-color: $linesColor;
-}
-.seans-tabs button:hover {
-  color: black;
-  background-color: $linesColor;
-  transition: ease 600ms;
+
+.seanse__buttons .active {
+  color: var(--mainClr);
+  background-color: var(--secondaryClr);
 }
 
-.table_custom {
-  margin-top: 3%;
-  font-family: $lusidaFont;
-  font-weight: 900;
-  border-radius: 5px;
+.seanse__table {
+  border-spacing: 0;
+  margin: 3% 0;
   width: 100%;
-  // height: 500px;
-  @media (max-width: 1200px) {
-    // height: 400px;
-    font-size: 85%;
-  }
-  @media (max-width: 992px) {
-    // height: 300px;
-    font-size: 68%;
-  }
-}
-
-@mixin seansTable($leftColumnW, $centerColumnW, $rightColumnW, $paddingRight) {
-  @if ($leftColumnW != null) {
-    .table_custom table,
-    .table_custom td:nth-of-type(1),
-    table th:nth-of-type(1) {
-      width: $leftColumnW;
+  overflow: hidden;
+  border-radius: $imagesBR;
+  th,
+  td,
+  tr {
+    padding: 2.7% 0;
+    @extend %desktopParagraphsFS;
+    &:nth-of-type(1) {
+      width: 12%;
+      text-align: center;
+    }
+    &:nth-of-type(2) {
+      width: 60%;
+      text-align: left;
+    }
+    &:nth-of-type(3) {
+      width: 12%;
+      text-align: center;
+    }
+    &:nth-of-type(4) {
+      width: 16%;
       text-align: center;
     }
   }
-
-  @if ($centerColumnW != null) {
-    .table_custom table,
-    .table_custom td:nth-of-type(2),
-    table th:nth-of-type(2) {
-      width: $centerColumnW;
-    }
-  }
-
-  @if ($rightColumnW != null) {
-    .table_custom table,
-    .table_custom td:nth-of-type(3),
-    table th:nth-of-type(3) {
-      width: $rightColumnW;
-      text-align: center;
-      padding-right: $paddingRight;
-    }
-  }
 }
-
-@include seansTable(8%, 48%, 12%, 2%);
-
-.table_custom th,
-.table_custom td {
-  padding: 2.7% 0 2.7% 1%;
-  // padding: 1.8% 0 1.8% 1%;
-}
-
 .table_head {
   background-color: #e41b2b;
   color: white;
-  border-color: #ea2222;
 }
-
 .table_white {
   color: black;
   background-color: white;
 }
-
 .table_gray {
   color: white;
   background-color: #2b2831;
 }
 
-@media (max-width: 767.8px),
-  (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
-  .seans_button_xs__title {
-    font-weight: 900;
-  }
-
-  .table_custom {
+@media #{$mediaQueryMobile} {
+  .seans_button_xs {
+    position: relative;
+    padding: 2%;
+    margin: 1vw 0;
+    background-color: var(--mainClr);
+    border: $border2px;
+    border-radius: $buttonsBR;
     width: 100%;
-    // min-height: 350px;
-    margin: 2% 0 4% 0;
+    outline: none !important;
   }
-
-  .seans-tab-xs {
-    font-size: 90%;
+  .seans_button_xs:hover {
+    background-color: var(--mainClr) !important;
+    border-color: #e41b2b !important;
+    color: #e41b2b !important;
+    transition: ease 650ms;
   }
-}
-
-@for $i from 4 to -1 {
-  $maxWidth: 320px + $i * 111.9px;
-  $tableFontSize: 48%+9% * $i;
-  $buttonTitleFontSize: 75%+6% * $i;
-
-  @media (max-width: $maxWidth) {
-    .table_custom {
-      font-size: $tableFontSize;
-    }
-    .seans_button_xs__title {
-      font-size: $buttonTitleFontSize;
+  .seans_button_xs span {
+    font-size: 2.8vw;
+  }
+  .glyphicon-chevron-down {
+    position: absolute;
+    top: 35%;
+    right: 2vw;
+    @media (max-width: 400px) {
+      top: 38%;
     }
   }
-}
 
-@media (max-width: 544px) {
-  @include seansTable(null, null, 13%, 0.5%);
-}
+  .seanse__table {
+    margin: 2.1vw auto;
+    th,
+    td,
+    tr {
+      font-size: $mobileParagraphsFS;
+    }
+  }
 
-@media (max-width: 432px) {
-  @include seansTable(null, null, 16%, 0.5%);
+  .popper {
+    z-index: 2;
+  }
+  .popper__backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 5;
+  }
+  .popper__content {
+    border: $border2px;
+    border-radius: $buttonsBR;
+    color: var(--secondaryClr);
+    text-align: center;
+    background-color: var(--mainClr);
+    position: relative !important;
+    width: auto;
+    margin: 25vh 2% 2% 2%;
+    z-index: 5;
+    min-height: auto;
+  }
+  .popper li {
+    list-style-type: none;
+    cursor: pointer;
+    border-bottom: solid 1px;
+    margin: 0 10px;
+    font-size: $mobileParagraphsFS;
+    &:last-child {
+      border-bottom: none !important;
+    }
+  }
+  .popper li.active,
+  .popper li:hover {
+    transition: ease 0.6s;
+    color: #e41b2b;
+  }
+  .popper__seance li {
+    padding: 3.5vw 0;
+  }
 }

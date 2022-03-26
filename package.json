@@ -3,30 +3,26 @@
   "type": "module",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://sovremennik.sbor.net",
+  "homepage": "http://sovremennik.sbor.net/",
   "dependencies": {
-    "3": "^2.1.0",
-    "@material-ui/core": "^4.11.3",
+    "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
-    "bootstrap": "^3.4.1",
-    "node-sass": "^4.14.1",
-    "react": "^16.13.1",
-    "react-bootstrap": "^0.32.4",
-    "react-dom": "^16.13.1",
-    "react-id-swiper": "^2.4.0",
+    "node-sass": "^6.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-lite-youtube-embed": "^2.0.3",
-    "react-redux": "^7.2.0",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "3.2.0",
-    "redux": "^4.0.5",
-    "source-map-explorer": "^2.5.2",
-    "swiper": "^5.3.6"
+    "react-redux": "^7.2.4",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "redux": "^4.1.0",
+    "swiper": "^6.7.1",
+    "web-vitals": "^1.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "analyze_js": "source-map-explorer 'build/static/js/*.js'",
-    "analyze_css": "source-map-explorer 'build/static/css/*.css'",
+    "analyze_css": "source-map-explorer 'build/static/css/*.css' --no-border-checks",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "scrapper": "node ExternalScripts/Scrapper/scrapper",
@@ -36,7 +32,10 @@
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [
@@ -51,10 +50,13 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
     "cherio": "^1.0.0-rc.2",
-    "fs": "^0.0.1-security",
-    "gh-pages": "^2.2.0",
-    "puppeteer": "^8.0.0",
-    "xlsx": "^0.16.8"
+    "fs": "0.0.1-security",
+    "puppeteer": "^10.1.0",
+    "source-map-explorer": "^2.5.2",
+    "xlsx": "^0.17.0"
   }
 }

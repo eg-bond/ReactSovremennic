@@ -1,267 +1,112 @@
-@import 'variables';
-
 .linkWrapper:focus .sushiAdv {
   @include shiftUp;
 }
 
 .sushiAdv {
-  position: relative;
-  width: 100%;
-  border: solid 1px;
-  border-radius: 3px;
   margin-bottom: 3%;
   padding-bottom: 10%;
   transition: ease 300ms;
-}
-
-.sushiAdv img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.sushi_page {
-  margin-top: 2%;
+  @extend %imgContainer;
 }
 
 .sushi_page__content {
-  min-height: 1100px;
-  @media (max-width: 1200px) {
-    min-height: 800px;
-  }
-  @media (max-width: 992px) {
-    min-height: 650px;
-  }
-  @media (max-width: 768px) {
-    min-height: 400px;
+  padding-bottom: 20px;
+  margin-top: 0.2%;
+  @media #{$mediaQueryMobile} {
+    padding-bottom: 0;
   }
 }
 
 .sushi_page__content img {
   width: 100%;
-  border-radius: 3px;
-  border: 1px solid;
-  min-height: 750px;
-  @media (max-width: 1200px) {
-    min-height: 600px;
-  }
-  @media (max-width: 992px) {
-    min-height: 450px;
-  }
+  border-radius: $imagesBR;
 }
 .sushi_page__menuButtons {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  font-family: $arialFont;
+  margin-bottom: 20px;
 }
 .sushi_page__menuButtons .active {
-  color: black;
-  background-color: $linesColor;
+  color: var(--mainClr);
+  background-color: var(--secondaryClr);
 }
-.sushi_page__menuButtons button:hover {
-  color: black;
-  background-color: $linesColor;
-  transition: ease 600ms;
-}
+// .sushi_page__menuButtons button:hover {
+//   color: var(--mainClr);
+//   background-color: var(--secondaryClr);
+//   transition: ease 600ms;
+// }
 .sushi_page__menuButtons button {
-  background-color: black;
-  border: none;
+  border: 2px solid;
   outline: none;
   margin: 1% 0;
-  padding: 4% 0 4% 3%;
-  border-radius: 5px;
-  text-align: left;
-  @media (max-width: 1200px) {
-    font-size: 85%;
+  padding: 5% 2%;
+  font-size: 1rem;
+  &:first-child {
+    margin-top: 0;
   }
-  @media (max-width: 992px) {
-    font-size: 70%;
+  @media ($mediaQuery1200) {
+    font-size: 0.85rem;
   }
-}
-
-.sushiEmptyImg {
-  position: relative;
-  width: 100%;
-  padding-bottom: 155%;
-  margin-bottom: 2%;
+  @media ($mediaQuery992) {
+    font-size: 0.7rem;
+  }
 }
 
 .swiper-container-sushi {
-  width: 100%;
   height: auto;
-  overflow: hidden;
-  margin-bottom: 20px;
   cursor: grab;
 }
 .swiper-button-next,
 .swiper-button-prev {
-  color: black;
+  color: var(--mainClr);
 }
 .swiper-container-sushi > .swiper-pagination-bullets {
   margin: 0 10px 20px 0;
 }
 .swiper-pagination-fraction {
-  color: black;
-  font-weight: bold;
-  @media (max-width: 1200px) {
-    font-size: 90%;
+  color: var(--mainClr);
+  @media ($mediaQuery1200) {
+    font-size: 0.9rem;
+    span {
+      font-size: 0.9rem;
+    }
   }
-  @media (max-width: 992px) {
-    font-size: 80%;
+  @media ($mediaQuery992) {
+    font-size: 0.8rem;
+    span {
+      font-size: 0.8rem;
+    }
   }
 }
 
-@media (max-width: 767.8px),
-  (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
-  .sushi_page {
-    margin-top: 0;
+@media #{$mediaQueryMobile} {
+  .popper__sushi li {
+    padding: 2.2vw 0;
+    // min-height: 8vw !important;
   }
 
-  .sushi_page > .col-xs-12 {
-    padding-right: 0;
-    padding-left: 0;
+  .sushi_page__content {
+    margin: 2.1vw auto;
   }
 
-  .seans_button_xs {
-    padding: 2% 2% 2% 4.5%;
-    margin: 3.4% 0 1.5% 0;
-    font-family: $arialFont;
-    background-color: black;
-    border: solid 1.7px white;
-    color: white;
-    border-radius: 21px;
-    width: 100%;
-    outline: none !important;
+  .swiper-button-next {
+    right: 2px !important;
   }
-  .seans_button_xs:hover {
-    background-color: black !important;
-    border-color: red !important;
-    color: red !important;
-    border-radius: 21px;
-    transition: ease 650ms;
+  .swiper-button-prev {
+    left: 2px !important;
   }
-  .seans_button_xs:focus {
-    border: solid 1.7px white;
-    background-color: black;
-    color: white;
-  }
-
-  .glyphicon-chevron-down {
-    float: right;
-    margin-top: 0.5%;
-  }
-  .modal-dialog {
-    padding: 8.5% 20% 0 20%;
-  }
-  .modal-title {
-    font-family: $arialFont;
-    font-weight: 900;
-  }
-
-  .sushi-tab-xs {
-    > li {
-      border-bottom: solid 1px black;
-      > a {
-        color: black;
-        font-family: Lucida Console, monospace;
-        font-weight: bold;
-        outline: none;
-
-        &:hover {
-          color: #f00;
-          background-color: white;
-          border: none;
-          text-decoration: none;
-        }
-      }
-    }
-  }
-
-  .sushi-tab-xs > li.active > a,
-  .sushi-tab-xs > li.active > a:focus,
-  .sushi-tab-xs > li.active > a:hover {
-    color: #f00;
-    border: none;
-  }
-
-  .sushi_page img {
-    width: 100%;
-    margin-top: 2%;
-  }
-
-  .swiper-container-sushi {
-    width: 100%;
-    height: auto;
-    overflow: hidden;
-    margin-bottom: 0;
-  }
-
   .swiper-button-next,
   .swiper-button-prev {
     &::after {
       font-size: xx-large;
     }
   }
-}
-
-@mixin sushi(
-  $buttonFontSize,
-  $modalFontSize,
-  $aFontSize,
-  $swiperBuM,
-  $swiperBuH,
-  $swFractionFS,
-  $swFractionMB,
-  $maxWidth
-) {
-  @media (max-width: $maxWidth) {
-    .sushi_menu_xs > button {
-      font-size: $buttonFontSize;
+  .swiper-pagination-fraction {
+    bottom: 2px !important;
+    font-size: $mobileParagraphsFS;
+    span {
+      font-size: $mobileParagraphsFS;
     }
-    .modal-title {
-      font-size: $modalFontSize;
-    }
-    .sushi_page ul > li > a {
-      font-size: $aFontSize;
-    }
-    .swiper-button-next {
-      margin-right: $swiperBuM;
-    }
-    .swiper-button-prev {
-      margin-left: $swiperBuM;
-    }
-    .swiper-pagination-fraction {
-      margin-bottom: $swFractionMB;
-      font-size: $swFractionFS;
-    }
-  }
-}
-
-@for $i from 4 to -1 {
-  $maxWidth: 320px + $i * 111.9px;
-  $buttonFontSize: 72%+7% * $i;
-  $modalFontSize: 95%+ 2.5 * $i;
-  $aFontSize: 82% + 4.5 * $i;
-  $swiperBuM: -4.5% + 0.8 * $i;
-  $swiperBuH: 10px + 3.75 * $i;
-  $swFractionFS: 55% + 8.75 * $i;
-  $swFractionMB: -3% + 0.7% * $i;
-
-  @include sushi(
-    $buttonFontSize,
-    $modalFontSize,
-    $aFontSize,
-    $swiperBuM,
-    $swiperBuH,
-    $swFractionFS,
-    $swFractionMB,
-    $maxWidth
-  );
-}
-
-@media (max-width: 590px) {
-  .modal-dialog {
-    padding: 9.5% 0.9% 0 0.9%;
   }
 }

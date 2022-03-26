@@ -1,91 +1,159 @@
-import React, { useEffect } from 'react'
-
-import { Tab } from 'react-bootstrap'
-import NavItems from './NavItems'
-import SeansModal from './SeansModal'
+import React, { useEffect, useState } from 'react'
+import { MobileSeanceNavigation } from './MobileSeanceNavigation'
 import {
-  changeActiveKey,
-  changeButtonTitle,
-  initialActiveKey,
-  initialButtonTitle,
+  changeSceduleItem,
+  setTodaySceduleItem,
 } from '../../REDUX/seansReduser'
-import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { CreateTable } from './CreateTable'
-import { themeClasses } from '../../helpers'
+import Grow from '@material-ui/core/Grow'
+import scedule from './scedule'
+import { useCallback } from 'react'
+import IndexAdvXS from '../../Template/IndexAdvXS'
 
-let table = CreateTable()
-let finalTable = [...table]
-
-const Seans = React.memo(
-  ({ initialActiveKey, initialButtonTitle, Q, siteMode, theme, ...props }) => {
-    const themeCl = themeClasses(theme)
-
-    useEffect(() => {
-      return () => {
-        initialActiveKey()
-        initialButtonTitle()
-      }
-    }, [initialActiveKey, initialButtonTitle])
-
+const desktopBtn = (d, activeSceduleItemKey, changeTableContent) => {
+  return (
+    <button
+      data-testid={d[0]}
+      key={d[0] + 'desc'}
+      className={`fill_button ${activeSceduleItemKey === d[0] ? 'active' : ''}`}
+      onClick={() => {
+        changeTableContent(d[0], `${d[1]} ${d[2]}`)
+      }}>
+      {d[1]}
+      <br />
+      {d[2]}
+    </button>
+  )
+}
+const CreateSeanseButtons = React.memo(
+  ({ datesArr, activeSceduleItemKey, changeTableContent }) => {
     return (
-      <div className='col-lg-9 col-md-9 col-sm-9'>
-        <Tab.Container
-          id='table'
-          activeKey={props.activeKey}
-          onSelect={k => props.changeActiveKey(k)}>
-          <div>
-            {Q.desktop && (
-              <div
-                className={`seans-menu ${
-                  siteMode === 'special' ? themeCl.navs : ''
-                } `}>
-                <NavItems
-                  deviceType={'notMobile'}
-                  datesArr={props.datesArr}
-                  changeButtonTitle={props.changeButtonTitle}
-                  changeActiveKey={props.changeActiveKey}
-                  activeKey={props.activeKey}
-                />
-              </div>
-            )}
-
-            {Q.mobile && (
-              <div className='sushi_menu_xs'>
-                <SeansModal
-                  datesArr={props.datesArr}
-                  buttonTitle={props.buttonTitle}
-                  changeButtonTitle={props.changeButtonTitle}
-                  initialButtonTitle={props.initialButtonTitle}
-                />
-              </div>
-            )}
-
-            <Tab.Content className='xs350px' animation>
-              {finalTable}
-            </Tab.Content>
-          </div>
-        </Tab.Container>
-
-        <div className='separator-special' />
+      <div className='seanse__buttons'>
+        {datesArr.map(d =>
+          desktopBtn(d, activeSceduleItemKey, changeTableContent)
+        )}
       </div>
     )
   }
 )
 
-let mapStateToProps = state => ({
-  datesArr: state.seansPage.actualDatesArr,
-  activeKey: state.seansPage.activeKey,
-  buttonTitle: state.seansPage.buttonTitle,
-  siteMode: state.special.siteMode,
-  theme: state.special.theme,
+const tableItem = (seanse, i) => {
+  return (
+    <tr key={seanse[0]} className={i % 2 === 0 ? 'table_gray' : 'table_white'}>
+      <td>{seanse[0]}</td>
+      <td>{seanse[1]}</td>
+      <td>{seanse[2]}</td>
+      <td>{seanse[3]}</td>
+    </tr>
+  )
+}
+const TableContent = React.memo(({ scedule, activeSceduleItemKey }) => {
+  if (scedule[activeSceduleItemKey]) {
+    return (
+      <tbody>
+        <tr className={`table_head`}>
+          <th>Сеанс</th>
+          <th>Фильм</th>
+          <th>Возраст</th>
+          <th>Цена, руб</th>
+        </tr>
+        {scedule[activeSceduleItemKey].map(tableItem)}
+      </tbody>
+    )
+  }
+  return null
 })
 
-export default compose(
-  connect(mapStateToProps, {
-    changeButtonTitle,
-    changeActiveKey,
-    initialButtonTitle,
-    initialActiveKey,
-  })
-)(Seans)
+let trDurationSeance = 0
+
+const Seans = ({
+  setTodaySceduleItem,
+  datesArr,
+  buttonTitle,
+  activeSceduleItemKey,
+  mobileQ,
+  desktopQ,
+  changeSceduleItem,
+}) => {
+  const [tableVisible, switchVisibility] = useState(true)
+
+  const changeTableContent = useCallback(
+    (key, title) => {
+      if (key !== activeSceduleItemKey) {
+        switchVisibility(false)
+        setTimeout(() => {
+          changeSceduleItem(key, title)
+          switchVisibility(true)
+        }, trDurationSeance)
+      }
+    },
+    [activeSceduleItemKey, changeSceduleItem]
+  )
+
+  useEffect(() => {
+    return () => {
+      setTodaySceduleItem()
+    }
+  }, [setTodaySceduleItem])
+
+  useEffect(() => {
+    trDurationSeance = 200
+    return () => {
+      trDurationSeance = 0
+    }
+  }, [])
+
+  return (
+    <div className='content__gridLeftItem--3fr'>
+      {desktopQ && (
+        <CreateSeanseButtons
+          datesArr={datesArr}
+          activeSceduleItemKey={activeSceduleItemKey}
+          changeTableContent={changeTableContent}
+        />
+      )}
+
+      {mobileQ && (
+        <div className='sushi_menu_xs'>
+          <MobileSeanceNavigation
+            activeSceduleItemKey={activeSceduleItemKey}
+            datesArr={datesArr}
+            buttonTitle={buttonTitle}
+            changeSceduleItem={changeSceduleItem}
+            switchVisibility={switchVisibility}
+          />
+        </div>
+      )}
+
+      <Grow in={tableVisible} timeout={trDurationSeance}>
+        <table className='seanse__table'>
+          <TableContent
+            activeSceduleItemKey={activeSceduleItemKey}
+            scedule={scedule}
+          />
+        </table>
+      </Grow>
+
+      {desktopQ && (
+        <div className='barCombos'>
+          <img src='./Images/barCombo.gif' alt='Вместе дешевле' />
+        </div>
+      )}
+
+      <div className='separatorMobile separatorMobile--index' />
+
+      {mobileQ && <IndexAdvXS />}
+    </div>
+  )
+}
+
+let mapStateToProps = state => ({
+  datesArr: state.seansPage.actualDatesArr,
+  activeSceduleItemKey: state.seansPage.activeSceduleItemKey,
+  buttonTitle: state.seansPage.buttonTitle,
+})
+
+export default connect(mapStateToProps, {
+  changeSceduleItem,
+  setTodaySceduleItem,
+})(Seans)

@@ -52,17 +52,17 @@ var makeFilmItem = function (filmSet, sceduleItemKey, dayTitlesArr, filmIndex) {
 
     // Вставляем время и цену
     for (var j = 0; j < filmSceduleItem.length; j++) {
-        var seansIndex = filmSceduleItem[j][3]
+        var seansIndex = filmSceduleItem[j][4]
 
         timeLayerSet.layers[seansIndex].visible = true
         priceLayerSet.layers[seansIndex].visible = true
 
         timeLayerSet.layers[seansIndex].textItem.contents = filmSceduleItem[j][0]
-        priceLayerSet.layers[seansIndex].textItem.contents = filmSceduleItem[j][2] + 'р.'
+        priceLayerSet.layers[seansIndex].textItem.contents = filmSceduleItem[j][3] + 'р.'
     }
 
     // Сохраняем файл
-    var filename = sceduleItemKey + '-2021'
+    var filename = sceduleItemKey + '-2022'
     saveJpeg(filename)
 }
 
@@ -78,7 +78,7 @@ var dayKeysRanges = {
     allWeek: ["day1", "day2", "day3", "day4", "day5", "day6", "day0"],
 }
 // Это единственный изменяемый параметр 
-var dayKeysArr = dayKeysRanges.weekEnd
+var dayKeysArr = ['day6']
 
 // Цикл, пробегающийся по выбранным в dayKeysArr фильмам
 for (var i = 0; i < dayKeysArr.length; i++) {

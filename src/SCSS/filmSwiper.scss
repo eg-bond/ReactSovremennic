@@ -1,189 +1,122 @@
-@import 'variables';
-
 .cinemaSlider {
-  margin-top: 10px;
+  width: 100%;
   cursor: grab;
   height: auto;
 }
-.filmSwiper {
-  width: 98%;
-  margin: 0.5% 0 0 1%;
+.cinemaSlider .swiper-wrapper {
+  // height: 350px;
+  height: 325px;
+  @media ($mediaQuery1200) {
+    // height: 300px;
+    height: 275px;
+  }
+  @media ($mediaQuery992) {
+    // height: 245px;
+    height: 225px;
+  }
 }
-.filmSwiper img {
+.cinemaSlider__container {
+  padding: 7px 7px 0 7px;
+}
+.cinemaSlider .swiper-slide {
+  position: relative;
+  z-index: 1;
+}
+.cinemaSlider img {
+  // height: 275px;
   height: 250px;
   width: 100%;
-  border-radius: 3px;
+  border-radius: $imagesBR;
+  position: relative;
+  z-index: 1;
+  @media ($mediaQuery1200) {
+    // height: 230px;
+    height: 210px;
+  }
+  @media ($mediaQuery992) {
+    // height: 185px;
+    height: 170px;
+  }
 }
-.filmSwiper h1 {
-  font-size: 101%;
-  font-weight: bold;
+.cinemaSlider h1 {
   padding-left: 2%;
-  font-family: $lusidaFont;
   margin: 5% 0 2% 0;
   white-space: pre;
   overflow: hidden;
+  @extend %desktopParagraphsFS;
 }
-.filmSwiper h1:before {
+.cinemaSlider h1::before {
   content: '';
-  display: block;
-  height: 21px;
-  width: 72px;
-  position: relative;
-  left: 84%;
-  margin-top: -20px;
-  background-image: linear-gradient(to right, transparent, black 25%);
+  width: 20px;
+  position: absolute;
+  right: -2px;
+  bottom: 0;
+  top: 0;
+  background-image: linear-gradient(to right, transparent, var(--mainClr) 100%);
 }
-.filmSwiper p {
+.cinemaSlider p {
   padding-left: 2.5%;
-  font-size: 90%;
   letter-spacing: 0.01em;
-  color: white;
   font-weight: normal;
-  font-family: $lusidaFont;
+  font-size: 0.9rem;
+  @media ($mediaQuery1200) {
+    font-size: 0.8rem;
+  }
+  @media ($mediaQuery992) {
+    font-size: 0.7rem;
+  }
 }
-.filmSwiper a {
-  color: white;
+.cinemaSlider a {
+  color: var(--secondaryClr);
   text-decoration: none;
   cursor: pointer;
   font-weight: normal;
 }
-.filmSwiper a:hover {
-  color: #d8d1d1;
+.sliderSlide * {
   transition: all 0.3s;
   cursor: pointer;
-  font-weight: normal;
+}
+.sliderSlide:hover img {
+  opacity: 0.85;
+}
+.sliderSlide:hover h1,
+.sliderSlide:hover p {
+  color: red;
 }
 
 .swiper-pagination-bullet {
-  background: #000;
-  background-color: white;
+  background: var(--mainClr);
+  background-color: var(--secondaryClr);
+}
+.cinemaSlider .swiper-pagination-bullets {
+  bottom: 10px !important;
 }
 
-@mixin filmSwiperDesktop($swiperHeight, $beforeElem, $fontSize, $imgHeight) {
-  .filmSwiper .swiper-wrapper {
-    height: $swiperHeight;
-  }
-  .filmSwiper h1:before {
-    top: $beforeElem;
-  }
-  .filmSwiper .swiper-slide {
-    font-size: $fontSize;
-  }
-  .filmSwiper img {
-    height: $imgHeight;
-  }
-}
-
-@include filmSwiperDesktop(318px, 24px, 12px, 250px);
-
-@media (max-width: 1200px) {
-  @include filmSwiperDesktop(270px, 21px, 76%, 210px);
-}
-
-@media (max-width: 992px) {
-  .cinemaSlider h4 {
-    padding-left: 1.5%;
-  }
-  @include filmSwiperDesktop(226px, 21px, 72%, 170px);
-}
-
-@media (max-width: 767.8px),
-  (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2) {
+@media #{$mediaQueryMobile} {
   .cinemaSlider {
-    width: 100%;
-    padding-left: 10px;
     h4 {
-      font-family: $arialFont;
       color: white;
-      margin: 1% 0 2% 0;
+      font-size: $mobileTitlesFS;
+      margin: 0;
+      padding: 1vw 0 1vw 15px;
     }
   }
-
-  .filmSwiper .swiper-slide {
-    font-size: 11px;
+  .cinemaSlider__container {
+    padding: 0 15px 0 15px;
   }
-  .filmSwiper img {
-    width: 100%;
-    border-radius: 3px;
+  .cinemaSlider .swiper-wrapper {
+    height: auto;
   }
-  .filmSwiper h1 {
-    font-weight: bold;
-    font-family: $lusidaFont;
-    margin: 5% 0 2% 0;
-    white-space: nowrap;
-    color: white;
+  .cinemaSlider img {
+    height: 34vw;
   }
-  .filmSwiper h1:before {
-    content: '';
-    display: block;
-    height: 20px;
-    width: 72px;
-    position: relative;
-    left: 85%;
-    top: 15px;
-    margin-top: -20px;
-    background-image: linear-gradient(to right, transparent, black 25%);
+  .cinemaSlider h1 {
+    font-size: 2.4vw;
   }
-  .filmSwiper p {
-    letter-spacing: 0.01em;
-    font-family: $lusidaFont;
-    color: white;
+  .cinemaSlider p {
+    font-size: 2vw;
   }
-  .filmSwiper a {
-    color: white;
-    text-decoration: none;
-    cursor: pointer;
-  }
-
   .swiper-pagination-bullet {
     display: none;
   }
-}
-
-@mixin filmSwiperXS(
-  $swiperHeight,
-  $mainHeadFS,
-  $mainHeadPL,
-  $filmTitleFS,
-  $filmDateFS,
-  $maxWidth
-) {
-  @media (max-width: $maxWidth) {
-    .cinemaSlider {
-      height: $swiperHeight;
-    }
-    .cinemaSlider h4 {
-      font-size: $mainHeadFS;
-      padding-left: $mainHeadPL;
-    }
-    .filmSwiper .swiper-wrapper {
-      height: $swiperHeight/1.1;
-    }
-    .filmSwiper img {
-      height: $swiperHeight/1.35;
-    }
-    .filmSwiper h1 {
-      font-size: $filmTitleFS;
-    }
-    .filmSwiper p {
-      font-size: $filmDateFS;
-    }
-  }
-}
-
-@for $i from 4 to -1 {
-  $maxWidth: 320px + $i * 111.9px;
-  $swiperHeight: 164px + 37px * $i;
-  $mainHeadFS: 65% + 11.25% * $i;
-  $mainHeadPL: 3.5% - 0.375% * $i;
-  $filmTitleFS: 75% + 9% * $i;
-  $filmDateFS: 75% + 3% * $i;
-  @include filmSwiperXS(
-    $swiperHeight,
-    $mainHeadFS,
-    $mainHeadPL,
-    $filmTitleFS,
-    $filmDateFS,
-    $maxWidth
-  );
 }

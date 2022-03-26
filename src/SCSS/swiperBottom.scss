@@ -1,47 +1,59 @@
-@import "variables";
-
-.bottomSwiper {
-  padding: 0.5px 0 0 0;
-  width: 100%;
-  background-color: black;
-  border-top: $border5px;
-  cursor: grab;
-  @media (max-width: 992px) {
-    border-top: solid 2px $linesColor;
+.bottomSwiper__bar {
+  margin: 2% 0 10px 20px;
+  @extend %desktopTitlesFS;
+  @media #{$mediaQueryMobile} {
+    display: none;
   }
 }
 
-.bottomSwiper .swiper-slide {
-  font-size: 14px;
+.bottomSwiper {
+  min-height: 462px;
+  @media ($mediaQuery1200) {
+    min-height: 380px;
+  }
+  @media ($mediaQuery992) {
+    min-height: 290px;
+  }
+  @media #{$mediaQueryMobile} {
+    display: none;
+  }
 }
+
+.bottomSwiper__border {
+  border-top: $border5px;
+  margin-left: -1px;
+  @media ($mediaQuery992) {
+    border-top: $border3px;
+  }
+  @media #{$mediaQueryMobile} {
+    display: none;
+  }
+}
+
+.bottomSwiper__container {
+  width: 100%;
+  cursor: grab;
+}
+
 .bottomSwiper img {
   width: 100%;
 }
 .bottomSwiper h1 {
-  font-size: 140%;
-  font-weight: bold;
-  padding-left: 2%;
-  @media (max-width: 1200px) {
-    font-size: 115%;
+  padding: 0 1% 0 2%;
+  margin: 3% 0;
+  font-size: 1.8rem;
+  @media ($mediaQuery1200) {
+    font-size: 1.5rem;
   }
-  @media (max-width: 992px) {
-    font-size: 87%;
-    margin: 5% 0 4% 0;
+  @media ($mediaQuery992) {
+    font-size: 1.2rem;
   }
 }
 .bottomSwiper p {
   padding-left: 2%;
-  letter-spacing: 0.02em;
-  font: normal 100% 'century gothic', arial;
-  @media (max-width: 1200px) {
-    font-size: 78%;
-  }
-  @media (max-width: 992px) {
-    font-size: 68%;
-  }
+  margin-bottom: 1.5%;
+  @extend %desktopParagraphsFS;
 }
 .bottomSwiper a {
   text-decoration: none;
 }
-
-
