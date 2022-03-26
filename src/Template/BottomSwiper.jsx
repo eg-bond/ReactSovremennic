@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import SwiperCore, { Autoplay } from 'swiper'
-import { Swiper, SwiperSlide } from 'swiper/react'
+import { Swiper, SwiperSlide } from 'swiper/react/swiper-react'
 import { scrollToNavigation } from '../helpers'
 
 SwiperCore.use([Autoplay])
