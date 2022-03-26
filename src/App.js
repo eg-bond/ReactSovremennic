@@ -63,7 +63,6 @@ const App = ({
     'flex-wrapper',
   ].join(' ')
   //-----------------------------------
-  console.log('render')
   if (filmsToday[0] === undefined) {
     return null
   }
