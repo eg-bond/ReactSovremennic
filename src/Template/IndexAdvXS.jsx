@@ -17,9 +17,6 @@ function IndexAdvXS() {
           <Link to='/sushi'>
             <img src='./Images/sushiNew.jpg' alt='новинки суши' />
           </Link>
-          {/* <div>
-            <img src='./Images/jsb1.gif' alt='gift' />
-          </div> */}
         </div>
       </div>
     </div>

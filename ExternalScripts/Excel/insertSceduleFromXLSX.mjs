@@ -5,7 +5,6 @@ import fs from 'fs'
 let workBook = xlsx.readFile('ExternalScripts/Excel/macros.xlsm')
 let ws = workBook.Sheets['Лист2']
 let data = xlsx.utils.sheet_to_json(ws)
-
 //Преобразуем извлеченный из екселя объект в удобный для дальнейшего использования
 let scedule = {}
 for (let i = 0; i < 7; i++) {
@@ -23,4 +22,4 @@ const finalData = `let scedule = ${JSON.stringify(scedule)}
 export default scedule;`
 
 //Записываем получившиеся данные в файл
-fs.writeFileSync('src/Content/Seans/scedule.js', finalData)
+fs.writeFileSync('src/Content/Seans/scedule.mjs', finalData)

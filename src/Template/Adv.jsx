@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useRouteMatch } from 'react-router-dom'
+import { Link, useMatch } from 'react-router-dom'
 
 const AdvContent = React.memo(() => {
   return (
@@ -21,8 +21,8 @@ const AdvContent = React.memo(() => {
 })
 
 function Adv() {
-  let match = useRouteMatch('/:firsId?')
-  if (match.params.firsId !== 'sushi') {
+  let matchSushi = useMatch({ path: 'sushi' })
+  if (!matchSushi) {
     return <AdvContent />
   }
   return null

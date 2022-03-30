@@ -1,5 +1,5 @@
 import React, { Suspense, lazy, useRef } from 'react'
-import { Redirect, Route, Switch } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import SelectedMovie from './Cinema/SelectedMovie'
 import IndexContent from './IndexContent/IndexContent'
 import Seans from './Seans/Seans'
@@ -22,46 +22,47 @@ const Content = ({
   const rulesLoaded = useRef(false)
 
   return (
-    <>
-      <Switch>
-        <Route exact path='/'>
-          <IndexContent
-            siteMode={siteMode}
-            films={films}
-            mobileQ={mobileQ}
-            desktopQ={desktopQ}
-          />
-        </Route>
-        <Route exact path='/seans'>
-          <Seans mobileQ={mobileQ} desktopQ={desktopQ} />
-        </Route>
-        <Route exact path='/sushi'>
-          <SushiContainer siteMode={siteMode} />
-        </Route>
-        <Route exact path='/movies/:film_id'>
-          <SelectedMovie
-            filmsObject={filmsObject}
-            createFilmsObject={createFilmsObject}
-            siteMode={siteMode}
-            fontSize={fontSize}
-          />
-        </Route>
-      </Switch>
-      {/* prettier-ignore */}
-      <Route exact path='/films'>        
-        {siteMode === 'special' 
-          ? <FilmsSpecialPage /> 
-          : <Redirect to='/' />}
-      </Route>
-      <Suspense fallback={<div className='content__gridLeftItem--3fr'></div>}>
-        <Route exact path='/about'>
-          <About siteMode={siteMode} loaded={aboutLoaded} />
-        </Route>
-        <Route exact path='/rules'>
-          <Rules loaded={rulesLoaded} />
-        </Route>
-      </Suspense>
-    </>
+    <Suspense fallback={<div className='content__gridLeftItem--3fr'></div>}>
+      <Routes>
+        <Route
+          path='/'
+          element={
+            <IndexContent
+              siteMode={siteMode}
+              films={films}
+              mobileQ={mobileQ}
+              desktopQ={desktopQ}
+            />
+          }
+        />
+        <Route
+          path='seans'
+          element={<Seans mobileQ={mobileQ} desktopQ={desktopQ} />}
+        />
+        <Route path='sushi' element={<SushiContainer siteMode={siteMode} />} />
+        <Route
+          path='movies/:film_id'
+          element={
+            <SelectedMovie
+              filmsObject={filmsObject}
+              createFilmsObject={createFilmsObject}
+              siteMode={siteMode}
+              fontSize={fontSize}
+            />
+          }
+        />
+        <Route
+          path='films'
+          element={<FilmsSpecialPage siteMode={siteMode} />}
+        />
+        {/* lazy routes */}
+        <Route
+          path='about'
+          element={<About siteMode={siteMode} loaded={aboutLoaded} />}
+        />
+        <Route path='rules' element={<Rules loaded={rulesLoaded} />} />
+      </Routes>
+    </Suspense>
   )
 }
 

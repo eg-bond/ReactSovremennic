@@ -1,6 +1,6 @@
 import React from 'react'
 import SwiperCore, { Navigation, Pagination } from 'swiper'
-import { Swiper, SwiperSlide } from 'swiper/react/swiper-react'
+import { Swiper, SwiperSlide } from 'swiper/react'
 import Grow from '@material-ui/core/Grow'
 import { trDuration } from './SushiContainer'
 SwiperCore.use([Navigation, Pagination])

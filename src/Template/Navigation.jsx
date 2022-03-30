@@ -5,7 +5,9 @@ import SpecialSettings from './SpecialSettings'
 
 const NavItem = ({ url, title }) => (
   <li>
-    <NavLink className={'fill_button'} to={url} activeClassName='active'>
+    <NavLink
+      to={url}
+      className={({ isActive }) => 'fill_button' + (isActive ? ' active' : '')}>
       {title}
     </NavLink>
   </li>
@@ -20,7 +22,6 @@ function Navigation({ siteMode, fontSize, theme }) {
       ? 'navigation--fs200'
       : ''
 
-  const logo = themeLogoFile
   let navClasses = [modifyCl('navigation'), fsNavCl].join(' ')
 
   return (
@@ -31,18 +32,18 @@ function Navigation({ siteMode, fontSize, theme }) {
           <Link to='/'>
             <img
               className='navigation__logo__img'
-              src={`./Images/${logo[theme]}`}
+              src={`./Images/${themeLogoFile[theme]}`}
               alt='logoImg'
             />
           </Link>
         </div>
         <div className={`${modifyCl('navigation__menu')}`}>
           <ul>
-            <NavItem url='/seans' title='РАСПИСАНИЕ' />
-            {siteMode === 'special' && <NavItem url='/films' title='ФИЛЬМЫ' />}
-            <NavItem url='/about' title='О КИНОТЕАТРЕ' />
-            <NavItem url='/rules' title='ПРАВИЛА РАБОТЫ' />
-            <NavItem url='/sushi' title='СУШИ-БАР "КИН-НО"' />
+            <NavItem url='seans' title='РАСПИСАНИЕ' />
+            {siteMode === 'special' && <NavItem url='films' title='ФИЛЬМЫ' />}
+            <NavItem url='about' title='О КИНОТЕАТРЕ' />
+            <NavItem url='rules' title='ПРАВИЛА РАБОТЫ' />
+            <NavItem url='sushi' title='СУШИ-БАР "КИН-НО"' />
           </ul>
         </div>
       </nav>

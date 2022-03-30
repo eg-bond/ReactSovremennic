@@ -1,13 +1,11 @@
 import React from 'react'
-import { Link, useRouteMatch } from 'react-router-dom'
+import { Link, useMatch, useNavigate } from 'react-router-dom'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 
 let filmsSpecial = null
 
-function FilmsSpecial({ films }) {
-  let match = useRouteMatch('/:firstId?')
-
+function FilmsSpecial({ films, siteMode }) {
   if (!filmsSpecial) {
     filmsSpecial = films.map(f => (
       <div className='filmsSpecial__flex__item' key={f.link}>
@@ -24,10 +22,15 @@ function FilmsSpecial({ films }) {
     ))
   }
 
-  let titleCl =
-    match.params.firstId === 'films'
-      ? 'filmsSpecialPage__h1'
-      : 'filmsSpecial__h1'
+  let match = useMatch('films')
+  let navigate = useNavigate()
+
+  // redirect if siteMode was switched on filmsSpecial page
+  if (siteMode == 'default' && match) {
+    navigate('/', { replace: true })
+  }
+
+  let titleCl = match ? 'filmsSpecialPage__h1' : 'filmsSpecial__h1'
 
   return (
     <div className='filmsSpecial'>

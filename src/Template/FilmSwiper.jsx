@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import SwiperCore, { Pagination, Autoplay } from 'swiper'
-import { Swiper, SwiperSlide } from 'swiper/react/swiper-react'
+import { Swiper, SwiperSlide } from 'swiper/react'
 import { Link } from 'react-router-dom'
 
 SwiperCore.use([Pagination, Autoplay])
@@ -52,7 +52,7 @@ const FilmSwiper = ({ mobile, films }) => {
       <Swiper {...params}>
         {films.map(f => (
           <SwiperSlide className={'sliderSlide'} key={f.link + 'FS'}>
-            <Link to={`/movies/${f.link}`}>
+            <Link to={`movies/${f.link}`}>
               <img src={`./Images/top_menu/${f.link}.gif`} alt={f.title} />
               <div style={{ position: 'relative' }}>
                 <h1>{f.title}</h1>

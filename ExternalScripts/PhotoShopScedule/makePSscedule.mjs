@@ -1,5 +1,5 @@
-import scedule from '../../src/Content/Seans/scedule.js'
-import { filmsArray } from '../../src/REDUX/filmsArray.js'
+import scedule from '../../src/Content/Seans/scedule.mjs'
+import { filmsArray } from '../../src/REDUX/filmsArray.mjs'
 import fs from 'fs'
 
 // Функция, которая ищет в массиве filmArray фильмы из входящего массива с названиями

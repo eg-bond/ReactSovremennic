@@ -63,7 +63,7 @@ const TableContent = React.memo(({ scedule, activeSceduleItemKey }) => {
   }
   return null
 })
-
+// Grow animation time variable
 let trDurationSeance = 0
 
 const Seans = ({
@@ -90,6 +90,7 @@ const Seans = ({
     [activeSceduleItemKey, changeSceduleItem]
   )
 
+  // Switches the schedule item to todays when user leaves Seance page
   useEffect(() => {
     return () => {
       setTodaySceduleItem()

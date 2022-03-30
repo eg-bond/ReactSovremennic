@@ -1,10 +1,10 @@
 import React from 'react'
 import FilmsSpecial from './FilmsSpecial'
 
-function FilmsSpecialPage() {
+function FilmsSpecialPage({ siteMode }) {
   return (
     <div className='content__gridLeftItem--3fr'>
-      <FilmsSpecial />
+      <FilmsSpecial siteMode={siteMode} />
     </div>
   )
 }

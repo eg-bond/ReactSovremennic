@@ -6,7 +6,7 @@ import FilmsSpecial from '../FilmsSpecial/FilmsSpecial'
 function SelectedMovie({ filmsObject, createFilmsObject, siteMode, fontSize }) {
   const { film_id } = useParams()
 
-  // Формирует объект фильмов если он отсутстует
+  // Creates filmsObject if it doesn't exist
   useEffect(() => {
     !filmsObject && createFilmsObject()
   }, [createFilmsObject, filmsObject])

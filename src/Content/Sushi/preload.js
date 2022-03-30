@@ -1,4 +1,4 @@
-const sushiElems = {
+export const sushiElems = {
   default: [
     ['new', 'Новинки меню'],
     ['sushi', 'Суши'],
@@ -51,7 +51,7 @@ const sushiElems = {
   ],
 }
 
-export let preloadImg = (imgKey, imgPreloaded) => {
+export const preloadImg = (imgKey, imgPreloaded) => {
   let key
   sushiElems.swiperKeys.includes(imgKey) ? (key = imgKey + '1') : (key = imgKey)
   return new Promise(res => {

@@ -81,14 +81,6 @@ const Sushi = ({
           </div>
         )}
 
-        {/* {desktopQ && (
-              <a className={'linkWrapper'} href='http://www.region47.sbor.net/'>
-                <div className={'sushiAdv sushiAdv--1'}>
-                  <img src='./Images/region47_wide.gif' alt='region47' />
-                </div>
-              </a>
-            )} */}
-
         <div className={`sushi_page__content`}>
           {progressBar && <SushiLinearProgress />}
           <SushiImage

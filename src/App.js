@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import 'swiper/swiper.scss'
-import 'swiper/modules/navigation/navigation.scss'
-import 'swiper/modules/pagination/pagination.scss'
+import 'swiper/scss'
+import 'swiper/scss/navigation'
+import 'swiper/scss/pagination'
 import './SCSS/style.scss'
 import FilmSwiper from './Template/FilmSwiper'
 import Navigation from './Template/Navigation'
@@ -31,7 +31,7 @@ const App = ({
   imgHidden,
   fontSize,
 }) => {
-  // Инициализационные эффекты
+  // Initialization
   useEffect(() => {
     createActualDatesArr()
     setTodaySceduleItem()
@@ -42,18 +42,18 @@ const App = ({
   let mobileQ = useMediaQuery(queries.mobile)
   let desktopQ = useMediaQuery(queries.desktop)
 
-  // Меняет версию сайта на 'default' при переходе с десктопной версии в мобильную
+  // Changes siteMode to 'default' when switching from desktop to mobile
   useEffect(() => {
     if (mobileQ && siteMode === 'special') {
       switchSiteMode('default')
     }
   }, [mobileQ, switchSiteMode, siteMode])
 
-  // Изменение размера шрифта
+  // Switches the main fontSize style variable
   useEffect(() => {
     document.documentElement.style.setProperty('--htmlFontSize', fontSize)
   }, [fontSize])
-  // Изменение цветовых схем
+  // Changes colors it theme/siteMode changed
   useEffect(() => {
     changeAppColors(theme, siteMode)
   }, [theme, siteMode])
@@ -78,8 +78,6 @@ const App = ({
         <div className='separatorMobile' />
 
         <div className={`container wrapper ${imgHidden ? 'hideImages' : ''}`}>
-          {/* <CovidMessage /> */}
-
           {siteMode === 'default' && (
             <FilmSwiper films={films} mobile={mobileQ} />
           )}

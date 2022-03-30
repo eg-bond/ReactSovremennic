@@ -1,22 +1,24 @@
 {
   "name": "react_sovremennik",
-  "type": "module",
   "version": "0.1.0",
   "private": true,
   "homepage": "http://sovremennik.sbor.net/",
   "dependencies": {
-    "@material-ui/core": "^4.11.4",
+    "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
+    "@testing-library/user-event": "^13.2.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-lite-youtube-embed": "^2.0.3",
-    "react-redux": "^7.2.4",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3",
-    "redux": "^4.1.0",
+    "react-lite-youtube-embed": "^2.2.1-a",
+    "react-redux": "^7.2.6",
+    "react-router-dom": "^6.2.2",
+    "react-scripts": "5.0.0",
+    "redux": "^4.1.2",
     "sass": "^1.49.9",
     "swiper": "^8.0.7",
-    "web-vitals": "^1.1.2"
+    "web-vitals": "^2.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -25,9 +27,9 @@
     "analyze_css": "source-map-explorer 'build/static/css/*.css' --no-border-checks",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "scrapper": "node ExternalScripts/Scrapper/scrapper",
-    "make_ps": "node ExternalScripts/PhotoShopScedule/makePSscedule",
-    "get_scedule": "node ExternalScripts/Excel/insertSceduleFromXLSX",
+    "scrapper": "node ExternalScripts/Scrapper/scrapper.mjs",
+    "make_ps": "node ExternalScripts/PhotoShopScedule/makePSscedule.mjs",
+    "get_scedule": "node ExternalScripts/Excel/insertSceduleFromXLSX.mjs",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
@@ -50,13 +52,10 @@
     ]
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
     "cherio": "^1.0.0-rc.2",
-    "fs": "0.0.1-security",
-    "puppeteer": "^10.1.0",
+    "fs": "^0.0.1-security",
+    "puppeteer": "^13.5.1",
     "source-map-explorer": "^2.5.2",
-    "xlsx": "^0.17.0"
+    "xlsx": "^0.18.5"
   }
 }

@@ -1,4 +1,5 @@
 import puppeteer from 'puppeteer'
+// let puppeteer = require('puppeteer')
 
 const LAUNCH_PUPPETEER_OPTS = {
   args: [
