@@ -26,7 +26,7 @@ function FilmsSpecial({ films, siteMode }) {
   let navigate = useNavigate()
 
   // redirect if siteMode was switched on filmsSpecial page
-  if (siteMode == 'default' && match) {
+  if (siteMode === 'default' && match) {
     navigate('/', { replace: true })
   }
 
