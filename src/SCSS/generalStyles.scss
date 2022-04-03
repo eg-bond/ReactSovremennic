@@ -5,7 +5,8 @@
 }
 html {
   --mainClr: black;
-  --secondaryClr: #ebece9;
+  --secondaryClr: #d7d7d7;
+  // --secondaryClr: #ebece9;
   --movieTitlesClr: #e41b2b;
   --mobileSeparatorClr: #292e33;
   --htmlFontSize: 14px;
@@ -101,9 +102,9 @@ h6 {
 }
 //--------------------------------------
 
-$backImgHeight: 285px;
-$backImgHeight1200: 235px;
-$backImgHeight992: 183px;
+$backImgHeight: 335px;
+$backImgHeight1200: 275px;
+$backImgHeight992: 213px;
 .space {
   background-image: url('../images/main_image_new.jpg');
   background-size: cover;
@@ -139,7 +140,7 @@ $backImgHeight992: 183px;
   }
 }
 .mainContainer--default {
-  background-color: #0a2252;
+  background-color: #ffffff;
   // background-image: url('../images/main_image.jpg'),
   //   linear-gradient(#704b1f, #704b1f);
   // linear-gradient(90deg, #845c28 50%, #845c28 50%);
