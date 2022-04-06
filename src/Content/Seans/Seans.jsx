@@ -9,6 +9,7 @@ import Grow from '@material-ui/core/Grow'
 import scedule from './scedule'
 import { useCallback } from 'react'
 import IndexAdvXS from '../../Template/IndexAdvXS'
+import BarSwiper from '../../Template/BarSwiper'
 
 const desktopBtn = (d, activeSceduleItemKey, changeTableContent) => {
   return (
@@ -47,6 +48,7 @@ const tableItem = (seanse, i) => {
     </tr>
   )
 }
+
 const TableContent = React.memo(({ scedule, activeSceduleItemKey }) => {
   if (scedule[activeSceduleItemKey]) {
     return (
@@ -67,13 +69,14 @@ const TableContent = React.memo(({ scedule, activeSceduleItemKey }) => {
 let trDurationSeance = 0
 
 const Seans = ({
-  setTodaySceduleItem,
-  datesArr,
-  buttonTitle,
   activeSceduleItemKey,
-  mobileQ,
-  desktopQ,
+  buttonTitle,
   changeSceduleItem,
+  datesArr,
+  desktopQ,
+  mobileQ,
+  setTodaySceduleItem,
+  siteMode,
 }) => {
   const [tableVisible, switchVisibility] = useState(true)
 
@@ -135,11 +138,7 @@ const Seans = ({
         </table>
       </Grow>
 
-      {desktopQ && (
-        <div className='barCombos'>
-          <img src='./Images/barCombo.gif' alt='Вместе дешевле' />
-        </div>
-      )}
+      {siteMode === 'default' && desktopQ && <BarSwiper />}
 
       <div className='separatorMobile separatorMobile--index' />
 

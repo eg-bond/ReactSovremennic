@@ -19,7 +19,6 @@ const slideKeys = {
 }
 
 const swiperParams = {
-  spaceBetween: 30,
   pagination: {
     type: 'fraction',
   },

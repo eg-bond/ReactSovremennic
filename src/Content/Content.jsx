@@ -37,7 +37,9 @@ const Content = ({
         />
         <Route
           path='seans'
-          element={<Seans mobileQ={mobileQ} desktopQ={desktopQ} />}
+          element={
+            <Seans mobileQ={mobileQ} desktopQ={desktopQ} siteMode={siteMode} />
+          }
         />
         <Route path='sushi' element={<SushiContainer siteMode={siteMode} />} />
         <Route

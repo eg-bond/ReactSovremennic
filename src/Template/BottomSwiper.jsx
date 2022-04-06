@@ -27,7 +27,6 @@ const BottomSwiper = props => {
     <>
       {props.desktop && (
         <div
-          data-testid='bottom_swiper'
           className={`bottomSwiper ${opacity}`}
           onMouseEnter={() => swiperRef.current.autoplay.stop()}
           onMouseLeave={() => swiperRef.current.autoplay.start()}>

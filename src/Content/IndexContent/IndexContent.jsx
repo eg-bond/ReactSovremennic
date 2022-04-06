@@ -3,6 +3,7 @@ import IndexAdvXS from '../../Template/IndexAdvXS'
 import { Link } from 'react-router-dom'
 import FilmsSpecial from '../FilmsSpecial/FilmsSpecial'
 import LiteYouTubeEmbed from 'react-lite-youtube-embed'
+import BarSwiper from '../../Template/BarSwiper'
 
 function IndexContent({ siteMode, films, mobileQ, desktopQ }) {
   return (
@@ -46,11 +47,7 @@ function IndexContent({ siteMode, films, mobileQ, desktopQ }) {
             Вконтакте
           </a>
         </p>
-        {desktopQ && (
-          <div className='barCombos'>
-            <img src='./Images/barCombo.gif' alt='Вместе дешевле' />
-          </div>
-        )}
+        {siteMode === 'default' && desktopQ && <BarSwiper />}
       </div>
 
       {siteMode === 'special' && desktopQ && <FilmsSpecial films={films} />}

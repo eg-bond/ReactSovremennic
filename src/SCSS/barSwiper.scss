@@ -1,0 +1,18 @@
+.swiper-container-bar {
+  border-radius: $imagesBR;
+  border: $border1px;
+  height: 472px;
+  margin-top: 2.5%;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  @media ($mediaQuery1200) {
+    height: 387px;
+  }
+  @media ($mediaQuery992) {
+    height: 296px;
+  }
+  img {
+    width: 100%;
+  }
+}
