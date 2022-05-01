@@ -7,7 +7,7 @@ import { preloadImg, sushiElems } from './preload'
 export let trDuration = 0
 
 const SushiContainer = ({ siteMode }) => {
-  const currentImgKey = useRef('new')
+  const currentImgKey = useRef('sushi')
   const [imgVisible, switchVisibility] = useState(true)
   const [progressBar, showProgressBar] = useState(false)
   const imgPreloaded = useRef(false)
@@ -46,8 +46,8 @@ const SushiContainer = ({ siteMode }) => {
 
   // Switches to default sushi img if siteMode was changed while on of the swiper images was active
   useEffect(() => {
-    sushiElems.allPossibleSwiperKeys.includes(currentImgKey.current) &&
-      changeImage('new')
+    sushiElems.allPossibleSwiperKeys.includes(currentImgKey.current)
+    changeImage('sushi')
   }, [siteMode, changeImage])
 
   // Grow should not animate on first render

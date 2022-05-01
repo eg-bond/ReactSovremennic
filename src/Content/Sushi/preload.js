@@ -1,8 +1,8 @@
 export const sushiElems = {
   default: [
-    ['new', 'Новинки меню'],
     ['sushi', 'Суши'],
     ['rolls', 'Роллы'],
+    ['green_rolls', 'Овощные роллы'],
     ['black_rolls', 'Цветные/черные роллы'],
     ['hot_rolls', 'Запеченные роллы'],
     ['brand_rolls', 'Фирменные роллы'],
@@ -14,13 +14,16 @@ export const sushiElems = {
     ['garnish', 'Гарниры'],
     ['dessert', 'Десерты'],
     ['gruzia', 'Грузинская кухня'],
-    ['pizza', 'Пицца'],
+    ['pizza', 'Пицца, закуски'],
   ],
   special: [
     ['sushi', 'Суши'],
     ['rolls', 'Роллы'],
+    ['green_rolls', 'Овощные роллы'],
     ['black_rolls', 'Цветные/черные роллы'],
     ['hot_rolls', 'Запеченые роллы'],
+    ['rolls1', 'Роллы 1'],
+    ['rolls2', 'Роллы 2'],
     ['brand_rolls1', 'Фирменные роллы 1'],
     ['brand_rolls2', 'Фирменные роллы 2'],
     ['brand_rolls3', 'Фирменные роллы 3'],
@@ -37,13 +40,13 @@ export const sushiElems = {
     ['gruzia', 'Грузинская кухня'],
     ['pizza', 'Пицца'],
   ],
-  swiperKeys: ['brand_rolls', 'hot_dishes'],
+  swiperKeys: ['rolls', 'brand_rolls', 'hot_dishes'],
   allPossibleSwiperKeys: [
-    'brand_rolls',
+    'rolls1',
+    'rolls2',
     'brand_rolls1',
     'brand_rolls2',
     'brand_rolls3',
-    'hot_dishes',
     'hot_dishes1',
     'hot_dishes2',
     'hot_dishes3',
@@ -56,7 +59,7 @@ export const preloadImg = (imgKey, imgPreloaded) => {
   sushiElems.swiperKeys.includes(imgKey) ? (key = imgKey + '1') : (key = imgKey)
   return new Promise(res => {
     let img = new window.Image()
-    img.src = `./Images/sushi/${key}.gif`
+    img.src = `./Images/sushi/${key}.jpg`
     img.onload = () => {
       imgPreloaded.current = true
       res()

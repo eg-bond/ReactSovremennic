@@ -15,7 +15,7 @@ const SushiImage = React.memo(({ currentImgKey, swiperKeys, imgVisible }) => {
     <Grow in={imgVisible} timeout={trDuration}>
       <img
         className={'sushi__page__img'}
-        src={`./Images/sushi/${currentImgKey}.gif`}
+        src={`./Images/sushi/${currentImgKey}.jpg`}
         alt={currentImgKey}
       />
     </Grow>
