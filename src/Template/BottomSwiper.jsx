@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import SwiperCore, { Autoplay } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -6,47 +6,45 @@ import { scrollToNavigation } from '../helpers'
 
 SwiperCore.use([Autoplay])
 
-const BottomSwiper = props => {
+const BottomSwiper = ({ desktop, filmsToday }) => {
   const [opacity, turnOpacity] = useState('opacity_0')
-  const swiperRef = useRef(null)
+
+  if (!desktop) {
+    return null
+  }
 
   const params = {
     slidesPerView: 4,
     spaceBetween: 25,
     className: `bottomSwiper__container`,
     loop: true,
-    onSwiper: swiper => (swiperRef.current = swiper),
     onImagesReady: () => turnOpacity('opacity_1'),
     autoplay: {
-      delay: 3000,
+      delay: 2500,
+      pauseOnMouseEnter: true,
       disableOnInteraction: false,
     },
   }
 
   return (
-    <>
-      {props.desktop && (
-        <div
-          className={`bottomSwiper ${opacity}`}
-          onMouseEnter={() => swiperRef.current.autoplay.stop()}
-          onMouseLeave={() => swiperRef.current.autoplay.start()}>
-          <Swiper {...params}>
-            {props.filmsToday.map(f => (
-              <SwiperSlide className={'sliderSlide'} key={f.link + 'BS'}>
-                <Link onClick={scrollToNavigation} to={`/movies/${f.link}`}>
-                  <img
-                    src={`./Images/description/${f.link}_D.jpg`}
-                    alt={f.title}
-                  />
-                  <h1>{f.title}</h1>
-                  <p>{f.kind.split(', ')[0]}</p>
-                </Link>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
-      )}
-    </>
+    <div className={`bottomSwiper ${opacity}`}>
+      <Swiper {...params}>{filmsToday.map(bottomSwiperSlide)}</Swiper>
+    </div>
+  )
+}
+
+function bottomSwiperSlide(film) {
+  return (
+    <SwiperSlide className={'sliderSlide'} key={film.link + 'BS'}>
+      <Link onClick={scrollToNavigation} to={`/movies/${film.link}`}>
+        <img
+          src={`./Images/description/${film.link}_D.webp`}
+          alt={film.title}
+        />
+        <h1>{film.title}</h1>
+        <p>{film.kind.split(', ')[0]}</p>
+      </Link>
+    </SwiperSlide>
   )
 }
 

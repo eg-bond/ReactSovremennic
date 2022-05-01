@@ -6,6 +6,7 @@ import { SushiLinearProgress } from './SushiLinearProgress'
 import { trDuration } from './SushiContainer'
 import { useMediaQuery } from '@material-ui/core'
 import { queries } from '../../helpers'
+import { sushiImgSrc } from './sushiHelpers'
 
 const SushiImage = React.memo(({ currentImgKey, swiperKeys, imgVisible }) => {
   if (swiperKeys.includes(currentImgKey)) {
@@ -15,7 +16,7 @@ const SushiImage = React.memo(({ currentImgKey, swiperKeys, imgVisible }) => {
     <Grow in={imgVisible} timeout={trDuration}>
       <img
         className={'sushi__page__img'}
-        src={`./Images/sushi/${currentImgKey}.jpg`}
+        src={sushiImgSrc(currentImgKey)}
         alt={currentImgKey}
       />
     </Grow>
@@ -35,11 +36,10 @@ const desktopMenuButton = (key, title, currentImgKey, changeImage) => {
 }
 
 const CreateMenuButtons = React.memo(
-  ({ siteMode, sushiElems, currentImgKey, changeImage }) => {
-    return sushiElems[siteMode].map(item =>
+  ({ siteMode, sushiElems, currentImgKey, changeImage }) =>
+    sushiElems[siteMode].map(item =>
       desktopMenuButton(item[0], item[1], currentImgKey, changeImage)
     )
-  }
 )
 
 const Sushi = ({

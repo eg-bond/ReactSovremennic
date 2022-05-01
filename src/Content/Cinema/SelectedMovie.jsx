@@ -21,7 +21,7 @@ function SelectedMovie({ filmsObject, createFilmsObject, siteMode, fontSize }) {
     <div className='selectedMovie--leftFr'>
       <div className='selectedMovie__image'>
         <img
-          src={`./Images/description/${filmItem.link}_D.jpg`}
+          src={`./Images/description/${filmItem.link}_D.webp`}
           alt={filmItem.title}
         />
       </div>

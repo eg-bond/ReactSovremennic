@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react'
 import Sushi from './Sushi'
 import { delay } from '../../helpers'
-import { preloadImg, sushiElems } from './preload'
+import { preloadImg, sushiElems } from './sushiHelpers'
 
 // Grow animation time variable
 export let trDuration = 0
@@ -46,8 +46,9 @@ const SushiContainer = ({ siteMode }) => {
 
   // Switches to default sushi img if siteMode was changed while on of the swiper images was active
   useEffect(() => {
-    sushiElems.allPossibleSwiperKeys.includes(currentImgKey.current)
-    changeImage('sushi')
+    if (sushiElems.allPossibleSwiperKeys.includes(currentImgKey.current)) {
+      changeImage('sushi')
+    }
   }, [siteMode, changeImage])
 
   // Grow should not animate on first render

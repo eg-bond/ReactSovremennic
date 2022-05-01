@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import SwiperCore, { Pagination, Autoplay } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Link } from 'react-router-dom'
@@ -7,18 +7,15 @@ SwiperCore.use([Pagination, Autoplay])
 
 const FilmSwiper = ({ mobile, films }) => {
   const [opacity, turnOpacity] = useState('opacity_0')
-  const swiperRef = useRef(null)
 
-  let apOptionsFunc = () => {
-    if (mobile === false) {
-      return {
-        delay: 1500,
-        pauseOnMouseEnter: true,
-        disableOnInteraction: false,
-      }
-    } else {
-      return false
+  let autoplayOptions = () => {
+    const options = {
+      delay: 1500,
+      pauseOnMouseEnter: true,
+      disableOnInteraction: false,
     }
+    // If desktop is used - turn on autoplay with options above
+    return mobile === false ? options : false
   }
 
   const params = {
@@ -26,13 +23,12 @@ const FilmSwiper = ({ mobile, films }) => {
     className: 'cinemaSlider__container',
     observer: true,
     observeParents: true,
-    onSwiper: swiper => (swiperRef.current = swiper),
     onImagesReady: () => turnOpacity('opacity_1'),
     pagination: {
       dynamicBullets: true,
       clickable: true,
     },
-    autoplay: apOptionsFunc(),
+    autoplay: autoplayOptions(),
     breakpoints: {
       250: {
         slidesPerView: 3.5,
@@ -49,20 +45,22 @@ const FilmSwiper = ({ mobile, films }) => {
   return (
     <div className={`cinemaSlider ${opacity}`}>
       {mobile && <h4>Фильмы</h4>}
-      <Swiper {...params}>
-        {films.map(f => (
-          <SwiperSlide className={'sliderSlide'} key={f.link + 'FS'}>
-            <Link to={`movies/${f.link}`}>
-              <img src={`./Images/top_menu/${f.link}.gif`} alt={f.title} />
-              <div style={{ position: 'relative' }}>
-                <h1>{f.title}</h1>
-              </div>
-              <p>{f.beginDate}</p>
-            </Link>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      <Swiper {...params}>{films.map(filmSwiperSlide)}</Swiper>
     </div>
+  )
+}
+
+function filmSwiperSlide(film) {
+  return (
+    <SwiperSlide className={'sliderSlide'} key={film.link + 'FS'}>
+      <Link to={`movies/${film.link}`}>
+        <img src={`./Images/top_menu/${film.link}.webp`} alt={film.title} />
+        <div style={{ position: 'relative' }}>
+          <h1>{film.title}</h1>
+        </div>
+        <p>{film.beginDate}</p>
+      </Link>
+    </SwiperSlide>
   )
 }
 
