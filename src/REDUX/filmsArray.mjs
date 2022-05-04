@@ -2,7 +2,7 @@ export const filmsArray = [
   {
     title: 'Анчартед: На картах не значится',
     beginDate: 'с 10 февраля',
-    endDate: 'по 4 мая',
+    endDate: 'по 11 мая',
     kind: 'Боевик, приключения',
     director: 'Рубен Фляйшер',
     duration: '115 мин. / 01:55',
@@ -32,7 +32,7 @@ export const filmsArray = [
   {
     title: 'Первый Оскар',
     beginDate: 'с 21 апреля',
-    endDate: 'по 4 мая',
+    endDate: 'по 11 мая',
     kind: 'Драма, военный, история',
     director: 'Сергей Мокрицкий',
     duration: '—',
