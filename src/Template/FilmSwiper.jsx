@@ -10,7 +10,7 @@ const FilmSwiper = ({ mobile, films }) => {
 
   let autoplayOptions = () => {
     const options = {
-      delay: 1500,
+      delay: 2500,
       pauseOnMouseEnter: true,
       disableOnInteraction: false,
     }
