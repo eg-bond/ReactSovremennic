@@ -11,7 +11,7 @@ function FilmsSpecial({ films, siteMode }) {
       <div className='filmsSpecial__flex__item' key={f.link}>
         <Link className={'linkWrapper'} to={`/movies/${f.link}`}>
           <div className='filmsSpecial__flex__item__img'>
-            <img src={`./Images/top_menu/${f.link}.gif`} alt={f.title} />
+            <img src={`./Images/top_menu/${f.link}.webp`} alt={f.title} />
           </div>
           <div className={'filmsSpecial__flex__title'}>
             <h2>{f.title}</h2>
