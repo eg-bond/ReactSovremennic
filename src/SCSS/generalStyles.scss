@@ -6,7 +6,7 @@
 html {
   --mainClr: black;
   // --secondaryClr: #d7d7d7;
-  --secondaryClr: #ebece9;
+  --secondaryClr: white;
   --movieTitlesClr: #e41b2b;
   --mobileSeparatorClr: #292e33;
   --htmlFontSize: 14px;
@@ -147,13 +147,6 @@ $backImgHeight992: 213px;
 }
 
 .covidMessage {
-  border-bottom: $border5px;
-  @media ($mediaQuery992) {
-    border-bottom: $border3px;
-  }
-  @media #{$mediaQueryMobile} {
-    border-bottom: none;
-  }
   padding-top: 3px;
   margin: 0 -1px;
   margin-bottom: 4px;
@@ -171,6 +164,25 @@ $backImgHeight992: 213px;
     @media #{$mediaQueryMobile} {
       font-size: $mobileParagraphsFS;
     }
+  }
+}
+
+.covidMessage--default {
+  border-bottom: $border5px;
+  @media ($mediaQuery992) {
+    border-bottom: $border3px;
+  }
+  @media #{$mediaQueryMobile} {
+    border-bottom: none;
+  }
+}
+.covidMessage--special {
+  border-top: $border5px;
+  @media ($mediaQuery992) {
+    border-top: $border3px;
+  }
+  @media #{$mediaQueryMobile} {
+    border-top: none;
   }
 }
 

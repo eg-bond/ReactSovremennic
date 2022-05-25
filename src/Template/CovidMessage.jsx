@@ -1,9 +1,10 @@
 import React from 'react'
+import { modifiedClass } from '../helpers'
 
-function CovidMessage() {
+function CovidMessage({ siteMode }) {
   return (
     <>
-      <div className='covidMessage'>
+      <div className={modifiedClass('covidMessage', siteMode)}>
         <p style={{ marginBottom: '5px' }}>
           Уважаемые гости кинотеатра «Современник»!
         </p>

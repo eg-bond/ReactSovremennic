@@ -5,10 +5,10 @@ export const modifiedClass = (cl, siteMode) =>
 const themeAppColors = {
   blackWhite: {
     main: 'black',
-    secondary: '#ebece9',
+    secondary: 'white',
   },
   whiteBlack: {
-    main: '#ebece9',
+    main: 'white',
     secondary: 'black',
   },
   blackBlue: {

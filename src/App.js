@@ -79,7 +79,7 @@ const App = ({
         <div className='separatorMobile' />
 
         <div className={`container wrapper ${imgHidden ? 'hideImages' : ''}`}>
-          <CovidMessage />
+          {/* <CovidMessage siteMode={siteMode} /> */}
           {siteMode === 'default' && (
             <FilmSwiper films={films} mobile={mobileQ} />
           )}

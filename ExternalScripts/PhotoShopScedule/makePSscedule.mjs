@@ -2,16 +2,23 @@ import scedule from '../../src/Content/Seans/scedule.mjs'
 import { filmsArray } from '../../src/REDUX/filmsArray.mjs'
 import fs from 'fs'
 
+export const findFirstWordInTitle = title => {
+  const match = title.match(/^\S+/gi)
+  return match[0].replace(/[\.:!,]/gi, '').toLowerCase()
+}
+
 // Функция, которая ищет в массиве filmArray фильмы из входящего массива с названиями
 // и возвращающая двумерный массив Array<["title", "age"]>
 const findFilmAge = (titlesArr, filmsArr) => {
   let result = []
+
   // убираем 2D из названий фильмов для корректного поиска
   const modifiedTitles = titlesArr.map(title => {
-    return title.substr(0, title.length - 3)
+    return findFirstWordInTitle(title)
   })
+
   filmsArr.forEach(film => {
-    if (modifiedTitles.includes(film.title)) {
+    if (modifiedTitles.includes(findFirstWordInTitle(film.title))) {
       result.push([film.title + ' 2D', film.age])
     }
   })
@@ -55,7 +62,8 @@ const prepareSceduleForPS = sceduleKeysArray => {
     // Формируем объект вида "Название фильма": [Массив сеансов]
     let dailySeansObject = {}
     indexedSceduleItem.forEach(item => {
-      let filmTitle = item[1].replace('  ', ' ').trim() // убираем двойные пробелы из названий фильмов и пробелы по бокам
+      // убираем двойные пробелы перед 2D и пробелы по бокам
+      let filmTitle = item[1].replace(/\s+2D/gi, ' 2D').trim()
       if (dailySeansObject[filmTitle]) {
         dailySeansObject[filmTitle] = [...dailySeansObject[filmTitle], item]
       } else {
@@ -65,6 +73,7 @@ const prepareSceduleForPS = sceduleKeysArray => {
 
     // Формируем двумерный массив, каждый элемент которого содержит название фильма и возрастное ограничение в числовом формате
     const titlesArr = Object.keys(dailySeansObject)
+
     let seansTitlesAndAgesArr = agesToNumber(findFilmAge(titlesArr, filmsArray))
 
     // сортируем названия фильмов по возрастанию возрасных ограничений
