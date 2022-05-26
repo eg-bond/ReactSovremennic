@@ -97,6 +97,7 @@
     justify-content: space-around;
   }
   .indexAdvXS__item1 {
+    flex-basis: 41%;
     padding: 2.5% 2% 2.5% 0;
     img {
       width: 100%;
@@ -105,6 +106,7 @@
     }
   }
   .indexAdvXS__item2 {
+    flex-basis: 59%;
     display: flex;
     flex-direction: column;
     padding: 2.5% 0 2.5% 2%;

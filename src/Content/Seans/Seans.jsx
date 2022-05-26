@@ -10,6 +10,7 @@ import scedule from './scedule'
 import { useCallback } from 'react'
 import IndexAdvXS from '../../Template/IndexAdvXS'
 import BarSwiper from '../../Template/BarSwiper'
+import { modifiedClass } from '../../helpers'
 
 const desktopBtn = (d, activeSceduleItemKey, changeTableContent) => {
   return (
@@ -20,16 +21,19 @@ const desktopBtn = (d, activeSceduleItemKey, changeTableContent) => {
       onClick={() => {
         changeTableContent(d[0], `${d[1]} ${d[2]}`)
       }}>
-      {d[1]}
+      <span>{d[1]}</span>
+      <span>{d[2]}</span>
+
+      {/* {d[1]}
       <br />
-      {d[2]}
+      {d[2]} */}
     </button>
   )
 }
 const CreateSeanseButtons = React.memo(
-  ({ datesArr, activeSceduleItemKey, changeTableContent }) => {
+  ({ datesArr, activeSceduleItemKey, changeTableContent, siteMode }) => {
     return (
-      <div className='seanse__buttons'>
+      <div className={modifiedClass('seanse__buttons', siteMode)}>
         {datesArr.map(d =>
           desktopBtn(d, activeSceduleItemKey, changeTableContent)
         )}
@@ -114,6 +118,7 @@ const Seans = ({
           datesArr={datesArr}
           activeSceduleItemKey={activeSceduleItemKey}
           changeTableContent={changeTableContent}
+          siteMode={siteMode}
         />
       )}
 

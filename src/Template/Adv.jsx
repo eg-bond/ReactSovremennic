@@ -5,7 +5,7 @@ const AdvContent = React.memo(() => {
   return (
     <div className='content__gridRightItem--1fr'>
       <div className={'desktopAdv desktopAdv--5'}>
-        <img src='./Images/vr_image.jpg' alt='vr' />
+        <img src='./Images/vr_image.webp' alt='vr' />
       </div>
 
       <Link className={'linkWrapper'} to='/sushi'>

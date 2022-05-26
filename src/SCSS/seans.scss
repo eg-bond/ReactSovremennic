@@ -1,28 +1,27 @@
 .seanse__buttons {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.4rem;
   > button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
     border: 2px solid;
     outline: none;
-    padding: 8px 9px;
-    margin: 2px 2.5px;
-    font-size: 1.1rem;
-    &:first-child {
-      margin-left: 0;
-    }
-    &:last-child {
-      margin-right: 0;
+    padding: 7px 10px;
+    font-size: 1rem;
+    > span {
+      align-self: center;
     }
     @media ($mediaQuery1200) {
-      padding: 8px 8px;
-      font-size: 0.87rem;
+      font-size: 0.8rem;
     }
     @media ($mediaQuery992) {
-      font-size: 0.67rem;
-      padding: 4px 5px;
-      margin: 2px 3px;
+      font-size: 0.6rem;
+      padding: 3px 8px;
+      border: 1px solid;
     }
   }
 }
@@ -32,9 +31,22 @@
   background-color: var(--secondaryClr);
 }
 
+.seanse__buttons--default {
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  > button {
+    flex-basis: 14%;
+  }
+}
+
+.seanse__buttons--special {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
 .seanse__table {
   border-spacing: 0;
-  margin: 3% 0;
+  margin: 1rem 0;
   width: 100%;
   overflow: hidden;
   border-radius: $imagesBR;

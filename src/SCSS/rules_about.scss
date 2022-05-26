@@ -23,11 +23,12 @@
 //"О кинотеатре"
 .aboutImages {
   display: flex;
+  margin-bottom: 0.5rem;
   justify-content: space-between;
 }
 .aboutImages__image {
   @extend %imgContainer;
-  margin: 0.5% 2% 2% 2%;
+  margin: 0 0.5rem;
   padding-bottom: 15%;
   &:first-child {
     margin-left: 0;
