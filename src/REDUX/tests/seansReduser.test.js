@@ -15,7 +15,7 @@ let initialState = {
     ['day6', 'Суббота', '12 июня'],
   ],
   actualDatesArr: [],
-  weekStartsFrom: 'monday',
+  weekStartsFrom: 'th',
   activeSceduleItemKey: '',
   buttonTitle: null,
 }
