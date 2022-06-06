@@ -1,20 +1,5 @@
 export const filmsArray = [
   {
-    title: 'Крутые яйца 2',
-    beginDate: 'с 19 мая',
-    endDate: 'по 1 июня',
-    kind: 'Мультфильм, фэнтези, комедия, приключения, семейный',
-    director: 'Габриэль Рива Паласио, Родольфо Рива Палачио Алатристе',
-    duration: '88 мин. / 01:28',
-    age: '6+',
-    actors:
-      'Марсело Барсело, Маурицио Барриентос, Бруно Бичир, Ximena de Anda, Мария Алисия Дельгадо, Карлос Эспехель, Oliver Flores, Juan Frese, Valentina Garrido, Armando González',
-    description:
-      'Тото и его друзья должны спасти своих птенцов, которых забрали на гурманское мероприятие в Африку.',
-    playerCode: 'FT-mSyyWejY',
-    link: 'eggs_2',
-  },
-  {
     title: 'Мой папа - вождь',
     beginDate: 'с 26 мая',
     endDate: 'по 8 июня',
