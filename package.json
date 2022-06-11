@@ -56,6 +56,7 @@
     "fs": "^0.0.1-security",
     "puppeteer": "^13.5.1",
     "source-map-explorer": "^2.5.2",
+    "webp-converter": "^2.3.3",
     "xlsx": "^0.18.5"
   }
 }
