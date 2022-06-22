@@ -3,12 +3,16 @@ const fs = require('fs')
 
 const options = {
   description: {
-    input: './description_img/',
-    output: '../../public/Images/description/',
+    input: 'ExternalScripts/WebpConverter/description_img/',
+    output: 'public/Images/description/',
   },
   top_menu: {
-    input: './top_menu_img/',
-    output: '../../public/Images/top_menu/',
+    input: 'ExternalScripts/WebpConverter/top_menu_img/',
+    output: 'public/Images/top_menu/',
+  },
+  main: {
+    input: 'ExternalScripts/WebpConverter/main_img/',
+    output: 'src/images/',
   },
 }
 
@@ -26,3 +30,4 @@ const convertToWebP = name => {
 
 convertToWebP('description')
 convertToWebP('top_menu')
+convertToWebP('main')

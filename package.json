@@ -28,6 +28,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "scrapper": "node ExternalScripts/Scrapper/scrapper.mjs",
+    "webp": "node ExternalScripts/WebpConverter/convertToWebP.js",
     "make_ps": "node ExternalScripts/PhotoShopScedule/makePSscedule.mjs",
     "get_scedule": "node ExternalScripts/Excel/insertSceduleFromXLSX.mjs",
     "predeploy": "npm run build",
