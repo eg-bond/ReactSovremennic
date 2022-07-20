@@ -61,7 +61,7 @@ export const filmsArray = [
   {
     title: 'Одержимая',
     beginDate: 'с 14 июля',
-    endDate: 'по 27 июля',
+    endDate: 'по 20 июля',
     kind: 'Триллер, детектив',
     director: 'Игорь Волошин',
     duration: '87 мин. / 01:27',
