@@ -2,7 +2,7 @@ export const filmsArray = [
   {
     title: 'Забытое чудо',
     beginDate: 'с 16 июля',
-    endDate: 'по 27 июля',
+    endDate: 'по 24 июля',
     kind: 'Мультфильм, приключения, фэнтези',
     director: 'Андрей Колпин',
     duration: '90 мин. / 01:30',
