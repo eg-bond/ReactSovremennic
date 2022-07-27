@@ -75,7 +75,7 @@ var dayKeysRanges = {
     firstHalf: ["day1", "day2", "day3"],
     secondHalf: ["day4", "day5", "day6", "day0"],
     weekEnd: ["day6", "day0"],
-    allWeek: ["day1", "day2", "day3", "day4", "day5", "day6", "day0"],
+    allWeek: ["day1", "day2", "day3", "day4", "day5", "day6", "day0"]
 }
 // Это единственный изменяемый параметр 
 var dayKeysArr = ["day1", "day2", "day3"]
