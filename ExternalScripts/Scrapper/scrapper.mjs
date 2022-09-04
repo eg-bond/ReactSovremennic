@@ -3,7 +3,7 @@ import cherio from 'cherio'
 import { getPageContent } from './puppeteer.mjs'
 
 const SITE = 'https://www.kinopoisk.ru/film/'
-const cinemaIds = ['1209527']
+const cinemaIds = ['4396744', '4324674', '1445165', '1087904']
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1)
@@ -14,7 +14,7 @@ async function scrapCinema(id) {
     let filmItem = {
       title: '',
       beginDate: 'с ',
-      endDate: 'по ',
+      endDate: '',
       kind: '',
       director: '',
       duration: '',
