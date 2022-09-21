@@ -76,7 +76,7 @@ export const filmsArray = [
   },
   {
     title: 'Дневная смена',
-    beginDate: 'с 22 сентября',
+    beginDate: 'с 23 сентября',
     endDate: '',
     kind: 'Ужасы, боевик, комедия',
     director: 'Дж.Дж. Перри',
