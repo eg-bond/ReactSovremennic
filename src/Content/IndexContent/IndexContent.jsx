@@ -47,6 +47,10 @@ function IndexContent({ siteMode, films, mobileQ, desktopQ }) {
             Вконтакте
           </a>
         </p>
+        <p>
+          • Уважаемые посетители кинотеатра! Показ последнего сеанса
+          осуществляется только от трех человек.
+        </p>
         {siteMode === 'default' && desktopQ && <BarSwiper />}
       </div>
 
