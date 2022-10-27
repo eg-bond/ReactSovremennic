@@ -101,7 +101,7 @@ const App = ({
 
           {siteMode === 'default' && (
             <div>
-              <h1 className='bottomSwiper__bar'>Сегодня в кино</h1>
+              <h1 className='bottomSwiper__bar'>На этой неделе в кино</h1>
               <hr className={`bottomSwiper__border`} />
               <BottomSwiper filmsToday={filmsToday} desktop={desktopQ} />
             </div>
