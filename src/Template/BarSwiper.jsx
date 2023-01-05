@@ -12,7 +12,7 @@ const barSwiperSlide = slideKey => {
   )
 }
 
-const slideKeys = ['bar_combo_3', 'bar_combo_2', 'bar_combo_1']
+const slideKeys = ['combo2', 'combo1']
 
 const BarSwiper = () => {
   return (
