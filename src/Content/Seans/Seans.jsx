@@ -23,10 +23,6 @@ const desktopBtn = (d, activeSceduleItemKey, changeTableContent) => {
       }}>
       <span>{d[1]}</span>
       <span>{d[2]}</span>
-
-      {/* {d[1]}
-      <br />
-      {d[2]} */}
     </button>
   )
 }
