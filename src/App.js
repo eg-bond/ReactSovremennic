@@ -16,7 +16,6 @@ import { switchSiteMode, switchFontSize } from './REDUX/specialReduser'
 import { changeAppColors, modifiedClass, queries } from './helpers'
 import { useMediaQuery } from '@material-ui/core'
 import Content from './Content/Content'
-import CovidMessage from './Template/CovidMessage'
 
 const App = ({
   createActualDatesArr,
@@ -54,7 +53,8 @@ const App = ({
   useEffect(() => {
     document.documentElement.style.setProperty('--htmlFontSize', fontSize)
   }, [fontSize])
-  // Changes colors it theme/siteMode changed
+
+  // Changes colors if theme/siteMode changed
   useEffect(() => {
     changeAppColors(theme, siteMode)
   }, [theme, siteMode])
@@ -63,6 +63,7 @@ const App = ({
     modifiedClass('mainContainer', siteMode),
     'flex-wrapper',
   ].join(' ')
+
   //-----------------------------------
   if (filmsToday[0] === undefined) {
     return null

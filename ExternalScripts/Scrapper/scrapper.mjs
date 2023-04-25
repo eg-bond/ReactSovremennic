@@ -3,7 +3,7 @@ import cherio from 'cherio'
 import { getPageContent } from './puppeteer.mjs'
 
 const SITE = 'https://www.kinopoisk.ru/film/'
-const cinemaIds = ['840821', '4674780']
+const cinemaIds = ['1387135', '5194326']
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1)
@@ -24,21 +24,24 @@ async function scrapCinema(id) {
       playerCode: '',
       link: '',
     }
-    // Скачиваем HTML в виде строки с искомой страницы
+    // Download HTML of desired page as string
     const pageContent = await getPageContent(`${SITE}${id}`)
 
-    // Загружаем HTML string в cherio
+    // Insert HTML string to cherio
     const $ = cherio.load(pageContent)
 
     const $divs = $('div')
     const divsArr = Object.values($divs)
 
-    // Название-----------------------------------------------------------------------------------------
-    const titleString = $('h1').text()
-    filmItem.title = titleString
+    // Title--------------------------------------------------------------------------------------------
+    let titleString = $('h1').text()
+    const datePart = titleString.indexOf('(')
+    datePart !== -1
+      ? (filmItem.title = titleString.slice(0, datePart - 1))
+      : (filmItem.title = titleString)
 
-    // Жанр---------------------------------------------------------------------------------------------
-    //Находим родительский div строки "Жанр"
+    // Kind---------------------------------------------------------------------------------------------
+    // Find parent div of "kind" field
     const kindDiv = divsArr.find(item => $(item).text() === 'Жанр')
     const $kindParent = $(kindDiv).parent()
     // Находим все ссылки внутри, фильтруем и получаем обрезанный с конца массив жанров
@@ -46,13 +49,14 @@ async function scrapCinema(id) {
     const kindLinksFiltered = Object.values($kindLinks).filter(
       item => $(item).text() !== 'слова'
     )
+
     const kindLinksArrSliced = Object.values(kindLinksFiltered).slice(0, -4)
-    // вытаскиваем innerText из каждой ссылки и формируем строку из жанров, разделенных запятыми
+    // retrieve innerText from every link and form string of movie kind
     const kindLinksText = kindLinksArrSliced.map(item => $(item).text())
     const kindString = kindLinksText.join(', ')
     filmItem.kind = capitalizeFirstLetter(kindString)
 
-    // Режиссер------------------------------------------------------------------------------------------
+    // Director------------------------------------------------------------------------------------------
     //Находим родительский div строки "Режиссер"
     const directorDiv = divsArr.find(item => $(item).text() === 'Режиссер')
     const $directorParent = $(directorDiv).parent()
@@ -70,35 +74,42 @@ async function scrapCinema(id) {
     const directorString = directorLinksText.join(', ')
     filmItem.director = directorString
 
-    // Продолжительность----------------------------------------------------------------------------------
-    // Находим родительский div строки "Время"
+    // Duration-----------------------------------------------------------------------------------------
+    // Find parent div of "diration" field
     const durationDiv = divsArr.find(item => $(item).text() === 'Время')
     const $durationParent = $(durationDiv).parent()
-    // Вытаскиваем продолжительность
+    // retrieve duration
     const $durationLinks = $('div', $durationParent)
     const durationLinksArrSliced = Object.values($durationLinks).slice(0, -4)
     const durationLinksText = durationLinksArrSliced.map(item => $(item).text())
     const durationString = durationLinksText[durationLinksText.length - 1]
     filmItem.duration = durationString
 
-    // Возраст--------------------------------------------------------------------------------------------
-    // Находим родительский div строки "Возраст"
+    // Age-----------------------------------------------------------------------------------------------
+    // Find parent div of "age" field
     const ageDiv = divsArr.find(item => $(item).text() === 'Возраст')
     const $ageParent = $(ageDiv).parent()
+    // retrieve age
     const ageSpan = $('span', $ageParent)
     const ageString = ageSpan.text()
     filmItem.age = ageString
 
-    // Актеры--------------------------------------------------------------------------------------------
+    // Actors--------------------------------------------------------------------------------------------
     const $actorsNode = $('[itemprop="actor"]')
     const actorsArr = Object.values($actorsNode).map(item => $(item).text())
     const actorsString = actorsArr.slice(0, -4).join(', ')
     filmItem.actors = actorsString
 
-    // Описание------------------------------------------------------------------------------------------
-    const descriptionString = $('p').text()
-    filmItem.description = descriptionString
+    // Description---------------------------------------------------------------------------------------
+    const $p = $('p')
+    const pArr = Object.values($p)
 
+    const descriptionP = pArr.find(item =>
+      $(item).attr('class').includes('styles_paragraph')
+    )
+    filmItem.description = $(descriptionP).text()
+
+    // --------------------------------------------------------------------------------------------------
     return filmItem
   } catch (err) {
     console.log('An error has occured \n')
