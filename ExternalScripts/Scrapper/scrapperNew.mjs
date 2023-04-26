@@ -1,93 +1,141 @@
 import fs from 'fs'
-import cherio from 'cherio'
 import { getPageContent } from './puppeteer.mjs'
 import { JSDOM } from 'jsdom'
-import { example } from './example.mjs'
 
 const URL = 'https://www.kinopoisk.ru/film/'
 const cinemaIds = ['1387135', '1267348']
 
-//------------------------------------------------------------------------------
-function getTitle(divsArr, filmItem, dom) {
-  let titleString = dom.window.document.querySelector('h1').textContent
-  const datePart = titleString.indexOf('(')
-  return datePart !== -1
-    ? (filmItem.title = titleString.slice(0, datePart - 1))
+//------------------------------------------------------------------------------++
+function getTitle(filmItem, dom) {
+  const titleString = dom.window.document.querySelector('h1').textContent
+  const datePartIndex = titleString.indexOf('(')
+
+  datePartIndex !== -1
+    ? (filmItem.title = titleString.slice(0, datePartIndex - 1))
     : (filmItem.title = titleString)
 }
 
-//------------------------------------------------------------------------------
-function getKind(divsArr, filmItem) {
-  const kindParentNode = [...divsArr].find(
-    item => item.textContent === 'Жанр'
-  ).parentElement
+//------------------------------------------------------------------------------+-
+// function getField(fieldName, divsArr, filmItem) {
+//   const fieldParams = {
+//     kind: { searchWord: 'Жанр', filterWord: 'слова' },
+//     director: { searchWord: 'Режиссер', filterWord: '...' },
+//   }
 
-  const kindLinksNodes = kindParentNode.querySelectorAll('a')
-  const kindLinksFiltered = [...kindLinksNodes].filter(
-    el => el.textContent !== 'слова'
+//   const fieldParentNode = [...divsArr].find(
+//     item => item.textContent === fieldParams[fieldName].searchWord
+//   ).parentElement
+
+//   const fieldLinkNodes = fieldParentNode.querySelectorAll('a')
+//   const fieldLinksFiltered = [...fieldLinkNodes].filter(
+//     el => el.textContent !== fieldParams[fieldName].filterWord
+//   )
+//   const fieldString = fieldLinksFiltered
+//     .map(item => item.textContent)
+//     .join(', ')
+
+//   filmItem[fieldName] = capitalizeFirstLetter(fieldString)
+// }
+
+//------------------------------------------------------------------------------+-
+function getFieldNew(fieldName, divsArr, filmItem) {
+  const fieldParams = {
+    age: { searchWord: 'Возраст' },
+    duration: { searchWord: 'Время' },
+    director: { searchWord: 'Режиссер' },
+    kind: { searchWord: 'Жанр' },
+  }
+
+  const fieldNameNode = [...divsArr].find(
+    item => item.textContent === fieldParams[fieldName].searchWord
   )
-  const kindString = kindLinksFiltered.map(item => item.textContent).join(', ')
 
-  filmItem.kind = capitalizeFirstLetter(kindString)
+  if (!fieldNameNode) {
+    filmItem[fieldName] = '-'
+    return
+  }
+
+  if (fieldName === 'age' || fieldName === 'duration') {
+    filmItem[fieldName] = fieldNameNode.nextSibling.textContent
+  } else {
+    filmItem[fieldName] = capitalizeFirstLetter(
+      fieldNameNode.nextSibling.firstChild.textContent
+    )
+  }
 }
 
 //------------------------------------------------------------------------------
-function getDirector(divsArr, filmItem) {
-  const directorParentNode = [...divsArr].find(
-    item => item.textContent === 'Режиссер'
-  ).parentElement
+// function getKind(divsArr, filmItem) {
+//   const kindParentNode = [...divsArr].find(
+//     item => item.textContent === 'Жанр'
+//   ).parentElement
 
-  const kindLinksNodes = directorParentNode.querySelectorAll('a')
-  const kindLinksFiltered = [...kindLinksNodes].filter(
-    el => el.textContent !== 'слова'
-  )
-  const kindString = kindLinksFiltered.map(item => item.textContent).join(', ')
+//   const kindLinksNodes = kindParentNode.querySelectorAll('a')
+//   const kindLinksFiltered = [...kindLinksNodes].filter(
+//     el => el.textContent !== 'слова'
+//   )
+//   const kindString = kindLinksFiltered.map(item => item.textContent).join(', ')
 
-  filmItem.director = capitalizeFirstLetter(kindString)
-}
+//   filmItem.kind = capitalizeFirstLetter(kindString)
+// }
 
 //------------------------------------------------------------------------------
+// function getDirector(divsArr, filmItem) {
+//   const directorParentNode = [...divsArr].find(
+//     item => item.textContent === 'Режиссер'
+//   ).parentElement
+
+//   const kindLinksNodes = directorParentNode.querySelectorAll('a')
+//   const kindLinksFiltered = [...kindLinksNodes].filter(
+//     el => el.textContent !== '...'
+//   )
+//   const kindString = kindLinksFiltered.map(item => item.textContent).join(', ')
+
+//   filmItem.director = capitalizeFirstLetter(kindString)
+// }
+
+//------------------------------------------------------------------------------++
 function getDuration(divsArr, filmItem) {
-  const directorParentNode = [...divsArr].find(
+  const durationNameNode = [...divsArr].find(
     item => item.textContent === 'Время'
-  ).parentElement
-
-  const kindLinksNodes = directorParentNode.querySelectorAll('div ~ div')
-  const kindLinksFiltered = [...kindLinksNodes].filter(
-    el => el.textContent !== 'слова'
   )
-  const kindString = kindLinksFiltered.map(item => item.textContent).join(', ')
 
-  filmItem.duration = kindString
+  !durationNameNode
+    ? (filmItem.duration = '-')
+    : (filmItem.duration = durationNameNode.nextSibling.textContent)
 }
 
-//---------------------------------------------------------------------
+//------------------------------------------------------------------------------++
 function getAge(divsArr, filmItem) {
-  const ageNode = [...divsArr].find(item => item.textContent === 'Возраст')
+  const ageNameNode = [...divsArr].find(item => item.textContent === 'Возраст')
 
-  !ageNode
+  !ageNameNode
     ? (filmItem.age = '-')
-    : (filmItem.age = ageNode.parentElement.querySelector('span').textContent)
+    : (filmItem.age = ageNameNode.nextSibling.textContent)
 }
 
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------++
 function getActors(filmItem, dom) {
-  let actorsArr = dom.window.document.querySelectorAll('[itemprop="actor"]')
+  let actorNodesArr = dom.window.document.querySelectorAll('[itemprop="actor"]')
 
-  let filteredActors = [...actorsArr]
+  // get rid of dubbing actors and form a single string
+  let filteredActorsString = [...actorNodesArr]
     .filter(item => item.closest('div').textContent.includes('В главных ролях'))
     .map(item => item.textContent)
     .join(', ')
 
-  filmItem.actors = filteredActors
+  filmItem.actors = filteredActorsString
 }
-//------------------------------------------------------------------------------
-function getDescription(filmItem, dom) {
-  let pArr = dom.window.document.querySelectorAll('p')
 
-  const descriptionP = [...pArr].find(item =>
+//------------------------------------------------------------------------------++
+function getDescription(filmItem, dom) {
+  let pNodesArr = dom.window.document.querySelectorAll('p')
+
+  // find description paragraph
+  const descriptionP = [...pNodesArr].find(item =>
     item.className.includes('styles_paragraph')
   )
+
   filmItem.description = descriptionP.textContent
 }
 
@@ -116,13 +164,18 @@ async function scrapCinema(id) {
 
   const divsArr = dom.window.document.querySelectorAll('div')
 
-  getTitle(divsArr, filmItem, dom)
-  getKind(divsArr, filmItem)
-  getDirector(divsArr, filmItem)
-  getAge(divsArr, filmItem)
+  getTitle(filmItem, dom)
+  // getField('kind', divsArr, filmItem)
+  // getField('director', divsArr, filmItem)
+  getFieldNew('kind', divsArr, filmItem)
+  getFieldNew('director', divsArr, filmItem)
+  getFieldNew('age', divsArr, filmItem)
+  getFieldNew('duration', divsArr, filmItem)
+
+  // getAge(divsArr, filmItem)
   getActors(filmItem, dom)
   getDescription(filmItem, dom)
-  getDuration(divsArr, filmItem)
+  // getDuration(divsArr, filmItem)
 
   console.log(filmItem)
 }
