@@ -7,7 +7,7 @@ import { scrollToNavigation } from '../helpers'
 SwiperCore.use([Autoplay])
 
 const BottomSwiper = ({ desktop, filmsToday }) => {
-  const [opacity, turnOpacity] = useState('opacity_0')
+  // const [opacity, turnOpacity] = useState('opacity_0')
 
   if (!desktop) {
     return null
@@ -18,7 +18,7 @@ const BottomSwiper = ({ desktop, filmsToday }) => {
     spaceBetween: 25,
     className: `bottomSwiper__container`,
     loop: true,
-    onImagesReady: () => turnOpacity('opacity_1'),
+    // onImagesReady: () => turnOpacity('opacity_1'),
     autoplay: {
       delay: 2500,
       pauseOnMouseEnter: true,
@@ -27,15 +27,17 @@ const BottomSwiper = ({ desktop, filmsToday }) => {
   }
 
   return (
-    <div className={`bottomSwiper ${opacity}`}>
-      <Swiper {...params}>{filmsToday.map(bottomSwiperSlide)}</Swiper>
+    <div className={`bottomSwiper`}>
+      <Swiper {...params}>
+        {filmsToday.map((film, i) => bottomSwiperSlide(film, i))}
+      </Swiper>
     </div>
   )
 }
 
-function bottomSwiperSlide(film) {
+function bottomSwiperSlide(film, i) {
   return (
-    <SwiperSlide className={'sliderSlide'} key={film.link + 'BS'}>
+    <SwiperSlide className={'sliderSlide'} key={film.link + 'BS' + i}>
       <Link onClick={scrollToNavigation} to={`/movies/${film.link}`}>
         <img
           src={`./Images/description/${film.link}_D.webp`}
