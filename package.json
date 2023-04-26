@@ -28,6 +28,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "scrapper": "node ExternalScripts/Scrapper/scrapper.mjs",
+    "scrapperNew": "node ExternalScripts/Scrapper/scrapperNew.mjs",
     "webp": "node ExternalScripts/WebpConverter/convertToWebP.js",
     "make_ps": "node ExternalScripts/PhotoShopScedule/makePSscedule.mjs",
     "get_scedule": "node ExternalScripts/Excel/insertSceduleFromXLSX.mjs",
@@ -55,6 +56,7 @@
   "devDependencies": {
     "cherio": "^1.0.0-rc.2",
     "fs": "^0.0.1-security",
+    "jsdom": "^21.1.1",
     "puppeteer": "^13.5.1",
     "source-map-explorer": "^2.5.2",
     "webp-converter": "^2.3.3",
