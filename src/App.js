@@ -74,13 +74,12 @@ const App = ({
       <div>
         <Navigation siteMode={siteMode} fontSize={fontSize} theme={theme} />
 
-        {/*Отступ навигации в мобильной версии*/}
+        {/*Navigation menu margin for mobile*/}
         <div className='navigation__containerXs' />
 
         <div className='separatorMobile' />
 
         <div className={`container wrapper ${imgHidden ? 'hideImages' : ''}`}>
-          {/* <CovidMessage siteMode={siteMode} /> */}
           {siteMode === 'default' && (
             <FilmSwiper films={films} mobile={mobileQ} />
           )}
