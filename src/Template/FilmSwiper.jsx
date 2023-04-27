@@ -2,11 +2,16 @@ import React, { useState } from 'react'
 import SwiperCore, { Pagination, Autoplay } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Link } from 'react-router-dom'
+import { after } from '../helpers'
 
 SwiperCore.use([Pagination, Autoplay])
 
 const FilmSwiper = ({ mobile, films }) => {
-  const [opacity, turnOpacity] = useState('opacity_0')
+  const [allImgLoaded, setImgLoaded] = useState(false)
+
+  const onLoad = after(films.length, () => {
+    setImgLoaded(true)
+  })
 
   let autoplayOptions = () => {
     const options = {
@@ -23,12 +28,11 @@ const FilmSwiper = ({ mobile, films }) => {
     className: 'cinemaSlider__container',
     observer: true,
     observeParents: true,
-    onImagesReady: () => turnOpacity('opacity_1'),
     pagination: {
       dynamicBullets: true,
       clickable: true,
     },
-    autoplay: autoplayOptions(),
+    autoplay: false,
     breakpoints: {
       250: {
         slidesPerView: 3.5,
@@ -45,19 +49,30 @@ const FilmSwiper = ({ mobile, films }) => {
   return (
     <div className={`cinemaSlider`}>
       {mobile && <h4>Фильмы</h4>}
-      <Swiper {...params}>{films.map(filmSwiperSlide)}</Swiper>
+      <Swiper {...params}>
+        {films.map(item => filmSwiperSlide(item, allImgLoaded, onLoad))}
+      </Swiper>
     </div>
   )
 }
 
-function filmSwiperSlide(film) {
+function filmSwiperSlide(film, allImgLoaded, onLoad) {
   return (
-    <SwiperSlide className={'sliderSlide'} key={film.link + 'FS'}>
+    <SwiperSlide
+      className={'sliderSlide cinemaSlider__slide'}
+      key={film.link + 'FS'}>
       <Link to={`movies/${film.link}`}>
-        <img src={`./Images/top_menu/${film.link}.webp`} alt={film.title} />
-        <div style={{ position: 'relative' }}>
-          <h1>{film.title}</h1>
+        <div
+          className={`cinemaSlider__slide__imgCont ${
+            !allImgLoaded ? 'skeleton' : ''
+          }`}>
+          <img
+            onLoad={onLoad}
+            src={`./Images/top_menu/${film.link}.webp`}
+            alt={film.title}
+          />
         </div>
+        <h1>{film.title}</h1>
         <p>{film.beginDate}</p>
       </Link>
     </SwiperSlide>

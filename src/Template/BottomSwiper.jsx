@@ -42,22 +42,24 @@ const BottomSwiper = ({ desktop, filmsToday }) => {
 
 function bottomSwiperSlide(film, i, onLoad, allImgLoaded) {
   return (
-    <SwiperSlide className={'sliderSlide'} key={film.link + 'BS' + i}>
+    <SwiperSlide
+      className={'sliderSlide bottomSwiper__slide'}
+      key={film.link + 'BS' + i}>
       <Link onClick={scrollToNavigation} to={`/movies/${film.link}`}>
-        <div className='bottomSwiper__slide'>
-          <div
-            className={`bottomSwiper__slide-img ${
-              !allImgLoaded ? 'skeleton' : ''
-            }`}>
-            <img
-              onLoad={onLoad}
-              src={`./Images/description/${film.link}_D.webp`}
-              alt={film.title}
-            />
-          </div>
-          <h1>{film.title}</h1>
-          <p>{film.kind.split(', ')[0]}</p>
+        {/* <div className='bottomSwiper__slide'> */}
+        <div
+          className={`bottomSwiper__slide__imgCont ${
+            !allImgLoaded ? 'skeleton' : ''
+          }`}>
+          <img
+            onLoad={onLoad}
+            src={`./Images/description/${film.link}_D.webp`}
+            alt={film.title}
+          />
         </div>
+        <h1>{film.title}</h1>
+        <p>{film.kind.split(', ')[0]}</p>
+        {/* </div> */}
       </Link>
     </SwiperSlide>
   )
