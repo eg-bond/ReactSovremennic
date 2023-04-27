@@ -2,25 +2,28 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import SwiperCore, { Autoplay } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { scrollToNavigation } from '../helpers'
+import { after, scrollToNavigation } from '../helpers'
 
 SwiperCore.use([Autoplay])
 
 const BottomSwiper = ({ desktop, filmsToday }) => {
-  // const [opacity, turnOpacity] = useState('opacity_0')
+  const [allImgLoaded, setImgLoaded] = useState(false)
 
-  if (!desktop) {
+  if (!desktop || filmsToday[0] === undefined) {
     return null
   }
+
+  const onLoad = after(filmsToday.length, () => {
+    setImgLoaded(true)
+  })
 
   const params = {
     slidesPerView: 4,
     spaceBetween: 25,
     className: `bottomSwiper__container`,
     loop: true,
-    // onImagesReady: () => turnOpacity('opacity_1'),
     autoplay: {
-      delay: 2500,
+      delay: 3000,
       pauseOnMouseEnter: true,
       disableOnInteraction: false,
     },
@@ -29,22 +32,32 @@ const BottomSwiper = ({ desktop, filmsToday }) => {
   return (
     <div className={`bottomSwiper`}>
       <Swiper {...params}>
-        {filmsToday.map((film, i) => bottomSwiperSlide(film, i))}
+        {filmsToday.map((film, i) =>
+          bottomSwiperSlide(film, i, onLoad, allImgLoaded)
+        )}
       </Swiper>
     </div>
   )
 }
 
-function bottomSwiperSlide(film, i) {
+function bottomSwiperSlide(film, i, onLoad, allImgLoaded) {
   return (
     <SwiperSlide className={'sliderSlide'} key={film.link + 'BS' + i}>
       <Link onClick={scrollToNavigation} to={`/movies/${film.link}`}>
-        <img
-          src={`./Images/description/${film.link}_D.webp`}
-          alt={film.title}
-        />
-        <h1>{film.title}</h1>
-        <p>{film.kind.split(', ')[0]}</p>
+        <div className='bottomSwiper__slide'>
+          <div
+            className={`bottomSwiper__slide-img ${
+              !allImgLoaded ? 'skeleton' : ''
+            }`}>
+            <img
+              onLoad={onLoad}
+              src={`./Images/description/${film.link}_D.webp`}
+              alt={film.title}
+            />
+          </div>
+          <h1>{film.title}</h1>
+          <p>{film.kind.split(', ')[0]}</p>
+        </div>
       </Link>
     </SwiperSlide>
   )

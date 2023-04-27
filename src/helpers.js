@@ -1,4 +1,4 @@
-// Хелперы для сайта "для слабовидящих"
+// Helpers for siteMode "special"
 export const modifiedClass = (cl, siteMode) =>
   `${cl} ${siteMode === 'default' ? cl + '--default' : cl + '--special'}`
 
@@ -61,19 +61,29 @@ export const themeLogo = theme => {
       return 'logo'
   }
 }
-//-------------------------------------
-// Медиа запросы
+//-------------------------------------------------------------------
+
+// Media queries strings for reusing
 export const queries = {
   desktop: '(min-width: 768px) and (min-height: 500px)',
   mobile:
     '(max-width: 767.5px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)',
 }
 
-// Функциb для прокрутки наверх
+// Scroll up functions
 export const scrollToTop = () => window.scrollTo(0, 0)
 export const scrollToNavigation = () => window.scrollTo(0, 200)
 
-// Промис - задержка
+// Delay promise
 export const delay = ms => {
   return new Promise(res => setTimeout(() => res(), ms))
+}
+
+// after decorator (invokes function after it is called necessary amount of times)
+export function after(times, func) {
+  return function () {
+    if (--times < 1) {
+      return func.apply(this, arguments)
+    }
+  }
 }

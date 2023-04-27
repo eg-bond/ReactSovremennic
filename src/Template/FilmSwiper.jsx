@@ -43,7 +43,7 @@ const FilmSwiper = ({ mobile, films }) => {
   }
 
   return (
-    <div className={`cinemaSlider ${opacity}`}>
+    <div className={`cinemaSlider`}>
       {mobile && <h4>Фильмы</h4>}
       <Swiper {...params}>{films.map(filmSwiperSlide)}</Swiper>
     </div>
