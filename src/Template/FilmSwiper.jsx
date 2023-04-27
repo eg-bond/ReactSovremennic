@@ -13,16 +13,6 @@ const FilmSwiper = ({ mobile, films }) => {
     setImgLoaded(true)
   })
 
-  let autoplayOptions = () => {
-    const options = {
-      delay: 2500,
-      pauseOnMouseEnter: true,
-      disableOnInteraction: false,
-    }
-    // If desktop is used - turn on autoplay with options above
-    return mobile === false ? options : false
-  }
-
   const params = {
     spaceBetween: 10,
     className: 'cinemaSlider__container',
@@ -32,7 +22,7 @@ const FilmSwiper = ({ mobile, films }) => {
       dynamicBullets: true,
       clickable: true,
     },
-    autoplay: false,
+    autoplay: { enabled: false },
     breakpoints: {
       250: {
         slidesPerView: 3.5,
@@ -42,6 +32,12 @@ const FilmSwiper = ({ mobile, films }) => {
       768: {
         freeMode: false,
         slidesPerView: 5,
+        autoplay: {
+          enabled: true,
+          delay: 3500,
+          pauseOnMouseEnter: true,
+          disableOnInteraction: false,
+        },
       },
     },
   }
