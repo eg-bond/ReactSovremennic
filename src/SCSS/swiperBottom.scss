@@ -37,8 +37,6 @@
 
 .bottomSwiper__slide {
   height: 462px;
-  // background-color: #000000;
-  // overflow: hidden;
   @media ($mediaQuery1200) {
     height: 380px;
   }
@@ -49,7 +47,6 @@
 
 .bottomSwiper__slide__imgCont {
   height: 388px;
-  // padding-bottom: 56.25%;
   position: relative;
   z-index: 1;
   @media ($mediaQuery1200) {
