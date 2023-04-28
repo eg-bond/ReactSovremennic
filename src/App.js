@@ -64,11 +64,6 @@ const App = ({
     'flex-wrapper',
   ].join(' ')
 
-  //-----------------------------------
-  if (filmsToday[0] === undefined) {
-    return null
-  }
-
   return (
     <div className={mainContainerClasses}>
       <div>
@@ -103,7 +98,7 @@ const App = ({
             <div>
               <h1 className='bottomSwiper__bar'>На этой неделе в кино</h1>
               <hr className={`bottomSwiper__border`} />
-              <BottomSwiper filmsToday={filmsToday} desktop={desktopQ} />
+              <BottomSwiper filmsToday={filmsToday || []} desktop={desktopQ} />
             </div>
           )}
         </div>

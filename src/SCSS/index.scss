@@ -96,34 +96,29 @@
     display: flex;
     justify-content: space-around;
   }
+
   .indexAdvXS__item1 {
     flex-basis: 41%;
     padding: 2.5% 2% 2.5% 0;
-    img {
-      width: 100%;
-      border-radius: $imagesBR;
-      border: $border1px;
-    }
   }
   .indexAdvXS__item2 {
     flex-basis: 59%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     padding: 2.5% 0 2.5% 2%;
-    img {
-      width: 100%;
-      border: $border1px;
-      border-radius: $imagesBR;
-      margin-bottom: 6%;
-    }
   }
+}
 
-  //реклама на остальных страницах в мобильной версии
-  .advXS {
-    margin: 3% 0 3.7% 0;
+.indexAdvXS__item1__imgCont {
+  @extend %imgContainer;
+  @media #{$mediaQueryMobile} {
+    min-height: 60vw;
   }
-  .advXS__img {
-    @extend %imgContainerXs;
-    padding-bottom: 13%;
+}
+.indexAdvXS__item2__imgCont {
+  @extend %imgContainer;
+  @media #{$mediaQueryMobile} {
+    min-height: 28vw;
   }
 }

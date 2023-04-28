@@ -1,5 +1,4 @@
 $jostFont: 'Jost', sans-serif;
-// $linesColor: #ebece9;
 $imagesBR: 10px;
 $buttonsBR: 30px;
 $border1px: solid 1px var(--secondaryClr);
@@ -7,15 +6,16 @@ $border2px: solid 2px var(--secondaryClr);
 $border3px: solid 3px var(--secondaryClr);
 $border5px: solid 5px var(--secondaryClr);
 
-// Переменные для мобильной версии
+// Media
 $mediaQueryMobile: '(max-width: 767.8px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)';
 $mediaQuery1200: 'max-width: 1200px';
 $mediaQuery992: 'max-width: 992px';
+
+// Mobile variables
 $mobileParagraphsFS: 2.3vw;
 $mobileTitlesFS: 3.2vw;
 
-// Переменные сайта для слабовидящих
-// Цветовые темы
+// theme colors for siteMode = "special"
 $blackWhiteBackground: black;
 $blackWhiteElements: #ebece9;
 
@@ -31,8 +31,7 @@ $yellowBrownElements: #810026;
 $blueGreenBackground: #b4e5ee;
 $blueGreenElements: #5e4005;
 
-// Переиспользуемые классы
-// Контейнер для изображений, который держит форму
+// Reusable CSS template
 %imgContainer {
   position: relative;
   width: 100%;
@@ -43,20 +42,6 @@ $blueGreenElements: #5e4005;
     position: absolute;
     width: 100%;
     height: 100%;
-  }
-}
-@media #{$mediaQueryMobile} {
-  %imgContainerXs {
-    position: relative;
-    width: 100%;
-    border: $border1px;
-    border-radius: $imagesBR;
-    overflow: hidden;
-    & img {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-    }
   }
 }
 

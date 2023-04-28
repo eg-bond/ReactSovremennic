@@ -7,7 +7,9 @@ SwiperCore.use([Autoplay])
 const barSwiperSlide = slideKey => {
   return (
     <SwiperSlide key={slideKey}>
-      <img src={`./Images/${slideKey}.webp`} alt={slideKey} />
+      <div className='imgContainer skeleton'>
+        <img src={`./Images/${slideKey}.webp`} alt={slideKey} />
+      </div>
     </SwiperSlide>
   )
 }
