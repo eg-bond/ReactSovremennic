@@ -1,5 +1,4 @@
 .skeleton {
-  background-color: #48494a;
   background-image: linear-gradient(
     90deg,
     rgba(255, 255, 255, 0),
@@ -10,6 +9,12 @@
   background-repeat: no-repeat;
   background-position: left -40px top 0;
   animation: shine 1s ease infinite;
+}
+.skeleton-Black {
+  background-color: #000000;
+}
+.skeleton-Gray {
+  background-color: #48494a;
 }
 @keyframes shine {
   to {

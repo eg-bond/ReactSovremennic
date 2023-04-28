@@ -1,7 +1,21 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { DescriptionTrailer } from './DescriptionTrailer'
 import { useParams } from 'react-router'
 import FilmsSpecial from '../FilmsSpecial/FilmsSpecial'
+
+const FilmImg = ({ link, title }) => {
+  return (
+    <div className='selectedMovie--leftFr'>
+      <div className={'selectedMovie__image skeleton'}>
+        <img
+          src={`./Images/description/${link}_D.webp`}
+          alt={title}
+          key={link + 'SM'}
+        />
+      </div>
+    </div>
+  )
+}
 
 function SelectedMovie({ filmsObject, createFilmsObject, siteMode, fontSize }) {
   const { film_id } = useParams()
@@ -17,24 +31,15 @@ function SelectedMovie({ filmsObject, createFilmsObject, siteMode, fontSize }) {
 
   let filmItem = filmsObject[film_id]
 
-  const FilmImg = () => (
-    <div className='selectedMovie--leftFr'>
-      <div className='selectedMovie__image'>
-        <img
-          src={`./Images/description/${filmItem.link}_D.webp`}
-          alt={filmItem.title}
-        />
-      </div>
-    </div>
-  )
-
   let gridClass =
     fontSize !== '26px' ? 'selectedMovie--rightFr' : 'selectedMovie--fullFr'
 
   return (
     <div className='content__gridLeftItem--3fr'>
       <div className='selectedMovie'>
-        {fontSize !== '26px' && <FilmImg />}
+        {fontSize !== '26px' && (
+          <FilmImg link={filmItem.link} title={filmItem.title} />
+        )}
 
         <div className={gridClass}>
           <div className='selectedMovie__title'>

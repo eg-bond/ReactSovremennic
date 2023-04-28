@@ -65,6 +65,9 @@
 }
 
 @media #{$mediaQueryMobile} {
+  .selectedMovie__image {
+    padding-bottom: 35vw;
+  }
   .selectedMovie__title {
     h2 {
       font-size: $mobileTitlesFS !important;

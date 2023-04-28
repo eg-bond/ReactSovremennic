@@ -60,7 +60,7 @@ function filmSwiperSlide(film, allImgLoaded, onLoad) {
       <Link to={`movies/${film.link}`}>
         <div
           className={`cinemaSlider__slide__imgCont ${
-            !allImgLoaded ? 'skeleton' : ''
+            !allImgLoaded ? 'skeleton skeleton-Gray' : ''
           }`}>
           <img
             onLoad={onLoad}
