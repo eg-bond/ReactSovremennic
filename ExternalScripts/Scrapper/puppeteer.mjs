@@ -2,6 +2,7 @@ import puppeteer from 'puppeteer'
 // let puppeteer = require('puppeteer')
 
 const LAUNCH_PUPPETEER_OPTS = {
+  headless: 'new',
   args: [
     '--no-sandbox',
     '--disable-setuid-sandbox',

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import 'swiper/scss'
 import 'swiper/scss/navigation'
 import 'swiper/scss/pagination'
@@ -49,7 +49,7 @@ const App = ({
     }
   }, [mobileQ, switchSiteMode, siteMode])
 
-  // Switches the main fontSize style variable
+  // // Switches the main fontSize style variable
   useEffect(() => {
     document.documentElement.style.setProperty('--htmlFontSize', fontSize)
   }, [fontSize])

@@ -1,44 +1,32 @@
 {
   "name": "react_sovremennik",
-  "version": "0.1.0",
   "private": true,
+  "version": "0.1.0",
+  "type": "module",
   "homepage": "http://sovremennik.sbor.net/",
-  "dependencies": {
-    "@material-ui/core": "^4.12.3",
-    "@material-ui/icons": "^4.11.2",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.0.0",
-    "@testing-library/user-event": "^13.2.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-lite-youtube-embed": "^2.2.1-a",
-    "react-redux": "^7.2.6",
-    "react-router-dom": "^6.2.2",
-    "react-scripts": "5.0.0",
-    "redux": "^4.1.2",
-    "sass": "^1.49.9",
-    "swiper": "^9.2.4",
-    "web-vitals": "^2.1.0"
-  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "analyze_js": "source-map-explorer 'build/static/js/*.js'",
-    "analyze_css": "source-map-explorer 'build/static/css/*.css' --no-border-checks",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "analyze_js": "source-map-explorer 'dist/assets/*.js'",
+    "analyze_css": "source-map-explorer 'dist/assets/*.css' --no-border-checks",
     "scrapper": "node ExternalScripts/Scrapper/scrapper.mjs",
     "webp": "node ExternalScripts/WebpConverter/convertToWebP.js",
     "make_ps": "node ExternalScripts/PhotoShopScedule/makePSscedule.mjs",
-    "get_scedule": "node ExternalScripts/Excel/insertSceduleFromXLSX.mjs",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "get_scedule": "node ExternalScripts/Excel/insertSceduleFromXLSX.mjs"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "dependencies": {
+    "@material-ui/core": "^4.12.4",
+    "@material-ui/icons": "^4.11.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-lite-youtube-embed": "^2.3.52",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.11.0",
+    "redux": "^4.2.1",
+    "sass": "^1.62.1",
+    "swiper": "^9.2.4"
   },
   "browserslist": {
     "production": [
@@ -53,10 +41,18 @@
     ]
   },
   "devDependencies": {
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^4.0.0",
+    "eslint": "^8.38.0",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.3.4",
     "fs": "^0.0.1-security",
     "jsdom": "^21.1.1",
-    "puppeteer": "^13.5.1",
-    "source-map-explorer": "^2.5.2",
+    "puppeteer": "^19.11.1",
+    "source-map-explorer": "^2.5.3",
+    "vite": "^4.3.2",
     "webp-converter": "^2.3.3",
     "xlsx": "^0.18.5"
   }
