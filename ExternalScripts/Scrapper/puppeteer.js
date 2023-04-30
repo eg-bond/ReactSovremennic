@@ -1,5 +1,4 @@
 import puppeteer from 'puppeteer'
-// let puppeteer = require('puppeteer')
 
 const LAUNCH_PUPPETEER_OPTS = {
   headless: 'new',
@@ -20,15 +19,11 @@ const PAGE_PUPPETEER_OPTS = {
 }
 
 export async function getPageContent(url) {
-  try {
-    const browser = await puppeteer.launch(LAUNCH_PUPPETEER_OPTS)
-    const page = await browser.newPage()
-    await page.goto(url, PAGE_PUPPETEER_OPTS)
-    const content = await page.content()
-    browser.close()
+  const browser = await puppeteer.launch(LAUNCH_PUPPETEER_OPTS)
+  const page = await browser.newPage()
+  await page.goto(url, PAGE_PUPPETEER_OPTS)
+  const content = await page.content()
+  browser.close()
 
-    return content
-  } catch (err) {
-    throw err
-  }
+  return content
 }

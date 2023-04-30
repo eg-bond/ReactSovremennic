@@ -2,8 +2,8 @@
   "name": "react_sovremennik",
   "private": true,
   "version": "0.1.0",
-  "type": "module",
   "homepage": "http://sovremennik.sbor.net/",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -11,10 +11,10 @@
     "preview": "vite preview",
     "analyze_js": "source-map-explorer 'dist/assets/*.js'",
     "analyze_css": "source-map-explorer 'dist/assets/*.css' --no-border-checks",
-    "scrapper": "node ExternalScripts/Scrapper/scrapper.mjs",
+    "scrapper": "node ExternalScripts/Scrapper/scrapper.js",
     "webp": "node ExternalScripts/WebpConverter/convertToWebP.js",
-    "make_ps": "node ExternalScripts/PhotoShopScedule/makePSscedule.mjs",
-    "get_scedule": "node ExternalScripts/Excel/insertSceduleFromXLSX.mjs"
+    "make_ps": "node ExternalScripts/PhotoShopScedule/makePSscedule.js",
+    "get_scedule": "node ExternalScripts/Excel/insertSceduleFromXLSX.js"
   },
   "dependencies": {
     "@material-ui/core": "^4.12.4",

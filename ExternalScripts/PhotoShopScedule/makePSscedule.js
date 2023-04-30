@@ -1,5 +1,5 @@
-import scedule from '../../src/Content/Seans/scedule.mjs'
-import { filmsArray } from '../../src/REDUX/filmsArray.mjs'
+import scedule from '../../src/Content/Seans/scedule.js'
+import { filmsArray } from '../../src/REDUX/filmsArray.js'
 import fs from 'fs'
 
 export const findFirstWordInTitle = title => {
