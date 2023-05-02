@@ -1,4 +1,4 @@
-import React from 'react'
+import { memo } from 'react'
 import Switch from '@material-ui/core/Switch'
 import ButtonGroup from '@material-ui/core/ButtonGroup'
 import Button from '@material-ui/core/Button'
@@ -7,9 +7,9 @@ import RemoveRedEyeOutlinedIcon from '@material-ui/icons/RemoveRedEyeOutlined'
 import Brightness1Icon from '@material-ui/icons/Brightness1'
 import { scrollToTop } from '../helpers'
 
-export const SiteModeButton = React.memo(({ siteMode, switchSiteMode }) => {
+const SiteModeButtonComp = ({ siteMode, switchSiteMode }) => {
   let modeToDispatch = siteMode === 'default' ? 'special' : 'default'
-
+  console.log('render SiteModeButtonComp')
   return (
     <Button
       className='specialSettings__modeButton'
@@ -24,14 +24,17 @@ export const SiteModeButton = React.memo(({ siteMode, switchSiteMode }) => {
         : 'Обычная версия сайта'}
     </Button>
   )
-})
+}
+
+export const SiteModeButton = memo(SiteModeButtonComp)
 
 const ThemeButton = ({ theme, cl, swST }) => (
   <IconButton onClick={() => swST(theme)} className={cl}>
     <Brightness1Icon />
   </IconButton>
 )
-export const ThemeButtons = React.memo(({ switchSiteTheme }) => {
+const ThemeButtonsComp = ({ switchSiteTheme }) => {
+  console.log('render ThemeButtonsComp')
   return (
     <div className='specialSettings__flex__item'>
       <div className={'specialSettings__flex__title'}>ЦВЕТОВАЯ СХЕМА</div>
@@ -42,9 +45,11 @@ export const ThemeButtons = React.memo(({ switchSiteTheme }) => {
       <ThemeButton theme='blueGreen' cl='themeBG' swST={switchSiteTheme} />
     </div>
   )
-})
+}
+export const ThemeButtons = memo(ThemeButtonsComp)
 
-export const FontButtons = React.memo(({ switchFontSize }) => {
+const FontButtonsComp = ({ switchFontSize }) => {
+  console.log('render FontButtons')
   return (
     <div className='specialSettings__flex__item'>
       <div className={'specialSettings__flex__title'}>РАЗМЕР ШРИФТА</div>
@@ -59,27 +64,28 @@ export const FontButtons = React.memo(({ switchFontSize }) => {
       </ButtonGroup>
     </div>
   )
-})
+}
+export const FontButtons = memo(FontButtonsComp)
 
-export const ImgSwitcher = React.memo(
-  ({ imgHidden, switchImagesVisibility }) => {
-    const handleImgSwitch = () =>
-      imgHidden ? switchImagesVisibility(false) : switchImagesVisibility(true)
+const ImgSwitcherComp = ({ imgHidden, switchImagesVisibility }) => {
+  console.log('render ImgSwitcherComp')
+  const handleImgSwitch = () =>
+    imgHidden ? switchImagesVisibility(false) : switchImagesVisibility(true)
 
-    const handlePress = e => e.key === 'Enter' && handleImgSwitch()
+  const handlePress = e => e.key === 'Enter' && handleImgSwitch()
 
-    return (
-      <div className='specialSettings__flex__item'>
-        <div className={'specialSettings__flex__title'}>ИЗОБРАЖЕНИЯ</div>
-        <span className={'specialSettings__switchOff'}>Выкл.</span>
-        <Switch
-          onClick={handleImgSwitch}
-          checked={!imgHidden}
-          onKeyPress={handlePress}
-          color='default'
-        />
-        <span className={'specialSettings__switchOn'}>Вкл.</span>
-      </div>
-    )
-  }
-)
+  return (
+    <div className='specialSettings__flex__item'>
+      <div className={'specialSettings__flex__title'}>ИЗОБРАЖЕНИЯ</div>
+      <span className={'specialSettings__switchOff'}>Выкл.</span>
+      <Switch
+        onClick={handleImgSwitch}
+        checked={!imgHidden}
+        onKeyPress={handlePress}
+        color='default'
+      />
+      <span className={'specialSettings__switchOn'}>Вкл.</span>
+    </div>
+  )
+}
+export const ImgSwitcher = memo(ImgSwitcherComp)

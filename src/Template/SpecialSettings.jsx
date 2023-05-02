@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   switchSiteMode,
   switchSiteTheme,
@@ -13,6 +12,7 @@ import {
   SiteModeButton,
   ThemeButtons,
 } from './SpecialSettingsComp'
+import PropTypes from 'prop-types'
 
 function SpecialSettings({
   switchSiteTheme,
@@ -21,7 +21,6 @@ function SpecialSettings({
   imgHidden,
   siteMode,
   switchSiteMode,
-  theme,
 }) {
   if (siteMode === 'default') {
     return (
@@ -32,7 +31,7 @@ function SpecialSettings({
   }
 
   return (
-    <div className={`specialSettings__container 'theme__${theme}__borders'`}>
+    <div className={`specialSettings__container`}>
       <div className={`specialSettings__flex`}>
         <ThemeButtons switchSiteTheme={switchSiteTheme} />
 
@@ -51,18 +50,27 @@ function SpecialSettings({
   )
 }
 
+SpecialSettings.propTypes = {
+  switchSiteTheme: PropTypes.func.isRequired,
+  switchImagesVisibility: PropTypes.func.isRequired,
+  switchFontSize: PropTypes.func.isRequired,
+  imgHidden: PropTypes.bool.isRequired,
+  siteMode: PropTypes.string.isRequired,
+  switchSiteMode: PropTypes.func.isRequired,
+}
+
 let mapStateToProps = state => ({
   siteMode: state.special.siteMode,
   imgHidden: state.special.imgHidden,
-  theme: state.special.theme,
-  fontSize: state.special.fontSize,
 })
 
-export default compose(
+const SpecialSettingsComposed = compose(
   connect(mapStateToProps, {
     switchSiteMode,
     switchSiteTheme,
     switchImagesVisibility,
     switchFontSize,
   })
-)(React.memo(SpecialSettings))
+)(SpecialSettings)
+
+export default SpecialSettingsComposed

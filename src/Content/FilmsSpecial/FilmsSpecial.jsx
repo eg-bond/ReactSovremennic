@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link, useMatch, useNavigate } from 'react-router-dom'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
@@ -44,4 +43,6 @@ let mapStateToProps = state => ({
   films: state.cinema.films,
 })
 
-export default compose(connect(mapStateToProps, {}))(FilmsSpecial)
+const FilmSpecialComposed = compose(connect(mapStateToProps, {}))(FilmsSpecial)
+
+export default FilmSpecialComposed
