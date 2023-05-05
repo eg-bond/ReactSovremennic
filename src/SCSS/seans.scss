@@ -89,7 +89,8 @@
 @media #{$mediaQueryMobile} {
   .seans_button_xs {
     position: relative;
-    padding: 2%;
+    min-height: 9vw;
+    // padding: 2%;
     margin: 1vw 0;
     background-color: var(--mainClr);
     border: $border2px;
@@ -116,7 +117,7 @@
   }
 
   .seanse__table {
-    margin: 2.1vw auto;
+    margin: 2.5vw auto;
     th,
     td,
     tr {

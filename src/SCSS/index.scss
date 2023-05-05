@@ -31,11 +31,6 @@
     color: rgb(45, 140, 230) !important;
   }
 }
-.barCombos {
-  @extend %imgContainer;
-  padding-bottom: 60%;
-  margin-top: 2.5%;
-}
 
 //Реклама справа в десктопной версии
 .desktopAdv {
@@ -99,14 +94,14 @@
 
   .indexAdvXS__item1 {
     flex-basis: 41%;
-    padding: 2.5% 2% 2.5% 0;
+    padding: 2.5vw 2% 2.5vw 0;
   }
   .indexAdvXS__item2 {
     flex-basis: 59%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 2.5% 0 2.5% 2%;
+    padding: 2.5vw 0 2.5vw 2%;
   }
 }
 

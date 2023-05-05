@@ -1,5 +1,5 @@
 .bottomSwiper__bar {
-  margin: 2% 0 10px 20px;
+  margin: 1% 0 10px 20px;
   @extend %desktopTitlesFS;
   @media #{$mediaQueryMobile} {
     display: none;

@@ -1,12 +1,13 @@
-import React, { useEffect, useState, useCallback, useRef } from 'react'
+import { useEffect, useState, useCallback, useRef } from 'react'
 import Sushi from './Sushi'
 import { delay } from '../../helpers'
 import { preloadImg, sushiElems } from './sushiHelpers'
+import { MobileSushiNavigation } from './MobileSushiNavigation'
 
 // Grow animation time variable
 export let trDuration = 0
 
-const SushiContainer = ({ siteMode }) => {
+const SushiContainer = ({ siteMode, mobileQ, desktopQ }) => {
   const currentImgKey = useRef('sushi')
   const [imgVisible, switchVisibility] = useState(true)
   const [progressBar, showProgressBar] = useState(false)
@@ -67,6 +68,8 @@ const SushiContainer = ({ siteMode }) => {
       siteMode={siteMode}
       imgVisible={imgVisible}
       progressBar={progressBar}
+      mobileQ={mobileQ}
+      desktopQ={desktopQ}
     />
   )
 }

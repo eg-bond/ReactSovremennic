@@ -139,10 +139,10 @@ const Seans = ({
         </table>
       </Grow>
 
-      {siteMode === 'default' && desktopQ && <BarSwiper />}
+      <div className='separatorMobile separatorMobile--index' />
+      {siteMode === 'default' && <BarSwiper />}
 
       <div className='separatorMobile separatorMobile--index' />
-
       {mobileQ && <IndexAdvXS />}
     </div>
   )

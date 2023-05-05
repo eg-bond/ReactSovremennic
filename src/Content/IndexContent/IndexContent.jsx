@@ -1,4 +1,3 @@
-import React from 'react'
 import IndexAdvXS from '../../Template/IndexAdvXS'
 import { Link } from 'react-router-dom'
 import FilmsSpecial from '../FilmsSpecial/FilmsSpecial'
@@ -51,7 +50,9 @@ function IndexContent({ siteMode, films, mobileQ, desktopQ }) {
           • Уважаемые посетители кинотеатра! Показ последнего сеанса
           осуществляется только от трех человек.
         </p>
-        {siteMode === 'default' && desktopQ && <BarSwiper />}
+        <div className='separatorMobile separatorMobile--index' />
+        {siteMode === 'default' && <BarSwiper />}
+        {/* {siteMode === 'default' && desktopQ && <BarSwiper />} */}
       </div>
 
       {siteMode === 'special' && desktopQ && <FilmsSpecial films={films} />}

@@ -41,7 +41,16 @@ const Content = ({
             <Seans mobileQ={mobileQ} desktopQ={desktopQ} siteMode={siteMode} />
           }
         />
-        <Route path='sushi' element={<SushiContainer siteMode={siteMode} />} />
+        <Route
+          path='sushi'
+          element={
+            <SushiContainer
+              siteMode={siteMode}
+              mobileQ={mobileQ}
+              desktopQ={desktopQ}
+            />
+          }
+        />
         <Route
           path='movies/:film_id'
           element={

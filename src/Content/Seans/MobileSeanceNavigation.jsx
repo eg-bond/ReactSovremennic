@@ -2,34 +2,37 @@ import React, { useState, useCallback, useRef } from 'react'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import Grow from '@material-ui/core/Grow'
 
-const PopperContent = React.memo(
-  ({ activeSceduleItemKey, datesArr, changeTableContent }) => {
-    return (
-      <div className='popper__content'>
-        <ul>
-          {datesArr.map(d => (
-            <li
-              data-testid={`${d[0]}_xs`}
-              className={activeSceduleItemKey === d[0] ? 'active' : ''}
-              key={`${d[0]}_s`}
-              onClick={() => changeTableContent(d[0], `${d[1]} ${d[2]}`)}>
-              {d[1]} {d[2]}
-            </li>
-          ))}
-        </ul>
-      </div>
-    )
-  }
-)
+const PopperContent = React.memo(function PopperContent({
+  activeSceduleItemKey,
+  datesArr,
+  changeTableContent,
+}) {
+  return (
+    <div className='popper__content'>
+      <ul>
+        {datesArr.map(d => (
+          <li
+            data-testid={`${d[0]}_xs`}
+            className={activeSceduleItemKey === d[0] ? 'active' : ''}
+            key={`${d[0]}_s`}
+            onClick={() => changeTableContent(d[0], `${d[1]} ${d[2]}`)}>
+            {d[1]} {d[2]}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+})
 
 export const MobileSeanceNavigation = React.memo(
-  ({
+  function MobileSeanceNavigation({
     activeSceduleItemKey,
     buttonTitle,
     datesArr,
     changeSceduleItem,
     switchVisibility,
-  }) => {
+  }) {
+    console.log('seans render')
     const [open, setOpen] = useState(false)
     // clickAwayActive нужен для того, чтобы ClickAwayListener был неактивен когда Popper скрыт
     const clickAwayActive = useRef(false)

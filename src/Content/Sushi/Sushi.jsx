@@ -4,8 +4,6 @@ import SushiSwipers from './SushiSwipers'
 import Grow from '@material-ui/core/Grow'
 import { SushiLinearProgress } from './SushiLinearProgress'
 import { trDuration } from './SushiContainer'
-import { useMediaQuery } from '@material-ui/core'
-import { queries } from '../../helpers'
 import { sushiImgSrc } from './sushiHelpers'
 
 const SushiImage = React.memo(({ currentImgKey, swiperKeys, imgVisible }) => {
@@ -49,10 +47,9 @@ const Sushi = ({
   imgVisible,
   progressBar,
   siteMode,
+  mobileQ,
+  desktopQ,
 }) => {
-  let mobileQ = useMediaQuery(queries.mobile)
-  let desktopQ = useMediaQuery(queries.desktop)
-
   return (
     <>
       {desktopQ && (
