@@ -59,6 +59,13 @@ h6 {
   transition: ease 150ms;
 }
 
+.displayMobile {
+  display: none;
+  @media #{$mediaQueryMobile} {
+    display: block;
+  }
+}
+
 .red {
   color: red;
 }
@@ -198,7 +205,7 @@ $backImgHeight992: 213px;
   @extend %desktopBorders;
   @media #{$mediaQueryMobile} {
     border-width: 0;
-    min-height: 100vh;
+    min-height: 90vh;
   }
 }
 

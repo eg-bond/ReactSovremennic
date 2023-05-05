@@ -14,7 +14,7 @@ function Footer({ mobileQ, siteMode }) {
   return (
     <div className={`footer container`}>
       <Link onClick={scrollToTop} to='/'>
-        Кинотеатр «Современник» © 2005 - 2022
+        Кинотеатр «Современник» © 2005 - 2023
       </Link>
     </div>
   )

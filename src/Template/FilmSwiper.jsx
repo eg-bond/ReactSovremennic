@@ -6,7 +6,7 @@ import { after } from '../helpers'
 
 SwiperCore.use([Pagination, Autoplay])
 
-const FilmSwiper = ({ mobile, films }) => {
+const FilmSwiper = ({ films }) => {
   const [allImgLoaded, setImgLoaded] = useState(false)
 
   const onLoad = after(films.length, () => {
@@ -44,7 +44,7 @@ const FilmSwiper = ({ mobile, films }) => {
 
   return (
     <div className={`cinemaSlider`}>
-      {mobile && <h4>Фильмы</h4>}
+      <h4 className='displayMobile'>Фильмы</h4>
       <Swiper {...params}>
         {films.map(item => filmSwiperSlide(item, allImgLoaded, onLoad))}
       </Swiper>
