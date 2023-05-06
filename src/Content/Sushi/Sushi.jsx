@@ -17,14 +17,14 @@ const SushiImage = React.memo(function SushiImage({
   return (
     <Grow in={imgVisible} timeout={trDuration}>
       {/* <div className='sushi__page_img_cont'> */}
-      <div className={imgVisible ? 'opacity_1' : 'opacity_0'}>
-        <img
-          className={'sushi__page__img'}
-          src={sushiImgSrc(currentImgKey)}
-          alt={currentImgKey}
-          key={currentImgKey}
-        />
-      </div>
+      {/* <div className={imgVisible ? 'opacity_1' : 'opacity_0'}> */}
+      <img
+        className={'sushi__page__img'}
+        src={sushiImgSrc(currentImgKey)}
+        alt={currentImgKey}
+        key={currentImgKey}
+      />
+      {/* </div> */}
     </Grow>
   )
 })
