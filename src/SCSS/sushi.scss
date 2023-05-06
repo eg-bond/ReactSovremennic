@@ -110,3 +110,19 @@
     }
   }
 }
+
+.sushi__page_img_cont {
+  animation-name: fadeout 1300ms ease;
+  // transition: 300ms;
+}
+
+@keyframes fadeout {
+  // 0% {
+  //   opacity: 1;
+  // }
+
+  to {
+    transform: translate(20px, 20px);
+    // opacity: 0;
+  }
+}

@@ -6,17 +6,25 @@ import { SushiLinearProgress } from './SushiLinearProgress'
 import { trDuration } from './SushiContainer'
 import { sushiImgSrc } from './sushiHelpers'
 
-const SushiImage = React.memo(({ currentImgKey, swiperKeys, imgVisible }) => {
+const SushiImage = React.memo(function SushiImage({
+  currentImgKey,
+  swiperKeys,
+  imgVisible,
+}) {
   if (swiperKeys.includes(currentImgKey)) {
     return <SushiSwipers swiperKey={currentImgKey} imgVisible={imgVisible} />
   }
   return (
     <Grow in={imgVisible} timeout={trDuration}>
-      <img
-        className={'sushi__page__img'}
-        src={sushiImgSrc(currentImgKey)}
-        alt={currentImgKey}
-      />
+      {/* <div className='sushi__page_img_cont'> */}
+      <div className={imgVisible ? 'opacity_1' : 'opacity_0'}>
+        <img
+          className={'sushi__page__img'}
+          src={sushiImgSrc(currentImgKey)}
+          alt={currentImgKey}
+          key={currentImgKey}
+        />
+      </div>
     </Grow>
   )
 })
