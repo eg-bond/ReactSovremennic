@@ -1,8 +1,6 @@
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import SwiperCore, { Navigation, Pagination } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import Grow from '@material-ui/core/Grow'
-import { trDuration } from './SushiContainer'
 import { sushiImgSrc } from './sushiHelpers'
 SwiperCore.use([Navigation, Pagination])
 
@@ -12,15 +10,15 @@ const slideKeys = {
   brand_rolls: ['brand_rolls1', 'brand_rolls2', 'brand_rolls3'],
 }
 
-const sushiSwiperSlide = slideKey => {
+const sushiSwiperSlide = (slideKey, onLoad) => {
   return (
     <SwiperSlide key={slideKey}>
-      <img src={sushiImgSrc(slideKey)} alt={slideKey} />
+      <img onLoad={onLoad} src={sushiImgSrc(slideKey)} alt={slideKey} />
     </SwiperSlide>
   )
 }
 
-export const SushiSwipers = ({ swiperKey, imgVisible }) => {
+export const SushiSwipers = ({ swiperKey, imgVisible, onLoad }) => {
   const swiperRef = useRef(null)
 
   const swiperParams = {
@@ -40,11 +38,13 @@ export const SushiSwipers = ({ swiperKey, imgVisible }) => {
   }, [swiperKey])
 
   return (
-    <Grow in={imgVisible} timeout={trDuration}>
+    <div className={`${imgVisible ? 'fadeInUp' : 'fadeOutDown'}`}>
       <Swiper className={`swiper-container-sushi`} {...swiperParams}>
-        {slideKeys[swiperKey].map(sushiSwiperSlide)}
+        {slideKeys[swiperKey].map(slideKey =>
+          sushiSwiperSlide(slideKey, onLoad)
+        )}
       </Swiper>
-    </Grow>
+    </div>
   )
 }
 

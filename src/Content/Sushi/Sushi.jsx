@@ -1,31 +1,40 @@
-import React from 'react'
+import { memo } from 'react'
 import { MobileSushiNavigation } from './MobileSushiNavigation'
 import SushiSwipers from './SushiSwipers'
-import Grow from '@material-ui/core/Grow'
 import { SushiLinearProgress } from './SushiLinearProgress'
-import { trDuration } from './SushiContainer'
 import { sushiImgSrc } from './sushiHelpers'
 
-const SushiImage = React.memo(function SushiImage({
+const SushiImage = memo(function SushiImage({
   currentImgKey,
   swiperKeys,
   imgVisible,
+  showProgressBar,
+  clearPBTimeout,
 }) {
-  if (swiperKeys.includes(currentImgKey)) {
-    return <SushiSwipers swiperKey={currentImgKey} imgVisible={imgVisible} />
+  const onLoad = () => {
+    showProgressBar(false)
+    clearPBTimeout()
   }
+  if (swiperKeys.includes(currentImgKey)) {
+    return (
+      <SushiSwipers
+        swiperKey={currentImgKey}
+        imgVisible={imgVisible}
+        onLoad={onLoad}
+      />
+    )
+  }
+
   return (
-    <Grow in={imgVisible} timeout={trDuration}>
-      {/* <div className='sushi__page_img_cont'> */}
-      {/* <div className={imgVisible ? 'opacity_1' : 'opacity_0'}> */}
+    <div className={`${imgVisible ? 'fadeInUp' : 'fadeOutDown'}`}>
       <img
+        onLoad={onLoad}
         className={'sushi__page__img'}
         src={sushiImgSrc(currentImgKey)}
         alt={currentImgKey}
         key={currentImgKey}
       />
-      {/* </div> */}
-    </Grow>
+    </div>
   )
 })
 
@@ -41,12 +50,16 @@ const desktopMenuButton = (key, title, currentImgKey, changeImage) => {
   )
 }
 
-const CreateMenuButtons = React.memo(
-  ({ siteMode, sushiElems, currentImgKey, changeImage }) =>
-    sushiElems[siteMode].map(item =>
-      desktopMenuButton(item[0], item[1], currentImgKey, changeImage)
-    )
-)
+const CreateMenuButtons = memo(function CreateMenuButtons({
+  siteMode,
+  sushiElems,
+  currentImgKey,
+  changeImage,
+}) {
+  return sushiElems[siteMode].map(item =>
+    desktopMenuButton(item[0], item[1], currentImgKey, changeImage)
+  )
+})
 
 const Sushi = ({
   sushiElems,
@@ -57,7 +70,10 @@ const Sushi = ({
   siteMode,
   mobileQ,
   desktopQ,
+  showProgressBar,
+  clearPBTimeout,
 }) => {
+  console.log('sushi rendered')
   return (
     <>
       {desktopQ && (
@@ -92,6 +108,8 @@ const Sushi = ({
             currentImgKey={currentImgKey}
             swiperKeys={sushiElems.swiperKeys}
             imgVisible={imgVisible}
+            showProgressBar={showProgressBar}
+            clearPBTimeout={clearPBTimeout}
           />
         </div>
       </div>

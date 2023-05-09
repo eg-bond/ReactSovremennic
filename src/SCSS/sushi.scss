@@ -10,6 +10,8 @@
 }
 
 .sushi_page__content {
+  --animationDuration: 200ms;
+  --shiftLength: 1.5vw;
   padding-bottom: 20px;
   margin-top: 0.2%;
   @media #{$mediaQueryMobile} {
@@ -31,11 +33,6 @@
   color: var(--mainClr);
   background-color: var(--secondaryClr);
 }
-// .sushi_page__menuButtons button:hover {
-//   color: var(--mainClr);
-//   background-color: var(--secondaryClr);
-//   transition: ease 600ms;
-// }
 .sushi_page__menuButtons button {
   border: 2px solid;
   outline: none;
@@ -83,7 +80,6 @@
 @media #{$mediaQueryMobile} {
   .popper__sushi li {
     padding: 2.2vw 0;
-    // min-height: 8vw !important;
   }
 
   .sushi_page__content {
@@ -111,18 +107,36 @@
   }
 }
 
-.sushi__page_img_cont {
-  animation-name: fadeout 1300ms ease;
-  // transition: 300ms;
+.fadeInUp {
+  animation: fadeInUp var(--animationDuration) ease forwards;
+}
+.fadeOutDown {
+  animation: fadeOutDown var(--animationDuration) ease forwards;
 }
 
-@keyframes fadeout {
-  // 0% {
-  //   opacity: 1;
-  // }
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate(var(--shiftLength), var(--shiftLength));
+    transform: translate(var(--shiftLength), var(--shiftLength));
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeOutDown {
+  from {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
 
   to {
-    transform: translate(20px, 20px);
-    // opacity: 0;
+    opacity: 0;
+    -webkit-transform: translate(var(--shiftLength), var(--shiftLength));
+    transform: translate(var(--shiftLength), var(--shiftLength));
   }
 }
