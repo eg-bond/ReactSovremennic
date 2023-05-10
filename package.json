@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
@@ -53,6 +53,9 @@
     "puppeteer": "^19.11.1",
     "source-map-explorer": "^2.5.3",
     "vite": "^4.3.2",
+    "vite-plugin-live-reload": "^3.0.2",
+    "vite-plugin-qrcode": "^0.2.1",
+    "vite-plugin-remove-console": "^2.1.1",
     "webp-converter": "^2.3.3",
     "xlsx": "^0.18.5"
   }
