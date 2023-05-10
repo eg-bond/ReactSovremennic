@@ -13,10 +13,8 @@ function IndexContent({ siteMode, films, isMobile }) {
 
           <div className='embed-responsive'>
             <LiteYouTubeEmbed
-              id='PLfrc7TOjXulMiQWLR1Jr8ZiZ2b7hWqSZf'
-              playlist={true}
-              playlistCoverId='CwVB_nwfntY'
-              title='index_trailers_playlist'
+              id='CwVB_nwfntY'
+              title='index_trailer'
               poster='maxresdefault'
             />
           </div>
