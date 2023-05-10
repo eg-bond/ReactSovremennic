@@ -21,7 +21,7 @@ describe('Seanse tests:', () => {
   }
   describe('Desctop:', () => {
     beforeEach(() => {
-      let { store } = renderWithRedux(<Seans mobileQ={false} desktopQ={true} />)
+      let { store } = renderWithRedux(<Seans isMobile={false} />)
       // диспатчим инициализационные экшены
       store.dispatch(createActualDatesArr())
       store.dispatch(setTodaySceduleItem())
@@ -81,7 +81,7 @@ describe('Seanse tests:', () => {
   })
   describe('Mobile:', () => {
     beforeEach(() => {
-      let { store } = renderWithRedux(<Seans mobileQ={true} desktopQ={false} />)
+      let { store } = renderWithRedux(<Seans isMobile={true} />)
       // диспатчим инициализационные экшены
       store.dispatch(createActualDatesArr())
       store.dispatch(setTodaySceduleItem())

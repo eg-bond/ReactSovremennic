@@ -4,12 +4,12 @@ import FilmsSpecial from '../FilmsSpecial/FilmsSpecial'
 import LiteYouTubeEmbed from 'react-lite-youtube-embed'
 import BarSwiper from '../../Template/BarSwiper'
 
-function IndexContent({ siteMode, films, mobileQ, desktopQ }) {
+function IndexContent({ siteMode, films, isMobile }) {
   return (
     <div className='content__gridLeftItem--3fr'>
       {siteMode === 'default' && (
         <div className='trailers'>
-          {mobileQ && <h4>Трейлеры</h4>}
+          {isMobile && <h4>Трейлеры</h4>}
 
           <div className='embed-responsive'>
             <LiteYouTubeEmbed
@@ -52,14 +52,13 @@ function IndexContent({ siteMode, films, mobileQ, desktopQ }) {
         </p>
         <div className='separatorMobile separatorMobile--index' />
         {siteMode === 'default' && <BarSwiper />}
-        {/* {siteMode === 'default' && desktopQ && <BarSwiper />} */}
       </div>
 
-      {siteMode === 'special' && desktopQ && <FilmsSpecial films={films} />}
+      {siteMode === 'special' && <FilmsSpecial films={films} />}
 
       <div className='separatorMobile separatorMobile--index' />
 
-      {mobileQ && <IndexAdvXS />}
+      {isMobile && <IndexAdvXS />}
     </div>
   )
 }

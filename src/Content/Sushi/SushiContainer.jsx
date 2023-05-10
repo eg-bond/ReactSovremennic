@@ -6,7 +6,7 @@ import useTimeout from '../../hooks'
 // animation duration
 export let trDuration = 200
 
-const SushiContainer = ({ siteMode, mobileQ, desktopQ }) => {
+const SushiContainer = ({ siteMode, isMobile }) => {
   const currentImgKey = useRef('sushi')
   const [currentImgK, switchImg] = useState('sushi')
   const [imgVisible, switchVisibility] = useState(true)
@@ -83,8 +83,7 @@ const SushiContainer = ({ siteMode, mobileQ, desktopQ }) => {
       siteMode={siteMode}
       imgVisible={imgVisible}
       progressBar={progressBar}
-      mobileQ={mobileQ}
-      desktopQ={desktopQ}
+      isMobile={isMobile}
       clearPBTimeout={clearPBTimeout}
     />
   )

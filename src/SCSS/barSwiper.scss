@@ -2,7 +2,7 @@
   border-radius: $imagesBR;
   border: $border1px;
   height: 472px;
-  margin: 2.5vw 0;
+  margin: 1rem 0;
   overflow: hidden;
   position: relative;
   cursor: grab;
@@ -14,6 +14,7 @@
     height: 296px;
   }
   @media #{$mediaQueryMobile} {
+    margin: 2.5vw 0;
     height: 50vw;
   }
 }

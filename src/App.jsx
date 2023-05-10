@@ -39,16 +39,15 @@ const App = ({
     createFilmsTodayArr()
   }, [createActualDatesArr, setTodaySceduleItem, createFilmsTodayArr])
 
-  // Media queries.
-  let mobileQ = useMediaQuery(queries.mobile)
-  let desktopQ = useMediaQuery(queries.desktop)
+  // Media query hook.
+  let isMobile = useMediaQuery(queries.mobile)
 
   // Changes siteMode to 'default' when switching from desktop to mobile
   useEffect(() => {
-    if (mobileQ && siteMode === 'special') {
+    if (isMobile && siteMode === 'special') {
       switchSiteMode('default')
     }
-  }, [mobileQ, switchSiteMode, siteMode])
+  }, [isMobile, switchSiteMode, siteMode])
 
   // // Switches the main fontSize style variable
   useEffect(() => {
@@ -77,7 +76,7 @@ const App = ({
 
         <div className={`container wrapper ${imgHidden ? 'hideImages' : ''}`}>
           {siteMode === 'default' && (
-            <FilmSwiper films={films} mobile={mobileQ} />
+            <FilmSwiper films={films} mobile={isMobile} />
           )}
 
           <div className='separatorMobile separatorMobile--MB' />
@@ -86,25 +85,24 @@ const App = ({
           <div className={'mainContainer__content'}>
             <Content
               siteMode={siteMode}
-              mobileQ={mobileQ}
-              desktopQ={desktopQ}
+              isMobile={isMobile}
               filmsObject={filmsObject}
               createFilmsObject={createFilmsObject}
               fontSize={fontSize}
             />
-            {desktopQ && <Adv />}
+            {!isMobile && <Adv />}
           </div>
 
           {siteMode === 'default' && (
             <div>
               <h1 className='bottomSwiper__bar'>На этой неделе в кино</h1>
               <hr className={`bottomSwiper__border`} />
-              <BottomSwiper filmsToday={filmsToday || []} desktop={desktopQ} />
+              <BottomSwiper filmsToday={filmsToday || []} isMobile={isMobile} />
             </div>
           )}
         </div>
       </div>
-      <Footer mobileQ={mobileQ} siteMode={siteMode} />
+      <Footer isMobile={isMobile} siteMode={siteMode} />
     </div>
   )
 }

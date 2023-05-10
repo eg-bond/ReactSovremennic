@@ -2,14 +2,14 @@ import { memo, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { scrollToTop } from '../helpers'
 
-const Footer = memo(function Footer({ mobileQ, siteMode }) {
+const Footer = memo(function Footer({ isMobile, siteMode }) {
   // Автоматический скролл наверх для мобильной версии
   const { pathname } = useLocation()
   useEffect(() => {
-    if (mobileQ || siteMode === 'special') {
+    if (isMobile || siteMode === 'special') {
       scrollToTop()
     }
-  }, [pathname, mobileQ, siteMode])
+  }, [pathname, isMobile, siteMode])
 
   return (
     <div className={`footer container`}>

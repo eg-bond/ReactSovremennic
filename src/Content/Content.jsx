@@ -10,8 +10,7 @@ const Rules = lazy(() => import('./Rules/Rules'))
 const About = lazy(() => import('./About/About'))
 
 const Content = memo(function Content({
-  desktopQ,
-  mobileQ,
+  isMobile,
   films,
   filmsObject,
   createFilmsObject,
@@ -30,26 +29,17 @@ const Content = memo(function Content({
             <IndexContent
               siteMode={siteMode}
               films={films}
-              mobileQ={mobileQ}
-              desktopQ={desktopQ}
+              isMobile={isMobile}
             />
           }
         />
         <Route
           path='seans'
-          element={
-            <Seans mobileQ={mobileQ} desktopQ={desktopQ} siteMode={siteMode} />
-          }
+          element={<Seans isMobile={isMobile} siteMode={siteMode} />}
         />
         <Route
           path='sushi'
-          element={
-            <SushiContainer
-              siteMode={siteMode}
-              mobileQ={mobileQ}
-              desktopQ={desktopQ}
-            />
-          }
+          element={<SushiContainer siteMode={siteMode} isMobile={isMobile} />}
         />
         <Route
           path='movies/:film_id'

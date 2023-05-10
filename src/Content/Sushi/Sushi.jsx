@@ -68,14 +68,13 @@ const Sushi = ({
   imgVisible,
   progressBar,
   siteMode,
-  mobileQ,
-  desktopQ,
+  isMobile,
   showProgressBar,
   clearPBTimeout,
 }) => {
   return (
     <>
-      {desktopQ && (
+      {!isMobile && (
         <div
           style={{ paddingRight: '0' }}
           className='sushi_page content__gridLeftItem--1fr'>
@@ -91,7 +90,7 @@ const Sushi = ({
       )}
 
       <div className='sushi_page content__gridRightItem--3fr'>
-        {mobileQ && (
+        {isMobile && (
           <div className='sushi_menu_xs'>
             <MobileSushiNavigation
               currentImgKey={currentImgKey}

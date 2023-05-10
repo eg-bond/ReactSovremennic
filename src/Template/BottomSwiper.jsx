@@ -6,10 +6,10 @@ import { after, scrollToNavigation } from '../helpers'
 
 SwiperCore.use([Autoplay])
 
-const BottomSwiper = memo(function BottomSwiper({ desktop, filmsToday }) {
+const BottomSwiper = memo(function BottomSwiper({ isMobile, filmsToday }) {
   const [allImgLoaded, setImgLoaded] = useState(false)
 
-  if (!desktop || filmsToday[0] === undefined) {
+  if (isMobile || filmsToday[0] === undefined) {
     return null
   }
 

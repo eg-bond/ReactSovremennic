@@ -79,8 +79,7 @@ const Seans = ({
   buttonTitle,
   changeSceduleItem,
   datesArr,
-  desktopQ,
-  mobileQ,
+  isMobile,
   setTodaySceduleItem,
   siteMode,
 }) => {
@@ -115,7 +114,7 @@ const Seans = ({
 
   return (
     <div className='content__gridLeftItem--3fr'>
-      {desktopQ && (
+      {!isMobile && (
         <CreateSeanseButtons
           datesArr={datesArr}
           activeSceduleItemKey={activeSceduleItemKey}
@@ -124,7 +123,7 @@ const Seans = ({
         />
       )}
 
-      {mobileQ && (
+      {isMobile && (
         <div className='sushi_menu_xs'>
           <MobileSeanceNavigation
             activeSceduleItemKey={activeSceduleItemKey}
@@ -149,7 +148,7 @@ const Seans = ({
       {siteMode === 'default' && <BarSwiper />}
 
       <div className='separatorMobile separatorMobile--index' />
-      {mobileQ && <IndexAdvXS />}
+      {isMobile && <IndexAdvXS />}
     </div>
   )
 }
