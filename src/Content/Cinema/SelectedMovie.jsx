@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { memo, useEffect } from 'react'
 import { DescriptionTrailer } from './DescriptionTrailer'
 import { useParams } from 'react-router'
 import FilmsSpecial from '../FilmsSpecial/FilmsSpecial'
@@ -17,7 +17,12 @@ const FilmImg = ({ link, title }) => {
   )
 }
 
-function SelectedMovie({ filmsObject, createFilmsObject, siteMode, fontSize }) {
+const SelectedMovie = memo(function SelectedMovie({
+  filmsObject,
+  createFilmsObject,
+  siteMode,
+  fontSize,
+}) {
   const { film_id } = useParams()
 
   // Creates filmsObject if it doesn't exist
@@ -82,6 +87,6 @@ function SelectedMovie({ filmsObject, createFilmsObject, siteMode, fontSize }) {
       {siteMode === 'special' && <FilmsSpecial />}
     </div>
   )
-}
+})
 
-export default React.memo(SelectedMovie)
+export default SelectedMovie

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { memo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import SwiperCore, { Autoplay } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -6,7 +6,7 @@ import { after, scrollToNavigation } from '../helpers'
 
 SwiperCore.use([Autoplay])
 
-const BottomSwiper = ({ desktop, filmsToday }) => {
+const BottomSwiper = memo(function BottomSwiper({ desktop, filmsToday }) {
   const [allImgLoaded, setImgLoaded] = useState(false)
 
   if (!desktop || filmsToday[0] === undefined) {
@@ -38,7 +38,7 @@ const BottomSwiper = ({ desktop, filmsToday }) => {
       </Swiper>
     </div>
   )
-}
+})
 
 function bottomSwiperSlide(film, i, onLoad, allImgLoaded) {
   return (
@@ -63,4 +63,4 @@ function bottomSwiperSlide(film, i, onLoad, allImgLoaded) {
   )
 }
 
-export default React.memo(BottomSwiper)
+export default BottomSwiper

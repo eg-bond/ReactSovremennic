@@ -11,7 +11,7 @@
 
 .sushi_page__content {
   --animationDuration: 200ms;
-  --shiftLength: 1.5vw;
+  --shiftLength: 1.3vw;
   padding-bottom: 20px;
   margin-top: 0.2%;
   @media #{$mediaQueryMobile} {
@@ -117,8 +117,8 @@
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    -webkit-transform: translate(var(--shiftLength), var(--shiftLength));
-    transform: translate(var(--shiftLength), var(--shiftLength));
+    -webkit-transform: translateY(var(--shiftLength));
+    transform: translateY(var(--shiftLength));
   }
   to {
     opacity: 1;
@@ -136,7 +136,7 @@
 
   to {
     opacity: 0;
-    -webkit-transform: translate(var(--shiftLength), var(--shiftLength));
-    transform: translate(var(--shiftLength), var(--shiftLength));
+    -webkit-transform: translateY(var(--shiftLength));
+    transform: translateY(var(--shiftLength));
   }
 }

@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useRef } from 'react'
+import { Suspense, lazy, memo, useRef } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import SelectedMovie from './Cinema/SelectedMovie'
 import IndexContent from './IndexContent/IndexContent'
@@ -9,7 +9,7 @@ import FilmsSpecialPage from './FilmsSpecial/FilmsSpecialPage'
 const Rules = lazy(() => import('./Rules/Rules'))
 const About = lazy(() => import('./About/About'))
 
-const Content = ({
+const Content = memo(function Content({
   desktopQ,
   mobileQ,
   films,
@@ -17,7 +17,7 @@ const Content = ({
   createFilmsObject,
   siteMode,
   fontSize,
-}) => {
+}) {
   const aboutLoaded = useRef(false)
   const rulesLoaded = useRef(false)
 
@@ -75,6 +75,6 @@ const Content = ({
       </Routes>
     </Suspense>
   )
-}
+})
 
-export default React.memo(Content)
+export default Content

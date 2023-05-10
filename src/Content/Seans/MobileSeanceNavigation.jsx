@@ -1,8 +1,8 @@
-import React, { useState, useCallback, useRef } from 'react'
+import { useState, useCallback, useRef, memo } from 'react'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import Grow from '@material-ui/core/Grow'
 
-const PopperContent = React.memo(function PopperContent({
+const PopperContent = memo(function PopperContent({
   activeSceduleItemKey,
   datesArr,
   changeTableContent,
@@ -24,69 +24,63 @@ const PopperContent = React.memo(function PopperContent({
   )
 })
 
-export const MobileSeanceNavigation = React.memo(
-  function MobileSeanceNavigation({
-    activeSceduleItemKey,
-    buttonTitle,
-    datesArr,
-    changeSceduleItem,
-    switchVisibility,
-  }) {
-    console.log('seans render')
-    const [open, setOpen] = useState(false)
-    // clickAwayActive нужен для того, чтобы ClickAwayListener был неактивен когда Popper скрыт
-    const clickAwayActive = useRef(false)
+export const MobileSeanceNavigation = memo(function MobileSeanceNavigation({
+  activeSceduleItemKey,
+  buttonTitle,
+  datesArr,
+  changeSceduleItem,
+  switchVisibility,
+}) {
+  const [open, setOpen] = useState(false)
+  // clickAwayActive нужен для того, чтобы ClickAwayListener был неактивен когда Popper скрыт
+  const clickAwayActive = useRef(false)
 
-    const handleToggle = () => {
-      setOpen(prevOpen => !prevOpen)
-    }
-
-    const changeTableContent = useCallback(
-      (key, title) => {
-        switchVisibility(false)
-        setTimeout(() => {
-          changeSceduleItem(key, title)
-          switchVisibility(true)
-        }, 200)
-
-        setOpen(false)
-      },
-      [changeSceduleItem, switchVisibility]
-    )
-
-    const handleClose = () => {
-      if (clickAwayActive.current) {
-        setOpen(false)
-      }
-    }
-
-    return (
-      <div>
-        <button className='seans_button_xs' onClick={handleToggle}>
-          <span className='seans_button_xs__title'>{buttonTitle}</span>{' '}
-          <span
-            className='glyphicon glyphicon-chevron-down'
-            aria-hidden='true'
-          />
-        </button>
-
-        <Grow
-          in={open}
-          onEntered={() => (clickAwayActive.current = true)}
-          onExited={() => (clickAwayActive.current = false)}>
-          <div className='popper__backdrop'>
-            <ClickAwayListener onClickAway={handleClose}>
-              <div className='popper popper__seance'>
-                <PopperContent
-                  activeSceduleItemKey={activeSceduleItemKey}
-                  datesArr={datesArr}
-                  changeTableContent={changeTableContent}
-                />
-              </div>
-            </ClickAwayListener>
-          </div>
-        </Grow>
-      </div>
-    )
+  const handleToggle = () => {
+    setOpen(prevOpen => !prevOpen)
   }
-)
+
+  const changeTableContent = useCallback(
+    (key, title) => {
+      switchVisibility(false)
+      setTimeout(() => {
+        changeSceduleItem(key, title)
+        switchVisibility(true)
+      }, 200)
+
+      setOpen(false)
+    },
+    [changeSceduleItem, switchVisibility]
+  )
+
+  const handleClose = () => {
+    if (clickAwayActive.current) {
+      setOpen(false)
+    }
+  }
+
+  return (
+    <div>
+      <button className='seans_button_xs' onClick={handleToggle}>
+        <span className='seans_button_xs__title'>{buttonTitle}</span>{' '}
+        <span className='glyphicon glyphicon-chevron-down' aria-hidden='true' />
+      </button>
+
+      <Grow
+        in={open}
+        onEntered={() => (clickAwayActive.current = true)}
+        onExited={() => (clickAwayActive.current = false)}>
+        <div className='popper__backdrop'>
+          <ClickAwayListener onClickAway={handleClose}>
+            <div className='popper popper__seance'>
+              <PopperContent
+                activeSceduleItemKey={activeSceduleItemKey}
+                datesArr={datesArr}
+                changeTableContent={changeTableContent}
+              />
+            </div>
+          </ClickAwayListener>
+        </div>
+      </Grow>
+    </div>
+  )
+})

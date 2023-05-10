@@ -1,9 +1,9 @@
-import React, { useState, useCallback } from 'react'
+import { useState, useCallback, memo } from 'react'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import Grow from '@material-ui/core/Grow'
 import { useRef } from 'react'
 
-const PopperContent = React.memo(function PopperContent({
+const PopperContent = memo(function PopperContent({
   defaultSushiArr,
   switchSushiImage,
   currentImgKey,
@@ -24,12 +24,11 @@ const PopperContent = React.memo(function PopperContent({
   )
 })
 
-export const MobileSushiNavigation = React.memo(function MobileSushiNavigation({
+export const MobileSushiNavigation = memo(function MobileSushiNavigation({
   changeImage,
   currentImgKey,
   defaultSushiArr,
 }) {
-  console.log('sushi render')
   const [open, setOpen] = useState(false)
   // clickAwayActive нужен для того, чтобы ClickAwayListener был неактивен когда Popper скрыт
   const clickAwayActive = useRef(false)

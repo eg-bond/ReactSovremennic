@@ -9,7 +9,7 @@ import { scrollToTop } from '../helpers'
 
 const SiteModeButtonComp = ({ siteMode, switchSiteMode }) => {
   let modeToDispatch = siteMode === 'default' ? 'special' : 'default'
-  console.log('render SiteModeButtonComp')
+
   return (
     <Button
       className='specialSettings__modeButton'
@@ -34,7 +34,6 @@ const ThemeButton = ({ theme, cl, swST }) => (
   </IconButton>
 )
 const ThemeButtonsComp = ({ switchSiteTheme }) => {
-  console.log('render ThemeButtonsComp')
   return (
     <div className='specialSettings__flex__item'>
       <div className={'specialSettings__flex__title'}>ЦВЕТОВАЯ СХЕМА</div>
@@ -49,7 +48,6 @@ const ThemeButtonsComp = ({ switchSiteTheme }) => {
 export const ThemeButtons = memo(ThemeButtonsComp)
 
 const FontButtonsComp = ({ switchFontSize }) => {
-  console.log('render FontButtons')
   return (
     <div className='specialSettings__flex__item'>
       <div className={'specialSettings__flex__title'}>РАЗМЕР ШРИФТА</div>
@@ -68,7 +66,6 @@ const FontButtonsComp = ({ switchFontSize }) => {
 export const FontButtons = memo(FontButtonsComp)
 
 const ImgSwitcherComp = ({ imgHidden, switchImagesVisibility }) => {
-  console.log('render ImgSwitcherComp')
   const handleImgSwitch = () =>
     imgHidden ? switchImagesVisibility(false) : switchImagesVisibility(true)
 

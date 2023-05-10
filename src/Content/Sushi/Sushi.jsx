@@ -73,7 +73,6 @@ const Sushi = ({
   showProgressBar,
   clearPBTimeout,
 }) => {
-  console.log('sushi rendered')
   return (
     <>
       {desktopQ && (

@@ -1,4 +1,4 @@
-import React from 'react'
+import { memo } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { themeLogoFile, modifiedClass } from '../helpers'
 import SpecialSettings from './SpecialSettings'
@@ -13,7 +13,7 @@ const NavItem = ({ url, title }) => (
   </li>
 )
 
-function Navigation({ siteMode, fontSize, theme }) {
+const Navigation = memo(function Navigation({ siteMode, fontSize, theme }) {
   const modifyCl = cl => modifiedClass(cl, siteMode)
   let fsNavCl =
     fontSize === '21px'
@@ -49,6 +49,6 @@ function Navigation({ siteMode, fontSize, theme }) {
       </nav>
     </div>
   )
-}
+})
 
-export default React.memo(Navigation)
+export default Navigation

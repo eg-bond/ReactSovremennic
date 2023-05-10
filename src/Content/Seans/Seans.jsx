@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import { MobileSeanceNavigation } from './MobileSeanceNavigation'
 import {
   changeSceduleItem,
@@ -26,17 +26,20 @@ const desktopBtn = (d, activeSceduleItemKey, changeTableContent) => {
     </button>
   )
 }
-const CreateSeanseButtons = React.memo(
-  ({ datesArr, activeSceduleItemKey, changeTableContent, siteMode }) => {
-    return (
-      <div className={modifiedClass('seanse__buttons', siteMode)}>
-        {datesArr.map(d =>
-          desktopBtn(d, activeSceduleItemKey, changeTableContent)
-        )}
-      </div>
-    )
-  }
-)
+const CreateSeanseButtons = memo(function CreateSeanseButtons({
+  datesArr,
+  activeSceduleItemKey,
+  changeTableContent,
+  siteMode,
+}) {
+  return (
+    <div className={modifiedClass('seanse__buttons', siteMode)}>
+      {datesArr.map(d =>
+        desktopBtn(d, activeSceduleItemKey, changeTableContent)
+      )}
+    </div>
+  )
+})
 
 const tableItem = (seanse, i) => {
   return (
@@ -49,7 +52,10 @@ const tableItem = (seanse, i) => {
   )
 }
 
-const TableContent = React.memo(({ scedule, activeSceduleItemKey }) => {
+const TableContent = memo(function TableContent({
+  scedule,
+  activeSceduleItemKey,
+}) {
   if (scedule[activeSceduleItemKey]) {
     return (
       <tbody>
@@ -154,7 +160,9 @@ let mapStateToProps = state => ({
   buttonTitle: state.seansPage.buttonTitle,
 })
 
-export default connect(mapStateToProps, {
+const ConnectedSeans = connect(mapStateToProps, {
   changeSceduleItem,
   setTodaySceduleItem,
 })(Seans)
+
+export default ConnectedSeans
