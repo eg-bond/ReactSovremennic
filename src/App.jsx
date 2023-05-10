@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import 'swiper/scss'
 import 'swiper/scss/navigation'
 import 'swiper/scss/pagination'
@@ -16,6 +16,7 @@ import { switchSiteMode, switchFontSize } from './REDUX/specialReduser'
 import { changeAppColors, modifiedClass, queries } from './helpers'
 import { useMediaQuery } from '@material-ui/core'
 import Content from './Content/Content'
+import PropTypes from 'prop-types'
 
 const App = ({
   createActualDatesArr,
@@ -49,7 +50,7 @@ const App = ({
     }
   }, [mobileQ, switchSiteMode, siteMode])
 
-  // Switches the main fontSize style variable
+  // // Switches the main fontSize style variable
   useEffect(() => {
     document.documentElement.style.setProperty('--htmlFontSize', fontSize)
   }, [fontSize])
@@ -108,6 +109,21 @@ const App = ({
   )
 }
 
+App.propTypes = {
+  createActualDatesArr: PropTypes.func,
+  setTodaySceduleItem: PropTypes.func,
+  createFilmsTodayArr: PropTypes.func,
+  films: PropTypes.array,
+  filmsToday: PropTypes.array,
+  filmsObject: PropTypes.object,
+  createFilmsObject: PropTypes.func,
+  switchSiteMode: PropTypes.func,
+  siteMode: PropTypes.string,
+  theme: PropTypes.string,
+  imgHidden: PropTypes.bool,
+  fontSize: PropTypes.string,
+}
+
 let mapStateToProps = state => ({
   films: state.cinema.films,
   filmsToday: state.cinema.filmsToday,
@@ -118,7 +134,7 @@ let mapStateToProps = state => ({
   fontSize: state.special.fontSize,
 })
 
-export default compose(
+const AppComposed = compose(
   connect(mapStateToProps, {
     setTodaySceduleItem,
     createActualDatesArr,
@@ -128,3 +144,5 @@ export default compose(
     switchFontSize,
   })
 )(App)
+
+export default AppComposed

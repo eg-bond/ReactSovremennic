@@ -4,16 +4,16 @@ const CREATE_ACTUAL_DATES_ARR = 'CREATE_ACTUAL_DATES_ARR'
 
 let initialState = {
   datesArr: [
-    ['day0', 'Воскресенье', '30 апреля'],
-    ['day1', 'Понедельник', '1 мая'],
-    ['day2', 'Вторник', '2 мая'],
-    ['day3', 'Среда', '3 мая'],
-    ['day4', 'Четверг', '27 апреля'],
-    ['day5', 'Пятница', '28 апреля'],
-    ['day6', 'Суббота', '29 апреля'],
+    ['day0', 'Воскресенье', '7 мая'],
+    ['day1', 'Понедельник', '8 мая'],
+    ['day2', 'Вторник', '9 мая'],
+    ['day3', 'Среда', '10 мая'],
+    ['day4', 'Четверг', '11 мая'],
+    ['day5', 'Пятница', '12 мая'],
+    ['day6', 'Суббота', '6 мая'],
   ],
   actualDatesArr: [], // массив с датами, расположенными в правильном порядке
-  weekStartsFrom: 'th', // monday либо любое другое значение
+  weekStartsFrom: 'monday', // monday либо любое другое значение
   activeSceduleItemKey: '',
   buttonTitle: null,
 }
@@ -38,8 +38,11 @@ export const seansReduser = (state = initialState, action) => {
     case CREATE_ACTUAL_DATES_ARR:
       let newArr = []
       if (state.weekStartsFrom === 'monday') {
-        newArr = [...state.datesArr, state.datesArr[0]]
-        newArr.shift()
+        // newArr = [...state.datesArr, state.datesArr[0]]
+        // newArr.shift()
+
+        newArr = [state.datesArr[6], ...state.datesArr]
+        newArr.pop()
       } else {
         newArr = [
           ...state.datesArr,

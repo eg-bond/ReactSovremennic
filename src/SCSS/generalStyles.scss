@@ -52,11 +52,18 @@ h6 {
 
 .opacity_0 {
   opacity: 0;
-  transition: ease 150ms;
+  transition: ease 550ms;
 }
 .opacity_1 {
   opacity: 1;
-  transition: ease 150ms;
+  transition: ease 550ms;
+}
+
+.displayMobile {
+  display: none;
+  @media #{$mediaQueryMobile} {
+    display: block;
+  }
 }
 
 .red {
@@ -198,7 +205,7 @@ $backImgHeight992: 213px;
   @extend %desktopBorders;
   @media #{$mediaQueryMobile} {
     border-width: 0;
-    min-height: 100vh;
+    min-height: 90vh;
   }
 }
 

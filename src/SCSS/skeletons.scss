@@ -5,19 +5,19 @@
     rgb(94 92 92 / 50%),
     rgba(255, 255, 255, 0)
   );
-  background-size: 40px 100%;
+  background-size: 80px 100%;
   background-repeat: no-repeat;
-  background-position: left -40px top 0;
+  background-position: left -80px top 0;
   animation: shine 1s ease infinite;
 }
 .skeleton-Black {
   background-color: #000000;
 }
 .skeleton-Gray {
-  background-color: #48494a;
+  background-color: #2d2d2d;
 }
 @keyframes shine {
   to {
-    background-position: right -40px top 0;
+    background-position: right -80px top 0;
   }
 }

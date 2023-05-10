@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import { memo, useState } from 'react'
 import { Link, useMatch } from 'react-router-dom'
 import { after } from '../helpers'
 
-const AdvContent = React.memo(() => {
+const AdvContent = memo(function AdvContent() {
   const [loaded, setImgLoaded] = useState(false)
 
   const onLoad = after(3, () => {

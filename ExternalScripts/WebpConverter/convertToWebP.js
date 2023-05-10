@@ -1,5 +1,5 @@
-const webp = require('webp-converter')
-const fs = require('fs')
+import webp from 'webp-converter'
+import fs from 'fs'
 
 const options = {
   description: {
