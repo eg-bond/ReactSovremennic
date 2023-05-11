@@ -10,7 +10,7 @@ let initialState = {
   imgHidden: false,
 }
 
-export const specialReduser = (state = initialState, action) => {
+export const specialReducer = (state = initialState, action) => {
   switch (action.type) {
     case SWITCH_SITE_MODE:
       return action.mode === 'default'
@@ -35,4 +35,4 @@ export const switchImagesVisibility = value => ({
 })
 export const switchFontSize = fontSize => ({ type: SWITCH_FONT_SIZE, fontSize })
 
-export default specialReduser
+export default specialReducer

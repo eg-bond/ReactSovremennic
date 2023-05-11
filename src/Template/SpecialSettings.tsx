@@ -3,7 +3,7 @@ import {
   switchSiteTheme,
   switchImagesVisibility,
   switchFontSize,
-} from '../REDUX/specialReduser'
+} from '../REDUX/specialReducer'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import {

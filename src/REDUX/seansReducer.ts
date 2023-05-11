@@ -18,7 +18,7 @@ let initialState = {
   buttonTitle: null,
 }
 
-export const seansReduser = (state = initialState, action) => {
+export const seansReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_TODAY_SCEDULE_ITEM:
       let date = new Date()
@@ -67,4 +67,4 @@ export const changeSceduleItem = (activeSceduleItemKey, buttonTitle) => ({
 })
 export const createActualDatesArr = () => ({ type: CREATE_ACTUAL_DATES_ARR })
 
-export default seansReduser
+export default seansReducer

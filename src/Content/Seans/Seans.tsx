@@ -3,7 +3,7 @@ import { MobileSeanceNavigation } from './MobileSeanceNavigation'
 import {
   changeSceduleItem,
   setTodaySceduleItem,
-} from '../../REDUX/seansReduser'
+} from '../../REDUX/seansReducer'
 import { connect } from 'react-redux'
 import Grow from '@material-ui/core/Grow'
 import scedule from './scedule'

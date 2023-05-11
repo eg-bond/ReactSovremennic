@@ -1,7 +1,7 @@
 import { combineReducers, createStore } from 'redux'
-import seansReduser from './seansReduser'
-import cinemaReduser from './cinemaReduser'
-import specialReduser from './specialReduser'
+import seansReduser from './seansReducer'
+import cinemaReduser from './cinemaReducer'
+import specialReduser from './specialReducer'
 
 let reducers = combineReducers({
   seansPage: seansReduser,
@@ -10,6 +10,5 @@ let reducers = combineReducers({
 })
 
 const store = createStore(reducers)
-window.store = store
 
 export default store

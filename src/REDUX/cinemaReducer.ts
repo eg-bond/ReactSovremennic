@@ -9,7 +9,7 @@ let initialState = {
   filmsTodayAmount: 6,
 }
 
-export const cinemaReduser = (state = initialState, action) => {
+export const cinemaReducer = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_FILMS_TODAY_ARR:
       let filmsToday = []
@@ -44,4 +44,4 @@ export const cinemaReduser = (state = initialState, action) => {
 export const createFilmsTodayArr = () => ({ type: CREATE_FILMS_TODAY_ARR })
 export const createFilmsObject = () => ({ type: CREATE_FILMS_OBJECT })
 
-export default cinemaReduser
+export default cinemaReducer
