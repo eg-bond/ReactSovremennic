@@ -1,8 +1,7 @@
-import React from 'react'
 import { NavItem, Nav } from 'react-bootstrap'
 
 const NavItems = props => {
-  const switchSeanstable = (e, key) => {
+  const switchSeanceTable = (e, key) => {
     props.changeButtonTitle(e.target.value)
     props.changeActiveKey(key)
   }
@@ -15,7 +14,7 @@ const NavItems = props => {
             value={`${d[1]} ${d[2]}`}
             key={d[0]}
             className={props.activeKey === d[0] ? 'active' : ''}
-            onClick={e => switchSeanstable(e, d[0])}>
+            onClick={e => switchSeanceTable(e, d[0])}>
             {d[1]}
             <br />
             {d[2]}

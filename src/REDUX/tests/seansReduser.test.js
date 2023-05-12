@@ -16,7 +16,7 @@ let initialState = {
   ],
   actualDatesArr: [],
   weekStartsFrom: 'th',
-  activeSceduleItemKey: '',
+  activeScheduleItemKey: '',
   buttonTitle: null,
 }
 
@@ -24,15 +24,15 @@ describe('seansReduser tests:', () => {
   describe('SET_TODAY_SCEDULE_ITEM', () => {
     let newS = seansReduser(initialState, setTodaySceduleItem())
 
-    it('activeSceduleItemKey is not empty', () => {
-      expect(newS.activeSceduleItemKey).not.toBe('')
+    it('activeScheduleItemKey is not empty', () => {
+      expect(newS.activeScheduleItemKey).not.toBe('')
     })
 
     let date = new Date()
     let day = date.getDay()
 
-    it('activeSceduleItemKey is set correctly', () => {
-      expect(newS.activeSceduleItemKey).toBe(newS.datesArr[day][0])
+    it('activeScheduleItemKey is set correctly', () => {
+      expect(newS.activeScheduleItemKey).toBe(newS.datesArr[day][0])
     })
     it('buttonTitle is correct', () => {
       expect(newS.buttonTitle).toBe(
@@ -46,8 +46,8 @@ describe('seansReduser tests:', () => {
     let title = 'Воскресенье 25 декабря'
     let newS = seansReduser(initialState, changeSceduleItem(activeKey, title))
 
-    it('activeSceduleItemKey is equal to key from action', () => {
-      expect(newS.activeSceduleItemKey).toBe(activeKey)
+    it('activeScheduleItemKey is equal to key from action', () => {
+      expect(newS.activeScheduleItemKey).toBe(activeKey)
     })
     it('buttonTitle is equal to title from action', () => {
       expect(newS.buttonTitle).toBe(title)

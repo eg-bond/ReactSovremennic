@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Button, Modal } from 'react-bootstrap'
 import NavItems from './NavItems'
 
-function SeansModal(props) {
+function SeanceModal(props) {
   let [show, setShow] = useState(false)
 
   const selectModalItem = e => {
@@ -33,4 +33,4 @@ function SeansModal(props) {
   )
 }
 
-export default SeansModal
+export default SeanceModal

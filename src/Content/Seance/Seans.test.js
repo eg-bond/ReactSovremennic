@@ -46,7 +46,7 @@ describe('Seanse tests:', () => {
     })
 
     it('Scedule items changes correctly', async () => {
-      let activeSIKey = store.getState().seansPage.activeSceduleItemKey
+      let activeSIKey = store.getState().seansPage.activeScheduleItemKey
       expect(screen.getByText(scedule[activeSIKey][4][0])).toBeInTheDocument()
 
       const sredaBtn = screen.getByTestId('day3')
@@ -101,7 +101,7 @@ describe('Seanse tests:', () => {
     })
 
     it('Menu items activation works', async () => {
-      let activeSIKey = store.getState().seansPage.activeSceduleItemKey
+      let activeSIKey = store.getState().seansPage.activeScheduleItemKey
       const xsMenuBtn = screen.getByRole('button')
       userEvent.click(xsMenuBtn)
       expect(screen.getByTestId(activeSIKey + '_xs')).toHaveClass('active')

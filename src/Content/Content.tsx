@@ -2,7 +2,7 @@ import { Suspense, lazy, memo, useRef } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import SelectedMovie from './Cinema/SelectedMovie'
 import IndexContent from './IndexContent/IndexContent'
-import Seans from './Seans/Seans'
+import Seance from './Seance/Seance'
 import SushiContainer from './Sushi/SushiContainer'
 import FilmsSpecialPage from './FilmsSpecial/FilmsSpecialPage'
 
@@ -34,8 +34,8 @@ const Content = memo(function Content({
           }
         />
         <Route
-          path='seans'
-          element={<Seans isMobile={isMobile} siteMode={siteMode} />}
+          path='seance'
+          element={<Seance isMobile={isMobile} siteMode={siteMode} />}
         />
         <Route
           path='sushi'

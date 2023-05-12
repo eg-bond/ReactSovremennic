@@ -7,7 +7,7 @@ import FilmSwiper from './Template/FilmSwiper'
 import Navigation from './Template/Navigation'
 import BottomSwiper from './Template/BottomSwiper'
 import Footer from './Template/Footer'
-import { setTodaySceduleItem, createActualDatesArr } from './REDUX/seansReducer'
+import { setTodayScheduleItem } from './REDUX/seanceReducer'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import Adv from './Template/Adv'
@@ -16,11 +16,10 @@ import { switchSiteMode, switchFontSize } from './REDUX/specialReducer'
 import { changeAppColors, modifiedClass, queries } from './helpers'
 import { useMediaQuery } from '@material-ui/core'
 import Content from './Content/Content'
-import PropTypes from 'prop-types'
 
 const App = ({
-  createActualDatesArr,
-  setTodaySceduleItem,
+  // createActualDatesArr,
+  setTodayScheduleItem,
   createFilmsTodayArr,
   films,
   filmsToday,
@@ -34,10 +33,10 @@ const App = ({
 }) => {
   // Initialization
   useEffect(() => {
-    createActualDatesArr()
-    setTodaySceduleItem()
+    // createActualDatesArr()
+    setTodayScheduleItem()
     createFilmsTodayArr()
-  }, [createActualDatesArr, setTodaySceduleItem, createFilmsTodayArr])
+  }, [setTodayScheduleItem, createFilmsTodayArr])
 
   // Media query hook.
   let isMobile = useMediaQuery(queries.mobile)
@@ -107,21 +106,6 @@ const App = ({
   )
 }
 
-App.propTypes = {
-  createActualDatesArr: PropTypes.func,
-  setTodaySceduleItem: PropTypes.func,
-  createFilmsTodayArr: PropTypes.func,
-  films: PropTypes.array,
-  filmsToday: PropTypes.array,
-  filmsObject: PropTypes.object,
-  createFilmsObject: PropTypes.func,
-  switchSiteMode: PropTypes.func,
-  siteMode: PropTypes.string,
-  theme: PropTypes.string,
-  imgHidden: PropTypes.bool,
-  fontSize: PropTypes.string,
-}
-
 let mapStateToProps = state => ({
   films: state.cinema.films,
   filmsToday: state.cinema.filmsToday,
@@ -134,8 +118,8 @@ let mapStateToProps = state => ({
 
 const AppComposed = compose(
   connect(mapStateToProps, {
-    setTodaySceduleItem,
-    createActualDatesArr,
+    setTodayScheduleItem,
+    // createActualDatesArr,
     createFilmsTodayArr,
     createFilmsObject,
     switchSiteMode,

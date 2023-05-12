@@ -3,7 +3,7 @@ import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import Grow from '@material-ui/core/Grow'
 
 const PopperContent = memo(function PopperContent({
-  activeSceduleItemKey,
+  activeScheduleItemKey,
   datesArr,
   changeTableContent,
 }) {
@@ -13,7 +13,7 @@ const PopperContent = memo(function PopperContent({
         {datesArr.map(d => (
           <li
             data-testid={`${d[0]}_xs`}
-            className={activeSceduleItemKey === d[0] ? 'active' : ''}
+            className={activeScheduleItemKey === d[0] ? 'active' : ''}
             key={`${d[0]}_s`}
             onClick={() => changeTableContent(d[0], `${d[1]} ${d[2]}`)}>
             {d[1]} {d[2]}
@@ -25,10 +25,10 @@ const PopperContent = memo(function PopperContent({
 })
 
 export const MobileSeanceNavigation = memo(function MobileSeanceNavigation({
-  activeSceduleItemKey,
+  activeScheduleItemKey,
   buttonTitle,
   datesArr,
-  changeSceduleItem,
+  changeScheduleItem,
   switchVisibility,
 }) {
   const [open, setOpen] = useState(false)
@@ -43,13 +43,13 @@ export const MobileSeanceNavigation = memo(function MobileSeanceNavigation({
     (key, title) => {
       switchVisibility(false)
       setTimeout(() => {
-        changeSceduleItem(key, title)
+        changeScheduleItem({ key, title })
         switchVisibility(true)
       }, 200)
 
       setOpen(false)
     },
-    [changeSceduleItem, switchVisibility]
+    [changeScheduleItem, switchVisibility]
   )
 
   const handleClose = () => {
@@ -73,7 +73,7 @@ export const MobileSeanceNavigation = memo(function MobileSeanceNavigation({
           <ClickAwayListener onClickAway={handleClose}>
             <div className='popper popper__seance'>
               <PopperContent
-                activeSceduleItemKey={activeSceduleItemKey}
+                activeScheduleItemKey={activeScheduleItemKey}
                 datesArr={datesArr}
                 changeTableContent={changeTableContent}
               />

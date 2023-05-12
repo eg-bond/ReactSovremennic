@@ -39,7 +39,7 @@ const Navigation = memo(function Navigation({ siteMode, fontSize, theme }) {
         </div>
         <div className={`${modifyCl('navigation__menu')}`}>
           <ul>
-            <NavItem url='seans' title='РАСПИСАНИЕ' />
+            <NavItem url='seance' title='РАСПИСАНИЕ' />
             {siteMode === 'special' && <NavItem url='films' title='ФИЛЬМЫ' />}
             <NavItem url='about' title='О КИНОТЕАТРЕ' />
             <NavItem url='rules' title='ПРАВИЛА РАБОТЫ' />

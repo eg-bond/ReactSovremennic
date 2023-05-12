@@ -1,9 +1,9 @@
 import { memo, useEffect, useState } from 'react'
 import { MobileSeanceNavigation } from './MobileSeanceNavigation'
 import {
-  changeSceduleItem,
-  setTodaySceduleItem,
-} from '../../REDUX/seansReducer'
+  changeScheduleItem,
+  setTodayScheduleItem,
+} from '../../REDUX/seanceReducer'
 import { connect } from 'react-redux'
 import Grow from '@material-ui/core/Grow'
 import scedule from './scedule'
@@ -12,12 +12,14 @@ import IndexAdvXS from '../../Template/IndexAdvXS'
 import BarSwiper from '../../Template/BarSwiper'
 import { modifiedClass } from '../../helpers'
 
-const desktopBtn = (d, activeSceduleItemKey, changeTableContent) => {
+const desktopBtn = (d, activeScheduleItemKey, changeTableContent) => {
   return (
     <button
       data-testid={d[0]}
-      key={d[0] + 'desc'}
-      className={`fill_button ${activeSceduleItemKey === d[0] ? 'active' : ''}`}
+      key={d + 'desc'}
+      className={`fill_button ${
+        activeScheduleItemKey === d[0] ? 'active' : ''
+      }`}
       onClick={() => {
         changeTableContent(d[0], `${d[1]} ${d[2]}`)
       }}>
@@ -26,37 +28,37 @@ const desktopBtn = (d, activeSceduleItemKey, changeTableContent) => {
     </button>
   )
 }
-const CreateSeanseButtons = memo(function CreateSeanseButtons({
+const CreateSeanceButtons = memo(function CreateSeanceButtons({
   datesArr,
-  activeSceduleItemKey,
+  activeScheduleItemKey,
   changeTableContent,
   siteMode,
 }) {
   return (
     <div className={modifiedClass('seanse__buttons', siteMode)}>
       {datesArr.map(d =>
-        desktopBtn(d, activeSceduleItemKey, changeTableContent)
+        desktopBtn(d, activeScheduleItemKey, changeTableContent)
       )}
     </div>
   )
 })
 
-const tableItem = (seanse, i) => {
+const tableItem = (seance, i) => {
   return (
-    <tr key={seanse[0]} className={i % 2 === 0 ? 'table_gray' : 'table_white'}>
-      <td>{seanse[0]}</td>
-      <td>{seanse[1]}</td>
-      <td>{seanse[2]}</td>
-      <td>{seanse[3]}</td>
+    <tr key={seance[0]} className={i % 2 === 0 ? 'table_gray' : 'table_white'}>
+      <td>{seance[0]}</td>
+      <td>{seance[1]}</td>
+      <td>{seance[2]}</td>
+      <td>{seance[3]}</td>
     </tr>
   )
 }
 
 const TableContent = memo(function TableContent({
   scedule,
-  activeSceduleItemKey,
+  activeScheduleItemKey,
 }) {
-  if (scedule[activeSceduleItemKey]) {
+  if (scedule[activeScheduleItemKey]) {
     return (
       <tbody>
         <tr className={`table_head`}>
@@ -65,7 +67,7 @@ const TableContent = memo(function TableContent({
           <th>Возраст</th>
           <th>Цена, руб</th>
         </tr>
-        {scedule[activeSceduleItemKey].map(tableItem)}
+        {scedule[activeScheduleItemKey].map(tableItem)}
       </tbody>
     )
   }
@@ -74,36 +76,36 @@ const TableContent = memo(function TableContent({
 // Grow animation time variable
 let trDurationSeance = 0
 
-const Seans = ({
-  activeSceduleItemKey,
+const Seance = ({
+  activeScheduleItemKey,
   buttonTitle,
-  changeSceduleItem,
+  changeScheduleItem,
   datesArr,
   isMobile,
-  setTodaySceduleItem,
+  setTodayScheduleItem,
   siteMode,
 }) => {
   const [tableVisible, switchVisibility] = useState(true)
 
   const changeTableContent = useCallback(
     (key, title) => {
-      if (key !== activeSceduleItemKey) {
+      if (key !== activeScheduleItemKey) {
         switchVisibility(false)
         setTimeout(() => {
-          changeSceduleItem(key, title)
+          changeScheduleItem({ key, title })
           switchVisibility(true)
         }, trDurationSeance)
       }
     },
-    [activeSceduleItemKey, changeSceduleItem]
+    [activeScheduleItemKey, changeScheduleItem]
   )
 
   // Switches the schedule item to todays when user leaves Seance page
   useEffect(() => {
     return () => {
-      setTodaySceduleItem()
+      setTodayScheduleItem()
     }
-  }, [setTodaySceduleItem])
+  }, [setTodayScheduleItem])
 
   useEffect(() => {
     trDurationSeance = 200
@@ -115,9 +117,9 @@ const Seans = ({
   return (
     <div className='content__gridLeftItem--3fr'>
       {!isMobile && (
-        <CreateSeanseButtons
+        <CreateSeanceButtons
           datesArr={datesArr}
-          activeSceduleItemKey={activeSceduleItemKey}
+          activeScheduleItemKey={activeScheduleItemKey}
           changeTableContent={changeTableContent}
           siteMode={siteMode}
         />
@@ -126,10 +128,10 @@ const Seans = ({
       {isMobile && (
         <div className='sushi_menu_xs'>
           <MobileSeanceNavigation
-            activeSceduleItemKey={activeSceduleItemKey}
+            activeScheduleItemKey={activeScheduleItemKey}
             datesArr={datesArr}
             buttonTitle={buttonTitle}
-            changeSceduleItem={changeSceduleItem}
+            changeScheduleItem={changeScheduleItem}
             switchVisibility={switchVisibility}
           />
         </div>
@@ -138,7 +140,7 @@ const Seans = ({
       <Grow in={tableVisible} timeout={trDurationSeance}>
         <table className='seanse__table'>
           <TableContent
-            activeSceduleItemKey={activeSceduleItemKey}
+            activeScheduleItemKey={activeScheduleItemKey}
             scedule={scedule}
           />
         </table>
@@ -154,14 +156,15 @@ const Seans = ({
 }
 
 let mapStateToProps = state => ({
-  datesArr: state.seansPage.actualDatesArr,
-  activeSceduleItemKey: state.seansPage.activeSceduleItemKey,
-  buttonTitle: state.seansPage.buttonTitle,
+  // datesArr: state.seansPage.actualDatesArr,
+  datesArr: state.seance.datesArr,
+  activeScheduleItemKey: state.seance.activeScheduleItemKey,
+  buttonTitle: state.seance.buttonTitle,
 })
 
-const ConnectedSeans = connect(mapStateToProps, {
-  changeSceduleItem,
-  setTodaySceduleItem,
-})(Seans)
+const ConnectedSeance = connect(mapStateToProps, {
+  changeScheduleItem,
+  setTodayScheduleItem,
+})(Seance)
 
-export default ConnectedSeans
+export default ConnectedSeance
