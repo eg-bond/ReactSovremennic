@@ -1,18 +1,23 @@
 import { memo, useEffect, useState } from 'react'
 import { MobileSeanceNavigation } from './MobileSeanceNavigation'
 import {
-  changeScheduleItem,
-  setTodayScheduleItem,
+  DateKeysT,
+  changeScheduleItem_A,
+  setTodayScheduleItem_A,
 } from '../../REDUX/seanceReducer'
-import { connect } from 'react-redux'
 import Grow from '@material-ui/core/Grow'
-import scedule from './scedule'
+import schedule, { ScheduleT } from './schedule'
 import { useCallback } from 'react'
 import IndexAdvXS from '../../Template/IndexAdvXS'
 import BarSwiper from '../../Template/BarSwiper'
 import { modifiedClass } from '../../helpers'
+import { useAppDispatch, useAppSelector } from '../../REDUX/store'
 
-const desktopBtn = (d, activeScheduleItemKey, changeTableContent) => {
+const desktopBtn = (
+  d: [DateKeysT, string, string],
+  activeScheduleItemKey: CSB_T['activeScheduleItemKey'],
+  changeTableContent: CSB_T['changeTableContent']
+) => {
   return (
     <button
       data-testid={d[0]}
@@ -28,12 +33,20 @@ const desktopBtn = (d, activeScheduleItemKey, changeTableContent) => {
     </button>
   )
 }
+
+export interface CSB_T {
+  datesArr: Array<[DateKeysT, string, string]>
+  activeScheduleItemKey: DateKeysT | ''
+  changeTableContent: (key: DateKeysT, title: string) => void
+  siteMode: string
+}
+
 const CreateSeanceButtons = memo(function CreateSeanceButtons({
   datesArr,
   activeScheduleItemKey,
   changeTableContent,
   siteMode,
-}) {
+}: CSB_T) {
   return (
     <div className={modifiedClass('seanse__buttons', siteMode)}>
       {datesArr.map(d =>
@@ -43,7 +56,7 @@ const CreateSeanceButtons = memo(function CreateSeanceButtons({
   )
 })
 
-const tableItem = (seance, i) => {
+const tableItem = (seance: Array<string | number>, i: number) => {
   return (
     <tr key={seance[0]} className={i % 2 === 0 ? 'table_gray' : 'table_white'}>
       <td>{seance[0]}</td>
@@ -53,12 +66,16 @@ const tableItem = (seance, i) => {
     </tr>
   )
 }
+type TableContentT = {
+  schedule: ScheduleT
+  activeScheduleItemKey: CSB_T['activeScheduleItemKey']
+}
 
 const TableContent = memo(function TableContent({
-  scedule,
+  schedule,
   activeScheduleItemKey,
-}) {
-  if (scedule[activeScheduleItemKey]) {
+}: TableContentT) {
+  if (schedule[activeScheduleItemKey]) {
     return (
       <tbody>
         <tr className={`table_head`}>
@@ -67,7 +84,7 @@ const TableContent = memo(function TableContent({
           <th>Возраст</th>
           <th>Цена, руб</th>
         </tr>
-        {scedule[activeScheduleItemKey].map(tableItem)}
+        {schedule[activeScheduleItemKey].map(tableItem)}
       </tbody>
     )
   }
@@ -76,23 +93,37 @@ const TableContent = memo(function TableContent({
 // Grow animation time variable
 let trDurationSeance = 0
 
-const Seance = ({
-  activeScheduleItemKey,
-  buttonTitle,
-  changeScheduleItem,
-  datesArr,
-  isMobile,
-  setTodayScheduleItem,
-  siteMode,
-}) => {
+type SeancePropsT = {
+  isMobile: boolean
+  siteMode: string
+}
+
+const Seance = memo(function Seance({ isMobile, siteMode }: SeancePropsT) {
+  //------------------------------------------------------------------
+  const { datesArr } = useAppSelector(state => state.seance)
+  const { buttonTitle } = useAppSelector(state => state.seance)
+  const { activeScheduleItemKey } = useAppSelector(state => state.seance)
+  const dispatch = useAppDispatch()
+
+  const setTodayScheduleItem = useCallback(() => {
+    dispatch(setTodayScheduleItem_A())
+  }, [dispatch])
+  const changeScheduleItem = useCallback(
+    (key: DateKeysT, title: string) => {
+      dispatch(changeScheduleItem_A({ key, title }))
+    },
+    [dispatch]
+  )
+  //------------------------------------------------------------------
+
   const [tableVisible, switchVisibility] = useState(true)
 
   const changeTableContent = useCallback(
-    (key, title) => {
+    (key: DateKeysT, title: string) => {
       if (key !== activeScheduleItemKey) {
         switchVisibility(false)
         setTimeout(() => {
-          changeScheduleItem({ key, title })
+          changeScheduleItem(key, title)
           switchVisibility(true)
         }, trDurationSeance)
       }
@@ -141,7 +172,7 @@ const Seance = ({
         <table className='seanse__table'>
           <TableContent
             activeScheduleItemKey={activeScheduleItemKey}
-            scedule={scedule}
+            schedule={schedule}
           />
         </table>
       </Grow>
@@ -153,18 +184,6 @@ const Seance = ({
       {isMobile && <IndexAdvXS />}
     </div>
   )
-}
-
-let mapStateToProps = state => ({
-  // datesArr: state.seansPage.actualDatesArr,
-  datesArr: state.seance.datesArr,
-  activeScheduleItemKey: state.seance.activeScheduleItemKey,
-  buttonTitle: state.seance.buttonTitle,
 })
 
-const ConnectedSeance = connect(mapStateToProps, {
-  changeScheduleItem,
-  setTodayScheduleItem,
-})(Seance)
-
-export default ConnectedSeance
+export default Seance

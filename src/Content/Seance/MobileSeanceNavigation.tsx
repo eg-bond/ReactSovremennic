@@ -1,12 +1,20 @@
 import { useState, useCallback, useRef, memo } from 'react'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import Grow from '@material-ui/core/Grow'
+import { CSB_T } from './Seance'
+import { DateKeysT } from '../../REDUX/seanceReducer'
+
+type PopperContent = {
+  activeScheduleItemKey: CSB_T['activeScheduleItemKey']
+  datesArr: CSB_T['datesArr']
+  changeTableContent: CSB_T['changeTableContent']
+}
 
 const PopperContent = memo(function PopperContent({
   activeScheduleItemKey,
   datesArr,
   changeTableContent,
-}) {
+}: PopperContent) {
   return (
     <div className='popper__content'>
       <ul>
@@ -24,13 +32,21 @@ const PopperContent = memo(function PopperContent({
   )
 })
 
+type MobileSeanceNavigationT = {
+  activeScheduleItemKey: CSB_T['activeScheduleItemKey']
+  buttonTitle: string
+  datesArr: CSB_T['datesArr']
+  changeScheduleItem: (key: DateKeysT, title: string) => void
+  switchVisibility: (arg0: boolean) => void
+}
+
 export const MobileSeanceNavigation = memo(function MobileSeanceNavigation({
   activeScheduleItemKey,
   buttonTitle,
   datesArr,
   changeScheduleItem,
   switchVisibility,
-}) {
+}: MobileSeanceNavigationT) {
   const [open, setOpen] = useState(false)
   // clickAwayActive нужен для того, чтобы ClickAwayListener был неактивен когда Popper скрыт
   const clickAwayActive = useRef(false)
@@ -40,10 +56,10 @@ export const MobileSeanceNavigation = memo(function MobileSeanceNavigation({
   }
 
   const changeTableContent = useCallback(
-    (key, title) => {
+    (key: DateKeysT, title: string) => {
       switchVisibility(false)
       setTimeout(() => {
-        changeScheduleItem({ key, title })
+        changeScheduleItem(key, title)
         switchVisibility(true)
       }, 200)
 

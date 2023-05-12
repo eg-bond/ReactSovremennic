@@ -1,6 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
-const initialState = {
+interface SeanceStateT {
+  datesArr: Array<[DateKeysT, string, string]>
+  activeScheduleItemKey: DateKeysT | ''
+  buttonTitle: string
+}
+const initialState: SeanceStateT = {
   datesArr: [
     ['day1', 'Понедельник', '8 мая'],
     ['day2', 'Вторник', '9 мая'],
@@ -18,24 +23,42 @@ const seanceSlice = createSlice({
   name: 'seance',
   initialState,
   reducers: {
-    setTodayScheduleItem(state) {
+    setTodayScheduleItem_A(state) {
       const date = new Date()
       const key = 'day' + date.getDay()
       const dateItem = state.datesArr.find(item => item[0] === key)
-
+      //@ts-ignore
       state.activeScheduleItemKey = key
+      //@ts-ignore
       state.buttonTitle = dateItem[1] + ' ' + dateItem[2]
     },
-    changeScheduleItem: {
-      reducer(state, action) {
-        const { key, title } = action.payload
-        state.activeScheduleItemKey = key
-        state.buttonTitle = title
-      },
+    changeScheduleItem_A(
+      state,
+      action: PayloadAction<
+        {
+          key: DateKeysT
+          title: string
+        },
+        string
+      >
+    ) {
+      const { key, title } = action.payload
+      state.activeScheduleItemKey = key
+      state.buttonTitle = title
     },
   },
 })
 
-export const { setTodayScheduleItem, changeScheduleItem } = seanceSlice.actions
+export const { setTodayScheduleItem_A, changeScheduleItem_A } =
+  seanceSlice.actions
 
 export default seanceSlice.reducer
+
+export type DateKeysT =
+  | 'day0'
+  | 'day1'
+  | 'day2'
+  | 'day3'
+  | 'day4'
+  | 'day5'
+  | 'day6'

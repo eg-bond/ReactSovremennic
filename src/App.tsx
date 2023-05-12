@@ -7,7 +7,7 @@ import FilmSwiper from './Template/FilmSwiper'
 import Navigation from './Template/Navigation'
 import BottomSwiper from './Template/BottomSwiper'
 import Footer from './Template/Footer'
-import { setTodayScheduleItem } from './REDUX/seanceReducer'
+import { setTodayScheduleItem_A } from './REDUX/seanceReducer'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import Adv from './Template/Adv'
@@ -19,7 +19,7 @@ import Content from './Content/Content'
 
 const App = ({
   // createActualDatesArr,
-  setTodayScheduleItem,
+  setTodayScheduleItem_A,
   createFilmsTodayArr,
   films,
   filmsToday,
@@ -34,9 +34,9 @@ const App = ({
   // Initialization
   useEffect(() => {
     // createActualDatesArr()
-    setTodayScheduleItem()
+    setTodayScheduleItem_A()
     createFilmsTodayArr()
-  }, [setTodayScheduleItem, createFilmsTodayArr])
+  }, [setTodayScheduleItem_A, createFilmsTodayArr])
 
   // Media query hook.
   let isMobile = useMediaQuery(queries.mobile)
@@ -118,7 +118,7 @@ let mapStateToProps = state => ({
 
 const AppComposed = compose(
   connect(mapStateToProps, {
-    setTodayScheduleItem,
+    setTodayScheduleItem_A,
     // createActualDatesArr,
     createFilmsTodayArr,
     createFilmsObject,
