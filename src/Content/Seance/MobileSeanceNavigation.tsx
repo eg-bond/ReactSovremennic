@@ -1,44 +1,8 @@
 import { useState, useCallback, useRef, memo } from 'react'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import Grow from '@material-ui/core/Grow'
-import { CSB_T } from './Seance'
-import { DateKeysT } from '../../REDUX/seanceReducer'
-
-type PopperContent = {
-  activeScheduleItemKey: CSB_T['activeScheduleItemKey']
-  datesArr: CSB_T['datesArr']
-  changeTableContent: CSB_T['changeTableContent']
-}
-
-const PopperContent = memo(function PopperContent({
-  activeScheduleItemKey,
-  datesArr,
-  changeTableContent,
-}: PopperContent) {
-  return (
-    <div className='popper__content'>
-      <ul>
-        {datesArr.map(d => (
-          <li
-            data-testid={`${d[0]}_xs`}
-            className={activeScheduleItemKey === d[0] ? 'active' : ''}
-            key={`${d[0]}_s`}
-            onClick={() => changeTableContent(d[0], `${d[1]} ${d[2]}`)}>
-            {d[1]} {d[2]}
-          </li>
-        ))}
-      </ul>
-    </div>
-  )
-})
-
-type MobileSeanceNavigationT = {
-  activeScheduleItemKey: CSB_T['activeScheduleItemKey']
-  buttonTitle: string
-  datesArr: CSB_T['datesArr']
-  changeScheduleItem: (key: DateKeysT, title: string) => void
-  switchVisibility: (arg0: boolean) => void
-}
+import type { DateKeysT, SeanceStateT } from '../../REDUX/seance/seanceReducerT'
+import type { ChangeTableContentT } from './Seance'
 
 export const MobileSeanceNavigation = memo(function MobileSeanceNavigation({
   activeScheduleItemKey,
@@ -100,3 +64,39 @@ export const MobileSeanceNavigation = memo(function MobileSeanceNavigation({
     </div>
   )
 })
+
+const PopperContent = memo<PopperContent>(function PopperContent({
+  activeScheduleItemKey,
+  datesArr,
+  changeTableContent,
+}) {
+  return (
+    <div className='popper__content'>
+      <ul>
+        {datesArr.map(d => (
+          <li
+            data-testid={`${d[0]}_xs`}
+            className={activeScheduleItemKey === d[0] ? 'active' : ''}
+            key={`${d[0]}_s`}
+            onClick={() => changeTableContent(d[0], `${d[1]} ${d[2]}`)}>
+            {d[1]} {d[2]}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+})
+
+type MobileSeanceNavigationT = {
+  activeScheduleItemKey: SeanceStateT['activeScheduleItemKey']
+  buttonTitle: string
+  datesArr: SeanceStateT['datesArr']
+  changeScheduleItem: ChangeTableContentT
+  switchVisibility: (arg0: boolean) => void
+}
+
+type PopperContent = {
+  activeScheduleItemKey: SeanceStateT['activeScheduleItemKey']
+  datesArr: SeanceStateT['datesArr']
+  changeTableContent: ChangeTableContentT
+}

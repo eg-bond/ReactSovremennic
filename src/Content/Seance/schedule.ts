@@ -1,4 +1,4 @@
-const schedule: ScheduleT = {
+const schedule = {
   day0: [
     ['11:00', 'Яга и книга заклинаний 2D', '6+', 220],
     ['13:00', 'Кот в сапогах 2: Последнее желание 2D', '6+', 300],
@@ -44,8 +44,6 @@ const schedule: ScheduleT = {
   ],
 }
 
-export type ScheduleT = {
-  [index: string]: Array<[string, string, string, number]>
-}
+export type ScheduleT = typeof schedule
 
 export default schedule

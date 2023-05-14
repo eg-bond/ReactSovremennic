@@ -1,5 +1,5 @@
 // import { combineReducers, createStore } from 'redux'
-import seanceReduser from './seanceReducer'
+import seanceReduser from './seance/seanceReducer'
 import cinemaReduser from './cinemaReducer'
 import specialReduser from './specialReducer'
 import { configureStore } from '@reduxjs/toolkit'
