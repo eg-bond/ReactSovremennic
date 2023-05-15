@@ -100,7 +100,7 @@ const App = () => {
           )}
         </div>
       </div>
-      <Footer isMobile={isMobile} siteMode={siteMode} />
+      <Footer />
     </div>
   )
 }

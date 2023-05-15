@@ -1,16 +1,8 @@
-import { memo, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { memo } from 'react'
+import { Link } from 'react-router-dom'
 import { scrollToTop } from '../helpers'
 
-const Footer = memo(function Footer({ isMobile, siteMode }) {
-  // Автоматический скролл наверх для мобильной версии
-  const { pathname } = useLocation()
-  useEffect(() => {
-    if (isMobile || siteMode === 'special') {
-      scrollToTop()
-    }
-  }, [pathname, isMobile, siteMode])
-
+const Footer = memo(function Footer() {
   return (
     <div className={`footer container`}>
       <Link onClick={scrollToTop} to='/'>

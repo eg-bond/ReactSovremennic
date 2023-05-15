@@ -65,7 +65,7 @@ export const MobileSeanceNavigation = memo(function MobileSeanceNavigation({
   )
 })
 
-const PopperContent = memo<PopperContent>(function PopperContent({
+const PopperContent = memo<PopperContentT>(function PopperContent({
   activeScheduleItemKey,
   datesArr,
   changeTableContent,
@@ -95,7 +95,7 @@ type MobileSeanceNavigationT = {
   switchVisibility: (arg0: boolean) => void
 }
 
-type PopperContent = {
+type PopperContentT = {
   activeScheduleItemKey: SeanceStateT['activeScheduleItemKey']
   datesArr: SeanceStateT['datesArr']
   changeTableContent: ChangeTableContentT

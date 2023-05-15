@@ -3,10 +3,15 @@ import SwiperCore, { Pagination, Autoplay } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Link } from 'react-router-dom'
 import { after } from '../helpers'
+import { CinemaStateT } from '../REDUX/cinema/cinemaReducerT'
 
 SwiperCore.use([Pagination, Autoplay])
 
-const FilmSwiper = memo(function FilmSwiper({ films }) {
+const FilmSwiper = memo(function FilmSwiper({
+  films,
+}: {
+  films: CinemaStateT['films']
+}) {
   const [allImgLoaded, setImgLoaded] = useState(false)
 
   const onLoad = after(films.length, () => {
@@ -22,7 +27,7 @@ const FilmSwiper = memo(function FilmSwiper({ films }) {
       dynamicBullets: true,
       clickable: true,
     },
-    autoplay: { enabled: false },
+    autoplay: false,
     breakpoints: {
       250: {
         slidesPerView: 3.5,
@@ -52,7 +57,11 @@ const FilmSwiper = memo(function FilmSwiper({ films }) {
   )
 })
 
-function filmSwiperSlide(film, allImgLoaded, onLoad) {
+function filmSwiperSlide(
+  film: CinemaStateT['films'][0],
+  allImgLoaded: boolean,
+  onLoad: () => void
+) {
   return (
     <SwiperSlide
       className={'sliderSlide cinemaSlider__slide'}

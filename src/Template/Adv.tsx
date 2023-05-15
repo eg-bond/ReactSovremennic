@@ -33,7 +33,7 @@ const AdvContent = memo(function AdvContent() {
 })
 
 function Adv() {
-  let matchSushi = useMatch({ path: 'sushi' })
+  const matchSushi = useMatch({ path: 'sushi' })
   if (!matchSushi) {
     return <AdvContent />
   }

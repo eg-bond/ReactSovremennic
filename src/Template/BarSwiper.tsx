@@ -1,10 +1,9 @@
-import React from 'react'
 import SwiperCore, { Autoplay } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 SwiperCore.use([Autoplay])
 
-const barSwiperSlide = slideKey => {
+const barSwiperSlide = (slideKey: string) => {
   return (
     <SwiperSlide key={slideKey}>
       <div className='imgContainer skeleton'>
@@ -20,7 +19,7 @@ const BarSwiper = () => {
   return (
     <Swiper
       className='swiper-container-bar'
-      loop='true'
+      loop={true}
       autoplay={{
         delay: 4000,
         disableOnInteraction: false,

@@ -1,7 +1,7 @@
 import Fade from '@material-ui/core/Fade'
 import { useAppSelector } from '../../REDUX/store'
 
-function About({ loaded }) {
+function About({ loaded }: { loaded: React.MutableRefObject<boolean> }) {
   const { siteMode } = useAppSelector(state => state.special)
   if (loaded.current) {
     return (

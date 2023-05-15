@@ -3,10 +3,14 @@ import { Link } from 'react-router-dom'
 import SwiperCore, { Autoplay } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { after, scrollToNavigation } from '../helpers'
+import { CinemaStateT } from '../REDUX/cinema/cinemaReducerT'
 
 SwiperCore.use([Autoplay])
 
-const BottomSwiper = memo(function BottomSwiper({ isMobile, filmsToday }) {
+const BottomSwiper = memo<BottomSwiperT>(function BottomSwiper({
+  isMobile,
+  filmsToday,
+}) {
   const [allImgLoaded, setImgLoaded] = useState(false)
 
   if (isMobile || filmsToday[0] === undefined) {
@@ -40,7 +44,12 @@ const BottomSwiper = memo(function BottomSwiper({ isMobile, filmsToday }) {
   )
 })
 
-function bottomSwiperSlide(film, i, onLoad, allImgLoaded) {
+function bottomSwiperSlide(
+  film: CinemaStateT['filmsToday'][0],
+  i: number,
+  onLoad: () => void,
+  allImgLoaded: boolean
+) {
   return (
     <SwiperSlide
       className={'sliderSlide bottomSwiper__slide'}
@@ -64,3 +73,8 @@ function bottomSwiperSlide(film, i, onLoad, allImgLoaded) {
 }
 
 export default BottomSwiper
+
+type BottomSwiperT = {
+  isMobile: boolean
+  filmsToday: CinemaStateT['filmsToday']
+}
