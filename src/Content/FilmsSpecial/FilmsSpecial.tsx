@@ -1,11 +1,15 @@
 import { Link, useMatch, useNavigate } from 'react-router-dom'
-import { compose } from 'redux'
-import { connect } from 'react-redux'
+// import { compose } from 'redux'
+// import { connect } from 'react-redux'
+import { useAppSelector } from '../../REDUX/store'
 
 let filmsSpecial = null
 
-function FilmsSpecial({ films, siteMode }) {
+function FilmsSpecial({ siteMode }: { siteMode: string }) {
+  const { films } = useAppSelector(state => state.cinema)
+
   if (!filmsSpecial) {
+    console.log('fsMemo')
     filmsSpecial = films.map(f => (
       <div className='filmsSpecial__flex__item' key={f.link}>
         <Link className={'linkWrapper'} to={`/movies/${f.link}`}>
@@ -21,15 +25,16 @@ function FilmsSpecial({ films, siteMode }) {
     ))
   }
 
-  let match = useMatch('films')
-  let navigate = useNavigate()
+  const match = useMatch('films')
+  const navigate = useNavigate()
 
   // redirect if siteMode was switched on filmsSpecial page
   if (siteMode === 'default' && match) {
     navigate('/', { replace: true })
   }
 
-  let titleCl = match ? 'filmsSpecialPage__h1' : 'filmsSpecial__h1'
+  const titleCl = match ? 'filmsSpecialPage__h1' : 'filmsSpecial__h1'
+  console.log('fs')
 
   return (
     <div className='filmsSpecial'>
@@ -39,10 +44,4 @@ function FilmsSpecial({ films, siteMode }) {
   )
 }
 
-let mapStateToProps = state => ({
-  films: state.cinema.films,
-})
-
-const FilmSpecialComposed = compose(connect(mapStateToProps, {}))(FilmsSpecial)
-
-export default FilmSpecialComposed
+export default FilmsSpecial

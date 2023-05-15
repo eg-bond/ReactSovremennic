@@ -9,14 +9,7 @@ import FilmsSpecialPage from './FilmsSpecial/FilmsSpecialPage'
 const Rules = lazy(() => import('./Rules/Rules'))
 const About = lazy(() => import('./About/About'))
 
-const Content = memo(function Content({
-  isMobile,
-  films,
-  filmsObject,
-  createFilmsObject,
-  siteMode,
-  fontSize,
-}) {
+const Content = memo(function Content({ isMobile, films, siteMode, fontSize }) {
   const aboutLoaded = useRef(false)
   const rulesLoaded = useRef(false)
 
@@ -43,14 +36,7 @@ const Content = memo(function Content({
         />
         <Route
           path='movies/:film_id'
-          element={
-            <SelectedMovie
-              filmsObject={filmsObject}
-              createFilmsObject={createFilmsObject}
-              siteMode={siteMode}
-              fontSize={fontSize}
-            />
-          }
+          element={<SelectedMovie siteMode={siteMode} fontSize={fontSize} />}
         />
         <Route
           path='films'

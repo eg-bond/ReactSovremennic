@@ -7,11 +7,14 @@ import FilmSwiper from './Template/FilmSwiper'
 import Navigation from './Template/Navigation'
 import BottomSwiper from './Template/BottomSwiper'
 import Footer from './Template/Footer'
-import { setTodayScheduleItem_A } from './REDUX/seance/seanceReducer'
+import { setTodayScheduleItem_AC } from './REDUX/seance/seanceReducer'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import Adv from './Template/Adv'
-import { createFilmsTodayArr, createFilmsObject } from './REDUX/cinemaReducer'
+import {
+  createFilmsTodayArr_AC,
+  createFilmsObject_AC,
+} from './REDUX/cinema/cinemaReducer'
 import { switchSiteMode, switchFontSize } from './REDUX/specialReducer'
 import { changeAppColors, modifiedClass, queries } from './helpers'
 import { useMediaQuery } from '@material-ui/core'
@@ -19,12 +22,12 @@ import Content from './Content/Content'
 
 const App = ({
   // createActualDatesArr,
-  setTodayScheduleItem_A,
-  createFilmsTodayArr,
+  setTodayScheduleItem_AC,
+  createFilmsTodayArr_AC,
   films,
   filmsToday,
   filmsObject,
-  createFilmsObject,
+  createFilmsObject_AC,
   switchSiteMode,
   siteMode,
   theme,
@@ -33,10 +36,9 @@ const App = ({
 }) => {
   // Initialization
   useEffect(() => {
-    // createActualDatesArr()
-    setTodayScheduleItem_A()
-    createFilmsTodayArr()
-  }, [setTodayScheduleItem_A, createFilmsTodayArr])
+    setTodayScheduleItem_AC()
+    createFilmsTodayArr_AC()
+  }, [setTodayScheduleItem_AC, createFilmsTodayArr_AC])
 
   // Media query hook.
   let isMobile = useMediaQuery(queries.mobile)
@@ -85,8 +87,6 @@ const App = ({
             <Content
               siteMode={siteMode}
               isMobile={isMobile}
-              filmsObject={filmsObject}
-              createFilmsObject={createFilmsObject}
               fontSize={fontSize}
             />
             {!isMobile && <Adv />}
@@ -118,10 +118,10 @@ let mapStateToProps = state => ({
 
 const AppComposed = compose(
   connect(mapStateToProps, {
-    setTodayScheduleItem_A,
+    setTodayScheduleItem_AC,
     // createActualDatesArr,
-    createFilmsTodayArr,
-    createFilmsObject,
+    createFilmsTodayArr_AC,
+    createFilmsObject_AC,
     switchSiteMode,
     switchFontSize,
   })

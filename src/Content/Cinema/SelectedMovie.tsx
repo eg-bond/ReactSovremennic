@@ -1,42 +1,43 @@
-import { memo, useEffect } from 'react'
+import { memo, useCallback, useEffect } from 'react'
 import { DescriptionTrailer } from './DescriptionTrailer'
 import { useParams } from 'react-router'
 import FilmsSpecial from '../FilmsSpecial/FilmsSpecial'
+import { useAppDispatch, useAppSelector } from '../../REDUX/store'
+import { createFilmsObject_AC } from '../../REDUX/cinema/cinemaReducer'
+import type { FilmItemT } from '../../REDUX/cinema/cinemaReducerT'
+import { FilmImg } from './FilmImg'
 
-const FilmImg = ({ link, title }) => {
-  return (
-    <div className='selectedMovie--leftFr'>
-      <div className={'selectedMovie__image skeleton'}>
-        <img
-          src={`./Images/description/${link}_D.webp`}
-          alt={title}
-          key={link + 'SM'}
-        />
-      </div>
-    </div>
-  )
-}
-
-const SelectedMovie = memo(function SelectedMovie({
-  filmsObject,
-  createFilmsObject,
+const SelectedMovie = memo<SelectedMovieT>(function SelectedMovie({
   siteMode,
   fontSize,
 }) {
+  const { filmsObject } = useAppSelector(state => state.cinema)
+  const dispatch = useAppDispatch()
+
+  const createFilmsObject = useCallback(() => {
+    dispatch(createFilmsObject_AC())
+  }, [])
+  //--------------------------------------------
+
   const { film_id } = useParams()
+
+  const filmsObjCreated = useCallback(
+    () => Object.keys(filmsObject).length,
+    [filmsObject]
+  )
 
   // Creates filmsObject if it doesn't exist
   useEffect(() => {
-    !filmsObject && createFilmsObject()
-  }, [createFilmsObject, filmsObject])
+    !filmsObjCreated() && createFilmsObject()
+  }, [createFilmsObject, filmsObjCreated])
 
-  if (!filmsObject) {
+  if (!filmsObjCreated()) {
     return <div className='selectedMovie'></div>
   }
 
-  let filmItem = filmsObject[film_id]
+  const filmItem: FilmItemT = filmsObject[film_id as string]
 
-  let gridClass =
+  const gridClass =
     fontSize !== '26px' ? 'selectedMovie--rightFr' : 'selectedMovie--fullFr'
 
   return (
@@ -90,3 +91,8 @@ const SelectedMovie = memo(function SelectedMovie({
 })
 
 export default SelectedMovie
+
+type SelectedMovieT = {
+  siteMode: string
+  fontSize: string
+}

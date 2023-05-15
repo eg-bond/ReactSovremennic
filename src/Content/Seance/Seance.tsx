@@ -1,8 +1,8 @@
 import { memo, useEffect, useState } from 'react'
 import { MobileSeanceNavigation } from './MobileSeanceNavigation'
 import {
-  changeScheduleItem_A,
-  setTodayScheduleItem_A,
+  changeScheduleItem_AC,
+  setTodayScheduleItem_AC,
 } from '../../REDUX/seance/seanceReducer'
 import Grow from '@material-ui/core/Grow'
 import schedule from './schedule'
@@ -25,11 +25,11 @@ const Seance = memo<SeancePropsT>(function Seance({ isMobile, siteMode }) {
   const dispatch = useAppDispatch()
 
   const setTodayScheduleItem = useCallback(() => {
-    dispatch(setTodayScheduleItem_A())
+    dispatch(setTodayScheduleItem_AC())
   }, [])
 
   const changeScheduleItem = useCallback((key: DateKeysT, title: string) => {
-    dispatch(changeScheduleItem_A({ key, title }))
+    dispatch(changeScheduleItem_AC({ key, title }))
   }, [])
   //------------------------------------------------------------------
 
