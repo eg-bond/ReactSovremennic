@@ -1,6 +1,8 @@
 import Fade from '@material-ui/core/Fade'
+import { useAppSelector } from '../../REDUX/store'
 
-function About({ siteMode, loaded }) {
+function About({ loaded }) {
+  const { siteMode } = useAppSelector(state => state.special)
   if (loaded.current) {
     return (
       <AboutContent siteMode={siteMode} cl={'content__gridLeftItem--3fr'} />

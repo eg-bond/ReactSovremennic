@@ -2,47 +2,19 @@ import { useEffect, useState, useCallback, useRef } from 'react'
 import Sushi from './Sushi'
 import { sushiElems } from './sushiHelpers'
 import useTimeout from '../../hooks'
+import { useAppSelector } from '../../REDUX/store'
 
 // animation duration
 export let trDuration = 200
 
-const SushiContainer = ({ siteMode, isMobile }) => {
+const SushiContainer = ({ isMobile }) => {
+  const { siteMode } = useAppSelector(state => state.special)
+
   const currentImgKey = useRef('sushi')
   const [currentImgK, switchImg] = useState('sushi')
   const [imgVisible, switchVisibility] = useState(true)
   const [progressBar, showProgressBar] = useState(false)
 
-  // function fadeOutHandler(key) {
-  //   return new Promise(res => {
-  //     switchVisibility(false)
-
-  //     delay(trDuration).then(() => {
-  //       currentImgKey.current = key
-  //       if (!imgPreloaded.current) {
-  //         showProgressBar(true)
-  //       }
-  //       res()
-  //     })
-  //   })
-  // }
-
-  // // Counts how much time changeImage called
-  // const funcCalled = useRef(0)
-
-  // const changeImage = useCallback(async key => {
-  //   if (currentImgKey.current !== key) {
-  //     funcCalled.current += 1
-  //     await Promise.all([fadeOutHandler(key), preloadImg(key, imgPreloaded)])
-  //     imgPreloaded.current = false
-  //     if (funcCalled.current > 1) {
-  //       funcCalled.current -= 1
-  //     } else {
-  //       showProgressBar(false)
-  //       switchVisibility(true)
-  //       funcCalled.current -= 1
-  //     }
-  //   }
-  // }, [])
   const { clear: clearPBTimeout, reset: resetPBTimeout } = useTimeout(
     () => showProgressBar(true),
     trDuration * 2

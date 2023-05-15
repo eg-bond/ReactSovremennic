@@ -7,10 +7,9 @@ import { createFilmsObject_AC } from '../../REDUX/cinema/cinemaReducer'
 import type { FilmItemT } from '../../REDUX/cinema/cinemaReducerT'
 import { FilmImg } from './FilmImg'
 
-const SelectedMovie = memo<SelectedMovieT>(function SelectedMovie({
-  siteMode,
-  fontSize,
-}) {
+const SelectedMovie = memo(function SelectedMovie() {
+  const { siteMode } = useAppSelector(state => state.special)
+  const { fontSize } = useAppSelector(state => state.special)
   const { filmsObject } = useAppSelector(state => state.cinema)
   const dispatch = useAppDispatch()
 
@@ -91,8 +90,3 @@ const SelectedMovie = memo<SelectedMovieT>(function SelectedMovie({
 })
 
 export default SelectedMovie
-
-type SelectedMovieT = {
-  siteMode: string
-  fontSize: string
-}

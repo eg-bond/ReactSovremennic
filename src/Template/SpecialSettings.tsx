@@ -1,27 +1,36 @@
 import {
-  switchSiteMode,
-  switchSiteTheme,
-  switchImagesVisibility,
-  switchFontSize,
-} from '../REDUX/specialReducer'
-import { compose } from 'redux'
-import { connect } from 'react-redux'
-import {
-  FontButtons,
-  ImgSwitcher,
-  SiteModeButton,
-  ThemeButtons,
-} from './SpecialSettingsComp'
-import PropTypes from 'prop-types'
+  switchSiteMode_AC,
+  switchSiteTheme_AC,
+  switchImagesVisibility_AC,
+  switchFontSize_AC,
+} from '../REDUX/special/specialReducer'
 
-function SpecialSettings({
-  switchSiteTheme,
-  switchImagesVisibility,
-  switchFontSize,
-  imgHidden,
-  siteMode,
-  switchSiteMode,
-}) {
+import { useAppDispatch, useAppSelector } from '../REDUX/store'
+import { useCallback } from 'react'
+import { SpecialStateT } from '../REDUX/special/spacialReducerT'
+import { SiteModeButton } from './SpecialSettingsComponents/SiteModeButton'
+import { ThemeButtons } from './SpecialSettingsComponents/ThemeButtons'
+import { FontButtons } from './SpecialSettingsComponents/FontButtons'
+import { ImgSwitcher } from './SpecialSettingsComponents/ImgSwitcher'
+
+function SpecialSettings() {
+  const { siteMode } = useAppSelector(state => state.special)
+  const { imgHidden } = useAppSelector(state => state.special)
+  const dispatch = useAppDispatch()
+
+  const switchSiteTheme = useCallback((theme: SpecialStateT['theme']) => {
+    dispatch(switchSiteTheme_AC({ theme }))
+  }, [])
+  const switchImagesVisibility = useCallback((value: boolean) => {
+    dispatch(switchImagesVisibility_AC({ value }))
+  }, [])
+  const switchFontSize = useCallback((fontSize: SpecialStateT['fontSize']) => {
+    dispatch(switchFontSize_AC({ fontSize }))
+  }, [])
+  const switchSiteMode = useCallback((mode: SpecialStateT['siteMode']) => {
+    dispatch(switchSiteMode_AC({ mode }))
+  }, [])
+
   if (siteMode === 'default') {
     return (
       <div className={`space`}>
@@ -50,27 +59,4 @@ function SpecialSettings({
   )
 }
 
-SpecialSettings.propTypes = {
-  switchSiteTheme: PropTypes.func.isRequired,
-  switchImagesVisibility: PropTypes.func.isRequired,
-  switchFontSize: PropTypes.func.isRequired,
-  imgHidden: PropTypes.bool.isRequired,
-  siteMode: PropTypes.string.isRequired,
-  switchSiteMode: PropTypes.func.isRequired,
-}
-
-let mapStateToProps = state => ({
-  siteMode: state.special.siteMode,
-  imgHidden: state.special.imgHidden,
-})
-
-const SpecialSettingsComposed = compose(
-  connect(mapStateToProps, {
-    switchSiteMode,
-    switchSiteTheme,
-    switchImagesVisibility,
-    switchFontSize,
-  })
-)(SpecialSettings)
-
-export default SpecialSettingsComposed
+export default SpecialSettings

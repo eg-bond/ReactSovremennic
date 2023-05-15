@@ -9,7 +9,7 @@ import FilmsSpecialPage from './FilmsSpecial/FilmsSpecialPage'
 const Rules = lazy(() => import('./Rules/Rules'))
 const About = lazy(() => import('./About/About'))
 
-const Content = memo(function Content({ isMobile, films, siteMode, fontSize }) {
+const Content = memo(function Content({ isMobile, films }) {
   const aboutLoaded = useRef(false)
   const rulesLoaded = useRef(false)
 
@@ -18,35 +18,14 @@ const Content = memo(function Content({ isMobile, films, siteMode, fontSize }) {
       <Routes>
         <Route
           path='/'
-          element={
-            <IndexContent
-              siteMode={siteMode}
-              films={films}
-              isMobile={isMobile}
-            />
-          }
+          element={<IndexContent films={films} isMobile={isMobile} />}
         />
-        <Route
-          path='seance'
-          element={<Seance isMobile={isMobile} siteMode={siteMode} />}
-        />
-        <Route
-          path='sushi'
-          element={<SushiContainer siteMode={siteMode} isMobile={isMobile} />}
-        />
-        <Route
-          path='movies/:film_id'
-          element={<SelectedMovie siteMode={siteMode} fontSize={fontSize} />}
-        />
-        <Route
-          path='films'
-          element={<FilmsSpecialPage siteMode={siteMode} />}
-        />
+        <Route path='seance' element={<Seance isMobile={isMobile} />} />
+        <Route path='sushi' element={<SushiContainer isMobile={isMobile} />} />
+        <Route path='movies/:film_id' element={<SelectedMovie />} />
+        <Route path='films' element={<FilmsSpecialPage />} />
         {/* lazy routes */}
-        <Route
-          path='about'
-          element={<About siteMode={siteMode} loaded={aboutLoaded} />}
-        />
+        <Route path='about' element={<About loaded={aboutLoaded} />} />
         <Route path='rules' element={<Rules loaded={rulesLoaded} />} />
       </Routes>
     </Suspense>

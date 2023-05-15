@@ -1,6 +1,13 @@
+import { SpecialStateT } from './REDUX/special/spacialReducerT'
+
 // Helpers for siteMode "special"
-export const modifiedClass = (cl, siteMode) =>
-  `${cl} ${siteMode === 'default' ? cl + '--default' : cl + '--special'}`
+export const modifiedClass = (
+  cl: string,
+  siteMode: SpecialStateT['siteMode']
+) =>
+  `${cl} ${
+    siteMode === 'default' ? cl + '--default' : cl + '--special'
+  }` as `${typeof cl} ${typeof cl}${'--default' | '--special'}`
 
 const themeAppColors = {
   blackWhite: {
@@ -43,7 +50,7 @@ export const themeLogoFile = {
   blackBlue: 'logoBB.png',
   yellowBrown: 'logoYB.png',
   blueGreen: 'logoBG.png',
-}
+} as const
 
 export const themeLogo = theme => {
   switch (theme) {

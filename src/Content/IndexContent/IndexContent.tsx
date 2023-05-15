@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom'
 import FilmsSpecial from '../FilmsSpecial/FilmsSpecial'
 import LiteYouTubeEmbed from 'react-lite-youtube-embed'
 import BarSwiper from '../../Template/BarSwiper'
+import { useAppSelector } from '../../REDUX/store'
 
-function IndexContent({ siteMode, films, isMobile }) {
+function IndexContent({ films, isMobile }) {
+  const { siteMode } = useAppSelector(state => state.special)
+
   return (
     <div className='content__gridLeftItem--3fr'>
       {siteMode === 'default' && (

@@ -1,7 +1,7 @@
 // import { combineReducers, createStore } from 'redux'
 import seanceReduser from './seance/seanceReducer'
 import cinemaReduser from './cinema/cinemaReducer'
-import specialReduser from './specialReducer'
+import specialReduser from './special/specialReducer'
 import { configureStore } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 

@@ -2,8 +2,9 @@ import { memo } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { themeLogoFile, modifiedClass } from '../helpers'
 import SpecialSettings from './SpecialSettings'
+import { SpecialStateT } from '../REDUX/special/spacialReducerT'
 
-const NavItem = ({ url, title }) => (
+const NavItem = ({ url, title }: { url: string; title: string }) => (
   <li>
     <NavLink
       to={url}
@@ -13,16 +14,20 @@ const NavItem = ({ url, title }) => (
   </li>
 )
 
-const Navigation = memo(function Navigation({ siteMode, fontSize, theme }) {
-  const modifyCl = cl => modifiedClass(cl, siteMode)
-  let fsNavCl =
+const Navigation = memo<NavigationT>(function Navigation({
+  siteMode,
+  fontSize,
+  theme,
+}) {
+  const modifyCl = (cl: string) => modifiedClass(cl, siteMode)
+  const fsNavCl =
     fontSize === '21px'
       ? 'navigation--fs150'
       : fontSize === '26px'
       ? 'navigation--fs200'
       : ''
 
-  let navClasses = [modifyCl('navigation'), fsNavCl].join(' ')
+  const navClasses = [modifyCl('navigation'), fsNavCl].join(' ')
 
   return (
     <div className='container'>
@@ -52,3 +57,9 @@ const Navigation = memo(function Navigation({ siteMode, fontSize, theme }) {
 })
 
 export default Navigation
+
+type NavigationT = {
+  siteMode: SpecialStateT['siteMode']
+  fontSize: SpecialStateT['fontSize']
+  theme: SpecialStateT['theme']
+}

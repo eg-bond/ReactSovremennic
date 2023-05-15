@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 import 'swiper/scss'
 import 'swiper/scss/navigation'
 import 'swiper/scss/pagination'
@@ -8,40 +8,43 @@ import Navigation from './Template/Navigation'
 import BottomSwiper from './Template/BottomSwiper'
 import Footer from './Template/Footer'
 import { setTodayScheduleItem_AC } from './REDUX/seance/seanceReducer'
-import { compose } from 'redux'
-import { connect } from 'react-redux'
 import Adv from './Template/Adv'
-import {
-  createFilmsTodayArr_AC,
-  createFilmsObject_AC,
-} from './REDUX/cinema/cinemaReducer'
-import { switchSiteMode, switchFontSize } from './REDUX/specialReducer'
+import { createFilmsTodayArr_AC } from './REDUX/cinema/cinemaReducer'
+import { switchSiteMode_AC } from './REDUX/special/specialReducer'
 import { changeAppColors, modifiedClass, queries } from './helpers'
 import { useMediaQuery } from '@material-ui/core'
 import Content from './Content/Content'
+import { useAppDispatch, useAppSelector } from './REDUX/store'
+import { SpecialStateT } from './REDUX/special/spacialReducerT'
 
-const App = ({
-  // createActualDatesArr,
-  setTodayScheduleItem_AC,
-  createFilmsTodayArr_AC,
-  films,
-  filmsToday,
-  filmsObject,
-  createFilmsObject_AC,
-  switchSiteMode,
-  siteMode,
-  theme,
-  imgHidden,
-  fontSize,
-}) => {
+const App = () => {
+  const { films } = useAppSelector(state => state.cinema)
+  const { filmsToday } = useAppSelector(state => state.cinema)
+  const { siteMode } = useAppSelector(state => state.special)
+  const { theme } = useAppSelector(state => state.special)
+  const { imgHidden } = useAppSelector(state => state.special)
+  const { fontSize } = useAppSelector(state => state.special)
+  const dispatch = useAppDispatch()
+
+  const switchSiteMode = useCallback((mode: SpecialStateT['siteMode']) => {
+    dispatch(switchSiteMode_AC({ mode }))
+  }, [])
+
+  const createFilmsTodayArr = useCallback(() => {
+    dispatch(createFilmsTodayArr_AC())
+  }, [])
+  const setTodayScheduleItem = useCallback(() => {
+    dispatch(setTodayScheduleItem_AC())
+  }, [])
+
   // Initialization
   useEffect(() => {
-    setTodayScheduleItem_AC()
-    createFilmsTodayArr_AC()
-  }, [setTodayScheduleItem_AC, createFilmsTodayArr_AC])
+    setTodayScheduleItem()
+    createFilmsTodayArr()
+  }, [setTodayScheduleItem, createFilmsTodayArr])
 
   // Media query hook.
-  let isMobile = useMediaQuery(queries.mobile)
+  const isMobile = useMediaQuery(queries.mobile)
 
   // Changes siteMode to 'default' when switching from desktop to mobile
   useEffect(() => {
@@ -60,7 +63,7 @@ const App = ({
     changeAppColors(theme, siteMode)
   }, [theme, siteMode])
 
-  let mainContainerClasses = [
+  const mainContainerClasses = [
     modifiedClass('mainContainer', siteMode),
     'flex-wrapper',
   ].join(' ')
@@ -84,11 +87,7 @@ const App = ({
           <hr className='separator hidden-xs' />
 
           <div className={'mainContainer__content'}>
-            <Content
-              siteMode={siteMode}
-              isMobile={isMobile}
-              fontSize={fontSize}
-            />
+            <Content isMobile={isMobile} fontSize={fontSize} />
             {!isMobile && <Adv />}
           </div>
 
@@ -106,25 +105,4 @@ const App = ({
   )
 }
 
-let mapStateToProps = state => ({
-  films: state.cinema.films,
-  filmsToday: state.cinema.filmsToday,
-  filmsObject: state.cinema.filmsObject,
-  siteMode: state.special.siteMode,
-  theme: state.special.theme,
-  imgHidden: state.special.imgHidden,
-  fontSize: state.special.fontSize,
-})
-
-const AppComposed = compose(
-  connect(mapStateToProps, {
-    setTodayScheduleItem_AC,
-    // createActualDatesArr,
-    createFilmsTodayArr_AC,
-    createFilmsObject_AC,
-    switchSiteMode,
-    switchFontSize,
-  })
-)(App)
-
-export default AppComposed
+export default App

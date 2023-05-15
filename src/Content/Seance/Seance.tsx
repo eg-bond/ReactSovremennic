@@ -17,8 +17,9 @@ import { TableContent } from './seanceComponents/TableContent'
 // Grow animation time variable
 let trDurationSeance = 0
 
-const Seance = memo<SeancePropsT>(function Seance({ isMobile, siteMode }) {
+const Seance = memo<{ isMobile: boolean }>(function Seance({ isMobile }) {
   //------------------------------------------------------------------
+  const { siteMode } = useAppSelector(state => state.special)
   const { datesArr } = useAppSelector(state => state.seance)
   const { buttonTitle } = useAppSelector(state => state.seance)
   const { activeScheduleItemKey } = useAppSelector(state => state.seance)
@@ -105,9 +106,4 @@ const Seance = memo<SeancePropsT>(function Seance({ isMobile, siteMode }) {
 
 export default Seance
 
-type SeancePropsT = {
-  isMobile: boolean
-  //special reducer
-  siteMode: string
-}
 export type ChangeTableContentT = (key: DateKeysT, title: string) => void
