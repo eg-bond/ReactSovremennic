@@ -30,9 +30,12 @@ const themeAppColors = {
     main: '#b4e5ee',
     secondary: '#5e4005',
   },
-}
+} as const
 
-export const changeAppColors = (theme, siteMode) => {
+export const changeAppColors = (
+  theme: SpecialStateT['theme'],
+  siteMode: SpecialStateT['siteMode']
+) => {
   const docStyle = document.documentElement.style
 
   docStyle.setProperty('--mainClr', themeAppColors[theme].main)
@@ -52,7 +55,7 @@ export const themeLogoFile = {
   blueGreen: 'logoBG.png',
 } as const
 
-export const themeLogo = theme => {
+export const themeLogo = (theme: SpecialStateT['theme']) => {
   switch (theme) {
     case 'blackWhite':
       return 'logo'
@@ -75,19 +78,19 @@ export const queries = {
   desktop: '(min-width: 768px) and (min-height: 500px)',
   mobile:
     '(max-width: 767.5px), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)',
-}
+} as const
 
 // Scroll up functions
 export const scrollToTop = () => window.scrollTo(0, 0)
 export const scrollToNavigation = () => window.scrollTo(0, 200)
 
 // Delay promise
-export const delay = ms => {
-  return new Promise(res => setTimeout(() => res(), ms))
+export const delay = (ms: number) => {
+  return new Promise<void>(res => setTimeout(() => res(), ms))
 }
 
 // after decorator (invokes function after it is called necessary amount of times)
-export function after(times, func) {
+export function after(times: number, func: (arg0: IArguments) => unknown) {
   return function () {
     if (--times < 1) {
       return func.apply(this, arguments)

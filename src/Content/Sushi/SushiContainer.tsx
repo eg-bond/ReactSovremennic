@@ -1,13 +1,10 @@
 import { useEffect, useState, useCallback, useRef } from 'react'
 import Sushi from './Sushi'
-import { sushiElems } from './sushiHelpers'
+import { sushiElems, trDuration } from './sushiHelpers'
 import useTimeout from '../../hooks'
 import { useAppSelector } from '../../REDUX/store'
 
-// animation duration
-export let trDuration = 200
-
-const SushiContainer = ({ isMobile }) => {
+const SushiContainer = ({ isMobile }: { isMobile: boolean }) => {
   const { siteMode } = useAppSelector(state => state.special)
 
   const currentImgKey = useRef('sushi')
@@ -26,7 +23,7 @@ const SushiContainer = ({ isMobile }) => {
   }, [])
 
   const changeTableContent = useCallback(
-    key => {
+    (key: string) => {
       if (key !== currentImgK) {
         switchVisibility(false)
         resetPBTimeout()
@@ -36,7 +33,7 @@ const SushiContainer = ({ isMobile }) => {
         }, trDuration)
       }
     },
-    [currentImgK, switchImg]
+    [currentImgK, switchImg, resetPBTimeout]
   )
 
   // Switches to default sushi img if siteMode was changed while swiper images was active

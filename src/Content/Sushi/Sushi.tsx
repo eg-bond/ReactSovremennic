@@ -3,8 +3,9 @@ import { MobileSushiNavigation } from './MobileSushiNavigation'
 import SushiSwipers from './SushiSwipers'
 import { SushiLinearProgress } from './SushiLinearProgress'
 import { sushiImgSrc } from './sushiHelpers'
+import type { CMB_T, SushiImageT, SushiT } from './sushiT'
 
-const SushiImage = memo(function SushiImage({
+const SushiImage = memo<SushiImageT>(function SushiImage({
   currentImgKey,
   swiperKeys,
   imgVisible,
@@ -15,6 +16,7 @@ const SushiImage = memo(function SushiImage({
     showProgressBar(false)
     clearPBTimeout()
   }
+  //@ts-ignore
   if (swiperKeys.includes(currentImgKey)) {
     return (
       <SushiSwipers
@@ -38,10 +40,14 @@ const SushiImage = memo(function SushiImage({
   )
 })
 
-const desktopMenuButton = (key, title, currentImgKey, changeImage) => {
+const desktopMenuButton = (
+  key: SushiT['currentImgKey'],
+  title: string,
+  currentImgKey: SushiT['currentImgKey'],
+  changeImage: SushiT['changeImage']
+) => {
   return (
     <button
-      data-testid={key}
       key={key + 'btn'}
       className={`fill_button ${currentImgKey === key ? 'active' : ''}`}
       onClick={() => changeImage(key)}>
@@ -50,7 +56,7 @@ const desktopMenuButton = (key, title, currentImgKey, changeImage) => {
   )
 }
 
-const CreateMenuButtons = memo(function CreateMenuButtons({
+const CreateMenuButtons = memo<CMB_T>(function CreateMenuButtons({
   siteMode,
   sushiElems,
   currentImgKey,
@@ -71,7 +77,7 @@ const Sushi = ({
   isMobile,
   showProgressBar,
   clearPBTimeout,
-}) => {
+}: SushiT) => {
   return (
     <>
       {!isMobile && (

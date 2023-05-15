@@ -5,8 +5,9 @@ import LiteYouTubeEmbed from 'react-lite-youtube-embed'
 import BarSwiper from '../../Template/BarSwiper'
 import { useAppSelector } from '../../REDUX/store'
 
-function IndexContent({ films, isMobile }) {
+function IndexContent({ isMobile }: { isMobile: boolean }) {
   const { siteMode } = useAppSelector(state => state.special)
+  const { films } = useAppSelector(state => state.cinema)
 
   return (
     <div className='content__gridLeftItem--3fr'>

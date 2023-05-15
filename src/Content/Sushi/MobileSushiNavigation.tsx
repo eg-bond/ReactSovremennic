@@ -2,8 +2,9 @@ import { useState, useCallback, memo } from 'react'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import Grow from '@material-ui/core/Grow'
 import { useRef } from 'react'
+import type { MobileSushiNavigationT, PopperContentT, SushiT } from './sushiT'
 
-const PopperContent = memo(function PopperContent({
+const PopperContent = memo<PopperContentT>(function PopperContent({
   defaultSushiArr,
   switchSushiImage,
   currentImgKey,
@@ -24,55 +25,60 @@ const PopperContent = memo(function PopperContent({
   )
 })
 
-export const MobileSushiNavigation = memo(function MobileSushiNavigation({
-  changeImage,
-  currentImgKey,
-  defaultSushiArr,
-}) {
-  const [open, setOpen] = useState(false)
-  // clickAwayActive нужен для того, чтобы ClickAwayListener был неактивен когда Popper скрыт
-  const clickAwayActive = useRef(false)
+export const MobileSushiNavigation = memo<MobileSushiNavigationT>(
+  function MobileSushiNavigation({
+    changeImage,
+    currentImgKey,
+    defaultSushiArr,
+  }) {
+    const [open, setOpen] = useState(false)
+    // clickAwayActive нужен для того, чтобы ClickAwayListener был неактивен когда Popper скрыт
+    const clickAwayActive = useRef(false)
 
-  const handleToggle = () => {
-    setOpen(prevOpen => !prevOpen)
-  }
-
-  const switchSushiImage = useCallback(
-    key => {
-      changeImage(key)
-      setOpen(false)
-    },
-    [changeImage]
-  )
-
-  const handleClose = () => {
-    if (clickAwayActive.current) {
-      setOpen(false)
+    const handleToggle = () => {
+      setOpen(prevOpen => !prevOpen)
     }
-  }
 
-  return (
-    <div>
-      <button className='seans_button_xs' onClick={handleToggle}>
-        <span className='seans_button_xs__title'>Меню</span>{' '}
-        <span className='glyphicon glyphicon-chevron-down' aria-hidden='true' />
-      </button>
-      <Grow
-        in={open}
-        onEntered={() => (clickAwayActive.current = true)}
-        onExited={() => (clickAwayActive.current = false)}>
-        <div className='popper__backdrop'>
-          <ClickAwayListener onClickAway={handleClose}>
-            <div className='popper popper__sushi'>
-              <PopperContent
-                defaultSushiArr={defaultSushiArr}
-                currentImgKey={currentImgKey}
-                switchSushiImage={switchSushiImage}
-              />
-            </div>
-          </ClickAwayListener>
-        </div>
-      </Grow>
-    </div>
-  )
-})
+    const switchSushiImage = useCallback(
+      (key: SushiT['currentImgKey']) => {
+        changeImage(key)
+        setOpen(false)
+      },
+      [changeImage]
+    )
+
+    const handleClose = () => {
+      if (clickAwayActive.current) {
+        setOpen(false)
+      }
+    }
+
+    return (
+      <div>
+        <button className='seans_button_xs' onClick={handleToggle}>
+          <span className='seans_button_xs__title'>Меню</span>{' '}
+          <span
+            className='glyphicon glyphicon-chevron-down'
+            aria-hidden='true'
+          />
+        </button>
+        <Grow
+          in={open}
+          onEntered={() => (clickAwayActive.current = true)}
+          onExited={() => (clickAwayActive.current = false)}>
+          <div className='popper__backdrop'>
+            <ClickAwayListener onClickAway={handleClose}>
+              <div className='popper popper__sushi'>
+                <PopperContent
+                  defaultSushiArr={defaultSushiArr}
+                  currentImgKey={currentImgKey}
+                  switchSushiImage={switchSushiImage}
+                />
+              </div>
+            </ClickAwayListener>
+          </div>
+        </Grow>
+      </div>
+    )
+  }
+)

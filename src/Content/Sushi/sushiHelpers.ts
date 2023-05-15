@@ -51,16 +51,20 @@ export const sushiElems = {
     'hot_dishes3',
     'hot_dishes4',
   ],
-}
+} as const
 
-export const sushiImgSrc = key => `./Images/sushi/${key}.webp`
+export const sushiImgSrc = (key: string) => `./Images/sushi/${key}.webp`
 
-export const preloadImg = (imgKey, imgPreloaded) => {
-  let key
+export const preloadImg = (
+  imgKey: string,
+  imgPreloaded: React.MutableRefObject<boolean>
+) => {
+  let key: string
+  //@ts-ignore
   sushiElems.swiperKeys.includes(imgKey) ? (key = imgKey + '1') : (key = imgKey)
 
-  return new Promise(res => {
-    let img = new window.Image()
+  return new Promise<void>(res => {
+    const img = new window.Image()
     img.src = sushiImgSrc(key)
     img.onload = () => {
       imgPreloaded.current = true
@@ -68,3 +72,6 @@ export const preloadImg = (imgKey, imgPreloaded) => {
     }
   })
 }
+
+// animation duration
+export const trDuration = 200
