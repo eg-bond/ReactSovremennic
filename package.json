@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "analyze_js": "source-map-explorer 'dist/assets/*.js'",
     "analyze_css": "source-map-explorer 'dist/assets/*.css' --no-border-checks",
-    "scrapper": "node ExternalScripts/Scrapper/scrapper.js",
+    "scrapper": "ts-node-esm ExternalScripts/Scrapper/scrapper.ts",
     "webp": "node ExternalScripts/WebpConverter/convertToWebP.js",
     "make_ps": "node ExternalScripts/PhotoShopScedule/makePSscedule.js",
     "get_scedule": "node ExternalScripts/Excel/insertSceduleFromXLSX.js"
@@ -42,6 +42,7 @@
     ]
   },
   "devDependencies": {
+    "@types/jsdom": "^21.1.1",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.59.5",
@@ -55,6 +56,7 @@
     "jsdom": "^21.1.1",
     "puppeteer": "^19.11.1",
     "source-map-explorer": "^2.5.3",
+    "ts-node": "^10.9.1",
     "typescript": "^5.0.4",
     "vite": "^4.3.2",
     "vite-plugin-live-reload": "^3.0.2",

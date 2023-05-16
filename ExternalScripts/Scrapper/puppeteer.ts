@@ -1,7 +1,7 @@
 import puppeteer from 'puppeteer'
 
 const LAUNCH_PUPPETEER_OPTS = {
-  headless: 'new',
+  headless: 'new' as const,
   args: [
     '--no-sandbox',
     '--disable-setuid-sandbox',
@@ -13,12 +13,12 @@ const LAUNCH_PUPPETEER_OPTS = {
 }
 
 const PAGE_PUPPETEER_OPTS = {
-  networkIdle2Timeout: 5000,
-  waitUntil: 'networkidle2',
+  // networkIdle2Timeout: 5000,
   timeout: 3000000,
+  waitUntil: 'networkidle2' as const,
 }
 
-export async function getPageContent(url) {
+export async function getPageContent(url: string) {
   const browser = await puppeteer.launch(LAUNCH_PUPPETEER_OPTS)
   const page = await browser.newPage()
   await page.goto(url, PAGE_PUPPETEER_OPTS)
