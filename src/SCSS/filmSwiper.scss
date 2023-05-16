@@ -1,32 +1,29 @@
-.cinemaSlider {
-  width: 100%;
-  cursor: grab;
-  height: auto;
-}
-.cinemaSlider .swiper-wrapper {
-  height: 325px;
-  @media ($mediaQuery1200) {
-    height: 275px;
-  }
-  @media ($mediaQuery992) {
-    height: 225px;
-  }
-}
 .cinemaSlider__container {
   padding: 7px 7px 0 7px;
+  width: 100%;
+  cursor: grab;
 }
-
-.cinemaSlider__slide {
-  height: 300px;
+.cinemaSlider .swiper-wrapper {
+  min-height: 315px;
   @media ($mediaQuery1200) {
-    height: 250px;
+    min-height: 263px;
   }
   @media ($mediaQuery992) {
-    height: 200px;
+    min-height: 212px;
   }
 }
 
-.cinemaSlider__slide__imgCont {
+// .cinemaSlider__slide {
+//   height: 300px;
+//   @media ($mediaQuery1200) {
+//     height: 250px;
+//   }
+//   @media ($mediaQuery992) {
+//     height: 200px;
+//   }
+// }
+
+.cinemaSlider__imgCont {
   height: 255px;
   overflow: hidden;
   border-radius: $imagesBR;
@@ -40,21 +37,21 @@
   }
 }
 
-.cinemaSlider__slide__imgCont img {
+.cinemaSlider .swSlide__img {
   position: absolute;
   overflow: hidden;
   width: 100%;
   height: 100%;
 }
 
-.cinemaSlider h1 {
+.cinemaSlider .swSlide__h1 {
   padding-left: 2%;
   margin: 5% 0 2% 0;
   white-space: pre;
   overflow: hidden;
   @extend %desktopParagraphsFS;
 }
-.cinemaSlider h1::before {
+.cinemaSlider .swSlide__h1::before {
   content: '';
   width: 20px;
   position: absolute;
@@ -63,7 +60,7 @@
   top: 0;
   background-image: linear-gradient(to right, transparent, var(--mainClr) 100%);
 }
-.cinemaSlider p {
+.cinemaSlider .swSlide__p {
   padding-left: 2.5%;
   letter-spacing: 0.01em;
   font-weight: normal;
@@ -74,23 +71,6 @@
   @media ($mediaQuery992) {
     font-size: 0.7rem;
   }
-}
-.cinemaSlider a {
-  color: var(--secondaryClr);
-  text-decoration: none;
-  cursor: pointer;
-  font-weight: normal;
-}
-.sliderSlide * {
-  transition: all 0.3s;
-  cursor: pointer;
-}
-.sliderSlide:hover img {
-  opacity: 0.85;
-}
-.sliderSlide:hover h1,
-.sliderSlide:hover p {
-  color: red;
 }
 
 .swiper-pagination-bullet {
@@ -103,7 +83,7 @@
 
 @media #{$mediaQueryMobile} {
   .cinemaSlider {
-    h4 {
+    .displayMobile {
       color: white;
       font-size: $mobileTitlesFS;
       margin: 0;
@@ -114,18 +94,18 @@
     padding: 0 15px 0 15px;
   }
   .cinemaSlider .swiper-wrapper {
-    height: auto;
+    min-height: auto;
   }
   .cinemaSlider__slide {
     height: 42vw;
   }
-  .cinemaSlider__slide__imgCont {
+  .cinemaSlider__imgCont {
     height: 34vw;
   }
-  .cinemaSlider h1 {
+  .cinemaSlider .swSlide__h1 {
     font-size: 2.4vw;
   }
-  .cinemaSlider p {
+  .cinemaSlider .swSlide__p {
     font-size: 2vw;
   }
   .swiper-pagination-bullet {

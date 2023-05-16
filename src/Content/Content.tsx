@@ -4,7 +4,7 @@ import SelectedMovie from './Cinema/SelectedMovie'
 import IndexContent from './IndexContent/IndexContent'
 import Seance from './Seance/Seance'
 import SushiContainer from './Sushi/SushiContainer'
-import FilmsSpecialPage from './FilmsSpecial/FilmsSpecialPage'
+// import FilmsSpecialPage from './FilmsSpecial/FilmsSpecialPage'
 
 const Rules = lazy(() => import('./Rules/Rules'))
 const About = lazy(() => import('./About/About'))
@@ -20,7 +20,7 @@ const Content = memo<{ isMobile: boolean }>(function Content({ isMobile }) {
         <Route path='seance' element={<Seance isMobile={isMobile} />} />
         <Route path='sushi' element={<SushiContainer isMobile={isMobile} />} />
         <Route path='movies/:film_id' element={<SelectedMovie />} />
-        <Route path='films' element={<FilmsSpecialPage />} />
+        {/* <Route path='films' element={<FilmsSpecialPage />} /> */}
         {/* lazy routes */}
         <Route path='about' element={<About loaded={aboutLoaded} />} />
         <Route path='rules' element={<Rules loaded={rulesLoaded} />} />

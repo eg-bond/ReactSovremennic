@@ -52,21 +52,25 @@ function bottomSwiperSlide(
 ) {
   return (
     <SwiperSlide
-      className={'sliderSlide bottomSwiper__slide'}
+      className={'swSlide bottomSwiper__slide'}
       key={film.link + 'BS' + i}>
-      <Link onClick={scrollToNavigation} to={`/movies/${film.link}`}>
+      <Link
+        className='swSlide__a'
+        onClick={scrollToNavigation}
+        to={`/movies/${film.link}`}>
         <div
-          className={`bottomSwiper__slide__imgCont ${
+          className={`bottomSwiper__imgCont ${
             !allImgLoaded ? 'skeleton skeleton-Gray' : ''
           }`}>
           <img
+            className='swSlide__img'
             onLoad={onLoad}
             src={`./Images/description/${film.link}_D.webp`}
             alt={film.title}
           />
         </div>
-        <h1>{film.title}</h1>
-        <p>{film.kind.split(', ')[0]}</p>
+        <h1 className='swSlide__h1'>{film.title}</h1>
+        <p className='swSlide__p'>{film.kind.split(', ')[0]}</p>
       </Link>
     </SwiperSlide>
   )

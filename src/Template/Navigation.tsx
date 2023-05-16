@@ -27,12 +27,10 @@ const Navigation = memo<NavigationT>(function Navigation({
       ? 'navigation--fs200'
       : ''
 
-  const navClasses = [modifyCl('navigation'), fsNavCl].join(' ')
-
   return (
     <div className='container'>
       <SpecialSettings />
-      <nav role='navigation' className={navClasses}>
+      <nav role='navigation' className={`navigation ${fsNavCl}`}>
         <div className={`${modifyCl('navigation__logo')}`}>
           <Link to='/'>
             <img
@@ -45,7 +43,7 @@ const Navigation = memo<NavigationT>(function Navigation({
         <div className={`${modifyCl('navigation__menu')}`}>
           <ul>
             <NavItem url='seance' title='РАСПИСАНИЕ' />
-            {siteMode === 'special' && <NavItem url='films' title='ФИЛЬМЫ' />}
+            {/* {siteMode === 'special' && <NavItem url='films' title='ФИЛЬМЫ' />} */}
             <NavItem url='about' title='О КИНОТЕАТРЕ' />
             <NavItem url='rules' title='ПРАВИЛА РАБОТЫ' />
             <NavItem url='sushi' title='СУШИ-БАР "КИН-НО"' />

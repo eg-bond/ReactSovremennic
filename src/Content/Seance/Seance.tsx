@@ -96,7 +96,7 @@ const Seance = memo<{ isMobile: boolean }>(function Seance({ isMobile }) {
       </Grow>
 
       <div className='separatorMobile separatorMobile--index' />
-      {siteMode === 'default' && <BarSwiper />}
+      <BarSwiper />
 
       <div className='separatorMobile separatorMobile--index' />
       {isMobile && <IndexAdvXS />}

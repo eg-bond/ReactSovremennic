@@ -1,6 +1,6 @@
 import IndexAdvXS from '../../Template/IndexAdvXS'
 import { Link } from 'react-router-dom'
-import FilmsSpecial from '../FilmsSpecial/FilmsSpecial'
+// import FilmsSpecial from '../FilmsSpecial/FilmsSpecial'
 import LiteYouTubeEmbed from 'react-lite-youtube-embed'
 import BarSwiper from '../../Template/BarSwiper'
 import { useAppSelector } from '../../REDUX/store'
@@ -53,10 +53,10 @@ function IndexContent({ isMobile }: { isMobile: boolean }) {
           осуществляется только от трех человек.
         </p>
         <div className='separatorMobile separatorMobile--index' />
-        {siteMode === 'default' && <BarSwiper />}
+        <BarSwiper />
       </div>
 
-      {siteMode === 'special' && <FilmsSpecial films={films} />}
+      {/* {siteMode === 'special' && <FilmsSpecial films={films} />} */}
 
       <div className='separatorMobile separatorMobile--index' />
 

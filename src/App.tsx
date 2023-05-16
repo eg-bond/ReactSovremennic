@@ -79,7 +79,8 @@ const App = () => {
         <div className='separatorMobile' />
 
         <div className={`container wrapper ${imgHidden ? 'hideImages' : ''}`}>
-          {siteMode === 'default' && <FilmSwiper films={films} />}
+          <FilmSwiper films={films} siteMode={siteMode} isMobile={isMobile} />
+          {/* {siteMode === 'default' && <FilmSwiper films={films} />} */}
 
           <div className='separatorMobile separatorMobile--MB' />
           <hr className='separator hidden-xs' />

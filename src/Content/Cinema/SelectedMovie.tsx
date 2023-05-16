@@ -1,7 +1,7 @@
 import { memo, useCallback, useEffect } from 'react'
 import { DescriptionTrailer } from './DescriptionTrailer'
 import { useParams } from 'react-router'
-import FilmsSpecial from '../FilmsSpecial/FilmsSpecial'
+// import FilmsSpecial from '../FilmsSpecial/FilmsSpecial'
 import { useAppDispatch, useAppSelector } from '../../REDUX/store'
 import { createFilmsObject_AC } from '../../REDUX/cinema/cinemaReducer'
 import type { FilmItemT } from '../../REDUX/cinema/cinemaReducerT'
@@ -84,7 +84,7 @@ const SelectedMovie = memo(function SelectedMovie() {
           fontSize={fontSize}
         />
       </div>
-      {siteMode === 'special' && <FilmsSpecial />}
+      {/* {siteMode === 'special' && <FilmsSpecial />} */}
     </div>
   )
 })
