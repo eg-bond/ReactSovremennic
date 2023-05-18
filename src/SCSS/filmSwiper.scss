@@ -1,16 +1,99 @@
+.cinemaSlider {
+  position: relative;
+  --1920Height: 315px;
+  --1200Height: 263px;
+  --992Height: 212px;
+  --arrowH1920: calc(var(--1920Height) / 3.5);
+  --arrowH1200: calc(var(--1200Height) / 3.5);
+  --arrowH992: calc(var(--992Height) / 3.5);
+}
+
 .cinemaSlider__container {
   padding: 7px 7px 0 7px;
   width: 100%;
   cursor: grab;
 }
 .cinemaSlider .swiper-wrapper {
-  min-height: 315px;
+  min-height: var(--1920Height);
   @media ($mediaQuery1200) {
-    min-height: 263px;
+    min-height: var(--1200Height);
   }
   @media ($mediaQuery992) {
-    min-height: 212px;
+    min-height: var(--992Height);
   }
+}
+.arrow {
+  z-index: 10;
+  // border: solid;
+  color: black;
+  cursor: pointer;
+  height: var(--arrowH1920);
+  width: 45px;
+  position: absolute;
+  transition: 0.3s;
+
+  top: calc((var(--1920Height) - var(--arrowH1920)) / 2);
+  @media ($mediaQuery1200) {
+    height: var(--arrowH1920);
+    top: calc((var(--1200Height) - var(--arrowH1200)) / 2);
+  }
+  @media ($mediaQuery992) {
+    height: var(--arrowH992);
+    width: 38px;
+    top: calc((var(--992Height) - var(--arrowH992)) / 2);
+  }
+}
+.arrow__right {
+  right: -4rem;
+  @media ($mediaQuery992) {
+    right: -3.3rem;
+  }
+}
+.arrow__left {
+  left: -4rem;
+  rotate: (180deg);
+  transform: translateY(-3px);
+  @media ($mediaQuery992) {
+    left: -3.3rem;
+  }
+}
+
+.arrow-top,
+.arrow-bottom {
+  background-color: var(--secondaryClr);
+  height: 4px;
+  left: -5px;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+}
+
+.arrow-top:after,
+.arrow-bottom:after {
+  background-color: #fff;
+  content: '';
+  height: 100%;
+  position: absolute;
+  top: 0;
+}
+
+.arrow-top {
+  transform: rotate(45deg);
+  transform-origin: bottom right;
+}
+.arrow-top:after {
+  left: 100%;
+  right: 0;
+  transition-delay: 0s;
+}
+
+.arrow-bottom {
+  transform: rotate(-45deg);
+  transform-origin: top right;
+}
+.arrow-bottom:after {
+  left: 0;
+  right: 100%;
 }
 
 // .cinemaSlider__slide {
@@ -78,7 +161,7 @@
   background-color: var(--secondaryClr);
 }
 .cinemaSlider .swiper-pagination-bullets {
-  bottom: 10px !important;
+  bottom: 6px !important;
 }
 
 @media #{$mediaQueryMobile} {
