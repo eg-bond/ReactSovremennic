@@ -1,59 +1,61 @@
-import { memo, useState } from 'react'
+import { memo, useState, useCallback } from 'react'
+import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { Link } from 'react-router-dom'
-import SwiperCore, { Autoplay } from 'swiper'
-import { Swiper, SwiperSlide } from 'swiper/react'
 import { after, scrollToNavigation } from '../helpers'
 import { CinemaStateT } from '../REDUX/cinema/cinemaReducerT'
 
-SwiperCore.use([Autoplay])
-
-const BottomSwiper = memo<BottomSwiperT>(function BottomSwiper({
+const BottomSwiperN = memo<BottomSwiperT>(function BottomSwiperN({
   isMobile,
   filmsToday,
 }) {
   const [allImgLoaded, setImgLoaded] = useState(false)
 
+  //deps!!!!!!!!!!!
+  const onLoad = useCallback(
+    () =>
+      after(filmsToday.length, () => {
+        setImgLoaded(true)
+      }),
+    []
+  )
+
   if (isMobile || filmsToday[0] === undefined) {
     return null
   }
 
-  const onLoad = after(filmsToday.length, () => {
-    setImgLoaded(true)
-  })
-
-  const params = {
-    slidesPerView: 4,
-    spaceBetween: 25,
-    className: `bottomSwiper__container`,
-    loop: true,
-    autoplay: {
-      delay: 3000,
-      pauseOnMouseEnter: true,
-      disableOnInteraction: false,
-    },
-  }
-
   return (
-    <div className={`bottomSwiper`}>
-      <Swiper {...params}>
-        {filmsToday.map((film, i) =>
-          bottomSwiperSlide(film, i, onLoad, allImgLoaded)
-        )}
-      </Swiper>
-    </div>
+    <Splide
+      className={'bottomSwiper'}
+      options={{
+        perPage: 4,
+        perMove: 1,
+        pagination: false,
+        gap: '2rem',
+        arrows: false,
+        // slideFocus: false,
+        // navigation: false,
+        type: 'loop',
+        autoplay: true,
+        interval: 2000,
+        pauseOnHover: true,
+        pauseOnFocus: true,
+      }}>
+      {filmsToday.map((item, i) => (
+        <Slide
+          key={i + 'BSl'}
+          film={item}
+          allImgLoaded={allImgLoaded}
+          onLoad={onLoad}
+        />
+      ))}
+    </Splide>
   )
 })
 
-function bottomSwiperSlide(
-  film: CinemaStateT['filmsToday'][0],
-  i: number,
-  onLoad: () => void,
-  allImgLoaded: boolean
-) {
+const Slide = memo(function Slide({ film, allImgLoaded, onLoad }: SlideT) {
+  // skeleton не убирается!!!!!!!!!!!!!!!!
   return (
-    <SwiperSlide
-      className={'swSlide bottomSwiper__slide'}
-      key={film.link + 'BS' + i}>
+    <SplideSlide className={'swSlide bottomSwiper__slide'}>
       <Link
         className='swSlide__a'
         onClick={scrollToNavigation}
@@ -72,11 +74,17 @@ function bottomSwiperSlide(
         <h1 className='swSlide__h1'>{film.title}</h1>
         <p className='swSlide__p'>{film.kind.split(', ')[0]}</p>
       </Link>
-    </SwiperSlide>
+    </SplideSlide>
   )
+})
+
+type SlideT = {
+  film: CinemaStateT['films'][0]
+  allImgLoaded: boolean
+  onLoad: () => void
 }
 
-export default BottomSwiper
+export default BottomSwiperN
 
 type BottomSwiperT = {
   isMobile: boolean

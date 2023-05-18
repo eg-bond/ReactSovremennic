@@ -19,30 +19,32 @@ const FilmsSlider = memo<FilmSwiperT>(function FilmsSlider({
   )
 
   return (
-    <Splide
-      className={'cinemaSlider'}
-      options={{
-        perPage: isMobile ? 3 : 5,
-        drag: isMobile ? 'free' : true,
-        perMove: 1,
-        pagination: false,
-        gap: '0.6rem',
-        arrows: isMobile ? false : true,
-      }}>
-      {films.map((item, i) => (
-        <Slide
-          key={i + 'FS'}
-          film={item}
-          allImgLoaded={allImgLoaded}
-          onLoad={onLoad}
-        />
-      ))}
-    </Splide>
+    <div className={'cinemaSlider'}>
+      <h4 className='displayMobile'>Фильмы</h4>
+      <Splide
+        options={{
+          perPage: isMobile ? 3 : 5,
+          drag: isMobile ? 'free' : true,
+          perMove: 1,
+          pagination: false,
+          gap: '0.6rem',
+          arrows: isMobile ? false : true,
+        }}>
+        {films.map((item, i) => (
+          <Slide
+            key={i + 'FS'}
+            film={item}
+            allImgLoaded={allImgLoaded}
+            onLoad={onLoad}
+          />
+        ))}
+      </Splide>
+    </div>
   )
 })
 
 const Slide = memo(function Slide({ film, allImgLoaded, onLoad }: SlideT) {
-  console.log('one slide')
+  // skeleton не убирается!!!!!!!!!!!!!!!!
   return (
     <SplideSlide className={'swSlide cinemaSlider__slide'}>
       <Link className='swSlide__a' to={`movies/${film.link}`}>
@@ -51,7 +53,7 @@ const Slide = memo(function Slide({ film, allImgLoaded, onLoad }: SlideT) {
             !allImgLoaded ? 'skeleton skeleton-Gray' : ''
           }`}>
           <img
-            className='spSlide__img'
+            className='swSlide__img'
             onLoad={onLoad}
             src={`./Images/top_menu/${film.link}.webp`}
             alt={film.title}
