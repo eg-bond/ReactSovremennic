@@ -1,4 +1,4 @@
-import { memo, useState, useEffect } from 'react'
+import { memo, useState, useEffect, useCallback } from 'react'
 import SwiperCore, { Pagination, Autoplay } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Link } from 'react-router-dom'
@@ -23,13 +23,47 @@ const FilmSwiper = memo<FilmSwiperT>(function FilmSwiper({
   const [allImgLoaded, setImgLoaded] = useState(false)
   // saves swiper instance
   const [swiper, setSwiper] = useState({} as SwiperT)
+  const [disabledArrow, setDisabledArrow] = useState(
+    'none' as 'none' | 'left' | 'right'
+  )
+  // console.log(disabledArrow)
+  const onFocus = useCallback(
+    e => {
+      if ('on' in swiper) {
+        const elPar = e.target.offsetParent
+
+        if (![...elPar.classList].includes('swiper-slide-visible')) {
+          if (Number(e.relatedTarget.id[0]) - Number(e.target.id[0]) < 0) {
+            swiper.slideNext()
+          } else {
+            swiper.slidePrev()
+          }
+          // console.log(e.relatedTarget)
+          // console.log(e.target.relatedTarget.id)
+        }
+      }
+    },
+    [swiper]
+  )
   // turns on/off autoplay when switching from mobile to desktop
   useEffect(() => {
     if ('on' in swiper) {
       swiper.on('progress', function ({ isEnd, isBeginning }) {
-        if (isBeginning) console.log('beg')
-        if (isEnd) console.log('end')
+        // console.log('progressEv')
+
+        if (isBeginning) {
+          setDisabledArrow('left')
+          return
+        }
+        if (isEnd) {
+          setDisabledArrow('right')
+          return
+        }
+        setDisabledArrow('none')
       })
+      // swiper.on('slideChange', function () {
+      //   console.log('some')
+      // })
     }
 
     return () => {
@@ -37,15 +71,15 @@ const FilmSwiper = memo<FilmSwiperT>(function FilmSwiper({
     }
   }, [swiper])
 
-  useEffect(() => {
-    !isMobile ? swiper?.autoplay?.start() : swiper?.autoplay?.stop()
-  }, [isMobile, swiper])
+  // useEffect(() => {
+  //   !isMobile ? swiper?.autoplay?.start() : swiper?.autoplay?.stop()
+  // }, [isMobile, swiper])
   // turns on/off autoplay when siteMode changes
-  useEffect(() => {
-    siteMode === 'default'
-      ? swiper?.autoplay?.start()
-      : swiper?.autoplay?.stop()
-  }, [siteMode, swiper])
+  // useEffect(() => {
+  //   siteMode === 'default'
+  //     ? swiper?.autoplay?.start()
+  //     : swiper?.autoplay?.stop()
+  // }, [siteMode, swiper])
 
   const onLoad = after(films.length, () => {
     setImgLoaded(true)
@@ -64,24 +98,34 @@ const FilmSwiper = memo<FilmSwiperT>(function FilmSwiper({
       {!isMobile && (
         <>
           <div
-            type='checkbox'
-            tabIndex={0}
-            className='arrow arrow__left'
+            // tabIndex={0}
+            className={`arrow arrow__left `}
             //@ts-ignore
             onKeyDown={nextSlideKey}
             onClick={() => swiper.slidePrev()}>
-            <div className='arrow-top'></div>
-            <div className='arrow-bottom'></div>
+            <div
+              className={`arrow-top ${
+                disabledArrow === 'left' ? 'arrow-disabled' : ''
+              }`}></div>
+            <div
+              className={`arrow-bottom ${
+                disabledArrow === 'left' ? 'arrow-disabled' : ''
+              }`}></div>
           </div>
           <div
-            aria-disabled={true}
             tabIndex={0}
             className='arrow arrow__right'
             //@ts-ignore
             onKeyDown={prevSlideKey}
             onClick={() => swiper.slideNext()}>
-            <div className='arrow-top'></div>
-            <div className='arrow-bottom'></div>
+            <div
+              className={`arrow-top ${
+                disabledArrow === 'right' ? 'arrow-disabled' : ''
+              }`}></div>
+            <div
+              className={`arrow-bottom ${
+                disabledArrow === 'right' ? 'arrow-disabled' : ''
+              }`}></div>
           </div>
         </>
       )}
@@ -93,6 +137,7 @@ const FilmSwiper = memo<FilmSwiperT>(function FilmSwiper({
           type: 'bullets',
           dynamicBullets: true,
         }}
+        watchSlidesProgress={true}
         breakpoints={{
           250: {
             slidesPerView: 3.5,
@@ -104,7 +149,9 @@ const FilmSwiper = memo<FilmSwiperT>(function FilmSwiper({
             slidesPerView: 5,
           },
         }}>
-        {films.map(item => filmSwiperSlide(item, allImgLoaded, onLoad))}
+        {films.map((item, i) =>
+          filmSwiperSlide(item, i, allImgLoaded, onLoad, onFocus)
+        )}
       </Swiper>
     </div>
   )
@@ -112,14 +159,20 @@ const FilmSwiper = memo<FilmSwiperT>(function FilmSwiper({
 
 function filmSwiperSlide(
   film: CinemaStateT['films'][0],
+  i: number,
   allImgLoaded: boolean,
-  onLoad: () => void
+  onLoad: () => void,
+  onFocus: () => void
 ) {
   return (
     <SwiperSlide
       className={'swSlide cinemaSlider__slide'}
       key={film.link + 'FS'}>
-      <Link className='swSlide__a' to={`movies/${film.link}`}>
+      <Link
+        id={i + 'FS'}
+        onFocus={onFocus}
+        className='swSlide__a'
+        to={`movies/${film.link}`}>
         <div
           className={`cinemaSlider__imgCont ${
             !allImgLoaded ? 'skeleton skeleton-Gray' : ''

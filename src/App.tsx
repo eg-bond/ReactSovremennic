@@ -3,7 +3,7 @@ import 'swiper/scss'
 import 'swiper/scss/navigation'
 import 'swiper/scss/pagination'
 import './SCSS/style.scss'
-import FilmSwiper from './Template/FilmSwiper'
+// import FilmSwiper from './Template/FilmSwiper'
 import Navigation from './Template/Navigation'
 import BottomSwiper from './Template/BottomSwiper'
 import Footer from './Template/Footer'
@@ -16,6 +16,7 @@ import { useMediaQuery } from '@material-ui/core'
 import Content from './Content/Content'
 import { useAppDispatch, useAppSelector } from './REDUX/store'
 import { SpecialStateT } from './REDUX/special/spacialReducerT'
+import FilmsSlider from './Template/FilmsSlider'
 
 const App = () => {
   const { films } = useAppSelector(state => state.cinema)
@@ -79,7 +80,8 @@ const App = () => {
         <div className='separatorMobile' />
 
         <div className={`container wrapper ${imgHidden ? 'hideImages' : ''}`}>
-          <FilmSwiper films={films} siteMode={siteMode} isMobile={isMobile} />
+          {/* <FilmSwiper films={films} siteMode={siteMode} isMobile={isMobile} /> */}
+          <FilmsSlider films={films} isMobile={isMobile} />
           {/* {siteMode === 'default' && <FilmSwiper films={films} />} */}
 
           <div className='separatorMobile separatorMobile--MB' />

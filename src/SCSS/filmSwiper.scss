@@ -58,6 +58,11 @@
   }
 }
 
+.arrow-disabled {
+  background-color: gray !important;
+  // cursor: default;
+}
+
 .arrow-top,
 .arrow-bottom {
   background-color: var(--secondaryClr);
