@@ -15,7 +15,7 @@ const AdvContent = memo(function AdvContent() {
         <img onLoad={onLoad} src='./Images/vr_image.webp' alt='vr' />
       </div>
 
-      <Link className={'linkWrapper'} to='/sushi'>
+      <Link tabIndex={2} className={'linkWrapper'} to='/sushi'>
         <div
           className={`desktopAdv desktopAdv--3 ${!loaded ? 'skeleton' : ''}`}>
           <img onLoad={onLoad} src='./Images/72.gif' alt='Суши-бар' />

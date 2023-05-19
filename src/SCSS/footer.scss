@@ -2,17 +2,20 @@
   text-align: center;
   padding: 2%;
   background-color: var(--secondaryClr);
-  a {
+  .footer__a {
     color: var(--mainClr);
     @extend %desktopParagraphsFS;
     &:hover {
+      text-decoration: underline;
+    }
+    &:focus {
       text-decoration: underline;
     }
   }
 
   @media #{$mediaQueryMobile} {
     width: 100%;
-    a {
+    .footer__a {
       font-size: $mobileParagraphsFS;
     }
   }

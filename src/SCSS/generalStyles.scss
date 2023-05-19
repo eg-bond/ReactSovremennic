@@ -242,8 +242,9 @@ $backImgHeight992: 213px;
   border: $border1px;
   border-radius: $imagesBR;
   overflow: hidden;
+  margin-bottom: 2%;
   @media #{$mediaQueryMobile} {
-    margin: 0 0 3% 0;
+    margin-bottom: 3%;
   }
 }
 .embed-responsive .embed-responsive-item,

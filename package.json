@@ -61,6 +61,7 @@
     "vite-plugin-live-reload": "^3.0.2",
     "vite-plugin-qrcode": "^0.2.1",
     "vite-plugin-remove-console": "^2.1.1",
+    "vite-plugin-svgr": "^3.2.0",
     "webp-converter": "^2.3.3",
     "xlsx": "^0.18.5"
   }

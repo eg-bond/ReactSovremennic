@@ -8,7 +8,6 @@ import type { FilmItemT } from '../../REDUX/cinema/cinemaReducerT'
 import { FilmImg } from './FilmImg'
 
 const SelectedMovie = memo(function SelectedMovie() {
-  const { siteMode } = useAppSelector(state => state.special)
   const { fontSize } = useAppSelector(state => state.special)
   const { filmsObject } = useAppSelector(state => state.cinema)
   const dispatch = useAppDispatch()
@@ -80,11 +79,9 @@ const SelectedMovie = memo(function SelectedMovie() {
         <DescriptionTrailer
           description={filmItem['description']}
           trailer_src={filmItem['playerCode']}
-          siteMode={siteMode}
           fontSize={fontSize}
         />
       </div>
-      {/* {siteMode === 'special' && <FilmsSpecial />} */}
     </div>
   )
 })

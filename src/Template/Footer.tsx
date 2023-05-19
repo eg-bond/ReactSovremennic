@@ -4,8 +4,8 @@ import { scrollToTop } from '../helpers'
 
 const Footer = memo(function Footer() {
   return (
-    <div className={`footer container`}>
-      <Link onClick={scrollToTop} to='/'>
+    <div className='footer container'>
+      <Link className='footer__a' onClick={scrollToTop} to='/'>
         Кинотеатр «Современник» © 2005 - 2023
       </Link>
     </div>

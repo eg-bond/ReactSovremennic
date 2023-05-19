@@ -54,10 +54,31 @@
     width: 70%;
   }
 }
-.navigation__logo a:hover {
-  background-color: transparent !important;
-  box-shadow: none !important;
+.navigation__logo a:hover img {
+  animation: UpAndDown 2s ease infinite;
+  @media #{$mediaQueryMobile} {
+    animation: none;
+  }
+  // background-color: transparent !important;
+  // box-shadow: none !important;
 }
+.navigation__logo a:focus img {
+  animation: UpAndDown 2s ease infinite;
+  @media #{$mediaQueryMobile} {
+    animation: none;
+  }
+  // background-color: transparent !important;
+  // box-shadow: none !important;
+}
+@keyframes UpAndDown {
+  50% {
+    transform: translateY(-4px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 .navigation__logo--special {
   @media ($mediaQuery1200) {
     flex: 0.8;

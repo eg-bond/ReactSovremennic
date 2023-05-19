@@ -3,6 +3,7 @@ import { NavLink, Link } from 'react-router-dom'
 import { themeLogoFile, modifiedClass } from '../helpers'
 import SpecialSettings from './SpecialSettings'
 import { SpecialStateT } from '../REDUX/special/spacialReducerT'
+import { ReactComponent as ReactLogo } from '../../public/Images/logoGood.svg'
 
 const NavItem = ({ url, title }: { url: string; title: string }) => (
   <li>
@@ -38,6 +39,7 @@ const Navigation = memo<NavigationT>(function Navigation({
               src={`./Images/${themeLogoFile[theme]}`}
               alt='logoImg'
             />
+            {/* <ReactLogo /> */}
           </Link>
         </div>
         <div className={`${modifyCl('navigation__menu')}`}>
