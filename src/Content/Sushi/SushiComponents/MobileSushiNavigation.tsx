@@ -2,17 +2,17 @@ import { useState, useCallback, memo } from 'react'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import Grow from '@material-ui/core/Grow'
 import { useRef } from 'react'
-import type { MobileSushiNavigationT, PopperContentT, SushiT } from './sushiT'
+import type { MobileSushiNavigationT, PopperContentT, SushiT } from '../sushiT'
+import { sushiElems } from '../sushiHelpers'
 
 const PopperContent = memo<PopperContentT>(function PopperContent({
-  defaultSushiArr,
-  switchSushiImage,
   currentImgKey,
+  switchSushiImage,
 }) {
   return (
     <div className='popper__content'>
       <ul>
-        {defaultSushiArr.map(item => (
+        {sushiElems.menuButtons.map(item => (
           <li
             className={currentImgKey === item[0] ? 'active' : ''}
             key={item[0]}
@@ -26,11 +26,7 @@ const PopperContent = memo<PopperContentT>(function PopperContent({
 })
 
 export const MobileSushiNavigation = memo<MobileSushiNavigationT>(
-  function MobileSushiNavigation({
-    changeImage,
-    currentImgKey,
-    defaultSushiArr,
-  }) {
+  function MobileSushiNavigation({ changeImage, currentImgKey }) {
     const [open, setOpen] = useState(false)
     // clickAwayActive нужен для того, чтобы ClickAwayListener был неактивен когда Popper скрыт
     const clickAwayActive = useRef(false)
@@ -70,7 +66,6 @@ export const MobileSushiNavigation = memo<MobileSushiNavigationT>(
             <ClickAwayListener onClickAway={handleClose}>
               <div className='popper popper__sushi'>
                 <PopperContent
-                  defaultSushiArr={defaultSushiArr}
                   currentImgKey={currentImgKey}
                   switchSushiImage={switchSushiImage}
                 />

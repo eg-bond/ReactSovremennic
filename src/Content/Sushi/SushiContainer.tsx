@@ -1,14 +1,13 @@
-import { useEffect, useState, useCallback, useRef } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import Sushi from './Sushi'
-import { sushiElems, trDuration } from './sushiHelpers'
+import { trDuration } from './sushiHelpers'
 import useTimeout from '../../hooks'
-import { useAppSelector } from '../../REDUX/store'
+import type { SushiT } from './sushiT'
 
 const SushiContainer = ({ isMobile }: { isMobile: boolean }) => {
-  const { siteMode } = useAppSelector(state => state.special)
-
-  const currentImgKey = useRef('sushi')
-  const [currentImgK, switchImg] = useState('sushi')
+  const [currentImgKey, switchImg] = useState(
+    'sushi' as SushiT['currentImgKey']
+  )
   const [imgVisible, switchVisibility] = useState(true)
   const [progressBar, showProgressBar] = useState(false)
 
@@ -23,8 +22,8 @@ const SushiContainer = ({ isMobile }: { isMobile: boolean }) => {
   }, [])
 
   const changeTableContent = useCallback(
-    (key: string) => {
-      if (key !== currentImgK) {
+    (key: SushiT['currentImgKey']) => {
+      if (key !== currentImgKey) {
         switchVisibility(false)
         resetPBTimeout()
         setTimeout(() => {
@@ -33,27 +32,18 @@ const SushiContainer = ({ isMobile }: { isMobile: boolean }) => {
         }, trDuration)
       }
     },
-    [currentImgK, switchImg, resetPBTimeout]
+    [currentImgKey, switchImg, resetPBTimeout]
   )
-
-  // Switches to default sushi img if siteMode was changed while swiper images was active
-  useEffect(() => {
-    if (sushiElems.allPossibleSwiperKeys.includes(currentImgKey.current)) {
-      changeTableContent('sushi')
-    }
-  }, [siteMode, changeTableContent])
 
   return (
     <Sushi
-      sushiElems={sushiElems}
-      currentImgKey={currentImgK}
-      changeImage={changeTableContent}
-      showProgressBar={showProgressBar}
-      siteMode={siteMode}
+      currentImgKey={currentImgKey}
       imgVisible={imgVisible}
-      progressBar={progressBar}
       isMobile={isMobile}
+      progressBar={progressBar}
+      changeImage={changeTableContent}
       clearPBTimeout={clearPBTimeout}
+      showProgressBar={showProgressBar}
     />
   )
 }

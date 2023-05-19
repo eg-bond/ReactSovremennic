@@ -229,7 +229,7 @@ $backImgHeight992: 213px;
   // keyboard focus
   &:focus-visible {
     color: var(--secondaryClr);
-    box-shadow: 0 0 0 0.15em var(--secondaryClr);
+    box-shadow: 0 0 0 0.25em var(--secondaryClr);
   }
   // everything else
   &:focus:not(:focus-visible) {

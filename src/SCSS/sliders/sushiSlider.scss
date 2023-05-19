@@ -13,3 +13,7 @@
 .sushiSlider .splide__pagination__page.is-active {
   background: black;
 }
+
+.sushiSlider .splide__pagination__page:focus {
+  outline: black solid 2px !important;
+}
