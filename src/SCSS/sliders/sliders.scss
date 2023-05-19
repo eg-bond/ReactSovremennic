@@ -1,7 +1,9 @@
-// Свайпер "сегодня в кино"
-@import 'swiperBottom';
-// Свайпер со всеми фильмами
-@import 'splide';
+// Todays week slider
+@import 'bottomSlider';
+// Slider with all movies
+@import 'filmsSlider';
+@import 'sushiSlider';
+@import 'barSlider';
 
 .swSlide__img,
 .swSlide__h1,
@@ -28,5 +30,3 @@
     color: red;
   }
 }
-
-// color: var(--secondaryClr);

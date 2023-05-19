@@ -20,15 +20,13 @@
     "@material-ui/icons": "^4.11.3",
     "@reduxjs/toolkit": "^1.9.5",
     "@splidejs/react-splide": "^0.7.12",
-    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-lite-youtube-embed": "^2.3.52",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.11.0",
     "redux": "^4.2.1",
-    "sass": "^1.62.1",
-    "swiper": "^9.3.2"
+    "sass": "^1.62.1"
   },
   "browserslist": {
     "production": [

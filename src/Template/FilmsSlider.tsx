@@ -1,16 +1,16 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import type { CinemaStateT } from '../REDUX/cinema/cinemaReducerT'
 import { Link } from 'react-router-dom'
-import { memo, useState, useCallback } from 'react'
+import { memo, useState, useMemo } from 'react'
 import { after } from '../helpers'
 
-const FilmsSlider = memo<FilmSwiperT>(function FilmsSlider({
+const FilmsSlider = memo<FilmSliderT>(function FilmsSlider({
   films,
   isMobile,
 }) {
   const [allImgLoaded, setImgLoaded] = useState(false)
 
-  const onLoad = useCallback(
+  const onLoad = useMemo(
     () =>
       after(films.length, () => {
         setImgLoaded(true)
@@ -27,7 +27,7 @@ const FilmsSlider = memo<FilmSwiperT>(function FilmsSlider({
           drag: isMobile ? 'free' : true,
           perMove: 1,
           pagination: false,
-          gap: '0.6rem',
+          gap: isMobile ? '1rem' : '0.6rem',
           arrows: isMobile ? false : true,
         }}>
         {films.map((item, i) => (
@@ -44,7 +44,6 @@ const FilmsSlider = memo<FilmSwiperT>(function FilmsSlider({
 })
 
 const Slide = memo(function Slide({ film, allImgLoaded, onLoad }: SlideT) {
-  // skeleton не убирается!!!!!!!!!!!!!!!!
   return (
     <SplideSlide className={'swSlide cinemaSlider__slide'}>
       <Link className='swSlide__a' to={`movies/${film.link}`}>
@@ -74,7 +73,7 @@ type SlideT = {
   onLoad: () => void
 }
 
-type FilmSwiperT = {
+type FilmSliderT = {
   films: CinemaStateT['films']
   isMobile: boolean
 }

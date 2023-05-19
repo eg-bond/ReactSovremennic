@@ -8,7 +8,7 @@ import Grow from '@material-ui/core/Grow'
 import schedule from './schedule'
 import { useCallback } from 'react'
 import IndexAdvXS from '../../Template/IndexAdvXS'
-import BarSwiper from '../../Template/BarSwiper'
+import BarSlider from '../../Template/BarSlider'
 import { useAppDispatch, useAppSelector } from '../../REDUX/store'
 import type { DateKeysT } from '../../REDUX/seance/seanceReducerT'
 import { CreateSeanceButtons } from './seanceComponents/CreateSeanceButtons'
@@ -96,7 +96,7 @@ const Seance = memo<{ isMobile: boolean }>(function Seance({ isMobile }) {
       </Grow>
 
       <div className='separatorMobile separatorMobile--index' />
-      <BarSwiper />
+      <BarSlider />
 
       <div className='separatorMobile separatorMobile--index' />
       {isMobile && <IndexAdvXS />}

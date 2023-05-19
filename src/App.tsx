@@ -1,11 +1,7 @@
 import { useCallback, useEffect } from 'react'
-import 'swiper/scss'
-import 'swiper/scss/navigation'
-import 'swiper/scss/pagination'
 import './SCSS/style.scss'
-// import FilmSwiper from './Template/FilmSwiper'
 import Navigation from './Template/Navigation'
-import BottomSwiper from './Template/BottomSwiper'
+import BottomSlider from './Template/BottomSlider'
 import Footer from './Template/Footer'
 import { setTodayScheduleItem_AC } from './REDUX/seance/seanceReducer'
 import Adv from './Template/Adv'
@@ -80,9 +76,7 @@ const App = () => {
         <div className='separatorMobile' />
 
         <div className={`container wrapper ${imgHidden ? 'hideImages' : ''}`}>
-          {/* <FilmSwiper films={films} siteMode={siteMode} isMobile={isMobile} /> */}
           <FilmsSlider films={films} isMobile={isMobile} />
-          {/* {siteMode === 'default' && <FilmSwiper films={films} />} */}
 
           <div className='separatorMobile separatorMobile--MB' />
           <hr className='separator hidden-xs' />
@@ -94,9 +88,9 @@ const App = () => {
 
           {siteMode === 'default' && (
             <div>
-              <h1 className='bottomSwiper__bar'>На этой неделе в кино</h1>
-              <hr className={`bottomSwiper__border`} />
-              <BottomSwiper filmsToday={filmsToday || []} isMobile={isMobile} />
+              <h1 className='bottomSlider__bar'>На этой неделе в кино</h1>
+              <hr className='bottomSlider__border' />
+              <BottomSlider filmsToday={filmsToday || []} isMobile={isMobile} />
             </div>
           )}
         </div>

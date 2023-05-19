@@ -1,0 +1,15 @@
+.sushiSlider {
+  height: auto;
+  cursor: grab;
+}
+.sushiSlider .splide__arrow svg {
+  fill: black;
+}
+
+.sushiSlider .splide__arrow:focus {
+  outline: black solid 2px !important;
+}
+
+.sushiSlider .splide__pagination__page.is-active {
+  background: black;
+}

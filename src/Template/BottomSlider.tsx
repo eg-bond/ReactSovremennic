@@ -1,22 +1,21 @@
-import { memo, useState, useCallback } from 'react'
+import { memo, useState, useMemo } from 'react'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { Link } from 'react-router-dom'
 import { after, scrollToNavigation } from '../helpers'
 import { CinemaStateT } from '../REDUX/cinema/cinemaReducerT'
 
-const BottomSwiperN = memo<BottomSwiperT>(function BottomSwiperN({
+const BottomSlider = memo<BottomSliderT>(function BottomSliderN({
   isMobile,
   filmsToday,
 }) {
   const [allImgLoaded, setImgLoaded] = useState(false)
 
-  //deps!!!!!!!!!!!
-  const onLoad = useCallback(
+  const onLoad = useMemo(
     () =>
       after(filmsToday.length, () => {
         setImgLoaded(true)
       }),
-    []
+    [filmsToday.length]
   )
 
   if (isMobile || filmsToday[0] === undefined) {
@@ -25,15 +24,13 @@ const BottomSwiperN = memo<BottomSwiperT>(function BottomSwiperN({
 
   return (
     <Splide
-      className={'bottomSwiper'}
+      className={'bottomSlider'}
       options={{
         perPage: 4,
         perMove: 1,
         pagination: false,
         gap: '2rem',
         arrows: false,
-        // slideFocus: false,
-        // navigation: false,
         type: 'loop',
         autoplay: true,
         interval: 2000,
@@ -53,15 +50,14 @@ const BottomSwiperN = memo<BottomSwiperT>(function BottomSwiperN({
 })
 
 const Slide = memo(function Slide({ film, allImgLoaded, onLoad }: SlideT) {
-  // skeleton не убирается!!!!!!!!!!!!!!!!
   return (
-    <SplideSlide className={'swSlide bottomSwiper__slide'}>
+    <SplideSlide className={'swSlide bottomSlider__slide'}>
       <Link
         className='swSlide__a'
         onClick={scrollToNavigation}
         to={`/movies/${film.link}`}>
         <div
-          className={`bottomSwiper__imgCont ${
+          className={`bottomSlider__imgCont ${
             !allImgLoaded ? 'skeleton skeleton-Gray' : ''
           }`}>
           <img
@@ -84,9 +80,9 @@ type SlideT = {
   onLoad: () => void
 }
 
-export default BottomSwiperN
+export default BottomSlider
 
-type BottomSwiperT = {
+type BottomSliderT = {
   isMobile: boolean
   filmsToday: CinemaStateT['filmsToday']
 }

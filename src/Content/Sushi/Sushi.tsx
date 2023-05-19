@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import { MobileSushiNavigation } from './MobileSushiNavigation'
-import SushiSwipers from './SushiSwipers'
+import SushiSliders from './SushiSliders'
 import { SushiLinearProgress } from './SushiLinearProgress'
 import { sushiImgSrc } from './sushiHelpers'
 import type { CMB_T, SushiImageT, SushiT } from './sushiT'
@@ -19,7 +19,7 @@ const SushiImage = memo<SushiImageT>(function SushiImage({
   //@ts-ignore
   if (swiperKeys.includes(currentImgKey)) {
     return (
-      <SushiSwipers
+      <SushiSliders
         swiperKey={currentImgKey}
         imgVisible={imgVisible}
         onLoad={onLoad}
