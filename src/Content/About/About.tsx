@@ -1,26 +1,10 @@
-import Fade from '@material-ui/core/Fade'
 import { useAppSelector } from '../../REDUX/store'
 
-function About({ loaded }: { loaded: React.MutableRefObject<boolean> }) {
+function About() {
   const { siteMode } = useAppSelector(state => state.special)
-  if (loaded.current) {
-    return (
-      <AboutContent siteMode={siteMode} cl={'content__gridLeftItem--3fr'} />
-    )
-  }
 
   return (
-    <Fade className='content__gridLeftItem--3fr' in={true}>
-      <div onTransitionEnd={() => (loaded.current = true)}>
-        <AboutContent siteMode={siteMode} cl={''} />
-      </div>
-    </Fade>
-  )
-}
-
-function AboutContent({ siteMode, cl, ...props }) {
-  return (
-    <div className={`${cl} rules`} {...props}>
+    <div className='content__gridLeftItem--3fr rules'>
       <div>
         <h3>О кинотеатре «Современник»</h3>
         <p>

@@ -8,11 +8,11 @@ import Adv from './Template/Adv'
 import { createFilmsTodayArr_AC } from './REDUX/cinema/cinemaReducer'
 import { switchSiteMode_AC } from './REDUX/special/specialReducer'
 import { changeAppColors, modifiedClass, queries } from './helpers'
-import { useMediaQuery } from '@material-ui/core'
 import Content from './Content/Content'
 import { useAppDispatch, useAppSelector } from './REDUX/store'
 import { SpecialStateT } from './REDUX/special/spacialReducerT'
 import FilmsSlider from './Template/FilmsSlider'
+import { useMediaQuery } from './hooks'
 
 const App = () => {
   const { films } = useAppSelector(state => state.cinema)

@@ -1,23 +1,6 @@
-import React from 'react'
-import Fade from '@material-ui/core/Fade'
-
-function Rules({ loaded }) {
-  if (loaded.current) {
-    return <RulesContent cl={'content__gridLeftItem--3fr'} />
-  }
-
+function Rules() {
   return (
-    <Fade className='content__gridLeftItem--3fr' in={true}>
-      <div onTransitionEnd={() => (loaded.current = true)}>
-        <RulesContent cl={''} />
-      </div>
-    </Fade>
-  )
-}
-
-function RulesContent({ cl, ...props }) {
-  return (
-    <div className={cl} {...props}>
+    <div className='content__gridLeftItem--3fr rules'>
       <div className='rules'>
         <h3>Правила Кинотеатра «Современник»</h3>
         <p>

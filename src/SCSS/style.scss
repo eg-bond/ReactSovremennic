@@ -7,8 +7,8 @@
 @import 'bootstrap3_classes';
 // Общие стили
 @import 'generalStyles';
-// Скелетоны
-@import 'skeletons';
+// Animations
+@import './animations/animations.scss';
 // Стили сайта для слабовидящих
 @import 'special';
 // Стили для react-lite-youtube-embed

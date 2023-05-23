@@ -1,0 +1,39 @@
+html {
+  // same as trDuration in SushiHelpers
+  --animationDuration: 200ms;
+  --shiftLength: 1.3vw;
+}
+
+.fadeInUp {
+  animation: fadeInUp var(--animationDuration) ease forwards;
+}
+.fadeOutDown {
+  animation: fadeOutDown var(--animationDuration) ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(var(--shiftLength));
+    transform: translateY(var(--shiftLength));
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeOutDown {
+  from {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+
+  to {
+    opacity: 0;
+    -webkit-transform: translateY(var(--shiftLength));
+    transform: translateY(var(--shiftLength));
+  }
+}

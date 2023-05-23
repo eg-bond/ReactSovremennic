@@ -4,7 +4,6 @@ import {
   changeScheduleItem_AC,
   setTodayScheduleItem_AC,
 } from '../../REDUX/seance/seanceReducer'
-import Grow from '@material-ui/core/Grow'
 import schedule from './schedule'
 import { useCallback } from 'react'
 import IndexAdvXS from '../../Template/IndexAdvXS'
@@ -13,9 +12,7 @@ import { useAppDispatch, useAppSelector } from '../../REDUX/store'
 import type { DateKeysT } from '../../REDUX/seance/seanceReducerT'
 import { CreateSeanceButtons } from './seanceComponents/CreateSeanceButtons'
 import { TableContent } from './seanceComponents/TableContent'
-
-// Grow animation time variable
-let trDurationSeance = 0
+import { trDuration } from '../Sushi/sushiHelpers'
 
 const Seance = memo<{ isMobile: boolean }>(function Seance({ isMobile }) {
   //------------------------------------------------------------------
@@ -43,7 +40,7 @@ const Seance = memo<{ isMobile: boolean }>(function Seance({ isMobile }) {
         setTimeout(() => {
           changeScheduleItem(key, title)
           switchVisibility(true)
-        }, trDurationSeance)
+        }, trDuration)
       }
     },
     [activeScheduleItemKey, changeScheduleItem]
@@ -53,13 +50,6 @@ const Seance = memo<{ isMobile: boolean }>(function Seance({ isMobile }) {
   useEffect(() => {
     return () => {
       setTodayScheduleItem()
-    }
-  }, [])
-
-  useEffect(() => {
-    trDurationSeance = 200
-    return () => {
-      trDurationSeance = 0
     }
   }, [])
 
@@ -80,20 +70,19 @@ const Seance = memo<{ isMobile: boolean }>(function Seance({ isMobile }) {
             activeScheduleItemKey={activeScheduleItemKey}
             datesArr={datesArr}
             buttonTitle={buttonTitle}
-            changeScheduleItem={changeScheduleItem}
-            switchVisibility={switchVisibility}
+            changeTableContent={changeTableContent}
           />
         </div>
       )}
 
-      <Grow in={tableVisible} timeout={trDurationSeance}>
+      <div className={`${tableVisible ? 'fadeInUp' : 'fadeOutDown'}`}>
         <table className='seanse__table'>
           <TableContent
             activeScheduleItemKey={activeScheduleItemKey}
             schedule={schedule}
           />
         </table>
-      </Grow>
+      </div>
 
       <div className='separatorMobile separatorMobile--index' />
       <BarSlider />

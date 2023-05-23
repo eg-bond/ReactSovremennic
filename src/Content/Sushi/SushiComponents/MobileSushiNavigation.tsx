@@ -5,34 +5,16 @@ import { useRef } from 'react'
 import type { MobileSushiNavigationT, PopperContentT, SushiT } from '../sushiT'
 import { sushiElems } from '../sushiHelpers'
 
-const PopperContent = memo<PopperContentT>(function PopperContent({
-  currentImgKey,
-  switchSushiImage,
-}) {
-  return (
-    <div className='popper__content'>
-      <ul>
-        {sushiElems.menuButtons.map(item => (
-          <li
-            className={currentImgKey === item[0] ? 'active' : ''}
-            key={item[0]}
-            onClick={() => switchSushiImage(item[0])}>
-            {item[1]}
-          </li>
-        ))}
-      </ul>
-    </div>
-  )
-})
-
 export const MobileSushiNavigation = memo<MobileSushiNavigationT>(
   function MobileSushiNavigation({ changeImage, currentImgKey }) {
     const [open, setOpen] = useState(false)
-    // clickAwayActive нужен для того, чтобы ClickAwayListener был неактивен когда Popper скрыт
+    // clickAwayActive makes ClickAwayListener enabled when modal is shown
     const clickAwayActive = useRef(false)
 
-    const handleToggle = () => {
-      setOpen(prevOpen => !prevOpen)
+    const handleClose = () => {
+      if (clickAwayActive.current) {
+        setOpen(false)
+      }
     }
 
     const switchSushiImage = useCallback(
@@ -43,15 +25,9 @@ export const MobileSushiNavigation = memo<MobileSushiNavigationT>(
       [changeImage]
     )
 
-    const handleClose = () => {
-      if (clickAwayActive.current) {
-        setOpen(false)
-      }
-    }
-
     return (
       <div>
-        <button className='seans_button_xs' onClick={handleToggle}>
+        <button className='seans_button_xs' onClick={() => setOpen(true)}>
           <span className='seans_button_xs__title'>Меню</span>{' '}
           <span
             className='glyphicon glyphicon-chevron-down'
@@ -77,3 +53,21 @@ export const MobileSushiNavigation = memo<MobileSushiNavigationT>(
     )
   }
 )
+
+const PopperContent = memo<PopperContentT>(function PopperContent({
+  currentImgKey,
+  switchSushiImage,
+}) {
+  return (
+    <ul>
+      {sushiElems.menuButtons.map(item => (
+        <li
+          className={currentImgKey === item[0] ? 'active' : ''}
+          key={item[0]}
+          onClick={() => switchSushiImage(item[0])}>
+          {item[1]}
+        </li>
+      ))}
+    </ul>
+  )
+})

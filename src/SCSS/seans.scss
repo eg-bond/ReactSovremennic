@@ -90,7 +90,6 @@
   .seans_button_xs {
     position: relative;
     min-height: 9vw;
-    // padding: 2%;
     margin: 1vw 0;
     background-color: var(--mainClr);
     border: $border2px;
@@ -125,9 +124,6 @@
     }
   }
 
-  .popper {
-    z-index: 2;
-  }
   .popper__backdrop {
     position: fixed;
     top: 0;
@@ -138,7 +134,7 @@
     overflow-y: auto;
     z-index: 5;
   }
-  .popper__content {
+  .popper {
     border: $border2px;
     border-radius: $buttonsBR;
     color: var(--secondaryClr);
@@ -168,4 +164,54 @@
   .popper__seance li {
     padding: 3.5vw 0;
   }
+
+  //---------------------------
+  // .overlay {
+  //   display: none;
+  //   position: fixed;
+  //   inset: 0;
+  //   z-index: 9;
+  // }
+
+  // .modal {
+  //   display: none;
+  //   position: fixed;
+  //   padding: 0.5rem 0.5rem;
+  //   top: 50%;
+  //   left: 50%;
+  //   translate: -50% -50%;
+  //   z-index: 5;
+  //   border: $border2px;
+  //   border-radius: $buttonsBR;
+  //   color: var(--secondaryClr);
+  //   text-align: center;
+  //   background-color: var(--mainClr);
+  //   min-height: auto;
+  // }
+
+  // .modal li {
+  //   list-style-type: none;
+  //   cursor: pointer;
+  //   border-bottom: solid 1px;
+  //   margin: 0 10px;
+  //   width: 85vw;
+  //   font-size: $mobileParagraphsFS;
+  //   padding: 3.5vw 0;
+  //   &:last-child {
+  //     border-bottom: none !important;
+  //   }
+  // }
+  // .modal li.active,
+  // .modal li:hover {
+  //   transition: ease 0.6s;
+  //   color: #e41b2b;
+  // }
+  // .popper__seance li {
+  //   padding: 3.5vw 0;
+  // }
+
+  // .overlay.open,
+  // .modal.open {
+  //   display: block;
+  // }
 }

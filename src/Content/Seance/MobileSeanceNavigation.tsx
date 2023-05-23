@@ -8,29 +8,11 @@ export const MobileSeanceNavigation = memo(function MobileSeanceNavigation({
   activeScheduleItemKey,
   buttonTitle,
   datesArr,
-  changeScheduleItem,
-  switchVisibility,
+  changeTableContent,
 }: MobileSeanceNavigationT) {
   const [open, setOpen] = useState(false)
-  // clickAwayActive нужен для того, чтобы ClickAwayListener был неактивен когда Popper скрыт
+  // clickAwayActive makes ClickAwayListener enabled when modal is shown
   const clickAwayActive = useRef(false)
-
-  const handleToggle = () => {
-    setOpen(prevOpen => !prevOpen)
-  }
-
-  const changeTableContent = useCallback(
-    (key: DateKeysT, title: string) => {
-      switchVisibility(false)
-      setTimeout(() => {
-        changeScheduleItem(key, title)
-        switchVisibility(true)
-      }, 200)
-
-      setOpen(false)
-    },
-    [changeScheduleItem, switchVisibility]
-  )
 
   const handleClose = () => {
     if (clickAwayActive.current) {
@@ -38,9 +20,17 @@ export const MobileSeanceNavigation = memo(function MobileSeanceNavigation({
     }
   }
 
+  const handleChangeTable = useCallback(
+    (key: DateKeysT, title: string) => {
+      changeTableContent(key, title)
+      setOpen(false)
+    },
+    [changeTableContent]
+  )
+
   return (
     <div>
-      <button className='seans_button_xs' onClick={handleToggle}>
+      <button className='seans_button_xs' onClick={() => setOpen(true)}>
         <span className='seans_button_xs__title'>{buttonTitle}</span>{' '}
         <span className='glyphicon glyphicon-chevron-down' aria-hidden='true' />
       </button>
@@ -55,7 +45,7 @@ export const MobileSeanceNavigation = memo(function MobileSeanceNavigation({
               <PopperContent
                 activeScheduleItemKey={activeScheduleItemKey}
                 datesArr={datesArr}
-                changeTableContent={changeTableContent}
+                changeTableContent={handleChangeTable}
               />
             </div>
           </ClickAwayListener>
@@ -71,19 +61,16 @@ const PopperContent = memo<PopperContentT>(function PopperContent({
   changeTableContent,
 }) {
   return (
-    <div className='popper__content'>
-      <ul>
-        {datesArr.map(d => (
-          <li
-            data-testid={`${d[0]}_xs`}
-            className={activeScheduleItemKey === d[0] ? 'active' : ''}
-            key={`${d[0]}_s`}
-            onClick={() => changeTableContent(d[0], `${d[1]} ${d[2]}`)}>
-            {d[1]} {d[2]}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ul>
+      {datesArr.map(d => (
+        <li
+          className={activeScheduleItemKey === d[0] ? 'active' : ''}
+          key={`${d[0]}_s`}
+          onClick={() => changeTableContent(d[0], `${d[1]} ${d[2]}`)}>
+          {d[1]} {d[2]}
+        </li>
+      ))}
+    </ul>
   )
 })
 
@@ -91,8 +78,7 @@ type MobileSeanceNavigationT = {
   activeScheduleItemKey: SeanceStateT['activeScheduleItemKey']
   buttonTitle: string
   datesArr: SeanceStateT['datesArr']
-  changeScheduleItem: ChangeTableContentT
-  switchVisibility: (arg0: boolean) => void
+  changeTableContent: ChangeTableContentT
 }
 
 type PopperContentT = {

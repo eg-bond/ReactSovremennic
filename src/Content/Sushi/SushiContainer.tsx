@@ -1,8 +1,8 @@
 import { useEffect, useState, useCallback } from 'react'
 import Sushi from './Sushi'
 import { trDuration } from './sushiHelpers'
-import useTimeout from '../../hooks'
 import type { SushiT } from './sushiT'
+import { useTimeout } from '../../hooks'
 
 const SushiContainer = ({ isMobile }: { isMobile: boolean }) => {
   const [currentImgKey, switchImg] = useState(
@@ -11,6 +11,7 @@ const SushiContainer = ({ isMobile }: { isMobile: boolean }) => {
   const [imgVisible, switchVisibility] = useState(true)
   const [progressBar, showProgressBar] = useState(false)
 
+  // progress bar
   const { clear: clearPBTimeout, reset: resetPBTimeout } = useTimeout(
     () => showProgressBar(true),
     trDuration * 2

@@ -42,5 +42,5 @@ export const preloadSushiImg = (
   })
 }
 
-// animation duration
+// animation duration (same as --animationDuration in fade.scss)
 export const trDuration = 200

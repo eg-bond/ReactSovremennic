@@ -5,8 +5,9 @@ import '@testing-library/jest-dom/extend-expect'
 import { Provider } from 'react-redux'
 import store from '../../REDUX/store'
 import { delay, queries } from '../../helpers'
-import { useMediaQuery } from '@material-ui/core'
+
 import * as preload from './preload'
+import { useMediaQuery } from '../../hooks'
 
 export const withStore = component => {
   return <Provider store={store}>{component}</Provider>
