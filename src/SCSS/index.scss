@@ -58,6 +58,13 @@
 }
 .desktopAdv--5 {
   padding-bottom: 65%;
+  cursor: pointer;
+  & img {
+    transition: ease 300ms;
+  }
+  & img:hover {
+    opacity: 0.85;
+  }
 }
 //------------------------
 

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import FilmsSpecial from '../FilmsSpecial/FilmsSpecial'
 import LiteYouTubeEmbed from 'react-lite-youtube-embed'
 import BarSwiper from '../../Template/BarSwiper'
+import { SushiWork } from '../../Template/SushiWork'
 
 function IndexContent({ siteMode, films, isMobile }) {
   return (
@@ -48,6 +49,10 @@ function IndexContent({ siteMode, films, isMobile }) {
           • Уважаемые посетители кинотеатра! Показ последнего сеанса
           осуществляется только от трех человек.
         </p>
+
+        <div className='separatorMobile separatorMobile--index' />
+        {isMobile && <SushiWork />}
+
         <div className='separatorMobile separatorMobile--index' />
         {siteMode === 'default' && <BarSwiper />}
       </div>
@@ -55,7 +60,6 @@ function IndexContent({ siteMode, films, isMobile }) {
       {siteMode === 'special' && <FilmsSpecial films={films} />}
 
       <div className='separatorMobile separatorMobile--index' />
-
       {isMobile && <IndexAdvXS />}
     </div>
   )

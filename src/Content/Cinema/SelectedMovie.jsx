@@ -2,6 +2,7 @@ import { memo, useEffect } from 'react'
 import { DescriptionTrailer } from './DescriptionTrailer'
 import { useParams } from 'react-router'
 import FilmsSpecial from '../FilmsSpecial/FilmsSpecial'
+import { SushiWork } from '../../Template/SushiWork'
 
 const FilmImg = ({ link, title }) => {
   return (
@@ -22,6 +23,7 @@ const SelectedMovie = memo(function SelectedMovie({
   createFilmsObject,
   siteMode,
   fontSize,
+  isMobile,
 }) {
   const { film_id } = useParams()
 
@@ -85,6 +87,9 @@ const SelectedMovie = memo(function SelectedMovie({
         />
       </div>
       {siteMode === 'special' && <FilmsSpecial />}
+
+      <div className='separatorMobile separatorMobile--index' />
+      {isMobile && <SushiWork />}
     </div>
   )
 })

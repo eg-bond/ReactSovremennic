@@ -15,6 +15,7 @@
   padding-bottom: 20px;
   margin-top: 0.2%;
   @media #{$mediaQueryMobile} {
+    min-height: 90vw;
     padding-bottom: 0;
   }
 }

@@ -11,6 +11,7 @@ import { useCallback } from 'react'
 import IndexAdvXS from '../../Template/IndexAdvXS'
 import BarSwiper from '../../Template/BarSwiper'
 import { modifiedClass } from '../../helpers'
+import { SushiWork } from '../../Template/SushiWork'
 
 const desktopBtn = (d, activeSceduleItemKey, changeTableContent) => {
   return (
@@ -143,6 +144,8 @@ const Seans = ({
           />
         </table>
       </Grow>
+      <div className='separatorMobile separatorMobile--index' />
+      {isMobile && <SushiWork />}
 
       <div className='separatorMobile separatorMobile--index' />
       {siteMode === 'default' && <BarSwiper />}

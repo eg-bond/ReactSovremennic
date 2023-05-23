@@ -49,6 +49,7 @@ const Content = memo(function Content({
               createFilmsObject={createFilmsObject}
               siteMode={siteMode}
               fontSize={fontSize}
+              isMobile={isMobile}
             />
           }
         />

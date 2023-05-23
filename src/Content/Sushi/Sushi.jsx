@@ -3,6 +3,8 @@ import { MobileSushiNavigation } from './MobileSushiNavigation'
 import SushiSwipers from './SushiSwipers'
 import { SushiLinearProgress } from './SushiLinearProgress'
 import { sushiImgSrc } from './sushiHelpers'
+import { SushiWork } from '../../Template/SushiWork'
+import { SushiWorkModal } from '../../Template/Adv'
 
 const SushiImage = memo(function SushiImage({
   currentImgKey,
@@ -86,6 +88,7 @@ const Sushi = ({
               changeImage={changeImage}
             />
           </div>
+          <SushiWorkModal />
         </div>
       )}
 
@@ -110,6 +113,9 @@ const Sushi = ({
             clearPBTimeout={clearPBTimeout}
           />
         </div>
+
+        <div className='separatorMobile separatorMobile--index' />
+        {isMobile && <SushiWork />}
       </div>
     </>
   )
