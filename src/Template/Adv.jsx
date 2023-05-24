@@ -49,7 +49,7 @@ export function SushiWorkModal({ loaded = true, onLoad = () => {} }) {
         <img
           onClick={() => setOpen(true)}
           onLoad={onLoad}
-          src='./Images/sushi_work_half.webp'
+          src='./Images/sushi_work_250.webp'
           alt='суши_работа'
         />
       </div>
