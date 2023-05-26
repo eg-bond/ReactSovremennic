@@ -13,7 +13,8 @@
     "scrapper": "ts-node-esm ExternalScripts/Scrapper/scrapper.ts",
     "webp": "node ExternalScripts/WebpConverter/convertToWebP.js",
     "make_ps": "node ExternalScripts/PhotoShopScedule/makePSscedule.js",
-    "get_scedule": "node ExternalScripts/Excel/insertSceduleFromXLSX.js"
+    "get_scedule": "node ExternalScripts/Excel/insertSceduleFromXLSX.js",
+    "get_scedule_ts": "ts-node-esm ExternalScripts/Excel/insertSceduleFromXLSX.ts"
   },
   "dependencies": {
     "@material-ui/core": "^4.12.4",

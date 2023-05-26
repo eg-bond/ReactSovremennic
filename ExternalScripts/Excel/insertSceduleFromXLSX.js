@@ -1,11 +1,12 @@
 import xlsx from 'xlsx'
 import fs from 'fs'
-import { filmsArray } from '../../src/REDUX/filmsArray.ts'
+import { filmsArray } from '../../src/REDUX/filmsArray.js'
 
 //Вытаскиваем JS объект с расписанием из екселя
 let workBook = xlsx.readFile('ExternalScripts/Excel/macros.xlsm')
 let ws = workBook.Sheets['Лист2']
 let data = xlsx.utils.sheet_to_json(ws)
+
 //Преобразуем извлеченный из екселя объект в удобный для дальнейшего использования
 let scedule = {}
 for (let i = 0; i < 7; i++) {
@@ -24,7 +25,7 @@ const finalData = `let scedule = ${JSON.stringify(finalScedule)}
 export default scedule;`
 
 //Записываем получившиеся данные в файл
-fs.writeFileSync('src/Content/Seans/scedule.ts', finalData)
+fs.writeFileSync('src/Content/Seance/scedule.js', finalData)
 
 // Актуализирует названия фильмов в расписании в соответствии с названиями из 'filmsArray'
 // и добавляет возрастное ограничение
@@ -55,6 +56,8 @@ function finalizeScedule(scedule) {
 
     sceduleCopy[key] = updatedDay
   })
+
+  console.log(sceduleCopy)
 
   return sceduleCopy
 }
