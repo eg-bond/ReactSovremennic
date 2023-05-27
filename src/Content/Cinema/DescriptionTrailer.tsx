@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import LiteYouTubeEmbed from 'react-lite-youtube-embed'
-import { SpecialStateT } from '../../REDUX/special/spacialReducerT'
+import { SpecialStateT } from '../../REDUX/special/specialReducerT'
 
 export const DescriptionTrailer = memo<DescriptionTrailerT>(
   function DescriptionTrailer({ description, trailer_src, fontSize }) {

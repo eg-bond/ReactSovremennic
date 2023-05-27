@@ -2,7 +2,7 @@ import { memo } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { themeLogoFile, modifiedClass } from '../helpers'
 import SpecialSettings from './SpecialSettings'
-import { SpecialStateT } from '../REDUX/special/spacialReducerT'
+import { SpecialStateT } from '../REDUX/special/specialReducerT'
 
 const NavItem = ({ url, title }: { url: string; title: string }) => (
   <li>

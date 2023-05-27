@@ -1,4 +1,4 @@
-import { SpecialStateT } from './REDUX/special/spacialReducerT'
+import { SpecialStateT } from './REDUX/special/specialReducerT'
 
 // Helpers for siteMode "special"
 export const modifiedClass = (

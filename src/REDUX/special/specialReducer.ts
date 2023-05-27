@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import type { SpecialStateT } from './spacialReducerT'
+import type { SpecialStateT } from './specialReducerT'
 
 const initialState: SpecialStateT = {
   siteMode: 'default',

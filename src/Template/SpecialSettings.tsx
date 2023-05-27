@@ -7,7 +7,7 @@ import {
 
 import { useAppDispatch, useAppSelector } from '../REDUX/store'
 import { useCallback } from 'react'
-import { SpecialStateT } from '../REDUX/special/spacialReducerT'
+import { SpecialStateT } from '../REDUX/special/specialReducerT'
 import { SiteModeButton } from './SpecialSettingsComponents/SiteModeButton'
 import { ThemeButtons } from './SpecialSettingsComponents/ThemeButtons'
 import { FontButtons } from './SpecialSettingsComponents/FontButtons'

@@ -10,9 +10,10 @@ import { switchSiteMode_AC } from './REDUX/special/specialReducer'
 import { changeAppColors, modifiedClass, queries } from './helpers'
 import Content from './Content/Content'
 import { useAppDispatch, useAppSelector } from './REDUX/store'
-import { SpecialStateT } from './REDUX/special/spacialReducerT'
+import { SpecialStateT } from './REDUX/special/specialReducerT'
 import FilmsSlider from './Template/FilmsSlider'
 import { useMediaQuery } from './hooks'
+import { useLocation } from 'react-router-dom'
 
 const App = () => {
   const { films } = useAppSelector(state => state.cinema)

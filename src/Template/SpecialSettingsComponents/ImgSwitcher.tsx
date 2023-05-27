@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import Switch from '@material-ui/core/Switch'
-import { SpecialDispatchesT } from '../../REDUX/special/spacialReducerT'
+import { SpecialDispatchesT } from '../../REDUX/special/specialReducerT'
 
 const ImgSwitcherComp = ({
   imgHidden,

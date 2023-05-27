@@ -1,4 +1,4 @@
-import type { SpecialStateT } from '../../REDUX/special/spacialReducerT'
+import type { SpecialStateT } from '../../REDUX/special/specialReducerT'
 import { sushiElems } from './sushiHelpers'
 
 type SushiElemsT = typeof sushiElems

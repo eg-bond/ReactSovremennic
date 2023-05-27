@@ -1,7 +1,7 @@
 import ButtonGroup from '@material-ui/core/ButtonGroup'
 import Button from '@material-ui/core/Button'
 import { memo } from 'react'
-import { SpecialDispatchesT } from '../../REDUX/special/spacialReducerT'
+import { SpecialDispatchesT } from '../../REDUX/special/specialReducerT'
 
 const FontButtonsComp = ({
   switchFontSize,

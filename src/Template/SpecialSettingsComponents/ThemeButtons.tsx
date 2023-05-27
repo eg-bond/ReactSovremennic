@@ -4,7 +4,7 @@ import Brightness1Icon from '@material-ui/icons/Brightness1'
 import type {
   SpecialDispatchesT,
   SpecialStateT,
-} from '../../REDUX/special/spacialReducerT'
+} from '../../REDUX/special/specialReducerT'
 
 const ThemeButtonsComp = ({
   switchSiteTheme,

@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { SpecialStateT } from '../../REDUX/special/spacialReducerT'
+import { SpecialStateT } from '../../REDUX/special/specialReducerT'
 import { Button } from '@material-ui/core'
 import { scrollToTop } from '../../helpers'
 import RemoveRedEyeOutlinedIcon from '@material-ui/icons/RemoveRedEyeOutlined'

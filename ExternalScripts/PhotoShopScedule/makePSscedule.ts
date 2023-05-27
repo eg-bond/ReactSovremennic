@@ -1,11 +1,8 @@
-import scedule from '../../src/Content/Seans/scedule.js'
-import { filmsArray } from '../../src/REDUX/filmsArray.js'
+//@ts-nocheck
+import scedule from '../../src/Content/Seance/schedule.ts'
+import { filmsArray } from '../../src/REDUX/filmsArray.ts'
 import fs from 'fs'
-
-export const findFirstWordInTitle = title => {
-  const match = title.match(/^\S+/gi)
-  return match[0].replace(/[\.:!,]/gi, '').toLowerCase()
-}
+import { findFirstWordInTitle } from '../Excel/insertSceduleFromXLSX.ts'
 
 // Функция, которая ищет в массиве filmArray фильмы из входящего массива с названиями
 // и возвращающая двумерный массив Array<["title", "age"]>

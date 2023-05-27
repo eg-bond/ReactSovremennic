@@ -1,40 +1,13 @@
-import { memo, useCallback, useEffect } from 'react'
+import { memo } from 'react'
 import { DescriptionTrailer } from './DescriptionTrailer'
-import { useParams } from 'react-router'
-// import FilmsSpecial from '../FilmsSpecial/FilmsSpecial'
-import { useAppDispatch, useAppSelector } from '../../REDUX/store'
-import { createFilmsObject_AC } from '../../REDUX/cinema/cinemaReducer'
-import type { FilmItemT } from '../../REDUX/cinema/cinemaReducerT'
 import { FilmImg } from './FilmImg'
+import type { FilmItemT } from '../../REDUX/cinema/cinemaReducerT'
+import type { SpecialStateT } from '../../REDUX/special/specialReducerT'
 
-const SelectedMovie = memo(function SelectedMovie() {
-  const { fontSize } = useAppSelector(state => state.special)
-  const { filmsObject } = useAppSelector(state => state.cinema)
-  const dispatch = useAppDispatch()
-
-  const createFilmsObject = useCallback(() => {
-    dispatch(createFilmsObject_AC())
-  }, [])
-  //--------------------------------------------
-
-  const { film_id } = useParams()
-
-  const filmsObjCreated = useCallback(
-    () => Object.keys(filmsObject).length,
-    [filmsObject]
-  )
-
-  // Creates filmsObject if it doesn't exist
-  useEffect(() => {
-    !filmsObjCreated() && createFilmsObject()
-  }, [createFilmsObject, filmsObjCreated])
-
-  if (!filmsObjCreated()) {
-    return <div className='selectedMovie'></div>
-  }
-
-  const filmItem: FilmItemT = filmsObject[film_id as string]
-
+const SelectedMovie = memo<{
+  fontSize: SpecialStateT['fontSize']
+  filmItem: FilmItemT
+}>(function SelectedMovie({ fontSize, filmItem }) {
   const gridClass =
     fontSize !== '26px' ? 'selectedMovie--rightFr' : 'selectedMovie--fullFr'
 
