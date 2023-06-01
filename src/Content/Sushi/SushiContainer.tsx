@@ -17,6 +17,13 @@ const SushiContainer = ({ isMobile }: { isMobile: boolean }) => {
     trDuration * 2
   )
 
+  // triggers then image loaded
+  const onLoad = useCallback(() => {
+    showProgressBar(false)
+    clearPBTimeout()
+    switchVisibility(true)
+  }, [])
+
   // Set progressBar timeout at first render
   useEffect(() => {
     resetPBTimeout()
@@ -29,7 +36,6 @@ const SushiContainer = ({ isMobile }: { isMobile: boolean }) => {
         resetPBTimeout()
         setTimeout(() => {
           switchImg(key)
-          switchVisibility(true)
         }, trDuration)
       }
     },
@@ -43,8 +49,7 @@ const SushiContainer = ({ isMobile }: { isMobile: boolean }) => {
       isMobile={isMobile}
       progressBar={progressBar}
       changeImage={changeTableContent}
-      clearPBTimeout={clearPBTimeout}
-      showProgressBar={showProgressBar}
+      onLoad={onLoad}
     />
   )
 }

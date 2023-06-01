@@ -14,16 +14,9 @@ const cinemaSlice = createSlice({
   initialState,
   reducers: {
     createFilmsTodayArr(state) {
-      // function amountOfSlides() {
-      //   return Math.ceil(8 / state.filmsTodayAmount) * state.filmsTodayAmount
-      // }
-
       for (let i = 0; i < state.filmsTodayAmount; i++) {
         state.filmsToday[i] = state.films[i]
       }
-      // for (let i = 0; i < state.filmsTodayAmount; i++) {
-      //   state.filmsToday[i] = state.films[i % state.filmsTodayAmount]
-      // }
     },
     createFilmsObject(state) {
       state.films.forEach(film => {

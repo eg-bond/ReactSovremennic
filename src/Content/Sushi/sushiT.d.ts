@@ -9,14 +9,12 @@ type SushiT = {
   isMobile: boolean
   progressBar: boolean
   changeImage: (key: SushiElemsT['menuButtons'][any][0]) => void
-  clearPBTimeout: () => void
-  showProgressBar: React.Dispatch<React.SetStateAction<boolean>>
+  onLoad: () => void
 }
 type SushiImageT = {
   currentImgKey: SushiT['currentImgKey']
   imgVisible: SushiT['imgVisible']
-  clearPBTimeout: SushiT['clearPBTimeout']
-  showProgressBar: SushiT['showProgressBar']
+  onLoad: SushiT['onLoad']
 }
 type CMB_T = {
   currentImgKey: SushiT['currentImgKey']

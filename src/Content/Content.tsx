@@ -1,6 +1,5 @@
-import { Suspense, lazy, memo, useRef } from 'react'
+import { Suspense, lazy, memo } from 'react'
 import { Routes, Route } from 'react-router-dom'
-
 import IndexContent from './IndexContent/IndexContent'
 import Seance from './Seance/Seance'
 import SushiContainer from './Sushi/SushiContainer'

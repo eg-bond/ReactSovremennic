@@ -1,4 +1,3 @@
-// import { combineReducers, createStore } from 'redux'
 import seanceReduser from './seance/seanceReducer'
 import cinemaReduser from './cinema/cinemaReducer'
 import specialReduser from './special/specialReducer'

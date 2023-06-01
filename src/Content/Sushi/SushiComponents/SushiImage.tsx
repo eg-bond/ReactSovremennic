@@ -7,14 +7,8 @@ import { sushiElems } from '../sushiHelpers'
 const SushiImage = memo<SushiImageT>(function SushiImage({
   currentImgKey,
   imgVisible,
-  clearPBTimeout,
-  showProgressBar,
+  onLoad,
 }) {
-  const onLoad = () => {
-    showProgressBar(false)
-    clearPBTimeout()
-  }
-
   if (currentImgKey in sushiElems.slidersKeys) {
     return (
       <SushiSliders
@@ -29,6 +23,7 @@ const SushiImage = memo<SushiImageT>(function SushiImage({
   return (
     <div className={`${imgVisible ? 'fadeInUp' : 'fadeOutDown'}`}>
       <img
+        key={currentImgKey}
         onLoad={onLoad}
         className={'sushi__page__img'}
         src={sushiImgSrc(currentImgKey)}

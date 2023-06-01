@@ -10,8 +10,7 @@ const Sushi = ({
   imgVisible,
   progressBar,
   isMobile,
-  showProgressBar,
-  clearPBTimeout,
+  onLoad,
 }: SushiT) => {
   return (
     <>
@@ -43,8 +42,7 @@ const Sushi = ({
           <SushiImage
             currentImgKey={currentImgKey}
             imgVisible={imgVisible}
-            clearPBTimeout={clearPBTimeout}
-            showProgressBar={showProgressBar}
+            onLoad={onLoad}
           />
         </div>
       </div>
