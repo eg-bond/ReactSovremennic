@@ -3082,10 +3082,10 @@ vite-plugin-remove-console@^2.1.1:
   resolved "https://registry.yarnpkg.com/vite-plugin-remove-console/-/vite-plugin-remove-console-2.1.1.tgz#d5e20765bba7c9bfa6e4cf818e2d9209bd2dc464"
   integrity sha512-AQOsKl9+1YO82otwSchf+P8SRo4RhMvPjOvjm9DXOnkff0SBwBPAzazEn06IUjhsm/zX4miMgicCQH1hPdktrw==
 
-vite@^4.3.2:
-  version "4.3.3"
-  resolved "https://registry.yarnpkg.com/vite/-/vite-4.3.3.tgz#26adb4aa01439fc4546c480ea547674d87289396"
-  integrity sha512-MwFlLBO4udZXd+VBcezo3u8mC77YQk+ik+fbc0GZWGgzfbPP+8Kf0fldhARqvSYmtIWoAJ5BXPClUbMTlqFxrA==
+vite@^4.3.9:
+  version "4.3.9"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-4.3.9.tgz#db896200c0b1aa13b37cdc35c9e99ee2fdd5f96d"
+  integrity sha512-qsTNZjO9NoJNW7KnOrgYwczm0WctJ8m/yqYAMAK9Lxt4SoySUfS5S8ia9K7JHpa3KEeMfyF8LoJ3c5NeBJy6pg==
   dependencies:
     esbuild "^0.17.5"
     postcss "^8.4.23"

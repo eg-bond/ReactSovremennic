@@ -52,7 +52,7 @@
     "jsdom": "^21.1.1",
     "puppeteer": "^19.11.1",
     "source-map-explorer": "^2.5.3",
-    "vite": "^4.3.2",
+    "vite": "^4.3.9",
     "vite-plugin-live-reload": "^3.0.2",
     "vite-plugin-qrcode": "^0.2.1",
     "vite-plugin-remove-console": "^2.1.1",
