@@ -1,11 +1,10 @@
-@import '@splidejs/react-splide/css';
-// or only core styles
-@import '@splidejs/react-splide/css/core';
-
 .cinemaSlider {
   padding: 7px 7px 0 7px;
   width: 100%;
   cursor: grab;
+}
+.splide__track {
+  transition: ease 200ms;
 }
 // .cinemaSlider {
 //   min-height: var(--1920Height);
@@ -78,6 +77,9 @@
 }
 
 @media #{$mediaQueryMobile} {
+  .cinemaSlider {
+    padding: 0 7px;
+  }
   .cinemaSlider {
     .displayMobile {
       color: white;

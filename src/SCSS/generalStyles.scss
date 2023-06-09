@@ -70,6 +70,13 @@ h6 {
   color: red;
 }
 
+.padd_l {
+  padding-left: 6vw !important;
+}
+.padd_r {
+  padding-right: 6vw !important;
+}
+
 // Флекс для прижатия футера к нижней части экрана
 .flex-wrapper {
   display: flex;

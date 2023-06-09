@@ -1,7 +1,7 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import type { CinemaStateT } from '../REDUX/cinema/cinemaReducerT'
 import { Link } from 'react-router-dom'
-import { memo, useState, useMemo } from 'react'
+import { memo, useState, useMemo, useEffect, useRef } from 'react'
 import { after } from '../helpers'
 
 const FilmsSlider = memo<FilmSliderT>(function FilmsSlider({
@@ -18,16 +18,53 @@ const FilmsSlider = memo<FilmSliderT>(function FilmsSlider({
     []
   )
 
+  const observer = useRef(
+    new MutationObserver(mutationRecords => {
+      if (mutationRecords[0].target.classList.contains('is-visible')) {
+        splideTrack.classList.remove('padd_r')
+        splideTrack.classList.add('padd_l')
+      } else {
+        splideTrack.classList.remove('padd_l')
+        splideTrack.classList.add('padd_r')
+      }
+    })
+  )
+
+  let lastEl: Element
+  let splideTrack: Element
+
+  // useEffect(() => {
+  //   lastEl = document.querySelector('.splide__slide:last-child')
+  //   splideTrack = document.querySelector('.splide__track')
+  // }, [])
+
+  useEffect(() => {
+    lastEl = document.querySelector('.splide__slide:last-child')
+    splideTrack = document.querySelector('.splide__track')
+
+    if (isMobile) {
+      splideTrack.classList.add('padd_r')
+      observer.current.observe(lastEl, {
+        attributes: true,
+        attributeOldValue: true,
+      })
+    } else {
+      observer.current.disconnect()
+      splideTrack.classList.remove('padd_r')
+      splideTrack.classList.remove('padd_l')
+    }
+  }, [isMobile])
+
   return (
     <div className={'cinemaSlider'}>
       <h4 className='displayMobile'>Фильмы</h4>
       <Splide
         options={{
           perPage: isMobile ? 3 : 5,
-          drag: isMobile ? 'free' : true,
+          // drag: isMobile ? 'free' : true,
           perMove: 1,
           pagination: false,
-          gap: isMobile ? '2.5vw' : '0.6rem',
+          gap: isMobile ? '2vw' : '0.6rem',
           arrows: isMobile ? false : true,
         }}>
         {films.map((item, i) => (
