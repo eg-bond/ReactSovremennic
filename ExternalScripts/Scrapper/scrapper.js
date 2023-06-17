@@ -3,7 +3,7 @@ import { getPageContent } from './puppeteer.js'
 import { JSDOM } from 'jsdom'
 
 const URL = 'https://www.kinopoisk.ru/film/'
-const cinemaIds = ['1219177', '4715481']
+const cinemaIds = ['999881']
 
 parseCinemaData(cinemaIds)
 
