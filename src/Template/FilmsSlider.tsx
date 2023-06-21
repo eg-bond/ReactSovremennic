@@ -1,59 +1,17 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import type { CinemaStateT } from '../REDUX/cinema/cinemaReducerT'
 import { Link } from 'react-router-dom'
-import { memo, useState, useMemo, useEffect, useRef } from 'react'
-import { after } from '../helpers'
+import { memo } from 'react'
+import { useMobilePaddings } from './useMobilePaddings'
+import { useImagesLoaded } from './useImagesLoaded'
 
 const FilmsSlider = memo<FilmSliderT>(function FilmsSlider({
   films,
   isMobile,
 }) {
-  const [allImgLoaded, setImgLoaded] = useState(false)
-
-  const onLoad = useMemo(
-    () =>
-      after(films.length, () => {
-        setImgLoaded(true)
-      }),
-    []
-  )
-
-  const observer = useRef(
-    new MutationObserver(mutationRecords => {
-      if (mutationRecords[0].target.classList.contains('is-visible')) {
-        splideTrack.classList.remove('padd_r')
-        splideTrack.classList.add('padd_l')
-      } else {
-        splideTrack.classList.remove('padd_l')
-        splideTrack.classList.add('padd_r')
-      }
-    })
-  )
-
-  let lastEl: Element
-  let splideTrack: Element
-
-  // useEffect(() => {
-  //   lastEl = document.querySelector('.splide__slide:last-child')
-  //   splideTrack = document.querySelector('.splide__track')
-  // }, [])
-
-  useEffect(() => {
-    lastEl = document.querySelector('.splide__slide:last-child')
-    splideTrack = document.querySelector('.splide__track')
-
-    if (isMobile) {
-      splideTrack.classList.add('padd_r')
-      observer.current.observe(lastEl, {
-        attributes: true,
-        attributeOldValue: true,
-      })
-    } else {
-      observer.current.disconnect()
-      splideTrack.classList.remove('padd_r')
-      splideTrack.classList.remove('padd_l')
-    }
-  }, [isMobile])
+  const { allImgLoaded, onLoad } = useImagesLoaded(films)
+  //adds paddings to mobile slider to make it look like 3.5 slides
+  useMobilePaddings(isMobile)
 
   return (
     <div className={'cinemaSlider'}>
@@ -61,7 +19,6 @@ const FilmsSlider = memo<FilmSliderT>(function FilmsSlider({
       <Splide
         options={{
           perPage: isMobile ? 3 : 5,
-          // drag: isMobile ? 'free' : true,
           perMove: 1,
           pagination: false,
           gap: isMobile ? '2vw' : '0.6rem',

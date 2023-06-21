@@ -71,10 +71,10 @@ h6 {
 }
 
 .padd_l {
-  padding-left: 6vw !important;
+  padding-left: 7vw !important;
 }
 .padd_r {
-  padding-right: 6vw !important;
+  padding-right: 7vw !important;
 }
 
 // Флекс для прижатия футера к нижней части экрана
@@ -157,10 +157,7 @@ $backImgHeight992: 213px;
   }
 }
 .mainContainer--default {
-  background-color: #c5c5c5;
-  // background-image: url('../images/main_image.jpg'),
-  //   linear-gradient(#704b1f, #704b1f);
-  // linear-gradient(90deg, #845c28 50%, #845c28 50%);
+  background-color: #b8b8b8;
 }
 
 .covidMessage {

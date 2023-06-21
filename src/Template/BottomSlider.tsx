@@ -1,22 +1,15 @@
-import { memo, useState, useMemo } from 'react'
+import { memo } from 'react'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { Link } from 'react-router-dom'
-import { after, scrollToNavigation } from '../helpers'
+import { scrollToNavigation } from '../helpers'
 import { CinemaStateT } from '../REDUX/cinema/cinemaReducerT'
+import { useImagesLoaded } from './useImagesLoaded'
 
 const BottomSlider = memo<BottomSliderT>(function BottomSliderN({
   isMobile,
   filmsToday,
 }) {
-  const [allImgLoaded, setImgLoaded] = useState(false)
-
-  const onLoad = useMemo(
-    () =>
-      after(filmsToday.length, () => {
-        setImgLoaded(true)
-      }),
-    [filmsToday.length]
-  )
+  const { allImgLoaded, onLoad } = useImagesLoaded(filmsToday)
 
   if (isMobile || filmsToday[0] === undefined) {
     return null
