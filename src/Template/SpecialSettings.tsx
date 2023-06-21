@@ -1,35 +1,18 @@
-import {
-  switchSiteMode_AC,
-  switchSiteTheme_AC,
-  switchImagesVisibility_AC,
-  switchFontSize_AC,
-} from '../REDUX/special/specialReducer'
-
-import { useAppDispatch, useAppSelector } from '../REDUX/store'
-import { useCallback } from 'react'
-import { SpecialStateT } from '../REDUX/special/specialReducerT'
 import { SiteModeButton } from './SpecialSettingsComponents/SiteModeButton'
 import { ThemeButtons } from './SpecialSettingsComponents/ThemeButtons'
 import { FontButtons } from './SpecialSettingsComponents/FontButtons'
 import { ImgSwitcher } from './SpecialSettingsComponents/ImgSwitcher'
+import { useSpecialState } from './useSpecialState'
 
 function SpecialSettings() {
-  const { siteMode } = useAppSelector(state => state.special)
-  const { imgHidden } = useAppSelector(state => state.special)
-  const dispatch = useAppDispatch()
-
-  const switchSiteTheme = useCallback((theme: SpecialStateT['theme']) => {
-    dispatch(switchSiteTheme_AC({ theme }))
-  }, [])
-  const switchImagesVisibility = useCallback((value: boolean) => {
-    dispatch(switchImagesVisibility_AC({ value }))
-  }, [])
-  const switchFontSize = useCallback((fontSize: SpecialStateT['fontSize']) => {
-    dispatch(switchFontSize_AC({ fontSize }))
-  }, [])
-  const switchSiteMode = useCallback((mode: SpecialStateT['siteMode']) => {
-    dispatch(switchSiteMode_AC({ mode }))
-  }, [])
+  const {
+    siteMode,
+    imgHidden,
+    switchFontSize,
+    switchImagesVisibility,
+    switchSiteMode,
+    switchSiteTheme,
+  } = useSpecialState()
 
   if (siteMode === 'default') {
     return (

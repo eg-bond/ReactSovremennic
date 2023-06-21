@@ -1,13 +1,11 @@
 import IndexAdvXS from '../../Template/IndexAdvXS'
 import { Link } from 'react-router-dom'
-// import FilmsSpecial from '../FilmsSpecial/FilmsSpecial'
 import LiteYouTubeEmbed from 'react-lite-youtube-embed'
 import BarSlider from '../../Template/BarSlider'
 import { useAppSelector } from '../../REDUX/store'
 
 function IndexContent({ isMobile }: { isMobile: boolean }) {
   const { siteMode } = useAppSelector(state => state.special)
-  const { films } = useAppSelector(state => state.cinema)
 
   return (
     <div className='content__gridLeftItem--3fr'>
@@ -55,8 +53,6 @@ function IndexContent({ isMobile }: { isMobile: boolean }) {
         <div className='separatorMobile separatorMobile--index' />
         <BarSlider />
       </div>
-
-      {/* {siteMode === 'special' && <FilmsSpecial films={films} />} */}
 
       <div className='separatorMobile separatorMobile--index' />
 

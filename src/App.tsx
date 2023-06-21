@@ -1,39 +1,27 @@
-import { useCallback, useEffect } from 'react'
+import { useEffect } from 'react'
 import './SCSS/style.scss'
 import Navigation from './Template/Navigation'
 import BottomSlider from './Template/BottomSlider'
 import Footer from './Template/Footer'
-import { setTodayScheduleItem_AC } from './REDUX/seance/seanceReducer'
 import Adv from './Template/Adv'
-import { createFilmsTodayArr_AC } from './REDUX/cinema/cinemaReducer'
-import { switchSiteMode_AC } from './REDUX/special/specialReducer'
 import { changeAppColors, modifiedClass, queries } from './helpers'
 import Content from './Content/Content'
-import { useAppDispatch, useAppSelector } from './REDUX/store'
-import { SpecialStateT } from './REDUX/special/specialReducerT'
 import FilmsSlider from './Template/FilmsSlider'
 import { useMediaQuery } from './hooks'
-import { useLocation } from 'react-router-dom'
+import { useAppState } from './useAppState'
 
 const App = () => {
-  const { films } = useAppSelector(state => state.cinema)
-  const { filmsToday } = useAppSelector(state => state.cinema)
-  const { siteMode } = useAppSelector(state => state.special)
-  const { theme } = useAppSelector(state => state.special)
-  const { imgHidden } = useAppSelector(state => state.special)
-  const { fontSize } = useAppSelector(state => state.special)
-  const dispatch = useAppDispatch()
-
-  const switchSiteMode = useCallback((mode: SpecialStateT['siteMode']) => {
-    dispatch(switchSiteMode_AC({ mode }))
-  }, [])
-
-  const createFilmsTodayArr = useCallback(() => {
-    dispatch(createFilmsTodayArr_AC())
-  }, [])
-  const setTodayScheduleItem = useCallback(() => {
-    dispatch(setTodayScheduleItem_AC())
-  }, [])
+  const {
+    films,
+    filmsToday,
+    siteMode,
+    theme,
+    imgHidden,
+    fontSize,
+    switchSiteMode,
+    createFilmsTodayArr,
+    setTodayScheduleItem,
+  } = useAppState()
 
   // Initialization
   useEffect(() => {
@@ -51,7 +39,7 @@ const App = () => {
     }
   }, [isMobile, switchSiteMode, siteMode])
 
-  // // Switches the main fontSize style variable
+  // Switches the main fontSize style variable
   useEffect(() => {
     document.documentElement.style.setProperty('--htmlFontSize', fontSize)
   }, [fontSize])

@@ -1,35 +1,24 @@
 import { memo, useEffect, useState } from 'react'
 import { MobileSeanceNavigation } from './MobileSeanceNavigation'
-import {
-  changeScheduleItem_AC,
-  setTodayScheduleItem_AC,
-} from '../../REDUX/seance/seanceReducer'
 import schedule from './schedule'
 import { useCallback } from 'react'
 import IndexAdvXS from '../../Template/IndexAdvXS'
 import BarSlider from '../../Template/BarSlider'
-import { useAppDispatch, useAppSelector } from '../../REDUX/store'
 import type { DateKeysT } from '../../REDUX/seance/seanceReducerT'
 import { CreateSeanceButtons } from './seanceComponents/CreateSeanceButtons'
 import { TableContent } from './seanceComponents/TableContent'
 import { trDuration } from '../Sushi/sushiHelpers'
+import { useSeanceState } from './useSeanceState'
 
 const Seance = memo<{ isMobile: boolean }>(function Seance({ isMobile }) {
-  //------------------------------------------------------------------
-  const { siteMode } = useAppSelector(state => state.special)
-  const { datesArr } = useAppSelector(state => state.seance)
-  const { buttonTitle } = useAppSelector(state => state.seance)
-  const { activeScheduleItemKey } = useAppSelector(state => state.seance)
-  const dispatch = useAppDispatch()
-
-  const setTodayScheduleItem = useCallback(() => {
-    dispatch(setTodayScheduleItem_AC())
-  }, [])
-
-  const changeScheduleItem = useCallback((key: DateKeysT, title: string) => {
-    dispatch(changeScheduleItem_AC({ key, title }))
-  }, [])
-  //------------------------------------------------------------------
+  const {
+    siteMode,
+    datesArr,
+    buttonTitle,
+    activeScheduleItemKey,
+    setTodayScheduleItem,
+    changeScheduleItem,
+  } = useSeanceState()
 
   const [tableVisible, switchVisibility] = useState(true)
 
