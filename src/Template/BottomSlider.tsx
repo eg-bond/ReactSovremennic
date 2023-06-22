@@ -3,14 +3,11 @@ import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { Link } from 'react-router-dom'
 import { scrollToNavigation } from '../helpers'
 import { CinemaStateT } from '../REDUX/cinema/cinemaReducerT'
-import { useImagesLoaded } from './useImagesLoaded'
 
 const BottomSlider = memo<BottomSliderT>(function BottomSliderN({
   isMobile,
   filmsToday,
 }) {
-  const { allImgLoaded, onLoad } = useImagesLoaded(filmsToday)
-
   if (isMobile || filmsToday[0] === undefined) {
     return null
   }
@@ -31,31 +28,22 @@ const BottomSlider = memo<BottomSliderT>(function BottomSliderN({
         pauseOnFocus: true,
       }}>
       {filmsToday.map((item, i) => (
-        <Slide
-          key={i + 'BSl'}
-          film={item}
-          allImgLoaded={allImgLoaded}
-          onLoad={onLoad}
-        />
+        <Slide key={i + 'BSl'} film={item} />
       ))}
     </Splide>
   )
 })
 
-const Slide = memo(function Slide({ film, allImgLoaded, onLoad }: SlideT) {
+const Slide = memo(function Slide({ film }: SlideT) {
   return (
     <SplideSlide className={'swSlide bottomSlider__slide'}>
       <Link
         className='swSlide__a'
         onClick={scrollToNavigation}
         to={`/movies/${film.link}`}>
-        <div
-          className={`bottomSlider__imgCont ${
-            !allImgLoaded ? 'skeleton skeleton-Gray' : ''
-          }`}>
+        <div className={`bottomSlider__imgCont skeleton-Gray`}>
           <img
             className='swSlide__img'
-            onLoad={onLoad}
             src={`./Images/description/${film.link}_D.webp`}
             alt={film.title}
           />
@@ -69,8 +57,6 @@ const Slide = memo(function Slide({ film, allImgLoaded, onLoad }: SlideT) {
 
 type SlideT = {
   film: CinemaStateT['films'][0]
-  allImgLoaded: boolean
-  onLoad: () => void
 }
 
 export default BottomSlider

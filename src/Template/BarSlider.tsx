@@ -4,9 +4,9 @@ import { memo } from 'react'
 const BarSliderSlide = ({ slideKey }: { slideKey: string }) => {
   return (
     <SplideSlide key={slideKey}>
-      <div className='imgContainer skeleton'>
+      <div className='imgContainer'>
         <img
-          className='imgContainer__img'
+          className='imgContainer__img transition'
           src={`./Images/${slideKey}.webp`}
           alt={slideKey}
         />

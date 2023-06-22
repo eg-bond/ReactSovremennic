@@ -50,6 +50,11 @@ h6 {
   color: var(--secondaryClr);
 }
 
+img,
+article {
+  transition: all 0.3s;
+}
+
 .opacity_0 {
   opacity: 0;
   transition: ease 550ms;

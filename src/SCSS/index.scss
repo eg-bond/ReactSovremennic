@@ -38,9 +38,6 @@
   margin-bottom: 7%;
   transition: ease 300ms;
 }
-.linkWrapper img {
-  transition: all 0.3s;
-}
 .linkWrapper:focus .desktopAdv {
   @include shiftUp;
 }

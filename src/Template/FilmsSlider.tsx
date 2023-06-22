@@ -42,8 +42,8 @@ const Slide = memo(function Slide({ film, allImgLoaded, onLoad }: SlideT) {
     <SplideSlide className={'swSlide cinemaSlider__slide'}>
       <Link className='swSlide__a' to={`movies/${film.link}`}>
         <div
-          className={`cinemaSlider__imgCont ${
-            !allImgLoaded ? 'skeleton skeleton-Gray' : ''
+          className={`cinemaSlider__imgCont skeleton-Gray ${
+            !allImgLoaded ? 'skeleton' : ''
           }`}>
           <img
             className='swSlide__img'

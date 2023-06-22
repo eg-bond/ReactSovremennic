@@ -4,6 +4,9 @@ html {
   --shiftLength: 1.3vw;
 }
 
+.fadeIn {
+  animation: fadeIn var(--animationDuration) ease forwards;
+}
 .fadeInUp {
   animation: fadeInUp var(--animationDuration) ease forwards;
 }
@@ -11,6 +14,14 @@ html {
   animation: fadeOutDown var(--animationDuration) ease forwards;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 @keyframes fadeInUp {
   from {
     opacity: 0;
