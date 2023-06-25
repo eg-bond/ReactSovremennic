@@ -6,7 +6,7 @@ let initialState = {
   films: filmsArray,
   filmsObject: null,
   filmsToday: [],
-  filmsTodayAmount: 6,
+  filmsTodayAmount: 5,
 }
 
 export const cinemaReduser = (state = initialState, action) => {
