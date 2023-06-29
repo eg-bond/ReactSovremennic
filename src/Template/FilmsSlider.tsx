@@ -3,13 +3,13 @@ import type { CinemaStateT } from '../REDUX/cinema/cinemaReducerT'
 import { Link } from 'react-router-dom'
 import { memo } from 'react'
 import { useMobilePaddings } from './useMobilePaddings'
-import { useImagesLoaded } from './useImagesLoaded'
+import { useImagesLoaded } from '../hooks/useImagesLoaded'
 
 const FilmsSlider = memo<FilmSliderT>(function FilmsSlider({
   films,
   isMobile,
 }) {
-  const { allImgLoaded, onLoad } = useImagesLoaded(films)
+  const { allImgLoaded, onLoad } = useImagesLoaded(films.length || 0)
   //adds paddings to mobile slider to make it look like 3.5 slides
   useMobilePaddings(isMobile)
 

@@ -2,9 +2,9 @@ import { useCallback } from 'react'
 import {
   changeScheduleItem_AC,
   setTodayScheduleItem_AC,
-} from '../../REDUX/seance/seanceReducer'
-import { useAppDispatch, useAppSelector } from '../../REDUX/store'
-import type { DateKeysT } from '../../REDUX/seance/seanceReducerT'
+} from '../seance/seanceReducer'
+import { useAppDispatch, useAppSelector } from '../store'
+import type { DateKeysT } from '../seance/seanceReducerT'
 
 export const useSeanceState = () => {
   const { siteMode } = useAppSelector(state => state.special)

@@ -7,8 +7,8 @@ import Adv from './Template/Adv'
 import { changeAppColors, modifiedClass, queries } from './helpers'
 import Content from './Content/Content'
 import FilmsSlider from './Template/FilmsSlider'
-import { useMediaQuery } from './hooks'
-import { useAppState } from './useAppState'
+import { useAppState } from './REDUX/stateHooks/useAppState'
+import { useMediaQuery } from './hooks/useMediaQuery'
 
 const App = () => {
   const {

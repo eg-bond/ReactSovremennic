@@ -2,7 +2,7 @@ import { SiteModeButton } from './SpecialSettingsComponents/SiteModeButton'
 import { ThemeButtons } from './SpecialSettingsComponents/ThemeButtons'
 import { FontButtons } from './SpecialSettingsComponents/FontButtons'
 import { ImgSwitcher } from './SpecialSettingsComponents/ImgSwitcher'
-import { useSpecialState } from './useSpecialState'
+import { useSpecialState } from '../REDUX/stateHooks/useSpecialState'
 
 function SpecialSettings() {
   const {

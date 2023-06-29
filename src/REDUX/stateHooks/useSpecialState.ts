@@ -4,9 +4,9 @@ import {
   switchImagesVisibility_AC,
   switchSiteMode_AC,
   switchSiteTheme_AC,
-} from '../REDUX/special/specialReducer'
-import type { SpecialStateT } from '../REDUX/special/specialReducerT'
-import { useAppDispatch, useAppSelector } from '../REDUX/store'
+} from '../special/specialReducer'
+import type { SpecialStateT } from '../special/specialReducerT'
+import { useAppDispatch, useAppSelector } from '../store'
 
 export const useSpecialState = () => {
   const { siteMode } = useAppSelector(state => state.special)

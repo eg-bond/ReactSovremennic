@@ -8,7 +8,7 @@ import type { DateKeysT } from '../../REDUX/seance/seanceReducerT'
 import { CreateSeanceButtons } from './seanceComponents/CreateSeanceButtons'
 import { TableContent } from './seanceComponents/TableContent'
 import { trDuration } from '../Sushi/sushiHelpers'
-import { useSeanceState } from './useSeanceState'
+import { useSeanceState } from '../../REDUX/stateHooks/useSeanceState'
 
 const Seance = memo<{ isMobile: boolean }>(function Seance({ isMobile }) {
   const {

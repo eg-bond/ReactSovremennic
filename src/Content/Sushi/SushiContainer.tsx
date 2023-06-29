@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from 'react'
 import Sushi from './Sushi'
 import { trDuration } from './sushiHelpers'
 import type { SushiT } from './sushiT'
-import { useTimeout } from '../../hooks'
+import { useTimeout } from '../../hooks/useTimeout'
 
 const SushiContainer = ({ isMobile }: { isMobile: boolean }) => {
   const [currentImgKey, switchImg] = useState(

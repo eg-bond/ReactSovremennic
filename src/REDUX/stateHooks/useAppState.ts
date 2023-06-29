@@ -1,9 +1,9 @@
 import { useCallback } from 'react'
-import { createFilmsTodayArr_AC } from './REDUX/cinema/cinemaReducer'
-import { setTodayScheduleItem_AC } from './REDUX/seance/seanceReducer'
-import { switchSiteMode_AC } from './REDUX/special/specialReducer'
-import { useAppDispatch, useAppSelector } from './REDUX/store'
-import type { SpecialStateT } from './REDUX/special/specialReducerT'
+import { createFilmsTodayArr_AC } from '../cinema/cinemaReducer'
+import { setTodayScheduleItem_AC } from '../seance/seanceReducer'
+import { switchSiteMode_AC } from '../special/specialReducer'
+import { useAppDispatch, useAppSelector } from '../store'
+import type { SpecialStateT } from '../special/specialReducerT'
 
 export const useAppState = () => {
   const { films } = useAppSelector(state => state.cinema)
