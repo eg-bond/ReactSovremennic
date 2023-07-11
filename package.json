@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "analyze_js": "source-map-explorer 'dist/assets/*.js'",
+    "analyze_js": "source-map-explorer 'dist/assets/*.js' --no-border-checks",
     "analyze_css": "source-map-explorer 'dist/assets/*.css' --no-border-checks",
     "scrapper": "node ExternalScripts/Scrapper/scrapper.js",
     "webp": "node ExternalScripts/WebpConverter/convertToWebP.js",
