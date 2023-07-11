@@ -8,7 +8,7 @@ export const SushiLinearProgress = withStyles(theme => ({
     height: 5,
     borderRadius: 3,
     marginBottom: -5,
-    [theme.breakpoints.down('768')]: {
+    [theme.breakpoints.down(768)]: {
       marginTop: '1.6%',
       marginBottom: -10,
     },

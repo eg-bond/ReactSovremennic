@@ -1,6 +1,6 @@
 import { memo } from 'react'
-import type { ScheduleT } from '../schedule'
 import type { SeanceStateT } from '../../../REDUX/seance/seanceReducerT'
+import schedule from '../schedule'
 
 export const TableContent = memo<TableContentT>(function TableContent({
   schedule,
@@ -37,3 +37,5 @@ type TableContentT = {
   schedule: ScheduleT
   activeScheduleItemKey: SeanceStateT['activeScheduleItemKey']
 }
+
+type ScheduleT = typeof schedule

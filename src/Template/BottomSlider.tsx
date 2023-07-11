@@ -2,7 +2,7 @@ import { memo } from 'react'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { Link } from 'react-router-dom'
 import { scrollToNavigation } from '../helpers'
-import { CinemaStateT } from '../REDUX/cinema/cinemaReducerT'
+import type { CinemaStateT } from '../REDUX/cinema/cinemaReducerT'
 
 const BottomSlider = memo<BottomSliderT>(function BottomSliderN({
   isMobile,

@@ -2,6 +2,7 @@ import { memo } from 'react'
 import { modifiedClass } from '../../../helpers'
 import type { SeanceStateT } from '../../../REDUX/seance/seanceReducerT'
 import type { ChangeTableContentT } from '../Seance'
+import type { SpecialStateT } from '../../../REDUX/special/specialReducerT'
 
 export const CreateSeanceButtons = memo<CSB_T>(function CreateSeanceButtons({
   datesArr,
@@ -42,6 +43,5 @@ type CSB_T = {
   datesArr: SeanceStateT['datesArr']
   activeScheduleItemKey: SeanceStateT['activeScheduleItemKey']
   changeTableContent: ChangeTableContentT
-  //special reducer
-  siteMode: string
+  siteMode: SpecialStateT['siteMode']
 }
