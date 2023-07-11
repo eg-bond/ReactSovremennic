@@ -2,7 +2,7 @@
 import scedule from '../../src/Content/Seance/schedule.ts'
 import { filmsArray } from '../../src/REDUX/filmsArray.ts'
 import fs from 'fs'
-import { findFirstWordInTitle } from '../Excel/insertSceduleFromXLSX.ts'
+import { findFirstWordInTitle } from '../Excel/insertScheduleFromXLSX.ts'
 
 // Функция, которая ищет в массиве filmArray фильмы из входящего массива с названиями
 // и возвращающая двумерный массив Array<["title", "age"]>

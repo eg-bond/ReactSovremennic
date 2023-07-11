@@ -18,14 +18,14 @@ const schedule = dataToObj(data)
 const finalSchedule = finalizeScedule(schedule)
 
 // Write final data to schedule.ts file
-const finalData = `let schedule = ${JSON.stringify(finalSchedule)}
+const finalData = `const schedule = ${JSON.stringify(finalSchedule)}
 export default schedule;`
 fs.writeFileSync('src/Content/Seance/schedule.ts', finalData)
 
-//------------------------------------------------------------------------------------
+//------------------------------------------------------------------------
 function dataToObj(data: dataT) {
   const schedule = {} as {
-    [index: string]: Array<[string, string, number]>
+    [Property in dataT[0]['day']]: Array<[string, string, number]>
   }
 
   for (let i = 0; i < 7; i++) {
@@ -46,28 +46,35 @@ function finalizeScedule(schedule: ReturnType<typeof dataToObj>) {
   const actualTitleAndAge = findTitleAndAge()
 
   const finalSchedule = {} as {
-    [index: string]: Array<[string, string, string, number | string]>
+    [Property in dataT[0]['day']]: Array<
+      [string, string, string, number | string]
+    >
   }
   // loop through all days
-  Object.keys(schedule).forEach(key => {
-    // map through all seance in a day an add actual title and age
-    const updatedDay = schedule[key].map(seance => {
-      const shortTitle = findFirstWordInTitle(seance[1])
-
-      if (actualTitleAndAge[shortTitle]) {
-        return [
-          seance[0],
-          actualTitleAndAge[shortTitle][0],
-          actualTitleAndAge[shortTitle][1],
-          seance[2],
-        ]
-      } else {
-        return ['There', 'is', 'no', 'movie']
-      }
-    })
+  Object.keys(schedule).forEach(
     //@ts-ignore
-    finalSchedule[key] = updatedDay
-  })
+    (key: dataT[0]['day']) => {
+      // map through all seance in a day an add actual title and age
+      const updatedDay: (typeof finalSchedule)['day0'] = schedule[key].map(
+        seance => {
+          const shortTitle = findFirstWordInTitle(seance[1])
+
+          if (actualTitleAndAge[shortTitle]) {
+            return [
+              seance[0],
+              actualTitleAndAge[shortTitle][0],
+              actualTitleAndAge[shortTitle][1],
+              seance[2],
+            ]
+          } else {
+            return ['There', 'is', 'no', 'movie']
+          }
+        }
+      )
+
+      finalSchedule[key] = updatedDay
+    }
+  )
 
   return finalSchedule
 }
