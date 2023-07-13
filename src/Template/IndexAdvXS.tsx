@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 function IndexAdvXS() {
   return (
-    <div className='container'>
+    <div className='container' data-testid={'mobile_adv'}>
       <div className='indexAdvXS'>
         <div className='indexAdvXS__item1'>
           <div className='indexAdvXS__item1__imgCont skeleton'>

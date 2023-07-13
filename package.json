@@ -13,7 +13,8 @@
     "scrapper": "ts-node-esm ExternalScripts/Scrapper/scrapper.ts",
     "webp": "node ExternalScripts/WebpConverter/convertToWebP.js",
     "make_ps": "ts-node-esm ExternalScripts/PhotoShopScedule/makePSscedule.ts",
-    "get_schedule": "ts-node-esm ExternalScripts/Excel/insertScheduleFromXLSX.ts"
+    "get_schedule": "ts-node-esm ExternalScripts/Excel/insertScheduleFromXLSX.ts",
+    "test": "vitest"
   },
   "dependencies": {
     "@material-ui/core": "^4.12.4",
@@ -41,6 +42,8 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
     "@types/jsdom": "^21.1.1",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
@@ -62,6 +65,7 @@
     "vite-plugin-qrcode": "^0.2.1",
     "vite-plugin-remove-console": "^2.1.1",
     "vite-plugin-svgr": "^3.2.0",
+    "vitest": "^0.33.0",
     "webp-converter": "^2.3.3",
     "xlsx": "^0.18.5"
   }
