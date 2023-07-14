@@ -14,7 +14,6 @@ export const renderWithRedux = (component: ReactNode) => {
 export const renderWithRouter = (component: ReactNode) => {
   return {
     ...render(<HashRouter>{component}</HashRouter>),
-    store,
   }
 }
 export const renderWithRouterAndRedux = (component: ReactNode) => {
@@ -29,23 +28,5 @@ export const renderWithRouterAndRedux = (component: ReactNode) => {
 }
 
 describe('Simple working test', () => {
-  it('App:', () => {
-    // renderWithRouterAndRedux(<App />)
-    // const infoTitle = screen.queryByText(/Информация/i)
-    // console.log(infoTitle)
-    // expect(infoTitle).toBeVisible()
-  })
-
-  // it('should increment count on click', async () => {
-  //   render(<App />)
-  //   userEvent.click(screen.getByRole('button'))
-  //   expect(await screen.findByText(/count is: 1/i)).toBeInTheDocument()
-  // })
-
-  // it('uses flexbox in app header', async () => {
-  //   render(<App />)
-  //   const element = screen.getByRole('banner')
-  //   expect(element.className).toEqual('App-header')
-  //   expect(getComputedStyle(element).display).toEqual('flex')
-  // })
+  it('App:', () => {})
 })
