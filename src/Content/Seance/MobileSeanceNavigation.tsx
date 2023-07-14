@@ -64,6 +64,7 @@ const PopperContent = memo<PopperContentT>(function PopperContent({
     <ul>
       {datesArr.map(d => (
         <li
+          data-testid={`${d[0]}_xs`}
           className={activeScheduleItemKey === d[0] ? 'active' : ''}
           key={`${d[0]}_s`}
           onClick={() => changeTableContent(d[0], `${d[1]} ${d[2]}`)}>
