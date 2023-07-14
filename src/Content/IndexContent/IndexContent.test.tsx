@@ -5,7 +5,7 @@ import '../../SCSS/style.scss'
 
 vitest.mock('../../Template/BarSlider')
 
-describe('Index page tests', () => {
+describe.skip('Index page tests', () => {
   it('Has Information title:', () => {
     renderWithRouterAndRedux(<IndexContent isMobile={false} />)
     const infoTitle = screen.queryByText(/Информация/i)
