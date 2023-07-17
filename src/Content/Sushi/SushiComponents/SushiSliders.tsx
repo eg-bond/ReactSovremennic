@@ -35,7 +35,12 @@ export const SushiSliders = ({
         }}>
         {sushiElems.slidersKeys[sliderKey].map(slideKey => (
           <SplideSlide key={slideKey}>
-            <img onLoad={onLoad} src={sushiImgSrc(slideKey)} alt={slideKey} />
+            <img
+              className='sushi_page__img'
+              onLoad={onLoad}
+              src={sushiImgSrc(slideKey)}
+              alt={slideKey}
+            />
           </SplideSlide>
         ))}
       </Splide>

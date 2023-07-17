@@ -1,30 +1,21 @@
-import { fireEvent, render, screen } from '@testing-library/react'
-import { Link, MemoryRouter } from 'react-router-dom'
-import { Provider } from 'react-redux'
-import store from '../REDUX/store'
-import { ReactNode } from 'react'
+import { fireEvent, screen } from '@testing-library/react'
+import { Link } from 'react-router-dom'
 import { setTodayScheduleItem_AC } from '../REDUX/seance/seanceReducer'
 import Content from './Content'
 import Navigation from '../Template/Navigation'
 import { filmsArray } from '../REDUX/filmsArray'
 import { CinemaStateT } from '../REDUX/cinema/cinemaReducerT'
-
-export const rendWithMemRouterAndRedux = (component: ReactNode) => {
-  return {
-    ...render(
-      <MemoryRouter initialEntries={['/']}>
-        <Provider store={store}>{component}</Provider>
-      </MemoryRouter>
-    ),
-    store,
-  }
-}
-
-vitest.mock('../Template/BarSlider')
+import { renderWithRouterAndRedux } from '../App.test'
+import { matchMediaMock } from '../test/matchMediaMock'
 
 describe('React Router', () => {
+  afterEach(() => {
+    vi.resetAllMocks()
+  })
   beforeEach(() => {
-    const { store } = rendWithMemRouterAndRedux(
+    matchMediaMock('desktop')
+
+    const { store } = renderWithRouterAndRedux(
       <div>
         <Navigation siteMode='default' theme='blackWhite' fontSize='14px' />
         <Link to={`movies/dont_exist`}>Wrong movie URL</Link>
@@ -95,8 +86,11 @@ const FilmsSliderSimpleClone = ({
     <h4 className='displayMobile'>Фильмы</h4>
     <div className='splide'>
       {filmsArray.map((item, i) => (
-        <Link className='swSlide__a' to={`movies/${item.link}`}>
-          <div className='splide_slide' key={i + 'FSS'}>
+        <Link
+          key={i + 'FSSC'}
+          className='swSlide__a'
+          to={`movies/${item.link}`}>
+          <div className='splide_slide'>
             <img src={`./Images/top_menu/${item.link}.webp`} alt={item.title} />
             <h1 className='swSlide__h1'>{item.title}</h1>
             <p className='swSlide__p'>{item.beginDate}</p>
