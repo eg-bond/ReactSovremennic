@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import LiteYouTubeEmbed from 'react-lite-youtube-embed'
 import BarSlider from '../../Template/BarSlider'
 import { useAppSelector } from '../../REDUX/store'
+import { SushiWork } from '../../Template/SushiWork'
 
 function IndexContent({ isMobile }: { isMobile: boolean }) {
   const { siteMode } = useAppSelector(state => state.special)
@@ -50,6 +51,10 @@ function IndexContent({ isMobile }: { isMobile: boolean }) {
           • Уважаемые посетители кинотеатра! Показ последнего сеанса
           осуществляется только от трех человек.
         </p>
+
+        <div className='separatorMobile separatorMobile--index' />
+        {isMobile && <SushiWork />}
+
         <div className='separatorMobile separatorMobile--index' />
         <BarSlider />
       </div>

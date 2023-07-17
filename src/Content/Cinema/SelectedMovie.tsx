@@ -3,11 +3,13 @@ import { DescriptionTrailer } from './DescriptionTrailer'
 import { FilmImg } from './FilmImg'
 import type { FilmItemT } from '../../REDUX/cinema/cinemaReducerT'
 import type { SpecialStateT } from '../../REDUX/special/specialReducerT'
+import { SushiWork } from '../../Template/SushiWork'
 
 const SelectedMovie = memo<{
   fontSize: SpecialStateT['fontSize']
   filmItem: FilmItemT
-}>(function SelectedMovie({ fontSize, filmItem }) {
+  isMobile: boolean
+}>(function SelectedMovie({ fontSize, filmItem, isMobile }) {
   const gridClass =
     fontSize !== '26px' ? 'selectedMovie--rightFr' : 'selectedMovie--fullFr'
 
@@ -55,6 +57,9 @@ const SelectedMovie = memo<{
           fontSize={fontSize}
         />
       </div>
+
+      <div className='separatorMobile separatorMobile--index' />
+      {isMobile && <SushiWork />}
     </div>
   )
 })

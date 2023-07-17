@@ -6,35 +6,43 @@ import type { FilmItemT } from '../../REDUX/cinema/cinemaReducerT'
 import SelectedMovie from './SelectedMovie'
 import Redirect from '../../Template/Redirect'
 
-const SelectedMovieContainer = memo(function SelectedMovieContainer() {
-  const { fontSize } = useAppSelector(state => state.special)
-  const { filmsObject } = useAppSelector(state => state.cinema)
-  const dispatch = useAppDispatch()
-  //--------------------------------------------
+const SelectedMovieContainer = memo<{ isMobile: boolean }>(
+  function SelectedMovieContainer({ isMobile }) {
+    const { fontSize } = useAppSelector(state => state.special)
+    const { filmsObject } = useAppSelector(state => state.cinema)
+    const dispatch = useAppDispatch()
+    //--------------------------------------------
 
-  const { film_id } = useParams()
+    const { film_id } = useParams()
 
-  const filmsObjCreated = useCallback(
-    () => Object.keys(filmsObject).length,
-    [filmsObject]
-  )
+    const filmsObjCreated = useCallback(
+      () => Object.keys(filmsObject).length,
+      [filmsObject]
+    )
 
-  // Creates filmsObject if it doesn't exist
-  useEffect(() => {
-    !filmsObjCreated() && dispatch(createFilmsObject_AC())
-  }, [dispatch, filmsObjCreated])
+    // Creates filmsObject if it doesn't exist
+    useEffect(() => {
+      !filmsObjCreated() && dispatch(createFilmsObject_AC())
+    }, [dispatch, filmsObjCreated])
 
-  if (!filmsObjCreated()) {
-    return <div className='selectedMovie'></div>
+    if (!filmsObjCreated()) {
+      return <div className='selectedMovie'></div>
+    }
+
+    const filmItem: FilmItemT | undefined = filmsObject[film_id as string]
+
+    if (!filmItem) {
+      return <Redirect to={'/'} />
+    }
+
+    return (
+      <SelectedMovie
+        fontSize={fontSize}
+        filmItem={filmItem}
+        isMobile={isMobile}
+      />
+    )
   }
-
-  const filmItem: FilmItemT | undefined = filmsObject[film_id as string]
-
-  if (!filmItem) {
-    return <Redirect to={'/'} />
-  }
-
-  return <SelectedMovie fontSize={fontSize} filmItem={filmItem} />
-})
+)
 
 export default SelectedMovieContainer

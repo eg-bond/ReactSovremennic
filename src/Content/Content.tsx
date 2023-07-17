@@ -21,7 +21,10 @@ const Content = memo<{ isMobile: boolean }>(function Content({ isMobile }) {
         <Route path='/' element={<IndexContent isMobile={isMobile} />} />
         <Route path='seance' element={<Seance isMobile={isMobile} />} />
         <Route path='sushi' element={<SushiContainer isMobile={isMobile} />} />
-        <Route path='movies/:film_id' element={<SelectedMovieContainer />} />
+        <Route
+          path='movies/:film_id'
+          element={<SelectedMovieContainer isMobile={isMobile} />}
+        />
         {/* lazy routes */}
         <Route path='about' element={<About />} />
         <Route path='rules' element={<Rules />} />

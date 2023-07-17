@@ -3,6 +3,7 @@ import { SushiLinearProgress } from './SushiLinearProgress'
 import type { SushiT } from './sushiT'
 import CreateMenuButtons from './SushiComponents/CreateMenuButtons'
 import SushiImage from './SushiComponents/SushiImage'
+import { SushiWork } from '../../Template/SushiWork'
 
 const Sushi = ({
   currentImgKey,
@@ -45,6 +46,9 @@ const Sushi = ({
             onLoad={onLoad}
           />
         </div>
+
+        <div className='separatorMobile separatorMobile--index' />
+        {isMobile && <SushiWork />}
       </div>
     </>
   )

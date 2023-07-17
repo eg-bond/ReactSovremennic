@@ -1,18 +1,20 @@
 import { memo } from 'react'
 import { Link, useMatch } from 'react-router-dom'
 import { useImagesLoaded } from '../hooks/useImagesLoaded'
+import { SushiWorkModal } from './SushiWork'
 
 const AdvContent = memo(function AdvContent() {
   const { allImgLoaded, onLoad } = useImagesLoaded(3)
 
   return (
     <div className='content__gridRightItem--1fr'>
-      <div
+      <SushiWorkModal loaded={allImgLoaded} onLoad={onLoad} />
+      {/* <div
         className={`desktopAdv desktopAdv--5 ${
           !allImgLoaded ? 'skeleton' : ''
         } `}>
         <img onLoad={onLoad} src='./Images/vr_image.webp' alt='vr' />
-      </div>
+      </div> */}
 
       <Link tabIndex={2} className={'linkWrapper'} to='/sushi'>
         <div

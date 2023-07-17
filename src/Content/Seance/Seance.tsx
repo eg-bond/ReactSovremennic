@@ -9,6 +9,7 @@ import { CreateSeanceButtons } from './seanceComponents/CreateSeanceButtons'
 import { TableContent } from './seanceComponents/TableContent'
 import { trDuration } from '../Sushi/sushiHelpers'
 import { useSeanceState } from '../../REDUX/stateHooks/useSeanceState'
+import { SushiWork } from '../../Template/SushiWork'
 
 const Seance = memo<{ isMobile: boolean }>(function Seance({ isMobile }) {
   const {
@@ -72,6 +73,9 @@ const Seance = memo<{ isMobile: boolean }>(function Seance({ isMobile }) {
           />
         </table>
       </div>
+
+      <div className='separatorMobile separatorMobile--index' />
+      {isMobile && <SushiWork />}
 
       <div className='separatorMobile separatorMobile--index' />
       <BarSlider />
