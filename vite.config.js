@@ -22,6 +22,13 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: './src/test/setup.ts',
     css: true,
+    coverage: {
+      reporter: ['html'],
+    },
+    browser: {
+      enabled: true,
+      name: 'chrome', 
+    },
   },
   server: {
     open: true,

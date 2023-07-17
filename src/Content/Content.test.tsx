@@ -12,6 +12,7 @@ describe('React Router', () => {
   afterEach(() => {
     vi.resetAllMocks()
   })
+
   beforeEach(() => {
     matchMediaMock('desktop')
 
