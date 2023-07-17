@@ -14,6 +14,7 @@ export const filmsArray = [
   //   playerCode: 'JcEKRP7h5G8',
   //   link: 'guardians_3',
   // },
+
   {
     title: 'Братья Супер Марио в кино',
     beginDate: 'с 8 июня',

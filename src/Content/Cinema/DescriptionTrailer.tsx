@@ -8,7 +8,7 @@ export const DescriptionTrailer = memo<DescriptionTrailerT>(
       fontSize !== '26px' ? 'descTrailer--grid' : 'selectedMovie--fullFr'
 
     return (
-      <div className={gridClass}>
+      <div key={trailer_src} className={gridClass}>
         <p className='selectedMovie__description'>{description}</p>
         <div className='embed-responsive'>
           <LiteYouTubeEmbed

@@ -25,7 +25,7 @@ const SushiImage = memo<SushiImageT>(function SushiImage({
       <img
         key={currentImgKey}
         onLoad={onLoad}
-        className={'sushi__page__img'}
+        className={'sushi_page__img'}
         src={sushiImgSrc(currentImgKey)}
         alt={currentImgKey}
       />

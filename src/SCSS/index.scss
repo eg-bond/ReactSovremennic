@@ -25,9 +25,15 @@
   &:hover {
     color: red;
   }
+  &:focus {
+    color: red;
+  }
 }
 .vk_ref {
   &:hover {
+    color: rgb(45, 140, 230) !important;
+  }
+  &:focus {
     color: rgb(45, 140, 230) !important;
   }
 }
@@ -56,6 +62,12 @@
 .desktopAdv--5 {
   padding-bottom: 95%;
   cursor: pointer;
+  & img {
+    transition: ease 300ms;
+  }
+  & img:hover {
+    opacity: 0.85;
+  }
 }
 //------------------------
 
