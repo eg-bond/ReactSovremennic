@@ -25,12 +25,12 @@ export function SushiWorkModal({ loaded = true, onLoad = () => {} }) {
   return (
     <>
       <div className={`desktopAdv desktopAdv--5 ${!loaded ? 'skeleton' : ''} `}>
-        <img
+        {/* <img
           onClick={() => setOpen(true)}
           onLoad={onLoad}
           src='./Images/sushi_work_250.webp'
           alt='суши_работа'
-        />
+        /> */}
       </div>
       <Fade
         in={open}
