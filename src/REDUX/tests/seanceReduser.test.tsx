@@ -18,7 +18,7 @@ const initialState: SeanceStateT = {
   buttonTitle: '',
 }
 
-describe('seanceReduser tests:', () => {
+describe('seanceReducer tests:', () => {
   describe('setTodayScheduleItem', () => {
     const newState = reducer(initialState, setTodayScheduleItem_AC())
     const date = new Date()
