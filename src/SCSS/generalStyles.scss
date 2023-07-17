@@ -82,6 +82,29 @@ article {
   padding-right: 7vw !important;
 }
 
+//sushi work modal
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9;
+  background: rgba(0, 0, 0, 0.5);
+}
+.modal {
+  position: fixed;
+  width: 40vw;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: 5;
+  min-height: auto;
+  @media ($mediaQuery1200) {
+    width: 55vw;
+  }
+}
+.modal__img {
+  width: 100%;
+}
+
 // Флекс для прижатия футера к нижней части экрана
 .flex-wrapper {
   display: flex;
