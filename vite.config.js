@@ -25,10 +25,6 @@ export default defineConfig({
     coverage: {
       reporter: ['html'],
     },
-    browser: {
-      enabled: true,
-      name: 'chrome', 
-    },
   },
   server: {
     open: true,
