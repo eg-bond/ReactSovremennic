@@ -20,10 +20,11 @@ const convertToWebP = name => {
   const inputFolderPath = options[name].input
 
   fs.readdirSync(inputFolderPath).forEach(file => {
+    console.log(file)
     webp.cwebp(
       options[name].input + file,
       options[name].output + file.replace('.jpg', '.webp'),
-      '-q 80'
+      '-q 100'
     )
   })
 }

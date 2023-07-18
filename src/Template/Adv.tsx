@@ -21,7 +21,7 @@ const AdvContent = memo(function AdvContent() {
           className={`desktopAdv desktopAdv--3 ${
             !allImgLoaded ? 'skeleton' : ''
           }`}>
-          <img onLoad={onLoad} src='./Images/72.gif' alt='Суши-бар' />
+          <img onLoad={onLoad} src='./Images/72.webp' alt='Суши-бар' />
         </div>
       </Link>
       <div

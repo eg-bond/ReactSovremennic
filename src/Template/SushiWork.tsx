@@ -7,6 +7,9 @@ export const SushiWork = () => {
       <img
         className='sushiWork__img'
         src='./Images/sushi_work_half.webp'
+        // srcSet={
+        //   './Images/respImg/sushi_work_half_xs.webp 400w, ./Images/respImg/sushi_work_half_sm.webp 500w, ./Images/respImg/sushi_work_half_med.webp 600w'
+        // }
         alt='работа_суши'
       />
     </div>
@@ -28,7 +31,7 @@ export function SushiWorkModal({ loaded = true, onLoad = () => {} }) {
         <img
           onClick={() => setOpen(true)}
           onLoad={onLoad}
-          src='./Images/sushi_work_250.webp'
+          src='./Images/sushi_work_sm.webp'
           alt='суши_работа'
         />
       </div>

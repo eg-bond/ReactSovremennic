@@ -7,7 +7,10 @@ const BarSliderSlide = ({ slideKey }: { slideKey: string }) => {
       <div className='imgContainer'>
         <img
           className='imgContainer__img transition'
-          src={`./Images/${slideKey}.webp`}
+          src={`./Images/kombo/${slideKey}_lg.webp`}
+          srcSet={`./Images/kombo/${slideKey}_sm.webp 500w,
+                   ./Images/kombo/${slideKey}_md.webp 680w,
+                   ./Images/kombo/${slideKey}_lg.webp 1920w`}
           alt={slideKey}
         />
       </div>
@@ -15,7 +18,7 @@ const BarSliderSlide = ({ slideKey }: { slideKey: string }) => {
   )
 }
 
-const slideKeys = ['kombo2', 'kombo1']
+const slideKeys = ['kombo1', 'kombo2']
 
 const BarSlider = memo(function BarSlider() {
   return (
