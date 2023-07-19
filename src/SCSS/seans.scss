@@ -86,6 +86,71 @@
   background-color: #2b2831;
 }
 
+//---------------------------
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9;
+  background: rgba(0, 0, 0, 0.5);
+}
+.modal {
+  position: fixed;
+  width: 40vw;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: 5;
+  min-height: auto;
+  @media ($mediaQuery1200) {
+    width: 55vw;
+  }
+}
+.modal__img {
+  width: 100%;
+}
+//---------------------------
+
+.popper__backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 5;
+}
+.popper {
+  border: $border2px;
+  border-radius: $buttonsBR;
+  color: var(--secondaryClr);
+  text-align: center;
+  background-color: var(--mainClr);
+  position: relative !important;
+  width: auto;
+  margin: 25vh 2% 2% 2%;
+  z-index: 5;
+  min-height: auto;
+}
+.popper li {
+  list-style-type: none;
+  cursor: pointer;
+  border-bottom: solid 1px;
+  margin: 0 10px;
+  font-size: $mobileParagraphsFS;
+  &:last-child {
+    border-bottom: none !important;
+  }
+}
+.popper li.active,
+.popper li:hover {
+  transition: ease 0.6s;
+  color: #e41b2b;
+}
+.popper__seance li {
+  padding: 3.5vw 0;
+}
+
 @media #{$mediaQueryMobile} {
   .seans_button_xs {
     position: relative;

@@ -60,7 +60,6 @@ function IndexContent({ isMobile }: { isMobile: boolean }) {
       </div>
 
       <div className='separatorMobile separatorMobile--index' />
-
       {isMobile && <IndexAdvXS />}
     </div>
   )
