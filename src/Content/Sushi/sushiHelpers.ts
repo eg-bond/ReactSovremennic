@@ -7,6 +7,7 @@ export const sushiElems = {
     ['hot_rolls', 'Запеченные роллы'],
     ['brand_rolls', 'Фирменные роллы'],
     ['mini_rolls', 'Мини-роллы'],
+    ['child_menu', 'Детское меню'],
     ['sets', 'Наборы'],
     ['salads', 'Салаты'],
     ['soups', 'Супы'],

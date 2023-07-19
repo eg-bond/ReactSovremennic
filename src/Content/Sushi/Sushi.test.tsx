@@ -14,7 +14,7 @@ describe('Sushi tests:', () => {
     })
 
     it('Desktop version renders correctly', () => {
-      expect(screen.getAllByRole('button')).toHaveLength(15)
+      expect(screen.getAllByRole('button')).toHaveLength(16)
       expect(screen.getByRole('img')).toBeInTheDocument()
     })
 
@@ -123,7 +123,7 @@ describe('Sushi tests:', () => {
 
     it('Menu items renders fine', () => {
       fireEvent.click(screen.getByRole('button'))
-      expect(screen.getAllByRole('listitem')).toHaveLength(15)
+      expect(screen.getAllByRole('listitem')).toHaveLength(16)
       expect(screen.getByText(/суши/i)).toBeVisible()
       expect(screen.getByText(/Пицца, закуски/i)).toBeVisible()
     })

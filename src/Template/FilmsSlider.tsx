@@ -22,6 +22,7 @@ const FilmsSlider = memo<FilmSliderT>(function FilmsSlider({
           perMove: 1,
           pagination: false,
           gap: isMobile ? '2vw' : '0.6rem',
+          // arrows: false,
           arrows: isMobile ? false : true,
         }}>
         {films.map((item, i) => (

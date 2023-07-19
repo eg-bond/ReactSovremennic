@@ -173,6 +173,7 @@ $backImgHeight992: 213px;
   background-repeat: no-repeat;
   background-size: 100% $backImgHeight + 1, 100%;
   height: 100%;
+  overflow: hidden;
   background-color: var(--mainClr);
   @media ($mediaQuery1200) {
     background-size: 100% $backImgHeight1200 + 1, 100%;
