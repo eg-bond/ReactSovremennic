@@ -7,9 +7,6 @@ export const SushiWork = () => {
       <img
         className='sushiWork__img'
         src='./Images/sushi_work_half.webp'
-        // srcSet={
-        //   './Images/respImg/sushi_work_half_xs.webp 400w, ./Images/respImg/sushi_work_half_sm.webp 500w, ./Images/respImg/sushi_work_half_med.webp 600w'
-        // }
         alt='работа_суши'
       />
     </div>
