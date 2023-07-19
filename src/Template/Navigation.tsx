@@ -1,18 +1,8 @@
 import { memo } from 'react'
 import { NavLink, Link } from 'react-router-dom'
-import { themeLogoFile, modifiedClass } from '../helpers'
+import { modifiedClass } from '../helpers'
 import SpecialSettings from './SpecialSettings'
 import type { SpecialStateT } from '../REDUX/special/specialReducerT'
-
-const NavItem = ({ url, title }: { url: string; title: string }) => (
-  <li>
-    <NavLink
-      to={url}
-      className={({ isActive }) => 'fill_button' + (isActive ? ' active' : '')}>
-      {title}
-    </NavLink>
-  </li>
-)
 
 const Navigation = memo<NavigationT>(function Navigation({
   siteMode,
@@ -20,6 +10,7 @@ const Navigation = memo<NavigationT>(function Navigation({
   theme,
 }) {
   const modifyCl = (cl: string) => modifiedClass(cl, siteMode)
+
   const fsNavCl =
     fontSize === '21px'
       ? 'navigation--fs150'
@@ -54,6 +45,24 @@ const Navigation = memo<NavigationT>(function Navigation({
 })
 
 export default Navigation
+
+const NavItem = ({ url, title }: { url: string; title: string }) => (
+  <li>
+    <NavLink
+      to={url}
+      className={({ isActive }) => 'fill_button' + (isActive ? ' active' : '')}>
+      {title}
+    </NavLink>
+  </li>
+)
+
+const themeLogoFile = {
+  blackWhite: 'logo.png',
+  whiteBlack: 'logoWB.png',
+  blackBlue: 'logoBB.png',
+  yellowBrown: 'logoYB.png',
+  blueGreen: 'logoBG.png',
+} as const
 
 type NavigationT = {
   siteMode: SpecialStateT['siteMode']

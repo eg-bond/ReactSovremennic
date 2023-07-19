@@ -25,22 +25,22 @@ export const sushiElems = {
 
 export const sushiImgSrc = (key: string) => `./Images/sushi/${key}.webp`
 
-export const preloadSushiImg = (
-  imgKey: string,
-  imgPreloaded: React.MutableRefObject<boolean>
-) => {
-  let key: string
-  imgKey in sushiElems.slidersKeys ? (key = imgKey + '1') : (key = imgKey)
+// export const preloadSushiImg = (
+//   imgKey: string,
+//   imgPreloaded: React.MutableRefObject<boolean>
+// ) => {
+//   let key: string
+//   imgKey in sushiElems.slidersKeys ? (key = imgKey + '1') : (key = imgKey)
 
-  return new Promise<void>(res => {
-    const img = new window.Image()
-    img.src = sushiImgSrc(key)
-    img.onload = () => {
-      imgPreloaded.current = true
-      res()
-    }
-  })
-}
+//   return new Promise<void>(res => {
+//     const img = new window.Image()
+//     img.src = sushiImgSrc(key)
+//     img.onload = () => {
+//       imgPreloaded.current = true
+//       res()
+//     }
+//   })
+// }
 
 // animation duration (same as --animationDuration in fade.scss)
 export const trDuration = 200

@@ -9,6 +9,7 @@ import Content from './Content/Content'
 import FilmsSlider from './Template/FilmsSlider'
 import { useAppState } from './REDUX/stateHooks/useAppState'
 import { useMediaQuery } from './hooks/useMediaQuery'
+import { useChangeTheme } from './hooks/useChangeTheme'
 
 const App = () => {
   const {
@@ -45,9 +46,7 @@ const App = () => {
   }, [fontSize])
 
   // Changes colors if theme/siteMode changed
-  useEffect(() => {
-    changeAppColors(theme, siteMode)
-  }, [theme, siteMode])
+  useChangeTheme(theme, siteMode)
 
   const mainContainerClasses = [
     modifiedClass('mainContainer', siteMode),

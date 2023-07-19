@@ -8,69 +8,6 @@ export const modifiedClass = (
   `${cl} ${
     siteMode === 'default' ? cl + '--default' : cl + '--special'
   }` as `${typeof cl} ${typeof cl}${'--default' | '--special'}`
-
-const themeAppColors = {
-  blackWhite: {
-    main: 'black',
-    secondary: 'white',
-  },
-  whiteBlack: {
-    main: 'white',
-    secondary: 'black',
-  },
-  blackBlue: {
-    main: 'black',
-    secondary: '#7ba2d5',
-  },
-  yellowBrown: {
-    main: '#f5dda1',
-    secondary: '#810026',
-  },
-  blueGreen: {
-    main: '#b4e5ee',
-    secondary: '#5e4005',
-  },
-} as const
-
-export const changeAppColors = (
-  theme: SpecialStateT['theme'],
-  siteMode: SpecialStateT['siteMode']
-) => {
-  const docStyle = document.documentElement.style
-
-  docStyle.setProperty('--mainClr', themeAppColors[theme].main)
-  docStyle.setProperty('--secondaryClr', themeAppColors[theme].secondary)
-  if (siteMode === 'default') {
-    docStyle.setProperty('--movieTitlesClr', '#e41b2b')
-  } else {
-    docStyle.setProperty('--movieTitlesClr', themeAppColors[theme].secondary)
-  }
-}
-
-export const themeLogoFile = {
-  blackWhite: 'logo.png',
-  whiteBlack: 'logoWB.png',
-  blackBlue: 'logoBB.png',
-  yellowBrown: 'logoYB.png',
-  blueGreen: 'logoBG.png',
-} as const
-
-export const themeLogo = (theme: SpecialStateT['theme']) => {
-  switch (theme) {
-    case 'blackWhite':
-      return 'logo'
-    case 'whiteBlack':
-      return 'logoWB'
-    case 'blackBlue':
-      return 'logoBB'
-    case 'yellowBrown':
-      return 'logoYB'
-    case 'blueGreen':
-      return 'logoBG'
-    default:
-      return 'logo'
-  }
-}
 //-------------------------------------------------------------------
 
 // Media queries strings for reusing
