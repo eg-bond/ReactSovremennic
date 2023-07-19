@@ -10,23 +10,26 @@
     "preview": "vite preview",
     "analyze_js": "source-map-explorer 'dist/assets/*.js' --no-border-checks",
     "analyze_css": "source-map-explorer 'dist/assets/*.css' --no-border-checks",
-    "scrapper": "node ExternalScripts/Scrapper/scrapper.js",
+    "scrapper": "ts-node-esm ExternalScripts/Scrapper/scrapper.ts",
     "webp": "node ExternalScripts/WebpConverter/convertToWebP.js",
-    "make_ps": "node ExternalScripts/PhotoShopScedule/makePSscedule.js",
-    "get_scedule": "node ExternalScripts/Excel/insertSceduleFromXLSX.js"
+    "make_ps": "ts-node-esm ExternalScripts/PhotoShopScedule/makePSscedule.ts",
+    "get_schedule": "ts-node-esm ExternalScripts/Excel/insertScheduleFromXLSX.ts",
+    "resize": "node ExternalScripts/ImgResizer/resize.js",
+    "test": "vitest",
+    "test_ui": "vitest --ui --coverage"
   },
   "dependencies": {
     "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.11.3",
-    "prop-types": "^15.8.1",
+    "@reduxjs/toolkit": "^1.9.5",
+    "@splidejs/react-splide": "^0.7.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-lite-youtube-embed": "^2.3.52",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.11.0",
     "redux": "^4.2.1",
-    "sass": "^1.62.1",
-    "swiper": "^9.2.4"
+    "sass": "^1.62.1"
   },
   "browserslist": {
     "production": [
@@ -41,9 +44,16 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
+    "@types/jsdom": "^21.1.1",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.59.5",
+    "@typescript-eslint/parser": "^5.59.5",
     "@vitejs/plugin-react": "^4.0.0",
+    "@vitest/coverage-v8": "^0.33.0",
+    "@vitest/ui": "^0.33.0",
     "eslint": "^8.38.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
@@ -51,11 +61,16 @@
     "fs": "^0.0.1-security",
     "jsdom": "^21.1.1",
     "puppeteer": "^19.11.1",
+    "sharp": "^0.32.3",
     "source-map-explorer": "^2.5.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4",
     "vite": "^4.3.2",
     "vite-plugin-live-reload": "^3.0.2",
     "vite-plugin-qrcode": "^0.2.1",
     "vite-plugin-remove-console": "^2.1.1",
+    "vite-plugin-svgr": "^3.2.0",
+    "vitest": "^0.33.0",
     "webp-converter": "^2.3.3",
     "xlsx": "^0.18.5"
   }

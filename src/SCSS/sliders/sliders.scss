@@ -1,0 +1,34 @@
+@import '@splidejs/react-splide/css';
+@import '@splidejs/react-splide/css/core';
+// Todays week slider
+@import 'bottomSlider';
+// Slider with all movies
+@import 'filmsSlider';
+@import 'sushiSlider';
+@import 'barSlider';
+
+.swSlide__img,
+.swSlide__h1,
+.swSlide__p {
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.swSlide__a:hover {
+  & .swSlide__img {
+    opacity: 0.85;
+  }
+  & .swSlide__h1,
+  .swSlide__p {
+    color: red;
+  }
+}
+.swSlide__a:focus-visible {
+  & .swSlide__img {
+    opacity: 0.85;
+  }
+  & .swSlide__h1,
+  .swSlide__p {
+    color: red;
+  }
+}

@@ -9,13 +9,7 @@
   color: var(--mainClr) !important;
   background-color: var(--secondaryClr) !important;
 }
-.navigation--default {
-  // border-radius: 20px 20px 0 0;
-}
-.navigation--special {
-  border-radius: 0;
-  border-bottom: none;
-}
+
 .navigation--fs150 {
   .navigation__menu {
     flex: 1.8;
@@ -60,10 +54,31 @@
     width: 70%;
   }
 }
-.navigation__logo a:hover {
-  background-color: transparent !important;
-  box-shadow: none !important;
+.navigation__logo a:hover img {
+  animation: UpAndDown 2s ease infinite;
+  @media #{$mediaQueryMobile} {
+    animation: none;
+  }
+  // background-color: transparent !important;
+  // box-shadow: none !important;
 }
+.navigation__logo a:focus img {
+  animation: UpAndDown 2s ease infinite;
+  @media #{$mediaQueryMobile} {
+    animation: none;
+  }
+  // background-color: transparent !important;
+  // box-shadow: none !important;
+}
+@keyframes UpAndDown {
+  50% {
+    transform: translateY(-4px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 .navigation__logo--special {
   @media ($mediaQuery1200) {
     flex: 0.8;

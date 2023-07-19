@@ -1,0 +1,37 @@
+html {
+  // same as trDuration in SushiHelpers
+  --animationDuration: 200ms;
+}
+
+.growIn {
+  animation: growIn var(--animationDuration) ease forwards;
+}
+.growOut {
+  animation: growOut var(--animationDuration) ease forwards;
+}
+
+@keyframes growIn {
+  from {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes growOut {
+  from {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+}

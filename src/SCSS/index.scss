@@ -25,9 +25,15 @@
   &:hover {
     color: red;
   }
+  &:focus {
+    color: red;
+  }
 }
 .vk_ref {
   &:hover {
+    color: rgb(45, 140, 230) !important;
+  }
+  &:focus {
     color: rgb(45, 140, 230) !important;
   }
 }
@@ -37,9 +43,6 @@
   @extend %imgContainer;
   margin-bottom: 7%;
   transition: ease 300ms;
-}
-.linkWrapper img {
-  transition: all 0.3s;
 }
 .linkWrapper:focus .desktopAdv {
   @include shiftUp;
@@ -57,8 +60,7 @@
   padding-bottom: 115%;
 }
 .desktopAdv--5 {
-  // height: 250px;
-  padding-bottom: 95%;
+  padding-bottom: 99.3%;
   cursor: pointer;
   & img {
     transition: ease 300ms;

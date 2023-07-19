@@ -14,6 +14,10 @@ const options = {
     input: 'ExternalScripts/WebpConverter/main_img/',
     output: 'src/images/',
   },
+  input: {
+    input: 'ExternalScripts/WebpConverter/input/',
+    output: 'ExternalScripts/WebpConverter/output/',
+  },
 }
 
 const convertToWebP = name => {
@@ -23,11 +27,12 @@ const convertToWebP = name => {
     webp.cwebp(
       options[name].input + file,
       options[name].output + file.replace('.jpg', '.webp'),
-      '-q 80'
+      '-q 100'
     )
   })
 }
 
-convertToWebP('description')
-convertToWebP('top_menu')
-convertToWebP('main')
+convertToWebP('input')
+// convertToWebP('description')
+// convertToWebP('top_menu')
+// convertToWebP('main')

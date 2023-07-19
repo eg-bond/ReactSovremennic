@@ -10,17 +10,16 @@
 }
 
 .sushi_page__content {
-  --animationDuration: 200ms;
-  --shiftLength: 1.3vw;
   padding-bottom: 20px;
   margin-top: 0.2%;
   @media #{$mediaQueryMobile} {
     min-height: 90vw;
     padding-bottom: 0;
+    min-height: 95vw;
   }
 }
 
-.sushi_page__content img {
+.sushi_page__img {
   width: 100%;
   border-radius: $imagesBR;
 }
@@ -51,33 +50,6 @@
   }
 }
 
-.swiper-container-sushi {
-  height: auto;
-  cursor: grab;
-}
-.swiper-button-next,
-.swiper-button-prev {
-  color: var(--mainClr);
-}
-.swiper-container-sushi > .swiper-pagination-bullets {
-  margin: 0 10px 20px 0;
-}
-.swiper-pagination-fraction {
-  color: var(--mainClr);
-  @media ($mediaQuery1200) {
-    font-size: 0.9rem;
-    span {
-      font-size: 0.9rem;
-    }
-  }
-  @media ($mediaQuery992) {
-    font-size: 0.8rem;
-    span {
-      font-size: 0.8rem;
-    }
-  }
-}
-
 @media #{$mediaQueryMobile} {
   .popper__sushi li {
     padding: 2.2vw 0;
@@ -85,59 +57,5 @@
 
   .sushi_page__content {
     margin: 2.5vw auto;
-  }
-
-  .swiper-button-next {
-    right: 2px !important;
-  }
-  .swiper-button-prev {
-    left: 2px !important;
-  }
-  .swiper-button-next,
-  .swiper-button-prev {
-    &::after {
-      font-size: xx-large;
-    }
-  }
-  .swiper-pagination-fraction {
-    bottom: 2px !important;
-    font-size: $mobileParagraphsFS;
-    span {
-      font-size: $mobileParagraphsFS;
-    }
-  }
-}
-
-.fadeInUp {
-  animation: fadeInUp var(--animationDuration) ease forwards;
-}
-.fadeOutDown {
-  animation: fadeOutDown var(--animationDuration) ease forwards;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    -webkit-transform: translateY(var(--shiftLength));
-    transform: translateY(var(--shiftLength));
-  }
-  to {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none;
-  }
-}
-
-@keyframes fadeOutDown {
-  from {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none;
-  }
-
-  to {
-    opacity: 0;
-    -webkit-transform: translateY(var(--shiftLength));
-    transform: translateY(var(--shiftLength));
   }
 }

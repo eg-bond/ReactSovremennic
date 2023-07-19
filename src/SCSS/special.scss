@@ -1,5 +1,6 @@
 // Скрываем все изображения на сайте
-.hideImages img {
+.hideImages img,
+.hideImages article {
   opacity: 0 !important;
 }
 

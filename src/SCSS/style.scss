@@ -7,8 +7,8 @@
 @import 'bootstrap3_classes';
 // Общие стили
 @import 'generalStyles';
-// Скелетоны
-@import 'skeletons';
+// Animations
+@import './animations/animations.scss';
 // Стили сайта для слабовидящих
 @import 'special';
 // Стили для react-lite-youtube-embed
@@ -17,14 +17,8 @@
 @import 'header';
 // Стили для главной страницы
 @import 'index';
-// Стили для компонента с фильмами версии для слабовидящих
-@import 'films';
-// Свайпер со всеми фильмами
-@import 'filmSwiper';
-// Свайпер со всеми фильмами
-@import 'barSwiper';
-// Свайпер "сегодня в кино"
-@import 'swiperBottom';
+// Слайдеры
+@import './sliders/sliders';
 // Стили для страницы с расписанием сеансов
 @import 'seans';
 // Стили для страницы с описаниями фильмов
