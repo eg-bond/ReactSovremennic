@@ -15,17 +15,27 @@
   }
   @media #{$mediaQueryMobile} {
     margin: 2.5vw 0;
-    height: 50vw;
+    height: 52vw;
   }
 }
 
 .imgContainer {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 472px;
   overflow: hidden;
+  @media ($mediaQuery1200) {
+    height: 387px;
+  }
+  @media ($mediaQuery992) {
+    height: 296px;
+  }
+  @media #{$mediaQueryMobile} {
+    height: 52vw;
+  }
 }
 
 .imgContainer__img {
   width: 100%;
+  height: 100%;
 }

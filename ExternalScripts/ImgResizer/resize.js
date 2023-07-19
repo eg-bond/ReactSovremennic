@@ -11,5 +11,4 @@ const resize = (width, height, postfix) => {
   })
 }
 
-resize(223, 223, '_md')
-resize(170, 170, '_sm')
+resize(1536, 864, '_lg')

@@ -14,13 +14,16 @@ const options = {
     input: 'ExternalScripts/WebpConverter/main_img/',
     output: 'src/images/',
   },
+  input: {
+    input: 'ExternalScripts/WebpConverter/input/',
+    output: 'ExternalScripts/WebpConverter/output/',
+  },
 }
 
 const convertToWebP = name => {
   const inputFolderPath = options[name].input
 
   fs.readdirSync(inputFolderPath).forEach(file => {
-    console.log(file)
     webp.cwebp(
       options[name].input + file,
       options[name].output + file.replace('.jpg', '.webp'),
@@ -29,6 +32,7 @@ const convertToWebP = name => {
   })
 }
 
-convertToWebP('description')
-convertToWebP('top_menu')
-convertToWebP('main')
+convertToWebP('input')
+// convertToWebP('description')
+// convertToWebP('top_menu')
+// convertToWebP('main')
