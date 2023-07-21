@@ -3,12 +3,12 @@ import { getPageContent } from './puppeteer.ts'
 import { JSDOM } from 'jsdom'
 
 const URL = 'https://www.kinopoisk.ru/film/'
-const cinemaIds = ['893621']
+const cinemaIds = ['4536580']
 
 parseCinemaData(cinemaIds)
 //------------------------------------------------------------------------------
 
-const filmItem = {
+const emptyFilmItem = {
   title: '',
   beginDate: 'с ',
   endDate: '',
@@ -25,7 +25,7 @@ const filmItem = {
 async function parseCinemaData(ids: typeof cinemaIds) {
   const htmlStringArray = await getHTML(ids)
 
-  const result: Array<typeof filmItem> = []
+  const result: Array<typeof emptyFilmItem> = []
 
   htmlStringArray.forEach(htmlStr => {
     const dom = new JSDOM(htmlStr, { contentType: 'text/html' })
@@ -35,6 +35,8 @@ async function parseCinemaData(ids: typeof cinemaIds) {
       dom,
       divsArr
     )
+
+    const filmItem = { ...emptyFilmItem }
 
     filmItem.title = getTitle()
     filmItem.kind = getField('kind')
@@ -101,9 +103,9 @@ function parseFunctions(dom: JSDOM, divsArr: NodeListOf<HTMLDivElement>) {
     if (fieldName === 'age' || fieldName === 'duration') {
       return fieldNameNode.nextSibling?.textContent || '-'
     } else {
-      return (filmItem[fieldName] = capitalizeFirstLetter(
+      return capitalizeFirstLetter(
         fieldNameNode.nextSibling?.firstChild?.textContent
-      ))
+      )
     }
   }
 
@@ -133,7 +135,7 @@ function parseFunctions(dom: JSDOM, divsArr: NodeListOf<HTMLDivElement>) {
     return descriptionP?.textContent || '-'
   }
 
-  return { getTitle, getField, getActors, getDescription, filmItem }
+  return { getTitle, getField, getActors, getDescription }
 }
 
 //------------------------------------------------------------------------------
