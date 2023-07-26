@@ -85,7 +85,7 @@ const prepareSceduleForPS = sceduleKeysArray => {
 
   // Выносим расписание в отдельный JSON файл для дальнейшего использование фотошопом
   fs.writeFileSync(
-    'ExternalScripts/PhotoShopScedule/psScedule.json',
+    'ExternalScripts/PhotoShopScedule/psSchedule.json',
     JSON.stringify(preparedPSscedule)
   )
 }

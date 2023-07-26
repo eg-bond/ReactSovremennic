@@ -68,7 +68,7 @@ var makeFilmItem = function (filmSet, sceduleItemKey, dayTitlesArr, filmIndex) {
 
 // Главный цикл -----------------------------------------------------------------
 // Подготовленное для фотошопа расписание сеансов
-var preparedPSscedule = loadJson('psScedule.json')
+var preparedPSscedule = loadJson('psSchedule.json')
 
 // Массив с ключами дней недели, для которых необходимо сформировать расписание
 var dayKeysRanges = {
@@ -78,7 +78,7 @@ var dayKeysRanges = {
     allWeek: ["day1", "day2", "day3", "day4", "day5", "day6", "day0"]
 }
 // Это единственный изменяемый параметр 
-var dayKeysArr = ["day1"]
+var dayKeysArr = ["day4"]
 
 // Цикл, пробегающийся по выбранным в dayKeysArr фильмам
 for (var i = 0; i < dayKeysArr.length; i++) {
