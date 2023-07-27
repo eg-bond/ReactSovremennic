@@ -18,9 +18,8 @@ export const sushiElems = {
     ['pizza', 'Пицца, закуски'],
   ],
   slidersKeys: {
-    rolls: ['rolls1', 'rolls2'],
-    hot_dishes: ['hot_dishes1', 'hot_dishes2', 'hot_dishes3', 'hot_dishes4'],
-    brand_rolls: ['brand_rolls1', 'brand_rolls2', 'brand_rolls3'],
+    hot_dishes: ['hot_dishes1', 'hot_dishes2', 'hot_dishes3'],
+    hot_rolls: ['hot_rolls1', 'hot_rolls2'],
   } as const,
 } as const
 
