@@ -24,7 +24,7 @@ export const filmsArray = [
     director: 'Аарон Хорват',
     duration: '92 мин. / 01:32',
     age: '6+',
-    dubbing: 'Red Head Sound',
+    dubbing: '(Дубляж Red Head Sound)',
     actors:
       'Крис Пратт, Чарли Дэй, Аня Тейлор-Джой, Джек Блэк, Кигэн-Майкл Ки, Сет Роген, Фред Армисен, Себастьян Манискалко, Кевин Майкл Ричардсон, Хари Пэйтон',
     description:
@@ -41,7 +41,7 @@ export const filmsArray = [
     director: 'Жуакин Душ Сантуш',
     duration: '140 мин. / 02:20',
     age: '12+',
-    dubbing: 'Red Head Sound',
+    dubbing: '(Дубляж Red Head Sound)',
     actors:
       'Шамеик Мур, Хейли Стайнфелд, Оскар Айзек, Джейк Джонсон, Исса Рэй, Брайан Тайри Генри, Луна Лорен Велес, Рэйчел Дрэч, Дэниэл Калуя, Майкл Рианда',
     description:
@@ -73,7 +73,7 @@ export const filmsArray = [
     director: 'Джулиус Эйвери',
     duration: '103 мин. / 01:43',
     age: '18+',
-    dubbing: 'Red Head Sound',
+    dubbing: '(Дубляж Red Head Sound)',
     actors:
       'Рассел Кроу, Дэниэл Дзоватто, Александра Эссоу, Франко Неро, Питер ДеСоуза-Фейхони, Лорел Марсден, Корнелл Джон, Райан О’Грэйди, Бьянка Бардо, Санти Байон',
     description:
@@ -90,7 +90,7 @@ export const filmsArray = [
     director: 'Стивен Кейпл мл.',
     duration: '127 мин. / 02:07',
     age: '12+',
-    dubbing: 'Red Head Sound',
+    dubbing: '(Дубляж Red Head Sound)',
     actors:
       'Доминик Фишбэк, Энтони Рамос, Луна Лорен Велес, Дин Скотт Васкес, Тобе Нвигве, Сара Стайлс, Лени Паркер, Френсис Ламарр, Эйдан Дивайн, Кервин Джексон',
     description:
@@ -106,7 +106,7 @@ export const filmsArray = [
     director: 'Андрес Мускетти',
     duration: '144 мин. / 02:24',
     age: '12+',
-    dubbing: 'Red Head Sound',
+    dubbing: '(Дубляж Red Head Sound)',
     actors:
       'Эзра Миллер, Майкл Китон, Саша Калле, Майкл Шеннон, Рон Ливингстон, Марибель Верду, Кирси Клемонс, Джереми Айронс, Антье Трауэ, Сирша-Моника Джексон',
     description:
@@ -122,7 +122,7 @@ export const filmsArray = [
     director: 'Дэвид Лоури',
     duration: '106 мин. / 01:46',
     age: '12+',
-    dubbing: 'Red Head Sound',
+    dubbing: '(Дубляж Red Head Sound)',
     actors:
       'Эвер Андерсон, Александр Молони, Джуд Лоу, Алисса Вапанатак, Джим Гэффиган, Джошуа Пикеринг, Jacobi Jupe, Молли Паркер, Алан Тьюдик, Яра Шахиди',
     description:
