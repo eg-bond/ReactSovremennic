@@ -40,7 +40,7 @@ const Sushi = ({
         )}
 
         <div className={`sushi_page__content`}>
-          {progressBar && <SushiLinearProgress />}
+          {/* {progressBar && <SushiLinearProgress />} */}
           <SushiImage
             currentImgKey={currentImgKey}
             imgVisible={imgVisible}

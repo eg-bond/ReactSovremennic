@@ -92,7 +92,10 @@ export const sushiNew = {
     { name: 'Угорь (острый)', ingridients: '', price: '100', picture: '' },
     { name: 'Кальмар (острый)', ingridients: '', price: '60', picture: '' },
   ],
-  vegetable_rolls: [
+  green_rolls: [
+    { name: 'Ролл "Айсберг"', ingridients: '', price: '220', picture: '' },
+    { name: 'Ролл с огурцом', ingridients: '', price: '150', picture: '' },
+    { name: 'Ролл с авокадо', ingridients: '', price: '180', picture: '' },
     {
       name: '"Темпура Хенд"',
       ingridients:
@@ -100,9 +103,6 @@ export const sushiNew = {
       price: '220',
       picture: '',
     },
-    { name: 'Ролл "Айсберг"', ingridients: '', price: '220', picture: '' },
-    { name: 'Ролл с огурцом', ingridients: '', price: '150', picture: '' },
-    { name: 'Ролл с авокадо', ingridients: '', price: '180', picture: '' },
   ],
   mini_rolls: [
     {
@@ -420,7 +420,7 @@ export const sushiNew = {
       picture: '',
     },
   ],
-  color_rolls: [
+  black_rolls: [
     {
       name: 'Кавати',
       ingridients:
@@ -758,7 +758,7 @@ export const sushiNew = {
       picture: '',
     },
   ],
-  deserts: [
+  dessert: [
     {
       name: 'Бананы темпура с мороженым',
       ingridients: '',

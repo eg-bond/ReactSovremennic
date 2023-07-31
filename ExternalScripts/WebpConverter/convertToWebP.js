@@ -27,12 +27,12 @@ const convertToWebP = name => {
     webp.cwebp(
       options[name].input + file,
       options[name].output + file.replace('.jpg', '.webp'),
-      '-q 100'
+      '-q 95'
     )
   })
 }
 
-// convertToWebP('input')
-convertToWebP('description')
-convertToWebP('top_menu')
+convertToWebP('input')
+// convertToWebP('description')
+// convertToWebP('top_menu')
 // convertToWebP('main')
