@@ -49,11 +49,7 @@ const SushiImage = memo<SushiImageT>(function SushiImage({
           key={currentImgKey + i}
           className={`sushiGrid__item fadeInDown`}
           style={{ animationDelay: delay(i) }}>
-          <img
-            className='sushiGrid__img'
-            src={'/Images/sushi_item.webp'}
-            alt='item'
-          />
+          <img className='sushiGrid__img' src={item.picture} alt='item' />
           <div className='sushiGrid__desc'>
             <h3>{item.name}</h3>
             {!!item.ingridients && <p>{item.ingridients}</p>}

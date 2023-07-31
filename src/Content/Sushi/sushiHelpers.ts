@@ -48,7 +48,12 @@ export const trDuration = 200
 
 export const sushiNew = {
   sushi: [
-    { name: 'Кальмар', ingridients: '', price: '60', picture: '' },
+    {
+      name: 'Кальмар',
+      ingridients: '',
+      price: '60',
+      picture: './Images/sushi/sushi_items/sushi1.webp',
+    },
     { name: 'Краб', ingridients: '', price: '110', picture: '' },
     { name: 'Лосось', ingridients: '', price: '110', picture: '' },
     { name: 'Угорь', ingridients: '', price: '110', picture: '' },
