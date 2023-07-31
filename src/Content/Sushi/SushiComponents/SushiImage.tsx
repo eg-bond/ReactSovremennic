@@ -33,6 +33,10 @@ import { sushiElems } from '../sushiHelpers'
 //   )
 // })
 
+const delay = (index: number) => {
+  return (0.05 * index).toString() + 's'
+}
+
 const SushiImage = memo<SushiImageT>(function SushiImage({
   currentImgKey,
   imgVisible,
@@ -40,19 +44,20 @@ const SushiImage = memo<SushiImageT>(function SushiImage({
 }) {
   return (
     <div className='sushiGrid'>
-      {sushiNew[currentImgKey].map(item => (
-        <div className='sushiGrd__item'>
+      {sushiNew[currentImgKey].map((item, i) => (
+        <div
+          key={currentImgKey + i}
+          className={`sushiGrid__item fadeInDown`}
+          style={{ animationDelay: delay(i) }}>
           <img
             className='sushiGrid__img'
             src={'/Images/sushi_item.webp'}
             alt='item'
           />
           <div className='sushiGrid__desc'>
-            <div className='sushiGrid__title'>
-              <h3>{item.name}</h3>
-              <h3>{item.price}</h3>
-            </div>
-            <p>{item.ingridients}</p>
+            <h3>{item.name}</h3>
+            {!!item.ingridients && <p>{item.ingridients}</p>}
+            <h3>{`${item.price}₽`}</h3>
           </div>
         </div>
       ))}
