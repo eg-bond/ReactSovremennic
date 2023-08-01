@@ -27,7 +27,7 @@ const convertToWebP = name => {
     webp.cwebp(
       options[name].input + file,
       options[name].output + file.replace('.jpg', '.webp'),
-      '-q 95'
+      '-q 100'
     )
   })
 }

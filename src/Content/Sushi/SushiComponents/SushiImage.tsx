@@ -51,9 +51,11 @@ const SushiImage = memo<SushiImageT>(function SushiImage({
           style={{ animationDelay: delay(i) }}>
           <img className='sushiGrid__img' src={item.picture} alt='item' />
           <div className='sushiGrid__desc'>
-            <h3>{item.name}</h3>
-            {!!item.ingridients && <p>{item.ingridients}</p>}
-            <h3>{`${item.price}₽`}</h3>
+            <div>
+              <h3>{item.name}</h3>
+              {!!item.ingridients && <p>{item.ingridients}</p>}
+            </div>
+            <h3>{`${item.price} ₽`}</h3>
           </div>
         </div>
       ))}
