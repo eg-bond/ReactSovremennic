@@ -1,49 +1,42 @@
-export const sushiElems = {
-  menuButtons: [
-    ['sushi', 'Суши'],
-    ['rolls', 'Роллы'],
-    ['green_colored', 'Овощные/цветные роллы'],
-    // ['black_rolls', 'Цветные/черные роллы'],
-    ['hot_rolls', 'Запеченные роллы'],
-    ['brand_rolls', 'Фирменные роллы'],
-    ['mini_rolls', 'Мини-роллы'],
-    ['child_menu', 'Детское меню'],
-    ['sets', 'Наборы'],
-    ['salads', 'Салаты'],
-    ['soups', 'Супы'],
-    ['hot_dishes', 'Горячие блюда'],
-    ['garnish', 'Гарниры'],
-    ['dessert', 'Десерты'],
-    ['gruzia', 'Грузинская кухня'],
-    ['pizza', 'Пицца, закуски'],
-  ],
-  slidersKeys: {
-    rolls: ['rolls1', 'rolls2'],
-    hot_dishes: ['hot_dishes1', 'hot_dishes2', 'hot_dishes3', 'hot_dishes4'],
-    brand_rolls: ['brand_rolls1', 'brand_rolls2', 'brand_rolls3'],
-  } as const,
-} as const
+export const menuButtons = [
+  ['sushi', 'Суши'],
+  ['sets', 'Наборы'],
+  ['brand_rolls', 'Фирменные роллы'],
+  ['hot_rolls', 'Запеченные роллы'],
+  ['rolls', 'Роллы'],
+  ['mini_rolls', 'Мини-роллы'],
+  ['green', 'Овощные роллы'],
+  ['colored', 'Цветные роллы'],
+  ['child_menu', 'Детское меню'],
+  ['salads', 'Салаты'],
+  ['soups', 'Супы'],
+  ['hot_dishes', 'Горячие блюда'],
+  ['gruzia', 'Грузинская кухня'],
+  ['pizza', 'Пицца, закуски'],
+  ['dessert', 'Десерты'],
+  ['garnish', 'Гарниры'],
+] as const
 
 export const sushiImgSrc = (key: string) => `./Images/sushi/${key}.webp`
 
-// export const preloadSushiImg = (
+// export const preloadSushiImg =
 //   imgKey: string,
 //   imgPreloaded: React.MutableRefObject<boolean>
-// ) => {
+//  => {
 //   let key: string
-//   imgKey in sushiElems.slidersKeys ? (key = imgKey + '1') : (key = imgKey)
+//   imgKey in sushiElems.slidersKeys ? key = imgKey + '1' : key = imgKey
 
-//   return new Promise<void>(res => {
-//     const img = new window.Image()
-//     img.src = sushiImgSrc(key)
-//     img.onload = () => {
+//   return new Promise<void>res => {
+//     const img = new window.Image
+//     img.src = sushiImgSrckey
+//     img.onload =  => {
 //       imgPreloaded.current = true
-//       res()
+//       res
 //     }
-//   })
+//   }
 // }
 
-// animation duration (same as --animationDuration in fade.scss)
+// animation duration same as --animationDuration in fade.scss
 export const trDuration = 200
 
 export const sushiNew = {
@@ -52,61 +45,61 @@ export const sushiNew = {
       name: 'Кальмар',
       ingridients: '',
       price: '60',
-      picture: './Images/sushi/sushi_items/sushi1.webp',
+      picture: './Images/sushi/sushi_items/squid.webp',
     },
     {
       name: 'Краб',
       ingridients: '',
       price: '110',
-      picture: './Images/sushi/sushi_items/sushi2.webp',
+      picture: './Images/sushi/sushi_items/krab.webp',
     },
     {
       name: 'Лосось',
       ingridients: '',
       price: '110',
-      picture: './Images/sushi/sushi_items/sushi3.webp',
+      picture: './Images/sushi/sushi_items/salmon.webp',
     },
     {
       name: 'Угорь',
       ingridients: '',
       price: '110',
-      picture: './Images/sushi/sushi_items/sushi7.webp',
+      picture: './Images/sushi/sushi_items/ell.webp',
     },
     {
       name: 'Тунец',
       ingridients: '',
       price: '80',
-      picture: './Images/sushi/sushi_items/sushi4.webp',
+      picture: './Images/sushi/sushi_items/tuna.webp',
     },
     {
       name: 'Гребешок',
       ingridients: '',
       price: '110',
-      picture: './Images/sushi/sushi_items/sushi5.webp',
+      picture: './Images/sushi/sushi_items/greb.webp',
     },
     {
       name: 'Тобико',
       ingridients: '',
       price: '80',
-      picture: './Images/sushi/sushi_items/sushi6.webp',
+      picture: './Images/sushi/sushi_items/tobiko.webp',
     },
     {
       name: 'Японский омлет',
       ingridients: '',
       price: '40',
-      picture: './Images/sushi/sushi_items/sushi9.webp',
+      picture: './Images/sushi/sushi_items/omlet.webp',
     },
     {
       name: 'Тигровая креветка',
       ingridients: '',
       price: '100',
-      picture: './Images/sushi/sushi_items/sushi0.webp',
+      picture: './Images/sushi/sushi_items/shrimp.webp',
     },
     {
       name: 'Лосось с перепелиным яйцом',
       ingridients: '',
       price: '130',
-      picture: './Images/sushi/sushi_items/sushi8.webp',
+      picture: './Images/sushi/sushi_items/salmon_egg.webp',
     },
     {
       name: 'Красный окунь (запеченный)',
@@ -115,7 +108,7 @@ export const sushiNew = {
       picture: './Images/sushi/sushi_items/sushi_hot.webp',
     },
     {
-      name: 'Креветка (запеченный)',
+      name: 'Креветка (запеченная)',
       ingridients: '',
       price: '90',
       picture: './Images/sushi/sushi_items/sushi_hot.webp',
@@ -169,7 +162,7 @@ export const sushiNew = {
       picture: './Images/sushi/sushi_items/sushi_spicy.webp',
     },
     {
-      name: 'Креветки (острый)',
+      name: 'Креветки (острые)',
       ingridients: '',
       price: '90',
       picture: './Images/sushi/sushi_items/sushi_spicy.webp',
@@ -187,7 +180,117 @@ export const sushiNew = {
       picture: './Images/sushi/sushi_items/sushi_spicy.webp',
     },
   ],
-  green_colored: [
+  sets: [
+    {
+      name: 'Сет «Запечённые суши»',
+      ingridients:
+        'Запеч. лосось (2 шт.), запеч. краб (2 шт.), запеч. угорь (2 шт.), запеч. креветки (2 шт.), ролл "Горячий Макс"',
+      price: '1600',
+      picture: './Images/sushi/sets/hot.webp',
+    },
+    {
+      name: 'Сет «Острые суши»',
+      ingridients:
+        'Острый лосось (2 шт.), острый угорь (2 шт.), острый краб (2 шт.), острые крев. (2 шт.), ролл Темпура острый',
+      price: '1350',
+      picture: './Images/sushi/sets/spicy.webp',
+    },
+
+    {
+      name: 'Сет «Горячая Япония»',
+      ingridients:
+        'Ролл "Каникама", ролл "Майами", ролл "Запечённый Муругай", ролл "Запечённый Изуми тай"',
+      price: '970',
+      picture: './Images/sushi/sets/japan.webp',
+    },
+    {
+      name: 'Сет «Макси»',
+      ingridients:
+        'Ролл "Темпура Лайт", ролл "Бансай", ролл "Запечённый Муругай", ролл "Сливочный Кани Маки", ролл "Калифорния с креветкой"',
+      price: '1150',
+      picture: './Images/sushi/sets/maxi.webp',
+    },
+  ],
+  rolls: [
+    {
+      name: 'Монако',
+      ingridients: 'Рис, нори, японский омлет, сыр сливочный, икра масаго',
+      price: '250',
+      picture: './Images/sushi/rolls/monako.webp',
+    },
+    {
+      name: 'Темпура Лайт',
+      ingridients:
+        'Рис, нори, сыр сливочный, помидоры, соус унаги, тесто темпура',
+      price: '180',
+      picture: './Images/sushi/rolls/tempura_light.webp',
+    },
+    {
+      name: 'Фиеста',
+      ingridients:
+        'Рис, нори, снежный краб, огурцы, икра масаго, сыр сливочный',
+      price: '250',
+      picture: './Images/sushi/rolls/fiesta.webp',
+    },
+
+    {
+      name: 'Тай',
+      ingridients:
+        'Рис, нори, сыр сливочный, окунь красный, соус масаго, кунжут',
+      price: '220',
+      picture: './Images/sushi/rolls/tai.webp',
+    },
+    {
+      name: 'Калифорния',
+      ingridients: 'Рис, нори, краб, соус масаго, огурец, авокадо, кунжут',
+      price: '350',
+      picture: './Images/sushi/rolls/cali.webp',
+    },
+    {
+      name: 'Калифорния - тобико',
+      ingridients: 'Рис, нори, соус масаго, краб, икра тобико, огурец, авокадо',
+      price: '430',
+      picture: './Images/sushi/rolls/cali_tobiko.webp',
+    },
+    {
+      name: 'Сливочный Кани Маки',
+      ingridients:
+        'Рис, нори, сыр сливочный, снежный краб, соус масаго, огурец, икра масаго, кунжут',
+      price: '240',
+      picture: './Images/sushi/rolls/kani_maki.webp',
+    },
+    {
+      name: 'Теплая Филадельфия',
+      ingridients: 'Рис, нори, сыр сливочный, икра тобико, лосось, унаги',
+      price: '570',
+      picture: './Images/sushi/rolls/hot_fila.webp',
+    },
+    {
+      name: 'Калифорния с креветкой',
+      ingridients: 'Рис, нори, сыр сливочный, креветка, огурец, кунжут',
+      price: '280',
+      picture: './Images/sushi/rolls/cali_squid.webp',
+    },
+    {
+      name: 'Бансай',
+      ingridients: 'Рис, нори, сыр сливочный, огурец, бекон, соус унаги',
+      price: '260',
+      picture: './Images/sushi/rolls/bansai.webp',
+    },
+    {
+      name: 'Текка',
+      ingridients: 'Рис, нори, тунец',
+      price: '220',
+      picture: './Images/sushi/rolls/tekka.webp',
+    },
+    {
+      name: 'Ролл с кальмаром',
+      ingridients: 'Рис, нори, кальмар, унаги, кунжут',
+      price: '200',
+      picture: './Images/sushi/rolls/squid.webp',
+    },
+  ],
+  green: [
     {
       name: 'Ролл "Айсберг"',
       ingridients: '',
@@ -209,483 +312,373 @@ export const sushiNew = {
     {
       name: '"Темпура Хенд"',
       ingridients:
-        '(Рис, нори, паприка, томаты, сыр сливочный, тесто темпура, панко, унаги, васаби, имбирь маринованный, соевый соус)',
+        'Рис, нори, паприка, томаты, сыр сливочный, тесто темпура, панко, унаги',
       price: '220',
       picture: './Images/sushi/green_colored/hend.webp',
     },
+  ],
+  colored: [
     {
       name: 'Кавати',
       ingridients:
-        '(Рис, соевый лист, краб, соус масаго, огурец, сыр сливочный, кунжут, васаби, имбирь маринованный, соевый соус)',
+        'Рис, соевый лист, краб, соус масаго, огурец, сыр сливочный, кунжут',
       price: '330',
       picture: './Images/sushi/green_colored/kavati.webp',
     },
     {
       name: 'Овари',
-      ingridients:
-        '(Рис, соеывй лист, лосось, сыр сливочный, айсберг, лимон, васаби, соевый соус)',
+      ingridients: 'Рис, соевый лист, лосось, сыр сливочный, айсберг, лимон',
       price: '410',
       picture: './Images/sushi/green_colored/ovari.webp',
     },
     {
       name: 'Хида',
       ingridients:
-        '(Рис, соевый лист, тунец, сыр сливочный, авокадо, огурец, кунжут, васаби, имбирь мар., соевый соус)',
+        'Рис, соевый лист, тунец, сыр сливочный, авокадо, огурец, кунжут',
       price: '300',
       picture: './Images/sushi/green_colored/hida.webp',
     },
   ],
-  mini_rolls: [
-    {
-      name: 'Филадельфия мини',
-      ingridients:
-        '(Рис, нори, огурец, икра тобико, сыр сливочный, лосось, кунжут, лимон, васаби, имбирь мар., соевый соус)',
-      price: '330',
-      picture: './Images/sushi/mini_rolls/fila.webp',
-    },
-    {
-      name: 'Ассорти мини',
-      ingridients:
-        '(Рис, нори, сыр сливочный, огурец, лосось, креветка, тунец, унаги, окунь, васаби, имбирь мар., соевый соус)',
-      price: '300',
-      picture: './Images/sushi/mini_rolls/assorti.webp',
-    },
-    {
-      name: 'Иватэ мини (без риса)',
-      ingridients:
-        '(Тунец, окунь, краб, лосось, гребешок, соус масаго, кунжут, унаги, васаби, имбирь мар., соевый соус)',
-      price: '480',
-      picture: './Images/sushi/mini_rolls/ivate.webp',
-    },
-    {
-      name: 'Горячий Макс мини',
-      ingridients:
-        '(Рис, нори, лосось, угорь, краб, соус масаго, кунжут, унаги, васаби, имбирь мар., соевый соус)',
-      price: '390',
-      picture: './Images/sushi/mini_rolls/maks.webp',
-    },
-    {
-      name: 'Темпура мини',
-      ingridients:
-        '(Рис, нори, сыр сливочный, лосось, кинза, тесто темпура, панко, унаги, васаби, имбирь мар., сливочный соус)',
-      price: '300',
-      picture: './Images/sushi/mini_rolls/tempura.webp',
-    },
-  ],
-  sets: [
-    {
-      name: 'Сет «Острые суши»',
-      ingridients:
-        '(Острый лосось 2 шт., острый угорь 2 шт., острый краб 2 шт., острые крев. 2 шт., ролл Темпура острый, васаби, имбирь маринованный, соевый соус)',
-      price: '1500?',
-      picture: './Images/sushi/sets/hot.webp',
-    },
-    {
-      name: 'Сет «Запечённые суши»',
-      ingridients:
-        '(Запеч. лосось 2 шт., запеч. краб 2 шт., запеч. угорь 2 шт., запеч. креветки 2 шт., ролл Горячий Макс, васаби, кунжут., имбирь маринованный, соевый соус)',
-      price: '1700?',
-      picture: './Images/sushi/sets/spicy.webp',
-    },
-    {
-      name: 'Сет «Макси»',
-      ingridients:
-        '(Ролл Темпура Лайт, ролл Бансай, ролл запечённый Муругай, ролл сливочный Кани Маки, ролл Калифорния с креветкой)',
-      price: '1150',
-      picture: './Images/sushi/sets/maxi.webp',
-    },
-    {
-      name: 'Сет «Горячая Япония»',
-      ingridients:
-        '(Ролл Каникама, ролл Майами, ролл запечённый Муругай, ролл запечённый Изуми тай)',
-      price: '970',
-      picture: './Images/sushi/sets/japan.webp',
-    },
-  ],
-  brand_rolls: [
-    {
-      name: 'Фуджияма',
-      ingridients:
-        '(Рис, нори, острый краб, лосось, огурец, лимон, васаби, имбирь маринованый, кунжут, соевый соус)',
-      price: '690',
-      picture: './Images/sushi/brand_rolls/fuji.webp',
-    },
-    {
-      name: 'Филадельфия',
-      ingridients:
-        '(Рис, нори, огурец, икра тобико, сыр сливочный, лосось, кунжут, лимон, васаби, имбирь мар., соевый соус)',
-      price: '570',
-      picture: './Images/sushi/brand_rolls/fila.webp',
-    },
-    {
-      name: 'Ночной Токио (без риса)',
-      ingridients:
-        '(Авокадо, огурец, икра тобико, лосось, краб, лимон, васаби, имбирь маринованный, соевый соус)',
-      price: '790',
-      picture: './Images/sushi/brand_rolls/tokyo.webp',
-    },
-    {
-      name: 'Бостон',
-      ingridients:
-        '(Рис, нори, острый лосось, огурец, авокадо, краб, васаби, имбирь маринованный, соевый соус)',
-      price: '550',
-      picture: './Images/sushi/brand_rolls/boston.webp',
-    },
-    {
-      name: 'Ролл с лососем',
-      ingridients:
-        '(Рис, нори, лосось, васаби, имбирь маринованный, соевый соус)',
-      price: '280',
-      picture: './Images/sushi/brand_rolls/salmon.webp',
-    },
-    {
-      name: 'Тоттори',
-      ingridients:
-        '(Рис, нори, сыр сливочный, краб, креветка темпура, кунжут, васаби, имбирь маринованный, соевый соус)',
-      price: '450',
-      picture: './Images/sushi/brand_rolls/tottori.webp',
-    },
-    {
-      name: 'Эби',
-      ingridients:
-        '(Рис, нори, соус масаго, креветка темпура, имбирь маринованный, васаби, соевый соус)',
-      price: '290',
-      picture: './Images/sushi/brand_rolls/ebi.webp',
-    },
-    {
-      name: 'Темпура острый',
-      ingridients:
-        '(Рис, нори, угорь, острый краб, унаги, имбирь маринованный, васаби, соевый соус)',
-      price: '480',
-      picture: './Images/sushi/brand_rolls/tempura_spicy.webp',
-    },
-    {
-      name: 'Дракон',
-      ingridients:
-        '(Рис, нори, краб, авокадо, огурец, угорь, кунжут, унаги, васаби, имбирь маринованный, соевый соус)',
-      price: '1200',
-      picture: './Images/sushi/brand_rolls/dragon.webp',
-    },
-    {
-      name: 'Ассорти',
-      ingridients:
-        '(Рис, нори, сыр сливочный, огурец, лосось, кальмар, креветка, угорь, тунец, унаги, окунь, васаби, имбирь маринованный, соевый соус)',
-      price: '520',
-      picture: './Images/sushi/brand_rolls/assorti.webp',
-    },
-  ],
   hot_rolls: [
     {
-      name: 'Сегун',
+      name: 'Иватэ (без риса)',
       ingridients:
-        '(Рис, нори, сыр сливочный, омлет, лосось, соус масаго, имбирь, соевый соус)',
-      price: '???',
-      picture: './Images/sushi/hot_rolls/segun.webp',
+        'Тунец, окунь, краб, лосось, гребешок, соус масаго, кунжут, унаги',
+      price: '770',
+      picture: './Images/sushi/hot_rolls/ivate.webp',
+    },
+
+    {
+      name: 'Шиитаке',
+      ingridients:
+        'Рис, нори, шиитаке, сыр сливочный, гребешок, лосось, масаго, кунжут, унаги',
+      price: '390',
+      picture: './Images/sushi/hot_rolls/sheetake.webp',
+    },
+    {
+      name: 'XXL',
+      ingridients:
+        'Рис, нори, лосось, икра тобико, острый краб, острый гребешок, унаги',
+      price: '720',
+      picture: './Images/sushi/hot_rolls/xxl.webp',
     },
     {
       name: 'Горячий Макс',
-      ingridients:
-        '(Рис, нори, лосось, угорь, краб, соус масаго, кунжут, унаги, васаби, имбирь маринованный, соевый соус)',
+      ingridients: 'Рис, нори, лосось, угорь, краб, соус масаго, кунжут, унаги',
       price: '750',
       picture: './Images/sushi/hot_rolls/maks.webp',
     },
     {
       name: 'Хаус',
       ingridients:
-        '(Рис, нори, лосось, тунец, паприка, острый краб, икра тобико, унаги, васаби, имбирь маринованный, соевый соус)',
+        'Рис, нори, лосось, тунец, паприка, острый краб, икра тобико, унаги',
       price: '520',
       picture: './Images/sushi/hot_rolls/house.webp',
     },
     {
-      name: 'Иватэ (без риса)',
-      ingridients:
-        '(Тунец, окунь, краб, лосось, гребешок, соус масаго, кунжут, унаги, васаби, имбирь маринованный, соевый соус)',
-      price: '770',
-      picture: './Images/sushi/hot_rolls/ivate.webp',
-    },
-    {
       name: 'Аканасу',
-      ingridients:
-        '(Рис, нори, сыр сливочный, томаты, лосось, имбирь маринованный, кунжут, унаги, васаби, соевый соус)',
+      ingridients: 'Рис, нори, сыр сливочный, томаты, лосось кунжут, унаги',
       price: '330',
       picture: './Images/sushi/hot_rolls/akanasu.webp',
     },
     {
+      name: 'Сегун',
+      ingridients: 'Рис, нори, сыр сливочный, омлет, лосось, соус масаго',
+      price: '450',
+      picture: './Images/sushi/hot_rolls/segun.webp',
+    },
+    {
       name: 'Запечённый Изуми Тай',
-      ingridients: 'Сыр сливочный, окунь, соус масаго, соус унаги, кунжут)',
+      ingridients:
+        'Рис, нори, сыр сливочный, окунь, соус масаго, соус унаги, кунжут',
       price: '260',
       picture: './Images/sushi/hot_rolls/izumi_tai.webp',
     },
     {
       name: 'Запечённый Каникама',
-      ingridients: '(Рис, сыр сливочный, снежный краб, соус масаго)',
+      ingridients: 'Рис, нори, сыр сливочный, снежный краб, соус масаго',
       price: '220',
       picture: './Images/sushi/hot_rolls/kanikama.webp',
     },
-    {
-      name: 'Запечённый Майами',
-      ingridients: '(Соус масаго, сыр сливочный, креветка, кунжут)',
-      price: '290',
-      picture: './Images/sushi/hot_rolls/mayami.webp',
-    },
+
     {
       name: 'Запечённый Муругай',
       ingridients:
-        '(Сыр сливочный, икра масаго, японский омлет, соус масаго, мидии, соус унаги, паприка)',
+        'Рис, нори, сыр сливочный, икра масаго, японский омлет, соус масаго, мидии, соус унаги, паприка',
       price: '260',
       picture: './Images/sushi/hot_rolls/murugai.webp',
     },
-    {
-      name: 'XXL',
-      ingridients:
-        '(Рис, нори, лосось, икра тобико, острый краб, острый гребешок, унаги, васаби, соевый соус, имбирь маринованный)',
-      price: '720',
-      picture: './Images/sushi/hot_rolls/xxl.webp',
-    },
+
     {
       name: 'Red Hot',
       ingridients:
-        '(Рис, нори, креветка, сыр сливочный, икра тобико, угорь, соус спайси, васаби, имбирь маринованный, соевый соус)',
+        'Рис, нори, креветка, сыр сливочный, икра тобико, угорь, соус спайси',
       price: '620',
       picture: './Images/sushi/hot_rolls/red_hot.webp',
     },
     {
-      name: 'Шиитаке',
+      name: 'Запечённый лосось',
       ingridients:
-        '(Рис, нори, шиитаке, сыр сливочный, гребешок, лосось, масаго, кунжут, унаги, имбирь маринованный, васаби, соевый соус)',
-      price: '390',
-      picture: './Images/sushi/hot_rolls/sheetake.webp',
+        'Рис, нори, икра масаго, снежный краб, помидор, лосось, соус спайси',
+      price: '340',
+      picture: './Images/sushi/hot_rolls/salmon.webp',
     },
-    {
-      name: 'Запеченный тунец',
-      ingridients:
-        '(Рис, нори, сыр сливочный, кунжут, японский омлет, соус спайси, чернила каракатицы, тунец, васаби, имбирь маринованный, соевый соус)',
-      price: '260',
-      picture: './Images/sushi/hot_rolls/tuna.webp',
-    },
+
     {
       name: 'Датэмаки с окунем',
       ingridients:
-        '(Рис, нори, окунь, соус спайси, сыр сливочный, японский омлет, огурец, кунжут, унаги, васаби, имбирь маринованный, соевый соус)',
+        'Рис, нори, окунь, соус спайси, сыр сливочный, японский омлет, огурец, кунжут, унаги',
       price: '250',
       picture: './Images/sushi/hot_rolls/datemaki.webp',
     },
     {
       name: 'Запечённый Канраки',
       ingridients:
-        '(Рис, нори, кунжит, сыр сливочный, кинза, окунь, соус масаго, сыр, унаги, васаби, имбирь маринованный, соевый соус)',
-      price: '???',
+        'Рис, нори, кунжит, сыр сливочный, кинза, окунь, соус масаго, сыр, унаги',
+      price: '280',
       picture: './Images/sushi/hot_rolls/kanraki.webp',
     },
-  ],
-  rolls: [
     {
-      name: 'Сливочный Кани Маки',
+      name: 'Запеченный тунец',
       ingridients:
-        '(Сыр сливочный, снежный краб, соус масаго, огурец, икра масаго, кунжут) ',
-      price: '240',
-      picture: './Images/sushi/rolls/kani_maki.webp',
-    },
-    {
-      name: 'Монако',
-      ingridients: '(Японский омлет, сыр сливочный, икра масаго)',
-      price: '250',
-      picture: './Images/sushi/rolls/monako.webp',
-    },
-    {
-      name: 'Темпура Лайт',
-      ingridients: '(Сыр сливочный, помидоры, соус унаги, тесто темпура)',
-      price: '180',
-      picture: './Images/sushi/rolls/tempura_light.webp',
-    },
-    {
-      name: 'Фиеста',
-      ingridients: '(Снежный краб, огурцы, икра масаго, сыр сливочный)',
-      price: '250',
-      picture: './Images/sushi/rolls/fiesta.webp',
-    },
-    {
-      name: 'Текка',
-      ingridients:
-        '(Рис, нори, тунец, васаби, имбирь маринованный, соевый соус)',
-      price: '220',
-      picture: './Images/sushi/rolls/tekka.webp',
-    },
-    {
-      name: 'Ролл с кальмаром',
-      ingridients:
-        '(Рис, нори, кальмар, унаги, кунжут, васаби, имбирь маринованный, соевый соус)',
-      price: '200',
-      picture: './Images/sushi/rolls/squid.webp',
-    },
-    {
-      name: 'Тай',
-      ingridients: '(Сыр сливочный, окунь красный, соус масаго, кунжут)',
-      price: '220',
-      picture: './Images/sushi/rolls/tai.webp',
-    },
-    {
-      name: 'Калифорния',
-      ingridients:
-        '(Рис, нори, краб, масаго, огурец, авокадо, кунжут, васаби, имбирь маринованный, соевый соус)',
-      price: '350',
-      picture: './Images/sushi/rolls/cali.webp',
-    },
-    {
-      name: 'Калифорния - тобико',
-      ingridients:
-        '(Рис, нори, масаго, краб, тобико, огурец, авокадо, васаби, имбирь маринованный, соевый соус)',
-      price: '430',
-      picture: './Images/sushi/rolls/cali_tobiko.webp',
-    },
-    {
-      name: 'Теплая Филадельфия',
-      ingridients:
-        '(Рис, нори, сыр слив., икра тобико, лосось, унаги, васаби, имбирь маринованный, соевый соус)',
-      price: '570',
-      picture: './Images/sushi/rolls/hot_fila.webp',
-    },
-    {
-      name: 'Калифорния с креветкой',
-      ingridients: '(Сыр сливочный, креветка, огурец, кунжут)',
-      price: '280',
-      picture: './Images/sushi/rolls/cali_squid.webp',
-    },
-    {
-      name: 'Бансай',
-      ingridients: '(Сыр сливочный, огурец, бекон, соус унаги)',
+        'Рис, нори, сыр сливочный, кунжут, японский омлет, соус спайси, чернила каракатицы, тунец',
       price: '260',
-      picture: './Images/sushi/rolls/bansai.webp',
+      picture: './Images/sushi/hot_rolls/tuna.webp',
+    },
+    {
+      name: 'Запечённый Майами',
+      ingridients: 'Соус масаго, сыр сливочный, креветка, кунжут',
+      price: '290',
+      picture: './Images/sushi/hot_rolls/mayami.webp',
     },
   ],
-  black_rolls: [
+  brand_rolls: [
     {
-      name: 'Кавати',
+      name: 'Фуджияма',
       ingridients:
-        '(Рис, соевый лист, краб, соус масаго, огурец, сыр сливочный, кунжут, васаби, имбирь маринованный, соевый соус)',
+        'Рис, нори, острый краб, лосось, огурец, лимон имбирь маринованый, кунжут',
+      price: '690',
+      picture: './Images/sushi/brand_rolls/fuji.webp',
+    },
+    {
+      name: 'Филадельфия',
+      ingridients:
+        'Рис, нори, огурец, икра тобико, сыр сливочный, лосось, кунжут, лимон',
+      price: '570',
+      picture: './Images/sushi/brand_rolls/fila.webp',
+    },
+    {
+      name: 'Ассорти',
+      ingridients:
+        'Рис, нори, сыр сливочный, огурец, лосось, кальмар, креветка, угорь, тунец, унаги, окунь',
+      price: '520',
+      picture: './Images/sushi/brand_rolls/assorti.webp',
+    },
+    {
+      name: 'Дракон',
+      ingridients: 'Рис, нори, краб, авокадо, огурец, угорь, кунжут, унаги',
+      price: '1200',
+      picture: './Images/sushi/brand_rolls/dragon.webp',
+    },
+    {
+      name: 'Ночной Токио (без риса)',
+      ingridients: 'Авокадо, огурец, икра тобико, лосось, краб, лимон',
+      price: '790',
+      picture: './Images/sushi/brand_rolls/tokyo.webp',
+    },
+    {
+      name: 'Бостон',
+      ingridients: 'Рис, нори, острый лосось, огурец, авокадо, краб',
+      price: '550',
+      picture: './Images/sushi/brand_rolls/boston.webp',
+    },
+
+    {
+      name: 'Тоттори',
+      ingridients: 'Рис, нори, сыр сливочный, краб, креветка темпура, кунжут',
+      price: '450',
+      picture: './Images/sushi/brand_rolls/tottori.webp',
+    },
+    {
+      name: 'Эби',
+      ingridients: 'Рис, нори, соус масаго, креветка темпура',
+      price: '290',
+      picture: './Images/sushi/brand_rolls/ebi.webp',
+    },
+    {
+      name: 'Темпура острый',
+      ingridients: 'Рис, нори, угорь, острый краб, унаги',
+      price: '480',
+      picture: './Images/sushi/brand_rolls/tempura_spicy.webp',
+    },
+    {
+      name: 'Ролл с лососем',
+      ingridients: 'Рис, нори, лосось',
+      price: '280',
+      picture: './Images/sushi/brand_rolls/salmon.webp',
+    },
+  ],
+  mini_rolls: [
+    {
+      name: 'Филадельфия мини',
+      ingridients:
+        'Рис, нори, огурец, икра тобико, сыр сливочный, лосось, кунжут, лимон',
       price: '330',
-      picture: '',
+      picture: './Images/sushi/mini_rolls/fila.webp',
     },
     {
-      name: 'Овари',
+      name: 'Ассорти мини',
       ingridients:
-        '(Рис, соеывй лист, лосось, сыр сливочный, айсберг, лимон, васаби, соевый соус)',
-      price: '410',
-      picture: '',
-    },
-    {
-      name: 'Хида',
-      ingridients:
-        '(Рис, соевый лист, тунец, сыр сливочный, авокадо, огурец, кунжут, васаби, имбирь мар., соевый соус)',
+        'Рис, нори, сыр сливочный, огурец, лосось, креветка, тунец, унаги, окунь',
       price: '300',
-      picture: '',
+      picture: './Images/sushi/mini_rolls/assorti.webp',
     },
     {
-      name: 'Сегун',
+      name: 'Иватэ мини (без риса)',
       ingridients:
-        '(Рис, нори, сыр сливочный, омлет, лосось, соус масаго, имбирь, соевый соус)',
-      price: '???',
-      picture: '',
+        'Тунец, окунь, краб, лосось, гребешок, соус масаго, кунжут, унаги',
+      price: '480',
+      picture: './Images/sushi/mini_rolls/ivate.webp',
+    },
+    {
+      name: 'Горячий Макс мини',
+      ingridients: 'Рис, нори, лосось, угорь, краб, соус масаго, кунжут, унаги',
+      price: '390',
+      picture: './Images/sushi/mini_rolls/maks.webp',
+    },
+    {
+      name: 'Темпура мини',
+      ingridients:
+        'Рис, нори, сыр сливочный, лосось, кинза, тесто темпура, панко, унаги, сливочный соус',
+      price: '300',
+      picture: './Images/sushi/mini_rolls/tempura.webp',
+    },
+  ],
+  child_menu: [
+    {
+      name: 'Котлетки с картофелем айдахо',
+      ingridients: 'Котлеты свино-говяжьи, огурец, паприка, картофель айдахо',
+      price: '380',
+      picture: './Images/sushi/child_menu/aidaho.webp',
+    },
+    {
+      name: 'Наггетсы с картофелем фри',
+      ingridients:
+        'Куриная грудка в панировке, огурец, помидоры черри, кетчуп, картофель фри',
+      price: '350',
+      picture: './Images/sushi/child_menu/naggets.webp',
+    },
+    {
+      name: 'Супчик куриный',
+      ingridients:
+        'Куриный бульон, филе куриное, картофель, вермишель, зелень, лук',
+      price: '200',
+      picture: './Images/sushi/child_menu/soup.webp',
     },
   ],
   salads: [
     {
-      name: 'Шеф салат',
-      ingridients:
-        '(Говядина, айсберг, томаты, паприка, кинза, чеснок, оливковое масло, винный уксус)',
-      price: '500',
-      picture: './Images/sushi/salads/chef.webp',
-    },
-    {
-      name: 'Салат из жаренного авокадо и лосося',
-      ingridients:
-        '(Айсберг, китайская капуста, огурец, помидоры черри, авокадо, лосось, лимон, соус дресинг, кунжут)',
-      price: '800',
-      picture: './Images/sushi/salads/hot_avocado.webp',
-    },
-    {
-      name: 'Салат «Цезарь» с курицей',
-      ingridients:
-        '(Айсберг, помидоры черри, перепелиные яйца, куриная грудка, сыр пармезан, соус цезарь, сухари)',
-      price: '590',
-      picture: './Images/sushi/salads/cesar_chicken.webp',
-    },
-    {
       name: 'Салат «Цезарь» с креветкой',
       ingridients:
-        '(Айсберг, помидоры черри, креветки, перепелиные яйца, сыр пармезан, соус цезарь, сухари)',
+        'Айсберг, помидоры черри, креветки, перепелиные яйца, сыр пармезан, соус цезарь, сухари',
       price: '870',
       picture: './Images/sushi/salads/cesar_shrimp.webp',
     },
     {
+      name: 'Салат «Цезарь» с курицей',
+      ingridients:
+        'Айсберг, помидоры черри, перепелиные яйца, куриная грудка, сыр пармезан, соус цезарь, сухари',
+      price: '590',
+      picture: './Images/sushi/salads/cesar_chicken.webp',
+    },
+    {
+      name: 'Салат из жаренного авокадо и лосося',
+      ingridients:
+        'Айсберг, китайская капуста, огурец, помидоры черри, авокадо, лосось, лимон, соус дресинг, кунжут',
+      price: '800',
+      picture: './Images/sushi/salads/hot_avocado.webp',
+    },
+
+    {
+      name: 'Шеф салат',
+      ingridients:
+        'Говядина, айсберг, томаты, паприка, кинза, чеснок, оливковое масло, винный уксус',
+      price: '500',
+      picture: './Images/sushi/salads/chef.webp',
+    },
+
+    {
       name: 'Салат с авокадо',
       ingridients:
-        '(Айсберг, китайская капуста, огурец, помидоры черри, авокадо, соус дресинг, кунжут)',
+        'Айсберг, китайская капуста, огурец, помидоры черри, авокадо, соус дресинг, кунжут',
       price: '440',
       picture: './Images/sushi/salads/avocado.webp',
     },
-    {
-      name: 'Салат из морских водорослей',
-      ingridients: '(Морские водоросли, ореховый соус, кунжут, лимон)',
-      price: '200',
-      picture: './Images/sushi/salads/seaweed.webp',
-    },
+
     {
       name: 'Салат с креветкой',
       ingridients:
-        '(Авокадо, огурец, креветки, лимон, листья салата, соус дресинг)',
+        'Авокадо, огурец, креветки, лимон, листья салата, соус дресинг',
       price: '520',
       picture: './Images/sushi/salads/shrimps.webp',
+    },
+    {
+      name: 'Салат из морских водорослей',
+      ingridients: 'Морские водоросли, ореховый соус, кунжут, лимон',
+      price: '200',
+      picture: './Images/sushi/salads/seaweed.webp',
     },
   ],
   soups: [
     {
-      name: 'Ясай',
-      ingridients:
-        '(Говядина, грибы шиитаке, лук порей, тофу, рисовая лапша, специи тогораши)',
-      price: '280',
-      picture: './Images/sushi/soups/yasai.webp',
-    },
-    {
-      name: 'Мисо',
-      ingridients: '(Бульон, лук порей, тофу, водоросли вакеме)',
-      price: '180',
-      picture: './Images/sushi/soups/miso.webp',
-    },
-    {
-      name: 'Острый суп с грибами и цукини',
-      ingridients: '(Бульон, водоросли вакеми, шиитаке, цукини)',
-      price: '170',
-      picture: './Images/sushi/soups/hot_mushrooms.webp',
-    },
-    {
-      name: 'Крабовый суп',
-      ingridients: '(Бульон, краб, рис, яйцо куриное, лук, нори)',
-      price: '600',
-      picture: './Images/sushi/soups/krab.webp',
-    },
-    {
       name: 'Кимчи',
       ingridients:
-        '(Бульон, яйцо куриное, кунжут, кимчи паста, кунжутное масло, тофу, водоросли вакеме)',
+        'Бульон, яйцо куриное, кунжут, кимчи паста, кунжутное масло, тофу, водоросли вакеме',
       price: '180',
       picture: './Images/sushi/soups/kimchi.webp',
     },
     {
+      name: 'Ясай',
+      ingridients:
+        'Говядина, грибы шиитаке, лук порей, тофу, рисовая лапша, специи тогораши',
+      price: '280',
+      picture: './Images/sushi/soups/yasai.webp',
+    },
+    {
+      name: 'Острый суп с грибами и цукини',
+      ingridients: 'Бульон, водоросли вакеми, шиитаке, цукини',
+      price: '170',
+      picture: './Images/sushi/soups/hot_mushrooms.webp',
+    },
+    {
+      name: 'Мисо',
+      ingridients: 'Бульон, лук порей, тофу, водоросли вакеме',
+      price: '180',
+      picture: './Images/sushi/soups/miso.webp',
+    },
+
+    {
+      name: 'Крабовый суп',
+      ingridients: 'Бульон, краб, рис, яйцо куриное, лук, нори',
+      price: '600',
+      picture: './Images/sushi/soups/krab.webp',
+    },
+
+    {
       name: 'Крем-суп с лососем',
-      ingridients: '(Бульон, рис, лосось, сливки, зелень)',
+      ingridients: 'Бульон, рис, лосось, сливки, зелень',
       price: '350',
       picture: './Images/sushi/soups/cs_salmon.webp',
     },
     {
       name: 'Крем-суп с угрём',
-      ingridients: '(Бульон, рис, угорь, сливки, зелень)',
+      ingridients: 'Бульон, рис, угорь, сливки, зелень',
       price: '350',
       picture: './Images/sushi/soups/cs_salmon.webp',
     },
     {
       name: 'Крем-суп грибной',
-      ingridients: '(Шампиньоны, лук, сливки)',
+      ingridients: 'Шампиньоны, лук, сливки',
       price: '250',
       picture: './Images/sushi/soups/cs_mushrooms.webp',
     },
@@ -694,102 +687,142 @@ export const sushiNew = {
     {
       name: 'Говядина с тушёнными овощами',
       ingridients:
-        '(Говядина, соус терияки, баклажаны, цукини, шиитаке, ореховый соус, помидоры черри, кунжут)',
+        'Говядина, соус терияки, баклажаны, цукини, шиитаке, ореховый соус, помидоры черри, кунжут',
       price: '690',
       picture: './Images/sushi/hot_dishes/govyad.webp',
     },
     {
-      name: 'Запечённый лосось с грибами',
+      name: 'Свинина гриль с грибным соусом',
       ingridients:
-        '(Лосось, шиитаке, лук порей, соус масаго, лист салата, лимон, кунжут)',
-      price: '690',
-      picture: './Images/sushi/hot_dishes/salmon_mush.webp',
+        'Свинина, баклажаны, цукини, шиитаке, айсберг, китайская капуста, сливки, соус тонкацу, кунжут',
+      price: '600',
+      picture: './Images/sushi/hot_dishes/pig_grill.webp',
     },
+
     {
       name: 'Гречневая лапша с говядиной',
       ingridients:
-        '(Греч. лапша, говядина, баклажаны, цукини, шиитаке, соус терияки, соус ланч кинг, кимчи паста, огурец, томаты, кунжут)',
+        'Греч. лапша, говядина, баклажаны, цукини, шиитаке, соус терияки, соус ланч кинг, кимчи паста, огурец, томаты, кунжут',
       price: '370',
       picture: './Images/sushi/hot_dishes/grech_lapsha.webp',
     },
     {
+      name: 'Лапша «5 ароматов»',
+      ingridients:
+        'Лапша удон, свинина, айсберг, соус терияки, паста кимчи, томаты, огурец, водоросли, кунжут',
+      price: '350',
+      picture: './Images/sushi/hot_dishes/lapsha_5.webp',
+    },
+
+    {
       name: 'Лапша Хурасами',
       ingridients:
-        '(Рисовая лапша, лосось, шиитаки, соус терияки, лимон, кунжут)',
+        'Рисовая лапша, лосось, шиитаки, соус терияки, лимон, кунжут',
       price: '750',
       picture: './Images/sushi/hot_dishes/hurasami.webp',
     },
     {
       name: 'Мидии запечённые',
-      ingridients: '(Мидии, соус масаго, лист салата, лимон, кунжут)',
+      ingridients: 'Мидии, соус масаго, лист салата, лимон, кунжут',
       price: '470',
       picture: './Images/sushi/hot_dishes/midii.webp',
     },
     {
       name: 'Куриная грудка в сливочном соусе',
       ingridients:
-        '(Куриная грудка, сливки, листья салата, огурец, помидоры черри, кунжут)',
+        'Куриная грудка, сливки, листья салата, огурец, помидоры черри, кунжут',
       price: '450',
       picture: './Images/sushi/hot_dishes/chicken_sause.webp',
     },
     {
-      name: 'Свинина гриль с грибным соусом',
+      name: 'Запечённый лосось с грибами',
       ingridients:
-        '(Свинина, баклажаны, цукини, шиитаке, айсберг, китайская капуста, сливки, соус тонкацу, кунжут)',
-      price: '600',
-      picture: './Images/sushi/hot_dishes/pig_grill.webp',
-    },
-    {
-      name: 'Курица Терияки',
-      ingridients:
-        '(Куриное бедро в соусе терияки, рис, лист салата, томаты, огурец, морковь мар., кунжут)',
-      price: '390',
-      picture: './Images/sushi/hot_dishes/chicken_teriyaki.webp',
-    },
-    {
-      name: 'Лапша «5 ароматов»',
-      ingridients:
-        '(Лапша удон, свинина, айсберг, соус терияки, паста кимчи, томаты, огурец, водоросли, кунжут)',
-      price: '350',
-      picture: './Images/sushi/hot_dishes/lapsha_5.webp',
+        'Лосось, шиитаке, лук порей, соус масаго, лист салата, лимон, кунжут',
+      price: '690',
+      picture: './Images/sushi/hot_dishes/salmon_mush.webp',
     },
     {
       name: 'Лапша удон с морепродуктами',
       ingridients:
-        '(Лапша удон, гребешок, креветки, лосось, мидии, цукини, соус терияки, кимчи, лимон, кунжут)',
+        'Лапша удон, гребешок, креветки, лосось, мидии, цукини, соус терияки, кимчи, лимон, кунжут',
       price: '750',
       picture: './Images/sushi/hot_dishes/udon.webp',
     },
     {
+      name: 'Курица Терияки',
+      ingridients:
+        'Куриное бедро в соусе терияки, рис, лист салата, томаты, огурец, морковь мар., кунжут',
+      price: '390',
+      picture: './Images/sushi/hot_dishes/chicken_teriyaki.webp',
+    },
+
+    {
       name: 'Лосось Терияки',
       ingridients:
-        '(Лосось в соусе терияки, рис, лист салата, огурец, морковь маар., лимон, кунжут)',
+        'Лосось в соусе терияки, рис, лист салата, огурец, морковь маар., лимон, кунжут',
       price: '850',
       picture: './Images/sushi/hot_dishes/salmon_teriyaki.webp',
     },
     {
       name: 'Рис с курицей и овощами',
       ingridients:
-        '(Куриное бедро, баклажаны, цукини, шиитаке, рис, соус терияки, соус тонкацу, огурец, томаты)',
+        'Куриное бедро, баклажаны, цукини, шиитаке, рис, соус терияки, соус тонкацу, огурец, томаты',
       price: '370',
       picture: './Images/sushi/hot_dishes/rise.webp',
     },
     {
       name: 'Шницель в соусе тонкацу',
       ingridients:
-        '(Свинина в панировке, соус тонкацу, лист салата, огурец, томаты)',
+        'Свинина в панировке, соус тонкацу, лист салата, огурец, томаты',
       price: '360',
       picture: './Images/sushi/hot_dishes/shnitzel_tonk.webp',
     },
     {
       name: 'Морской окунь с тушёными овощами в сливочном соусе',
       ingridients:
-        '(Окунь, баклажаны, цукини, шиитаке, сливки, листья салата, огурец, морковь мар., лимон, кунжут)',
+        'Окунь, баклажаны, цукини, шиитаке, сливки, листья салата, огурец, морковь мар., лимон, кунжут',
       price: '550',
       picture: './Images/sushi/hot_dishes/okyn.webp',
     },
     {
-      name: 'Японские пельмени с креветками (8 шт)',
+      name: 'Куриная грудка с Филадельфией',
+      ingridients:
+        'Куриная грудка в панировке, слив. сыр, паприка, лист салата, черри, огурец, соус тонкацу',
+      price: '540',
+      picture: './Images/sushi/hot_dishes/chicken_fila.webp',
+    },
+
+    {
+      name: 'Шницеля куриные',
+      ingridients:
+        'Куриная грудка в пан., лист салата, огурец, помидоры черри, соус тонкацу ',
+      price: '350',
+      picture: './Images/sushi/hot_dishes/chicken_shnitzel.webp',
+    },
+
+    {
+      name: 'Тайская лапша с говядиной',
+      ingridients:
+        'Яичная лапша, говядина, цукини, соус терияки, тайский соус, кунжут',
+      price: '350',
+      picture: './Images/sushi/hot_dishes/tai_lapsha.webp',
+    },
+    {
+      name: 'Тайская лапша со свининой',
+      ingridients:
+        'Яичная лапша, свинина, цукини, соус терияки, тайский соус, кунжут',
+      price: '280',
+      picture: './Images/sushi/hot_dishes/tai_lapsha.webp',
+    },
+    {
+      name: 'Тайская лапша с курицей',
+      ingridients:
+        'Яичная лапша, курица, цукини, соус терияки, тайский соус, кунжут',
+      price: '300',
+      picture: './Images/sushi/hot_dishes/tai_lapsha.webp',
+    },
+    {
+      name: 'Японские пельмени с креветками 8 шт',
       ingridients: '',
       price: '360',
       picture: './Images/sushi/hot_dishes/pelmeni.webp',
@@ -808,107 +841,21 @@ export const sushiNew = {
     },
     {
       name: 'Шашлычки из тигровых креветок',
-      ingridients: '(Креветки, соус терияки, кунжут)',
+      ingridients: 'Креветки, соус терияки, кунжут',
       price: '580',
       picture: './Images/sushi/hot_dishes/yaki_shrimps.webp',
     },
     {
       name: 'Шашлычки из лосося «Якитори»',
-      ingridients: '(Лосось, соус терияки, кунжут)',
+      ingridients: 'Лосось, соус терияки, кунжут',
       price: '850',
       picture: './Images/sushi/hot_dishes/yaki_salmon.webp',
     },
     {
       name: 'Куриные шашлычки «Якитори»',
-      ingridients: '(Куриное бедро, шашлычный соус, кунжут)',
+      ingridients: 'Куриное бедро, шашлычный соус, кунжут',
       price: '290',
       picture: './Images/sushi/hot_dishes/yaki_chicken.webp',
-    },
-    {
-      name: 'Шницеля куриные',
-      ingridients:
-        '(Куриная грудка в пан., лист салата, огурец, помидоры черри, соус тонкацу) ',
-      price: '350',
-      picture: './Images/sushi/hot_dishes/chicken_shnitzel.webp',
-    },
-    {
-      name: 'Куриная грудка с Филадельфией',
-      ingridients:
-        '(Куриная грудка в панировке, слив. сыр, паприка, лист салата, черри, огурец, соус тонкацу)',
-      price: '540',
-      picture: './Images/sushi/hot_dishes/chicken_fila.webp',
-    },
-    {
-      name: 'Тайская лапша с говядиной',
-      ingridients:
-        '(Яичная лапша, говядина, цукини, соус терияки, тайский соус, кунжут)',
-      price: '350',
-      picture: './Images/sushi/hot_dishes/tai_lapsha.webp',
-    },
-    {
-      name: 'Тайская лапша со свининой',
-      ingridients:
-        '(Яичная лапша, свинина, цукини, соус терияки, тайский соус, кунжут)',
-      price: '280',
-      picture: './Images/sushi/hot_dishes/tai_lapsha.webp',
-    },
-    {
-      name: 'Тайская лапша с курицей',
-      ingridients:
-        '(Яичная лапша, курица, цукини, соус терияки, тайский соус, кунжут)',
-      price: '300',
-      picture: './Images/sushi/hot_dishes/tai_lapsha.webp',
-    },
-  ],
-  gruzia: [
-    {
-      name: 'Хинкали (1шт.)',
-      ingridients: '(Тесто, свинина, говядина, перец черный, масло сливочное)',
-      price: '80',
-      picture: './Images/sushi/gruzia/hinkali.webp',
-    },
-    {
-      name: 'Чебуреки с сыром',
-      ingridients: '',
-      price: '130',
-      picture: './Images/sushi/gruzia/chebureki.webp',
-    },
-    {
-      name: 'Чебуреки с мясом',
-      ingridients: '',
-      price: '130',
-      picture: './Images/sushi/gruzia/chebureki.webp',
-    },
-    {
-      name: '«Гранд Равиоли»',
-      ingridients: '(Тесто, филе лосося, сливки, лук, чесночно-сметанный соус)',
-      price: '550',
-      picture: './Images/sushi/gruzia/raviolli.webp',
-    },
-    {
-      name: 'Солянка по-грузински',
-      ingridients: '(Говядина, лук, томат, бульон, кинза, специи)',
-      price: '500',
-      picture: './Images/sushi/gruzia/soup.webp',
-    },
-    {
-      name: '«Гирос»',
-      ingridients:
-        '(Тесто, чесночно-сметанный соус, бифштекс свино-говяжий, айсберг, огурцы солёные, лук красный, томаты, картофель фри)',
-      price: '480',
-      picture: './Images/sushi/gruzia/giros.webp',
-    },
-    {
-      name: 'Хачапури по-мегрельски',
-      ingridients: '(Тесто, сыр сулугуни, масло сливочное)',
-      price: '360',
-      picture: './Images/sushi/gruzia/megel.webp',
-    },
-    {
-      name: 'Хачапури по-аджарски',
-      ingridients: '(Тесто, сыр сулугуни, яйцо куриное, масло сливочное)',
-      price: '360',
-      picture: './Images/sushi/gruzia/adja.webp',
     },
   ],
   dessert: [
@@ -937,18 +884,6 @@ export const sushiNew = {
       picture: './Images/sushi/desserts/pelmeni.webp',
     },
     {
-      name: 'Чизкейк с топпингом',
-      ingridients: '',
-      price: '220',
-      picture: './Images/sushi/desserts/cheese_cake.webp',
-    },
-    {
-      name: 'Фруктовая тарелка',
-      ingridients: '',
-      price: '300',
-      picture: './Images/sushi/desserts/fruits.webp',
-    },
-    {
       name: 'Японские блинчики с Филадельфией и апельсиновым соусом',
       ingridients: '',
       price: '250',
@@ -961,32 +896,78 @@ export const sushiNew = {
       picture: './Images/sushi/desserts/pancakes.webp',
     },
     {
+      name: 'Чизкейк с топпингом',
+      ingridients: '',
+      price: '220',
+      picture: './Images/sushi/desserts/cheese_cake.webp',
+    },
+    {
+      name: 'Фруктовая тарелка',
+      ingridients: '',
+      price: '300',
+      picture: './Images/sushi/desserts/fruits.webp',
+    },
+
+    {
       name: 'Мороженое в ассортименте',
       ingridients: '',
       price: '80',
       picture: './Images/sushi/desserts/ice.webp',
     },
   ],
-  child_menu: [
+  gruzia: [
     {
-      name: 'Котлетки с картофелем айдахо',
-      ingridients: '(Котлеты свино-говяжьи, огурец, паприка, картофель айдахо)',
-      price: '380',
-      picture: './Images/sushi/child_menu/aidaho.webp',
+      name: '«Гирос»',
+      ingridients:
+        'Тесто, чесночно-сметанный соус, бифштекс свино-говяжий, айсберг, огурцы солёные, лук красный, томаты, картофель фри',
+      price: '480',
+      picture: './Images/sushi/gruzia/giros.webp',
     },
     {
-      name: 'Наггетсы с картофелем фри',
-      ingridients:
-        '(Куриная грудка в панировке, огурец, помидоры черри, кетчуп, картофель фри)',
-      price: '350',
-      picture: './Images/sushi/child_menu/naggets.webp',
+      name: 'Хачапури по-мегрельски',
+      ingridients: 'Тесто, сыр сулугуни, масло сливочное',
+      price: '360',
+      picture: './Images/sushi/gruzia/megel.webp',
     },
     {
-      name: 'Супчик куриный',
-      ingridients:
-        '(Куриный бульон, филе куриное, картофель, вермишель, зелень, лук)',
-      price: '200',
-      picture: './Images/sushi/child_menu/soup.webp',
+      name: 'Хачапури по-аджарски',
+      ingridients: 'Тесто, сыр сулугуни, яйцо куриное, масло сливочное',
+      price: '360',
+      picture: './Images/sushi/gruzia/adja.webp',
+    },
+
+    {
+      name: '«Гранд Равиоли»',
+      ingridients: 'Тесто, филе лосося, сливки, лук, чесночно-сметанный соус',
+      price: '550',
+      picture: './Images/sushi/gruzia/raviolli.webp',
+    },
+
+    {
+      name: 'Хинкали (1шт.)',
+      ingridients: 'Тесто, свинина, говядина, перец черный, масло сливочное',
+      price: '80',
+      picture: './Images/sushi/gruzia/hinkali.webp',
+    },
+
+    {
+      name: 'Солянка по-грузински',
+      ingridients: 'Говядина, лук, томат, бульон, кинза, специи',
+      price: '500',
+      picture: './Images/sushi/gruzia/soup.webp',
+    },
+
+    {
+      name: 'Чебуреки с сыром',
+      ingridients: '',
+      price: '130',
+      picture: './Images/sushi/gruzia/chebureki.webp',
+    },
+    {
+      name: 'Чебуреки с мясом',
+      ingridients: '',
+      price: '130',
+      picture: './Images/sushi/gruzia/chebureki.webp',
     },
   ],
   pizza: [
@@ -1015,8 +996,8 @@ export const sushiNew = {
       picture: './Images/sushi/pizza/karbonara.webp',
     },
     {
-      name: 'Гренки с сыром',
-      ingridients: '(Хлеб, сыр, чеснок, соль)',
+      name: 'Гренки с сыром и чесноком',
+      ingridients: '',
       price: '200',
       picture: './Images/sushi/pizza/grenki.webp',
     },
@@ -1050,25 +1031,25 @@ export const sushiNew = {
       name: 'Имбирь',
       ingridients: '',
       price: '50',
-      picture: './Images/sushi/garnish/sauce.webp',
+      picture: './Images/sushi/garnish/imbir.webp',
     },
     {
       name: 'Чабрец',
       ingridients: '',
       price: '30',
-      picture: './Images/sushi/garnish/sauce.webp',
+      picture: './Images/sushi/garnish/chabrets.webp',
     },
     {
       name: 'Мята',
       ingridients: '',
       price: '50',
-      picture: './Images/sushi/garnish/sauce.webp',
+      picture: './Images/sushi/garnish/mint.webp',
     },
     {
       name: 'Лимон',
       ingridients: '',
       price: '50',
-      picture: './Images/sushi/garnish/sauce.webp',
+      picture: './Images/sushi/garnish/lemone.webp',
     },
     {
       name: 'Ореховый соус',

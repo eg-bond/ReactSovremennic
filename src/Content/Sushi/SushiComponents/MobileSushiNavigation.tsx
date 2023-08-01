@@ -3,7 +3,7 @@ import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import Grow from '@material-ui/core/Grow'
 import { useRef } from 'react'
 import type { MobileSushiNavigationT, PopperContentT, SushiT } from '../sushiT'
-import { sushiElems } from '../sushiHelpers'
+import { menuButtons } from '../sushiHelpers'
 
 export const MobileSushiNavigation = memo<MobileSushiNavigationT>(
   function MobileSushiNavigation({ changeImage, currentImgKey }) {
@@ -60,7 +60,7 @@ const PopperContent = memo<PopperContentT>(function PopperContent({
 }) {
   return (
     <ul>
-      {sushiElems.menuButtons.map(item => (
+      {menuButtons.map(item => (
         <li
           className={currentImgKey === item[0] ? 'active' : ''}
           key={item[0]}
