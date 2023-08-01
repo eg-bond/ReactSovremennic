@@ -8,7 +8,7 @@ import { SushiWork, SushiWorkModal } from '../../Template/SushiWork'
 const Sushi = ({
   currentImgKey,
   changeImage,
-  imgVisible,
+  // imgVisible,
   progressBar,
   isMobile,
   onLoad,
@@ -43,7 +43,7 @@ const Sushi = ({
           {/* {progressBar && <SushiLinearProgress />} */}
           <SushiImage
             currentImgKey={currentImgKey}
-            imgVisible={imgVisible}
+            // imgVisible={imgVisible}
             onLoad={onLoad}
           />
         </div>

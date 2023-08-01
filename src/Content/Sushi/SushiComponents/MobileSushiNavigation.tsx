@@ -1,4 +1,4 @@
-import { useState, useCallback, memo } from 'react'
+import { useState, useCallback, memo, useEffect } from 'react'
 import ClickAwayListener from '@material-ui/core/ClickAwayListener'
 import Grow from '@material-ui/core/Grow'
 import { useRef } from 'react'
@@ -8,6 +8,21 @@ import { menuButtons } from '../sushiHelpers'
 export const MobileSushiNavigation = memo<MobileSushiNavigationT>(
   function MobileSushiNavigation({ changeImage, currentImgKey }) {
     const [open, setOpen] = useState(false)
+    const [buttonTitle, setButtonTitle] = useState('Суши')
+
+    useEffect(() => {
+      const currentMenuItem = menuButtons.find(
+        item => item[0] === currentImgKey
+      )
+      if (currentMenuItem) {
+        setButtonTitle(currentMenuItem[1])
+      }
+
+      return () => {
+        setButtonTitle('Суши')
+      }
+    }, [currentImgKey])
+
     // clickAwayActive makes ClickAwayListener enabled when modal is shown
     const clickAwayActive = useRef(false)
 
@@ -28,7 +43,7 @@ export const MobileSushiNavigation = memo<MobileSushiNavigationT>(
     return (
       <div>
         <button className='seans_button_xs' onClick={() => setOpen(true)}>
-          <span className='seans_button_xs__title'>Меню</span>{' '}
+          <span className='seans_button_xs__title'>{buttonTitle}</span>{' '}
           <span
             className='glyphicon glyphicon-chevron-down'
             aria-hidden='true'

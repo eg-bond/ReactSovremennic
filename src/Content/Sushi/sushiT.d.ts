@@ -1,14 +1,14 @@
 import type { SpecialStateT } from '../../REDUX/special/specialReducerT'
-import { sushiElems } from './sushiHelpers'
+import { menuButtons } from './sushiHelpers'
 
-type SushiElemsT = typeof sushiElems
+type SushiElemsT = typeof menuButtons
 
 type SushiT = {
-  currentImgKey: SushiElemsT['menuButtons'][any][0]
+  currentImgKey: SushiElemsT[any][0]
   imgVisible: boolean
   isMobile: boolean
   progressBar: boolean
-  changeImage: (key: SushiElemsT['menuButtons'][any][0]) => void
+  changeImage: (key: SushiElemsT[any][0]) => void
   onLoad: () => void
 }
 type SushiImageT = {

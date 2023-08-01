@@ -8,44 +8,55 @@ const SushiContainer = ({ isMobile }: { isMobile: boolean }) => {
   const [currentImgKey, switchImg] = useState(
     'sushi' as SushiT['currentImgKey']
   )
-  const [imgVisible, switchVisibility] = useState(true)
+  // const [imgVisible, switchVisibility] = useState(true)
   const [progressBar, showProgressBar] = useState(false)
 
   // progress bar
-  const { clear: clearPBTimeout, reset: resetPBTimeout } = useTimeout(
-    () => showProgressBar(true),
-    trDuration * 2
-  )
+  // const { clear: clearPBTimeout, reset: resetPBTimeout } = useTimeout(
+  //   () => showProgressBar(true),
+  //   trDuration * 2
+  // )
 
   // triggers then image loaded
   const onLoad = useCallback(() => {
     showProgressBar(false)
-    clearPBTimeout()
-    switchVisibility(true)
+    // clearPBTimeout()
+    // switchVisibility(true)
   }, [])
+  // const onLoad = useCallback(() => {
+  //   showProgressBar(false)
+  //   clearPBTimeout()
+  //   switchVisibility(true)
+  // }, [])
 
   // Set progressBar timeout at first render
-  useEffect(() => {
-    resetPBTimeout()
-  }, [])
+  // useEffect(() => {
+  //   resetPBTimeout()
+  // }, [])
 
   const changeTableContent = useCallback(
     (key: SushiT['currentImgKey']) => {
-      if (key !== currentImgKey) {
-        switchVisibility(false)
-        resetPBTimeout()
-        setTimeout(() => {
-          switchImg(key)
-        }, trDuration)
-      }
+      switchImg(key)
     },
-    [currentImgKey, switchImg, resetPBTimeout]
+    [switchImg]
   )
+  // const changeTableContent = useCallback(
+  //   (key: SushiT['currentImgKey']) => {
+  //     if (key !== currentImgKey) {
+  //       switchVisibility(false)
+  //       resetPBTimeout()
+  //       setTimeout(() => {
+  //         switchImg(key)
+  //       }, trDuration)
+  //     }
+  //   },
+  //   [currentImgKey, switchImg, resetPBTimeout]
+  // )
 
   return (
     <Sushi
       currentImgKey={currentImgKey}
-      imgVisible={imgVisible}
+      // imgVisible={imgVisible}
       isMobile={isMobile}
       progressBar={progressBar}
       changeImage={changeTableContent}
