@@ -141,7 +141,7 @@ export const sushiNew = {
       name: 'Гребешок (запеченный)',
       ingridients: '',
       price: '150',
-      picture: './Images/sushi/sushi_items/sushi_spicy.webp',
+      picture: './Images/sushi/sushi_items/sushi_hot.webp',
     },
     {
       name: 'Тунец (острый)',

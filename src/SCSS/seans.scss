@@ -80,10 +80,16 @@
 .table_white {
   color: black;
   background-color: #ededed;
+  @media #{$mediaQueryMobile} {
+    font-weight: 600;
+  }
 }
 .table_gray {
   color: white;
   background-color: #2b2831;
+  @media #{$mediaQueryMobile} {
+    font-weight: 600;
+  }
 }
 
 //---------------------------
@@ -131,6 +137,7 @@
   margin: 25vh 2% 2% 2%;
   z-index: 5;
   min-height: auto;
+  font-weight: 600;
 }
 .popper li {
   list-style-type: none;
