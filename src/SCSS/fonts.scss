@@ -1,12 +1,14 @@
-@font-face {
-  font-family: 'Jost';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Jost'), url('./fonts/Jost-Bold.woff2');
-}
-@font-face {
-  font-family: 'Jost';
-  font-style: normal;
-  font-weight: bold;
-  src: local('JostBold'), url('./fonts/Jost-ExtraBold.woff2');
-}
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;600&display=swap');
+// @font-face {
+//   font-family: 'Jost', sans-serif;
+//   font-style: normal;
+//   font-weight: 700;
+//   src: local('Jost'), url('./fonts/Jost-Boldaafs.woff2') format('woff2');
+//   // src: local('Jost'), url('./fonts/Jost-VariableFont_wght.woff2') format('woff2');
+// }
+// @font-face {
+//   font-family: 'Jost';
+//   font-style: normal;
+//   font-weight: bold;
+//   src: local('JostBold'), url('./fonts/Jost-ExtraBold.woff2');
+// }

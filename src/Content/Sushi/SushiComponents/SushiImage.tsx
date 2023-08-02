@@ -49,7 +49,13 @@ const SushiImage = memo<SushiImageT>(function SushiImage({
           key={currentImgKey + i}
           className={`sushiGrid__item fadeInDown`}
           style={{ animationDelay: delay(i) }}>
-          <img className='sushiGrid__img' src={item.picture} alt={item.name} />
+          <div className='sushiGrid__imgCont'>
+            <img
+              className='sushiGrid__img'
+              src={item.picture}
+              alt={item.name}
+            />
+          </div>
           <div className='sushiGrid__desc'>
             <div>
               <h3>{item.name}</h3>
