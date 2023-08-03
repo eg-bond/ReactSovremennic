@@ -27,7 +27,14 @@ export const menuButtons = [
   ['garnish', 'Гарниры'],
 ] as const
 
-export const sushiState = {
+export const sushiState: {
+  [property in (typeof menuButtons)[any][0]]: {
+    name: string
+    recipe?: string
+    price: string
+    pic: string
+  }[]
+} = {
   sushi: [
     {
       name: 'Кальмар',

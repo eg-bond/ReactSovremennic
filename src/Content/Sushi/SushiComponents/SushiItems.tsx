@@ -5,14 +5,14 @@ import type { SushiItemsT } from '../sushiT'
 const SushiItems = memo<SushiItemsT>(function SushiImage({ currentImgKey }) {
   return (
     <div className={`sushi_page__content`}>
-      <div className='sushiGrid'>
+      <div className='sushi_page__grid'>
         {sushiState[currentImgKey].map((item, i) => (
           <div
             key={currentImgKey + i}
-            className={`sushiGrid__item fadeInDown`}
+            className={`sushi_page__gridItem fadeInDown`}
             style={{ animationDelay: animationDelay(0.05, i) }}>
             <SushiImg picSrc={item.pic} alt={item.name} />
-            <div className='sushiGrid__desc'>
+            <div className='sushi_page__desc'>
               <div>
                 <h3>{item.name}</h3>
                 {!!item.recipe && <p>{item.recipe}</p>}
@@ -30,10 +30,10 @@ const SushiImg = ({ picSrc, alt }: { picSrc: string; alt: string }) => {
   const [loaded, setloaded] = useState(false)
 
   return (
-    <div className={`sushiGrid__imgCont ${loaded ? '' : 'loading'}`}>
+    <div className={`sushi_page__imgCont ${loaded ? '' : 'loading'}`}>
       <img
         onLoad={() => setloaded(true)}
-        className='sushiGrid__img'
+        className='sushi_page__img'
         src={picSrc}
         alt={alt}
       />

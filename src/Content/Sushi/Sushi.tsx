@@ -3,14 +3,13 @@ import type { SushiT } from './sushiT'
 import CreateMenuButtons from './SushiComponents/CreateMenuButtons'
 import SushiItems from './SushiComponents/SushiItems'
 import { SushiWork, SushiWorkModal } from '../../Template/SushiWork'
+import SushiSliders from './SushiComponents/SushiSliders'
 
 const Sushi = ({ currentImgKey, isMobile, changeImage }: SushiT) => {
   return (
     <>
       {!isMobile && (
-        <div
-          style={{ paddingRight: '0' }}
-          className='sushi_page content__gridLeftItem--1fr'>
+        <div className='sushi_page content__gridLeftItem--1fr'>
           <div className={`sushi_page__menuButtons `}>
             <CreateMenuButtons
               currentImgKey={currentImgKey}
@@ -30,7 +29,7 @@ const Sushi = ({ currentImgKey, isMobile, changeImage }: SushiT) => {
             />
           </div>
         )}
-
+        <SushiSliders />
         <SushiItems currentImgKey={currentImgKey} />
 
         <div className='separatorMobile separatorMobile--index' />
