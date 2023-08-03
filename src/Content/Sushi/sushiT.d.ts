@@ -11,10 +11,8 @@ type SushiT = {
   changeImage: (key: SushiElemsT[any][0]) => void
   onLoad: () => void
 }
-type SushiImageT = {
+type SushiItemsT = {
   currentImgKey: SushiT['currentImgKey']
-  imgVisible: SushiT['imgVisible']
-  onLoad: SushiT['onLoad']
 }
 type CMB_T = {
   currentImgKey: SushiT['currentImgKey']
@@ -31,7 +29,7 @@ type PopperContentT = {
 
 export type {
   SushiT,
-  SushiImageT,
+  SushiItemsT,
   CMB_T,
   SushiElemsT,
   MobileSushiNavigationT,

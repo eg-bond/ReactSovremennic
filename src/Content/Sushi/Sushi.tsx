@@ -1,18 +1,10 @@
 import { MobileSushiNavigation } from './SushiComponents/MobileSushiNavigation'
-import { SushiLinearProgress } from './SushiLinearProgress'
 import type { SushiT } from './sushiT'
 import CreateMenuButtons from './SushiComponents/CreateMenuButtons'
-import SushiImage from './SushiComponents/SushiImage'
+import SushiItems from './SushiComponents/SushiItems'
 import { SushiWork, SushiWorkModal } from '../../Template/SushiWork'
 
-const Sushi = ({
-  currentImgKey,
-  changeImage,
-  // imgVisible,
-  progressBar,
-  isMobile,
-  onLoad,
-}: SushiT) => {
+const Sushi = ({ currentImgKey, isMobile, changeImage }: SushiT) => {
   return (
     <>
       {!isMobile && (
@@ -39,14 +31,7 @@ const Sushi = ({
           </div>
         )}
 
-        <div className={`sushi_page__content`}>
-          {/* {progressBar && <SushiLinearProgress />} */}
-          <SushiImage
-            currentImgKey={currentImgKey}
-            // imgVisible={imgVisible}
-            onLoad={onLoad}
-          />
-        </div>
+        <SushiItems currentImgKey={currentImgKey} />
 
         <div className='separatorMobile separatorMobile--index' />
         {isMobile && <SushiWork />}

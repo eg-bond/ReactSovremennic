@@ -102,6 +102,11 @@
   height: 100%;
 }
 
+.loading {
+  background-image: url('../images/preloader.webp');
+  background-size: cover;
+}
+
 .sushiGrid__desc {
   display: flex;
   flex-direction: column;
