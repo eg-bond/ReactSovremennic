@@ -2,94 +2,118 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { menuButtons } from '../sushiHelpers'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import type { SushiElemsT } from '../sushiT'
+import {
+  motion,
+  useMotionValue,
+  useDragControls,
+  useTransform,
+  useMotionValueEvent,
+  useAnimate,
+} from 'framer-motion'
 
-let activeDrag = false,
-  prevPageX,
-  prevScrollLeft
-
-const dragStart = (e, ref) => {
-  activeDrag = true
-  prevPageX = e.pageX || e.touches[0].pageX
-  prevScrollLeft = ref.current.scrollLeft
-}
-
-const dragging = (e, ref) => {
-  if (!activeDrag) return
-  e.preventDefault()
-  let positionDiff = (e.pageX || e.touches[0].pageX) - prevPageX
-  ref.current.scrollLeft = prevScrollLeft - positionDiff
-}
-
-const dragStop = () => {
-  activeDrag = false
-}
+window.slider = document.querySelector('.sushiSlider')
 
 export const SushiSliders = ({
-  sliderKey,
-  imgVisible,
-  onLoad,
+  currentImgKey,
+  changeImage,
 }: {
   sliderKey: keyof SushiElemsT['slidersKeys']
   imgVisible: boolean
   onLoad: () => void
 }) => {
-  const navbarRef = useRef(null)
-
-  const [isDragging, setIsDragging] = useState(false)
-  const [prevPageXS, setPrevPageX] = useState(undefined)
-  const [prevScrollLeftS, setPrevScrollLeft] = useState(undefined)
-
-  const dragInProg = useCallback((e, ref) => {
-    if (!isDragging) return
-    e.preventDefault()
-    let positionDiff = (e.pageX || e.touches[0].pageX) - prevPageXS
-    ref.current.scrollLeft = prevScrollLeftS - positionDiff
-  }, [])
-
-  const startDrag = (e, ref) => {
-    setIsDragging(true)
-    setPrevPageX(e.pageX || e.touches[0].pageX)
-    setPrevScrollLeft(ref.current.scrollLeft)
-  }
-  const stopDrag = () => {
-    setIsDragging(false)
-  }
-  const scrollLeft = () => {
-    navbarRef.current.scrollLeft += 150
-  }
+  const [width, setWidth] = useState(0)
+  const containerRef = useRef(null)
+  const sliderRef = useRef(null)
 
   useEffect(() => {
-    document.addEventListener('mousemove', e => dragInProg(e, navbarRef))
-    document.addEventListener('mouseup', stopDrag)
-
-    // document.addEventListener('mousemove', e => dragging(e, navbarRef))
-    // document.addEventListener('mouseup', dragStop)
-
-    document.addEventListener('touchmove', e => dragging(e, navbarRef))
-    document.addEventListener('touchend', dragStop)
-    // return () => {
-    //   second
-    // }
+    setWidth(
+      containerRef.current.scrollWidth - containerRef.current.offsetWidth
+    )
   }, [])
+  const x = useMotionValue(0)
+
+  // useMotionValueEvent(x, 'animationStart', () => {
+  //   console.log('animation started on x')
+  // })
+
+  // useMotionValueEvent(x, 'change', latest => {
+  //   console.log('x changed to', latest)
+  // })
+
+  const [scope, animate] = useAnimate()
+  const [trans, setTrans] = useState(-100)
+  const handleClick = (e, item) => {
+    const left = e.pageX
+    const offLeft = e.target.offsetLeft
+    const widthEl = e.target.offsetWidth
+    const widthW = window.innerWidth
+
+    const scrollWidth = e.target.offsetParent.scrollWidth
+
+    const diff = scrollWidth - offLeft
+
+    const maxTranslate = scrollWidth - widthW
+
+    const translateEdge = (widthW - widthEl) / 2
+    const translate = offLeft - translateEdge
+    console.log(e)
+
+    console.log(
+      'left: ',
+      left,
+      'offLeft: ',
+      offLeft,
+      'widthW: ',
+      widthW,
+      'widthEl: ',
+      widthEl,
+      'scrollWidth: ',
+      scrollWidth,
+      'diff: ',
+      diff,
+      'maxTranslate: ',
+      maxTranslate,
+      'translate: ',
+      translate
+    )
+    // console.log(e)
+    if (translate < maxTranslate) {
+      x.set(-translate)
+    }
+    // setTrans(trans - 100)
+    // animate(scope.current, { translateX: trans })
+    // console.log(e.target.offsetParent.scrollWidth)
+    // console.log(e.target.offsetParent.scrollWidth)
+    // sliderRef.current.style.transform = 'translateX(-200px) !important'
+    // console.log(sliderRef.current.style.translateX)
+
+    changeImage(item)
+  }
 
   return (
-    <div>
-      <div
-        onMouseDown={e => startDrag(e, navbarRef)}
-        onMouseMove={e => dragInProg(e, navbarRef)}
-        onTouchStart={e => startDrag(e, navbarRef)}
-        // onMouseDown={e => dragStart(e, navbarRef)}
-        // onTouchStart={e => dragStart(e, navbarRef)}
-        ref={navbarRef}
-        className='sushiSlider'>
+    <motion.div className='sushiSlider__container' ref={containerRef}>
+      <button onClick={() => x.set(0)}>opacity</button>
+      <motion.div
+        style={{ x }}
+        // ref={sliderRef}
+        ref={scope}
+        drag='x'
+        dragConstraints={{ right: -trans - 100, left: -width - trans - 100 }}
+        className='sushiSlider'
+        // animate={{ translateX: '-100px' }}
+      >
         {menuButtons.map((item, i) => (
-          <div key={i + 'sas'} className='sushiSlider__item'>
-            {item[1]}
-          </div>
+          <button
+            key={item[0] + 'btn'}
+            className={`sushiSlider__item ${
+              currentImgKey === item[0] ? 'active' : ''
+            }`}
+            onClick={e => handleClick(e, item[0])}>
+            {item[1].toUpperCase()}
+          </button>
         ))}
-      </div>
-      <button onClick={scrollLeft}>scroll</button>
-    </div>
+      </motion.div>
+    </motion.div>
   )
 }
 

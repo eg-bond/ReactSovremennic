@@ -21,15 +21,15 @@ const Sushi = ({ currentImgKey, isMobile, changeImage }: SushiT) => {
       )}
 
       <div className='sushi_page content__gridRightItem--3fr'>
-        {isMobile && (
+        {/* {isMobile && (
           <div className='sushi_menu_xs'>
             <MobileSushiNavigation
               currentImgKey={currentImgKey}
               changeImage={changeImage}
             />
           </div>
-        )}
-        <SushiSliders />
+        )} */}
+        <SushiSliders currentImgKey={currentImgKey} changeImage={changeImage} />
         <SushiItems currentImgKey={currentImgKey} />
 
         <div className='separatorMobile separatorMobile--index' />

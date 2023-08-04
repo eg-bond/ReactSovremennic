@@ -55,6 +55,7 @@ const App = () => {
 
   return (
     <div className={mainContainerClasses}>
+      {/* <div onClick={e => console.log(e)} className={mainContainerClasses}> */}
       <div>
         <Navigation siteMode={siteMode} fontSize={fontSize} theme={theme} />
 
