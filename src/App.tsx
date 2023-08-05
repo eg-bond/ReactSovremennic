@@ -55,11 +55,10 @@ const App = () => {
 
   return (
     <div className={mainContainerClasses}>
-      {/* <div onClick={e => console.log(e)} className={mainContainerClasses}> */}
       <div>
         <Navigation siteMode={siteMode} fontSize={fontSize} theme={theme} />
 
-        {/*Navigation menu margin for mobile*/}
+        {/* Navigation menu margin for mobile */}
         <div className='navigation__containerXs' />
 
         <div className='separatorMobile' />
@@ -67,7 +66,7 @@ const App = () => {
         <div className={`container wrapper ${imgHidden ? 'hideImages' : ''}`}>
           <FilmsSlider films={films} isMobile={isMobile} />
 
-          <div className='separatorMobile separatorMobile--MB' />
+          <div className='separatorMobile separatorMobile--sticky' />
           <hr className='separator hidden-xs' />
 
           <div className={'mainContainer__content'}>

@@ -124,7 +124,7 @@
   left: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  z-index: 5;
+  z-index: 105;
 }
 .popper {
   border: $border2px;
@@ -135,7 +135,7 @@
   position: relative !important;
   width: auto;
   margin: 25vh 2% 2% 2%;
-  z-index: 5;
+  z-index: 105;
   min-height: auto;
   font-weight: 600;
 }
@@ -196,16 +196,6 @@
     }
   }
 
-  .popper__backdrop {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
-    z-index: 5;
-  }
   .popper {
     border: $border2px;
     border-radius: $buttonsBR;

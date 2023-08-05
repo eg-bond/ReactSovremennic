@@ -1,8 +1,8 @@
-import type { SushiT } from './sushiT'
 import CreateMenuButtons from './SushiComponents/CreateMenuButtons'
 import SushiItems from './SushiComponents/SushiItems'
 import { SushiWork, SushiWorkModal } from '../../Template/SushiWork'
 import { SushiMobileNavigation } from './SushiComponents/SushiMobileNavigation'
+import type { SushiT } from './sushiT'
 
 const Sushi = ({ currentImgKey, isMobile, changeImage }: SushiT) => {
   return (

@@ -7,7 +7,7 @@ const AdvContent = memo(function AdvContent() {
   const { allImgLoaded, onLoad } = useImagesLoaded(3)
 
   return (
-    <div className='content__gridRightItem--1fr'>
+    <div className='content__gridRightItem--1fr contentMT'>
       <SushiWorkModal loaded={allImgLoaded} onLoad={onLoad} />
       {/* <div
         className={`desktopAdv desktopAdv--5 ${

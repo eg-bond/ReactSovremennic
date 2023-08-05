@@ -1,8 +1,12 @@
 import { memo, useState } from 'react'
 import { animationDelay, sushiState } from '../sushiHelpers'
-import type { SushiItemsT } from '../sushiT'
+import type { SushiT } from '../sushiT'
 
-const SushiItems = memo<SushiItemsT>(function SushiImage({ currentImgKey }) {
+const SushiItems = memo(function SushiItems({
+  currentImgKey,
+}: {
+  currentImgKey: SushiT['currentImgKey']
+}) {
   return (
     <div className={`sushi_page__content`}>
       <div className='sushi_page__grid'>

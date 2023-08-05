@@ -13,10 +13,15 @@ html {
   background-color: var(--mainClr);
   font-size: var(--htmlFontSize);
   -webkit-tap-highlight-color: transparent;
+
+  --desktopContentMT: 15px;
+  --mobileContentMT: 2.5vw;
 }
 
-html::-webkit-scrollbar {
-  display: none;
+@media #{$mediaQueryMobile} {
+  html::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 hr {
@@ -89,6 +94,13 @@ article {
 }
 .padd_r {
   padding-right: 7vw !important;
+}
+
+.contentMT {
+  padding-top: var(--desktopContentMT) !important;
+  @media #{$mediaQueryMobile} {
+    padding-top: var(--mobileContentMT) !important;
+  }
 }
 
 //sushi work modal
@@ -182,7 +194,7 @@ $backImgHeight992: 213px;
   background-repeat: no-repeat;
   background-size: 100% $backImgHeight + 1, 100%;
   height: 100%;
-  overflow: hidden;
+  // overflow: hidden;
   background-color: var(--mainClr);
   @media ($mediaQuery1200) {
     background-size: 100% $backImgHeight1200 + 1, 100%;
@@ -254,7 +266,7 @@ $backImgHeight992: 213px;
 .separator {
   border-top: $border5px;
   margin-left: -1px;
-  margin-bottom: 15px;
+  // margin-bottom: 15px;
   @media ($mediaQuery992) {
     border-top: $border3px;
   }
@@ -310,8 +322,16 @@ $backImgHeight992: 213px;
     display: none;
   }
   .separatorMobile {
-    height: 5px;
+    height: 1vw;
     background-color: var(--mobileSeparatorClr);
+    z-index: 10;
+  }
+  .separatorMobile--sticky {
+    position: sticky;
+    top: 8.3vw;
+    @media (max-width: 544px) {
+      top: 18.8vw;
+    }
   }
   .separatorMobile--index {
     margin: 0 -15px 0 -15px;

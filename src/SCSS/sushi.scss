@@ -2,6 +2,13 @@
   @include shiftUp;
 }
 
+.sushi_page {
+  padding-top: var(--desktopContentMT);
+  @media #{$mediaQueryMobile} {
+    padding-top: 0 !important;
+  }
+}
+
 .sushiAdv {
   margin-bottom: 3%;
   padding-bottom: 10%;
@@ -153,12 +160,59 @@
   }
 }
 
+.sushiMobileNav__container {
+  display: flex;
+  overflow: hidden;
+  cursor: grab;
+  padding: var(--mobileContentMT) 0;
+  margin: 0 -8px;
+  //----------------------------
+  background-color: black;
+  position: sticky;
+  top: 9.2vw;
+  z-index: 100;
+  @media (max-width: 544px) {
+    top: 19.7vw;
+  }
+}
+
+.changing {
+  transition: 0.25s;
+  pointer-events: none;
+}
+
+.sushiMobileNav {
+  display: flex;
+  height: 9vw;
+  color: white;
+  column-gap: 2vw;
+}
+
+.sushiMobileNav__item {
+  width: fit-content;
+  white-space: nowrap;
+  border-radius: 5vw;
+  border: solid 2px white;
+  background-color: black;
+  padding: 0 1rem;
+  font-size: 2.8vw;
+}
+
+.sushiMobileNav__item.active {
+  background-color: white;
+  color: black;
+}
+.sushiMobileNav__item:hover {
+  background-color: white;
+  color: black;
+}
+
 @media #{$mediaQueryMobile} {
   .popper__sushi li {
     padding: 2.2vw 0;
   }
 
   .sushi_page__content {
-    margin: 2.5vw auto;
+    margin: 0 auto;
   }
 }

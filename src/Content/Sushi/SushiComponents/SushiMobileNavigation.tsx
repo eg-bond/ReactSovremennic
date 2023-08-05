@@ -14,7 +14,7 @@ export const SushiMobileNavigation = ({
   const sliderRef = useRef<HTMLDivElement>(null)
   const constraintRef = useRef(null)
   const x = useMotionValue(0)
-  const margins = 15 * 2 + 2
+  const margins = 14
 
   const handleClick = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -22,10 +22,10 @@ export const SushiMobileNavigation = ({
     ref: React.MutableRefObject<HTMLDivElement>
   ) => {
     setIsChanging(true)
+
     const width = window.innerWidth
     const target = e.target as HTMLButtonElement
     const btnWidth = target.offsetWidth
-
     const scrollWidth = ref.current.scrollWidth
 
     const translateEdge = (width - btnWidth - margins) / 2
@@ -45,17 +45,17 @@ export const SushiMobileNavigation = ({
   }
 
   return (
-    <div ref={constraintRef} className='sushiSlider__container'>
+    <div ref={constraintRef} className='sushiMobileNav__container'>
       <motion.div
         style={{ x }}
         ref={sliderRef}
         drag='x'
         dragConstraints={constraintRef}
-        className={`sushiSlider ${isChanging ? 'changing' : ''}`}>
+        className={`sushiMobileNav ${isChanging ? 'changing' : ''}`}>
         {menuButtons.map(item => (
           <button
             key={item[0] + '_sbtn'}
-            className={`sushiSlider__item ${
+            className={`sushiMobileNav__item ${
               currentImgKey === item[0] ? 'active' : ''
             }`}
             onClick={e => handleClick(e, item[0], sliderRef)}>

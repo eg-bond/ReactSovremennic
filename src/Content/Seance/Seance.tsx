@@ -44,7 +44,7 @@ const Seance = memo<{ isMobile: boolean }>(function Seance({ isMobile }) {
   }, [])
 
   return (
-    <div className='content__gridLeftItem--3fr'>
+    <div className='content__gridLeftItem--3fr contentMT'>
       {!isMobile && (
         <CreateSeanceButtons
           datesArr={datesArr}

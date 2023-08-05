@@ -9,7 +9,7 @@ function IndexContent({ isMobile }: { isMobile: boolean }) {
   const { siteMode } = useAppSelector(state => state.special)
 
   return (
-    <div className='content__gridLeftItem--3fr'>
+    <div className='content__gridLeftItem--3fr contentMT'>
       {siteMode === 'default' && (
         <div className='trailers'>
           {isMobile && <h4>Трейлеры</h4>}
