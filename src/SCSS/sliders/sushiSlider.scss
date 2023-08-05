@@ -1,25 +1,31 @@
 .sushiSlider__container {
+  display: flex;
   overflow: hidden;
   cursor: grab;
+  padding: 1vw 0;
+}
+
+.changing {
+  transition: 0.25s;
+  pointer-events: none;
 }
 
 .sushiSlider {
   display: flex;
-  height: 70px;
+  height: 9vw;
   color: white;
-  // transition: 0.5s;
-  // overflow: visible;
-  // z-index: 100;
+  column-gap: 2vw;
+  margin: 0 1px;
 }
 
 .sushiSlider__item {
   width: fit-content;
   white-space: nowrap;
-  margin: 0.5rem;
-  border-radius: 15px;
+  border-radius: 5vw;
   border: solid 2px white;
   background-color: black;
   padding: 0 1rem;
+  font-size: 2.8vw;
 }
 
 .sushiSlider__item.active {

@@ -15,6 +15,10 @@ html {
   -webkit-tap-highlight-color: transparent;
 }
 
+html::-webkit-scrollbar {
+  display: none;
+}
+
 hr {
   border: 0;
   margin-top: 0;

@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import type { SushiImageT } from '../sushiT'
-import SushiSliders from './SushiSliders'
+import SushiSliders from './SushiMobileNavigation'
 import { sushiImgSrc } from '../sushiHelpers'
 import { sushiElems } from '../sushiHelpers'
 
