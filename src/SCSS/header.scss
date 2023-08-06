@@ -128,9 +128,9 @@
     top: 0;
     width: 100%;
     z-index: 10;
-    height: 8.5vw;
+    height: var(--navbarMobileH768);
     @media (max-width: 544px) {
-      height: 19vw;
+      height: var(--navbarMobileH544);
       flex-direction: column;
     }
   }

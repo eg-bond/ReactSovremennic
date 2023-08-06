@@ -16,6 +16,9 @@ html {
 
   --desktopContentMT: 15px;
   --mobileContentMT: 2.5vw;
+
+  --navbarMobileH768: 8.5vw;
+  --navbarMobileH544: 19vw;
 }
 
 @media #{$mediaQueryMobile} {
@@ -324,13 +327,13 @@ $backImgHeight992: 213px;
   .separatorMobile {
     height: 1vw;
     background-color: var(--mobileSeparatorClr);
-    z-index: 10;
+    z-index: 200;
   }
   .separatorMobile--sticky {
     position: sticky;
-    top: 8.3vw;
+    top: calc(var(--navbarMobileH768));
     @media (max-width: 544px) {
-      top: 18.8vw;
+      top: var(--navbarMobileH544);
     }
   }
   .separatorMobile--index {

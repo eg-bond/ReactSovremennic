@@ -39,31 +39,43 @@ export const SushiMobileNavigation = ({
       x.set(0)
     }
 
-    setTimeout(() => setIsChanging(false), 250)
+    setTimeout(() => setIsChanging(false), 300)
 
     changeImage(imgKey)
+    const content = document.querySelector('.sushi_page__content')
+    const hr = document.querySelector('.sushiMobileNav__anchor')
+
+    const contentY = content?.getClientRects()[0].y
+    const hrY = hr?.getClientRects()[0].y
+
+    if (contentY !== undefined && hrY !== undefined) {
+      window.scrollBy(0, -(hrY - contentY))
+    }
   }
 
   return (
-    <div ref={constraintRef} className='sushiMobileNav__container'>
-      <motion.div
-        style={{ x }}
-        ref={sliderRef}
-        drag='x'
-        dragConstraints={constraintRef}
-        className={`sushiMobileNav ${isChanging ? 'changing' : ''}`}>
-        {menuButtons.map(item => (
-          <button
-            key={item[0] + '_sbtn'}
-            className={`sushiMobileNav__item ${
-              currentImgKey === item[0] ? 'active' : ''
-            }`}
-            onClick={e => handleClick(e, item[0], sliderRef)}>
-            {item[1]}
-          </button>
-        ))}
-      </motion.div>
-    </div>
+    <>
+      <div ref={constraintRef} className='sushiMobileNav__container'>
+        <motion.div
+          style={{ x }}
+          ref={sliderRef}
+          drag='x'
+          dragConstraints={constraintRef}
+          className={`sushiMobileNav ${isChanging ? 'changing' : ''}`}>
+          {menuButtons.map(item => (
+            <button
+              key={item[0] + '_sbtn'}
+              className={`sushiMobileNav__item ${
+                currentImgKey === item[0] ? 'active' : ''
+              }`}
+              onClick={e => handleClick(e, item[0], sliderRef)}>
+              {item[1]}
+            </button>
+          ))}
+        </motion.div>
+      </div>
+      <hr className='sushiMobileNav__anchor'></hr>
+    </>
   )
 }
 
