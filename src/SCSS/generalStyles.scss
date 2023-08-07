@@ -292,7 +292,7 @@ $backImgHeight992: 213px;
     position: sticky;
     top: calc(var(--navbarMobileH768) - 0.1vw);
     @media (max-width: 544px) {
-      top: var(--navbarMobileH544) - 0.1vw;
+      top: calc(var(--navbarMobileH544) - 0.1vw);
     }
   }
   .separatorMobile--index {
