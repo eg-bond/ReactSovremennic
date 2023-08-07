@@ -3,6 +3,7 @@
   padding: 0;
   font-family: 'Jost', sans-serif;
 }
+
 html {
   --mainClr: black;
   --secondaryClr: white;
@@ -166,6 +167,15 @@ article {
     margin: 0 15px;
   }
 }
+.content__gridRightItem--full {
+  grid-column: 1/5;
+  height: 90vh;
+  margin: 15px;
+  @media #{$mediaQueryMobile} {
+    grid-column: 1/5;
+    margin: 0 15px;
+  }
+}
 //--------------------------------------
 
 $backImgHeight: 335px;
@@ -193,8 +203,6 @@ $backImgHeight992: 213px;
 }
 
 .mainContainer {
-  background-position: top center;
-  background-repeat: no-repeat;
   background-size: 100% $backImgHeight + 1, 100%;
   height: 100%;
   // overflow: hidden;
@@ -213,46 +221,6 @@ $backImgHeight992: 213px;
   background-color: #b8b8b8;
 }
 
-.covidMessage {
-  padding-top: 3px;
-  margin: 0 -1px;
-  margin-bottom: 4px;
-
-  p {
-    margin: 0 15px;
-    text-align: justify;
-    font-size: 1.6rem;
-    @media ($mediaQuery1200) {
-      font-size: 1.25rem;
-    }
-    @media ($mediaQuery992) {
-      font-size: 1rem;
-    }
-    @media #{$mediaQueryMobile} {
-      font-size: $mobileParagraphsFS;
-    }
-  }
-}
-
-.covidMessage--default {
-  border-bottom: $border5px;
-  @media ($mediaQuery992) {
-    border-bottom: $border3px;
-  }
-  @media #{$mediaQueryMobile} {
-    border-bottom: none;
-  }
-}
-.covidMessage--special {
-  border-top: $border5px;
-  @media ($mediaQuery992) {
-    border-top: $border3px;
-  }
-  @media #{$mediaQueryMobile} {
-    border-top: none;
-  }
-}
-
 .wrapper {
   height: 100%;
   min-height: 85vh;
@@ -263,15 +231,6 @@ $backImgHeight992: 213px;
   @media #{$mediaQueryMobile} {
     border-width: 0;
     min-height: 90vh;
-  }
-}
-
-.separator {
-  border-top: $border5px;
-  margin-left: -1px;
-  // margin-bottom: 15px;
-  @media ($mediaQuery992) {
-    border-top: $border3px;
   }
 }
 
@@ -331,17 +290,15 @@ $backImgHeight992: 213px;
   }
   .separatorMobile--sticky {
     position: sticky;
-    top: calc(var(--navbarMobileH768));
+    top: calc(var(--navbarMobileH768) - 0.1vw);
     @media (max-width: 544px) {
-      top: var(--navbarMobileH544);
+      top: var(--navbarMobileH544) - 0.1vw;
     }
   }
   .separatorMobile--index {
     margin: 0 -15px 0 -15px;
   }
-  .separatorMobile--MB {
-    margin-bottom: 2vw;
-  }
+
   .sushiWork {
     margin: 2.5vw 0;
     position: relative;

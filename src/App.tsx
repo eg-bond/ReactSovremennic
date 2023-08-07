@@ -58,16 +58,12 @@ const App = () => {
       <div>
         <Navigation siteMode={siteMode} fontSize={fontSize} theme={theme} />
 
-        {/* Navigation menu margin for mobile */}
-        <div className='navigation__containerXs' />
-
         <div className='separatorMobile' />
 
         <div className={`container wrapper ${imgHidden ? 'hideImages' : ''}`}>
           <FilmsSlider films={films} isMobile={isMobile} />
 
           <div className='separatorMobile separatorMobile--sticky' />
-          <hr className='separator hidden-xs' />
 
           <div className={'mainContainer__content'}>
             <Content isMobile={isMobile} />

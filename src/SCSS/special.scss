@@ -88,17 +88,26 @@
 }
 
 // Классы кнопок изменения цветовых схем
-@mixin themeButtonCl($theme, $backColor, $elemsColor) {
-  .#{$theme} {
-    background-color: $backColor !important;
-    color: $elemsColor !important;
-  }
+.themeBW {
+  background-color: $blackWhiteBackground !important;
+  color: $blackWhiteElements !important;
 }
-@include themeButtonCl(themeBW, $blackWhiteBackground, $blackWhiteElements);
-@include themeButtonCl(themeWB, $whiteBlackBackground, $whiteBlackElements);
-@include themeButtonCl(themeBR, $blackBlueBackground, $blackBlueElements);
-@include themeButtonCl(themeYB, $yellowBrownBackground, $yellowBrownElements);
-@include themeButtonCl(themeBG, $blueGreenBackground, $blueGreenElements);
+.themeWB {
+  background-color: $whiteBlackBackground !important;
+  color: $whiteBlackElements !important;
+}
+.themeBR {
+  background-color: $blackBlueBackground !important;
+  color: $blackBlueElements !important;
+}
+.themeYB {
+  background-color: $yellowBrownBackground !important;
+  color: $yellowBrownElements !important;
+}
+.themeBG {
+  background-color: $blueGreenBackground !important;
+  color: $blueGreenElements !important;
+}
 //--------------------------------------------------------------------------
 
 // Анимации движений для фокуса
