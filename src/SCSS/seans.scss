@@ -1,3 +1,11 @@
+.seance {
+  padding-top: var(--desktopContentMT);
+  @media #{$mediaQueryMobile} {
+    padding-top: 0 !important;
+  }
+  --mobileNavHeight: 13.5vw;
+}
+
 .seanse__buttons {
   display: flex;
   flex-direction: row;
@@ -188,7 +196,7 @@
   }
 
   .seanse__table {
-    margin: 2.5vw auto;
+    margin: 0 auto 2.5vw auto;
     th,
     td,
     tr {

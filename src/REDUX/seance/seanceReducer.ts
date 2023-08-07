@@ -12,7 +12,6 @@ const initialState: SeanceStateT = {
     ['day3', 'Среда', '9 августа'],
   ],
   activeScheduleItemKey: '',
-  buttonTitle: '',
 }
 
 const seanceSlice = createSlice({
@@ -21,26 +20,19 @@ const seanceSlice = createSlice({
   reducers: {
     setTodayScheduleItem(state) {
       const date = new Date()
-      //@ts-ignore
-      const dayNum: getDayT = date.getDay()
+      const dayNum: getDayT = date.getDay() as getDayT
       const key = ('day' + dayNum) as `${'day'}${typeof dayNum}`
-      const dateItem =
-        state.datesArr.find(item => item[0] === key) || state.datesArr[0]
 
       state.activeScheduleItemKey = key
-
-      state.buttonTitle = dateItem[1] + ' ' + dateItem[2]
     },
     changeScheduleItem(
       state,
       action: PayloadAction<{
         key: DateKeysT
-        title: string
       }>
     ) {
-      const { key, title } = action.payload
+      const { key } = action.payload
       state.activeScheduleItemKey = key
-      state.buttonTitle = title
     },
   },
 })

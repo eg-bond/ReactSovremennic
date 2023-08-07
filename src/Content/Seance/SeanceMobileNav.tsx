@@ -1,16 +1,28 @@
+import { useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { SushiMobileNavT } from '../sushiT'
-import { menuButtons } from '../sushiHelpers'
+import type { MotionValue } from 'framer-motion'
+import { SeanceStateT } from '../../REDUX/seance/seanceReducerT'
 
-const SushiMobileNav = ({
+const SeanceMobileNav = ({
   x,
   constraintRef,
   sliderRef,
   hrRef,
   isChanging,
-  currentImgKey,
+  datesArr,
+  activeScheduleItemKey,
   handleClick,
-}: SushiMobileNavT) => {
+}: SeanceMobileNavT) => {
+  useEffect(() => {
+    console.log('sus')
+
+    const activeBtn = document.querySelector(
+      `#${activeScheduleItemKey}_seBtn`
+    ) as HTMLButtonElement
+
+    activeBtn?.click()
+  }, [])
+
   return (
     <>
       <div className='sushiMobileNav__container--back'>
@@ -21,14 +33,15 @@ const SushiMobileNav = ({
             drag='x'
             dragConstraints={constraintRef}
             className={`sushiMobileNav ${isChanging ? 'changing' : ''}`}>
-            {menuButtons.map(item => (
+            {datesArr.map(item => (
               <button
-                key={item[0] + '_sbtn'}
+                id={item[0] + '_seBtn'}
+                key={item[0] + '_seBtn'}
                 className={`sushiMobileNav__item ${
-                  currentImgKey === item[0] ? 'active' : ''
+                  activeScheduleItemKey === item[0] ? 'active' : ''
                 }`}
                 onClick={e => handleClick(e, item[0], sliderRef)}>
-                {item[1]}
+                {`${item[1]} ${item[2]}`}
               </button>
             ))}
           </motion.div>
@@ -39,4 +52,19 @@ const SushiMobileNav = ({
   )
 }
 
-export default SushiMobileNav
+export default SeanceMobileNav
+
+type SeanceMobileNavT = {
+  x: MotionValue<number>
+  constraintRef: React.RefObject<HTMLDivElement>
+  sliderRef: React.RefObject<HTMLDivElement>
+  hrRef: React.RefObject<HTMLHRElement>
+  isChanging: boolean
+  activeScheduleItemKey: SeanceStateT['activeScheduleItemKey']
+  datesArr: SeanceStateT['datesArr']
+  handleClick: (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    dateKey: SeanceStateT['datesArr'][0][0],
+    ref: React.RefObject<HTMLDivElement>
+  ) => void
+}

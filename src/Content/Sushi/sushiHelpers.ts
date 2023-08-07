@@ -9,8 +9,10 @@ export const scrollToNavbar = (
   contentRef: React.RefObject<HTMLDivElement>,
   hrRef: React.RefObject<HTMLHRElement>
 ) => {
-  const contentY = contentRef.current?.getClientRects()[0].y
-  const hrY = hrRef.current?.getClientRects()[0].y
+  if (!contentRef.current || !hrRef.current) return
+
+  const contentY = contentRef.current.getClientRects()[0].y
+  const hrY = hrRef.current.getClientRects()[0].y
 
   if (contentY === hrY) return
 

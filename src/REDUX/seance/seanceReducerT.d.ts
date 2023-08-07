@@ -1,7 +1,6 @@
 interface SeanceStateT {
   datesArr: Array<[DateKeysT, string, string]>
   activeScheduleItemKey: DateKeysT | ''
-  buttonTitle: string
 }
 
 type DateKeysT = 'day0' | 'day1' | 'day2' | 'day3' | 'day4' | 'day5' | 'day6'

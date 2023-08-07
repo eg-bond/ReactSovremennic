@@ -1,24 +1,19 @@
 import { useRef, useState, useEffect, useCallback } from 'react'
-import { scrollToNavbar } from '../sushiHelpers'
 import { useMotionValue } from 'framer-motion'
-import type { SushiT } from '../sushiT'
-import { useWindowWidth } from '../../../hooks/useWindowWidth'
-import SushiMobileNav from './SeanceMobileNav'
 import { DateKeysT, SeanceStateT } from '../../REDUX/seance/seanceReducerT'
-import { ChangeTableContentT } from './Seance'
+import SeanceMobileNav from './SeanceMobileNav'
+import { useWindowWidth } from '../../hooks/useWindowWidth'
+import { scrollToTop } from '../../helpers'
+import type { ChangeTableContentT } from './Seance'
 
-export const SushiMobileNavContainer = ({
+export const SeanceMobileNavContainer = ({
   activeScheduleItemKey,
   datesArr,
-  buttonTitle,
   changeTableContent,
-  contentRef,
 }: {
   activeScheduleItemKey: SeanceStateT['activeScheduleItemKey']
-  buttonTitle: string
   datesArr: SeanceStateT['datesArr']
   changeTableContent: ChangeTableContentT
-  contentRef: React.RefObject<HTMLDivElement>
 }) => {
   // adds class "changing" with transition style to slider for smooth animation
   const [isChanging, setIsChanging] = useState(false)
@@ -32,14 +27,13 @@ export const SushiMobileNavContainer = ({
   const margins = 14
 
   useEffect(() => {
-    scrollToNavbar(contentRef, hrRef)
+    scrollToTop()
   }, [])
 
   const handleClick = useCallback(
     (
       e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
       dateKey: DateKeysT,
-      title: string,
       ref: React.RefObject<HTMLDivElement>
     ) => {
       setIsChanging(true)
@@ -61,16 +55,14 @@ export const SushiMobileNavContainer = ({
         x.set(0)
       }
 
-      setTimeout(() => setIsChanging(false), 300)
-      changeTableContent(dateKey, title)
-
-      scrollToNavbar(contentRef, hrRef)
+      setTimeout(() => setIsChanging(false), 350)
+      changeTableContent(dateKey)
     },
-    [width, changeTableContent, x, contentRef]
+    [width, changeTableContent, x]
   )
 
   return (
-    <SushiMobileNav
+    <SeanceMobileNav
       x={x}
       constraintRef={constraintRef}
       sliderRef={sliderRef}
@@ -83,4 +75,4 @@ export const SushiMobileNavContainer = ({
   )
 }
 
-export default SushiMobileNavContainer
+export default SeanceMobileNavContainer

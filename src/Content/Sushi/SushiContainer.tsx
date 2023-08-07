@@ -9,7 +9,7 @@ const SushiContainer = ({ isMobile }: { isMobile: boolean }) => {
 
   const changeTableContent = useCallback(
     (key: SushiT['currentImgKey']) => {
-      switchImg(key)
+      if (key !== currentImgKey) switchImg(key)
     },
     [switchImg]
   )
