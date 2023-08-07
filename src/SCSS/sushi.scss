@@ -1,28 +1,9 @@
-.linkWrapper:focus .sushiAdv {
-  @include shiftUp;
-}
-
 .sushi_page {
   padding-top: var(--desktopContentMT);
   @media #{$mediaQueryMobile} {
     padding-top: 0 !important;
   }
-}
-
-.sushiAdv {
-  margin-bottom: 3%;
-  padding-bottom: 10%;
-  transition: ease 300ms;
-  @extend %imgContainer;
-}
-
-.sushi_page__content {
-  padding-bottom: 20px;
-  @media #{$mediaQueryMobile} {
-    min-height: 90vw;
-    padding-bottom: 0;
-    min-height: 95vw;
-  }
+  --mobileNavHeight: 13.5vw;
 }
 .sushi_page__menuButtons {
   display: flex;
@@ -37,7 +18,7 @@
 .sushi_page__menuButtons button {
   border: 2px solid;
   outline: none;
-  margin: 1% 0;
+  margin: 0.2rem 0;
   padding: 5% 2%;
   font-size: 1rem;
   &:first-child {
@@ -51,6 +32,75 @@
   }
 }
 
+// MobileNav-----------------------------
+.sushiMobileNav__container--back {
+  margin: 0 -15px;
+  background-color: black;
+  z-index: 10;
+  position: sticky;
+  top: 9.2vw;
+  @media (max-width: 544px) {
+    top: 19.7vw;
+  }
+}
+.sushiMobileNav__container {
+  display: flex;
+  overflow: hidden;
+  cursor: grab;
+  margin: 0 7px;
+  height: 13.5vw;
+  @media (max-width: 544px) {
+    top: 19.7vw;
+  }
+}
+
+.sushiMobileNav {
+  display: flex;
+  height: var(--mobileNavHeight);
+  color: white;
+  column-gap: 2vw;
+  padding: var(--mobileContentMT) 0;
+}
+.sushiMobileNav.changing {
+  transition: 0.25s;
+  pointer-events: none;
+}
+
+.sushiMobileNav__item {
+  width: fit-content;
+  white-space: nowrap;
+  border-radius: 5vw;
+  border: solid 2px white;
+  background-color: black;
+  padding: 0 1rem;
+  font-size: 2.8vw;
+  height: 8vw;
+}
+.sushiMobileNav__item.active {
+  background-color: white;
+  color: black;
+}
+.sushiMobileNav__item:hover {
+  background-color: white;
+  color: black;
+}
+
+.sushiMobileNav__anchor {
+  position: sticky;
+  top: calc(var(--navbarMobileH768) + var(--mobileNavHeight) + 0.5vw);
+  @media (max-width: 544px) {
+    top: calc(var(--navbarMobileH544) + var(--mobileNavHeight) + 0.5vw);
+  }
+}
+
+// Content---------------------------------
+.sushi_page__content {
+  padding-bottom: 20px;
+  @media #{$mediaQueryMobile} {
+    padding-bottom: 2.5vw;
+    // min-height: 95vw;
+  }
+}
 .sushi_page__grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
@@ -75,16 +125,15 @@
     grid-template-columns: repeat(auto-fill, minmax(40vw, 1fr));
   }
 }
-
 .sushi_page__gridItem {
   display: flex;
   flex-direction: column;
   height: 100%;
   background-color: white;
   border-radius: 15px;
-  padding: 0.5rem 1rem 0.5rem 1rem;
+  padding: 0.5rem 1rem;
   @media #{$mediaQueryMobile} {
-    padding: 1vw 2.5vw 1vw 2.5vw;
+    padding: 1vw 2.5vw;
   }
 }
 
@@ -95,16 +144,14 @@
   width: 100%;
   padding-bottom: 62%;
 }
-
+.sushi_page__imgCont.loading {
+  background-image: url('../images/preloader.webp');
+  background-size: cover;
+}
 .sushi_page__img {
   position: absolute;
   width: 100%;
   height: 100%;
-}
-
-.loading {
-  background-image: url('../images/preloader.webp');
-  background-size: cover;
 }
 
 .sushi_page__desc {
@@ -117,7 +164,6 @@
     row-gap: 1.3vw;
   }
 }
-
 .sushi_page__desc h3 {
   text-align: center;
   margin: 0;
@@ -137,7 +183,6 @@
     font-size: 3vw;
   }
 }
-
 .sushi_page__desc p {
   margin: 1rem 0 0 0;
   color: black;
@@ -159,72 +204,8 @@
   }
 }
 
-.sushiMobileNav__container {
-  display: flex;
-  overflow: hidden;
-  cursor: grab;
-  // padding: var(--mobileContentMT) 0;
-  margin: 0 -8px;
-  //----------------------------
-  background-color: black;
-  position: sticky;
-  top: 9.2vw;
-  z-index: 100;
-
-  height: 13.5vw;
-  @media (max-width: 544px) {
-    top: 19.7vw;
-  }
-}
-
-.changing {
-  transition: 0.25s;
-  pointer-events: none;
-}
-
-.sushiMobileNav {
-  display: flex;
-  height: 13.5vw;
-  color: white;
-  column-gap: 2vw;
-
-  padding: var(--mobileContentMT) 0;
-}
-
-.sushiMobileNav__item {
-  width: fit-content;
-  white-space: nowrap;
-  border-radius: 5vw;
-  border: solid 2px white;
-  background-color: black;
-  padding: 0 1rem;
-  font-size: 2.8vw;
-  height: 8vw;
-}
-
-.sushiMobileNav__anchor {
-  position: sticky;
-  top: calc(var(--navbarMobileH768) + 13.5vw + 0.5vw);
-  @media (max-width: 544px) {
-    top: calc(var(--navbarMobileH544) + 13.5vw + 0.5vw);
-  }
-}
-
-.sushiMobileNav__item.active {
-  background-color: white;
-  color: black;
-}
-.sushiMobileNav__item:hover {
-  background-color: white;
-  color: black;
-}
-
 @media #{$mediaQueryMobile} {
-  .popper__sushi li {
-    padding: 2.2vw 0;
-  }
-
   .sushi_page__content {
-    margin: 0 -7px 2.5vw -7px;
+    margin: 0 -7px;
   }
 }

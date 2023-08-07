@@ -8,24 +8,22 @@ const SushiItems = memo(function SushiItems({
   currentImgKey: SushiT['currentImgKey']
 }) {
   return (
-    <div className={`sushi_page__content`}>
-      <div className='sushi_page__grid'>
-        {sushiState[currentImgKey].map((item, i) => (
-          <div
-            key={currentImgKey + i}
-            className={`sushi_page__gridItem fadeInDown`}
-            style={{ animationDelay: animationDelay(0.05, i) }}>
-            <SushiImg picSrc={item.pic} alt={item.name} />
-            <div className='sushi_page__desc'>
-              <div>
-                <h3>{item.name}</h3>
-                {!!item.recipe && <p>{item.recipe}</p>}
-              </div>
-              <h3>{`${item.price} ₽`}</h3>
+    <div className='sushi_page__grid'>
+      {sushiState[currentImgKey].map((item, i) => (
+        <div
+          key={currentImgKey + i}
+          className={`sushi_page__gridItem fadeInDown`}
+          style={{ animationDelay: animationDelay(0.05, i) }}>
+          <SushiImg picSrc={item.pic} alt={item.name} />
+          <div className='sushi_page__desc'>
+            <div>
+              <h3>{item.name}</h3>
+              {!!item.recipe && <p>{item.recipe}</p>}
             </div>
+            <h3>{`${item.price} ₽`}</h3>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   )
 })

@@ -5,6 +5,20 @@ export const animationDelay = (delay: number, multiplier: number) => {
   return (delay * multiplier).toString() + 's'
 }
 
+export const scrollToNavbar = (
+  contentRef: React.RefObject<HTMLDivElement>,
+  hrRef: React.RefObject<HTMLHRElement>
+) => {
+  const contentY = contentRef.current?.getClientRects()[0].y
+  const hrY = hrRef.current?.getClientRects()[0].y
+
+  if (contentY === hrY) return
+
+  if (contentY !== undefined && hrY !== undefined) {
+    window.scrollBy(0, -(hrY - contentY))
+  }
+}
+
 // animation duration same as --animationDuration in fade.scss
 export const trDuration = 200
 

@@ -1,3 +1,4 @@
+import type { MotionValue } from 'framer-motion'
 import type { SpecialStateT } from '../../REDUX/special/specialReducerT'
 import { menuButtons } from './sushiHelpers'
 
@@ -13,4 +14,18 @@ type CMB_T = {
   changeImage: SushiT['changeImage']
 }
 
-export type { SushiT, CMB_T, SushiElemsT }
+type SushiMobileNavT = {
+  x: MotionValue<number>
+  constraintRef: React.RefObject<HTMLDivElement>
+  sliderRef: React.RefObject<HTMLDivElement>
+  hrRef: React.RefObject<HTMLHRElement>
+  isChanging: boolean
+  currentImgKey: SushiT['currentImgKey']
+  handleClick: (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    imgKey: SushiT['currentImgKey'],
+    ref: React.RefObject<HTMLDivElement>
+  ) => void
+}
+
+export type { SushiT, CMB_T, SushiElemsT, SushiMobileNavT }
