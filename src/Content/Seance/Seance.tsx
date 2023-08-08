@@ -9,7 +9,11 @@ import { TableContent } from './seanceComponents/TableContent'
 import { useSeanceState } from '../../REDUX/stateHooks/useSeanceState'
 import { SushiWork } from '../../Template/SushiWork'
 import SeanceMobileNavContainer from './SeanceMobileNavContainer'
-
+// type NavigationT = {
+//   siteMode: SpecialStateT['siteMode']
+//   fontSize: SpecialStateT['fontSize']
+//   theme: SpecialStateT['theme']
+// }
 const Seance = memo<{ isMobile: boolean }>(function Seance({ isMobile }) {
   const {
     siteMode,

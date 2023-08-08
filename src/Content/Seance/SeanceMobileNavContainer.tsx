@@ -36,16 +36,16 @@ export const SeanceMobileNavContainer = ({
       dateKey: DateKeysT,
       ref: React.RefObject<HTMLDivElement>
     ) => {
+      if (!ref.current) return
+
       setIsChanging(true)
 
       const target = e.target as HTMLButtonElement
-      const scrollWidth = ref.current?.scrollWidth
-      // x coordinate for active item to be in the middle of the screen
+      const scrollWidth = ref.current.scrollWidth
+      // // x coordinate for active item to be in the middle of the screen
       const translateEdge = (width - target.offsetWidth - margins) / 2
-      // required translateX css prop
+      // // required translateX css prop
       const translateX = target.offsetLeft - translateEdge
-
-      if (!scrollWidth) return
 
       if (translateX > 0) {
         if (translateX < scrollWidth - width) x.set(-translateX)

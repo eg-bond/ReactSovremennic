@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
-import type { MotionValue } from 'framer-motion'
 import { SeanceStateT } from '../../REDUX/seance/seanceReducerT'
+import type { MotionValue } from 'framer-motion'
 
 const SeanceMobileNav = ({
   x,
@@ -14,13 +14,11 @@ const SeanceMobileNav = ({
   handleClick,
 }: SeanceMobileNavT) => {
   useEffect(() => {
-    console.log('sus')
-
     const activeBtn = document.querySelector(
       `#${activeScheduleItemKey}_seBtn`
     ) as HTMLButtonElement
 
-    activeBtn?.click()
+    if (activeBtn) activeBtn.click()
   }, [])
 
   return (

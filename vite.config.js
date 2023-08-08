@@ -13,7 +13,7 @@ export default defineConfig({
   plugins: [
     react(),
     svgr(),
-    removeConsole(),
+    // removeConsole(),
     qrcode(),
     liveReload('public/Images/**/*.webp'),
   ],

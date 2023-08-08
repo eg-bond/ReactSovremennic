@@ -8,13 +8,14 @@ let splideTrack: Element | null
 export const useMobilePaddings = (isMobile: boolean) => {
   const observer = useRef(
     new MutationObserver(mutationRecords => {
-      //@ts-ignore
-      if (mutationRecords[0].target.classList.contains('is-visible')) {
-        splideTrack?.classList.remove('padd_r')
-        splideTrack?.classList.add('padd_l')
-      } else {
-        splideTrack?.classList.remove('padd_l')
-        splideTrack?.classList.add('padd_r')
+      if (splideTrack) {
+        if (mutationRecords[0].target.classList.contains('is-visible')) {
+          splideTrack.classList.remove('padd_r')
+          splideTrack.classList.add('padd_l')
+        } else {
+          splideTrack.classList.remove('padd_l')
+          splideTrack.classList.add('padd_r')
+        }
       }
     })
   )
