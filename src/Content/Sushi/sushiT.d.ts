@@ -1,6 +1,6 @@
 import type { MotionValue } from 'framer-motion'
 import type { SpecialStateT } from '../../REDUX/special/specialReducerT'
-import { menuButtons } from './sushiHelpers'
+import { menuButtons } from './sushiState'
 
 type SushiElemsT = typeof menuButtons
 

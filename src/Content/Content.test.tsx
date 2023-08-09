@@ -50,7 +50,7 @@ describe('React Router', () => {
     expect(await screen.findByText(/Заключительные пол/i)).toBeVisible()
 
     fireEvent.click(sushiNav)
-    expect(screen.getByText(/гарниры/i)).toBeVisible()
+    expect(await screen.findByText(/гарниры/i)).toBeVisible()
 
     fireEvent.click(indexNav)
     expect(screen.getByText(/информация/i)).toBeVisible()

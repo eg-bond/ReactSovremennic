@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import type { CMB_T } from '../sushiT'
-import { menuButtons } from '../sushiHelpers'
+import { menuButtons } from '../sushiState'
 
 const CreateMenuButtons = memo<CMB_T>(function CreateMenuButtons({
   currentImgKey,

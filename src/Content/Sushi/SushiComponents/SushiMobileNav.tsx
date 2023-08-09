@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { SushiMobileNavT } from '../sushiT'
-import { menuButtons } from '../sushiHelpers'
+import { menuButtons } from '../sushiState'
 
 const SushiMobileNav = ({
   x,

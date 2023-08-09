@@ -1,20 +1,16 @@
-import { memo, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import schedule from './schedule'
 import { useCallback } from 'react'
 import IndexAdvXS from '../../Template/IndexAdvXS'
 import BarSlider from '../../Template/BarSlider'
-import type { DateKeysT } from '../../REDUX/seance/seanceReducerT'
 import { CreateSeanceButtons } from './seanceComponents/CreateSeanceButtons'
 import { TableContent } from './seanceComponents/TableContent'
 import { useSeanceState } from '../../REDUX/stateHooks/useSeanceState'
 import { SushiWork } from '../../Template/SushiWork'
-import SeanceMobileNavContainer from './SeanceMobileNavContainer'
-// type NavigationT = {
-//   siteMode: SpecialStateT['siteMode']
-//   fontSize: SpecialStateT['fontSize']
-//   theme: SpecialStateT['theme']
-// }
-const Seance = memo<{ isMobile: boolean }>(function Seance({ isMobile }) {
+import SeanceMobileNavContainer from './seanceComponents/SeanceMobileNavContainer'
+import type { DateKeysT } from '../../REDUX/seance/seanceReducerT'
+
+const Seance = ({ isMobile }: { isMobile: boolean }) => {
   const {
     siteMode,
     datesArr,
@@ -49,7 +45,7 @@ const Seance = memo<{ isMobile: boolean }>(function Seance({ isMobile }) {
     }
   }, [])
 
-  if (!activeScheduleItemKey) return
+  if (!activeScheduleItemKey) return null
 
   return (
     <div className='content__gridLeftItem--3fr seance'>
@@ -92,7 +88,7 @@ const Seance = memo<{ isMobile: boolean }>(function Seance({ isMobile }) {
       {isMobile && <IndexAdvXS />}
     </div>
   )
-})
+}
 
 export default Seance
 

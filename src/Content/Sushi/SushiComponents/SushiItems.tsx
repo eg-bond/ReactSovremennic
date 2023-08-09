@@ -1,6 +1,7 @@
 import { memo, useState } from 'react'
-import { animationDelay, sushiState } from '../sushiHelpers'
+import { sushiState } from '../sushiState'
 import type { SushiT } from '../sushiT'
+import { animationDelay } from '../sushiHelpers'
 
 const SushiItems = memo(function SushiItems({
   currentImgKey,

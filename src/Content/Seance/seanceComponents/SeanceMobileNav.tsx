@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { SeanceStateT } from '../../REDUX/seance/seanceReducerT'
+import { SeanceStateT } from '../../../REDUX/seance/seanceReducerT'
 import type { MotionValue } from 'framer-motion'
 
 const SeanceMobileNav = ({

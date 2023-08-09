@@ -1,30 +1,29 @@
 import { act, fireEvent, screen } from '@testing-library/react'
 import { renderWithRouterAndRedux } from '../../App.test'
 import { setTodayScheduleItem_AC } from '../../REDUX/seance/seanceReducer'
-import Seance from './Seance'
 import type { SeanceStateT } from '../../REDUX/seance/seanceReducerT'
-import { delay } from '../../helpers'
-import { trDuration } from '../Sushi/sushiHelpers'
+import { delay, reg } from '../../helpers'
 import schedule from './schedule'
-
+import Seance from './Seance'
+import { matchMediaMock } from '../../test/matchMediaMock'
+import { trDuration } from '../Sushi/sushiHelpers'
 vitest.mock('../../Template/BarSlider')
 
 describe('Seance tests:', () => {
   const imgChanging = () => delay(trDuration)
 
+  // a little helper obj
+  const keyToTitle = {
+    day0: 'Воскресенье',
+    day1: 'Понедельник',
+    day2: 'Вторник',
+    day3: 'Среда',
+    day4: 'Четверг',
+    day5: 'Пятница',
+    day6: 'Суббота',
+    '': 'just for TS not to bark on me',
+  }
   describe('Desktop:', () => {
-    // a little helper obj
-    const keyToTitle = {
-      day0: 'Воскресенье',
-      day1: 'Понедельник',
-      day2: 'Вторник',
-      day3: 'Среда',
-      day4: 'Четверг',
-      day5: 'Пятница',
-      day6: 'Суббота',
-      '': 'just for TS not to bark on me',
-    }
-
     let activeKey: SeanceStateT['activeScheduleItemKey']
 
     beforeEach(() => {
@@ -80,6 +79,7 @@ describe('Seance tests:', () => {
     let activeKey: SeanceStateT['activeScheduleItemKey']
 
     beforeEach(() => {
+      matchMediaMock('mobile')
       const { store } = renderWithRouterAndRedux(<Seance isMobile={true} />)
       // initialization
       store.dispatch(setTodayScheduleItem_AC())
@@ -87,38 +87,24 @@ describe('Seance tests:', () => {
     })
 
     it('Mobile version renders correctly', () => {
-      expect(screen.getAllByRole('button')).toHaveLength(1)
+      expect(screen.getAllByRole('button')).toHaveLength(7)
       expect(screen.getByRole('table')).toBeInTheDocument()
     })
 
-    it('Menu items renders fine', () => {
-      fireEvent.click(screen.getByRole('button'))
-      expect(screen.getAllByRole('listitem')).toHaveLength(7)
+    it('Initial activation forks fine', () => {
+      const initialBtn = screen.getByText(reg(keyToTitle[activeKey], 'i'))
+      expect(initialBtn).toHaveClass('active')
     })
 
     it('Menu items activation works', async () => {
-      const xsMenuBtn = screen.getByRole('button')
-      fireEvent.click(xsMenuBtn)
-      expect(screen.getByTestId(activeKey + '_xs')).toHaveClass('active')
+      const sunBtn = screen.getByText(reg('воскресенье', 'i'))
+      fireEvent.click(sunBtn)
+      expect(sunBtn).toHaveClass('active')
 
-      fireEvent.click(screen.getByTestId('day5_xs'))
-      await act(imgChanging)
-      fireEvent.click(xsMenuBtn)
-      expect(screen.getByTestId('day5_xs')).toHaveClass('active')
-
-      if (activeKey + '_xs' !== 'day5_xs') {
-        expect(screen.getByTestId(activeKey + '_xs')).not.toHaveClass('active')
-      }
-    })
-
-    it('Popover closes after click on menu item', async () => {
-      const xsMenuBtn = screen.getByRole('button')
-      fireEvent.click(xsMenuBtn)
-      expect(screen.queryByTestId(activeKey + '_xs')).toBeVisible()
-
-      fireEvent.click(screen.getByTestId('day5_xs'))
-      await act(imgChanging)
-      expect(screen.queryByTestId(activeKey + '_xs')).not.toBeVisible()
+      const monBtn = screen.getByText(reg('понедельник', 'i'))
+      fireEvent.click(monBtn)
+      expect(monBtn).toHaveClass('active')
+      expect(sunBtn).not.toHaveClass('active')
     })
   })
 })

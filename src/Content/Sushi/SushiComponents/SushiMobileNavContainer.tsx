@@ -1,9 +1,9 @@
 import { useRef, useState, useEffect, useCallback } from 'react'
-import { scrollToNavbar } from '../sushiHelpers'
 import { useMotionValue } from 'framer-motion'
 import type { SushiT } from '../sushiT'
 import { useWindowWidth } from '../../../hooks/useWindowWidth'
 import SushiMobileNav from './SushiMobileNav'
+import { scrollToNavbar } from '../sushiHelpers'
 
 export const SushiMobileNavContainer = ({
   currentImgKey,
