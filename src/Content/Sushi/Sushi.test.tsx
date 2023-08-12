@@ -1,15 +1,10 @@
-import { screen, fireEvent } from '@testing-library/react'
+import { screen, fireEvent, act } from '@testing-library/react'
 import SushiContainer from './SushiContainer'
 import { renderWithRouterAndRedux } from '../../App.test'
-import { sushiState } from './sushiState'
+import { menuButtons, sushiState } from './sushiState'
 import { matchMediaMock } from '../../test/matchMediaMock'
-// vitest.mock('./sushiHelpers.ts')
 
-vi.mock('./sushiHelpers.ts', () => {
-  return {
-    scrollToNavbar: vi.fn(),
-  }
-})
+vitest.mock('./sushiHelpers.ts')
 
 describe('Sushi tests:', () => {
   describe('Desktop:', () => {
@@ -61,20 +56,19 @@ describe('Sushi tests:', () => {
       renderWithRouterAndRedux(<SushiContainer isMobile={true} />)
     })
 
-    //mock????????????????????
     it('Mobile version renders correctly', async () => {
-      // expect(await screen.getAllByRole('button')).toHaveLength(16)
-      // expect(await screen.getAllByRole('img')).toHaveLength(
-      //   sushiState.sushi.length
-      // )
+      expect(await screen.getAllByRole('button')).toHaveLength(16)
+      expect(await screen.getAllByRole('img')).toHaveLength(
+        sushiState.sushi.length + 1
+      )
     })
 
-    it.skip('Initial activation forks fine', () => {
-      const initialBtn = screen.getByText(/суши/i)
+    it('Initial activation forks fine', () => {
+      const initialBtn = screen.getByText(menuButtons[0][1])
       expect(initialBtn).toHaveClass('active')
     })
 
-    it.skip('Menu items activation works', async () => {
+    it('Menu items activation works', async () => {
       const dessertsBtn = screen.getByText(/десерты/i)
       fireEvent.click(dessertsBtn)
       expect(dessertsBtn).toHaveClass('active')
@@ -83,6 +77,11 @@ describe('Sushi tests:', () => {
       fireEvent.click(childBtn)
       expect(childBtn).toHaveClass('active')
       expect(dessertsBtn).not.toHaveClass('active')
+    })
+
+    it('Menu slider in the initial position', () => {
+      const menuSlider = screen.getByText(menuButtons[0][1]).parentElement
+      expect(menuSlider).toHaveStyle('transform: none')
     })
   })
 })
