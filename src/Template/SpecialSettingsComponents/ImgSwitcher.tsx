@@ -19,11 +19,6 @@ const ImgSwitcherComp = ({
       <div className={'specialSettings__flex__title'}>ИЗОБРАЖЕНИЯ</div>
       <div className='switch'>
         <label className='switch__label'>
-          <input
-            type='checkbox'
-            className='switch__input'
-            checked={imgHidden}
-          />
           <span
             className={`switch__slider ${
               imgHidden ? 'switch__slider--pressed' : ''
