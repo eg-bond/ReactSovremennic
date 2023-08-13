@@ -81,6 +81,7 @@
   min-height: 40px;
   min-width: 40px;
   transition: 0.4s;
+  margin: 0 1px;
   cursor: pointer;
 }
 .roundBtn:focus-visible {
@@ -151,6 +152,7 @@
   justify-content: center;
   background-color: #000000;
   border: none;
+  border-radius: 8px;
   cursor: pointer;
   min-height: 40px;
   padding: 0 10px;
@@ -232,6 +234,7 @@
   background-color: black;
   min-height: 40px;
   padding: 0 1rem;
+  border: none;
   border-radius: 8px;
   background-color: black !important;
   color: white !important;

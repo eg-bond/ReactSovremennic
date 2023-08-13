@@ -2,7 +2,6 @@ import { Suspense, lazy, memo } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import IndexContent from './IndexContent/IndexContent'
 import Seance from './Seance/Seance'
-import { SushiLinearProgress } from './Sushi/SushiLinearProgress'
 import SelectedMovieContainer from './Cinema/SelectedMovieContainer'
 import About from './About/About'
 import Rules from './Rules/Rules'
@@ -13,9 +12,7 @@ const Content = memo<{ isMobile: boolean }>(function Content({ isMobile }) {
   return (
     <Suspense
       fallback={
-        <div className='content__gridRightItem--full'>
-          <SushiLinearProgress />
-        </div>
+        <div className='content__gridRightItem--full'>{/* preloader?? */}</div>
       }>
       <Routes>
         <Route path='/' element={<IndexContent isMobile={isMobile} />} />
