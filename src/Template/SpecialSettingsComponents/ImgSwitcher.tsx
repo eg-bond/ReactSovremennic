@@ -1,5 +1,4 @@
 import { memo } from 'react'
-import Switch from '@material-ui/core/Switch'
 import type { SpecialDispatchesT } from '../../REDUX/special/specialReducerT'
 
 const ImgSwitcherComp = ({
@@ -18,15 +17,25 @@ const ImgSwitcherComp = ({
   return (
     <div className='specialSettings__flex__item'>
       <div className={'specialSettings__flex__title'}>ИЗОБРАЖЕНИЯ</div>
-      <span className={'specialSettings__switchOff'}>Выкл.</span>
-      <Switch
-        onClick={handleImgSwitch}
-        checked={!imgHidden}
-        onKeyPress={handlePress}
-        color='default'
-      />
-      <span className={'specialSettings__switchOn'}>Вкл.</span>
+      <div className='switch'>
+        <label className='switch__label'>
+          <input
+            type='checkbox'
+            className='switch__input'
+            checked={imgHidden}
+          />
+          <span
+            className={`switch__slider ${
+              imgHidden ? 'switch__slider--pressed' : ''
+            }`}
+            onClick={handleImgSwitch}
+            onKeyDown={handlePress}
+            role='button'
+            tabIndex={0}></span>
+        </label>
+      </div>
     </div>
   )
 }
+
 export const ImgSwitcher = memo(ImgSwitcherComp)

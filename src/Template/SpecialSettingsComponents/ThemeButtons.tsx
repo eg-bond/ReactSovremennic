@@ -1,6 +1,4 @@
-import { IconButton } from '@material-ui/core'
 import { memo } from 'react'
-import Brightness1Icon from '@material-ui/icons/Brightness1'
 import type {
   SpecialDispatchesT,
   SpecialStateT,
@@ -14,24 +12,25 @@ const ThemeButtonsComp = ({
   return (
     <div className='specialSettings__flex__item'>
       <div className={'specialSettings__flex__title'}>ЦВЕТОВАЯ СХЕМА</div>
-      <ThemeButton theme='blackWhite' cl='themeBW' swST={switchSiteTheme} />
-      <ThemeButton theme='whiteBlack' cl='themeWB' swST={switchSiteTheme} />
-      <ThemeButton theme='blackBlue' cl='themeBR' swST={switchSiteTheme} />
-      <ThemeButton theme='yellowBrown' cl='themeYB' swST={switchSiteTheme} />
-      <ThemeButton theme='blueGreen' cl='themeBG' swST={switchSiteTheme} />
+      <div>
+        <ThemeButton theme='blackWhite' swST={switchSiteTheme} />
+        <ThemeButton theme='whiteBlack' swST={switchSiteTheme} />
+        <ThemeButton theme='blackBlue' swST={switchSiteTheme} />
+        <ThemeButton theme='yellowBrown' swST={switchSiteTheme} />
+        <ThemeButton theme='blueGreen' swST={switchSiteTheme} />
+      </div>
     </div>
   )
 }
 
-const ThemeButton = ({ theme, cl, swST }: ThemeButtonT) => (
-  <IconButton onClick={() => swST(theme)} className={cl}>
-    <Brightness1Icon />
-  </IconButton>
+const ThemeButton = ({ theme, swST }: ThemeButtonT) => (
+  <button onClick={() => swST(theme)} className={`roundBtn ${theme}`}>
+    <span className={`roundBtn__innerCircle ${theme}`}></span>
+  </button>
 )
 
 type ThemeButtonT = {
   theme: SpecialStateT['theme']
-  cl: 'themeBW' | 'themeWB' | 'themeBR' | 'themeYB' | 'themeBG'
   swST: SpecialDispatchesT['switchSiteTheme']
 }
 

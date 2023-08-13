@@ -1,8 +1,6 @@
 import { memo } from 'react'
 import type { SpecialStateT } from '../../REDUX/special/specialReducerT'
-import { Button } from '@material-ui/core'
 import { scrollToTop } from '../../helpers'
-import RemoveRedEyeOutlinedIcon from '@material-ui/icons/RemoveRedEyeOutlined'
 
 const SiteModeButtonComp = ({
   siteMode,
@@ -14,18 +12,16 @@ const SiteModeButtonComp = ({
   const modeToDispatch = siteMode === 'default' ? 'special' : 'default'
 
   return (
-    <Button
+    <button
       className='specialSettings__modeButton'
       onClick={() => {
         switchSiteMode(modeToDispatch)
         scrollToTop()
-      }}
-      variant='contained'
-      startIcon={<RemoveRedEyeOutlinedIcon />}>
+      }}>
       {siteMode === 'default'
-        ? 'Версия для слабовидящих'
-        : 'Обычная версия сайта'}
-    </Button>
+        ? 'ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ'
+        : 'ОБЫЧНАЯ ВЕРСИЯ САЙТА'}
+    </button>
   )
 }
 

@@ -4,7 +4,7 @@
   opacity: 0 !important;
 }
 
-// Стили для верхней панели настроек
+// Special settings panel
 .specialSettings__container {
   background-color: #a08d5f;
   padding: 0.5% 1%;
@@ -23,6 +23,7 @@
   color: black;
   text-align: center;
   font-weight: bold;
+  align-self: flex-start;
   * {
     font-size: 16px !important;
     @media ($mediaQuery1200) {
@@ -36,27 +37,6 @@
 .specialSettings__flex__title {
   padding-bottom: 4%;
   font-weight: bold;
-}
-.specialSettings__flex__modeButton {
-  align-self: center;
-  & button {
-    background-color: black;
-  }
-  & button:hover {
-    background-color: black !important;
-  }
-  & span {
-    color: white;
-  }
-}
-.specialSettings__modeButton * {
-  font-size: 14px !important;
-  @media ($mediaQuery1200) {
-    font-size: 13px !important;
-  }
-  @media ($mediaQuery992) {
-    font-size: 11px !important;
-  }
 }
 .space {
   & button {
@@ -87,28 +67,190 @@
   }
 }
 
-// Классы кнопок изменения цветовых схем
-.themeBW {
-  background-color: $blackWhiteBackground !important;
-  color: $blackWhiteElements !important;
+// Theme buttons
+.themeBtn {
+  min-height: 20px;
+  min-width: 20px;
+  border: 2px solid black;
 }
-.themeWB {
-  background-color: $whiteBlackBackground !important;
-  color: $whiteBlackElements !important;
+
+.roundBtn {
+  position: relative;
+  border: none;
+  border-radius: 50%;
+  min-height: 40px;
+  min-width: 40px;
+  transition: 0.4s;
+  cursor: pointer;
 }
-.themeBR {
-  background-color: $blackBlueBackground !important;
-  color: $blackBlueElements !important;
+.roundBtn:focus-visible {
+  transform: translateY(-4px);
 }
-.themeYB {
-  background-color: $yellowBrownBackground !important;
-  color: $yellowBrownElements !important;
+.roundBtn:hover {
+  transform: translateY(-4px);
 }
-.themeBG {
-  background-color: $blueGreenBackground !important;
-  color: $blueGreenElements !important;
+
+.roundBtn__innerCircle {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
 }
-//--------------------------------------------------------------------------
+
+.roundBtn.blackWhite {
+  background-color: $blackWhiteBackground;
+}
+.roundBtn__innerCircle.blackWhite {
+  background-color: $blackWhiteElements;
+}
+
+.roundBtn.whiteBlack {
+  background-color: $whiteBlackBackground;
+}
+.roundBtn__innerCircle.whiteBlack {
+  background-color: $whiteBlackElements;
+}
+
+.roundBtn.blackBlue {
+  background-color: $blackBlueBackground;
+}
+.roundBtn__innerCircle.blackBlue {
+  background-color: $blackBlueElements;
+}
+
+.roundBtn.yellowBrown {
+  background-color: $yellowBrownBackground;
+}
+.roundBtn__innerCircle.yellowBrown {
+  background-color: $yellowBrownElements;
+}
+
+.roundBtn.blueGreen {
+  background-color: $blueGreenBackground;
+}
+.roundBtn__innerCircle.blueGreen {
+  background-color: $blueGreenElements;
+}
+
+// Font sizes
+.fontButtons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  column-gap: 2px;
+}
+
+.fontButtons__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000;
+  border: none;
+  cursor: pointer;
+  min-height: 40px;
+  padding: 0 10px;
+  transition: 0.4s;
+}
+.fontButtons__button:focus-visible {
+  transform: translateY(-4px);
+}
+.fontButtons__button:hover {
+  transform: translateY(-4px);
+}
+
+.fontButtons__label {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+//-----------------------------------
+
+// img switch
+.switch {
+  display: inline-block;
+  position: relative;
+  width: 50px;
+  height: 26px;
+  margin-top: 9px;
+  transition: 0.4s;
+}
+
+.switch__label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.switch__input {
+  display: none;
+}
+
+.switch__slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000;
+  border-radius: 20px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.switch__slider:before {
+  position: absolute;
+  content: '';
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.2s ease-in-out;
+}
+
+.switch__slider--pressed:before {
+  transform: translateX(22px);
+}
+
+// siteMode button
+.specialSettings__flex__modeButton {
+  align-self: center;
+}
+
+.specialSettings__modeButton {
+  background-color: black;
+  min-height: 40px;
+  padding: 0 1rem;
+  border-radius: 8px;
+  background-color: black !important;
+  color: white !important;
+  font-size: 14px !important;
+  transition: 0.4s;
+  @media ($mediaQuery1200) {
+    font-size: 13px !important;
+  }
+  @media ($mediaQuery992) {
+    font-size: 11px !important;
+  }
+}
+
+.specialSettings__modeButton:hover {
+  transform: translateY(-4px);
+}
+.specialSettings__modeButton:focus-visible {
+  transform: translateY(-4px);
+}
 
 // Анимации движений для фокуса
 $trLength: -6px;

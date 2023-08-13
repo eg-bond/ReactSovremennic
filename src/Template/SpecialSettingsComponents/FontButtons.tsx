@@ -1,7 +1,8 @@
-import ButtonGroup from '@material-ui/core/ButtonGroup'
-import Button from '@material-ui/core/Button'
 import { memo } from 'react'
-import type { SpecialDispatchesT } from '../../REDUX/special/specialReducerT'
+import type {
+  SpecialDispatchesT,
+  SpecialStateT,
+} from '../../REDUX/special/specialReducerT'
 
 const FontButtonsComp = ({
   switchFontSize,
@@ -11,16 +12,27 @@ const FontButtonsComp = ({
   return (
     <div className='specialSettings__flex__item'>
       <div className={'specialSettings__flex__title'}>РАЗМЕР ШРИФТА</div>
-      <ButtonGroup
-        className={'specialSettings__flex__fontButtons'}
-        size='large'
-        variant='contained'
-        aria-label='contained primary button group'>
-        <Button onClick={() => switchFontSize('14px')}>100%</Button>
-        <Button onClick={() => switchFontSize('21px')}>150%</Button>
-        <Button onClick={() => switchFontSize('26px')}>200%</Button>
-      </ButtonGroup>
+      <div className='fontButtons'>
+        <FontBtn text={'100%'} sFS={switchFontSize} FS={'14px'} />
+        <FontBtn text={'150%'} sFS={switchFontSize} FS={'21px'} />
+        <FontBtn text={'200%'} sFS={switchFontSize} FS={'26px'} />
+      </div>
     </div>
   )
 }
+
+const FontBtn = ({ text, sFS, FS }: FontBtnT) => {
+  return (
+    <button className='fontButtons__button' onClick={() => sFS(FS)}>
+      <span className='fontButtons__label '>{text}</span>
+    </button>
+  )
+}
+
+type FontBtnT = {
+  text: string
+  sFS: SpecialDispatchesT['switchFontSize']
+  FS: SpecialStateT['fontSize']
+}
+
 export const FontButtons = memo(FontButtonsComp)
