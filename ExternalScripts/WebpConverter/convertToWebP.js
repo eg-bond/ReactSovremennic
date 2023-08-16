@@ -11,7 +11,7 @@ const options = {
     output: 'public/Images/top_menu/',
   },
   main: {
-    input: 'ExternalScripts/WebpConverter/main_img/',
+    input: 'ExternalScripts/WebpConverter/main/',
     output: 'src/images/',
   },
   input: {
@@ -33,6 +33,6 @@ const convertToWebP = name => {
 }
 
 // convertToWebP('input')
-convertToWebP('description')
+// convertToWebP('description')
 // convertToWebP('top_menu')
-// convertToWebP('main')
+convertToWebP('main')
