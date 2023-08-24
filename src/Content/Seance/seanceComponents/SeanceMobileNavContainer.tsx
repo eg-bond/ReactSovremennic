@@ -7,7 +7,6 @@ import type {
   SeanceStateT,
 } from '../../../REDUX/seance/seanceReducerT'
 import { useWindowWidth } from '../../../hooks/useWindowWidth'
-import { scrollToTop } from '../../../helpers'
 
 export const SeanceMobileNavContainer = ({
   activeScheduleItemKey,
@@ -28,10 +27,6 @@ export const SeanceMobileNavContainer = ({
   const { width } = useWindowWidth()
 
   const margins = 14
-
-  useEffect(() => {
-    scrollToTop()
-  }, [])
 
   const handleClick = useCallback(
     (

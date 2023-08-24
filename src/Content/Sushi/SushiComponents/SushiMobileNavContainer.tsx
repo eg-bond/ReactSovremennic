@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect, useCallback } from 'react'
+import { useRef, useState, useCallback } from 'react'
 import { useMotionValue } from 'framer-motion'
 import { useWindowWidth } from '../../../hooks/useWindowWidth'
 import SushiMobileNav from './SushiMobileNav'
@@ -24,10 +24,6 @@ export const SushiMobileNavContainer = ({
   const { width } = useWindowWidth()
 
   const margins = 14
-
-  useEffect(() => {
-    scrollToNavbar(contentRef, hrRef)
-  }, [])
 
   const handleClick = useCallback(
     (
