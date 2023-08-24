@@ -1,5 +1,4 @@
-import { ClickAwayListener, Fade } from '@material-ui/core'
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 
 export const SushiWork = () => {
   return (
@@ -15,12 +14,9 @@ export const SushiWork = () => {
 
 export function SushiWorkModal({ loaded = true, onLoad = () => {} }) {
   const [open, setOpen] = useState(false)
-  const clickAwayActive = useRef(false)
 
   const handleClose = () => {
-    if (clickAwayActive.current) {
-      setOpen(false)
-    }
+    setOpen(false)
   }
   return (
     <div>
@@ -32,22 +28,19 @@ export function SushiWorkModal({ loaded = true, onLoad = () => {} }) {
           alt='суши_работа'
         />
       </div>
-      <Fade
-        in={open}
-        onEntered={() => (clickAwayActive.current = true)}
-        onExited={() => (clickAwayActive.current = false)}>
-        <div className='overlay'>
-          <ClickAwayListener onClickAway={handleClose}>
-            <div className='modal'>
-              <img
-                className='modal__img'
-                src='./Images/sushi_work.webp'
-                alt='суши_работа'
-              />
-            </div>
-          </ClickAwayListener>
+
+      <div
+        style={{ display: open ? 'block' : 'none' }}
+        className='overlay'
+        onClick={handleClose}>
+        <div className='modal'>
+          <img
+            className='modal__img'
+            src='./Images/sushi_work.webp'
+            alt='суши_работа'
+          />
         </div>
-      </Fade>
+      </div>
     </div>
   )
 }

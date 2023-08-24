@@ -9,14 +9,14 @@ function IndexContent({ isMobile }: { isMobile: boolean }) {
   const { siteMode } = useAppSelector(state => state.special)
 
   return (
-    <div className='content__gridLeftItem--3fr'>
+    <div className='content__gridLeftItem--3fr contentMT'>
       {siteMode === 'default' && (
         <div className='trailers'>
           {isMobile && <h4>Трейлеры</h4>}
 
           <div className='embed-responsive'>
             <LiteYouTubeEmbed
-              id='m3P3K47-zuo'
+              id='rY2OLeGYsdU'
               title='index_trailer'
               poster='maxresdefault'
             />

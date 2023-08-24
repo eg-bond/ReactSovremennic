@@ -9,7 +9,6 @@ import type { DateKeysT } from '../seance/seanceReducerT'
 export const useSeanceState = () => {
   const { siteMode } = useAppSelector(state => state.special)
   const { datesArr } = useAppSelector(state => state.seance)
-  const { buttonTitle } = useAppSelector(state => state.seance)
   const { activeScheduleItemKey } = useAppSelector(state => state.seance)
   const dispatch = useAppDispatch()
 
@@ -17,14 +16,13 @@ export const useSeanceState = () => {
     dispatch(setTodayScheduleItem_AC())
   }, [])
 
-  const changeScheduleItem = useCallback((key: DateKeysT, title: string) => {
-    dispatch(changeScheduleItem_AC({ key, title }))
+  const changeScheduleItem = useCallback((key: DateKeysT) => {
+    dispatch(changeScheduleItem_AC({ key }))
   }, [])
 
   return {
     siteMode,
     datesArr,
-    buttonTitle,
     activeScheduleItemKey,
     setTodayScheduleItem,
     changeScheduleItem,

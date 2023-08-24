@@ -1,15 +1,16 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import './SCSS/style.scss'
 import Navigation from './Template/Navigation'
 import BottomSlider from './Template/BottomSlider'
 import Footer from './Template/Footer'
 import Adv from './Template/Adv'
-import { changeAppColors, modifiedClass, queries } from './helpers'
+import { modifiedClass, queries } from './helpers'
 import Content from './Content/Content'
 import FilmsSlider from './Template/FilmsSlider'
 import { useAppState } from './REDUX/stateHooks/useAppState'
 import { useMediaQuery } from './hooks/useMediaQuery'
 import { useChangeTheme } from './hooks/useChangeTheme'
+import { useScrollToTop } from './hooks/useScrollToTop'
 
 const App = () => {
   const {
@@ -48,6 +49,11 @@ const App = () => {
   // Changes colors if theme/siteMode changed
   useChangeTheme(theme, siteMode)
 
+  // Scrolls to top if content starts higher than anchor
+  const contentRef = useRef(null)
+  const anchorRef = useRef(null)
+  useScrollToTop(contentRef, anchorRef)
+
   const mainContainerClasses = [
     modifiedClass('mainContainer', siteMode),
     'flex-wrapper',
@@ -58,18 +64,17 @@ const App = () => {
       <div>
         <Navigation siteMode={siteMode} fontSize={fontSize} theme={theme} />
 
-        {/*Navigation menu margin for mobile*/}
-        <div className='navigation__containerXs' />
-
         <div className='separatorMobile' />
 
         <div className={`container wrapper ${imgHidden ? 'hideImages' : ''}`}>
           <FilmsSlider films={films} isMobile={isMobile} />
 
-          <div className='separatorMobile separatorMobile--MB' />
-          <hr className='separator hidden-xs' />
+          <div
+            ref={anchorRef}
+            className='separatorMobile separatorMobile--sticky'
+          />
 
-          <div className={'mainContainer__content'}>
+          <div ref={contentRef} className={'mainContainer__content'}>
             <Content isMobile={isMobile} />
             {!isMobile && <Adv />}
           </div>

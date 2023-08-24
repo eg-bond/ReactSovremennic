@@ -1,5 +1,8 @@
 import { SpecialStateT } from './REDUX/special/specialReducerT'
 
+// regexp
+export const reg = (word: string, flags: string) => new RegExp(word, flags)
+
 // Helpers for siteMode "special"
 export const modifiedClass = (
   cl: string,

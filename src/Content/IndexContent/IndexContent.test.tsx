@@ -2,7 +2,6 @@ import { renderWithRouterAndRedux } from '../../App.test'
 import IndexContent from './IndexContent'
 import { screen } from '@testing-library/react'
 import '../../SCSS/style.scss'
-
 vitest.mock('../../Template/BarSlider')
 
 describe('Index page tests', () => {

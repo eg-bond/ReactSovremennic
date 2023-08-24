@@ -11,7 +11,7 @@ const options = {
     output: 'public/Images/top_menu/',
   },
   main: {
-    input: 'ExternalScripts/WebpConverter/main_img/',
+    input: 'ExternalScripts/WebpConverter/main/',
     output: 'src/images/',
   },
   input: {
@@ -27,7 +27,7 @@ const convertToWebP = name => {
     webp.cwebp(
       options[name].input + file,
       options[name].output + file.replace('.jpg', '.webp'),
-      '-q 90'
+      '-q 95'
     )
   })
 }

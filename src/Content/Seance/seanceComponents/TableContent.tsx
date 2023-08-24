@@ -24,7 +24,9 @@ export const TableContent = memo<TableContentT>(function TableContent({
 
 function tableItem(seance: Array<string | number>, i: number) {
   return (
-    <tr key={seance[0]} className={i % 2 === 0 ? 'table_gray' : 'table_white'}>
+    <tr
+      key={i + 'sTable'}
+      className={i % 2 === 0 ? 'table_gray' : 'table_white'}>
       <td>{seance[0]}</td>
       <td>{seance[1]}</td>
       <td>{seance[2]}</td>

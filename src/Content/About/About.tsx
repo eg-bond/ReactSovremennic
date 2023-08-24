@@ -4,7 +4,7 @@ function About() {
   const { siteMode } = useAppSelector(state => state.special)
 
   return (
-    <div className='content__gridLeftItem--3fr rules'>
+    <div className='content__gridLeftItem--3fr contentMT rules'>
       <div>
         <h3>О кинотеатре «Современник»</h3>
         <p>

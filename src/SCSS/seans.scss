@@ -1,3 +1,11 @@
+.seance {
+  padding-top: var(--desktopContentMT);
+  @media #{$mediaQueryMobile} {
+    padding-top: 0 !important;
+  }
+  --mobileNavHeight: 13.5vw;
+}
+
 .seanse__buttons {
   display: flex;
   flex-direction: row;
@@ -80,10 +88,16 @@
 .table_white {
   color: black;
   background-color: #ededed;
+  @media #{$mediaQueryMobile} {
+    font-weight: 600;
+  }
 }
 .table_gray {
   color: white;
   background-color: #2b2831;
+  @media #{$mediaQueryMobile} {
+    font-weight: 600;
+  }
 }
 
 //---------------------------
@@ -118,7 +132,7 @@
   left: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  z-index: 5;
+  z-index: 300;
 }
 .popper {
   border: $border2px;
@@ -129,8 +143,9 @@
   position: relative !important;
   width: auto;
   margin: 25vh 2% 2% 2%;
-  z-index: 5;
+  z-index: 105;
   min-height: auto;
+  font-weight: 600;
 }
 .popper li {
   list-style-type: none;
@@ -171,17 +186,9 @@
   .seans_button_xs span {
     font-size: 2.8vw;
   }
-  .glyphicon-chevron-down {
-    position: absolute;
-    top: 35%;
-    right: 2vw;
-    @media (max-width: 400px) {
-      top: 38%;
-    }
-  }
 
   .seanse__table {
-    margin: 2.5vw auto;
+    margin: 0 auto 2.5vw auto;
     th,
     td,
     tr {
@@ -189,16 +196,6 @@
     }
   }
 
-  .popper__backdrop {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
-    z-index: 5;
-  }
   .popper {
     border: $border2px;
     border-radius: $buttonsBR;

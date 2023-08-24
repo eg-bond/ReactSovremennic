@@ -19,7 +19,7 @@ const Navigation = memo<NavigationT>(function Navigation({
       : ''
 
   return (
-    <div className='container'>
+    <div className='container navigation__container'>
       <SpecialSettings />
       <nav role='navigation' className={`navigation ${fsNavCl}`}>
         <div className={`${modifyCl('navigation__logo')}`}>

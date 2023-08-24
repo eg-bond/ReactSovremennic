@@ -1,46 +1,25 @@
-export const sushiElems = {
-  menuButtons: [
-    ['sushi', 'Суши'],
-    ['rolls', 'Роллы'],
-    ['green_rolls', 'Овощные роллы'],
-    ['black_rolls', 'Цветные/черные роллы'],
-    ['hot_rolls', 'Запеченные роллы'],
-    ['brand_rolls', 'Фирменные роллы'],
-    ['mini_rolls', 'Мини-роллы'],
-    ['child_menu', 'Детское меню'],
-    ['sets', 'Наборы'],
-    ['salads', 'Салаты'],
-    ['soups', 'Супы'],
-    ['hot_dishes', 'Горячие блюда'],
-    ['garnish', 'Гарниры'],
-    ['dessert', 'Десерты'],
-    ['gruzia', 'Грузинская кухня'],
-    ['pizza', 'Пицца, закуски'],
-  ],
-  slidersKeys: {
-    hot_dishes: ['hot_dishes1', 'hot_dishes2', 'hot_dishes3'],
-    hot_rolls: ['hot_rolls1', 'hot_rolls2'],
-  } as const,
-} as const
+export const imgSrc = (folder: string, key: string) =>
+  `./Images/sushi/${folder}/${key}.webp`
 
-export const sushiImgSrc = (key: string) => `./Images/sushi/${key}.webp`
+export const animationDelay = (delay: number, multiplier: number) => {
+  return (delay * multiplier).toString() + 's'
+}
 
-// export const preloadSushiImg = (
-//   imgKey: string,
-//   imgPreloaded: React.MutableRefObject<boolean>
-// ) => {
-//   let key: string
-//   imgKey in sushiElems.slidersKeys ? (key = imgKey + '1') : (key = imgKey)
+export const scrollToNavbar = (
+  contentRef: React.RefObject<HTMLDivElement>,
+  hrRef: React.RefObject<HTMLHRElement>
+) => {
+  if (!contentRef.current || !hrRef.current) return
 
-//   return new Promise<void>(res => {
-//     const img = new window.Image()
-//     img.src = sushiImgSrc(key)
-//     img.onload = () => {
-//       imgPreloaded.current = true
-//       res()
-//     }
-//   })
-// }
+  const contentY = contentRef.current.getClientRects()[0].y
+  const hrY = hrRef.current.getClientRects()[0].y
 
-// animation duration (same as --animationDuration in fade.scss)
+  if (contentY === hrY) return
+
+  if (contentY !== undefined && hrY !== undefined) {
+    window.scrollBy(0, -(hrY - contentY))
+  }
+}
+
+// animation duration same as --animationDuration in fade.scss
 export const trDuration = 200

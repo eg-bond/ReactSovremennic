@@ -1,39 +1,31 @@
+import type { MotionValue } from 'framer-motion'
 import type { SpecialStateT } from '../../REDUX/special/specialReducerT'
-import { sushiElems } from './sushiHelpers'
+import { menuButtons } from './sushiState'
 
-type SushiElemsT = typeof sushiElems
+type SushiElemsT = typeof menuButtons
 
 type SushiT = {
-  currentImgKey: SushiElemsT['menuButtons'][any][0]
-  imgVisible: boolean
+  currentImgKey: SushiElemsT[any][0]
   isMobile: boolean
-  progressBar: boolean
-  changeImage: (key: SushiElemsT['menuButtons'][any][0]) => void
-  onLoad: () => void
-}
-type SushiImageT = {
-  currentImgKey: SushiT['currentImgKey']
-  imgVisible: SushiT['imgVisible']
-  onLoad: SushiT['onLoad']
+  changeImage: (key: SushiElemsT[any][0]) => void
 }
 type CMB_T = {
   currentImgKey: SushiT['currentImgKey']
   changeImage: SushiT['changeImage']
 }
-type MobileSushiNavigationT = {
-  changeImage: SushiT['changeImage']
+
+type SushiMobileNavT = {
+  x: MotionValue<number>
+  constraintRef: React.RefObject<HTMLDivElement>
+  sliderRef: React.RefObject<HTMLDivElement>
+  hrRef: React.RefObject<HTMLHRElement>
+  isChanging: boolean
   currentImgKey: SushiT['currentImgKey']
-}
-type PopperContentT = {
-  currentImgKey: SushiT['currentImgKey']
-  switchSushiImage: (key: SushiT['currentImgKey']) => void
+  handleClick: (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    imgKey: SushiT['currentImgKey'],
+    ref: React.RefObject<HTMLDivElement>
+  ) => void
 }
 
-export type {
-  SushiT,
-  SushiImageT,
-  CMB_T,
-  SushiElemsT,
-  MobileSushiNavigationT,
-  PopperContentT,
-}
+export type { SushiT, CMB_T, SushiElemsT, SushiMobileNavT }

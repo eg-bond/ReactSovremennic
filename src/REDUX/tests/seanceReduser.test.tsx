@@ -15,7 +15,6 @@ const initialState: SeanceStateT = {
     ['day0', 'Воскресенье', '25 июня'],
   ],
   activeScheduleItemKey: '',
-  buttonTitle: '',
 }
 
 describe('seanceReducer tests:', () => {
@@ -34,27 +33,17 @@ describe('seanceReducer tests:', () => {
     it('activeScheduleItemKey is set correctly', () => {
       expect(newState.activeScheduleItemKey).toBe(newState.datesArr[index][0])
     })
-
-    it('todays buttonTitle is correct', () => {
-      expect(newState.buttonTitle).toBe(
-        newState.datesArr[index][1] + ' ' + newState.datesArr[index][2]
-      )
-    })
   })
 
   describe('changeScheduleItem', () => {
     const actionKey = 'day3'
-    const actionTitle = 'Среда 21 июня'
     const newState = reducer(
       initialState,
-      changeScheduleItem_AC({ key: actionKey, title: actionTitle })
+      changeScheduleItem_AC({ key: actionKey })
     )
 
     it('activeScheduleItemKey is equal to key from action', () => {
       expect(newState.activeScheduleItemKey).toBe(actionKey)
-    })
-    it('buttonTitle is equal to title from action', () => {
-      expect(newState.buttonTitle).toBe(actionTitle)
     })
   })
 })

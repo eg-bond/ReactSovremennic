@@ -1,21 +1,19 @@
-import { memo, useEffect, useState } from 'react'
-import { MobileSeanceNavigation } from './MobileSeanceNavigation'
+import { useEffect, useState } from 'react'
 import schedule from './schedule'
 import { useCallback } from 'react'
 import IndexAdvXS from '../../Template/IndexAdvXS'
 import BarSlider from '../../Template/BarSlider'
-import type { DateKeysT } from '../../REDUX/seance/seanceReducerT'
 import { CreateSeanceButtons } from './seanceComponents/CreateSeanceButtons'
 import { TableContent } from './seanceComponents/TableContent'
-import { trDuration } from '../Sushi/sushiHelpers'
 import { useSeanceState } from '../../REDUX/stateHooks/useSeanceState'
 import { SushiWork } from '../../Template/SushiWork'
+import SeanceMobileNavContainer from './seanceComponents/SeanceMobileNavContainer'
+import type { DateKeysT } from '../../REDUX/seance/seanceReducerT'
 
-const Seance = memo<{ isMobile: boolean }>(function Seance({ isMobile }) {
+const Seance = ({ isMobile }: { isMobile: boolean }) => {
   const {
     siteMode,
     datesArr,
-    buttonTitle,
     activeScheduleItemKey,
     setTodayScheduleItem,
     changeScheduleItem,
@@ -24,16 +22,20 @@ const Seance = memo<{ isMobile: boolean }>(function Seance({ isMobile }) {
   const [tableVisible, switchVisibility] = useState(true)
 
   const changeTableContent = useCallback(
-    (key: DateKeysT, title: string) => {
+    (key: DateKeysT) => {
       if (key !== activeScheduleItemKey) {
-        switchVisibility(false)
-        setTimeout(() => {
-          changeScheduleItem(key, title)
-          switchVisibility(true)
-        }, trDuration)
+        if (isMobile) {
+          changeScheduleItem(key)
+        } else {
+          switchVisibility(false)
+          setTimeout(() => {
+            changeScheduleItem(key)
+            switchVisibility(true)
+          }, 200)
+        }
       }
     },
-    [activeScheduleItemKey, changeScheduleItem]
+    [activeScheduleItemKey, changeScheduleItem, isMobile]
   )
 
   // Switches the schedule item to todays when user leaves Seance page
@@ -43,8 +45,10 @@ const Seance = memo<{ isMobile: boolean }>(function Seance({ isMobile }) {
     }
   }, [])
 
+  if (!activeScheduleItemKey) return null
+
   return (
-    <div className='content__gridLeftItem--3fr'>
+    <div className='content__gridLeftItem--3fr seance'>
       {!isMobile && (
         <CreateSeanceButtons
           datesArr={datesArr}
@@ -56,23 +60,23 @@ const Seance = memo<{ isMobile: boolean }>(function Seance({ isMobile }) {
 
       {isMobile && (
         <div className='sushi_menu_xs'>
-          <MobileSeanceNavigation
+          <SeanceMobileNavContainer
             activeScheduleItemKey={activeScheduleItemKey}
             datesArr={datesArr}
-            buttonTitle={buttonTitle}
             changeTableContent={changeTableContent}
           />
         </div>
       )}
 
-      <div className={`${tableVisible ? 'fadeInUp' : 'fadeOutDown'}`}>
-        <table className='seanse__table'>
-          <TableContent
-            activeScheduleItemKey={activeScheduleItemKey}
-            schedule={schedule}
-          />
-        </table>
-      </div>
+      <table
+        className={`seanse__table ${
+          tableVisible ? 'fadeInUp' : 'fadeOutDown'
+        }`}>
+        <TableContent
+          activeScheduleItemKey={activeScheduleItemKey}
+          schedule={schedule}
+        />
+      </table>
 
       <div className='separatorMobile separatorMobile--index' />
       {isMobile && <SushiWork />}
@@ -84,8 +88,8 @@ const Seance = memo<{ isMobile: boolean }>(function Seance({ isMobile }) {
       {isMobile && <IndexAdvXS />}
     </div>
   )
-})
+}
 
 export default Seance
 
-export type ChangeTableContentT = (key: DateKeysT, title: string) => void
+export type ChangeTableContentT = (key: DateKeysT) => void
