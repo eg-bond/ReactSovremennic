@@ -123,7 +123,7 @@ export const filmsArray = [
   },
   {
     title: 'Синий Жук',
-    beginDate: 'с 23 сентября',
+    beginDate: 'с 30 сентября',
     endDate: '',
     kind: 'Фантастика, боевик, триллер, приключения',
     director: 'Анхель Мануэль Сото',
