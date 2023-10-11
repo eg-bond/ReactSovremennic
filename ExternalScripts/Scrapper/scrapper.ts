@@ -4,7 +4,6 @@ import { JSDOM } from 'jsdom'
 
 const URL = 'https://www.kinopoisk.ru/film/'
 const cinemaIds = ['5376192']
-// const cinemaIds = ['4850225', '5376192', '5135249', '4903012', '4959134']
 
 parseCinemaData(cinemaIds)
 //------------------------------------------------------------------------------
