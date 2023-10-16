@@ -3,7 +3,7 @@ import config from './config.ts'
 const kp = new kpDev.KinopoiskDev(config.KP_DEV_TOKEN)
 
 // needed movie ids
-const ids = [4850225, 5376192]
+const ids = [4889667]
 logAllMovies(ids)
 //-----------------------------------------------------------
 
@@ -31,7 +31,8 @@ async function getMovieData(id: number) {
     .map(person => person.name)
     .join(', ')
 
-  const duration = data?.movieLength?.toString() + ' мин'
+  const mLength = data?.movieLength
+  const duration = `${mLength?.toString()} мин. / ${minutesToHours(mLength)}`
 
   const age = data?.ageRating?.toString() + '+'
 
@@ -59,8 +60,15 @@ async function getMovieData(id: number) {
   return finalData
 }
 
-//-------------------------
+//------------------------------------------------------
 function capitalizeFirstLetter(string: string | undefined | null) {
   if (!string) return '-'
   return string.charAt(0).toUpperCase() + string.slice(1)
+}
+
+function minutesToHours(minutes: number | undefined) {
+  if (!minutes) return '-'
+  const hours = Math.floor(minutes / 60)
+  const remainingMinutes = minutes % 60
+  return `0${hours}:${remainingMinutes}`
 }
