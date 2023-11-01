@@ -33,6 +33,6 @@ const convertToWebP = name => {
 }
 
 // convertToWebP('input')
-// convertToWebP('description')
-// convertToWebP('top_menu')
-convertToWebP('main')
+convertToWebP('description')
+convertToWebP('top_menu')
+// convertToWebP('main')

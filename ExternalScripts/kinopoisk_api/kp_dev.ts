@@ -3,7 +3,7 @@ import config from './config.ts'
 const kp = new kpDev.KinopoiskDev(config.KP_DEV_TOKEN)
 
 // needed movie ids
-const ids = [4889667]
+const ids = [5080630, 5089029, 952158]
 logAllMovies(ids)
 //-----------------------------------------------------------
 
@@ -34,7 +34,7 @@ async function getMovieData(id: number) {
   const mLength = data?.movieLength
   const duration = `${mLength?.toString()} мин. / ${minutesToHours(mLength)}`
 
-  const age = data?.ageRating?.toString() + '+'
+  const age = data?.ageRating ? data.ageRating.toString() + '+' : '-'
 
   const actors = data?.persons
     ?.filter(person => person.enProfession === 'actor')
