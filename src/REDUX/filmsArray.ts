@@ -17,7 +17,7 @@ export const filmsArray = [
   {
     title: 'По щучьему велению',
     beginDate: 'с 26 октября',
-    endDate: 'по 15 ноября',
+    endDate: '',
     kind: 'Фэнтези, приключения',
     director: 'Александр Войтинский',
     duration: '115 мин. / 01:55',
@@ -33,7 +33,7 @@ export const filmsArray = [
   {
     title: 'Пять ночей с Фредди',
     beginDate: 'с 9 ноября',
-    endDate: 'по 22 ноября',
+    endDate: '',
     kind: 'Ужасы',
     director: 'Эмма Тамми',
     duration: '110 мин. / 01:50',
