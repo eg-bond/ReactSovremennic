@@ -1,9 +1,9 @@
 import kpDev from '@openmoviedb/kinopoiskdev_client'
-import config from './config.ts'
+import { config } from './config.ts'
 const kp = new kpDev.KinopoiskDev(config.KP_DEV_TOKEN)
 
 // needed movie ids
-const ids = [5313457, 944846]
+const ids = [1289334, 1077781]
 logAllMovies(ids)
 //-----------------------------------------------------------
 
