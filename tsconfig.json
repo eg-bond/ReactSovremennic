@@ -18,6 +18,9 @@
     "noFallthroughCasesInSwitch": true,
     "types": ["vitest/globals"]
   },
+  "ts-node": {
+    "esm": true // «———— enabling ESM for ts-node
+  },
   "include": ["src", "ExternalScripts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

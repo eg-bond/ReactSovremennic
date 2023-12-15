@@ -1,5 +1,5 @@
 import kpDev from '@openmoviedb/kinopoiskdev_client'
-import { config } from './config.ts'
+import { config } from './config.js'
 const kp = new kpDev.KinopoiskDev(config.KP_DEV_TOKEN)
 
 // needed movie ids
@@ -8,8 +8,8 @@ logAllMovies(ids)
 //-----------------------------------------------------------
 
 // log all desired movies data into console
-function logAllMovies(ids: number[]): void {
-  const promises: Array<ReturnType<typeof getMovieData>> = []
+function logAllMovies(ids) {
+  const promises = []
 
   ids.forEach(id => promises.push(getMovieData(id)))
 
@@ -17,7 +17,7 @@ function logAllMovies(ids: number[]): void {
 }
 
 // return necessary data in a form we need
-async function getMovieData(id: number) {
+async function getMovieData(id) {
   const { data } = await kp.movie.getById(id)
 
   const title = data?.name
@@ -61,12 +61,12 @@ async function getMovieData(id: number) {
 }
 
 //------------------------------------------------------
-function capitalizeFirstLetter(string: string | undefined | null) {
+function capitalizeFirstLetter(string) {
   if (!string) return '-'
   return string.charAt(0).toUpperCase() + string.slice(1)
 }
 
-function minutesToHours(minutes: number | undefined) {
+function minutesToHours(minutes) {
   if (!minutes) return '-'
   const hours = Math.floor(minutes / 60)
   const remainingMinutes = minutes % 60
