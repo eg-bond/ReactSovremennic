@@ -12,11 +12,9 @@
     "analyze_css": "source-map-explorer 'dist/assets/*.css' --no-border-checks",
     "scrapper": "ts-node-esm ExternalScripts/Scrapper/scrapper.ts",
     "kp_dev": "ts-node-esm ExternalScripts/kinopoisk_api/kp_dev.ts",
-    "kp_dev_js": "node ExternalScripts/kinopoisk_api/kp_dev.js",
     "webp": "node ExternalScripts/WebpConverter/convertToWebP.js",
     "make_ps": "ts-node-esm ExternalScripts/PhotoShopScedule/makePSscedule.ts",
     "get_schedule": "ts-node-esm ExternalScripts/Excel/insertScheduleFromXLSX.ts",
-    "get_schedule_js": "node ExternalScripts/Excel/insertScheduleFromXLSX.js",
     "resize": "node ExternalScripts/ImgResizer/resize.js",
     "test": "vitest",
     "test_ui": "vitest --ui --coverage"
