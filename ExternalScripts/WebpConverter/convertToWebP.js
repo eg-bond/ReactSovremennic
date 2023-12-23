@@ -1,6 +1,9 @@
 import webp from 'webp-converter'
 import fs from 'fs'
 
+// this will grant 755 permission to webp executables
+// webp.grant_permission()
+
 const options = {
   description: {
     input: 'ExternalScripts/WebpConverter/description_img/',
@@ -22,7 +25,6 @@ const options = {
 
 const convertToWebP = name => {
   const inputFolderPath = options[name].input
-
   fs.readdirSync(inputFolderPath).forEach(file => {
     webp.cwebp(
       options[name].input + file,
@@ -33,6 +35,6 @@ const convertToWebP = name => {
 }
 
 // convertToWebP('input')
-convertToWebP('description')
+// convertToWebP('description')
 // convertToWebP('top_menu')
 convertToWebP('main')
