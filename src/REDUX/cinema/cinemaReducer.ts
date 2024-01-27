@@ -6,7 +6,7 @@ const initialState: CinemaStateT = {
   films: filmsArray,
   filmsObject: {},
   filmsToday: [],
-  filmsTodayAmount: 3,
+  filmsTodayAmount: 4,
 }
 
 const cinemaSlice = createSlice({
@@ -15,7 +15,7 @@ const cinemaSlice = createSlice({
   reducers: {
     createFilmsTodayArr(state) {
       for (let i = 0; i < state.filmsTodayAmount; i++) {
-        state.filmsToday[i] = state.films[i + 2]
+        state.filmsToday[i] = state.films[i]
       }
     },
     createFilmsObject(state) {
