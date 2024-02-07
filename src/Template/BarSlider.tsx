@@ -18,7 +18,7 @@ const BarSliderSlide = ({ slideKey }: { slideKey: string }) => {
   )
 }
 
-const slideKeys = ['kombo1', 'kombo2']
+const slideKeys = ['Kombo1', 'Kombo2']
 
 const BarSlider = memo(function BarSlider() {
   return (
