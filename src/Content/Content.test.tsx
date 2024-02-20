@@ -38,7 +38,7 @@ describe('React Router', () => {
     const seanceNav = screen.getAllByText(/расписание/i)[0]
     const aboutNav = screen.getByText(/о кинотеатре/i)
     const rulesNav = screen.getByText(/правила работы/i)
-    const sushiNav = screen.getAllByText(/суши-бар/i)[0]
+    const sushiNav = screen.getAllByText(/бар/i)[0]
 
     fireEvent.click(seanceNav)
     expect(await screen.findByText(/Возраст/i)).toBeVisible()

@@ -23,10 +23,10 @@ describe('Simple working test', () => {
   })
   it('HideImages button works fine:', () => {
     fireEvent.click(screen.getByText(/версия для слабовидящих/i))
-    expect(screen.queryByAltText(/Суши-бар/i)).toBeVisible()
+    expect(screen.queryByAltText(/бар/i)).toBeVisible()
 
     fireEvent.click(screen.getByRole('checkbox'))
-    expect(screen.queryByAltText(/Суши-бар/i)).not.toBeVisible()
+    expect(screen.queryByAltText(/бар/i)).not.toBeVisible()
     expect(screen.queryByAltText(/Подарочный сертификат/i)).not.toBeVisible()
   })
   it('Color buttons work properly:', () => {

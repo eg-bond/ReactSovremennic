@@ -7,7 +7,7 @@ function IndexAdvXS() {
         <div className='indexAdvXS__item1'>
           <div className='indexAdvXS__item1__imgCont skeleton'>
             <Link to='/sushi'>
-              <img src='./Images/72.webp' alt='sushi' />
+              <img src='./Images/73.webp' alt='sushi' />
             </Link>
           </div>
         </div>

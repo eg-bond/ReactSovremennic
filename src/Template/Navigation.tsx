@@ -36,7 +36,7 @@ const Navigation = memo<NavigationT>(function Navigation({
             <NavItem url='seance' title='РАСПИСАНИЕ' />
             <NavItem url='about' title='О КИНОТЕАТРЕ' />
             <NavItem url='rules' title='ПРАВИЛА РАБОТЫ' />
-            <NavItem url='sushi' title='СУШИ-БАР "КИН-НО"' />
+            <NavItem url='sushi' title='БАР "КИН-НО"' />
           </ul>
         </div>
       </nav>
