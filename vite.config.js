@@ -17,14 +17,6 @@ export default defineConfig({
     removeConsole(),
     qrcode(),
     liveReload('public/Images/**/*.webp'),
-    // createHtmlPlugin({
-    //   inject: {
-    //     injectTo: 'head',
-    //     data: {
-
-    //     }
-    //   },
-    // }),
   ],
   test: {
     globals: true,
