@@ -7,6 +7,7 @@ import removeConsole from 'vite-plugin-remove-console'
 import { qrcode } from 'vite-plugin-qrcode'
 import liveReload from 'vite-plugin-live-reload'
 import svgr from 'vite-plugin-svgr'
+import { createHtmlPlugin } from 'vite-plugin-html'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -16,6 +17,14 @@ export default defineConfig({
     removeConsole(),
     qrcode(),
     liveReload('public/Images/**/*.webp'),
+    // createHtmlPlugin({
+    //   inject: {
+    //     injectTo: 'head',
+    //     data: {
+
+    //     }
+    //   },
+    // }),
   ],
   test: {
     globals: true,
