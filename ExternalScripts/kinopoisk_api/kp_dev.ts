@@ -3,7 +3,7 @@ import { config } from './config.ts'
 const kp = new kpDev.KinopoiskDev(config.KP_DEV_TOKEN)
 
 // needed movie ids
-const ids = [1234997, 5326241, 5364878]
+const ids = [4540126, 1346358, 5078842]
 logAllMovies(ids)
 //-----------------------------------------------------------
 
