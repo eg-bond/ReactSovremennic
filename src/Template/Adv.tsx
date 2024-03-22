@@ -21,9 +21,21 @@ const AdvContent = memo(function AdvContent() {
           className={`desktopAdv desktopAdv--3 ${
             !allImgLoaded ? 'skeleton' : ''
           }`}>
-          <img onLoad={onLoad} src='./Images/73.webp' alt='бар' />
+          <img onLoad={onLoad} src='./Images/72.webp' alt='бар' />
         </div>
       </Link>
+      <a href='https://lotten.ru' tabIndex={2} className={'linkWrapper'}>
+        <div
+          className={`desktopAdv desktopAdv--4 ${
+            !allImgLoaded ? 'skeleton' : ''
+          }`}>
+          <img
+            onLoad={onLoad}
+            src='./Images/lotten.webp'
+            alt='lotten кадастровые услуги'
+          />
+        </div>
+      </a>
       <div
         className={`desktopAdv desktopAdv--2 ${
           !allImgLoaded ? 'skeleton' : ''
