@@ -35,7 +35,7 @@ function IndexContent({ isMobile }: { isMobile: boolean }) {
         <p>
           • Бар "КИН-НО". Время работы: понедельник - четверг с 12:00 до 23:00,
           пятница - суббота с 12:00 до 01:00, воскресенье с 12:00 до 23:00.
-          Доставка осуществляется в часы работы ресторана, телефоны: 2-000-8,
+          Доставка осуществляется в часы работы ресторана, телефон:
           +7-992-177-24-11. Меню на
           <Link to='sushi' className='ref'>
             странице
@@ -51,16 +51,16 @@ function IndexContent({ isMobile }: { isMobile: boolean }) {
           • Уважаемые посетители кинотеатра! Показ последнего сеанса
           осуществляется только от трех человек.
         </p>
-
-        <div className='separatorMobile separatorMobile--index' />
-        {isMobile && <SushiWork />}
-
-        <div className='separatorMobile separatorMobile--index' />
-        <BarSlider />
       </div>
 
       <div className='separatorMobile separatorMobile--index' />
       {isMobile && <IndexAdvXS />}
+
+      <div className='separatorMobile separatorMobile--index' />
+      {isMobile && <SushiWork />}
+
+      <div className='separatorMobile separatorMobile--index' />
+      <BarSlider />
     </div>
   )
 }

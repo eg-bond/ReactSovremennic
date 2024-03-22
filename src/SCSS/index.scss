@@ -103,8 +103,12 @@
   }
 
   .indexAdvXS__item1 {
-    flex-basis: 41%;
-    padding: 2.5vw 2% 2.5vw 0;
+    flex-basis: 49%;
+    padding: 2.5vw 1% 2.5vw 0;
+  }
+  .indexAdvXS__item1_2 {
+    flex-basis: 49%;
+    padding: 2.5vw 0 2.5vw 1%;
   }
   .indexAdvXS__item2 {
     flex-basis: 59%;
@@ -118,7 +122,7 @@
 .indexAdvXS__item1__imgCont {
   @extend %imgContainer;
   @media #{$mediaQueryMobile} {
-    min-height: 60vw;
+    min-height: 70vw;
   }
 }
 .indexAdvXS__item2__imgCont {

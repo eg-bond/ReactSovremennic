@@ -18,7 +18,7 @@ const SushiSlide = ({
             !allImgLoaded ? 'skeleton' : ''
           }`}
           onLoad={onLoad}
-          src='./Images/73.webp'
+          src='./Images/74.webp'
           alt='бар'
         />
       </div>

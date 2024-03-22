@@ -79,13 +79,13 @@ const Seance = ({ isMobile }: { isMobile: boolean }) => {
       </table>
 
       <div className='separatorMobile separatorMobile--index' />
+      {isMobile && <IndexAdvXS />}
+
+      <div className='separatorMobile separatorMobile--index' />
       {isMobile && <SushiWork />}
 
       <div className='separatorMobile separatorMobile--index' />
       <BarSlider />
-
-      <div className='separatorMobile separatorMobile--index' />
-      {isMobile && <IndexAdvXS />}
     </div>
   )
 }
