@@ -18,6 +18,7 @@ export function SushiWorkModal({ loaded = true, onLoad = () => {} }) {
   const handleClose = () => {
     setOpen(false)
   }
+
   return (
     <div>
       <div className={`desktopAdv desktopAdv--5 ${!loaded ? 'skeleton' : ''} `}>

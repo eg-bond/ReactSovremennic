@@ -19,6 +19,14 @@
   @extend %desktopParagraphsFS;
 }
 
+.announce {
+  text-align: justify;
+  @media #{$mediaQueryMobile} {
+    margin-top: 4vw;
+  }
+  @extend %desktopParagraphsFS;
+}
+
 .ref {
   text-decoration: underline;
   transition: ease 0.3s;
