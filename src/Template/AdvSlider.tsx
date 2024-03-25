@@ -18,7 +18,7 @@ const SushiSlide = ({
             !allImgLoaded ? 'skeleton' : ''
           }`}
           onLoad={onLoad}
-          src='./Images/74.webp'
+          src='./Images/sushi_adv.webp'
           alt='бар'
         />
       </div>
@@ -41,7 +41,7 @@ const LottenSlide = ({
             !allImgLoaded ? 'skeleton' : ''
           }`}
           onLoad={onLoad}
-          src='./Images/lotten.webp'
+          src='./Images/lotten_adv.webp'
           alt='lotten кадастровые услуги'
         />
       </div>
@@ -62,7 +62,7 @@ const AdvSlider = memo(function BarSlider() {
         type: 'loop',
         // direction: 'rtl',
         autoplay: true,
-        interval: 3000,
+        interval: 5000,
         pauseOnHover: true,
       }}>
       <LottenSlide onLoad={onLoad} allImgLoaded={allImgLoaded} />
