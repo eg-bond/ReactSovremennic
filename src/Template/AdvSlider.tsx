@@ -12,7 +12,7 @@ const SushiSlide = ({
 }) => (
   <SplideSlide>
     <Link tabIndex={2} className={'linkWrapper'} to='/sushi'>
-      <div className={`imgContainer`}>
+      <div className={`imgContainer opacity_on_hover`}>
         <img
           className={`imgContainer__img transition ${
             !allImgLoaded ? 'skeleton' : ''
@@ -35,9 +35,9 @@ const LottenSlide = ({
 }) => (
   <SplideSlide>
     <a href='https://lotten.ru' tabIndex={2} className={'linkWrapper'}>
-      <div className={`imgContainer`}>
+      <div className={`imgContainer opacity_on_hover`}>
         <img
-          className={`imgContainer__img transition ${
+          className={`imgContainer__img transition  ${
             !allImgLoaded ? 'skeleton' : ''
           }`}
           onLoad={onLoad}

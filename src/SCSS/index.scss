@@ -77,6 +77,11 @@
     opacity: 0.85;
   }
 }
+.opacity_on_hover {
+  & img:hover {
+    opacity: 0.85;
+  }
+}
 //------------------------
 
 @media #{$mediaQueryMobile} {
