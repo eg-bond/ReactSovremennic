@@ -50,12 +50,6 @@ const Seance = ({ isMobile }: { isMobile: boolean }) => {
 
   return (
     <div className='content__gridLeftItem--3fr seance'>
-      <p className='announce'>
-        • Уважаемые гости кинотеатра "Современник"! В субботу 23.03.2024г. и
-        воскресенье 24.03.2024г. показ киносеансов осуществляться{' '}
-        <b className='red'>не будет!</b> Бар "КИН-НО" работает в штатном режиме.
-      </p>
-
       {!isMobile && (
         <CreateSeanceButtons
           datesArr={datesArr}
