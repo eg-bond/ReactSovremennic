@@ -1,9 +1,10 @@
 import kpDev from '@openmoviedb/kinopoiskdev_client'
 import { config } from './config.ts'
+
 const kp = new kpDev.KinopoiskDev(config.KP_DEV_TOKEN)
 
 // needed movie ids
-const ids = [4966325, 4968810, 1334852]
+const ids = [5212121, 5089021]
 logAllMovies(ids)
 //-----------------------------------------------------------
 
@@ -32,7 +33,7 @@ async function getMovieData(id: number) {
     .join(', ')
 
   const mLength = data?.movieLength
-  const duration = `${mLength?.toString()} мин. / ${minutesToHours(mLength)}`
+  const duration = getDuration(mLength)
 
   const age = data?.ageRating ? data.ageRating.toString() + '+' : '-'
 
@@ -64,6 +65,11 @@ async function getMovieData(id: number) {
 function capitalizeFirstLetter(string: string | undefined | null) {
   if (!string) return '-'
   return string.charAt(0).toUpperCase() + string.slice(1)
+}
+
+function getDuration(minutes: number | undefined) {
+  if (!minutes) return '-'
+  return `${minutes?.toString()} мин. / ${minutesToHours(minutes)}`
 }
 
 function minutesToHours(minutes: number | undefined) {
