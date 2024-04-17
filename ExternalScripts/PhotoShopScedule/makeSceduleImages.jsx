@@ -78,7 +78,7 @@ var dayKeysRanges = {
     allWeek: ["day1", "day2", "day3", "day4", "day5", "day6", "day0"]
 }
 // Это единственный изменяемый параметр 
-var dayKeysArr = ["day1"]
+var dayKeysArr = ["day5", "day6", "day0"]
 
 // Цикл, пробегающийся по выбранным в dayKeysArr фильмам
 for (var i = 0; i < dayKeysArr.length; i++) {
