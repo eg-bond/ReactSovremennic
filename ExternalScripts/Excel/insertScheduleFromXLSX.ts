@@ -1,6 +1,6 @@
 import xlsx from 'xlsx'
 import fs from 'fs'
-import { filmsArray } from '../../src/REDUX/filmsArray.ts'
+import { filmsArray } from '../../src/REDUX/filmsArray'
 
 type dataT = Array<{
   day: 'day0' | 'day1' | 'day2' | 'day3' | 'day4' | 'day5' | 'day6'

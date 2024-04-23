@@ -1,5 +1,5 @@
 import kpDev from '@openmoviedb/kinopoiskdev_client'
-import { config } from './config.ts'
+import { config } from './config'
 
 const kp = new kpDev.KinopoiskDev(config.KP_DEV_TOKEN)
 
