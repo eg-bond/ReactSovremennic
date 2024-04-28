@@ -1,4 +1,4 @@
-const schedule = {
+const scedule = {
   day0: [
     ['11:00', 'Приключения панды 2D', '6+', 280],
     ['12:55', 'Приключения панды 2D', '6+', 350],
@@ -51,4 +51,20 @@ const schedule = {
     ['22:00', 'Блиндаж 2D', '16+', 420],
   ],
 }
-export default schedule
+
+function AgeToNumber(age) {
+  return parseInt(age.replace('+', ''))
+}
+
+// console.log(typeof AgeToNumber('18+'))
+
+function getUniqueTitlesAndAges() {
+  const uniqueTitlesAndAges = Object.keys(scedule).reduce((acc, key) => {
+    const titlesAndAges = extractTitlesAndAges(key)
+    return [...acc, ...titlesAndAges]
+  }, [])
+
+  return uniqueTitlesAndAges
+}
+
+console.log(getUniqueTitlesAndAges())

@@ -1,4 +1,3 @@
-//@ts-nocheck
 import scedule from '../../src/Content/Seance/schedule'
 import { filmsArray } from '../../src/REDUX/filmsArray'
 import fs from 'fs'
@@ -6,7 +5,7 @@ import { findFirstWordInTitle } from '../Excel/insertScheduleFromXLSX'
 
 // Функция, которая ищет в массиве filmArray фильмы из входящего массива с названиями
 // и возвращающая двумерный массив Array<["title", "age"]>
-const findFilmAge = (titlesArr, filmsArr) => {
+const findFilmAge = (titlesArr: any, filmsArr: typeof filmsArray) => {
   let result = []
 
   // убираем 2D из названий фильмов для корректного поиска
@@ -58,6 +57,7 @@ const prepareSceduleForPS = sceduleKeysArray => {
 
     // Формируем объект вида "Название фильма": [Массив сеансов]
     let dailySeansObject = {}
+
     indexedSceduleItem.forEach(item => {
       // убираем двойные пробелы перед 2D и пробелы по бокам
       let filmTitle = item[1].replace(/\s+2D/gi, ' 2D').trim()
@@ -73,9 +73,12 @@ const prepareSceduleForPS = sceduleKeysArray => {
 
     let seansTitlesAndAgesArr = agesToNumber(findFilmAge(titlesArr, filmsArray))
 
+    console.log(seansTitlesAndAgesArr)
+
     // сортируем названия фильмов по возрастанию возрасных ограничений
     let sortedSeansTitles = sortTitles(seansTitlesAndAgesArr)
 
+    console.log(sortedSeansTitles)
     // Добавляем день в объект preparedPSscedule
     preparedPSscedule[sceduleDayKey] = {
       titles: sortedSeansTitles,
