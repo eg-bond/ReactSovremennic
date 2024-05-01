@@ -1,37 +1,49 @@
 import schedule from '../../../src/Content/Seance/schedule'
 
-// form array of unique titles
-export function extractTitlesAndAges(
+type TitleAgeTuple = [title: string, age: number]
+
+/**
+ * Extracts titles and ages of given day ('key') from schedule
+ * @param key - key of the day in schedule
+ * @returns Array of type: Array<[title: string, age: number]>
+ */
+export function extractTitlesWithAges(
   key: keyof typeof schedule
-): [string, number][] {
-  return scedule[key].map((item: (string | number)[]): [string, number] => [
-    item[1] as string,
-    AgeToNumber(item[2] as string),
-  ])
-}
-
-export function makeLibFrom(arr: Array<[string, number]>): LibType {
-  let result = {} as LibType
-  arr.forEach((item: [string, number]) => {
-    result[item[0]] = item[1]
+): Array<TitleAgeTuple> {
+  return schedule[key].map((item: Array<string | number>): TitleAgeTuple => {
+    const title = item[1] as string
+    const age = AgeToNumber(item[2] as string)
+    return [title, age]
   })
-  return result
 }
 
-export function libToArray(lib: LibType): Array<[string, number]> {
-  let result = [] as Array<[string, number]>
+/**
+ * Forms array of unique titles of given array
+ * @param arr Array of type: Array<[title: string, age: number]>
+ * @returns Array of type: Array<[uniqueTitle: string, age: number]>
+ */
+export function makeUniqueTitlesArr(
+  arr: Array<TitleAgeTuple>
+): Array<TitleAgeTuple> {
+  const lib = makeLibFrom(arr)
+
+  let result = [] as Array<TitleAgeTuple>
+
   for (let key in lib) {
     result.push([key, lib[key]])
   }
+
   return result
 }
 
-export function AgeToNumber(age: string): number {
-  return parseInt(age.replace('+', ''))
-}
-
-export function sortTitles(titles: Array<[string, number]>): Array<string> {
-  let sortedArray = titles.sort(function (a, b) {
+/**
+ * Sorts titles of given array by age from lowest to biggest.
+ * If ages are equal, sorts titles alphabetically.
+ * @param titles - Array of type: Array<[title: string, age: number]>
+ * @returns Array of type: Array<title: string>
+ */
+export function sortTitles(titles: Array<TitleAgeTuple>): Array<string> {
+  const sortedArray = titles.sort(function (a, b) {
     if (a[1] !== b[1]) {
       return a[1] - b[1]
     } else {
@@ -42,5 +54,26 @@ export function sortTitles(titles: Array<[string, number]>): Array<string> {
 }
 
 type LibType = {
-  [key: string]: number
+  [title: string]: number
+}
+/**
+ * Forms library of unique titles of given array
+ * @param arr - Array of the type [title: string, age: number]
+ * @returns Object type {title: age}
+ */
+function makeLibFrom(arr: Array<TitleAgeTuple>): LibType {
+  let result = {} as LibType
+  arr.forEach((item: [string, number]) => {
+    result[item[0]] = item[1]
+  })
+  return result
+}
+
+/**
+ * Converts age string to number
+ * @param age - age string of format: '18+'
+ * @returns number
+ */
+function AgeToNumber(age: string): number {
+  return parseInt(age.replace('+', ''))
 }

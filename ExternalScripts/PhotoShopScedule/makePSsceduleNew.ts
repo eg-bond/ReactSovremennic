@@ -1,9 +1,8 @@
 import scedule from '../../src/Content/Seance/schedule'
 import fs from 'fs'
 import {
-  extractTitlesAndAges,
-  libToArray,
-  makeLibFrom,
+  extractTitlesWithAges,
+  makeUniqueTitlesArr,
   sortTitles,
 } from './funcs/titles'
 
@@ -20,11 +19,9 @@ function makePsSchedule() {
 
   Object.keys(scedule).forEach((key: string): void => {
     // Titles
-    const titlesAndAges = extractTitlesAndAges(key as keyof typeof scedule)
-    const titlesLib = makeLibFrom(titlesAndAges)
-    const titlesArray = libToArray(titlesLib)
-    const sortedTitles = sortTitles(titlesArray)
-
+    const titlesAndAges = extractTitlesWithAges(key as keyof typeof scedule)
+    const uniqueTitlesArray = makeUniqueTitlesArr(titlesAndAges)
+    const sortedTitles = sortTitles(uniqueTitlesArray)
     // Schedule
     const indexedSceduleItem = indexSeances(key as keyof typeof scedule)
     const seanceLib = makeSeancesLibFrom(indexedSceduleItem)
@@ -32,10 +29,10 @@ function makePsSchedule() {
     psSchedule[key] = { titles: sortedTitles, seansScedule: seanceLib }
   })
 
-  fs.writeFileSync(
-    'ExternalScripts/PhotoShopScedule/psScheduleNew.json',
-    JSON.stringify(psSchedule)
-  )
+  // fs.writeFileSync(
+  //   'ExternalScripts/PhotoShopScedule/psScheduleNew.json',
+  //   JSON.stringify(psSchedule)
+  // )
 }
 
 function indexSeances(key: keyof typeof scedule): (string | number)[][] {
