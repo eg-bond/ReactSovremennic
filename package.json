@@ -13,7 +13,6 @@
     "kp_dev": "tsx ExternalScripts/kinopoisk_api/kp_dev.ts",
     "webp": "node ExternalScripts/WebpConverter/convert.mjs",
     "make_ps": "tsx ExternalScripts/PhotoShopScedule/makePSscedule.ts",
-    "make_ps_new": "tsx ExternalScripts/PhotoShopScedule/makePSsceduleNew.ts",
     "get_schedule": "tsx ExternalScripts/Excel/insertScheduleFromXLSX.ts",
     "resize": "node ExternalScripts/ImgResizer/resize.js",
     "test": "vitest",
