@@ -1,4 +1,4 @@
-import { imgSrc } from './sushiHelpers'
+import { imgSrc } from './sushiHelpers';
 
 export const menuButtons = [
   ['sushi', 'Суши'],
@@ -17,15 +17,15 @@ export const menuButtons = [
   ['pizza', 'Пицца, закуски'],
   ['dessert', 'Десерты'],
   ['garnish', 'Гарниры'],
-] as const
+] as const;
 
 export const sushiState: {
   [property in (typeof menuButtons)[any][0]]: {
-    name: string
-    recipe?: string
-    price: string
-    pic: string
-  }[]
+    name: string;
+    recipe?: string;
+    price: string;
+    pic: string;
+  }[];
 } = {
   sushi: [
     {
@@ -536,14 +536,14 @@ export const sushiState: {
       name: 'Салат «Цезарь» с креветкой',
       recipe:
         'Айсберг, помидоры черри, креветки, перепелиные яйца, сыр пармезан, соус цезарь, сухари',
-      price: '450',
+      price: '500',
       pic: imgSrc('salads', 'cesar_shrimp'),
     },
     {
       name: 'Салат «Цезарь» с курицей',
       recipe:
         'Айсберг, помидоры черри, перепелиные яйца, куриная грудка, сыр пармезан, соус цезарь, сухари',
-      price: '330',
+      price: '380',
       pic: imgSrc('salads', 'cesar_chicken'),
     },
     {
@@ -1035,4 +1035,4 @@ export const sushiState: {
       pic: imgSrc('garnish', 'sauce'),
     },
   ],
-}
+};
