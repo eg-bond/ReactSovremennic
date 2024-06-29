@@ -1,12 +1,12 @@
-import IndexAdvXS from '../../Template/IndexAdvXS'
-import { Link } from 'react-router-dom'
-import LiteYouTubeEmbed from 'react-lite-youtube-embed'
-import BarSlider from '../../Template/BarSlider'
-import { useAppSelector } from '../../REDUX/store'
-import { SushiWork } from '../../Template/SushiWork'
+import IndexAdvXS from '../../Template/IndexAdvXS';
+import { Link } from 'react-router-dom';
+import LiteYouTubeEmbed from 'react-lite-youtube-embed';
+import BarSlider from '../../Template/BarSlider';
+import { useAppSelector } from '../../REDUX/store';
+import { SushiWork } from '../../Template/SushiWork';
 
 function IndexContent({ isMobile }: { isMobile: boolean }) {
-  const { siteMode } = useAppSelector(state => state.special)
+  const { siteMode } = useAppSelector(state => state.special);
 
   return (
     <div className='content__gridLeftItem--3fr contentMT'>
@@ -16,7 +16,7 @@ function IndexContent({ isMobile }: { isMobile: boolean }) {
 
           <div className='embed-responsive'>
             <LiteYouTubeEmbed
-              id='3kID7Ltwz5g'
+              id='RJbl-Sqe7U8'
               title='index_trailer'
               poster='maxresdefault'
             />
@@ -63,7 +63,7 @@ function IndexContent({ isMobile }: { isMobile: boolean }) {
       <div className='separatorMobile separatorMobile--index' />
       <BarSlider />
     </div>
-  )
+  );
 }
 
-export default IndexContent
+export default IndexContent;

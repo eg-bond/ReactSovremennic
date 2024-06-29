@@ -1,13 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit'
-import { filmsArray } from '../filmsArray'
-import type { CinemaStateT } from './cinemaReducerT'
+import { createSlice } from '@reduxjs/toolkit';
+import { filmsArray } from '../filmsArray';
+import type { CinemaStateT } from './cinemaReducerT';
 
 const initialState: CinemaStateT = {
   films: filmsArray,
   filmsObject: {},
   filmsToday: [],
-  filmsTodayAmount: 7,
-}
+  filmsTodayAmount: 6,
+};
 
 const cinemaSlice = createSlice({
   name: 'cinema',
@@ -15,20 +15,20 @@ const cinemaSlice = createSlice({
   reducers: {
     createFilmsTodayArr(state) {
       for (let i = 0; i < state.filmsTodayAmount; i++) {
-        state.filmsToday[i] = state.films[i]
+        state.filmsToday[i] = state.films[i];
       }
     },
     createFilmsObject(state) {
       state.films.forEach(film => {
-        state.filmsObject[film.link] = film
-      })
+        state.filmsObject[film.link] = film;
+      });
     },
   },
-})
+});
 
 export const {
   createFilmsTodayArr: createFilmsTodayArr_AC,
   createFilmsObject: createFilmsObject_AC,
-} = cinemaSlice.actions
+} = cinemaSlice.actions;
 
-export default cinemaSlice.reducer
+export default cinemaSlice.reducer;
