@@ -1,49 +1,49 @@
-import kpDev from '@openmoviedb/kinopoiskdev_client'
-import { config } from './config'
+import kpDev from '@openmoviedb/kinopoiskdev_client';
+import { config } from './config';
 
-const kp = new kpDev.KinopoiskDev(config.KP_DEV_TOKEN)
+const kp = new kpDev.KinopoiskDev(config.KP_DEV_TOKEN);
 
 // needed movie ids
 
-const ids = [5424610]
-logAllMovies(ids)
+const ids = [5216647, 5103848];
+logAllMovies(ids);
 //-----------------------------------------------------------
 
 // log all desired movies data into console
 function logAllMovies(ids: number[]): void {
-  const promises: Array<ReturnType<typeof getMovieData>> = []
+  const promises: Array<ReturnType<typeof getMovieData>> = [];
 
-  ids.forEach(id => promises.push(getMovieData(id)))
+  ids.forEach(id => promises.push(getMovieData(id)));
 
-  Promise.all(promises).then(console.log)
+  Promise.all(promises).then(console.log);
 }
 
 // return necessary data in a form we need
 async function getMovieData(id: number) {
-  const { data } = await kp.movie.getById(id)
+  const { data } = await kp.movie.getById(id);
 
-  const title = data?.name
+  const title = data?.name;
 
   const kind = capitalizeFirstLetter(
     data?.genres?.map(genre => genre.name).join(', ')
-  )
+  );
 
   const director = data?.persons
     ?.filter(person => person.enProfession === 'director')
     .map(person => person.name)
-    .join(', ')
+    .join(', ');
 
-  const mLength = data?.movieLength
-  const duration = getDuration(mLength)
+  const mLength = data?.movieLength;
+  const duration = getDuration(mLength);
 
-  const age = data?.ageRating ? data.ageRating.toString() + '+' : '-'
+  const age = data?.ageRating ? data.ageRating.toString() + '+' : '-';
 
   const actors = data?.persons
     ?.filter(person => person.enProfession === 'actor')
     .map(person => person.name)
-    .join(', ')
+    .join(', ');
 
-  const description = data?.description
+  const description = data?.description;
 
   const finalData = {
     title,
@@ -57,25 +57,25 @@ async function getMovieData(id: number) {
     description,
     playerCode: '',
     link: '',
-  }
+  };
 
-  return finalData
+  return finalData;
 }
 
 //------------------------------------------------------
 function capitalizeFirstLetter(string: string | undefined | null) {
-  if (!string) return '-'
-  return string.charAt(0).toUpperCase() + string.slice(1)
+  if (!string) return '-';
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 function getDuration(minutes: number | undefined) {
-  if (!minutes) return '-'
-  return `${minutes?.toString()} мин. / ${minutesToHours(minutes)}`
+  if (!minutes) return '-';
+  return `${minutes?.toString()} мин. / ${minutesToHours(minutes)}`;
 }
 
 function minutesToHours(minutes: number | undefined) {
-  if (!minutes) return '-'
-  const hours = Math.floor(minutes / 60)
-  const remainingMinutes = minutes % 60
-  return `0${hours}:${remainingMinutes}`
+  if (!minutes) return '-';
+  const hours = Math.floor(minutes / 60);
+  const remainingMinutes = minutes % 60;
+  return `0${hours}:${remainingMinutes}`;
 }
