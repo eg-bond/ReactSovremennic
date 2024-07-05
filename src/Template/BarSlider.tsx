@@ -1,5 +1,5 @@
-import { Splide, SplideSlide } from '@splidejs/react-splide'
-import { memo } from 'react'
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+import { memo } from 'react';
 
 const BarSliderSlide = ({ slideKey }: { slideKey: string }) => {
   return (
@@ -15,10 +15,10 @@ const BarSliderSlide = ({ slideKey }: { slideKey: string }) => {
         />
       </div>
     </SplideSlide>
-  )
-}
+  );
+};
 
-const slideKeys = ['Kombo1', 'Kombo2']
+const slideKeys = ['kombo_1', 'kombo_2'];
 
 const BarSlider = memo(function BarSlider() {
   return (
@@ -39,6 +39,6 @@ const BarSlider = memo(function BarSlider() {
         <BarSliderSlide key={key} slideKey={key} />
       ))}
     </Splide>
-  )
-})
-export default BarSlider
+  );
+});
+export default BarSlider;
