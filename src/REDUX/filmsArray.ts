@@ -78,6 +78,7 @@ export const filmsArray = [
     playerCode: 'ipuweQbs38A',
     link: 'maxxxine',
   },
+
   {
     title: 'Не одна дома',
     beginDate: 'с 12 июля',
