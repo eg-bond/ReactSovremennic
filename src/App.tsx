@@ -1,16 +1,16 @@
-import { useEffect, useRef } from 'react'
-import './SCSS/style.scss'
-import Navigation from './Template/Navigation'
-import BottomSlider from './Template/BottomSlider'
-import Footer from './Template/Footer'
-import Adv from './Template/Adv'
-import { modifiedClass, queries } from './helpers'
-import Content from './Content/Content'
-import FilmsSlider from './Template/FilmsSlider'
-import { useAppState } from './REDUX/stateHooks/useAppState'
-import { useMediaQuery } from './hooks/useMediaQuery'
-import { useChangeTheme } from './hooks/useChangeTheme'
-import { useScrollToTop } from './hooks/useScrollToTop'
+import { useEffect, useRef } from 'react';
+import './SCSS/style.scss';
+import Navigation from './Template/Navigation';
+import BottomSlider from './Template/BottomSlider';
+import Footer from './Template/Footer';
+import Adv from './Template/Adv';
+import { modifiedClass, queries } from './helpers';
+import Content from './Content/Content';
+import FilmsSlider from './Template/FilmsSlider';
+import { useAppState } from './REDUX/stateHooks/useAppState';
+import { useMediaQuery } from './hooks/useMediaQuery';
+import { useChangeTheme } from './hooks/useChangeTheme';
+import { useScrollToTop } from './hooks/useScrollToTop';
 
 const App = () => {
   const {
@@ -23,41 +23,41 @@ const App = () => {
     switchSiteMode,
     createFilmsTodayArr,
     setTodayScheduleItem,
-  } = useAppState()
+  } = useAppState();
 
   // Initialization
   useEffect(() => {
-    setTodayScheduleItem()
-    createFilmsTodayArr()
-  }, [setTodayScheduleItem, createFilmsTodayArr])
+    setTodayScheduleItem();
+    createFilmsTodayArr();
+  }, [setTodayScheduleItem, createFilmsTodayArr]);
 
   // Media query hook.
-  const isMobile = useMediaQuery(queries.mobile)
+  const isMobile = useMediaQuery(queries.mobile);
 
   // Changes siteMode to 'default' when switching from desktop to mobile
   useEffect(() => {
     if (isMobile && siteMode === 'special') {
-      switchSiteMode('default')
+      switchSiteMode('default');
     }
-  }, [isMobile, switchSiteMode, siteMode])
+  }, [isMobile, switchSiteMode, siteMode]);
 
   // Switches the main fontSize style variable
   useEffect(() => {
-    document.documentElement.style.setProperty('--htmlFontSize', fontSize)
-  }, [fontSize])
+    document.documentElement.style.setProperty('--htmlFontSize', fontSize);
+  }, [fontSize]);
 
   // Changes colors if theme/siteMode changed
-  useChangeTheme(theme, siteMode)
+  useChangeTheme(theme, siteMode);
 
   // Scrolls to top if content starts higher than anchor
-  const contentRef = useRef(null)
-  const anchorRef = useRef(null)
-  useScrollToTop(contentRef, anchorRef)
+  const contentRef = useRef(null);
+  const anchorRef = useRef(null);
+  useScrollToTop(contentRef, anchorRef);
 
   const mainContainerClasses = [
     modifiedClass('mainContainer', siteMode),
     'flex-wrapper',
-  ].join(' ')
+  ].join(' ');
 
   return (
     <div className={mainContainerClasses}>
@@ -90,7 +90,7 @@ const App = () => {
       </div>
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
