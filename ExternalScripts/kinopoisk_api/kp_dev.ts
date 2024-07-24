@@ -5,7 +5,7 @@ const kp = new kpDev.KinopoiskDev(config.KP_DEV_TOKEN);
 
 // needed movie ids
 
-const ids = [5448948];
+const ids = [5212124];
 logAllMovies(ids);
 //-----------------------------------------------------------
 
