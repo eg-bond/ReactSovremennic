@@ -95,6 +95,7 @@ export const filmsArray = [
   {
     title: 'Дэдпул и Росомаха',
     beginDate: 'с 8 августа',
+    extra: 'В дубляже Read Head Sound с 15 августа',
     endDate: '',
     kind: 'Фантастика, боевик, комедия',
     director: 'Шон Леви',
