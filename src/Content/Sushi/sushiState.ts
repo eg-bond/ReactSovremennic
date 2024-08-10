@@ -95,7 +95,7 @@ export const sushiState: {
     },
     {
       name: 'Угорь (запеченный)',
-      price: '140',
+      price: '130',
       pic: imgSrc('sushi_items', 'hot'),
     },
     {
@@ -512,10 +512,10 @@ export const sushiState: {
   ],
   child: [
     {
-      name: 'Котлетки с картофелем айдахо',
-      recipe: 'Котлеты свино-говяжьи, огурец, паприка, картофель айдахо',
+      name: 'Котлетки с картофелем фри',
+      recipe: 'Котлеты свино-говяжьи, огурец, паприка, картофель фри, зелень',
       price: '360',
-      pic: imgSrc('child', 'aidaho'),
+      pic: imgSrc('preloader', 'preloader'),
     },
     {
       name: 'Наггетсы с картофелем фри',
@@ -527,111 +527,128 @@ export const sushiState: {
     {
       name: 'Супчик куриный',
       recipe: 'Куриный бульон, филе куриное, картофель, вермишель, зелень, лук',
-      price: '220',
+      price: '250',
       pic: imgSrc('child', 'soup'),
+    },
+    {
+      name: 'Овощные палочки',
+      recipe: 'Огурец, перец болгарский, морковь, сметана',
+      price: '220',
+      pic: imgSrc('preloader', 'preloader'),
     },
   ],
   salads: [
     {
-      name: 'Салат «Цезарь» с креветкой',
-      recipe:
-        'Айсберг, помидоры черри, креветки, перепелиные яйца, сыр пармезан, соус цезарь, сухари',
-      price: '500',
-      pic: imgSrc('salads', 'cesar_shrimp'),
-    },
-    {
-      name: 'Салат «Цезарь» с курицей',
-      recipe:
-        'Айсберг, помидоры черри, перепелиные яйца, куриная грудка, сыр пармезан, соус цезарь, сухари',
-      price: '380',
-      pic: imgSrc('salads', 'cesar_chicken'),
-    },
-    {
-      name: 'Салат из жаренного авокадо и лосося',
-      recipe:
-        'Айсберг, китайская капуста, огурец, помидоры черри, авокадо, лосось, лимон, соус дресинг, кунжут',
-      price: '850',
-      pic: imgSrc('salads', 'hot_avocado'),
-    },
-
-    {
       name: 'Шеф салат',
       recipe:
-        'Говядина, айсберг, томаты, паприка, кинза, чеснок, оливковое масло, винный уксус',
-      price: '520',
+        'Говядина, айсберг, томаты, паприка, руккола, кинза, чеснок, оливковое масло, винный уксус',
+      price: '540',
       pic: imgSrc('salads', 'chef'),
     },
 
     {
-      name: 'Салат с авокадо',
+      name: 'Салат из жаренного авокадо и лосося',
       recipe:
-        'Айсберг, китайская капуста, огурец, помидоры черри, авокадо, соус дресинг, кунжут',
-      price: '440',
-      pic: imgSrc('salads', 'avocado'),
+        'Айсберг, руккола, помидоры черри, авокадо, лосось, лимон, соус дресинг, кунжут',
+      price: '880',
+      pic: imgSrc('salads', 'hot_avocado'),
     },
 
     {
-      name: 'Салат с креветкой',
-      recipe: 'Авокадо, огурец, креветки, лимон, листья салата, соус дресинг',
-      price: '570',
-      pic: imgSrc('salads', 'shrimps'),
+      name: 'Салат «Цезарь» с курицей',
+      recipe:
+        'Айсберг, помидоры черри, куриная грудка, сыр пармезан, сухари, соус цезарь',
+      price: '400',
+      pic: imgSrc('salads', 'cesar_chicken'),
     },
+
+    {
+      name: 'Салат «Цезарь» с креветкой',
+      recipe:
+        'Айсберг, помидоры черри, креветки, сыр пармезан, сухари, соус цезарь',
+      price: '500',
+      pic: imgSrc('salads', 'cesar_shrimp'),
+    },
+
+    {
+      name: 'Салат с угрем',
+      recipe:
+        'Угорь, помидоры свежие, баклажаны,сливочный сыр, соус кисло-сладкий, кинза, кунжут',
+      price: '510',
+      pic: imgSrc('preloader', 'preloader'),
+    },
+
     {
       name: 'Салат из морских водорослей',
       recipe: 'Морские водоросли, ореховый соус, кунжут, лимон',
-      price: '230',
+      price: '250',
       pic: imgSrc('salads', 'seaweed'),
+    },
+
+    {
+      name: 'Салат с жареным баклажаном',
+      recipe:
+        'Баклажаны, помидоры свежие, сыр Фета, кинза, соус кисло-сладкий Чили, кунжут',
+      price: '320',
+      pic: imgSrc('preloader', 'preloader'),
     },
   ],
   soups: [
     {
-      name: 'Кимчи',
-      recipe:
-        'Бульон, яйцо куриное, кунжут, кимчи паста, кунжутное масло, тофу, водоросли вакеме',
-      price: '200',
-      pic: imgSrc('soups', 'kimchi'),
-    },
-    {
       name: 'Ясай',
       recipe:
-        'Говядина, грибы шиитаке, лук порей, тофу, рисовая лапша, специи тогораши',
-      price: '300',
+        'Говядина, грибы шиитаке, лук порей, тофу, рисовая лапша, специи тогораши, бульон Суимоно',
+      price: '330',
       pic: imgSrc('soups', 'yasai'),
     },
     {
-      name: 'Острый суп с грибами и цукини',
-      recipe: 'Бульон, водоросли вакеми, шиитаке, цукини',
-      price: '170',
-      pic: imgSrc('soups', 'hot_mushrooms'),
-    },
-    {
       name: 'Мисо',
-      recipe: 'Бульон, лук порей, тофу, водоросли вакеме',
+      recipe: 'Бульон, лук порей, тофу, водоросли вакеме, кунжут',
       price: '180',
       pic: imgSrc('soups', 'miso'),
     },
     {
+      name: 'Уха по-фински',
+      recipe:
+        'Бульон Суимоно, картофель, лосось, сливки, зелень, лук порей, черри',
+      price: '470',
+      pic: imgSrc('preloader', 'preloader'),
+    },
+
+    {
       name: 'Крабовый суп',
-      recipe: 'Бульон, краб, рис, яйцо куриное, лук, нори',
-      price: '570',
+      recipe: 'Бульон Суимоно, краб, рис, яйцо куриное, лук порей, нори',
+      price: '600',
       pic: imgSrc('soups', 'krab'),
     },
+
     {
-      name: 'Крем-суп с лососем',
-      recipe: 'Бульон, рис, лосось, сливки, зелень',
-      price: '400',
+      name: 'Кимчи',
+      recipe:
+        'Бульон Мисо, яйцо куриное, кунжут, кимчи паста, кунжутное масло, тофу, водоросли вакеме',
+      price: '200',
+      pic: imgSrc('soups', 'kimchi'),
+    },
+
+    {
+      name: 'Суп Том Ям',
+      recipe:
+        'Бульон куриный, паста Том Ям, рис, черри, мидии, шампиньоны, креветка, кальмар, лемонграсс, масло кунжутное, листья лайма, сливки, корень Галангала, кинза, лайм, кунжут',
+      price: '480',
+      pic: imgSrc('preloader', 'preloader'),
+    },
+
+    {
+      name: 'Сливочный суп с лососем',
+      recipe: 'Бульон Суимоно, рис, лосось, сливки, зелень',
+      price: '420',
       pic: imgSrc('soups', 'cs_ell'),
     },
-    {
-      name: 'Крем-суп с угрём',
-      recipe: 'Бульон, рис, угорь, сливки, зелень',
-      price: '390',
-      pic: imgSrc('soups', 'cs_ell'),
-    },
+
     {
       name: 'Крем-суп грибной',
-      recipe: 'Шампиньоны, лук, сливки',
-      price: '250',
+      recipe: 'Шампиньоны, лук, сливки, кунжутное масло',
+      price: '280',
       pic: imgSrc('soups', 'cs_mushrooms'),
     },
   ],
@@ -802,11 +819,29 @@ export const sushiState: {
   ],
   gruzia: [
     {
-      name: 'Гирос',
+      name: 'Хинкали с мясом (1шт.)',
+      recipe: 'Тесто, фарш свино-говяжий, перец черный, масло сливочное',
+      price: '80',
+      pic: imgSrc('gruzia', 'hinkali'),
+    },
+    {
+      name: 'Хинкали с сыром (1шт.)',
+      recipe: 'Тесто, сыр сулугуни, перец черный, масло сливочное',
+      price: '80',
+      pic: imgSrc('gruzia', 'hinkali'),
+    },
+    {
+      name: 'Гранд Равиоли (1шт.)',
+      recipe: 'Тесто, красная рыба, сливки, лук, чесночно-сметанный соус',
+      price: '150',
+      pic: imgSrc('gruzia', 'raviolli'),
+    },
+    {
+      name: 'Солянка по-грузински',
       recipe:
-        'Тесто, чесночно-сметанный соус, бифштекс свино-говяжий, айсберг, огурцы солёные, лук красный, томаты, картофель фри',
-      price: '490',
-      pic: imgSrc('gruzia', 'giros'),
+        'Говядина, лук, томат, бульон, кинза, специи, красный лук, чеснок',
+      price: '590',
+      pic: imgSrc('gruzia', 'soup'),
     },
     {
       name: 'Хачапури по-мегрельски',
@@ -820,60 +855,46 @@ export const sushiState: {
       price: '430',
       pic: imgSrc('gruzia', 'adja'),
     },
+
     {
-      name: '«Гранд Равиоли» (1шт.)',
-      recipe: 'Тесто, филе лосося, сливки, лук, чесночно-сметанный соус',
-      price: '160',
-      pic: imgSrc('gruzia', 'raviolli'),
-    },
-    {
-      name: 'Хинкали (1шт.)',
-      recipe: 'Тесто, свинина, говядина, перец черный, масло сливочное',
-      price: '80',
-      pic: imgSrc('gruzia', 'hinkali'),
-    },
-    {
-      name: 'Солянка по-грузински',
-      recipe: 'Говядина, лук, томат, бульон, кинза, специи',
-      price: '570',
-      pic: imgSrc('gruzia', 'soup'),
-    },
-    {
-      name: 'Чебуреки с сыром',
+      name: 'Чебурек с сыром',
+      recipe: 'Тесто, сыр сулугуни',
       price: '150',
       pic: imgSrc('gruzia', 'chebureki'),
     },
     {
-      name: 'Чебуреки с мясом',
+      name: 'Чебурек с мясом',
+      recipe: 'Тесто, свинина, говядина',
       price: '150',
       pic: imgSrc('gruzia', 'chebureki'),
     },
   ],
   pizza: [
     {
-      name: 'Пепперони',
-      price: '580',
-      pic: imgSrc('pizza', 'pepperoni'),
-    },
-    {
-      name: 'Маргарита',
-      price: '580',
-      pic: imgSrc('pizza', 'margarita'),
-    },
-    {
       name: 'Курица с грибами',
+      recipe:
+        'Тесто, соус сливочный, шампиньоны, куриная грудка, моцарела, корнишоны',
       price: '580',
       pic: imgSrc('pizza', 'chicken'),
     },
     {
+      name: 'Пепперони',
+      recipe: 'Тесто, соус для пиццы, моцарела, колбаса пеперони, оливки',
+      price: '580',
+      pic: imgSrc('pizza', 'pepperoni'),
+    },
+    {
       name: 'Карбонара',
+      recipe:
+        'Тесто, соус сливочный, моцарела, черри, пармезан, сливки, куриное яйцо, бекон',
       price: '680',
       pic: imgSrc('pizza', 'karbonara'),
     },
     {
-      name: 'Гренки с сыром и чесноком',
-      price: '200',
-      pic: imgSrc('pizza', 'grenki'),
+      name: 'Маргарита',
+      recipe: 'Тесто, соус для пиццы, моцарелла, помидоры свежие',
+      price: '580',
+      pic: imgSrc('pizza', 'margarita'),
     },
   ],
   dessert: [
@@ -898,6 +919,17 @@ export const sushiState: {
       pic: imgSrc('dessert', 'pelmeni'),
     },
     {
+      name: 'Чизкейк с топпингом',
+      price: '260',
+      pic: imgSrc('dessert', 'cheese_cake'),
+    },
+    {
+      name: 'Фруктовая тарелка',
+      recipe: 'Апельсин, яблоко, груша, банан, киви',
+      price: '330',
+      pic: imgSrc('dessert', 'fruits'),
+    },
+    {
       name: 'Японские блинчики с Филадельфией и апельсиновым соусом',
       price: '250',
       pic: imgSrc('dessert', 'j_pancakes'),
@@ -907,16 +939,7 @@ export const sushiState: {
       price: '120',
       pic: imgSrc('dessert', 'pancakes'),
     },
-    {
-      name: 'Чизкейк с топпингом',
-      price: '260',
-      pic: imgSrc('dessert', 'cheese_cake'),
-    },
-    {
-      name: 'Фруктовая тарелка',
-      price: '330',
-      pic: imgSrc('dessert', 'fruits'),
-    },
+
     {
       name: 'Мороженое в ассортименте',
       price: '90',
@@ -964,31 +987,7 @@ export const sushiState: {
       price: '50',
       pic: imgSrc('garnish', 'lemone'),
     },
-    {
-      name: 'Ореховый соус',
-      price: '60',
-      pic: imgSrc('garnish', 'sauce'),
-    },
-    {
-      name: 'Соус тонкацу',
-      price: '60',
-      pic: imgSrc('garnish', 'sauce'),
-    },
-    {
-      name: 'Соус кимчи',
-      price: '60',
-      pic: imgSrc('garnish', 'sauce'),
-    },
-    {
-      name: 'Острый соус',
-      price: '60',
-      pic: imgSrc('garnish', 'sauce'),
-    },
-    {
-      name: 'Соевый соус',
-      price: '60',
-      pic: imgSrc('garnish', 'sauce'),
-    },
+
     {
       name: 'Сметана',
       price: '30',
@@ -1031,6 +1030,36 @@ export const sushiState: {
     },
     {
       name: 'Аджика',
+      price: '60',
+      pic: imgSrc('garnish', 'sauce'),
+    },
+    {
+      name: 'Сырный соус',
+      price: '60',
+      pic: imgSrc('garnish', 'sauce'),
+    },
+    {
+      name: 'Ореховый соус',
+      price: '60',
+      pic: imgSrc('garnish', 'sauce'),
+    },
+    {
+      name: 'Соус тонкацу',
+      price: '60',
+      pic: imgSrc('garnish', 'sauce'),
+    },
+    {
+      name: 'Соус кимчи',
+      price: '60',
+      pic: imgSrc('garnish', 'sauce'),
+    },
+    {
+      name: 'Острый соус',
+      price: '60',
+      pic: imgSrc('garnish', 'sauce'),
+    },
+    {
+      name: 'Соевый соус',
       price: '60',
       pic: imgSrc('garnish', 'sauce'),
     },
