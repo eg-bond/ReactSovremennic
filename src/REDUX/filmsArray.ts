@@ -66,7 +66,7 @@ export const filmsArray = [
   },
   {
     title: 'Тихое место: День первый',
-    beginDate: 'скоро',
+    beginDate: 'с 15 августа',
     endDate: '',
     kind: 'Ужасы, фантастика, драма',
     director: 'Майкл Сарноски',
