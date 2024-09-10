@@ -1,15 +1,15 @@
-import { useEffect, useState } from 'react'
-import schedule from './schedule'
-import { useCallback } from 'react'
-import IndexAdvXS from '../../Template/IndexAdvXS'
-import BarSlider from '../../Template/BarSlider'
-import { CreateSeanceButtons } from './seanceComponents/CreateSeanceButtons'
-import { TableContent } from './seanceComponents/TableContent'
-import { useSeanceState } from '../../REDUX/stateHooks/useSeanceState'
-import { SushiWork } from '../../Template/SushiWork'
-import SeanceMobileNavContainer from './seanceComponents/SeanceMobileNavContainer'
-import type { DateKeysT } from '../../REDUX/seance/seanceReducerT'
-import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react';
+import schedule from './schedule';
+import { useCallback } from 'react';
+import IndexAdvXS from '../../Template/IndexAdvXS';
+import BarSlider from '../../Template/BarSlider';
+import { CreateSeanceButtons } from './seanceComponents/CreateSeanceButtons';
+import { TableContent } from './seanceComponents/TableContent';
+import { useSeanceState } from '../../REDUX/stateHooks/useSeanceState';
+import { SushiWork } from '../../Template/SushiWork';
+import SeanceMobileNavContainer from './seanceComponents/SeanceMobileNavContainer';
+import type { DateKeysT } from '../../REDUX/seance/seanceReducerT';
+import { Link } from 'react-router-dom';
 
 const Seance = ({ isMobile }: { isMobile: boolean }) => {
   const {
@@ -18,38 +18,45 @@ const Seance = ({ isMobile }: { isMobile: boolean }) => {
     activeScheduleItemKey,
     setTodayScheduleItem,
     changeScheduleItem,
-  } = useSeanceState()
+  } = useSeanceState();
 
-  const [tableVisible, switchVisibility] = useState(true)
+  const [tableVisible, switchVisibility] = useState(true);
 
   const changeTableContent = useCallback(
     (key: DateKeysT) => {
       if (key !== activeScheduleItemKey) {
         if (isMobile) {
-          changeScheduleItem(key)
+          changeScheduleItem(key);
         } else {
-          switchVisibility(false)
+          switchVisibility(false);
           setTimeout(() => {
-            changeScheduleItem(key)
-            switchVisibility(true)
-          }, 200)
+            changeScheduleItem(key);
+            switchVisibility(true);
+          }, 200);
         }
       }
     },
     [activeScheduleItemKey, changeScheduleItem, isMobile]
-  )
+  );
 
   // Switches the schedule item to todays when user leaves Seance page
   useEffect(() => {
     return () => {
-      setTodayScheduleItem()
-    }
-  }, [])
+      setTodayScheduleItem();
+    };
+  }, []);
 
-  if (!activeScheduleItemKey) return null
+  if (!activeScheduleItemKey) return null;
 
   return (
     <div className='content__gridLeftItem--3fr seance'>
+      {/* <div className={'news'}>
+        <p>
+          • Уважаемые посетители! На период с 9 сентября по 26 сентября
+          кинотеатр "Современник" и бар "КИН-НО"{' '}
+          <span className='red'>будут закрыты на ремонт!</span>
+        </p>
+      </div> */}
       {!isMobile && (
         <CreateSeanceButtons
           datesArr={datesArr}
@@ -88,9 +95,9 @@ const Seance = ({ isMobile }: { isMobile: boolean }) => {
       <div className='separatorMobile separatorMobile--index' />
       <BarSlider />
     </div>
-  )
-}
+  );
+};
 
-export default Seance
+export default Seance;
 
-export type ChangeTableContentT = (key: DateKeysT) => void
+export type ChangeTableContentT = (key: DateKeysT) => void;
