@@ -1,7 +1,7 @@
-import { useAppSelector } from '../../REDUX/store'
+import { useAppSelector } from '../../REDUX/store';
 
 function About() {
-  const { siteMode } = useAppSelector(state => state.special)
+  const { siteMode } = useAppSelector(state => state.special);
 
   return (
     <div className='content__gridLeftItem--3fr contentMT rules'>
@@ -38,16 +38,16 @@ function About() {
       </div>
       <div className='aboutImages'>
         <div className='aboutImages__image'>
-          <img src='./Images/about1.webp' alt='фото кинотеатра 1' />
+          <img src='Images/about1.webp' alt='фото кинотеатра 1' />
         </div>
         <div className='aboutImages__image hidden-xs'>
-          <img src='./Images/about2.webp' alt='фото кинотеатра 2' />
+          <img src='Images/about2.webp' alt='фото кинотеатра 2' />
         </div>
         <div className='aboutImages__image hidden-xs'>
-          <img src='./Images/about4.webp' alt='фото кинотеатра 4' />
+          <img src='Images/about4.webp' alt='фото кинотеатра 4' />
         </div>
         <div className='aboutImages__image'>
-          <img src='./Images/about3.webp' alt='фото кинотеатра 3' />
+          <img src='Images/about3.webp' alt='фото кинотеатра 3' />
         </div>
       </div>
       <div>
@@ -65,7 +65,7 @@ function About() {
         )}
       </div>
     </div>
-  )
+  );
 }
 
-export default About
+export default About;

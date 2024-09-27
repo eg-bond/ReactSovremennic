@@ -1,11 +1,11 @@
-import { memo } from 'react'
-import { Link, useMatch } from 'react-router-dom'
-import { useImagesLoaded } from '../hooks/useImagesLoaded'
-import { SushiWorkModal } from './SushiWork'
-import AdvSlider from './AdvSlider'
+import { memo } from 'react';
+import { useMatch } from 'react-router-dom';
+import { useImagesLoaded } from '../hooks/useImagesLoaded';
+import { SushiWorkModal } from './SushiWork';
+import AdvSlider from './AdvSlider';
 
 const AdvContent = memo(function AdvContent() {
-  const { allImgLoaded, onLoad } = useImagesLoaded(2)
+  const { allImgLoaded, onLoad } = useImagesLoaded(2);
 
   return (
     <div className='content__gridRightItem--1fr contentMT'>
@@ -17,21 +17,21 @@ const AdvContent = memo(function AdvContent() {
         }`}>
         <img
           onLoad={onLoad}
-          src='./Images/jsb1.gif'
+          src='Images/jsb1.gif'
           alt='Подарочный сертификат'
         />
       </div>
     </div>
-  )
-})
+  );
+});
 
 function Adv() {
-  const matchSushi = useMatch({ path: 'sushi' })
+  const matchSushi = useMatch({ path: 'sushi' });
 
   if (!matchSushi) {
-    return <AdvContent />
+    return <AdvContent />;
   }
-  return null
+  return null;
 }
 
-export default Adv
+export default Adv;

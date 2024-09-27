@@ -1,15 +1,15 @@
-import { memo } from 'react'
-import { Splide, SplideSlide } from '@splidejs/react-splide'
-import { Link } from 'react-router-dom'
-import { scrollToNavigation } from '../helpers'
-import type { CinemaStateT } from '../REDUX/cinema/cinemaReducerT'
+import { memo } from 'react';
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+import { Link } from 'react-router-dom';
+import { scrollToNavigation } from '../helpers';
+import type { CinemaStateT } from '../REDUX/cinema/cinemaReducerT';
 
 const BottomSlider = memo<BottomSliderT>(function BottomSliderN({
   isMobile,
   filmsToday,
 }) {
   if (isMobile || filmsToday[0] === undefined) {
-    return null
+    return null;
   }
 
   return (
@@ -31,8 +31,8 @@ const BottomSlider = memo<BottomSliderT>(function BottomSliderN({
         <Slide key={i + 'BSl'} film={item} />
       ))}
     </Splide>
-  )
-})
+  );
+});
 
 const Slide = memo(function Slide({ film }: SlideT) {
   return (
@@ -44,7 +44,7 @@ const Slide = memo(function Slide({ film }: SlideT) {
         <div className={`bottomSlider__imgCont skeleton-Gray`}>
           <img
             className='swSlide__img'
-            src={`./Images/description/${film.link}_D.webp`}
+            src={`Images/description/${film.link}_D.webp`}
             alt={film.title}
           />
         </div>
@@ -52,16 +52,16 @@ const Slide = memo(function Slide({ film }: SlideT) {
         <p className='swSlide__p'>{film.kind.split(', ')[0]}</p>
       </Link>
     </SplideSlide>
-  )
-})
+  );
+});
 
 type SlideT = {
-  film: CinemaStateT['films'][0]
-}
+  film: CinemaStateT['films'][0];
+};
 
-export default BottomSlider
+export default BottomSlider;
 
 type BottomSliderT = {
-  isMobile: boolean
-  filmsToday: CinemaStateT['filmsToday']
-}
+  isMobile: boolean;
+  filmsToday: CinemaStateT['filmsToday'];
+};

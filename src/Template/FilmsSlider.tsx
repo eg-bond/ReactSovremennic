@@ -1,17 +1,17 @@
-import { Splide, SplideSlide } from '@splidejs/react-splide'
-import type { CinemaStateT } from '../REDUX/cinema/cinemaReducerT'
-import { Link } from 'react-router-dom'
-import { memo } from 'react'
-import { useMobilePaddings } from './useMobilePaddings'
-import { useImagesLoaded } from '../hooks/useImagesLoaded'
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+import type { CinemaStateT } from '../REDUX/cinema/cinemaReducerT';
+import { Link } from 'react-router-dom';
+import { memo } from 'react';
+import { useMobilePaddings } from './useMobilePaddings';
+import { useImagesLoaded } from '../hooks/useImagesLoaded';
 
 const FilmsSlider = memo<FilmSliderT>(function FilmsSlider({
   films,
   isMobile,
 }) {
-  const { allImgLoaded, onLoad } = useImagesLoaded(films.length || 0)
+  const { allImgLoaded, onLoad } = useImagesLoaded(films.length || 0);
   //adds paddings to mobile slider to make it look like 3.5 slides
-  useMobilePaddings(isMobile)
+  useMobilePaddings(isMobile);
 
   return (
     <div className={'cinemaSlider'}>
@@ -35,8 +35,8 @@ const FilmsSlider = memo<FilmSliderT>(function FilmsSlider({
         ))}
       </Splide>
     </div>
-  )
-})
+  );
+});
 
 const Slide = memo(function Slide({ film, allImgLoaded, onLoad }: SlideT) {
   return (
@@ -49,7 +49,7 @@ const Slide = memo(function Slide({ film, allImgLoaded, onLoad }: SlideT) {
           <img
             className='swSlide__img'
             onLoad={onLoad}
-            src={`./Images/top_menu/${film.link}.webp`}
+            src={`Images/top_menu/${film.link}.webp`}
             alt={film.title}
           />
         </div>
@@ -57,18 +57,18 @@ const Slide = memo(function Slide({ film, allImgLoaded, onLoad }: SlideT) {
         <p className='swSlide__p'>{film.beginDate}</p>
       </Link>
     </SplideSlide>
-  )
-})
+  );
+});
 
-export default FilmsSlider
+export default FilmsSlider;
 
 type SlideT = {
-  film: CinemaStateT['films'][0]
-  allImgLoaded: boolean
-  onLoad: () => void
-}
+  film: CinemaStateT['films'][0];
+  allImgLoaded: boolean;
+  onLoad: () => void;
+};
 
 type FilmSliderT = {
-  films: CinemaStateT['films']
-  isMobile: boolean
-}
+  films: CinemaStateT['films'];
+  isMobile: boolean;
+};

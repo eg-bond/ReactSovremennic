@@ -26,6 +26,9 @@ export default defineConfig({
       reporter: ['html'],
     },
   },
+  preview: {
+    port: 8090,
+  },
   server: {
     open: true,
     port: 8080,

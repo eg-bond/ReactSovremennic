@@ -16,7 +16,7 @@ function IndexContent({ isMobile }: { isMobile: boolean }) {
 
           <div className='embed-responsive'>
             <LiteYouTubeEmbed
-              id='gYhGLkDqr-o'
+              id='7CqNxTnq_V4'
               title='index_trailer'
               poster='maxresdefault'
             />

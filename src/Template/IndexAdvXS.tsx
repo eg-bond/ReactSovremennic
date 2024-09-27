@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 function IndexAdvXS() {
   return (
@@ -7,7 +7,7 @@ function IndexAdvXS() {
         <div className='indexAdvXS__item1'>
           <div className='indexAdvXS__item1__imgCont skeleton'>
             <Link to='/sushi'>
-              <img src='./Images/sushi_adv.webp' alt='sushi' />
+              <img src='Images/sushi_adv.webp' alt='sushi' />
             </Link>
           </div>
         </div>
@@ -15,7 +15,7 @@ function IndexAdvXS() {
           <a href='https://lotten.ru' tabIndex={2} className={'linkWrapper'}>
             <div className='indexAdvXS__item1__imgCont skeleton'>
               <img
-                src='./Images/lotten_adv.webp'
+                src='Images/lotten_adv.webp'
                 alt='lotten кадастровые услуги'
               />
             </div>
@@ -23,7 +23,7 @@ function IndexAdvXS() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default IndexAdvXS
+export default IndexAdvXS;

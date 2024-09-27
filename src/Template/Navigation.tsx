@@ -1,22 +1,22 @@
-import { memo } from 'react'
-import { NavLink, Link } from 'react-router-dom'
-import { modifiedClass } from '../helpers'
-import SpecialSettings from './SpecialSettings'
-import type { SpecialStateT } from '../REDUX/special/specialReducerT'
+import { memo } from 'react';
+import { NavLink, Link } from 'react-router-dom';
+import { modifiedClass } from '../helpers';
+import SpecialSettings from './SpecialSettings';
+import type { SpecialStateT } from '../REDUX/special/specialReducerT';
 
 const Navigation = memo<NavigationT>(function Navigation({
   siteMode,
   fontSize,
   theme,
 }) {
-  const modifyCl = (cl: string) => modifiedClass(cl, siteMode)
+  const modifyCl = (cl: string) => modifiedClass(cl, siteMode);
 
   const fsNavCl =
     fontSize === '21px'
       ? 'navigation--fs150'
       : fontSize === '26px'
       ? 'navigation--fs200'
-      : ''
+      : '';
 
   return (
     <div className='container navigation__container'>
@@ -26,7 +26,7 @@ const Navigation = memo<NavigationT>(function Navigation({
           <Link to='/'>
             <img
               className='navigation__logo__img'
-              src={`./Images/${themeLogoFile[theme]}`}
+              src={`Images/${themeLogoFile[theme]}`}
               alt='logoImg'
             />
           </Link>
@@ -41,10 +41,10 @@ const Navigation = memo<NavigationT>(function Navigation({
         </div>
       </nav>
     </div>
-  )
-})
+  );
+});
 
-export default Navigation
+export default Navigation;
 
 const NavItem = ({ url, title }: { url: string; title: string }) => (
   <li>
@@ -54,7 +54,7 @@ const NavItem = ({ url, title }: { url: string; title: string }) => (
       {title}
     </NavLink>
   </li>
-)
+);
 
 const themeLogoFile = {
   blackWhite: 'logo.png',
@@ -62,10 +62,10 @@ const themeLogoFile = {
   blackBlue: 'logoBB.png',
   yellowBrown: 'logoYB.png',
   blueGreen: 'logoBG.png',
-} as const
+} as const;
 
 type NavigationT = {
-  siteMode: SpecialStateT['siteMode']
-  fontSize: SpecialStateT['fontSize']
-  theme: SpecialStateT['theme']
-}
+  siteMode: SpecialStateT['siteMode'];
+  fontSize: SpecialStateT['fontSize'];
+  theme: SpecialStateT['theme'];
+};

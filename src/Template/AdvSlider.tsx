@@ -1,14 +1,14 @@
-import { Splide, SplideSlide } from '@splidejs/react-splide'
-import { memo } from 'react'
-import { Link } from 'react-router-dom'
-import { useImagesLoaded } from '../hooks/useImagesLoaded'
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+import { memo } from 'react';
+import { Link } from 'react-router-dom';
+import { useImagesLoaded } from '../hooks/useImagesLoaded';
 
 const SushiSlide = ({
   allImgLoaded,
   onLoad,
 }: {
-  allImgLoaded: boolean
-  onLoad: () => void
+  allImgLoaded: boolean;
+  onLoad: () => void;
 }) => (
   <SplideSlide>
     <Link tabIndex={2} className={'linkWrapper'} to='/sushi'>
@@ -18,20 +18,20 @@ const SushiSlide = ({
             !allImgLoaded ? 'skeleton' : ''
           }`}
           onLoad={onLoad}
-          src='./Images/sushi_adv.webp'
+          src='Images/sushi_adv.webp'
           alt='бар'
         />
       </div>
     </Link>
   </SplideSlide>
-)
+);
 
 const LottenSlide = ({
   allImgLoaded,
   onLoad,
 }: {
-  allImgLoaded: boolean
-  onLoad: () => void
+  allImgLoaded: boolean;
+  onLoad: () => void;
 }) => (
   <SplideSlide>
     <a href='https://lotten.ru' tabIndex={2} className={'linkWrapper'}>
@@ -41,16 +41,16 @@ const LottenSlide = ({
             !allImgLoaded ? 'skeleton' : ''
           }`}
           onLoad={onLoad}
-          src='./Images/lotten_adv.webp'
+          src='Images/lotten_adv.webp'
           alt='lotten кадастровые услуги'
         />
       </div>
     </a>
   </SplideSlide>
-)
+);
 
 const AdvSlider = memo(function BarSlider() {
-  const { allImgLoaded, onLoad } = useImagesLoaded(2)
+  const { allImgLoaded, onLoad } = useImagesLoaded(2);
   return (
     <Splide
       className='advSlider'
@@ -68,6 +68,6 @@ const AdvSlider = memo(function BarSlider() {
       <LottenSlide onLoad={onLoad} allImgLoaded={allImgLoaded} />
       <SushiSlide onLoad={onLoad} allImgLoaded={allImgLoaded} />
     </Splide>
-  )
-})
-export default AdvSlider
+  );
+});
+export default AdvSlider;
