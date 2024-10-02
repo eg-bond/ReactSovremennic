@@ -16,7 +16,7 @@ function IndexContent({ isMobile }: { isMobile: boolean }) {
 
           <div className='embed-responsive'>
             <LiteYouTubeEmbed
-              id='7CqNxTnq_V4'
+              id='K6YWOVdmBSg'
               title='index_trailer'
               poster='maxresdefault'
             />
@@ -30,11 +30,7 @@ function IndexContent({ isMobile }: { isMobile: boolean }) {
         <h1 className={siteMode === 'special' ? 'index__h1--special' : ''}>
           Информация
         </h1>
-        <p>
-          • Уважаемые посетители! На период с 9 сентября по 1 октября кинотеатр
-          "Современник" и бар "КИН-НО"{' '}
-          <span className='red'>будут закрыты на ремонт!</span>
-        </p>
+
         <p>• Расписание сеансов можно узнать по телефону: 2-12-32</p>
         <p>
           • Бар "КИН-НО". Время работы: понедельник - четверг с 12:00 до 23:00,
