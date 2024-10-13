@@ -3,13 +3,13 @@ import type { DateKeysT, SeanceStateT, getDayT } from './seanceReducerT';
 
 const initialState: SeanceStateT = {
   datesArr: [
-    ['day1', 'Понедельник', '7 октября'],
-    ['day2', 'Вторник', '8 октября'],
-    ['day3', 'Среда', '9 октября'],
     ['day4', 'Четверг', '10 октября'],
     ['day5', 'Пятница', '11 октября'],
     ['day6', 'Суббота', '12 октября'],
     ['day0', 'Воскресенье', '13 октября'],
+    ['day1', 'Понедельник', '14 октября'],
+    ['day2', 'Вторник', '15 октября'],
+    ['day3', 'Среда', '16 октября'],
   ],
   activeScheduleItemKey: '',
 };
