@@ -6,7 +6,7 @@ const initialState: CinemaStateT = {
   films: filmsArray,
   filmsObject: {},
   filmsToday: [],
-  filmsTodayAmount: 5,
+  filmsTodayAmount: 7,
 };
 
 const cinemaSlice = createSlice({
