@@ -9,6 +9,7 @@ import { useSeanceState } from '../../REDUX/stateHooks/useSeanceState';
 import { SushiWork } from '../../Template/SushiWork';
 import SeanceMobileNavContainer from './seanceComponents/SeanceMobileNavContainer';
 import type { DateKeysT } from '../../REDUX/seance/seanceReducerT';
+import { OnlineSales } from '../../components/OnlineSales';
 
 const Seance = ({ isMobile }: { isMobile: boolean }) => {
   const {
@@ -78,9 +79,8 @@ const Seance = ({ isMobile }: { isMobile: boolean }) => {
         />
       </table>
 
-      <button data-action='open-widget' style={{ color: 'black' }}>
-        Купить билеты
-      </button>
+      <OnlineSales />
+
       <div className='separatorMobile separatorMobile--index' />
       {isMobile && <IndexAdvXS />}
 
