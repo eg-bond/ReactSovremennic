@@ -1,11 +1,7 @@
-import jsonSchedule from './schedule.json';
-
 export const OnlineSales = () => {
-  console.log(jsonSchedule);
-
   return (
     <div>
-      <button data-action='open-widget' style={{ color: 'black' }}>
+      <button className={'salesBtn'} data-action='open-widget'>
         Купить билеты
       </button>
     </div>

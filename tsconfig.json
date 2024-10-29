@@ -17,6 +17,10 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
     "types": ["vitest/globals"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
     // this line needed to import modules with default exports
     "allowSyntheticDefaultImports": true,
     // this line needed to properly process node modules in .ts files

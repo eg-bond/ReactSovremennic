@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 import schedule from './schedule';
 import { useCallback } from 'react';
-import IndexAdvXS from '../../Template/IndexAdvXS';
-import BarSlider from '../../Template/BarSlider';
+import IndexAdvXS from '@/Template/IndexAdvXS';
+import BarSlider from '@/Template/BarSlider';
 import { CreateSeanceButtons } from './seanceComponents/CreateSeanceButtons';
 import { TableContent } from './seanceComponents/TableContent';
-import { useSeanceState } from '../../REDUX/stateHooks/useSeanceState';
-import { SushiWork } from '../../Template/SushiWork';
+import { useSeanceState } from '@/REDUX/stateHooks/useSeanceState';
+import { SushiWork } from '@/Template/SushiWork';
 import SeanceMobileNavContainer from './seanceComponents/SeanceMobileNavContainer';
-import type { DateKeysT } from '../../REDUX/seance/seanceReducerT';
-import { OnlineSales } from '../../components/OnlineSales';
+import type { DateKeysT } from '@/REDUX/seance/seanceReducerT';
+import { OnlineSales } from '@/components/OnlineSales';
 
 const Seance = ({ isMobile }: { isMobile: boolean }) => {
   const {

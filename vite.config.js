@@ -17,6 +17,11 @@ export default defineConfig({
     qrcode(),
     liveReload('public/Images/**/*.webp'),
   ],
+  resolve: {
+    alias: {
+      '@': '/src',
+    },
+  },
   test: {
     globals: true,
     environment: 'jsdom',

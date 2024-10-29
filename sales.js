@@ -1,6 +1,6 @@
-(function (d, t, u, e, s) {
-  e = d.createElement(t);
-  s = d.getElementsByTagName(t)[0];
+(function (d, t, u) {
+  let e = d.createElement(t);
+  let s = d.getElementsByTagName(t)[0];
   e.async = true;
   e.src = u + '?v=' + Date.now();
   s.parentNode.insertBefore(e, s);
