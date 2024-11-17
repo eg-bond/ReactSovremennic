@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 import schedule from './schedule';
 import { useCallback } from 'react';
-import IndexAdvXS from '../../Template/IndexAdvXS';
-import BarSlider from '../../Template/BarSlider';
+import IndexAdvXS from '@/Template/IndexAdvXS';
+import BarSlider from '@/Template/BarSlider';
 import { CreateSeanceButtons } from './seanceComponents/CreateSeanceButtons';
 import { TableContent } from './seanceComponents/TableContent';
-import { useSeanceState } from '../../REDUX/stateHooks/useSeanceState';
-import { SushiWork } from '../../Template/SushiWork';
+import { useSeanceState } from '@/REDUX/stateHooks/useSeanceState';
+import { SushiWork } from '@/Template/SushiWork';
 import SeanceMobileNavContainer from './seanceComponents/SeanceMobileNavContainer';
-import type { DateKeysT } from '../../REDUX/seance/seanceReducerT';
-import { Link } from 'react-router-dom';
+import type { DateKeysT } from '@/REDUX/seance/seanceReducerT';
+import { OnlineSales } from '@/components/OnlineSales';
 
 const Seance = ({ isMobile }: { isMobile: boolean }) => {
   const {
@@ -50,13 +50,6 @@ const Seance = ({ isMobile }: { isMobile: boolean }) => {
 
   return (
     <div className='content__gridLeftItem--3fr seance'>
-      {/* <div className={'news'}>
-        <p>
-          • Уважаемые посетители! На период с 9 сентября по 26 сентября
-          кинотеатр "Современник" и бар "КИН-НО"{' '}
-          <span className='red'>будут закрыты на ремонт!</span>
-        </p>
-      </div> */}
       {!isMobile && (
         <CreateSeanceButtons
           datesArr={datesArr}
@@ -85,6 +78,8 @@ const Seance = ({ isMobile }: { isMobile: boolean }) => {
           schedule={schedule}
         />
       </table>
+
+      <OnlineSales />
 
       <div className='separatorMobile separatorMobile--index' />
       {isMobile && <IndexAdvXS />}
