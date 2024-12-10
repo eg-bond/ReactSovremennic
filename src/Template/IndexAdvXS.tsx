@@ -4,11 +4,16 @@ function IndexAdvXS() {
   return (
     <div className='container' data-testid={'mobile_adv'}>
       <div className='indexAdvXS'>
-        <div className='indexAdvXS__item1'>
+        {/* <div className='indexAdvXS__item1'>
           <div className='indexAdvXS__item1__imgCont skeleton'>
             <Link to='/sushi'>
               <img src='Images/sushi_adv.webp' alt='sushi' />
             </Link>
+          </div>
+        </div> */}
+        <div className='indexAdvXS__item1'>
+          <div className='indexAdvXS__item1__imgCont skeleton'>
+            <img src='Images/ny_eve.webp' alt='sushi' />
           </div>
         </div>
         <div className='indexAdvXS__item1_2'>

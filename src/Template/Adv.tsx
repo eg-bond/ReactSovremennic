@@ -5,13 +5,19 @@ import { SushiWorkModal } from './SushiWork';
 import AdvSlider from './AdvSlider';
 
 const AdvContent = memo(function AdvContent() {
-  const { allImgLoaded, onLoad } = useImagesLoaded(2);
+  const { allImgLoaded, onLoad } = useImagesLoaded(3);
 
   return (
     <div className='content__gridRightItem--1fr contentMT'>
-      <SushiWorkModal loaded={allImgLoaded} onLoad={onLoad} />
-      <AdvSlider />
       <div
+        className={`desktopAdv desktopAdv--3 ${
+          !allImgLoaded ? 'skeleton' : ''
+        } `}>
+        <img onLoad={onLoad} src='Images/ny_eve.webp' alt='новогодние вечера' />
+      </div>
+      <AdvSlider />
+      <SushiWorkModal loaded={allImgLoaded} onLoad={onLoad} />
+      {/* <div
         className={`desktopAdv desktopAdv--2 ${
           !allImgLoaded ? 'skeleton' : ''
         }`}>
@@ -20,7 +26,7 @@ const AdvContent = memo(function AdvContent() {
           src='Images/jsb1.gif'
           alt='Подарочный сертификат'
         />
-      </div>
+      </div> */}
     </div>
   );
 });
