@@ -46,7 +46,7 @@ export const sushiState: {
     },
     {
       name: 'Угорь',
-      price: '120',
+      price: '130',
       pic: imgSrc('sushi_items', 'ell'),
     },
     {
@@ -61,7 +61,7 @@ export const sushiState: {
     },
     {
       name: 'Тобико',
-      price: '70',
+      price: '80',
       pic: imgSrc('sushi_items', 'tobiko'),
     },
     {
@@ -71,27 +71,22 @@ export const sushiState: {
     },
     {
       name: 'Тигровая креветка',
-      price: '90',
+      price: '100',
       pic: imgSrc('sushi_items', 'shrimp'),
-    },
-    {
-      name: 'Лосось с перепелиным яйцом',
-      price: '170',
-      pic: imgSrc('sushi_items', 'salmon_egg'),
-    },
+    },    
     {
       name: 'Красный окунь (запеченный)',
-      price: '70',
+      price: '80',
       pic: imgSrc('sushi_items', 'hot'),
     },
     {
       name: 'Креветка (запеченная)',
-      price: '110',
+      price: '120',
       pic: imgSrc('sushi_items', 'hot'),
     },
     {
       name: 'Краб (запеченный)',
-      price: '140',
+      price: '150',
       pic: imgSrc('sushi_items', 'hot'),
     },
     {
@@ -101,7 +96,7 @@ export const sushiState: {
     },
     {
       name: 'Тунец (запеченный)',
-      price: '90',
+      price: '100',
       pic: imgSrc('sushi_items', 'hot'),
     },
     {
@@ -121,22 +116,22 @@ export const sushiState: {
     },
     {
       name: 'Лосось (острый)',
-      price: '130',
+      price: '150',
       pic: imgSrc('sushi_items', 'spicy'),
     },
     {
       name: 'Гребешок (острый)',
-      price: '110',
+      price: '120',
       pic: imgSrc('sushi_items', 'spicy'),
     },
     {
       name: 'Креветки (острые)',
-      price: '90',
+      price: '100',
       pic: imgSrc('sushi_items', 'spicy'),
     },
     {
       name: 'Угорь (острый)',
-      price: '110',
+      price: '130',
       pic: imgSrc('sushi_items', 'spicy'),
     },
     {
@@ -150,7 +145,7 @@ export const sushiState: {
       name: 'Сет «Запечённые суши»',
       recipe:
         'Запеч. лосось (2 шт.), запеч. краб (2 шт.), запеч. угорь (2 шт.), запеч. креветки (2 шт.), ролл "Горячий Макс"',
-      price: '1780',
+      price: '1830',
       pic: imgSrc('sets', 'hot'),
     },
     {
@@ -165,14 +160,14 @@ export const sushiState: {
       name: 'Сет «Горячая Япония»',
       recipe:
         'Ролл "Каникама", ролл "Майами", ролл "Запечённый Муругай", ролл "Запечённый Изуми тай"',
-      price: '990',
+      price: '1200',
       pic: imgSrc('sets', 'japan'),
     },
     {
       name: 'Сет «Макси»',
       recipe:
         'Ролл "Темпура Лайт", ролл "Бансай", ролл "Запечённый Муругай", ролл "Сливочный Кани Маки", ролл "Калифорния с креветкой"',
-      price: '1100',
+      price: '1390',
       pic: imgSrc('sets', 'maxi'),
     },
   ],
@@ -181,52 +176,52 @@ export const sushiState: {
       name: 'Фуджияма',
       recipe:
         'Рис, нори, острый краб, лосось, огурец, лимон имбирь маринованый, кунжут',
-      price: '1000',
+      price: '970',
       pic: imgSrc('brand', 'fuji'),
     },
     {
       name: 'Филадельфия',
       recipe:
         'Рис, нори, огурец, икра тобико, сыр сливочный, лосось, кунжут, лимон',
-      price: '670',
+      price: '770',
       pic: imgSrc('brand', 'fila'),
     },
     {
       name: 'Ассорти',
       recipe:
         'Рис, нори, сыр сливочный, огурец, лосось, кальмар, креветка, угорь, тунец, унаги, окунь',
-      price: '450',
+      price: '570',
       pic: imgSrc('brand', 'assorti'),
     },
     {
       name: 'Дракон',
       recipe: 'Рис, нори, краб, авокадо, огурец, угорь, кунжут, унаги',
-      price: '1350',
+      price: '1400',
       pic: imgSrc('brand', 'dragon'),
     },
     {
       name: 'Ночной Токио (без риса)',
       recipe: 'Авокадо, огурец, икра тобико, лосось, краб, лимон',
-      price: '1100',
+      price: '1030',
       pic: imgSrc('brand', 'tokyo'),
     },
     {
       name: 'Бостон',
       recipe: 'Рис, нори, острый лосось, огурец, авокадо, краб',
-      price: '750',
+      price: '670',
       pic: imgSrc('brand', 'boston'),
     },
 
     {
       name: 'Тоттори',
       recipe: 'Рис, нори, сыр сливочный, краб, креветка темпура, кунжут',
-      price: '490',
+      price: '590',
       pic: imgSrc('brand', 'tottori'),
     },
     {
       name: 'Эби',
       recipe: 'Рис, нори, соус масаго, креветка темпура',
-      price: '280',
+      price: '320',
       pic: imgSrc('brand', 'ebi'),
     },
     {
@@ -238,7 +233,7 @@ export const sushiState: {
     {
       name: 'Ролл с лососем',
       recipe: 'Рис, нори, лосось',
-      price: '280',
+      price: '330',
       pic: imgSrc('brand', 'salmon'),
     },
   ],
@@ -247,7 +242,7 @@ export const sushiState: {
       name: 'Иватэ (без риса)',
       recipe:
         'Тунец, окунь, краб, лосось, гребешок, соус масаго, кунжут, унаги',
-      price: '1090',
+      price: '1000',
       pic: imgSrc('hot', 'ivate'),
     },
 
@@ -255,7 +250,7 @@ export const sushiState: {
       name: 'Запеченный Шиитаке',
       recipe:
         'Рис, нори, шиитаке, сыр сливочный, гребешок, лосось, масаго, кунжут, унаги',
-      price: '420',
+      price: '480',
       pic: imgSrc('hot', 'sheetake'),
     },
     {
@@ -268,46 +263,46 @@ export const sushiState: {
     {
       name: 'Горячий Макс',
       recipe: 'Рис, нори, лосось, угорь, краб, соус масаго, кунжут, унаги',
-      price: '700',
+      price: '750',
       pic: imgSrc('hot', 'maks'),
     },
     {
       name: 'Хаус',
       recipe:
         'Рис, нори, лосось, тунец, паприка, острый краб, икра тобико, унаги',
-      price: '620',
+      price: '600',
       pic: imgSrc('hot', 'house'),
     },
     {
       name: 'Аканасу',
       recipe: 'Рис, нори, сыр сливочный, томаты, лосось кунжут, унаги',
-      price: '410',
+      price: '460',
       pic: imgSrc('hot', 'akanasu'),
     },
     {
       name: 'Сегун',
       recipe: 'Рис, нори, сыр сливочный, омлет, лосось, соус масаго',
-      price: '550',
+      price: '600',
       pic: imgSrc('hot', 'segun'),
     },
     {
       name: 'Запечённый Изуми Тай',
       recipe:
         'Рис, нори, сыр сливочный, окунь, соус масаго, соус унаги, кунжут',
-      price: '250',
+      price: '300',
       pic: imgSrc('hot', 'izumi_tai'),
     },
     {
       name: 'Запечённый Каникама',
       recipe: 'Рис, нори, сыр сливочный, снежный краб, соус масаго',
-      price: '250',
+      price: '300',
       pic: imgSrc('hot', 'kanikama'),
     },
     {
       name: 'Запечённый Муругай',
       recipe:
         'Рис, нори, сыр сливочный, икра масаго, японский омлет, соус масаго, мидии, соус унаги, паприка',
-      price: '270',
+      price: '320',
       pic: imgSrc('hot', 'murugai'),
     },
 
@@ -315,14 +310,14 @@ export const sushiState: {
       name: 'Red Hot',
       recipe:
         'Рис, нори, креветка, сыр сливочный, икра тобико, угорь, соус спайси',
-      price: '570',
+      price: '640',
       pic: imgSrc('hot', 'red_hot'),
     },
     {
       name: 'Запечённый лосось',
       recipe:
         'Рис, нори, икра масаго, снежный краб, помидор, лосось, соус спайси',
-      price: '440',
+      price: '490',
       pic: imgSrc('hot', 'salmon'),
     },
 
@@ -330,27 +325,27 @@ export const sushiState: {
       name: 'Датэмаки с окунем',
       recipe:
         'Рис, нори, окунь, соус спайси, сыр сливочный, японский омлет, огурец, кунжут, унаги',
-      price: '270',
+      price: '330',
       pic: imgSrc('hot', 'datemaki'),
     },
     {
       name: 'Запечённый Канраки',
       recipe:
         'Рис, нори, кунжит, сыр сливочный, кинза, окунь, соус масаго, сыр, унаги',
-      price: '310',
+      price: '370',
       pic: imgSrc('hot', 'kanraki'),
     },
     {
       name: 'Запеченный тунец',
       recipe:
         'Рис, нори, сыр сливочный, кунжут, японский омлет, соус спайси, чернила каракатицы, тунец',
-      price: '270',
+      price: '310',
       pic: imgSrc('hot', 'tuna'),
     },
     {
       name: 'Запечённый Майами',
       recipe: 'Соус масаго, сыр сливочный, креветка, кунжут',
-      price: '290',
+      price: '350',
       pic: imgSrc('hot', 'miami'),
     },
   ],
@@ -358,75 +353,75 @@ export const sushiState: {
     {
       name: 'Монако',
       recipe: 'Рис, нори, японский омлет, сыр сливочный, икра масаго',
-      price: '220',
+      price: '240',
       pic: imgSrc('rolls', 'monako'),
     },
     {
       name: 'Темпура Лайт',
       recipe: 'Рис, нори, сыр сливочный, помидоры, соус унаги, тесто темпура',
-      price: '160',
+      price: '200',
       pic: imgSrc('rolls', 'tempura_light'),
     },
     {
       name: 'Фиеста',
       recipe: 'Рис, нори, снежный краб, огурцы, икра масаго, сыр сливочный',
-      price: '250',
+      price: '290',
       pic: imgSrc('rolls', 'fiesta'),
     },
 
     {
       name: 'Тай',
       recipe: 'Рис, нори, сыр сливочный, окунь красный, соус масаго, кунжут',
-      price: '270',
+      price: '320',
       pic: imgSrc('rolls', 'tai'),
     },
     {
       name: 'Калифорния',
       recipe: 'Рис, нори, краб, соус масаго, огурец, авокадо, кунжут',
-      price: '450',
+      price: '420',
       pic: imgSrc('rolls', 'cali'),
     },
     {
       name: 'Калифорния - тобико',
       recipe: 'Рис, нори, соус масаго, краб, икра тобико, огурец, авокадо',
-      price: '520',
+      price: '470',
       pic: imgSrc('rolls', 'cali_tobiko'),
     },
     {
       name: 'Сливочный Кани Маки',
       recipe:
         'Рис, нори, сыр сливочный, снежный краб, соус масаго, огурец, икра масаго, кунжут',
-      price: '250',
+      price: '290',
       pic: imgSrc('rolls', 'kani_maki'),
     },
     {
       name: 'Теплая Филадельфия',
       recipe: 'Рис, нори, сыр сливочный, икра тобико, лосось, унаги',
-      price: '670',
+      price: '770',
       pic: imgSrc('rolls', 'hot_fila'),
     },
     {
       name: 'Калифорния с креветкой',
       recipe: 'Рис, нори, сыр сливочный, креветка, огурец, кунжут',
-      price: '290',
+      price: '350',
       pic: imgSrc('rolls', 'cali_shrimp'),
     },
     {
       name: 'Бансай',
       recipe: 'Рис, нори, сыр сливочный, огурец, бекон, соус унаги',
-      price: '250',
+      price: '290',
       pic: imgSrc('rolls', 'bansai'),
     },
     {
       name: 'Текка',
       recipe: 'Рис, нори, тунец',
-      price: '230',
+      price: '250',
       pic: imgSrc('rolls', 'tekka'),
     },
     {
       name: 'Ролл с кальмаром',
       recipe: 'Рис, нори, кальмар, унаги, кунжут',
-      price: '200',
+      price: '220',
       pic: imgSrc('rolls', 'squid'),
     },
   ],
@@ -435,58 +430,58 @@ export const sushiState: {
       name: 'Филадельфия мини',
       recipe:
         'Рис, нори, огурец, икра тобико, сыр сливочный, лосось, кунжут, лимон',
-      price: '390',
+      price: '460',
       pic: imgSrc('mini', 'fila'),
     },
     {
       name: 'Ассорти мини',
       recipe:
         'Рис, нори, сыр сливочный, огурец, лосось, креветка, тунец, унаги, окунь',
-      price: '300',
+      price: '380',
       pic: imgSrc('mini', 'assorti'),
     },
     {
       name: 'Иватэ мини (без риса)',
       recipe:
         'Тунец, окунь, краб, лосось, гребешок, соус масаго, кунжут, унаги',
-      price: '580',
+      price: '650',
       pic: imgSrc('mini', 'ivate'),
     },
     {
       name: 'Горячий Макс мини',
       recipe: 'Рис, нори, лосось, угорь, краб, соус масаго, кунжут, унаги',
-      price: '440',
+      price: '470',
       pic: imgSrc('mini', 'maks'),
     },
     {
       name: 'Темпура мини',
       recipe:
         'Рис, нори, сыр сливочный, лосось, кинза, тесто темпура, панко, унаги, сливочный соус',
-      price: '360',
+      price: '380',
       pic: imgSrc('mini', 'tempura'),
     },
   ],
   green: [
     {
       name: 'Ролл "Айсберг"',
-      price: '170',
+      price: '250',
       pic: imgSrc('green', 'iceberg'),
     },
     {
       name: 'Ролл с огурцом',
-      price: '100',
+      price: '120',
       pic: imgSrc('green', 'cucumber'),
     },
     {
       name: 'Ролл с авокадо',
-      price: '140',
+      price: '180',
       pic: imgSrc('green', 'avocado'),
     },
     {
       name: '"Темпура Хенд"',
       recipe:
         'Рис, нори, паприка, томаты, сыр сливочный, тесто темпура, панко, унаги',
-      price: '200',
+      price: '250',
       pic: imgSrc('green', 'hend'),
     },
   ],
@@ -495,13 +490,13 @@ export const sushiState: {
       name: 'Кавати',
       recipe:
         'Рис, соевый лист, краб, соус масаго, огурец, сыр сливочный, кунжут',
-      price: '410',
+      price: '380',
       pic: imgSrc('colored', 'kavati'),
     },
     {
       name: 'Овари',
       recipe: 'Рис, соевый лист, лосось, сыр сливочный, айсберг, лимон',
-      price: '480',
+      price: '510',
       pic: imgSrc('colored', 'ovari'),
     },
     {
@@ -522,7 +517,7 @@ export const sushiState: {
       name: 'Наггетсы с картофелем фри',
       recipe:
         'Куриная грудка в панировке, огурец, помидоры черри, кетчуп, картофель фри',
-      price: '350',
+      price: '370',
       pic: imgSrc('child', 'naggets'),
     },
     {
@@ -534,7 +529,7 @@ export const sushiState: {
     {
       name: 'Овощные палочки',
       recipe: 'Огурец, перец болгарский, морковь, сметана',
-      price: '220',
+      price: '130',
       pic: imgSrc('general', 'hot_dish_general'),
     },
   ],
@@ -543,7 +538,7 @@ export const sushiState: {
       name: 'Шеф салат',
       recipe:
         'Говядина, айсберг, томаты, паприка, руккола, кинза, чеснок, оливковое масло, винный уксус',
-      price: '540',
+      price: '570',
       pic: imgSrc('salads', 'chef'),
     },
 
@@ -551,7 +546,7 @@ export const sushiState: {
       name: 'Салат из жаренного авокадо и лосося',
       recipe:
         'Айсберг, руккола, помидоры черри, авокадо, лосось, лимон, соус дресинг, кунжут',
-      price: '880',
+      price: '900',
       pic: imgSrc('salads', 'hot_avocado'),
     },
 
@@ -559,7 +554,7 @@ export const sushiState: {
       name: 'Салат «Цезарь» с курицей',
       recipe:
         'Айсберг, помидоры черри, куриная грудка, сыр пармезан, сухари, соус цезарь',
-      price: '400',
+      price: '420',
       pic: imgSrc('salads', 'cesar_chicken'),
     },
 
@@ -567,7 +562,7 @@ export const sushiState: {
       name: 'Салат «Цезарь» с креветкой',
       recipe:
         'Айсберг, помидоры черри, креветки, сыр пармезан, сухари, соус цезарь',
-      price: '500',
+      price: '530',
       pic: imgSrc('salads', 'cesar_shrimp'),
     },
 
@@ -575,7 +570,7 @@ export const sushiState: {
       name: 'Салат с угрем',
       recipe:
         'Угорь, помидоры свежие, баклажаны,сливочный сыр, соус кисло-сладкий, кинза, кунжут',
-      price: '510',
+      price: '550',
       pic: imgSrc('general', 'salad_general'),
     },
 
@@ -590,7 +585,7 @@ export const sushiState: {
       name: 'Салат с жареным баклажаном',
       recipe:
         'Баклажаны, помидоры свежие, сыр Фета, кинза, соус кисло-сладкий Чили, кунжут',
-      price: '320',
+      price: '380',
       pic: imgSrc('general', 'salad_general'),
     },
   ],
@@ -599,7 +594,7 @@ export const sushiState: {
       name: 'Ясай',
       recipe:
         'Говядина, грибы шиитаке, лук порей, тофу, рисовая лапша, специи тогораши, бульон Суимоно',
-      price: '330',
+      price: '350',
       pic: imgSrc('soups', 'yasai'),
     },
     {
@@ -607,21 +602,7 @@ export const sushiState: {
       recipe: 'Бульон, лук порей, тофу, водоросли вакеме, кунжут',
       price: '180',
       pic: imgSrc('soups', 'miso'),
-    },
-    {
-      name: 'Уха по-фински',
-      recipe:
-        'Бульон Суимоно, картофель, лосось, сливки, зелень, лук порей, черри',
-      price: '470',
-      pic: imgSrc('general', 'soup_general'),
-    },
-
-    {
-      name: 'Крабовый суп',
-      recipe: 'Бульон Суимоно, краб, рис, яйцо куриное, лук порей, нори',
-      price: '600',
-      pic: imgSrc('soups', 'krab'),
-    },
+    },  
 
     {
       name: 'Кимчи',
@@ -635,21 +616,21 @@ export const sushiState: {
       name: 'Суп Том Ям',
       recipe:
         'Бульон куриный, паста Том Ям, рис, черри, мидии, шампиньоны, креветка, кальмар, лемонграсс, масло кунжутное, листья лайма, сливки, корень Галангала, кинза, лайм, кунжут',
-      price: '480',
+      price: '570',
       pic: imgSrc('general', 'soup_general'),
     },
 
     {
       name: 'Сливочный суп с лососем',
       recipe: 'Бульон Суимоно, рис, лосось, сливки, зелень',
-      price: '420',
+      price: '490',
       pic: imgSrc('soups', 'cs_ell'),
     },
 
     {
       name: 'Крем-суп грибной',
       recipe: 'Шампиньоны, лук, сливки, кунжутное масло',
-      price: '280',
+      price: '310',
       pic: imgSrc('soups', 'cs_mushrooms'),
     },
   ],
@@ -657,31 +638,31 @@ export const sushiState: {
     {
       name: 'Мидии запечённые',
       recipe: 'Мидии, соус масаго, лимон, соус Унаги, кунжут',
-      price: '420',
+      price: '430',
       pic: imgSrc('hot_dishes', 'midii'),
     },
     {
       name: 'Японские пельмени с креветками (8 шт)',
       recipe: 'Тесто Гедза, креветка, соевый соус, кунжут',
-      price: '680',
+      price: '700',
       pic: imgSrc('hot_dishes', 'pelmeni'),
     },
     {
       name: 'Креветки Темпура',
       recipe: 'Тесто темпура, креветка, соус соевый, имбирь',
-      price: '410',
+      price: '500',
       pic: imgSrc('hot_dishes', 'tempura'),
     },
     {
       name: 'Кольца кальмара Темпура',
       recipe: 'Тесто темпура, кальмар, соус соевый, имбирь',
-      price: '350',
+      price: '390',
       pic: imgSrc('hot_dishes', 'tempura'),
     },
     {
       name: 'Шашлычки из тигровых креветок',
       recipe: 'Креветки, соус терияки, кунжут',
-      price: '530',
+      price: '590',
       pic: imgSrc('hot_dishes', 'yaki_shrimps'),
     },
     {
@@ -693,14 +674,14 @@ export const sushiState: {
     {
       name: 'Куриные шашлычки «Якитори»',
       recipe: 'Куриное бедро филе, соус терияки, кунжут',
-      price: '280',
+      price: '300',
       pic: imgSrc('hot_dishes', 'yaki_chicken'),
     },
     {
       name: 'Сырная тарелка',
       recipe:
         'Сыр пармезан, сыр фета, сыр филадельфия, орехи грецкие, сыр косичка копченая, мед',
-      price: '400',
+      price: '550',
       pic: imgSrc('general', 'hot_dish_general'),
     },
     {
@@ -714,7 +695,7 @@ export const sushiState: {
       name: 'Поке с тунцом',
       recipe:
         'Рис, тунец, соус ореховый, огурцы свежие, салат Чука, Дайкон маринованный, кунжут, бобы Эдомаме, икра масаго, соус дресинг, лимон, кунжутное масло',
-      price: '370',
+      price: '380',
       pic: imgSrc('general', 'hot_dish_general'),
     },
     {
@@ -733,30 +714,30 @@ export const sushiState: {
   ],
   hot_dishes: [
     {
-      name: 'Говядина с тушёнными овощами',
+      name: 'Пибимпап с говядиной',
       recipe:
-        'Говядина, масло кунжутное, шиитаки, нори соус терияки, соус ланч кинг, рис, айсберг, морковь маринованная, кунжут, яйцо куриное',
-      price: '600',
+        'Говядина, масло кунжутное, соус тереяки, соус ланч кинг, шиитаки, рис, айсберг, яйцо, куриное, морковь маринованная, кунжут, нори',
+      price: '640',
       pic: imgSrc('hot_dishes', 'govyad'),
     },
     {
       name: 'Стейк из красной рыбы с овощами гриль',
       recipe:
         'Лосось, баклажаныя, кабачки, перец болгарский, помидоры свежие, шампиньоны, кунжут, лимон',
-      price: '1150',
+      price: '1180',
       pic: imgSrc('general', 'hot_dish_general'),
     },
     {
       name: 'Лапша «5 ароматов»',
       recipe:
         'Лапша удон, свинина, айсберг, перец болгарский, соус терияки, соус ланч кинг,паста кимчи, зелёный лук, морские водоросли, кунжут, кунжутное масло',
-      price: '360',
+      price: '370',
       pic: imgSrc('hot_dishes', 'lapsha_5'),
     },
     {
-      name: 'Рис с курицей и овощами',
+      name: 'Пибимпап с курицей',
       recipe:
-        'Филе куриного бедра, рис, айсберг, шиитаки, соус терияки, соус ланч кинг, морковь маринованная, яйцо куриное, нори, кунжут, масло кунжутное',
+        'Филе куриного бедра, рис, соус тереяки, соус ланч кинг, айсберг, нори, шиитаки, морковь маринованная, яйцо куриное, кунжут, масло кунжутное',
       price: '360',
       pic: imgSrc('hot_dishes', 'rise'),
     },
@@ -764,40 +745,40 @@ export const sushiState: {
       name: 'Шницель в соусе тонкацу',
       recipe:
         'Свинина в панировке, соус тонкацу, помидоры черри, картофель бэби',
-      price: '350',
+      price: '370',
       pic: imgSrc('hot_dishes', 'shnitzel_tonk'),
     },
     {
-      name: 'Морской окунь с тушёными овощами в сливочном соусе',
+      name: 'Морской окунь на подушке из шпината',
       recipe:
         'Окунь, цукини, шпинат, сыр с плесенью, черри, сливки, лимон, кунжут',
-      price: '640',
+      price: '800',
       pic: imgSrc('hot_dishes', 'okyn'),
     },
     {
       name: 'Куриная грудка в сливочном соусе',
       recipe: 'Куриная грудка, болгарский перец, сливки, черри, кунжут',
-      price: '350',
+      price: '430',
       pic: imgSrc('hot_dishes', 'chicken_sause'),
     },
     {
       name: 'Свинина гриль с грибным соусом',
       recipe:
         'Свинина, баклажаны, цукини, шиитаке, паприка, черри, сливки, соус тонкацу, кунжут',
-      price: '600',
+      price: '670',
       pic: imgSrc('hot_dishes', 'pig_grill'),
     },
     {
       name: 'Шницель куриный',
       recipe:
         'Куриная грудка в панировке, помидоры черри, картофель бэби, соус тонкацу',
-      price: '350',
+      price: '370',
       pic: imgSrc('hot_dishes', 'chicken_shnitzel'),
     },
     {
       name: 'Лапша Хурасами',
       recipe: 'Рисовая лапша, лосось, шиитаки, соус терияки, лимон, кунжут',
-      price: '790',
+      price: '810',
       pic: imgSrc('hot_dishes', 'hurasami'),
     },
 
@@ -805,21 +786,21 @@ export const sushiState: {
       name: 'Тайская лапша с говядиной',
       recipe:
         'Яичная лапша, говядина, цукини, зеленый лук, соус терияки, соус к/с Чили, перец болгарский, кунжут',
-      price: '360',
+      price: '400',
       pic: imgSrc('hot_dishes', 'lapsha'),
     },
     {
       name: 'Тайская лапша со свининой',
       recipe:
         'Яичная лапша, свинина, цукини, зеленый лук, соус терияки, соус к/с Чили, перец болгарский, кунжут',
-      price: '320',
+      price: '350',
       pic: imgSrc('hot_dishes', 'lapsha'),
     },
     {
       name: 'Тайская лапша с курицей',
       recipe:
         'Яичная лапша, курица, цукини, зеленый лук, соус терияки, соус к/с Чили, перец болгарский, кунжут',
-      price: '320',
+      price: '350',
       pic: imgSrc('hot_dishes', 'lapsha'),
     },
   ],
@@ -835,18 +816,12 @@ export const sushiState: {
       recipe: 'Тесто, сыр сулугуни, перец черный, масло сливочное',
       price: '80',
       pic: imgSrc('gruzia', 'hinkali'),
-    },
-    {
-      name: 'Гранд Равиоли (1шт.)',
-      recipe: 'Тесто, красная рыба, сливки, лук, чесночно-сметанный соус',
-      price: '150',
-      pic: imgSrc('gruzia', 'raviolli'),
-    },
+    },    
     {
       name: 'Солянка по-грузински',
       recipe:
         'Говядина, лук, томат, бульон, кинза, специи, красный лук, чеснок',
-      price: '590',
+      price: '650',
       pic: imgSrc('gruzia', 'soup'),
     },
     {
@@ -861,7 +836,6 @@ export const sushiState: {
       price: '430',
       pic: imgSrc('gruzia', 'adja'),
     },
-
     {
       name: 'Чебурек с сыром',
       recipe: 'Тесто, сыр сулугуни',
@@ -879,27 +853,27 @@ export const sushiState: {
     {
       name: 'Курица с грибами',
       recipe:
-        'Тесто, соус сливочный, шампиньоны, куриная грудка, моцарела, корнишоны',
-      price: '580',
+        'Тесто, соус сливочный, шампиньоны, куриная грудка, моцарела, корнишоны, орегано',
+      price: '600',
       pic: imgSrc('pizza', 'chicken'),
     },
     {
       name: 'Пепперони',
-      recipe: 'Тесто, соус для пиццы, моцарела, колбаса пеперони, оливки',
-      price: '580',
+      recipe: 'Тесто, соус для пиццы, моцарела, колбаса пеперони, маслины, орегано',
+      price: '600',
       pic: imgSrc('pizza', 'pepperoni'),
     },
     {
       name: 'Карбонара',
       recipe:
-        'Тесто, соус сливочный, моцарела, черри, пармезан, сливки, куриное яйцо, бекон',
-      price: '680',
+        'Тесто, соус сливочный, моцарела, черри, пармезан, сливки, куриное яйцо, бекон, орегано',
+      price: '690',
       pic: imgSrc('pizza', 'karbonara'),
     },
     {
       name: 'Маргарита',
-      recipe: 'Тесто, соус для пиццы, моцарелла, помидоры свежие',
-      price: '580',
+      recipe: 'Тесто, соус для пиццы, моцарелла, помидоры свежие, орегано',
+      price: '600',
       pic: imgSrc('pizza', 'margarita'),
     },
   ],
@@ -911,17 +885,17 @@ export const sushiState: {
     },
     {
       name: 'Яблоки темпура с мороженым',
-      price: '350',
+      price: '390',
       pic: imgSrc('dessert', 'apples'),
     },
     {
       name: 'Японские пельмени с яблоком и корицей (5 шт.)',
-      price: '320',
+      price: '330',
       pic: imgSrc('dessert', 'pelmeni'),
     },
     {
       name: 'Японские пельмени с персиком и тофу (5 шт.)',
-      price: '370',
+      price: '420',
       pic: imgSrc('dessert', 'pelmeni'),
     },
     {
@@ -932,16 +906,16 @@ export const sushiState: {
     {
       name: 'Фруктовая тарелка',
       recipe: 'Апельсин, яблоко, груша, банан, киви',
-      price: '330',
+      price: '480',
       pic: imgSrc('dessert', 'fruits'),
     },
     {
       name: 'Японские блинчики с Филадельфией и апельсиновым соусом',
-      price: '250',
+      price: '300',
       pic: imgSrc('dessert', 'j_pancakes'),
     },
     {
-      name: 'Блинчики с топпингом/сметаной на выбор',
+      name: 'Блинчики',
       price: '120',
       pic: imgSrc('dessert', 'pancakes'),
     },
@@ -960,12 +934,12 @@ export const sushiState: {
     },
     {
       name: 'Картофель айдахо',
-      price: '140',
+      price: '160',
       pic: imgSrc('garnish', 'aidaho'),
     },
     {
       name: 'Картофель фри',
-      price: '120',
+      price: '130',
       pic: imgSrc('garnish', 'fri'),
     },
     {
@@ -975,7 +949,7 @@ export const sushiState: {
     },
     {
       name: 'Имбирь',
-      price: '50',
+      price: '60',
       pic: imgSrc('garnish', 'imbir'),
     },
     {
@@ -1002,6 +976,11 @@ export const sushiState: {
     {
       name: 'Топпинг',
       price: '40',
+      pic: imgSrc('garnish', 'sauce'),
+    },
+    {
+      name: 'Сгущенное молоко',
+      price: '50',
       pic: imgSrc('garnish', 'sauce'),
     },
     {
