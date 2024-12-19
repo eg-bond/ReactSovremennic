@@ -6,7 +6,7 @@ import { useAppSelector } from '../../REDUX/store';
 import { SushiWork } from '../../Template/SushiWork';
 
 function IndexContent({ isMobile }: { isMobile: boolean }) {
-  const { siteMode } = useAppSelector(state => state.special);
+  const { siteMode } = useAppSelector(state => state.special);  
 
   return (
     <div className='content__gridLeftItem--3fr contentMT'>
@@ -16,7 +16,7 @@ function IndexContent({ isMobile }: { isMobile: boolean }) {
 
           <div className='embed-responsive'>
             <LiteYouTubeEmbed
-              id='w0_-Pt6OExA'
+              id='XeBf3iElDqw'
               title='index_trailer'
               poster='maxresdefault'
             />
