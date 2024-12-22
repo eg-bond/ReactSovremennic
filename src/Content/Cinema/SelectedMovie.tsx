@@ -16,15 +16,11 @@ const SelectedMovie = memo<{
   return (
     <div className='content__gridLeftItem--3fr contentMT'>
       <div className='selectedMovie'>
-        {/* {fontSize !== '26px' && (
-          <FilmImg link={filmItem.link} title={filmItem.title} />
-        )} */}
         <FilmImg link={filmItem.link} title={filmItem.title} />
         <div className={gridClass}>
           <div className='selectedMovie__title'>
             <h2>{filmItem['title']}</h2>
             <p>Смотрите {`${filmItem['beginDate']} ${filmItem['endDate']}`}</p>
-            {filmItem['extra'] && <p>{filmItem['extra']}</p>}
           </div>
           <table className='selectedMovie__table'>
             <tbody>

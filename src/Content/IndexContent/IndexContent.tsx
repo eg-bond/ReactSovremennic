@@ -6,7 +6,7 @@ import { useAppSelector } from '../../REDUX/store';
 import { SushiWork } from '../../Template/SushiWork';
 
 function IndexContent({ isMobile }: { isMobile: boolean }) {
-  const { siteMode } = useAppSelector(state => state.special);  
+  const { siteMode } = useAppSelector(state => state.special);
 
   return (
     <div className='content__gridLeftItem--3fr contentMT'>
@@ -15,11 +15,11 @@ function IndexContent({ isMobile }: { isMobile: boolean }) {
           {isMobile && <h4>Трейлеры</h4>}
 
           <div className='embed-responsive'>
-            <LiteYouTubeEmbed
-              id='XeBf3iElDqw'
-              title='index_trailer'
-              poster='maxresdefault'
-            />
+            <iframe
+              src={`https://vkvideo.ru/video_ext.php?oid=-215783732&id=456240278`}
+              width='640'
+              height='360'
+              allow='encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;'></iframe>
           </div>
         </div>
       )}

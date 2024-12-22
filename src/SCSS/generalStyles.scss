@@ -259,8 +259,14 @@ $backImgHeight992: 213px;
   border-radius: $imagesBR;
   overflow: hidden;
   margin-bottom: 2%;
+  width: 100%;
+  padding-top: 55%;
+  // @media #{$mediaQuery992} {
+  //   height: 500px;
+  // }
   @media #{$mediaQueryMobile} {
     margin-bottom: 3%;
+    // height: 55vw;
   }
 }
 .embed-responsive .embed-responsive-item,

@@ -54,7 +54,7 @@ function About() {
         <p>Адрес: г. Сосновый Бор, ул. Комсомольская д.1 </p>
 
         {siteMode === 'default' && (
-          <div className='embed-responsive embed-responsive-16by9'>
+          <div className='embed-responsive'>
             <iframe
               src='https://yandex.ru/map-widget/v1/?um=constructor%3Ab3cf16ca0bc3eed0838b34be9c0607866b4c270427026b7fe0dd14ef4096116b&amp;source=constructor'
               width='769'
