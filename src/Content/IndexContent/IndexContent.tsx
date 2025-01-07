@@ -1,9 +1,9 @@
 import IndexAdvXS from '../../Template/IndexAdvXS';
 import { Link } from 'react-router-dom';
-import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 import BarSlider from '../../Template/BarSlider';
 import { useAppSelector } from '../../REDUX/store';
 import { SushiWork } from '../../Template/SushiWork';
+import { convertVideoId } from '@/utils/convertVideoId';
 
 function IndexContent({ isMobile }: { isMobile: boolean }) {
   const { siteMode } = useAppSelector(state => state.special);
@@ -16,7 +16,9 @@ function IndexContent({ isMobile }: { isMobile: boolean }) {
 
           <div className='embed-responsive'>
             <iframe
-              src={`https://vkvideo.ru/video_ext.php?oid=-215783732&id=456240278`}
+              src={`https://vkvideo.ru/video_ext.php?oid=-${convertVideoId(
+                '218182715_456240443'
+              )}`}
               width='640'
               height='360'
               allow='encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;'></iframe>
