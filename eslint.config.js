@@ -7,9 +7,22 @@ import stylistic from '@stylistic/eslint-plugin';
 import newLineDest from 'eslint-plugin-newline-destructuring';
 import html from '@html-eslint/eslint-plugin';
 import parser from '@html-eslint/parser';
+import json from '@eslint/json';
 
 export default tseslint.config(
-  { ignores: ['dist'] },
+  { ignores: ['dist', 'yarn.lock'] },
+  // config for JSON files
+  {
+    ...json.configs.recommended,
+    files: ['**/*.json'],
+    plugins: {
+      json,
+    },
+    language: 'json/json',
+    rules: {
+      'json/no-duplicate-keys': 'error',
+    },
+  },
   // Config for HTML files
   {
     ...html.configs['flat/recommended'],
@@ -49,7 +62,7 @@ export default tseslint.config(
     files: ['**/*.{ts,tsx}', 'eslint.config.js'],
     languageOptions: {
       ecmaVersion: 2020,
-      // globals: globals.browser,
+      globals: globals.browser,
     },
     plugins: {
       'react-hooks': reactHooks,
