@@ -1,15 +1,15 @@
-import { memo } from 'react'
-import { Link } from 'react-router-dom'
-import { scrollToTop } from '../helpers'
+import { memo } from 'react';
+import { Link } from 'react-router-dom';
+import { scrollToTop } from '../helpers';
 
 const Footer = memo(function Footer() {
   return (
-    <div className='footer container'>
-      <Link className='footer__a' onClick={scrollToTop} to='/'>
+    <div className="footer container">
+      <Link className="footer__a" to="/" onClick={scrollToTop}>
         Кинотеатр «Современник» © 2005 - 2023
       </Link>
     </div>
-  )
-})
+  );
+});
 
-export default Footer
+export default Footer;

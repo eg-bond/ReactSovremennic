@@ -1,13 +1,14 @@
 import js from '@eslint/js';
 import globals from 'globals';
+import json from '@eslint/json';
+import parser from '@html-eslint/parser';
+import tseslint from 'typescript-eslint';
+import html from '@html-eslint/eslint-plugin';
+import stylistic from '@stylistic/eslint-plugin';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
-import tseslint from 'typescript-eslint';
-import stylistic from '@stylistic/eslint-plugin';
+import perfectionist from 'eslint-plugin-perfectionist';
 import newLineDest from 'eslint-plugin-newline-destructuring';
-import html from '@html-eslint/eslint-plugin';
-import parser from '@html-eslint/parser';
-import json from '@eslint/json';
 
 export default tseslint.config(
   { ignores: ['dist', 'yarn.lock', 'coverage'] },
@@ -43,7 +44,7 @@ export default tseslint.config(
       '@html-eslint/require-closing-tags': ['error', { selfClosing: 'always' }],
     },
   },
-  // Config for TS files
+  // Config for JS and TS files
   {
     extends: [
       stylistic.configs.customize({
@@ -59,12 +60,13 @@ export default tseslint.config(
       js.configs.recommended,
       ...tseslint.configs.recommended,
     ],
-    files: ['**/*.{ts,tsx}', 'eslint.config.js'],
+    files: ['**/*.{js,mjs,ts,tsx}', 'eslint.config.js', 'App.tsx'],
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
     },
     plugins: {
+      perfectionist,
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
       '@stylistic': stylistic,
@@ -75,6 +77,52 @@ export default tseslint.config(
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
+      ],
+      // sorting with perfectionist plugin ---------------------------------
+      'perfectionist/sort-imports': [
+        'error',
+        {
+          type: 'line-length',
+          newlinesBetween: 'never',
+          groups: [
+            ['builtin', 'external'],
+            // ['parent', 'sibling', 'index'],
+            'object',
+            'unknown',
+            'type',
+            'style',
+          ],
+          environment: 'node',
+        },
+      ],
+      'perfectionist/sort-interfaces': [
+        'error',
+        {
+          type: 'alphabetical',
+          newlinesBetween: 'never',
+        },
+      ],
+      'perfectionist/sort-object-types': [
+        'error',
+        {
+          type: 'alphabetical',
+          newlinesBetween: 'never',
+        },
+      ],
+      'perfectionist/sort-jsx-props': [
+        'error',
+        {
+          type: 'alphabetical',
+          groups: [
+            'shorthand',
+            'multiline',
+            'unknown',
+            'callback',
+          ],
+          customGroups: {
+            callback: '^on.+',
+          },
+        },
       ],
       // Semicolons -----------------------------------------------------
       '@stylistic/no-extra-semi': 'error',

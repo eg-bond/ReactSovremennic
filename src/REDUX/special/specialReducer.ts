@@ -1,12 +1,12 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import type { SpecialStateT } from './specialReducerT'
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import type { SpecialStateT } from './specialReducerT';
 
 const initialState: SpecialStateT = {
   siteMode: 'default',
   theme: 'blackWhite',
   fontSize: '14px',
   imgHidden: false,
-}
+};
 
 const specialSlice = createSlice({
   name: 'special',
@@ -15,48 +15,48 @@ const specialSlice = createSlice({
     switchSiteMode(
       state,
       action: PayloadAction<{
-        mode: SpecialStateT['siteMode']
-      }>
+        mode: SpecialStateT['siteMode'];
+      }>,
     ) {
-      const { mode } = action.payload
+      const { mode } = action.payload;
       if (mode === 'default') {
-        return { ...initialState }
+        return { ...initialState };
       } else {
-        state.siteMode = mode
+        state.siteMode = mode;
       }
     },
     switchSiteTheme(
       state,
       action: PayloadAction<{
-        theme: SpecialStateT['theme']
-      }>
+        theme: SpecialStateT['theme'];
+      }>,
     ) {
-      state.theme = action.payload.theme
+      state.theme = action.payload.theme;
     },
     switchImagesVisibility(
       state,
       action: PayloadAction<{
-        value: boolean
-      }>
+        value: boolean;
+      }>,
     ) {
-      state.imgHidden = action.payload.value
+      state.imgHidden = action.payload.value;
     },
     switchFontSize(
       state,
       action: PayloadAction<{
-        fontSize: SpecialStateT['fontSize']
-      }>
+        fontSize: SpecialStateT['fontSize'];
+      }>,
     ) {
-      state.fontSize = action.payload.fontSize
+      state.fontSize = action.payload.fontSize;
     },
   },
-})
+});
 
 export const {
   switchSiteMode: switchSiteMode_AC,
   switchSiteTheme: switchSiteTheme_AC,
   switchImagesVisibility: switchImagesVisibility_AC,
   switchFontSize: switchFontSize_AC,
-} = specialSlice.actions
+} = specialSlice.actions;
 
-export default specialSlice.reducer
+export default specialSlice.reducer;

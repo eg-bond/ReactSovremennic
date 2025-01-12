@@ -12,7 +12,7 @@ export const matchMediaMock = (viewportType: 'mobile' | 'desktop') => {
         removeEventListener: vi.fn(),
         dispatchEvent: vi.fn(),
       })),
-    })
+    });
   } else {
     return Object.defineProperty(window, 'matchMedia', {
       writable: true,
@@ -26,6 +26,6 @@ export const matchMediaMock = (viewportType: 'mobile' | 'desktop') => {
         removeEventListener: vi.fn(),
         dispatchEvent: vi.fn(),
       })),
-    })
+    });
   }
-}
+};

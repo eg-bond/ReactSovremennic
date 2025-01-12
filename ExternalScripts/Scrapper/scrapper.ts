@@ -1,12 +1,12 @@
-import fs from 'fs'
-import { getPageContent } from './puppeteer.ts'
-import { JSDOM } from 'jsdom'
+import fs from 'fs';
+import { JSDOM } from 'jsdom';
+import { getPageContent } from './puppeteer.ts';
 
-const URL = 'https://www.kinopoisk.ru/film/'
-const cinemaIds = ['5117258']
+const URL = 'https://www.kinopoisk.ru/film/';
+const cinemaIds = ['5117258'];
 
-parseCinemaData(cinemaIds)
-//------------------------------------------------------------------------------
+parseCinemaData(cinemaIds);
+// ------------------------------------------------------------------------------
 
 const emptyFilmItem = {
   title: '',
@@ -20,68 +20,73 @@ const emptyFilmItem = {
   description: '',
   playerCode: '',
   link: '',
-}
+};
 
 async function parseCinemaData(ids: typeof cinemaIds) {
-  const htmlStringArray = await getHTML(ids)
+  const htmlStringArray = await getHTML(ids);
 
-  const result: Array<typeof emptyFilmItem> = []
+  const result: Array<typeof emptyFilmItem> = [];
 
-  htmlStringArray.forEach(htmlStr => {
-    const dom = new JSDOM(htmlStr, { contentType: 'text/html' })
-    const divsArr = dom.window.document.querySelectorAll('div')
+  htmlStringArray.forEach((htmlStr) => {
+    const dom = new JSDOM(htmlStr, { contentType: 'text/html' });
+    const divsArr = dom.window.document.querySelectorAll('div');
 
-    const { getTitle, getField, getActors, getDescription } = parseFunctions(
+    const {
+      getTitle,
+      getField,
+      getActors,
+      getDescription,
+    } = parseFunctions(
       dom,
-      divsArr
-    )
+      divsArr,
+    );
 
-    const filmItem = { ...emptyFilmItem }
+    const filmItem = { ...emptyFilmItem };
 
-    filmItem.title = getTitle()
-    filmItem.kind = getField('kind')
-    filmItem.director = getField('director')
-    filmItem.age = getField('age')
-    filmItem.duration = getField('duration')
-    filmItem.actors = getActors()
-    filmItem.description = getDescription()
+    filmItem.title = getTitle();
+    filmItem.kind = getField('kind');
+    filmItem.director = getField('director');
+    filmItem.age = getField('age');
+    filmItem.duration = getField('duration');
+    filmItem.actors = getActors();
+    filmItem.description = getDescription();
 
-    result.push(filmItem)
-  })
+    result.push(filmItem);
+  });
 
   // Save result to "scrapperResult" file
-  const finalData = `const filmsArray = ${JSON.stringify(result)}`
-  fs.writeFileSync('ExternalScripts/Scrapper/scrapperResult.ts', finalData)
+  const finalData = `const filmsArray = ${JSON.stringify(result)}`;
+  fs.writeFileSync('ExternalScripts/Scrapper/scrapperResult.ts', finalData);
 
-  console.log(result)
+  console.log(result);
 }
 
-//------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------
 async function getHTML(ids: typeof cinemaIds) {
-  const promises: Array<Promise<string>> = []
-  ids.forEach(id => {
-    promises.push(getPageContent(`${URL}${id}`))
-  })
+  const promises: Array<Promise<string>> = [];
+  ids.forEach((id) => {
+    promises.push(getPageContent(`${URL}${id}`));
+  });
 
-  const htmlStringsArr = await Promise.all(promises)
+  const htmlStringsArr = await Promise.all(promises);
 
-  return htmlStringsArr
+  return htmlStringsArr;
 }
 
-//------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------
 function parseFunctions(dom: JSDOM, divsArr: NodeListOf<HTMLDivElement>) {
   function getTitle() {
-    const titleString = dom.window.document.querySelector('h1')?.textContent
+    const titleString = dom.window.document.querySelector('h1')?.textContent;
 
     if (!titleString) {
-      return '-'
+      return '-';
     }
 
-    const datePartIndex = titleString?.indexOf('(')
+    const datePartIndex = titleString?.indexOf('(');
 
     return datePartIndex !== -1
       ? titleString.slice(0, datePartIndex - 1)
-      : titleString
+      : titleString;
   }
 
   const fieldParams = {
@@ -89,57 +94,57 @@ function parseFunctions(dom: JSDOM, divsArr: NodeListOf<HTMLDivElement>) {
     duration: { searchWord: 'Время' },
     director: { searchWord: 'Режиссер' },
     kind: { searchWord: 'Жанр' },
-  } as const
+  } as const;
 
   function getField(fieldName: keyof typeof fieldParams) {
     const fieldNameNode = [...divsArr].find(
-      item => item.textContent === fieldParams[fieldName].searchWord
-    )
+      item => item.textContent === fieldParams[fieldName].searchWord,
+    );
 
     if (!fieldNameNode) {
-      return '-'
+      return '-';
     }
 
     if (fieldName === 'age' || fieldName === 'duration') {
-      return fieldNameNode.nextSibling?.textContent || '-'
+      return fieldNameNode.nextSibling?.textContent || '-';
     } else {
       return capitalizeFirstLetter(
-        fieldNameNode.nextSibling?.firstChild?.textContent
-      )
+        fieldNameNode.nextSibling?.firstChild?.textContent,
+      );
     }
   }
 
   function getActors() {
     const actorNodesArr =
-      dom.window.document.querySelectorAll('[itemprop="actor"]')
+      dom.window.document.querySelectorAll('[itemprop="actor"]');
 
     // get rid of dubbing actors and form a single string
     const filteredActorsString = [...actorNodesArr]
       .filter(item =>
-        item?.closest('div')?.textContent?.includes('В главных ролях')
+        item?.closest('div')?.textContent?.includes('В главных ролях'),
       )
       .map(item => item.textContent)
-      .join(', ')
+      .join(', ');
 
-    return filteredActorsString
+    return filteredActorsString;
   }
 
   function getDescription() {
-    const pNodesArr = dom.window.document.querySelectorAll('p')
+    const pNodesArr = dom.window.document.querySelectorAll('p');
 
     // find description paragraph
     const descriptionP = [...pNodesArr].find(item =>
-      item.className.includes('styles_paragraph')
-    )
+      item.className.includes('styles_paragraph'),
+    );
 
-    return descriptionP?.textContent || '-'
+    return descriptionP?.textContent || '-';
   }
 
-  return { getTitle, getField, getActors, getDescription }
+  return { getTitle, getField, getActors, getDescription };
 }
 
-//------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------
 function capitalizeFirstLetter(string: string | undefined | null) {
-  if (!string) return '-'
-  return string.charAt(0).toUpperCase() + string.slice(1)
+  if (!string) return '-';
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }

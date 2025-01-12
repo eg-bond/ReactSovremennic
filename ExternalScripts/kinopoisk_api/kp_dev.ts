@@ -7,7 +7,7 @@ const kp = new kpDev.KinopoiskDev(config.KP_DEV_TOKEN);
 
 const ids = [5919174];
 logAllMovies(ids);
-//-----------------------------------------------------------
+// -----------------------------------------------------------
 
 // log all desired movies data into console
 function logAllMovies(ids: number[]): void {
@@ -25,7 +25,7 @@ async function getMovieData(id: number) {
   const title = data?.name;
 
   const kind = capitalizeFirstLetter(
-    data?.genres?.map(genre => genre.name).join(', ')
+    data?.genres?.map(genre => genre.name).join(', '),
   );
 
   const director = data?.persons
@@ -62,7 +62,7 @@ async function getMovieData(id: number) {
   return finalData;
 }
 
-//------------------------------------------------------
+// ------------------------------------------------------
 function capitalizeFirstLetter(string: string | undefined | null) {
   if (!string) return '-';
   return string.charAt(0).toUpperCase() + string.slice(1);

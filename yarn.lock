@@ -1489,7 +1489,7 @@
   resolved "https://registry.yarnpkg.com/@typescript-eslint/types/-/types-8.15.0.tgz#4958edf3d83e97f77005f794452e595aaf6430fc"
   integrity sha512-n3Gt8Y/KyJNe0S3yDCD2RVKrHBC4gTUcLTebVBXacPy091E6tNspFLKRXlk3hwT4G55nfr1n2AdFqi/XMxzmPQ==
 
-"@typescript-eslint/types@8.19.1":
+"@typescript-eslint/types@8.19.1", "@typescript-eslint/types@^8.19.0":
   version "8.19.1"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/types/-/types-8.19.1.tgz#015a991281754ed986f2e549263a1188d6ed0a8c"
   integrity sha512-JBVHMLj7B1K1v1051ZaMMgLW4Q/jre5qGK0Ew6UgXz1Rqh+/xPzV1aW581OM00X6iOfyr1be+QyW8LOUf19BbA==
@@ -1559,7 +1559,7 @@
     "@typescript-eslint/types" "8.15.0"
     "@typescript-eslint/typescript-estree" "8.15.0"
 
-"@typescript-eslint/utils@^8.13.0":
+"@typescript-eslint/utils@^8.13.0", "@typescript-eslint/utils@^8.19.0":
   version "8.19.1"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/utils/-/utils-8.19.1.tgz#dd8eabd46b92bf61e573286e1c0ba6bd243a185b"
   integrity sha512-IxG5gLO0Ne+KaUc8iW1A+XuKLd63o4wlbI1Zp692n1xojCl/THvgIKXJXBZixTh5dd5+yTJ/VXH7GJaaw21qXA==
@@ -3461,6 +3461,15 @@ eslint-plugin-newline-destructuring@1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/eslint-plugin-newline-destructuring/-/eslint-plugin-newline-destructuring-1.2.2.tgz#33f3a62915df0f0e066fdf25a6792909fb3f9bf8"
   integrity sha512-QfKQpdx+ez2E233B6xSG82+SdkKhxSchTJCjUHjJ2RmMCq+v2IBTaR8wK2pejTBV05p/J1qB8QOOKXQNqWJGSA==
+
+eslint-plugin-perfectionist@^4.6.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-perfectionist/-/eslint-plugin-perfectionist-4.6.0.tgz#6cc9bc1f0b8efceb222af8b3fed5a05bacc81afb"
+  integrity sha512-kOswTebUK0LlYExRwqz7YQtvyTUIRsKfp8XrwBBeHGh2e8MBOS6K+7VvG6HpmNckyKySi1I96uPeAlptMFGcRQ==
+  dependencies:
+    "@typescript-eslint/types" "^8.19.0"
+    "@typescript-eslint/utils" "^8.19.0"
+    natural-orderby "^5.0.0"
 
 eslint-plugin-react-hooks@5.0.0:
   version "5.0.0"
@@ -6073,6 +6082,11 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==
+
+natural-orderby@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/natural-orderby/-/natural-orderby-5.0.0.tgz#bb655f669ee9c84e82cdc6cddbba25eb263cd9f4"
+  integrity sha512-kKHJhxwpR/Okycz4HhQKKlhWe4ASEfPgkSWNmKFHd7+ezuQlxkA5cM3+XkBPvm1gmHen3w53qsYAv+8GwRrBlg==
 
 netmask@^2.0.2:
   version "2.0.2"

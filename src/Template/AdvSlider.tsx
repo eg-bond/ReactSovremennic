@@ -1,48 +1,42 @@
-import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
+import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { useImagesLoaded } from '../hooks/useImagesLoaded';
 
-const SushiSlide = ({
-  allImgLoaded,
-  onLoad,
-}: {
+const SushiSlide = ({ allImgLoaded, onLoad }: {
   allImgLoaded: boolean;
   onLoad: () => void;
 }) => (
   <SplideSlide>
-    <Link tabIndex={2} className={'linkWrapper'} to='/sushi'>
-      <div className={`imgContainer opacity_on_hover`}>
+    <Link className="linkWrapper" tabIndex={2} to="/sushi">
+      <div className="imgContainer opacity_on_hover">
         <img
           className={`imgContainer__img transition ${
             !allImgLoaded ? 'skeleton' : ''
           }`}
+          alt="бар"
+          src="Images/sushi_adv.webp"
           onLoad={onLoad}
-          src='Images/sushi_adv.webp'
-          alt='бар'
         />
       </div>
     </Link>
   </SplideSlide>
 );
 
-const LottenSlide = ({
-  allImgLoaded,
-  onLoad,
-}: {
+const LottenSlide = ({ allImgLoaded, onLoad }: {
   allImgLoaded: boolean;
   onLoad: () => void;
 }) => (
   <SplideSlide>
-    <a href='https://lotten.ru' tabIndex={2} className={'linkWrapper'}>
-      <div className={`imgContainer opacity_on_hover`}>
+    <a className="linkWrapper" href="https://lotten.ru" tabIndex={2}>
+      <div className="imgContainer opacity_on_hover">
         <img
           className={`imgContainer__img transition  ${
             !allImgLoaded ? 'skeleton' : ''
           }`}
+          alt="lotten кадастровые услуги"
+          src="Images/lotten_adv.webp"
           onLoad={onLoad}
-          src='Images/lotten_adv.webp'
-          alt='lotten кадастровые услуги'
         />
       </div>
     </a>
@@ -53,7 +47,6 @@ const AdvSlider = memo(function BarSlider() {
   const { allImgLoaded, onLoad } = useImagesLoaded(2);
   return (
     <Splide
-      className='advSlider'
       options={{
         perPage: 1,
         perMove: 1,
@@ -64,9 +57,11 @@ const AdvSlider = memo(function BarSlider() {
         autoplay: true,
         interval: 5000,
         pauseOnHover: true,
-      }}>
-      <LottenSlide onLoad={onLoad} allImgLoaded={allImgLoaded} />
-      <SushiSlide onLoad={onLoad} allImgLoaded={allImgLoaded} />
+      }}
+      className="advSlider"
+    >
+      <LottenSlide allImgLoaded={allImgLoaded} onLoad={onLoad} />
+      <SushiSlide allImgLoaded={allImgLoaded} onLoad={onLoad} />
     </Splide>
   );
 });

@@ -43,16 +43,16 @@ function About() {
       </div>
       <div className="aboutImages">
         <div className="aboutImages__image">
-          <img src="Images/about1.webp" alt="фото кинотеатра 1" />
+          <img alt="фото кинотеатра 1" src="Images/about1.webp" />
         </div>
         <div className="aboutImages__image hidden-xs">
-          <img src="Images/about2.webp" alt="фото кинотеатра 2" />
+          <img alt="фото кинотеатра 2" src="Images/about2.webp" />
         </div>
         <div className="aboutImages__image hidden-xs">
-          <img src="Images/about4.webp" alt="фото кинотеатра 4" />
+          <img alt="фото кинотеатра 4" src="Images/about4.webp" />
         </div>
         <div className="aboutImages__image">
-          <img src="Images/about3.webp" alt="фото кинотеатра 3" />
+          <img alt="фото кинотеатра 3" src="Images/about3.webp" />
         </div>
       </div>
       <div>
@@ -61,10 +61,10 @@ function About() {
         {siteMode === 'default' && (
           <div className="embed-responsive">
             <iframe
-              src={SRC}
-              width="769"
               height="491"
+              src={SRC}
               title="yandex_map"
+              width="769"
             />
           </div>
         )}

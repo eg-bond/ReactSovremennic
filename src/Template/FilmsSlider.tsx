@@ -1,21 +1,18 @@
-import { Splide, SplideSlide } from '@splidejs/react-splide';
-import type { CinemaStateT } from '../REDUX/cinema/cinemaReducerT';
-import { Link } from 'react-router-dom';
 import { memo } from 'react';
+import { Link } from 'react-router-dom';
+import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { useMobilePaddings } from './useMobilePaddings';
 import { useImagesLoaded } from '../hooks/useImagesLoaded';
+import type { CinemaStateT } from '../REDUX/cinema/cinemaReducerT';
 
-const FilmsSlider = memo<FilmSliderT>(function FilmsSlider({
-  films,
-  isMobile,
-}) {
+const FilmsSlider = memo<FilmSliderT>(function FilmsSlider({ films, isMobile }) {
   const { allImgLoaded, onLoad } = useImagesLoaded(films.length || 0);
-  //adds paddings to mobile slider to make it look like 3.5 slides
+  // adds paddings to mobile slider to make it look like 3.5 slides
   useMobilePaddings(isMobile);
 
   return (
-    <div className={'cinemaSlider'}>
-      <h4 className='displayMobile'>Фильмы</h4>
+    <div className="cinemaSlider">
+      <h4 className="displayMobile">Фильмы</h4>
       <Splide
         options={{
           perPage: isMobile ? 3 : 5,
@@ -24,12 +21,13 @@ const FilmsSlider = memo<FilmSliderT>(function FilmsSlider({
           gap: isMobile ? '2vw' : '0.6rem',
           // arrows: false,
           arrows: isMobile ? false : true,
-        }}>
+        }}
+      >
         {films.map((item, i) => (
           <Slide
-            key={i + 'FS'}
-            film={item}
             allImgLoaded={allImgLoaded}
+            film={item}
+            key={i + 'FS'}
             onLoad={onLoad}
           />
         ))}
@@ -38,23 +36,28 @@ const FilmsSlider = memo<FilmSliderT>(function FilmsSlider({
   );
 });
 
-const Slide = memo(function Slide({ film, allImgLoaded, onLoad }: SlideT) {
+const Slide = memo(function Slide({
+  film,
+allImgLoaded,
+onLoad,
+}: SlideT) {
   return (
-    <SplideSlide className={'swSlide cinemaSlider__slide'}>
-      <Link className='swSlide__a' to={`movies/${film.link}`}>
+    <SplideSlide className="swSlide cinemaSlider__slide">
+      <Link className="swSlide__a" to={`movies/${film.link}`}>
         <div
           className={`cinemaSlider__imgCont skeleton-Gray ${
             !allImgLoaded ? 'skeleton' : ''
-          }`}>
+          }`}
+        >
           <img
-            className='swSlide__img'
-            onLoad={onLoad}
-            src={`Images/top_menu/${film.link}.webp`}
             alt={film.title}
+            className="swSlide__img"
+            src={`Images/top_menu/${film.link}.webp`}
+            onLoad={onLoad}
           />
         </div>
-        <h1 className='swSlide__h1'>{film.title}</h1>
-        <p className='swSlide__p'>{film.beginDate}</p>
+        <h1 className="swSlide__h1">{film.title}</h1>
+        <p className="swSlide__p">{film.beginDate}</p>
       </Link>
     </SplideSlide>
   );
@@ -63,8 +66,8 @@ const Slide = memo(function Slide({ film, allImgLoaded, onLoad }: SlideT) {
 export default FilmsSlider;
 
 type SlideT = {
-  film: CinemaStateT['films'][0];
   allImgLoaded: boolean;
+  film: CinemaStateT['films'][0];
   onLoad: () => void;
 };
 

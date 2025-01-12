@@ -1,15 +1,15 @@
 type SpecialStateT = {
-  siteMode: 'default' | 'special'
-  theme: 'blackWhite' | 'whiteBlack' | 'blackBlue' | 'yellowBrown' | 'blueGreen'
-  fontSize: '14px' | '21px' | '26px'
-  imgHidden: boolean
-}
+  fontSize: '14px' | '21px' | '26px';
+  imgHidden: boolean;
+  siteMode: 'default' | 'special';
+  theme: 'blackWhite' | 'whiteBlack' | 'blackBlue' | 'yellowBrown' | 'blueGreen';
+};
 
 type SpecialDispatchesT = {
-  switchSiteTheme: (theme: SpecialStateT['theme']) => void
-  switchImagesVisibility: (value: boolean) => void
-  switchFontSize: (fontSize: SpecialStateT['fontSize']) => void
-  switchSiteMode: (mode: SpecialStateT['siteMode']) => void
-}
+  switchFontSize: (fontSize: SpecialStateT['fontSize']) => void;
+  switchImagesVisibility: (value: boolean) => void;
+  switchSiteMode: (mode: SpecialStateT['siteMode']) => void;
+  switchSiteTheme: (theme: SpecialStateT['theme']) => void;
+};
 
-export type { SpecialStateT, SpecialDispatchesT }
+export type { SpecialStateT, SpecialDispatchesT };

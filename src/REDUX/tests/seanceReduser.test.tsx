@@ -1,8 +1,8 @@
-import type { SeanceStateT } from '../seance/seanceReducerT.js'
 import reducer, {
   setTodayScheduleItem_AC,
   changeScheduleItem_AC,
-} from '../seance/seanceReducer.js'
+} from '../seance/seanceReducer.js';
+import type { SeanceStateT } from '../seance/seanceReducerT.js';
 
 const initialState: SeanceStateT = {
   datesArr: [
@@ -15,35 +15,35 @@ const initialState: SeanceStateT = {
     ['day0', 'Воскресенье', '25 июня'],
   ],
   activeScheduleItemKey: '',
-}
+};
 
 describe('seanceReducer tests:', () => {
   describe('setTodayScheduleItem', () => {
-    const newState = reducer(initialState, setTodayScheduleItem_AC())
-    const date = new Date()
-    const day = date.getDay()
+    const newState = reducer(initialState, setTodayScheduleItem_AC());
+    const date = new Date();
+    const day = date.getDay();
     const index = initialState.datesArr.findIndex(
-      item => item[0] === 'day' + day
-    )
+      item => item[0] === 'day' + day,
+    );
 
     it('activeScheduleItemKey is not empty', () => {
-      expect(newState.activeScheduleItemKey).not.toBe('')
-    })
+      expect(newState.activeScheduleItemKey).not.toBe('');
+    });
 
     it('activeScheduleItemKey is set correctly', () => {
-      expect(newState.activeScheduleItemKey).toBe(newState.datesArr[index][0])
-    })
-  })
+      expect(newState.activeScheduleItemKey).toBe(newState.datesArr[index][0]);
+    });
+  });
 
   describe('changeScheduleItem', () => {
-    const actionKey = 'day3'
+    const actionKey = 'day3';
     const newState = reducer(
       initialState,
-      changeScheduleItem_AC({ key: actionKey })
-    )
+      changeScheduleItem_AC({ key: actionKey }),
+    );
 
     it('activeScheduleItemKey is equal to key from action', () => {
-      expect(newState.activeScheduleItemKey).toBe(actionKey)
-    })
-  })
-})
+      expect(newState.activeScheduleItemKey).toBe(actionKey);
+    });
+  });
+});

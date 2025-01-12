@@ -1,14 +1,16 @@
-import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const Redirect = ({ to }: { to: string }) => {
-  const navigate = useNavigate()
+const Redirect = ({ to }: {
+  to: string;
+}) => {
+  const navigate = useNavigate();
 
   useEffect(() => {
-    navigate(to)
-  }, [navigate, to])
+    navigate(to);
+  }, [navigate, to]);
 
-  return null
-}
+  return null;
+};
 
-export default Redirect
+export default Redirect;

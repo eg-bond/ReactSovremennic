@@ -1,16 +1,16 @@
-import { useState, useMemo } from 'react'
-import { after } from '../helpers'
+import { useState, useMemo } from 'react';
+import { after } from '../helpers';
 
 export const useImagesLoaded = (amount: number) => {
-  const [allImgLoaded, setAllImgLoaded] = useState(false)
+  const [allImgLoaded, setAllImgLoaded] = useState(false);
 
   const onLoad = useMemo(
     () =>
       after(amount, () => {
-        setAllImgLoaded(true)
+        setAllImgLoaded(true);
       }),
-    [amount]
-  )
+    [amount],
+  );
 
-  return { allImgLoaded, onLoad }
-}
+  return { allImgLoaded, onLoad };
+};

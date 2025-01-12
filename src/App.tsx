@@ -1,16 +1,16 @@
-import { useEffect, useRef } from 'react';
 import './SCSS/style.scss';
-import Navigation from './Template/Navigation';
-import BottomSlider from './Template/BottomSlider';
-import Footer from './Template/Footer';
+import { useEffect, useRef } from 'react';
 import Adv from './Template/Adv';
-import { modifiedClass, queries } from './helpers';
+import Footer from './Template/Footer';
 import Content from './Content/Content';
+import Navigation from './Template/Navigation';
 import FilmsSlider from './Template/FilmsSlider';
-import { useAppState } from './REDUX/stateHooks/useAppState';
+import BottomSlider from './Template/BottomSlider';
+import { modifiedClass, queries } from './helpers';
 import { useMediaQuery } from './hooks/useMediaQuery';
-import { useChangeTheme } from './hooks/useChangeTheme';
 import { useScrollToTop } from './hooks/useScrollToTop';
+import { useChangeTheme } from './hooks/useChangeTheme';
+import { useAppState } from './REDUX/stateHooks/useAppState';
 
 const App = () => {
   const {
@@ -62,27 +62,27 @@ const App = () => {
   return (
     <div className={mainContainerClasses}>
       <div>
-        <Navigation siteMode={siteMode} fontSize={fontSize} theme={theme} />
+        <Navigation fontSize={fontSize} siteMode={siteMode} theme={theme} />
 
-        <div className='separatorMobile' />
+        <div className="separatorMobile" />
 
         <div className={`container wrapper ${imgHidden ? 'hideImages' : ''}`}>
           <FilmsSlider films={films} isMobile={isMobile} />
 
           <div
+            className="separatorMobile separatorMobile--sticky"
             ref={anchorRef}
-            className='separatorMobile separatorMobile--sticky'
           />
 
-          <div ref={contentRef} className={'mainContainer__content'}>
+          <div className="mainContainer__content" ref={contentRef}>
             <Content isMobile={isMobile} />
             {!isMobile && <Adv />}
           </div>
 
           {siteMode === 'default' && (
             <div>
-              <h1 className='bottomSlider__bar'>На этой неделе в кино</h1>
-              <hr className='bottomSlider__border' />
+              <h1 className="bottomSlider__bar">На этой неделе в кино</h1>
+              <hr className="bottomSlider__border" />
               <BottomSlider filmsToday={filmsToday || []} isMobile={isMobile} />
             </div>
           )}

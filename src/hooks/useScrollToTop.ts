@@ -1,27 +1,27 @@
-import { useLocation } from 'react-router-dom'
-import { scrollToTop } from '../helpers'
-import { useEffect } from 'react'
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { scrollToTop } from '../helpers';
 
 // scrolls to top if content starts higher than anchor
 export const useScrollToTop = (
   contentRef: React.RefObject<HTMLDivElement>,
-  anchorRef: React.RefObject<HTMLDivElement>
+  anchorRef: React.RefObject<HTMLDivElement>,
 ) => {
-  const location = useLocation()
+  const location = useLocation();
 
   useEffect(() => {
-    if (!contentRef.current || !anchorRef.current) return
+    if (!contentRef.current || !anchorRef.current) return;
 
-    const contentY = contentRef.current.getClientRects()[0].y
-    const hrY = anchorRef.current.getClientRects()[0].y
+    const contentY = contentRef.current.getClientRects()[0].y;
+    const hrY = anchorRef.current.getClientRects()[0].y;
 
     // for desktop
-    if (contentY === hrY) return
+    if (contentY === hrY) return;
 
     // for mobile
     if (contentY !== undefined && hrY !== undefined) {
-      if (contentY >= hrY) return
-      scrollToTop()
+      if (contentY >= hrY) return;
+      scrollToTop();
     }
-  }, [location, contentRef, anchorRef])
-}
+  }, [location, contentRef, anchorRef]);
+};

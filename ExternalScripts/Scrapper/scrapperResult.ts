@@ -1,1 +1,0 @@
-const filmsArray = [{"title":"-","beginDate":"с ","endDate":"","kind":"-","director":"-","duration":"-","age":"-","actors":"","description":"-","playerCode":"","link":""}]

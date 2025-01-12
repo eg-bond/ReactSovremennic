@@ -1,28 +1,35 @@
 import { memo } from 'react';
-import { DescriptionTrailer } from './DescriptionTrailer';
 import { FilmImg } from './FilmImg';
+import { SushiWork } from '../../Template/SushiWork';
+import { DescriptionTrailer } from './DescriptionTrailer';
 import type { FilmItemT } from '../../REDUX/cinema/cinemaReducerT';
 import type { SpecialStateT } from '../../REDUX/special/specialReducerT';
-import { SushiWork } from '../../Template/SushiWork';
 
 const SelectedMovie = memo<{
-  fontSize: SpecialStateT['fontSize'];
   filmItem: FilmItemT;
+  fontSize: SpecialStateT['fontSize'];
   isMobile: boolean;
-}>(function SelectedMovie({ fontSize, filmItem, isMobile }) {
+}>(function SelectedMovie({
+  fontSize,
+filmItem,
+isMobile,
+}) {
   const gridClass =
     fontSize !== '26px' ? 'selectedMovie--rightFr' : 'selectedMovie--fullFr';
 
   return (
-    <div className='content__gridLeftItem--3fr contentMT'>
-      <div className='selectedMovie'>
+    <div className="content__gridLeftItem--3fr contentMT">
+      <div className="selectedMovie">
         <FilmImg link={filmItem.link} title={filmItem.title} />
         <div className={gridClass}>
-          <div className='selectedMovie__title'>
+          <div className="selectedMovie__title">
             <h2>{filmItem['title']}</h2>
-            <p>Смотрите {`${filmItem['beginDate']} ${filmItem['endDate']}`}</p>
+            <p>
+              Смотрите
+              {`${filmItem['beginDate']} ${filmItem['endDate']}`}
+            </p>
           </div>
-          <table className='selectedMovie__table'>
+          <table className="selectedMovie__table">
             <tbody>
               <tr>
                 <td>Жанр</td>
@@ -50,12 +57,12 @@ const SelectedMovie = memo<{
 
         <DescriptionTrailer
           description={filmItem['description']}
-          trailer_src={filmItem['playerCode']}
           fontSize={fontSize}
+          trailer_src={filmItem['playerCode']}
         />
       </div>
 
-      <div className='separatorMobile separatorMobile--index' />
+      <div className="separatorMobile separatorMobile--index" />
       {isMobile && <SushiWork />}
     </div>
   );

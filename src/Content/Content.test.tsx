@@ -1,12 +1,12 @@
-import { fireEvent, screen } from '@testing-library/react';
 import { Link } from 'react-router-dom';
-import { setTodayScheduleItem_AC } from '../REDUX/seance/seanceReducer';
+import { fireEvent, screen } from '@testing-library/react';
 import Content from './Content';
 import Navigation from '../Template/Navigation';
 import { filmsArray } from '../REDUX/filmsArray';
-import { CinemaStateT } from '../REDUX/cinema/cinemaReducerT';
 import { renderWithRouterAndRedux } from '../App.test';
 import { matchMediaMock } from '../test/matchMediaMock';
+import { CinemaStateT } from '../REDUX/cinema/cinemaReducerT';
+import { setTodayScheduleItem_AC } from '../REDUX/seance/seanceReducer';
 
 describe('React Router', () => {
   afterEach(() => {
@@ -18,11 +18,11 @@ describe('React Router', () => {
 
     const { store } = renderWithRouterAndRedux(
       <div>
-        <Navigation siteMode='default' theme='blackWhite' fontSize='14px' />
-        <Link to={`movies/dont_exist`}>Wrong movie URL</Link>
+        <Navigation fontSize="14px" siteMode="default" theme="blackWhite" />
+        <Link to="movies/dont_exist">Wrong movie URL</Link>
         <FilmsSliderSimpleClone filmsArray={filmsArray} />
         <Content isMobile={false} />
-      </div>
+      </div>,
     );
     // initialization
     store.dispatch(setTodayScheduleItem_AC());
@@ -57,22 +57,22 @@ describe('React Router', () => {
   });
 
   it('should navigate correctly through movies', async () => {
-    //first movie
+    // first movie
     fireEvent.click(screen.getByText(filmsArray[0].title));
     expect(await screen.findByText(filmsArray[0].director)).toBeVisible();
-    //second movie
+    // second movie
     fireEvent.click(screen.getByText(filmsArray[1].title));
     expect(await screen.findByText(filmsArray[1].director)).toBeVisible();
-    //third movie
+    // third movie
     fireEvent.click(screen.getByText(filmsArray[2].title));
     expect(await screen.findByText(filmsArray[2].director)).toBeVisible();
   });
 
   it('should redirect to index page if non-existent movie URL typed', async () => {
-    //first movie
+    // first movie
     fireEvent.click(screen.getByText(filmsArray[0].title));
     expect(await screen.findByText(filmsArray[0].director)).toBeVisible();
-    //wrong movie
+    // wrong movie
     fireEvent.click(screen.getByText(/Wrong movie URL/i));
     expect(screen.getByText(/информация/i)).toBeVisible();
   });
@@ -83,18 +83,19 @@ const FilmsSliderSimpleClone = ({
 }: {
   filmsArray: CinemaStateT['films'];
 }) => (
-  <div className={'cinemaSlider'}>
-    <h4 className='displayMobile'>Фильмы</h4>
-    <div className='splide'>
+  <div className="cinemaSlider">
+    <h4 className="displayMobile">Фильмы</h4>
+    <div className="splide">
       {filmsArray.map((item, i) => (
         <Link
+          className="swSlide__a"
           key={i + 'FSSC'}
-          className='swSlide__a'
-          to={`movies/${item.link}`}>
-          <div className='splide_slide'>
-            <img src={`Images/top_menu/${item.link}.webp`} alt={item.title} />
-            <h1 className='swSlide__h1'>{item.title}</h1>
-            <p className='swSlide__p'>{item.beginDate}</p>
+          to={`movies/${item.link}`}
+        >
+          <div className="splide_slide">
+            <img alt={item.title} src={`Images/top_menu/${item.link}.webp`} />
+            <h1 className="swSlide__h1">{item.title}</h1>
+            <p className="swSlide__p">{item.beginDate}</p>
           </div>
         </Link>
       ))}

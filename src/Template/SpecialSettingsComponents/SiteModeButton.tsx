@@ -1,28 +1,26 @@
-import { memo } from 'react'
-import type { SpecialStateT } from '../../REDUX/special/specialReducerT'
-import { scrollToTop } from '../../helpers'
+import { memo } from 'react';
+import { scrollToTop } from '../../helpers';
+import type { SpecialStateT } from '../../REDUX/special/specialReducerT';
 
-const SiteModeButtonComp = ({
-  siteMode,
-  switchSiteMode,
-}: {
-  siteMode: SpecialStateT['siteMode']
-  switchSiteMode: (mode: SpecialStateT['siteMode']) => void
+const SiteModeButtonComp = ({ siteMode, switchSiteMode }: {
+  siteMode: SpecialStateT['siteMode'];
+  switchSiteMode: (mode: SpecialStateT['siteMode']) => void;
 }) => {
-  const modeToDispatch = siteMode === 'default' ? 'special' : 'default'
+  const modeToDispatch = siteMode === 'default' ? 'special' : 'default';
 
   return (
     <button
-      className='specialSettings__modeButton'
+      className="specialSettings__modeButton"
       onClick={() => {
-        switchSiteMode(modeToDispatch)
-        scrollToTop()
-      }}>
+        switchSiteMode(modeToDispatch);
+        scrollToTop();
+      }}
+    >
       {siteMode === 'default'
         ? 'ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ'
         : 'ОБЫЧНАЯ ВЕРСИЯ САЙТА'}
     </button>
-  )
-}
+  );
+};
 
-export const SiteModeButton = memo(SiteModeButtonComp)
+export const SiteModeButton = memo(SiteModeButtonComp);

@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion'
-import { SushiMobileNavT } from '../sushiT'
-import { menuButtons } from '../sushiState'
+import { motion } from 'framer-motion';
+import { SushiMobileNavT } from '../sushiT';
+import { menuButtons } from '../sushiState';
 
 const SushiMobileNav = ({
   x,
@@ -13,30 +13,32 @@ const SushiMobileNav = ({
 }: SushiMobileNavT) => {
   return (
     <>
-      <div className='sushiMobileNav__container--back'>
-        <div ref={constraintRef} className='sushiMobileNav__container'>
+      <div className="sushiMobileNav__container--back">
+        <div className="sushiMobileNav__container" ref={constraintRef}>
           <motion.div
-            style={{ x }}
-            ref={sliderRef}
-            drag='x'
+            className={`sushiMobileNav ${isChanging ? 'changing' : ''}`}
+            drag="x"
             dragConstraints={constraintRef}
-            className={`sushiMobileNav ${isChanging ? 'changing' : ''}`}>
+            ref={sliderRef}
+            style={{ x }}
+          >
             {menuButtons.map(item => (
               <button
-                key={item[0] + '_sbtn'}
                 className={`sushiMobileNav__item ${
                   currentImgKey === item[0] ? 'active' : ''
                 }`}
-                onClick={e => handleClick(e, item[0], sliderRef)}>
+                key={item[0] + '_sbtn'}
+                onClick={e => handleClick(e, item[0], sliderRef)}
+              >
                 {item[1]}
               </button>
             ))}
           </motion.div>
         </div>
       </div>
-      <hr ref={hrRef} className='sushiMobileNav__anchor'></hr>
+      <hr className="sushiMobileNav__anchor" ref={hrRef}></hr>
     </>
-  )
-}
+  );
+};
 
-export default SushiMobileNav
+export default SushiMobileNav;

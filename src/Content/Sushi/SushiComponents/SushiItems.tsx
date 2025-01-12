@@ -1,22 +1,23 @@
-import { memo, useState } from 'react'
-import { sushiState } from '../sushiState'
-import type { SushiT } from '../sushiT'
-import { animationDelay } from '../sushiHelpers'
+import { memo, useState } from 'react';
+import { sushiState } from '../sushiState';
+import { animationDelay } from '../sushiHelpers';
+import type { SushiT } from '../sushiT';
 
 const SushiItems = memo(function SushiItems({
   currentImgKey,
 }: {
-  currentImgKey: SushiT['currentImgKey']
+  currentImgKey: SushiT['currentImgKey'];
 }) {
   return (
-    <div className='sushi_page__grid'>
+    <div className="sushi_page__grid">
       {sushiState[currentImgKey].map((item, i) => (
         <div
+          className="sushi_page__gridItem fadeInDown"
           key={currentImgKey + i}
-          className={`sushi_page__gridItem fadeInDown`}
-          style={{ animationDelay: animationDelay(0.05, i) }}>
-          <SushiImg picSrc={item.pic} alt={item.name} />
-          <div className='sushi_page__desc'>
+          style={{ animationDelay: animationDelay(0.05, i) }}
+        >
+          <SushiImg alt={item.name} picSrc={item.pic} />
+          <div className="sushi_page__desc">
             <div>
               <h3>{item.name}</h3>
               {!!item.recipe && <p>{item.recipe}</p>}
@@ -26,22 +27,24 @@ const SushiItems = memo(function SushiItems({
         </div>
       ))}
     </div>
-  )
-})
+  );
+});
 
-const SushiImg = ({ picSrc, alt }: { picSrc: string; alt: string }) => {
-  const [loaded, setloaded] = useState(false)
+const SushiImg = ({ picSrc, alt }: {
+  alt: string; picSrc: string;
+}) => {
+  const [loaded, setloaded] = useState(false);
 
   return (
     <div className={`sushi_page__imgCont ${loaded ? '' : 'loading'}`}>
       <img
-        onLoad={() => setloaded(true)}
-        className='sushi_page__img'
-        src={picSrc}
         alt={alt}
+        className="sushi_page__img"
+        src={picSrc}
+        onLoad={() => setloaded(true)}
       />
     </div>
-  )
-}
+  );
+};
 
-export default SushiItems
+export default SushiItems;

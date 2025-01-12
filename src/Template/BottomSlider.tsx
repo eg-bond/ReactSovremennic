@@ -1,20 +1,16 @@
 import { memo } from 'react';
-import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { Link } from 'react-router-dom';
+import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { scrollToNavigation } from '../helpers';
 import type { CinemaStateT } from '../REDUX/cinema/cinemaReducerT';
 
-const BottomSlider = memo<BottomSliderT>(function BottomSliderN({
-  isMobile,
-  filmsToday,
-}) {
+const BottomSlider = memo<BottomSliderT>(function BottomSliderN({ isMobile, filmsToday }) {
   if (isMobile || filmsToday[0] === undefined) {
     return null;
   }
 
   return (
     <Splide
-      className={'bottomSlider'}
       options={{
         perPage: 4,
         perMove: 1,
@@ -26,9 +22,11 @@ const BottomSlider = memo<BottomSliderT>(function BottomSliderN({
         interval: 2000,
         pauseOnHover: true,
         pauseOnFocus: true,
-      }}>
+      }}
+      className="bottomSlider"
+    >
       {filmsToday.map((item, i) => (
-        <Slide key={i + 'BSl'} film={item} />
+        <Slide film={item} key={i + 'BSl'} />
       ))}
     </Splide>
   );
@@ -36,20 +34,21 @@ const BottomSlider = memo<BottomSliderT>(function BottomSliderN({
 
 const Slide = memo(function Slide({ film }: SlideT) {
   return (
-    <SplideSlide className={'swSlide bottomSlider__slide'}>
+    <SplideSlide className="swSlide bottomSlider__slide">
       <Link
-        className='swSlide__a'
+        className="swSlide__a"
+        to={`/movies/${film.link}`}
         onClick={scrollToNavigation}
-        to={`/movies/${film.link}`}>
-        <div className={`bottomSlider__imgCont skeleton-Gray`}>
+      >
+        <div className="bottomSlider__imgCont skeleton-Gray">
           <img
-            className='swSlide__img'
-            src={`Images/description/${film.link}_D.webp`}
             alt={film.title}
+            className="swSlide__img"
+            src={`Images/description/${film.link}_D.webp`}
           />
         </div>
-        <h1 className='swSlide__h1'>{film.title}</h1>
-        <p className='swSlide__p'>{film.kind.split(', ')[0]}</p>
+        <h1 className="swSlide__h1">{film.title}</h1>
+        <p className="swSlide__p">{film.kind.split(', ')[0]}</p>
       </Link>
     </SplideSlide>
   );
@@ -62,6 +61,6 @@ type SlideT = {
 export default BottomSlider;
 
 type BottomSliderT = {
-  isMobile: boolean;
   filmsToday: CinemaStateT['filmsToday'];
+  isMobile: boolean;
 };

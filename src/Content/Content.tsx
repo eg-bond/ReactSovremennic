@@ -1,33 +1,36 @@
-import { Suspense, lazy, memo } from 'react'
-import { Routes, Route } from 'react-router-dom'
-import IndexContent from './IndexContent/IndexContent'
-import Seance from './Seance/Seance'
-import SelectedMovieContainer from './Cinema/SelectedMovieContainer'
-import About from './About/About'
-import Rules from './Rules/Rules'
+import { Suspense, lazy, memo } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import About from './About/About';
+import Rules from './Rules/Rules';
+import Seance from './Seance/Seance';
+import IndexContent from './IndexContent/IndexContent';
+import SelectedMovieContainer from './Cinema/SelectedMovieContainer';
 
-const SushiContainer = lazy(() => import('./Sushi/SushiContainer'))
+const SushiContainer = lazy(() => import('./Sushi/SushiContainer'));
 
-const Content = memo<{ isMobile: boolean }>(function Content({ isMobile }) {
+const Content = memo<{
+  isMobile: boolean;
+}>(function Content({ isMobile }) {
   return (
     <Suspense
       fallback={
-        <div className='content__gridRightItem--full'>{/* preloader?? */}</div>
-      }>
+        <div className="content__gridRightItem--full">{/* preloader?? */}</div>
+      }
+    >
       <Routes>
-        <Route path='/' element={<IndexContent isMobile={isMobile} />} />
-        <Route path='seance' element={<Seance isMobile={isMobile} />} />
+        <Route element={<IndexContent isMobile={isMobile} />} path="/" />
+        <Route element={<Seance isMobile={isMobile} />} path="seance" />
         <Route
-          path='movies/:film_id'
           element={<SelectedMovieContainer isMobile={isMobile} />}
+          path="movies/:film_id"
         />
-        <Route path='about' element={<About />} />
-        <Route path='rules' element={<Rules />} />
+        <Route element={<About />} path="about" />
+        <Route element={<Rules />} path="rules" />
         {/* lazy routes */}
-        <Route path='sushi' element={<SushiContainer isMobile={isMobile} />} />
+        <Route element={<SushiContainer isMobile={isMobile} />} path="sushi" />
       </Routes>
     </Suspense>
-  )
-})
+  );
+});
 
-export default Content
+export default Content;

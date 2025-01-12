@@ -1,18 +1,18 @@
-import { filmsArray } from '../filmsArray'
+import { filmsArray } from '../filmsArray';
 
-type FilmsArrayT = typeof filmsArray
+type FilmsArrayT = typeof filmsArray;
 
-type FilmItemT = FilmsArrayT[0]
+type FilmItemT = FilmsArrayT[0];
 
 type CinemaStateT = {
-  films: FilmsArrayT
-  filmsObject: FilmsObjectT
-  filmsToday: FilmsArrayT
-  filmsTodayAmount: number
-}
+  films: FilmsArrayT;
+  filmsObject: FilmsObjectT;
+  filmsToday: FilmsArrayT;
+  filmsTodayAmount: number;
+};
 
 type FilmsObjectT = {
-  [index: string]: FilmItemT
-}
+  [index: string]: FilmItemT;
+};
 
-export type { FilmsArrayT, CinemaStateT, FilmsObjectT, FilmItemT }
+export type { FilmsArrayT, CinemaStateT, FilmsObjectT, FilmItemT };

@@ -7,7 +7,7 @@ export const animationDelay = (delay: number, multiplier: number) => {
 
 export const scrollToNavbar = (
   contentRef: React.RefObject<HTMLDivElement>,
-  hrRef: React.RefObject<HTMLHRElement>
+  hrRef: React.RefObject<HTMLHRElement>,
 ) => {
   if (!contentRef.current || !hrRef.current) return;
 

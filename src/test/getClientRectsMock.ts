@@ -13,5 +13,5 @@ export const getClientRectsMock = () => {
         y: 0,
       },
     ]),
-  })
-}
+  });
+};

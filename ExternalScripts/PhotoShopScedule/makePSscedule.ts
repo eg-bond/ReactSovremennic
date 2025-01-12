@@ -1,39 +1,41 @@
-import schedule from '../../src/Content/Seance/schedule'
-import fs from 'fs'
-import {
-  extractTitlesWithAges,
-  makeUniqueTitlesArr,
-  sortTitles,
-} from './funcs/titles'
+import fs from 'fs';
+import schedule from '../../src/Content/Seance/schedule';
 import {
   SeanceLibType,
   indexSeances,
   makeSeancesLibFrom,
-} from './funcs/seances'
+} from './funcs/seances';
+import {
+  extractTitlesWithAges,
+  makeUniqueTitlesArr,
+  sortTitles,
+} from './funcs/titles';
 
 type PsScheduleType = {
-  [key: string]: { titles: string[]; seansScedule: SeanceLibType }
-}
+  [key: string]: {
+    seansScedule: SeanceLibType; titles: string[];
+  };
+};
 
 function makePsSchedule() {
-  const psSchedule = {} as PsScheduleType
+  const psSchedule = {} as PsScheduleType;
 
   Object.keys(schedule).forEach((key: string): void => {
     // Titles
-    const titlesAndAges = extractTitlesWithAges(key as keyof typeof schedule)
-    const uniqueTitlesArray = makeUniqueTitlesArr(titlesAndAges)
-    const sortedTitles = sortTitles(uniqueTitlesArray)
+    const titlesAndAges = extractTitlesWithAges(key as keyof typeof schedule);
+    const uniqueTitlesArray = makeUniqueTitlesArr(titlesAndAges);
+    const sortedTitles = sortTitles(uniqueTitlesArray);
     // Seances
-    const indexedSceduleItem = indexSeances(key as keyof typeof schedule)
-    const seanceLib = makeSeancesLibFrom(indexedSceduleItem)
+    const indexedSceduleItem = indexSeances(key as keyof typeof schedule);
+    const seanceLib = makeSeancesLibFrom(indexedSceduleItem);
     // Final psSchedule object
-    psSchedule[key] = { titles: sortedTitles, seansScedule: seanceLib }
-  })
+    psSchedule[key] = { titles: sortedTitles, seansScedule: seanceLib };
+  });
 
   fs.writeFileSync(
     'ExternalScripts/PhotoShopScedule/psSchedule.json',
-    JSON.stringify(psSchedule)
-  )
+    JSON.stringify(psSchedule),
+  );
 }
 
-makePsSchedule()
+makePsSchedule();

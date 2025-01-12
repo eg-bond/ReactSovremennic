@@ -23,9 +23,9 @@ export const menuButtons = [
 export const sushiState: {
   [property in (typeof menuButtons)[any][0]]: {
     name: string;
-    recipe?: string;
-    price: string;
     pic: string;
+    price: string;
+    recipe?: string;
   }[];
 } = {
   sushi: [
@@ -73,7 +73,7 @@ export const sushiState: {
       name: 'Тигровая креветка',
       price: '100',
       pic: imgSrc('sushi_items', 'shrimp'),
-    },    
+    },
     {
       name: 'Красный окунь (запеченный)',
       price: '80',
@@ -602,7 +602,7 @@ export const sushiState: {
       recipe: 'Бульон, лук порей, тофу, водоросли вакеме, кунжут',
       price: '180',
       pic: imgSrc('soups', 'miso'),
-    },  
+    },
 
     {
       name: 'Кимчи',
@@ -816,7 +816,7 @@ export const sushiState: {
       recipe: 'Тесто, сыр сулугуни, перец черный, масло сливочное',
       price: '80',
       pic: imgSrc('gruzia', 'hinkali'),
-    },    
+    },
     {
       name: 'Солянка по-грузински',
       recipe:
