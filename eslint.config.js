@@ -10,7 +10,7 @@ import parser from '@html-eslint/parser';
 import json from '@eslint/json';
 
 export default tseslint.config(
-  { ignores: ['dist', 'yarn.lock'] },
+  { ignores: ['dist', 'yarn.lock', 'coverage'] },
   // config for JSON files
   {
     ...json.configs.recommended,

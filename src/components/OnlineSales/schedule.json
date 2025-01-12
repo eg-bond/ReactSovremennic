@@ -4,8 +4,14 @@
       "id": 1445,
       "vip": 0,
       "title": "1",
-      "formats_id": [1, 2],
-      "formats": ["2D", "3D"],
+      "formats_id": [
+        1,
+        2
+      ],
+      "formats": [
+        "2D",
+        "3D"
+      ],
       "schedule_updated": 1730022976
     }
   ],
@@ -70,7 +76,9 @@
       "film_id": 10048155,
       "id": "671e0d3f400000c301797216",
       "external_id": "",
-      "formats": ["2D"],
+      "formats": [
+        "2D"
+      ],
       "length": 82,
       "timestamp": 1730102400,
       "updated": 1730022786,
@@ -79,9 +87,17 @@
       "start": "08:00",
       "comment": "",
       "approved": 0,
-      "upgrades": [""],
-      "duration": { "release": 82, "advertising": 0, "pause": 18 },
-      "format_ids": [1],
+      "upgrades": [
+        ""
+      ],
+      "duration": {
+        "release": 82,
+        "advertising": 0,
+        "pause": 18
+      },
+      "format_ids": [
+        1
+      ],
       "sale": {
         "is_open": true,
         "is_close_online_sale": false,
@@ -95,7 +111,9 @@
       "film_id": 19565,
       "id": "671e0d4e400000490079721b",
       "external_id": "",
-      "formats": ["2D"],
+      "formats": [
+        "2D"
+      ],
       "length": 95,
       "timestamp": 1730108400,
       "updated": 1730022786,
@@ -104,9 +122,17 @@
       "start": "09:40",
       "comment": "",
       "approved": 0,
-      "upgrades": [""],
-      "duration": { "release": 95, "advertising": 0, "pause": 20 },
-      "format_ids": [1],
+      "upgrades": [
+        ""
+      ],
+      "duration": {
+        "release": 95,
+        "advertising": 0,
+        "pause": 20
+      },
+      "format_ids": [
+        1
+      ],
       "sale": {
         "is_open": true,
         "is_close_online_sale": false,
@@ -120,7 +146,9 @@
       "film_id": 20725,
       "id": "671e0d59400000b401797220",
       "external_id": "",
-      "formats": ["2D"],
+      "formats": [
+        "2D"
+      ],
       "length": 119,
       "timestamp": 1730115300,
       "updated": 1730022786,
@@ -129,9 +157,17 @@
       "start": "11:35",
       "comment": "",
       "approved": 0,
-      "upgrades": [""],
-      "duration": { "release": 119, "advertising": 0, "pause": 26 },
-      "format_ids": [1],
+      "upgrades": [
+        ""
+      ],
+      "duration": {
+        "release": 119,
+        "advertising": 0,
+        "pause": 26
+      },
+      "format_ids": [
+        1
+      ],
       "sale": {
         "is_open": true,
         "is_close_online_sale": false,
@@ -145,7 +181,9 @@
       "film_id": 20539,
       "id": "671e0d643f00004e00c0bfcd",
       "external_id": "",
-      "formats": ["2D"],
+      "formats": [
+        "2D"
+      ],
       "length": 118,
       "timestamp": 1730124000,
       "updated": 1730022786,
@@ -154,9 +192,17 @@
       "start": "14:00",
       "comment": "",
       "approved": 0,
-      "upgrades": [""],
-      "duration": { "release": 118, "advertising": 0, "pause": 17 },
-      "format_ids": [1],
+      "upgrades": [
+        ""
+      ],
+      "duration": {
+        "release": 118,
+        "advertising": 0,
+        "pause": 17
+      },
+      "format_ids": [
+        1
+      ],
       "sale": {
         "is_open": true,
         "is_close_online_sale": false,
@@ -170,7 +216,9 @@
       "film_id": 20725,
       "id": "671e0d713f0000e100c0bfd9",
       "external_id": "",
-      "formats": ["2D"],
+      "formats": [
+        "2D"
+      ],
       "length": 119,
       "timestamp": 1730132100,
       "updated": 1730022786,
@@ -179,9 +227,17 @@
       "start": "16:15",
       "comment": "",
       "approved": 0,
-      "upgrades": [""],
-      "duration": { "release": 119, "advertising": 0, "pause": 21 },
-      "format_ids": [1],
+      "upgrades": [
+        ""
+      ],
+      "duration": {
+        "release": 119,
+        "advertising": 0,
+        "pause": 21
+      },
+      "format_ids": [
+        1
+      ],
       "sale": {
         "is_open": true,
         "is_close_online_sale": false,
@@ -195,7 +251,9 @@
       "film_id": 21163,
       "id": "671e0d81400000db00472d6e",
       "external_id": "",
-      "formats": ["2D"],
+      "formats": [
+        "2D"
+      ],
       "length": 129,
       "timestamp": 1730140500,
       "updated": 1730022786,
@@ -204,9 +262,17 @@
       "start": "18:35",
       "comment": "",
       "approved": 0,
-      "upgrades": [""],
-      "duration": { "release": 129, "advertising": 0, "pause": 11 },
-      "format_ids": [1],
+      "upgrades": [
+        ""
+      ],
+      "duration": {
+        "release": 129,
+        "advertising": 0,
+        "pause": 11
+      },
+      "format_ids": [
+        1
+      ],
       "sale": {
         "is_open": true,
         "is_close_online_sale": false,
@@ -220,7 +286,9 @@
       "film_id": 19563,
       "id": "671e0da5400000db00472d83",
       "external_id": "",
-      "formats": ["2D"],
+      "formats": [
+        "2D"
+      ],
       "length": 100,
       "timestamp": 1730188800,
       "updated": 1730022889,
@@ -229,9 +297,17 @@
       "start": "08:00",
       "comment": "",
       "approved": 0,
-      "upgrades": [""],
-      "duration": { "release": 100, "advertising": 0, "pause": 20 },
-      "format_ids": [1],
+      "upgrades": [
+        ""
+      ],
+      "duration": {
+        "release": 100,
+        "advertising": 0,
+        "pause": 20
+      },
+      "format_ids": [
+        1
+      ],
       "sale": {
         "is_open": true,
         "is_close_online_sale": false,
@@ -245,7 +321,9 @@
       "film_id": 20725,
       "id": "671e0db24000009100797254",
       "external_id": "",
-      "formats": ["2D"],
+      "formats": [
+        "2D"
+      ],
       "length": 119,
       "timestamp": 1730196000,
       "updated": 1730022889,
@@ -254,9 +332,17 @@
       "start": "10:00",
       "comment": "",
       "approved": 0,
-      "upgrades": [""],
-      "duration": { "release": 119, "advertising": 0, "pause": 26 },
-      "format_ids": [1],
+      "upgrades": [
+        ""
+      ],
+      "duration": {
+        "release": 119,
+        "advertising": 0,
+        "pause": 26
+      },
+      "format_ids": [
+        1
+      ],
       "sale": {
         "is_open": true,
         "is_close_online_sale": false,
@@ -270,7 +356,9 @@
       "film_id": 10048155,
       "id": "671e0dc2400000db00472d85",
       "external_id": "",
-      "formats": ["2D"],
+      "formats": [
+        "2D"
+      ],
       "length": 82,
       "timestamp": 1730204700,
       "updated": 1730022889,
@@ -279,9 +367,17 @@
       "start": "12:25",
       "comment": "",
       "approved": 0,
-      "upgrades": [""],
-      "duration": { "release": 82, "advertising": 0, "pause": 18 },
-      "format_ids": [1],
+      "upgrades": [
+        ""
+      ],
+      "duration": {
+        "release": 82,
+        "advertising": 0,
+        "pause": 18
+      },
+      "format_ids": [
+        1
+      ],
       "sale": {
         "is_open": true,
         "is_close_online_sale": false,
@@ -295,7 +391,9 @@
       "film_id": 20725,
       "id": "671e0dd33f0000e100c0c01c",
       "external_id": "",
-      "formats": ["2D"],
+      "formats": [
+        "2D"
+      ],
       "length": 119,
       "timestamp": 1730210700,
       "updated": 1730022889,
@@ -304,9 +402,17 @@
       "start": "14:05",
       "comment": "",
       "approved": 0,
-      "upgrades": [""],
-      "duration": { "release": 119, "advertising": 0, "pause": 21 },
-      "format_ids": [1],
+      "upgrades": [
+        ""
+      ],
+      "duration": {
+        "release": 119,
+        "advertising": 0,
+        "pause": 21
+      },
+      "format_ids": [
+        1
+      ],
       "sale": {
         "is_open": true,
         "is_close_online_sale": false,
@@ -320,7 +426,9 @@
       "film_id": 20539,
       "id": "671e0de33f00004700c0c01e",
       "external_id": "",
-      "formats": ["2D"],
+      "formats": [
+        "2D"
+      ],
       "length": 118,
       "timestamp": 1730219100,
       "updated": 1730022889,
@@ -329,9 +437,17 @@
       "start": "16:25",
       "comment": "",
       "approved": 0,
-      "upgrades": [""],
-      "duration": { "release": 118, "advertising": 0, "pause": 17 },
-      "format_ids": [1],
+      "upgrades": [
+        ""
+      ],
+      "duration": {
+        "release": 118,
+        "advertising": 0,
+        "pause": 17
+      },
+      "format_ids": [
+        1
+      ],
       "sale": {
         "is_open": true,
         "is_close_online_sale": false,
@@ -345,7 +461,9 @@
       "film_id": 21163,
       "id": "671e0de9400000490079725a",
       "external_id": "",
-      "formats": ["2D"],
+      "formats": [
+        "2D"
+      ],
       "length": 129,
       "timestamp": 1730227200,
       "updated": 1730022889,
@@ -354,9 +472,17 @@
       "start": "18:40",
       "comment": "",
       "approved": 0,
-      "upgrades": [""],
-      "duration": { "release": 129, "advertising": 0, "pause": 11 },
-      "format_ids": [1],
+      "upgrades": [
+        ""
+      ],
+      "duration": {
+        "release": 129,
+        "advertising": 0,
+        "pause": 11
+      },
+      "format_ids": [
+        1
+      ],
       "sale": {
         "is_open": true,
         "is_close_online_sale": false,
@@ -370,7 +496,9 @@
       "film_id": 19565,
       "id": "671e0e02400000490079725f",
       "external_id": "",
-      "formats": ["2D"],
+      "formats": [
+        "2D"
+      ],
       "length": 95,
       "timestamp": 1730275200,
       "updated": 1730022976,
@@ -379,9 +507,17 @@
       "start": "08:00",
       "comment": "",
       "approved": 0,
-      "upgrades": [""],
-      "duration": { "release": 95, "advertising": 0, "pause": 20 },
-      "format_ids": [1],
+      "upgrades": [
+        ""
+      ],
+      "duration": {
+        "release": 95,
+        "advertising": 0,
+        "pause": 20
+      },
+      "format_ids": [
+        1
+      ],
       "sale": {
         "is_open": true,
         "is_close_online_sale": false,
@@ -395,7 +531,9 @@
       "film_id": 20725,
       "id": "671e0e0d400000b401797260",
       "external_id": "",
-      "formats": ["2D"],
+      "formats": [
+        "2D"
+      ],
       "length": 119,
       "timestamp": 1730282100,
       "updated": 1730022976,
@@ -404,9 +542,17 @@
       "start": "09:55",
       "comment": "",
       "approved": 0,
-      "upgrades": [""],
-      "duration": { "release": 119, "advertising": 0, "pause": 26 },
-      "format_ids": [1],
+      "upgrades": [
+        ""
+      ],
+      "duration": {
+        "release": 119,
+        "advertising": 0,
+        "pause": 26
+      },
+      "format_ids": [
+        1
+      ],
       "sale": {
         "is_open": true,
         "is_close_online_sale": false,
@@ -420,7 +566,9 @@
       "film_id": 19563,
       "id": "671e0e1b4000005100472d8c",
       "external_id": "",
-      "formats": ["2D"],
+      "formats": [
+        "2D"
+      ],
       "length": 100,
       "timestamp": 1730290800,
       "updated": 1730022976,
@@ -429,9 +577,17 @@
       "start": "12:20",
       "comment": "",
       "approved": 0,
-      "upgrades": [""],
-      "duration": { "release": 100, "advertising": 0, "pause": 15 },
-      "format_ids": [1],
+      "upgrades": [
+        ""
+      ],
+      "duration": {
+        "release": 100,
+        "advertising": 0,
+        "pause": 15
+      },
+      "format_ids": [
+        1
+      ],
       "sale": {
         "is_open": true,
         "is_close_online_sale": false,
@@ -445,7 +601,9 @@
       "film_id": 20539,
       "id": "671e0e2a4000005100472e19",
       "external_id": "",
-      "formats": ["2D"],
+      "formats": [
+        "2D"
+      ],
       "length": 118,
       "timestamp": 1730297700,
       "updated": 1730022976,
@@ -454,9 +612,17 @@
       "start": "14:15",
       "comment": "",
       "approved": 0,
-      "upgrades": [""],
-      "duration": { "release": 118, "advertising": 0, "pause": 17 },
-      "format_ids": [1],
+      "upgrades": [
+        ""
+      ],
+      "duration": {
+        "release": 118,
+        "advertising": 0,
+        "pause": 17
+      },
+      "format_ids": [
+        1
+      ],
       "sale": {
         "is_open": true,
         "is_close_online_sale": false,
@@ -470,7 +636,9 @@
       "film_id": 20725,
       "id": "671e0e34400000bf01798120",
       "external_id": "",
-      "formats": ["2D"],
+      "formats": [
+        "2D"
+      ],
       "length": 119,
       "timestamp": 1730305800,
       "updated": 1730022976,
@@ -479,9 +647,17 @@
       "start": "16:30",
       "comment": "",
       "approved": 0,
-      "upgrades": [""],
-      "duration": { "release": 119, "advertising": 0, "pause": 21 },
-      "format_ids": [1],
+      "upgrades": [
+        ""
+      ],
+      "duration": {
+        "release": 119,
+        "advertising": 0,
+        "pause": 21
+      },
+      "format_ids": [
+        1
+      ],
       "sale": {
         "is_open": true,
         "is_close_online_sale": false,
@@ -495,7 +671,9 @@
       "film_id": 21163,
       "id": "671e0e403f0000e100c0c03b",
       "external_id": "",
-      "formats": ["2D"],
+      "formats": [
+        "2D"
+      ],
       "length": 129,
       "timestamp": 1730314200,
       "updated": 1730022976,
@@ -504,9 +682,17 @@
       "start": "18:50",
       "comment": "",
       "approved": 0,
-      "upgrades": [""],
-      "duration": { "release": 129, "advertising": 0, "pause": 11 },
-      "format_ids": [1],
+      "upgrades": [
+        ""
+      ],
+      "duration": {
+        "release": 129,
+        "advertising": 0,
+        "pause": 11
+      },
+      "format_ids": [
+        1
+      ],
       "sale": {
         "is_open": true,
         "is_close_online_sale": false,
