@@ -8,11 +8,13 @@
 
     See http://www.JSON.org/js.html
 
+
     This code should be minified before deployment.
     See http://javascript.crockford.com/jsmin.html
 
     USE YOUR OWN COPY. IT IS EXTREMELY UNWISE TO LOAD CODE FROM SERVERS YOU DO
     NOT CONTROL.
+
 
     This file creates a global JSON object containing two methods: stringify
     and parse.
@@ -87,6 +89,7 @@
             text = JSON.stringify(['e', {pluribus: 'unum'}]);
             // text is '["e",{"pluribus":"unum"}]'
 
+
             text = JSON.stringify(['e', {pluribus: 'unum'}], null, '\t');
             // text is '[\n\t"e",\n\t{\n\t\t"pluribus": "unum"\n\t}\n]'
 
@@ -95,6 +98,7 @@
                     'Date(' + this[key] + ')' : value;
             });
             // text is '["Date(---current time---)"]'
+
 
         JSON.parse(text, reviver)
             This method parses a JSON text to produce an object or array.
@@ -137,13 +141,14 @@
                 return value;
             });
 
+
     This is a reference implementation. You are free to copy, modify, or
     redistribute.
 */
 
-/* jslint evil: true, strict: false */
+/*jslint evil: true, strict: false */
 
-/* members "", "\b", "\t", "\n", "\f", "\r", "\"", JSON, "\\", apply,
+/*members "", "\b", "\t", "\n", "\f", "\r", "\"", JSON, "\\", apply,
     call, charCodeAt, getUTCDate, getUTCFullYear, getUTCHours,
     getUTCMinutes, getUTCMonth, getUTCSeconds, hasOwnProperty, join,
     lastIndex, length, parse, prototype, push, replace, slice, stringify,
@@ -167,17 +172,17 @@ if (!this.JSON) {
     Date.prototype.toJSON = function (key) {
       return isFinite(this.valueOf())
         ? this.getUTCFullYear() +
-        '-' +
-        f(this.getUTCMonth() + 1) +
-        '-' +
-        f(this.getUTCDate()) +
-        'T' +
-        f(this.getUTCHours()) +
-        ':' +
-        f(this.getUTCMinutes()) +
-        ':' +
-        f(this.getUTCSeconds()) +
-        'Z'
+            '-' +
+            f(this.getUTCMonth() + 1) +
+            '-' +
+            f(this.getUTCDate()) +
+            'T' +
+            f(this.getUTCHours()) +
+            ':' +
+            f(this.getUTCMinutes()) +
+            ':' +
+            f(this.getUTCSeconds()) +
+            'Z'
         : null;
     };
 
@@ -189,7 +194,7 @@ if (!this.JSON) {
         };
   }
 
-  let cx =
+  var cx =
       /[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,
     escapable =
       /[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,
@@ -216,20 +221,20 @@ if (!this.JSON) {
     escapable.lastIndex = 0;
     return escapable.test(string)
       ? '"' +
-      string.replace(escapable, function (a) {
-        const c = meta[a];
-        return typeof c === 'string'
-          ? c
-          : '\\u' + ('0000' + a.charCodeAt(0).toString(16)).slice(-4);
-      }) +
-      '"'
+          string.replace(escapable, function (a) {
+            var c = meta[a];
+            return typeof c === 'string'
+              ? c
+              : '\\u' + ('0000' + a.charCodeAt(0).toString(16)).slice(-4);
+          }) +
+          '"'
       : '"' + string + '"';
   }
 
   function str(key, holder) {
     // Produce a string from holder[key].
 
-    let i, // The loop counter.
+    var i, // The loop counter.
       k, // The member key.
       v, // The member value.
       length,
@@ -273,8 +278,8 @@ if (!this.JSON) {
 
         return String(value);
 
-        // If the type is 'object', we might be dealing with an object or an array or
-        // null.
+      // If the type is 'object', we might be dealing with an object or an array or
+      // null.
 
       case 'object':
         // Due to a specification blunder in ECMAScript, typeof null is 'object',
@@ -307,8 +312,8 @@ if (!this.JSON) {
             partial.length === 0
               ? '[]'
               : gap
-                ? '[\n' + gap + partial.join(',\n' + gap) + '\n' + mind + ']'
-                : '[' + partial.join(',') + ']';
+              ? '[\n' + gap + partial.join(',\n' + gap) + '\n' + mind + ']'
+              : '[' + partial.join(',') + ']';
           gap = mind;
           return v;
         }
@@ -346,8 +351,8 @@ if (!this.JSON) {
           partial.length === 0
             ? '{}'
             : gap
-              ? '{\n' + gap + partial.join(',\n' + gap) + '\n' + mind + '}'
-              : '{' + partial.join(',') + '}';
+            ? '{\n' + gap + partial.join(',\n' + gap) + '\n' + mind + '}'
+            : '{' + partial.join(',') + '}';
         gap = mind;
         return v;
     }
@@ -363,7 +368,7 @@ if (!this.JSON) {
       // A default replacer method can be provided. Use of the space parameter can
       // produce text that is more easily readable.
 
-      let i;
+      var i;
       gap = '';
       indent = '';
 
@@ -406,13 +411,13 @@ if (!this.JSON) {
       // The parse method takes a text and an optional reviver function, and returns
       // a JavaScript value if the text is a valid JSON text.
 
-      let j;
+      var j;
 
       function walk(holder, key) {
         // The walk method is used to recursively walk the resulting structure so
         // that modifications can be made.
 
-        let k,
+        var k,
           v,
           value = holder[key];
         if (value && typeof value === 'object') {
@@ -461,9 +466,9 @@ if (!this.JSON) {
             .replace(/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g, '@')
             .replace(
               /"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g,
-              ']',
+              ']'
             )
-            .replace(/(?:^|:|,)(?:\s*\[)+/g, ''),
+            .replace(/(?:^|:|,)(?:\s*\[)+/g, '')
         )
       ) {
         // In the third stage we use the eval function to compile the text into a
