@@ -11,8 +11,8 @@ const SelectedMovie = memo<{
   isMobile: boolean;
 }>(function SelectedMovie({
   fontSize,
-filmItem,
-isMobile,
+  filmItem,
+  isMobile,
 }) {
   const gridClass =
     fontSize !== '26px' ? 'selectedMovie--rightFr' : 'selectedMovie--fullFr';
@@ -26,6 +26,7 @@ isMobile,
             <h2>{filmItem['title']}</h2>
             <p>
               Смотрите
+              {' '}
               {`${filmItem['beginDate']} ${filmItem['endDate']}`}
             </p>
           </div>
