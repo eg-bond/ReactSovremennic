@@ -29,6 +29,12 @@ const SelectedMovie = memo<{
               {' '}
               {`${filmItem['beginDate']} ${filmItem['endDate']}`}
             </p>
+            {filmItem.link === 'smile_2' && (
+              <p>
+                В фильме присутствует ненормативная лексика!
+              </p>
+            )}
+
           </div>
           <table className="selectedMovie__table">
             <tbody>
