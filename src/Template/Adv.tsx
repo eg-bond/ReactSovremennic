@@ -9,8 +9,8 @@ const AdvContent = memo(function AdvContent() {
 
   return (
     <div className="content__gridRightItem--1fr contentMT">
-      <AdvSlider />
       <SushiWorkModal loaded={allImgLoaded} onLoad={onLoad} />
+      <AdvSlider />
       <div
         className={`desktopAdv desktopAdv--2 ${
           !allImgLoaded ? 'skeleton' : ''
