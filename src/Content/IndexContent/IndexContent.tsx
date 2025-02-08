@@ -23,7 +23,7 @@ function IndexContent({ isMobile }: {
                 'picture-in-picture; screen-wake-lock;'
               }
               src={`https://vkvideo.ru/video_ext.php?oid=-${convertVideoId(
-                '218182715_456240443',
+                '23900316_456244699',
               )}`}
               height="360"
               width="640"
