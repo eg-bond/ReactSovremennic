@@ -1,5 +1,6 @@
 import fs from 'fs';
 import xlsx from 'xlsx';
+import { PRE_SHOW_SERVICE_SHORT } from '@/utils/constants';
 import { filmsArray } from '../../src/REDUX/filmsArray';
 
 type dataT = Array<{
@@ -87,7 +88,10 @@ function findTitleAndAge() {
 
   filmsArray.forEach((filmItem) => {
     const key = findFirstWordInTitle(filmItem.title);
-    actualTitleAndAge[key] = [filmItem.title + ' 2D', filmItem.age];
+    const title = filmItem.pirate
+      ? `${filmItem.title} 2D ${PRE_SHOW_SERVICE_SHORT} `
+      : filmItem.title + ' 2D';
+    actualTitleAndAge[key] = [title, filmItem.age];
   });
 
   return actualTitleAndAge;

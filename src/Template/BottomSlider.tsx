@@ -1,5 +1,6 @@
-import { memo } from 'react';
+import { memo, useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import { PRE_SHOW_SERVICE } from '@/utils/constants';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { scrollToNavigation } from '../helpers';
 import type { CinemaStateT } from '../REDUX/cinema/cinemaReducerT';
@@ -33,6 +34,11 @@ const BottomSlider = memo<BottomSliderT>(function BottomSliderN({ isMobile, film
 });
 
 const Slide = memo(function Slide({ film }: SlideT) {
+  const title = useMemo(() =>
+    film.pirate ? `${film.title} ${PRE_SHOW_SERVICE}` : film.title,
+  [film.title, film.pirate],
+  );
+
   return (
     <SplideSlide className="swSlide bottomSlider__slide">
       <Link
@@ -47,7 +53,7 @@ const Slide = memo(function Slide({ film }: SlideT) {
             src={`Images/description/${film.link}_D.webp`}
           />
         </div>
-        <h1 className="swSlide__h1">{film.title}</h1>
+        <h1 className="swSlide__h1">{title}</h1>
         <p className="swSlide__p">{film.kind.split(', ')[0]}</p>
       </Link>
     </SplideSlide>

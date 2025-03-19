@@ -1,5 +1,6 @@
-import { memo } from 'react';
+import { memo, useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import { PRE_SHOW_SERVICE } from '@/utils/constants';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { useMobilePaddings } from './useMobilePaddings';
 import { useImagesLoaded } from '../hooks/useImagesLoaded';
@@ -19,7 +20,6 @@ const FilmsSlider = memo<FilmSliderT>(function FilmsSlider({ films, isMobile }) 
           perMove: 1,
           pagination: false,
           gap: isMobile ? '2vw' : '0.6rem',
-          // arrows: false,
           arrows: isMobile ? false : true,
         }}
       >
@@ -41,6 +41,11 @@ const Slide = memo(function Slide({
 allImgLoaded,
 onLoad,
 }: SlideT) {
+  const title = useMemo(() =>
+    film.pirate ? `${film.title} ${PRE_SHOW_SERVICE}` : film.title,
+  [film.title, film.pirate],
+  );
+
   return (
     <SplideSlide className="swSlide cinemaSlider__slide">
       <Link className="swSlide__a" to={`movies/${film.link}`}>
@@ -56,7 +61,7 @@ onLoad,
             onLoad={onLoad}
           />
         </div>
-        <h1 className="swSlide__h1">{film.title}</h1>
+        <h1 className="swSlide__h1">{title}</h1>
         <p className="swSlide__p">{film.beginDate}</p>
       </Link>
     </SplideSlide>

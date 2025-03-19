@@ -24,16 +24,12 @@ const SelectedMovie = memo<{
         <div className={gridClass}>
           <div className="selectedMovie__title">
             <h2>{filmItem['title']}</h2>
+            {filmItem['pirate'] && <h2>(предсеансовое обслуживание)</h2>}
             <p>
               Смотрите
               {' '}
               {`${filmItem['beginDate']} ${filmItem['endDate']}`}
             </p>
-            {filmItem.link === 'smile_2' && (
-              <p>
-                В фильме присутствует ненормативная лексика!
-              </p>
-            )}
 
           </div>
           <table className="selectedMovie__table">
