@@ -19,6 +19,14 @@
   @extend %desktopParagraphsFS;
 }
 
+.news_seance {
+  text-align: justify;
+}
+.news_seance p {
+  font-size: 1.4rem;
+  margin: 0 1% 0 1.5%;
+}
+
 .announce {
   text-align: justify;
   @media #{$mediaQueryMobile} {
@@ -106,6 +114,12 @@
     }
     a {
       font-size: $mobileParagraphsFS;
+    }
+  }
+  .news_seance {
+    p {
+      font-size: 2.8vw;
+      margin: 1.5% 0 1.5% 0.5%;
     }
   }
 

@@ -39,9 +39,23 @@ function IndexContent({ isMobile }: {
         <h1 className={siteMode === 'special' ? 'index__h1--special' : ''}>
           Информация
         </h1>
-
         <p>
-          • Уважаемые посетители кинотеатра! На странице
+          • Уважаемые посетители кинотеатра! По техническим причинам, в период
+          {' '}
+          <span style={{ fontWeight: 'bold' }}>с 21.03.2025 по 24.03.2025</span>
+          {' '}
+          кинопоказ
+          {' '}
+          <span style={{
+            fontWeight: 'bold',
+            color: 'red',
+          }}
+          >
+            осуществляться не будет!
+          </span>
+        </p>
+        <p>
+          • Уважаемые гости кинотеатра! На странице
           {' '}
           <Link className="ref" style={{ textDecoration: 'none' }} to="seance">
             "Расписание"

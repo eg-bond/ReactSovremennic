@@ -52,7 +52,7 @@ const Seance = ({ isMobile }: {
 
   return (
     <div className="content__gridLeftItem--3fr seance">
-      {!isMobile && (
+      {/* {!isMobile && (
         <CreateSeanceButtons
           activeScheduleItemKey={activeScheduleItemKey}
           changeTableContent={changeTableContent}
@@ -69,10 +69,10 @@ const Seance = ({ isMobile }: {
             datesArr={datesArr}
           />
         </div>
-      )}
+      )} */}
 
-      <table
-        className={`seanse__table ${
+      {/* <table
+      className={`seanse__table ${
           tableVisible ? 'fadeInUp' : 'fadeOutDown'
         }`}
       >
@@ -80,9 +80,27 @@ const Seance = ({ isMobile }: {
           activeScheduleItemKey={activeScheduleItemKey}
           schedule={schedule}
         />
-      </table>
+      </table> */}
 
-      <OnlineSales />
+      {/* <OnlineSales /> */}
+
+      <div className="news_seance">
+        <p>
+          • Уважаемые посетители кинотеатра! По техническим причинам, в период
+          {' '}
+          <span style={{ fontWeight: 'bold' }}>с 21.03.2025 по 24.03.2025</span>
+          {' '}
+          кинопоказ
+          {' '}
+          <span style={{
+            fontWeight: 'bold',
+            color: 'red',
+          }}
+          >
+            осуществляться не будет!
+          </span>
+        </p>
+      </div>
 
       <div className="separatorMobile separatorMobile--index" />
       {isMobile && <IndexAdvXS />}

@@ -9,9 +9,23 @@ const AdvContent = memo(function AdvContent() {
 
   return (
     <div className="content__gridRightItem--1fr contentMT">
+      <a href="https://vk.com/sushikinno">
+        <div
+          className={`desktopAdv opacity_on_hover ${
+            !allImgLoaded ? 'skeleton' : ''
+          }`}
+          style={{ paddingBottom: '130%' }}
+        >
+          <img
+            alt="DJ Сергей Рунов 22 марта"
+            src="Images/runov.webp"
+            onLoad={onLoad}
+          />
+        </div>
+      </a>
       <SushiWorkModal loaded={allImgLoaded} onLoad={onLoad} />
       <AdvSlider />
-      <div
+      {/* <div
         className={`desktopAdv desktopAdv--2 ${
           !allImgLoaded ? 'skeleton' : ''
         }`}
@@ -21,7 +35,7 @@ const AdvContent = memo(function AdvContent() {
           src="Images/jsb1.gif"
           onLoad={onLoad}
         />
-      </div>
+      </div> */}
     </div>
   );
 });
