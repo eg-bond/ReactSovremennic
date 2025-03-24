@@ -1,24 +1,15 @@
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function IndexAdvXS() {
   return (
     <div className="container" data-testid="mobile_adv">
       <div className="indexAdvXS">
         <div className="indexAdvXS__item1">
-          <div className="indexAdvXS__item1__imgCont">
-            <a href="https://vk.com/sushikinno">
-              <img
-                alt="DJ Сергей Рунов 22 марта"
-                src="Images/runov.webp"
-                style={{ height: '100%' }}
-              />
-            </a>
-          </div>
-          {/* <div className="indexAdvXS__item1__imgCont skeleton">
+          <div className="indexAdvXS__item1__imgCont skeleton">
             <Link to="/sushi">
               <img alt="sushi" src="Images/sushi_adv.webp" />
             </Link>
-          </div> */}
+          </div>
         </div>
 
         <div className="indexAdvXS__item1_2">
