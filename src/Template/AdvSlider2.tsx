@@ -3,48 +3,39 @@ import { Link } from 'react-router-dom';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { useImagesLoaded } from '../hooks/useImagesLoaded';
 
-const KaraokeSlide = ({ allImgLoaded, onLoad }: {
+const SushiSlide = ({ allImgLoaded, onLoad }: {
   allImgLoaded: boolean;
   onLoad: () => void;
 }) => (
   <SplideSlide>
-    <a
-      className="linkWrapper"
-      href="https://vk.com/sushikinno"
-      tabIndex={2}
-    >
+    <Link className="linkWrapper" tabIndex={2} to="/sushi">
       <div className="imgContainer opacity_on_hover">
         <img
           className={`imgContainer__img transition ${
             !allImgLoaded ? 'skeleton' : ''
           }`}
-          alt="караоке"
-          src="Images/karaoke.webp"
+          alt="бар"
+          src="Images/sushi_adv.webp"
           onLoad={onLoad}
         />
       </div>
-    </a>
+    </Link>
   </SplideSlide>
 );
 
-const GlamoramaSlide = ({ allImgLoaded, onLoad }: {
+const LottenSlide = ({ allImgLoaded, onLoad }: {
   allImgLoaded: boolean;
   onLoad: () => void;
 }) => (
   <SplideSlide>
-
-    <a
-      className="linkWrapper"
-      href="https://vk.com/away.php?to=https%3A%2F%2Fafisha.nethouse.ru%2Fevent%2Fglamorama&utf=1"
-      tabIndex={2}
-    >
+    <a className="linkWrapper" href="https://lotten.ru" tabIndex={2}>
       <div className="imgContainer opacity_on_hover">
         <img
           className={`imgContainer__img transition  ${
             !allImgLoaded ? 'skeleton' : ''
           }`}
-          alt="гламорама"
-          src="Images/glamorama.webp"
+          alt="lotten кадастровые услуги"
+          src="Images/lotten_adv.webp"
           onLoad={onLoad}
         />
       </div>
@@ -52,7 +43,7 @@ const GlamoramaSlide = ({ allImgLoaded, onLoad }: {
   </SplideSlide>
 );
 
-const AdvSlider = memo(function BarSlider() {
+const AdvSlider2 = memo(function BarSlider() {
   const { allImgLoaded, onLoad } = useImagesLoaded(2);
   return (
     <Splide
@@ -69,9 +60,9 @@ const AdvSlider = memo(function BarSlider() {
       }}
       className="advSlider"
     >
-      <KaraokeSlide allImgLoaded={allImgLoaded} onLoad={onLoad} />
-      <GlamoramaSlide allImgLoaded={allImgLoaded} onLoad={onLoad} />
+      <LottenSlide allImgLoaded={allImgLoaded} onLoad={onLoad} />
+      <SushiSlide allImgLoaded={allImgLoaded} onLoad={onLoad} />
     </Splide>
   );
 });
-export default AdvSlider;
+export default AdvSlider2;

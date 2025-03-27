@@ -1,17 +1,19 @@
 import { memo } from 'react';
 import { useMatch } from 'react-router-dom';
 import AdvSlider from './AdvSlider';
+import AdvSlider2 from './AdvSlider2';
 import { SushiWorkModal } from './SushiWork';
 import { useImagesLoaded } from '../hooks/useImagesLoaded';
 
 const AdvContent = memo(function AdvContent() {
-  const { allImgLoaded, onLoad } = useImagesLoaded(2);
+  const { allImgLoaded, onLoad } = useImagesLoaded(1);
 
   return (
     <div className="content__gridRightItem--1fr contentMT">
       <SushiWorkModal loaded={allImgLoaded} onLoad={onLoad} />
       <AdvSlider />
-      <div
+      <AdvSlider2 />
+      {/* <div
         className={`desktopAdv desktopAdv--2 ${
           !allImgLoaded ? 'skeleton' : ''
         }`}
@@ -21,7 +23,7 @@ const AdvContent = memo(function AdvContent() {
           src="Images/jsb1.gif"
           onLoad={onLoad}
         />
-      </div>
+      </div> */}
     </div>
   );
 });
