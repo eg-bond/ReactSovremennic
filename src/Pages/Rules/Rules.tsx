@@ -1,16 +1,65 @@
-function Rules() {
+import styled, { css } from 'styled-components';
+import { mobileParagraphsFS, mobileTitlesFS, width } from '@/utils/constants';
+
+const RulesContainer = styled.div`
+  /* content__gridLeftItem--3fr */
+  grid-column: 1/4;
+  margin: 0 15px;
+  @media ${width.below768} {
+    grid-column: 1/5;
+    margin: 0 15px;
+  }
+  /* contentMT */
+  padding-top: var(--desktopContentMT) !important;
+  @media ${width.below768} {
+    padding-top: var(--mobileContentMT) !important;
+  } 
+`;
+
+const RulesHeader = styled.h3`  
+    text-align: center;
+    font-size: 1.6rem; 
+    @media ${width.below992} {
+      font-size: 1.1rem;
+    }
+    @media ${width.below768} {
+      font-size: ${mobileTitlesFS};
+      margin: 1vw 0 1vw 0;
+    }  
+`;
+
+const desktopParagraphsFS = css`
+  font-size: 1.2rem;
+  @media ${width.below1200} {
+    font-size: 1.05rem;
+  }
+  @media ${width.below992} {
+    font-size: 0.9rem;
+  }
+`;
+
+const RulesParagraph = styled.p`  
+    text-align: justify;
+    ${desktopParagraphsFS}
+    /* -------------------- */
+    @media ${width.below768} {
+      font-size: ${mobileParagraphsFS};
+    }  
+`;
+
+export function Rules() {
   return (
-    <div className="content__gridLeftItem--3fr contentMT rules">
-      <h3>Правила Кинотеатра «Современник»</h3>
-      <p>
+    <RulesContainer>
+      <RulesHeader>Правила Кинотеатра «Современник»</RulesHeader>
+      <RulesParagraph>
         Настоящие правила разработаны в соответствии с Законом РФ «О защите прав
         потребителя» №2300-1 от 07.02.1992г., Постановлением Правительства РФ
         №1264 от 17.11.1994г. «Об утверждении Правил по кинообслуживанию и
         Постановлением Правительства РФ № 1036 от 15 августа 1997 г. «Об
         утверждении Правил оказания услуг общественного питания».
-      </p>
-      <h3>1. Общие правила работы Кинотеатрами «Современник» </h3>
-      <p>
+      </RulesParagraph>
+      <RulesHeader>1. Общие правила работы Кинотеатрами «Современник» </RulesHeader>
+      <RulesParagraph>
         • Работа кассы и продажа билетов начинается за 30 минут до начала
         первого сеанса (согласно расписанию).
         <br />
@@ -103,12 +152,12 @@ function Rules() {
         • При демонстрации фильма в формате 2D дети до 3 лет имеют право
         проходить на сеанс (0+) по билету сопровождающего, однако, в этом случае
         ребенок не должен занимать отдельного кресла.
-      </p>
-      <h3>
+      </RulesParagraph>
+      <RulesHeader>
         2. Правила поведения посетителей/зрителей в зале Кинотеатра
         «Современник».
-      </h3>
-      <p>
+      </RulesHeader>
+      <RulesParagraph>
         • В помещениях Кинотеатра запрещено: курить, в том числе табачные
         изделия, кальяны на табачной основе, парогенераторы («электронные
         сигареты»), сорить, проносить напитки и еду в стеклянной таре,
@@ -141,9 +190,9 @@ function Rules() {
         личности или имуществу гражданина, а также вред, причиненный имуществу
         юридического лица, подлежит возмещению в полном объеме лицом,
         причинившим вред.
-      </p>
-      <h3>3. Администрация кинотеатра имеет право:</h3>
-      <p>
+      </RulesParagraph>
+      <RulesHeader>3. Администрация кинотеатра имеет право:</RulesHeader>
+      <RulesParagraph>
         • Устанавливать репертуарную политику и цены на билеты.
         <br />
         • Потребовать предъявить документ, удостоверяющий личность покупателя, в
@@ -161,18 +210,16 @@ function Rules() {
         право принять необходимые меры по предупреждению и пресечению нарушений
         общественного порядка, а также отказать в обслуживании и нахождении на
         территории кинотеатра.
-      </p>
-      <h3>4. Заключительные положения.</h3>
-      <p>
+      </RulesParagraph>
+      <RulesHeader>4. Заключительные положения.</RulesHeader>
+      <RulesParagraph>
         • Администрация Кинотеатра «Современник» будет признательна, если
         посетители будут оставлять свои пожелания, предложения или жалобы
         относительно сервиса, качества показа фильмов и репертуарной программы.
         <br />
         • Пожалуйста, бережно и терпимо относитесь к оборудованию и другим
         посетителям Кинотеатра.
-      </p>
-    </div>
+      </RulesParagraph>
+    </RulesContainer>
   );
 }
-
-export default Rules;

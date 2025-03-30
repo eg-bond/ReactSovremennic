@@ -1,14 +1,14 @@
 import { About } from '@/Pages/About';
 import { Rules } from '@/Pages/Rules';
+import Seance from '@/Content/Seance/Seance';
 import { Suspense, lazy, memo } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Seance from './Seance/Seance';
-import IndexContent from './IndexContent/IndexContent';
-import SelectedMovieContainer from './Cinema/SelectedMovieContainer';
+import IndexContent from '@/Content/IndexContent/IndexContent';
+import SelectedMovieContainer from '@/Content/Cinema/SelectedMovieContainer';
 
-const SushiContainer = lazy(() => import('./Sushi/SushiContainer'));
+const SushiContainer = lazy(() => import('@/Content/Sushi/SushiContainer'));
 
-const Content = memo<{
+export const Routing = memo<{
   isMobile: boolean;
 }>(function Content({ isMobile }) {
   return (
@@ -32,5 +32,3 @@ const Content = memo<{
     </Suspense>
   );
 });
-
-export default Content;
