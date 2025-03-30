@@ -69,8 +69,8 @@ const AdvSlider = memo(function BarSlider() {
       }}
       className="advSlider"
     >
-      <KaraokeSlide allImgLoaded={allImgLoaded} onLoad={onLoad} />
       <GlamoramaSlide allImgLoaded={allImgLoaded} onLoad={onLoad} />
+      <KaraokeSlide allImgLoaded={allImgLoaded} onLoad={onLoad} />
     </Splide>
   );
 });
