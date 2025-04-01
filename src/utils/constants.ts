@@ -14,13 +14,37 @@ const breakpoints = {
   w1200: '1200px',
 } as const;
 
-export const width = {
-  below530: `(max-width: ${breakpoints.w530})`,
-  below768:
+export const SCREEN_WIDTH = {
+  BELOW_1200: `(max-width: ${breakpoints.w1200})`,
+  BELOW_992: `(max-width: ${breakpoints.w992})`,
+  BELOW_768:
   `(max-width: ${breakpoints.w768}), (max-height: 500px) and (-webkit-min-device-pixel-ratio: 2)`,
-  below992: `(max-width: ${breakpoints.w992})`,
-  below1200: `(max-width: ${breakpoints.w1200})`,
+  BELOW_530: `(max-width: ${breakpoints.w530})`,
 } as const;
 
-export const mobileParagraphsFS = '2.3vw';
-export const mobileTitlesFS = '3.2vw';
+const DESCTOP_BASIC_TITLE_FS = 2;
+// H1 font sizes
+export const H1_FS = {
+  BASIC: `${DESCTOP_BASIC_TITLE_FS}rem`,
+  BELOW_1200: `${DESCTOP_BASIC_TITLE_FS * 0.8}rem`,
+  BELOW_992: `${DESCTOP_BASIC_TITLE_FS * 0.6}rem`,
+} as const;
+// H2 font sizes
+export const H2_FS = {
+  BASIC: `${DESCTOP_BASIC_TITLE_FS * 0.8}rem`,
+  BELOW_1200: `${DESCTOP_BASIC_TITLE_FS * 0.65}rem`,
+  BELOW_992: `${DESCTOP_BASIC_TITLE_FS * 0.5}rem`,
+} as const;
+
+export type FontConstT = {
+  BASIC: string;
+  BELOW_1200: string;
+  BELOW_992: string;
+};
+
+export const MOBILE_P_FS = '2.3vw';
+const MOBILE_BASIC_TITLE_FS = 3.5;
+export const MOBILE_TITLE_FS = {
+  H1: `${MOBILE_BASIC_TITLE_FS}vw`,
+  H2: `${MOBILE_BASIC_TITLE_FS * 0.85}vw`,
+} as const;

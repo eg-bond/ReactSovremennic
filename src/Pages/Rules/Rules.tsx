@@ -1,56 +1,16 @@
-import styled, { css } from 'styled-components';
-import { mobileParagraphsFS, mobileTitlesFS, width } from '@/utils/constants';
-
-const RulesContainer = styled.div`
-  /* content__gridLeftItem--3fr */
-  grid-column: 1/4;
-  margin: 0 15px;
-  @media ${width.below768} {
-    grid-column: 1/5;
-    margin: 0 15px;
-  }
-  /* contentMT */
-  padding-top: var(--desktopContentMT) !important;
-  @media ${width.below768} {
-    padding-top: var(--mobileContentMT) !important;
-  } 
-`;
-
-const RulesHeader = styled.h3`  
-    text-align: center;
-    font-size: 1.6rem; 
-    @media ${width.below992} {
-      font-size: 1.1rem;
-    }
-    @media ${width.below768} {
-      font-size: ${mobileTitlesFS};
-      margin: 1vw 0 1vw 0;
-    }  
-`;
-
-const desktopParagraphsFS = css`
-  font-size: 1.2rem;
-  @media ${width.below1200} {
-    font-size: 1.05rem;
-  }
-  @media ${width.below992} {
-    font-size: 0.9rem;
-  }
-`;
-
-const RulesParagraph = styled.p`  
-    text-align: justify;
-    ${desktopParagraphsFS}
-    /* -------------------- */
-    @media ${width.below768} {
-      font-size: ${mobileParagraphsFS};
-    }  
-`;
+import styled from 'styled-components';
+import {
+  SCREEN_WIDTH, MOBILE_P_FS, MOBILE_TITLE_FS,
+  H1_FS, H2_FS, makeDesktopTitlesFS,
+  makeDesktopParagraphsFS,
+} from '@/utils';
 
 export function Rules() {
   return (
     <RulesContainer>
-      <RulesHeader>Правила Кинотеатра «Современник»</RulesHeader>
+      <RulesMainTitle>
+        Правила Кинотеатра «Современник»
+      </RulesMainTitle>
       <RulesParagraph>
         Настоящие правила разработаны в соответствии с Законом РФ «О защите прав
         потребителя» №2300-1 от 07.02.1992г., Постановлением Правительства РФ
@@ -58,7 +18,9 @@ export function Rules() {
         Постановлением Правительства РФ № 1036 от 15 августа 1997 г. «Об
         утверждении Правил оказания услуг общественного питания».
       </RulesParagraph>
-      <RulesHeader>1. Общие правила работы Кинотеатрами «Современник» </RulesHeader>
+      <RulesSubTitle>
+        1. Общие правила работы Кинотеатрами «Современник»
+      </RulesSubTitle>
       <RulesParagraph>
         • Работа кассы и продажа билетов начинается за 30 минут до начала
         первого сеанса (согласно расписанию).
@@ -153,10 +115,10 @@ export function Rules() {
         проходить на сеанс (0+) по билету сопровождающего, однако, в этом случае
         ребенок не должен занимать отдельного кресла.
       </RulesParagraph>
-      <RulesHeader>
+      <RulesSubTitle>
         2. Правила поведения посетителей/зрителей в зале Кинотеатра
         «Современник».
-      </RulesHeader>
+      </RulesSubTitle>
       <RulesParagraph>
         • В помещениях Кинотеатра запрещено: курить, в том числе табачные
         изделия, кальяны на табачной основе, парогенераторы («электронные
@@ -191,7 +153,9 @@ export function Rules() {
         юридического лица, подлежит возмещению в полном объеме лицом,
         причинившим вред.
       </RulesParagraph>
-      <RulesHeader>3. Администрация кинотеатра имеет право:</RulesHeader>
+      <RulesSubTitle>
+        3. Администрация кинотеатра имеет право:
+      </RulesSubTitle>
       <RulesParagraph>
         • Устанавливать репертуарную политику и цены на билеты.
         <br />
@@ -211,7 +175,9 @@ export function Rules() {
         общественного порядка, а также отказать в обслуживании и нахождении на
         территории кинотеатра.
       </RulesParagraph>
-      <RulesHeader>4. Заключительные положения.</RulesHeader>
+      <RulesSubTitle>
+        4. Заключительные положения.
+      </RulesSubTitle>
       <RulesParagraph>
         • Администрация Кинотеатра «Современник» будет признательна, если
         посетители будут оставлять свои пожелания, предложения или жалобы
@@ -223,3 +189,52 @@ export function Rules() {
     </RulesContainer>
   );
 }
+
+const RulesContainer = styled.div`
+  /* content__gridLeftItem--3fr */
+  grid-column: 1/4;
+  margin: 0 15px;
+  @media ${SCREEN_WIDTH.BELOW_768} {
+    grid-column: 1/5;
+    margin: 0 15px;
+  }
+  /* contentMT */
+  /* padding-top: var(--desktopContentMT) !important;
+  @media ${SCREEN_WIDTH.BELOW_768} {
+    padding-top: var(--mobileContentMT) !important;
+  }  */
+`;
+
+const BaseTitle = styled.h1`  
+  text-align: center;
+  
+  @media ${SCREEN_WIDTH.BELOW_768} {
+    margin: 1vw 0;
+  }
+`;
+
+const RulesMainTitle = styled(BaseTitle)`
+  margin-top: 0;
+  ${makeDesktopTitlesFS(H1_FS)}
+  
+  @media ${SCREEN_WIDTH.BELOW_768} {
+    font-size: ${MOBILE_TITLE_FS.H1};
+  }
+`;
+
+const RulesSubTitle = styled(BaseTitle).attrs({ as: 'h2' })`
+  ${makeDesktopTitlesFS(H2_FS)}
+  
+  @media ${SCREEN_WIDTH.BELOW_768} {
+    font-size: ${MOBILE_TITLE_FS.H2};
+  }
+`;
+
+const RulesParagraph = styled.p`  
+  text-align: justify;
+  ${makeDesktopParagraphsFS()}
+  
+  @media ${SCREEN_WIDTH.BELOW_768} {
+    font-size: ${MOBILE_P_FS};
+  }  
+`;

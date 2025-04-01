@@ -192,12 +192,12 @@ export default tseslint.config(
         maximum: { single: 3, multi: 1 },
       }],
       // Сортировка по алфавиту
-      // '@stylistic/jsx-sort-props': ['error', {
-      //   callbacksLast: true,
-      //   shorthandFirst: true,
-      //   multiline: 'last',
-      //   locale: 'auto',
-      // }],
+      '@stylistic/jsx-sort-props': ['error', {
+        callbacksLast: true,
+        shorthandFirst: true,
+        multiline: 'last',
+        locale: 'auto',
+      }],
     },
   },
 
