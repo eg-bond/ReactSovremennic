@@ -1,11 +1,16 @@
 import styled from 'styled-components';
-import {
-  SCREEN_WIDTH, MOBILE_P_FS, MOBILE_TITLE_FS,
-  H1_FS, H2_FS, makeDesktopTitlesFS,
-  makeDesktopParagraphsFS,
-} from '@/utils';
+import { SCREEN_WIDTH } from '@/utils';
+import { RulesSections } from '@/components/RulesSections';
 
 export function Rules() {
+  return (
+    <RulesContainer>
+      <RulesSections />
+    </RulesContainer>
+  );
+}
+
+export function Rules1() {
   return (
     <RulesContainer>
       <RulesMainTitle>
@@ -191,50 +196,10 @@ export function Rules() {
 }
 
 const RulesContainer = styled.div`
-  /* content__gridLeftItem--3fr */
   grid-column: 1/4;
   margin: 0 15px;
   @media ${SCREEN_WIDTH.BELOW_768} {
     grid-column: 1/5;
     margin: 0 15px;
-  }
-  /* contentMT */
-  /* padding-top: var(--desktopContentMT) !important;
-  @media ${SCREEN_WIDTH.BELOW_768} {
-    padding-top: var(--mobileContentMT) !important;
-  }  */
-`;
-
-const BaseTitle = styled.h1`  
-  text-align: center;
-  
-  @media ${SCREEN_WIDTH.BELOW_768} {
-    margin: 1vw 0;
-  }
-`;
-
-const RulesMainTitle = styled(BaseTitle)`
-  margin-top: 0;
-  ${makeDesktopTitlesFS(H1_FS)}
-  
-  @media ${SCREEN_WIDTH.BELOW_768} {
-    font-size: ${MOBILE_TITLE_FS.H1};
-  }
-`;
-
-const RulesSubTitle = styled(BaseTitle).attrs({ as: 'h2' })`
-  ${makeDesktopTitlesFS(H2_FS)}
-  
-  @media ${SCREEN_WIDTH.BELOW_768} {
-    font-size: ${MOBILE_TITLE_FS.H2};
-  }
-`;
-
-const RulesParagraph = styled.p`  
-  text-align: justify;
-  ${makeDesktopParagraphsFS()}
-  
-  @media ${SCREEN_WIDTH.BELOW_768} {
-    font-size: ${MOBILE_P_FS};
   }  
 `;
