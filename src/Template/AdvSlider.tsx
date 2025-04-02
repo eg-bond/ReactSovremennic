@@ -8,18 +8,14 @@ const KaraokeSlide = ({ allImgLoaded, onLoad }: {
   onLoad: () => void;
 }) => (
   <SplideSlide>
-    <a
-      className="linkWrapper"
-      href="https://vk.com/sushikinno"
-      tabIndex={2}
-    >
+    <a className="linkWrapper" href="https://vk.com/sushikinno" tabIndex={2}>
       <div className="imgContainer opacity_on_hover">
         <img
           className={`imgContainer__img transition ${
             !allImgLoaded ? 'skeleton' : ''
           }`}
           alt="караоке"
-          src="Images/karaoke.webp"
+          src="Images/akvamarine.webp"
           onLoad={onLoad}
         />
       </div>
@@ -32,7 +28,6 @@ const GlamoramaSlide = ({ allImgLoaded, onLoad }: {
   onLoad: () => void;
 }) => (
   <SplideSlide>
-
     <a
       className="linkWrapper"
       href="https://vk.com/away.php?to=https%3A%2F%2Fafisha.nethouse.ru%2Fevent%2Fglamorama&utf=1"
