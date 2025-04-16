@@ -82,8 +82,9 @@ export const filmsArray = [
     link: 'kraken',
   },
   {
-    title: 'Minecraft в кино',
+    title: 'Minecraft в кино / Снегур',
     beginDate: 'с 17 апреля',
+    pirate: true,
     endDate: '',
     kind: 'Фэнтези, боевик, приключения, семейный, комедия',
     director: 'Джаред Хесс',
