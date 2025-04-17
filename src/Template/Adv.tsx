@@ -13,17 +13,6 @@ const AdvContent = memo(function AdvContent() {
       <SushiWorkModal loaded={allImgLoaded} onLoad={onLoad} />
       <AdvSlider />
       <AdvSlider2 />
-      {/* <div
-        className={`desktopAdv desktopAdv--2 ${
-          !allImgLoaded ? 'skeleton' : ''
-        }`}
-      >
-        <img
-          alt="Подарочный сертификат"
-          src="Images/jsb1.gif"
-          onLoad={onLoad}
-        />
-      </div> */}
     </div>
   );
 });

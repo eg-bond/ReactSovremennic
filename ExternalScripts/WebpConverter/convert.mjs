@@ -16,7 +16,7 @@ const convert = () => {
       .webp({
         quality: 100, // Adjust quality (0-100)
         lossless: false, // Use lossy compression
-        effort: 4, // Compression effort (0-6)
+        effort: 0, // Compression effort (0-6)
       })
       .toFile(outputPath);
   });

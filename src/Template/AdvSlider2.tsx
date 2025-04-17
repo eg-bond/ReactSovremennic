@@ -8,8 +8,8 @@ const SushiSlide = ({ allImgLoaded, onLoad }: {
   onLoad: () => void;
 }) => (
   <SplideSlide>
-    <Link className="linkWrapper" tabIndex={2} to="/sushi">
-      <div className="imgContainer opacity_on_hover">
+    <Link tabIndex={2} to="/sushi">
+      <div className="imgContainer_23 opacity_on_hover">
         <img
           className={`imgContainer__img transition ${
             !allImgLoaded ? 'skeleton' : ''
@@ -28,8 +28,8 @@ const SpringSalesSlide = ({ allImgLoaded, onLoad }: {
   onLoad: () => void;
 }) => (
   <SplideSlide>
-    <Link className="linkWrapper" tabIndex={2} to="/sushi">
-      <div className="imgContainer opacity_on_hover">
+    <Link tabIndex={2} to="/sushi">
+      <div className="imgContainer_23 opacity_on_hover">
         <img
           className={`imgContainer__img transition ${
             !allImgLoaded ? 'skeleton' : ''
@@ -48,8 +48,8 @@ const LottenSlide = ({ allImgLoaded, onLoad }: {
   onLoad: () => void;
 }) => (
   <SplideSlide>
-    <a className="linkWrapper" href="https://lotten.ru" tabIndex={2}>
-      <div className="imgContainer opacity_on_hover">
+    <a href="https://lotten.ru" tabIndex={2}>
+      <div className="imgContainer_23 opacity_on_hover">
         <img
           className={`imgContainer__img transition  ${
             !allImgLoaded ? 'skeleton' : ''
@@ -73,7 +73,6 @@ const AdvSlider2 = memo(function BarSlider() {
         pagination: false,
         arrows: false,
         type: 'loop',
-        // direction: 'rtl',
         autoplay: true,
         interval: 3000,
         pauseOnHover: true,
@@ -83,7 +82,9 @@ const AdvSlider2 = memo(function BarSlider() {
       <LottenSlide allImgLoaded={allImgLoaded} onLoad={onLoad} />
       <SushiSlide allImgLoaded={allImgLoaded} onLoad={onLoad} />
       <SpringSalesSlide allImgLoaded={allImgLoaded} onLoad={onLoad} />
+
     </Splide>
   );
 });
+
 export default AdvSlider2;

@@ -6,7 +6,7 @@ const BarSliderSlide = ({ slideKey }: {
 }) => {
   return (
     <SplideSlide key={slideKey}>
-      <div className="imgContainer">
+      <div className="imgContainer_16na9">
         <img
           srcSet={`Images/kombo/${slideKey}_sm.webp 500w,
                    Images/kombo/${slideKey}_md.webp 680w,

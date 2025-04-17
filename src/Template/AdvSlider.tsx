@@ -70,7 +70,7 @@ const AfishaSlide = ({ allImgLoaded, onLoad }: {
 }) => {
   return (
     <SplideSlide>
-      <div className="imgContainer opacity_on_hover">
+      <div className="imgContainer_23 opacity_on_hover">
         <img
           className={`imgContainer__img transition ${
             !allImgLoaded ? 'skeleton' : ''
@@ -94,37 +94,13 @@ const KaraokeSlide = ({ allImgLoaded, onLoad }: {
       href="https://vk.com/sushikinno?z=photo-46510864_457242824%2Fd9d80b69328fbe3c52"
       tabIndex={2}
     >
-      <div className="imgContainer opacity_on_hover">
+      <div className="imgContainer_23 opacity_on_hover">
         <img
           className={`imgContainer__img transition ${
             !allImgLoaded ? 'skeleton' : ''
           }`}
           alt="детское караоке"
           src="Images/child_caraoke.webp"
-          onLoad={onLoad}
-        />
-      </div>
-    </a>
-  </SplideSlide>
-);
-
-const GlamoramaSlide = ({ allImgLoaded, onLoad }: {
-  allImgLoaded: boolean;
-  onLoad: () => void;
-}) => (
-  <SplideSlide>
-    <a
-      className="linkWrapper"
-      href="https://vk.com/away.php?to=https%3A%2F%2Fafisha.nethouse.ru%2Fevent%2Fglamorama&utf=1"
-      tabIndex={2}
-    >
-      <div className="imgContainer opacity_on_hover">
-        <img
-          className={`imgContainer__img transition  ${
-            !allImgLoaded ? 'skeleton' : ''
-          }`}
-          alt="гламорама"
-          src="Images/glamorama.webp"
           onLoad={onLoad}
         />
       </div>
@@ -142,14 +118,12 @@ const AdvSlider = memo(function BarSlider() {
         pagination: false,
         arrows: false,
         type: 'loop',
-        // direction: 'rtl',
         autoplay: true,
         interval: 3000,
         pauseOnHover: true,
       }}
       className="advSlider"
     >
-      <GlamoramaSlide allImgLoaded={allImgLoaded} onLoad={onLoad} />
       <KaraokeSlide allImgLoaded={allImgLoaded} onLoad={onLoad} />
       <AfishaSlide allImgLoaded={allImgLoaded} onLoad={onLoad} />
     </Splide>
