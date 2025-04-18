@@ -1,8 +1,8 @@
 import './SCSS/style.scss';
 import { useEffect, useRef } from 'react';
-import Adv from './Template/Adv';
 import Footer from './Template/Footer';
 import Content from './Content/Content';
+import { DesktopAdv } from './Template/Adv';
 import Navigation from './Template/Navigation';
 import FilmsSlider from './Template/FilmsSlider';
 import BottomSlider from './Template/BottomSlider';
@@ -76,7 +76,7 @@ const App = () => {
 
           <div className="mainContainer__content" ref={contentRef}>
             <Content isMobile={isMobile} />
-            {!isMobile && <Adv />}
+            {!isMobile && <DesktopAdv />}
           </div>
 
           {siteMode === 'default' && (

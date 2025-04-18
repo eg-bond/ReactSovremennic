@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
+import { MobileAdv } from '@/Template/Adv';
 import { useEffect, useState } from 'react';
 import BarSlider from '@/Template/BarSlider';
-import IndexAdvXS from '@/Template/IndexAdvXS';
 import { SushiWork } from '@/Template/SushiWork';
 import { OnlineSales } from '@/components/OnlineSales';
 import { useSeanceState } from '@/REDUX/stateHooks/useSeanceState';
@@ -85,7 +85,7 @@ const Seance = ({ isMobile }: {
       <OnlineSales />
 
       <div className="separatorMobile separatorMobile--index" />
-      {isMobile && <IndexAdvXS />}
+      {isMobile && <MobileAdv />}
 
       <div className="separatorMobile separatorMobile--index" />
       {isMobile && <SushiWork />}

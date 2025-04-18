@@ -1,29 +1,55 @@
-import { memo } from 'react';
 import { useMatch } from 'react-router-dom';
-import AdvSlider from './AdvSlider';
-import AdvSlider2 from './AdvSlider2';
+import { AdvSlider } from '@/components/Sliders';
+import {
+  AfishaSlide, KaraokeSlide,
+  LottenSlide, SpringSalesSlide, SushiSlide,
+} from '@/components/Sliders/Slides';
 import { SushiWorkModal } from './SushiWork';
-import { useImagesLoaded } from '../hooks/useImagesLoaded';
 
-const AdvContent = memo(function AdvContent() {
-  const { allImgLoaded, onLoad } = useImagesLoaded(1);
+const FIRST_SLIDER_SLIDES = [
+  AfishaSlide,
+  KaraokeSlide,
+];
+const SECOND_SLIDER_SLIDES = [
+  SushiSlide,
+  SpringSalesSlide,
+  LottenSlide,
+];
 
-  return (
-    <div className="content__gridRightItem--1fr contentMT">
-      <SushiWorkModal loaded={allImgLoaded} onLoad={onLoad} />
-      <AdvSlider />
-      <AdvSlider2 />
-    </div>
-  );
-});
-
-function Adv() {
+export function DesktopAdv() {
   const matchSushi = useMatch({ path: 'sushi' });
 
   if (!matchSushi) {
-    return <AdvContent />;
+    return (
+      <div className="content__gridRightItem--1fr contentMT">
+        <AdvSlider slides={FIRST_SLIDER_SLIDES} />
+
+        <div style={{ marginTop: '1rem' }}>
+          <AdvSlider slides={SECOND_SLIDER_SLIDES} />
+        </div>
+
+        <div style={{ marginTop: '1rem' }}>
+          <SushiWorkModal />
+        </div>
+      </div>
+    );
   }
+
   return null;
 }
 
-export default Adv;
+export function MobileAdv() {
+  return (
+    <div className="container" data-testid="mobile_adv">
+      <div className="indexAdvXS">
+        <div className="indexAdvXS__item1">
+          <AdvSlider slides={FIRST_SLIDER_SLIDES} />
+        </div>
+
+        <div className="indexAdvXS__item1_2">
+          <AdvSlider slides={SECOND_SLIDER_SLIDES} />
+        </div>
+      </div>
+    </div>
+  );
+}

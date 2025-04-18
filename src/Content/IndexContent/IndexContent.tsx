@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
+import { MobileAdv } from '@/Template/Adv';
 import { convertVideoId } from '@/utils/convertVideoId';
 import BarSlider from '../../Template/BarSlider';
-import IndexAdvXS from '../../Template/IndexAdvXS';
 import { useAppSelector } from '../../REDUX/store';
 import { SushiWork } from '../../Template/SushiWork';
 
@@ -75,7 +75,7 @@ function IndexContent({ isMobile }: {
       </div>
 
       <div className="separatorMobile separatorMobile--index" />
-      {isMobile && <IndexAdvXS />}
+      {isMobile && <MobileAdv />}
 
       <div className="separatorMobile separatorMobile--index" />
       {isMobile && <SushiWork />}

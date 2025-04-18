@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useImagesLoaded } from '@/hooks/useImagesLoaded';
 
 export const SushiWork = () => {
   return (
@@ -12,16 +13,16 @@ export const SushiWork = () => {
   );
 };
 
-export function SushiWorkModal({ loaded = true, onLoad = () => {} }) {
+export function SushiWorkModal() {
   const [open, setOpen] = useState(false);
-
+  const { allImgLoaded, onLoad } = useImagesLoaded(1);
   const handleClose = () => {
     setOpen(false);
   };
 
   return (
     <div>
-      <div className={`desktopAdv desktopAdv--5 ${!loaded ? 'skeleton' : ''} `}>
+      <div className={`desktopAdv desktopAdv--5 ${!allImgLoaded ? 'skeleton' : ''} `}>
         <img
           alt="суши_работа"
           src="Images/work_sushi_sm.webp"
