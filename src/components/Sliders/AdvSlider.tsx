@@ -2,11 +2,17 @@ import { memo } from 'react';
 import { Splide } from '@splidejs/react-splide';
 
 interface IAdvSlider {
+  interval?: number;
   slides: (() => JSX.Element)[];
+  type?: 'loop' | 'fade' | 'slide';
 }
 
 export const AdvSlider = memo<IAdvSlider>(
-  function AdvSlider({ slides }) {
+  function AdvSlider({
+    slides,
+    interval,
+    type,
+  }) {
     return (
       <Splide
         options={{
@@ -14,9 +20,9 @@ export const AdvSlider = memo<IAdvSlider>(
           perMove: 1,
           pagination: false,
           arrows: false,
-          type: 'loop',
+          type: type || 'loop',
           autoplay: true,
-          interval: 3500,
+          interval: interval || 4000,
           pauseOnHover: true,
         }}
         className="advSlider"
@@ -24,4 +30,5 @@ export const AdvSlider = memo<IAdvSlider>(
         {slides.map((Slide, i) => <Slide key={i} />)}
       </Splide>
     );
-  });
+  },
+);

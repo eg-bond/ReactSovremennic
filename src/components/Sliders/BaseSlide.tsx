@@ -1,46 +1,58 @@
 import { Link } from 'react-router-dom';
+import { useModal } from '@/contexts/ModalContext';
+// @ts-expect-error: splide
 import { SplideSlide } from '@splidejs/react-splide';
 import { useImagesLoaded } from '@/hooks/useImagesLoaded';
+import { IBaseSlide, isExternalLink, isInternalLink, ISlideImgWrapper, isModalLink } from './types';
 
-interface IBaseSlide {
-  alt: string;
-  link?: {
-    href?: string;
-    to?: string;
-  };
-  src: string;
-  tabIndex?: number;
-}
-
-const SlideWrapper = ({
+export const SlideImgWrapper: React.FC<ISlideImgWrapper> = ({
   children,
   link,
   tabIndex,
-}: {
-  children: React.ReactNode;
-  link?: IBaseSlide['link'];
-  tabIndex?: number;
 }) => {
-  if (link?.to) {
+  const { openModal } = useModal();
+
+  if (!link) return <>{children}</>;
+
+  if (isModalLink(link)) {
+    // TypeScript knows link.modalImage exists here
     return (
-      <Link tabIndex={tabIndex} to={link.to}>
+      <button
+        style={{
+          background: 'none',
+          border: 'none',
+        }}
+        tabIndex={tabIndex}
+        onClick={() => openModal(link.modalImage)}
+      >
+        {children}
+      </button>
+    );
+  }
+
+  if (isInternalLink(link)) {
+    // TypeScript knows link.path exists here
+    return (
+      <Link tabIndex={tabIndex} to={link.path}>
         {children}
       </Link>
     );
   }
-  if (link?.href) {
+
+  if (isExternalLink(link)) {
     return (
-      <a href={link.href} tabIndex={tabIndex}>
+      <a href={link.path} tabIndex={tabIndex}>
         {children}
       </a>
     );
   }
+
   return <>{children}</>;
 };
 
 export const BaseSlide = ({
   alt,
-  src,
+  imgSrc,
   link,
   tabIndex,
 }: IBaseSlide) => {
@@ -48,16 +60,19 @@ export const BaseSlide = ({
 
   return (
     <SplideSlide>
-      <SlideWrapper link={link} tabIndex={tabIndex}>
+      <SlideImgWrapper
+        link={link}
+        tabIndex={tabIndex}
+      >
         <div className="imgContainer_23 opacity_on_hover">
           <img
             alt={alt}
-            className={`imgContainer__img transition ${!allImgLoaded ? 'skeleton' : ''}`}
-            src={src}
+            className={`imgContainer__img ${!allImgLoaded ? 'skeleton' : ''}`}
+            src={imgSrc}
             onLoad={onLoad}
           />
         </div>
-      </SlideWrapper>
+      </SlideImgWrapper>
     </SplideSlide>
   );
 };

@@ -1,46 +1,53 @@
+import { SlideType } from './types';
 import { BaseSlide } from './BaseSlide';
 
 export const AfishaSlide = () => (
   <BaseSlide
-    alt="афиша"
-    src="Images/afisha.webp"
-  />
-);
-
-export const KaraokeSlide = () => (
-  <BaseSlide
     link={{
-      href: 'https://vk.com/sushikinno?z=photo-46510864_457242824%2Fd9d80b69328fbe3c52',
+      type: SlideType.Modal,
+      modalImage: {
+        src: '/Images/afisha_may_big.webp',
+        alt: 'Афиша мероприятий Май (крупным планом)',
+      },
     }}
-    alt="детское караоке"
-    src="Images/child_caraoke.webp"
+    alt="Афиша мероприятий Май"
+    imgSrc="/Images/afisha_may.webp"
     tabIndex={2}
   />
 );
 
 export const SushiSlide = () => (
   <BaseSlide
+    link={{
+      type: SlideType.Internal,
+      path: '/sushi',
+    }}
     alt="бар"
-    link={{ to: '/sushi' }}
-    src="Images/sushi_adv.webp"
+    imgSrc="/Images/sushi_adv.webp"
     tabIndex={2}
   />
 );
 
 export const SpringSalesSlide = () => (
   <BaseSlide
-    alt="весенние скидки"
-    link={{ to: '/sushi' }}
-    src="Images/spring_sales.webp"
+    link={{
+      type: SlideType.Internal,
+      path: '/sushi',
+    }}
+    alt="Весенние скидки в баре КИН-НО"
+    imgSrc="Images/spring_sales.webp"
     tabIndex={2}
   />
 );
 
 export const LottenSlide = () => (
   <BaseSlide
+    link={{
+      type: SlideType.External,
+      path: 'https://lotten.ru',
+    }}
     alt="lotten кадастровые услуги"
-    link={{ href: 'https://lotten.ru' }}
-    src="Images/lotten_adv.webp"
+    imgSrc="Images/lotten_adv.webp"
     tabIndex={2}
   />
 );

@@ -5,7 +5,7 @@ const kp = new kpDev.KinopoiskDev(config.KP_DEV_TOKEN);
 
 // needed movie ids
 
-const ids = [6224943, 4745315, 5518230];
+const ids = [5417693, 6440213, 5001443];
 logAllMovies(ids);
 // -----------------------------------------------------------
 
@@ -49,6 +49,7 @@ async function getMovieData(id: number) {
     title,
     beginDate: 'с',
     endDate: '',
+    pirate: false,
     kind,
     director,
     duration,
