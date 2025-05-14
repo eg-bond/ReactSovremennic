@@ -98,6 +98,5 @@ function findTitleAndAge() {
 }
 
 export function findFirstWordInTitle(title: string) {
-  const match = title.match(/^\S+/gi) || [''];
-  return match[0].replace(/[\.:!,]/gi, '').toLowerCase();
+  return title.slice(0, 3).replace(/[\.:!,]/gi, '').toLowerCase();
 }
