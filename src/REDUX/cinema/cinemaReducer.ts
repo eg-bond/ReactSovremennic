@@ -6,7 +6,7 @@ const initialState: CinemaStateT = {
   films: filmsArray,
   filmsObject: {},
   filmsToday: [],
-  filmsTodayAmount: 5,
+  filmsTodayAmount: 6,
 };
 
 const cinemaSlice = createSlice({
@@ -19,16 +19,13 @@ const cinemaSlice = createSlice({
       }
     },
     createFilmsObject(state) {
-      state.films.forEach(film => {
+      state.films.forEach((film) => {
         state.filmsObject[film.link] = film;
       });
     },
   },
 });
 
-export const {
-  createFilmsTodayArr: createFilmsTodayArr_AC,
-  createFilmsObject: createFilmsObject_AC,
-} = cinemaSlice.actions;
+export const { createFilmsTodayArr: createFilmsTodayArr_AC, createFilmsObject: createFilmsObject_AC } = cinemaSlice.actions;
 
 export default cinemaSlice.reducer;
