@@ -15,6 +15,14 @@ options.ts
 /dist
 /build
 
+# WebpConverter folders
+/ExternalScripts/WebpConverter/input
+/ExternalScripts/WebpConverter/output
+/ExternalScripts/WebpConverter/main
+
+# KinopoiskApi 
+/ExternalScripts/kinopoisk_api/movieIds.ts
+
 # misc
 .DS_Store
 .env.local
@@ -27,3 +35,5 @@ yarn-debug.log*
 yarn-error.log*
 ExternalScripts/kinopoisk_api/config.ts
 ExternalScripts/kinopoisk_api/config.js
+
+
