@@ -2,7 +2,7 @@ import { useMatch } from 'react-router-dom';
 import { AdvSlider } from '@/components/Sliders';
 import {
   AfishaSlide,
-  LottenSlide, SpringSalesSlide, SushiSlide,
+  LottenSlide, SushiCutsSlide, SushiSlide,
 } from '@/components/Sliders/Slides';
 import { SushiWorkModal } from './SushiWork';
 
@@ -11,7 +11,7 @@ const FIRST_SLIDER_SLIDES = [
 ];
 const SECOND_SLIDER_SLIDES = [
   SushiSlide,
-  SpringSalesSlide,
+  SushiCutsSlide,
   LottenSlide,
 ];
 

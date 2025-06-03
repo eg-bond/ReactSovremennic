@@ -6,12 +6,12 @@ export const AfishaSlide = () => (
     link={{
       type: SlideType.Modal,
       modalImage: {
-        src: '/Images/afisha_may_big.webp',
-        alt: 'Афиша мероприятий Май (крупным планом)',
+        src: '/Images/afisha_june_big.webp',
+        alt: 'Афиша мероприятий Июнь (крупным планом)',
       },
     }}
-    alt="Афиша мероприятий Май"
-    imgSrc="/Images/afisha_may.webp"
+    alt="Афиша мероприятий Июнь"
+    imgSrc="/Images/afisha_june.webp"
     tabIndex={2}
   />
 );
@@ -28,14 +28,17 @@ export const SushiSlide = () => (
   />
 );
 
-export const SpringSalesSlide = () => (
+export const SushiCutsSlide = () => (
   <BaseSlide
     link={{
-      type: SlideType.Internal,
-      path: '/sushi',
+      type: SlideType.Modal,
+      modalImage: {
+        src: '/Images/sushi_cuts_big.webp',
+        alt: 'Скидки в Баре КИН-НО (крупным планом)',
+      },
     }}
-    alt="Весенние скидки в баре КИН-НО"
-    imgSrc="Images/spring_sales.webp"
+    alt="Скидки в Баре КИН-НО"
+    imgSrc="/Images/sushi_cuts.webp"
     tabIndex={2}
   />
 );
