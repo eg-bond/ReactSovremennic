@@ -1,7 +1,17 @@
 .footer {
   text-align: center;
-  padding: 2%;
+  padding: 1.2%;
   background-color: var(--secondaryClr);
+
+  .footer__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 0 1rem;
+  }
+
   .footer__a {
     color: var(--mainClr);
     @extend %desktopParagraphsFS;
@@ -10,6 +20,37 @@
     }
     &:focus {
       text-decoration: underline;
+    }
+  }
+
+  .footer__social {
+    display: flex;
+    gap: 30px;
+  }
+
+  .footer__icon {
+    color: var(--mainClr);
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #7ba2d5;
+    }
+
+    svg {
+      width: 36px;
+      height: 36px;
+      @media ($mediaQuery1200) {
+        width: 30px;
+        height: 30px;
+      }
+      @media ($mediaQuery992) {
+        width: 24px;
+        height: 24px;
+      }
+      @media #{$mediaQueryMobile} {
+        width: 7vw;
+        height: 7vw;
+      }
     }
   }
 

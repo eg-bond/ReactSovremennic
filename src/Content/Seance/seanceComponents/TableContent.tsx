@@ -9,8 +9,8 @@ export const TableContent = memo<TableContentT>(function TableContent({ schedule
         <tr className="table_head">
           <th>Сеанс</th>
           <th>Фильм</th>
-          <th>Возраст</th>
-          <th>Цена, руб</th>
+          <th>Возр.</th>
+          <th>Цена</th>
         </tr>
         {schedule[activeScheduleItemKey as keyof ScheduleT].map(tableItem)}
       </tbody>

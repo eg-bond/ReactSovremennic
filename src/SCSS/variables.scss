@@ -14,8 +14,8 @@ $mediaQuery610: 'max-width: 610px';
 $mediaQuery530: 'max-width: 530px';
 
 // Mobile variables
-$mobileParagraphsFS: 2.3vw;
-$mobileTitlesFS: 3.2vw;
+$mobileParagraphsFS: 2.8vw;
+$mobileTitlesFS: 4vw;
 
 // theme colors for siteMode = "special"
 $blackWhiteBackground: black;
@@ -58,12 +58,12 @@ $blueGreenElements: #5e4005;
 }
 
 %desktopParagraphsFS {
-  font-size: 1.2rem;
+  font-size: 1.35rem;
   @media ($mediaQuery1200) {
-    font-size: 1.05rem;
+    font-size: 1.15rem;
   }
   @media ($mediaQuery992) {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 }
 

@@ -4,7 +4,7 @@ import { PRE_SHOW_SERVICE_SHORT } from '@/utils/constants';
 import { filmsArray } from '../../src/REDUX/filmsArray';
 
 type dataT = Array<{
-  cost: number;
+  cost: string;
   day: 'day0' | 'day1' | 'day2' | 'day3' | 'day4' | 'day5' | 'day6';
   filmTitle: 'string';
   time: 'string';
@@ -35,7 +35,7 @@ function dataToObj(data: dataT) {
     schedule[currentKey] = dayArr.map(item => [
       item.time,
       item.filmTitle,
-      item.cost,
+      item.cost + '₽',
     ]);
   }
 
