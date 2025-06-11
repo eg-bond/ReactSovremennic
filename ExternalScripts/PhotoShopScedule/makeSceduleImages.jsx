@@ -58,7 +58,7 @@ var makeFilmItem = function (filmSet, sceduleItemKey, dayTitlesArr, filmIndex) {
         priceLayerSet.layers[seansIndex].visible = true
 
         timeLayerSet.layers[seansIndex].textItem.contents = filmSceduleItem[j][0]
-        priceLayerSet.layers[seansIndex].textItem.contents = filmSceduleItem[j][3] + 'р.'
+        priceLayerSet.layers[seansIndex].textItem.contents = filmSceduleItem[j][3]
     }
 
     // Сохраняем файл
@@ -78,7 +78,7 @@ var dayKeysRanges = {
     allWeek: ["day1", "day2", "day3", "day4", "day5", "day6", "day0"]
 }
 // Это единственный изменяемый параметр
-var dayKeysArr = ["day1", "day2", "day3"]
+var dayKeysArr = ["day4", "day5", "day6", "day0"]
 
 // Цикл, пробегающийся по выбранным в dayKeysArr фильмам
 for (var i = 0; i < dayKeysArr.length; i++) {
