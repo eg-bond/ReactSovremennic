@@ -89,7 +89,7 @@ export const filmsArray = [
     title: 'Грешники',
     beginDate: 'с 19 июня',
     endDate: '',
-    pirate: false,
+    pirate: true,
     kind: 'Драма, фэнтези, триллер, ужасы, боевик, музыка',
     director: 'Райан Куглер',
     duration: '137 мин. / 02:17',
