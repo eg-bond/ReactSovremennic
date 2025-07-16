@@ -101,7 +101,7 @@ export const filmsArray = [
 
   {
     title: 'Мир Юрского периода: Возрождение',
-    beginDate: 'скоро',
+    beginDate: 'с 17 июля',
     endDate: '',
     pirate: true,
     kind: 'Фантастика, боевик, триллер, приключения',
