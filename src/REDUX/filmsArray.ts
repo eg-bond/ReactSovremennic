@@ -73,7 +73,7 @@ export const filmsArray = [
   },
   {
     title: 'Фантастическая четвёрка: Первые шаги',
-    beginDate: 'скоро',
+    beginDate: 'с 7 августа',
     endDate: '',
     pirate: true,
     kind: 'Фантастика, боевик, приключения',
