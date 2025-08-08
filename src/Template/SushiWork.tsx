@@ -7,7 +7,7 @@ export const SushiWork = () => {
       <img
         alt="работа_суши"
         className="sushiWork__img"
-        src="Images/work_sushi_half.webp"
+        src="Images/bar_work_big.webp"
       />
     </div>
   );
@@ -25,7 +25,7 @@ export function SushiWorkModal() {
       <div className={`desktopAdv desktopAdv--5 ${!allImgLoaded ? 'skeleton' : ''} `}>
         <img
           alt="суши_работа"
-          src="Images/work_sushi_sm.webp"
+          src="Images/bar_work.webp"
           onClick={() => setOpen(true)}
           onLoad={onLoad}
         />
@@ -40,7 +40,7 @@ export function SushiWorkModal() {
           <img
             alt="суши_работа"
             className="modal__img"
-            src="Images/work_sushi.webp"
+            src="Images/bar_work_big.webp"
           />
         </div>
       </div>

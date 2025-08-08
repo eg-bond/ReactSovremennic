@@ -6,12 +6,12 @@ export const AfishaSlide = () => (
     link={{
       type: SlideType.Modal,
       modalImage: {
-        src: '/Images/afisha_june_big.webp',
-        alt: 'Афиша мероприятий Июнь (крупным планом)',
+        src: '/Images/afisha_august_big.webp',
+        alt: 'Афиша мероприятий Август (крупным планом)',
       },
     }}
-    alt="Афиша мероприятий Июнь"
-    imgSrc="/Images/afisha_june.webp"
+    alt="Афиша мероприятий Август"
+    imgSrc="/Images/afisha_august.webp"
     tabIndex={2}
   />
 );
