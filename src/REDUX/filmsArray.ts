@@ -74,7 +74,7 @@ export const filmsArray = [
   },
   {
     title: 'Миссия невыполнима: Финальная расплата',
-    beginDate: 'скоро',
+    beginDate: 'с 28 августа',
     endDate: '',
     pirate: true,
     kind: 'Боевик, триллер, приключения',
