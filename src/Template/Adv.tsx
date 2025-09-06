@@ -21,11 +21,12 @@ export function DesktopAdv() {
   if (!matchSushi) {
     return (
       <div className="content__gridRightItem--1fr contentMT">
-        <AdvSlider slides={FIRST_SLIDER_SLIDES} type="slide" />
+        {/* <AdvSlider slides={FIRST_SLIDER_SLIDES} type="slide" /> */}
 
-        <div style={{ marginTop: '1rem' }}>
+        
+        {/* <div style={{ marginTop: '1rem' }}> */}
           <AdvSlider interval={5000} slides={SECOND_SLIDER_SLIDES} />
-        </div>
+        {/* </div> */}
 
         <div style={{ marginTop: '1rem' }}>
           <SushiWorkModal />
