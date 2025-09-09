@@ -1,17 +1,15 @@
 import { useMatch } from 'react-router-dom';
 import { AdvSlider } from '@/components/Sliders';
 import {
-  AfishaSlide,
-  LottenSlide, SushiCutsSlide, SushiSlide,
+  LottenSlide,  SushiSlide,
 } from '@/components/Sliders/Slides';
 import { SushiWorkModal } from './SushiWork';
 
 const FIRST_SLIDER_SLIDES = [
-  AfishaSlide,
+  
+  SushiSlide,
 ];
 const SECOND_SLIDER_SLIDES = [
-  SushiSlide,
-  SushiCutsSlide,
   LottenSlide,
 ];
 
@@ -21,12 +19,12 @@ export function DesktopAdv() {
   if (!matchSushi) {
     return (
       <div className="content__gridRightItem--1fr contentMT">
-        {/* <AdvSlider slides={FIRST_SLIDER_SLIDES} type="slide" /> */}
+        <AdvSlider slides={FIRST_SLIDER_SLIDES} type="slide" />
 
         
-        {/* <div style={{ marginTop: '1rem' }}> */}
-          <AdvSlider interval={5000} slides={SECOND_SLIDER_SLIDES} />
-        {/* </div> */}
+        <div style={{ marginTop: '1rem' }}>
+          <AdvSlider slides={SECOND_SLIDER_SLIDES} />
+        </div>
 
         <div style={{ marginTop: '1rem' }}>
           <SushiWorkModal />
