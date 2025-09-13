@@ -88,6 +88,7 @@ function findTitleAndAge() {
 
   filmsArray.forEach((filmItem) => {
     const key = findFirstWordInTitle(filmItem.title);
+
     const title = filmItem.pirate
       ? `${filmItem.title} 2D ${PRE_SHOW_SERVICE_SHORT} `
       : filmItem.title + ' 2D';
@@ -98,5 +99,7 @@ function findTitleAndAge() {
 }
 
 export function findFirstWordInTitle(title: string) {
-  return title.slice(0, 3).replace(/[\.:!,]/gi, '').toLowerCase();
+  const cleaned = title.replace(/[\.:!,*]/gi, '').toLowerCase();
+  const result = cleaned.slice(0, Math.min(3, cleaned.length)).trim();
+  return result;
 }
