@@ -20,7 +20,7 @@ const BarSliderSlide = ({ slideKey }: {
   );
 };
 
-const slideKeys = ['combo_1', 'combo_2'];
+const slideKeys = ['kombo1', 'kombo2'];
 
 const BarSlider = memo(function BarSlider() {
   return (
