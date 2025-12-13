@@ -3,6 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { modifiedClass } from '../helpers';
 import SpecialSettings from './SpecialSettings';
 import type { SpecialStateT } from '../REDUX/special/specialReducerT';
+import { SUSHI_BAR_URL } from '@/utils/constants';
 
 const Navigation = memo<NavigationT>(function Navigation({
   siteMode,
@@ -36,7 +37,10 @@ const Navigation = memo<NavigationT>(function Navigation({
             <NavItem title="РАСПИСАНИЕ" url="seance" />
             <NavItem title="О КИНОТЕАТРЕ" url="about" />
             <NavItem title="ПРАВИЛА РАБОТЫ" url="rules" />
-            <NavItem title='БАР "КИН-НО"' url="sushi" />
+            {/* <NavItem title='БАР "КИН-НО"' url="sushi" /> */}
+            <li>              
+              <a className={'fill_button'} href={SUSHI_BAR_URL}>БАР "КИН-НО"</a>
+            </li>
           </ul>
         </div>
       </nav>
