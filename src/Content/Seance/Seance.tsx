@@ -90,8 +90,8 @@ const Seance = ({ isMobile }: {
       <div className="separatorMobile separatorMobile--index" />
       {isMobile && <SushiWork />}
 
-      <div className="separatorMobile separatorMobile--index" />
-      <BarSlider />
+      {/* <div className="separatorMobile separatorMobile--index" />
+      <BarSlider /> */}
     </div>
   );
 };
