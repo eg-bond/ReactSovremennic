@@ -1,17 +1,18 @@
 import { SlideType } from './types';
 import { BaseSlide } from './BaseSlide';
+import { SUSHI_BAR_URL } from '@/utils/constants';
 
 export const AfishaSlide = () => (
   <BaseSlide
     link={{
       type: SlideType.Modal,
       modalImage: {
-        src: '/Images/afisha_august_big.webp',
-        alt: 'Афиша мероприятий Август (крупным планом)',
+        src: '/Images/karaoke_afisha.webp',
+        alt: 'Афиша мероприятий Январь (крупным планом)',
       },
     }}
-    alt="Афиша мероприятий Август"
-    imgSrc="/Images/afisha_august.webp"
+    alt="Афиша мероприятий Январь"
+    imgSrc="/Images/karaoke_afisha.webp"
     tabIndex={2}
   />
 );
@@ -20,7 +21,7 @@ export const SushiSlide = () => (
   <BaseSlide
     link={{
       type: SlideType.Internal,
-      path: '/sushi',
+      path: SUSHI_BAR_URL,
     }}
     alt="бар"
     imgSrc="/Images/sushi_adv.webp"

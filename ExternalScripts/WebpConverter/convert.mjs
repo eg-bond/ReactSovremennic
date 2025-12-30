@@ -14,9 +14,9 @@ const convert = () => {
 
     sharp(inputPath)
       .webp({
-        quality: 100, // Adjust quality (0-100)
+        quality: 90, // Adjust quality (0-100)
         lossless: false, // Use lossy compression
-        effort: 0, // Compression effort (0-6)
+        effort: 2, // Compression effort (0-6)
       })
       .toFile(outputPath);
   });
