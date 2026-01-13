@@ -14,7 +14,7 @@ const convert = () => {
 
     sharp(inputPath)
       .webp({
-        quality: 90, // Adjust quality (0-100)
+        quality: 95, // Adjust quality (0-100)
         lossless: false, // Use lossy compression
         effort: 2, // Compression effort (0-6)
       })
