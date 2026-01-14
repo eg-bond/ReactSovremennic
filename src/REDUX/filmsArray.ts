@@ -73,7 +73,7 @@ export const filmsArray = [
   },
   {
     title: 'Аватар: Пламя и пепел',
-    beginDate: 'скоро',
+    beginDate: 'с 22 января',
     endDate: '',
     pirate: true,
     kind: 'Фантастика, фэнтези, боевик, приключения',
