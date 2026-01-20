@@ -82,9 +82,9 @@ const Seance = ({ isMobile }: {
         />
       </table>
 
-      <div className="news" style={{ paddingBottom: '1vw' }}>              
+      {/* <div className="news" style={{ paddingBottom: '1vw' }}>              
           <p>Уважаемые посетители кинотеатра! Онлайн продажи билетов временно приостановлены по техническим причинам. Просим прощения за доставленные неудобства!</p>              
-      </div>
+      </div> */}
 
       <OnlineSales />
 
