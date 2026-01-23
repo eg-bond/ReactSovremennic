@@ -1,6 +1,6 @@
 import fs from 'fs';
 import xlsx from 'xlsx';
-import { PRE_SHOW_SERVICE_SHORT } from '@/utils/constants';
+import { LETTERS_AMOUNT, PRE_SHOW_SERVICE_SHORT } from '@/utils/constants';
 import { filmsArray } from '../../src/REDUX/filmsArray';
 
 type dataT = Array<{
@@ -100,6 +100,6 @@ function findTitleAndAge() {
 
 export function findFirstWordInTitle(title: string) {
   const cleaned = title.replace(/[\.:!,*]/gi, '').toLowerCase();
-  const result = cleaned.slice(0, Math.min(6, cleaned.length)).trim();
+  const result = cleaned.slice(0, Math.min(LETTERS_AMOUNT, cleaned.length)).trim();
   return result;
 }

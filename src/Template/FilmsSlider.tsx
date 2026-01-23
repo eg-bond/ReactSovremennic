@@ -57,7 +57,7 @@ onLoad,
           <img
             alt={film.title}
             className="swSlide__img"
-            src={`Images/top_menu/${film.link}.webp`}
+            src={`Images/description/${film.link}_D.webp`}
             onLoad={onLoad}
           />
         </div>

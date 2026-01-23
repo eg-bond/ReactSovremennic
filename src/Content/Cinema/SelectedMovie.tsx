@@ -35,35 +35,44 @@ const SelectedMovie = memo<{
           <table className="selectedMovie__table">
             <tbody>
               <tr>
-                <td>Жанр</td>
+                <td>Жанр:</td>
                 <td>{filmItem['kind']}</td>
               </tr>
               <tr>
-                <td>Режиссер</td>
+                <td>Режиссер:</td>
                 <td>{filmItem['director']}</td>
               </tr>
               <tr>
-                <td>Длительность</td>
+                <td>Длительность:</td>
                 <td>{filmItem['duration']}</td>
               </tr>
               <tr>
-                <td>Возраст</td>
+                <td>Возраст:</td>
                 <td>{filmItem['age']}</td>
               </tr>
               <tr>
-                <td>В главных ролях</td>
-                <td>{filmItem['actors']}</td>
+                <td>Возраст:</td>
+                <td>{filmItem['age']}</td>
               </tr>
+              <tr>
+                <td>Возраст:</td>
+                <td>{filmItem['age']}</td>
+              </tr>              
             </tbody>
           </table>
         </div>
+      </div>
+
+      <div className="selectedMovie" style={{color: 'white', fontSize: '2rem'}}>
+        <div style={{gridColumn: '1/4', gridRow: '1', textAlign: 'justify'}}>В главных ролях:</div>
+        <div style={{gridColumn: '2/4', gridRow: '1', textAlign: 'justify'}}>{filmItem['actors']}</div>
+      </div>      
 
         <DescriptionTrailer
           description={filmItem['description']}
           fontSize={fontSize}
           trailer_src={filmItem['playerCode']}
         />
-      </div>
 
       <div className="separatorMobile separatorMobile--index" />
       {isMobile && <SushiWork />}
