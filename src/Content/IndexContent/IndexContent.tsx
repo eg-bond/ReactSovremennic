@@ -4,6 +4,7 @@ import { convertVideoId } from '@/utils/convertVideoId';
 import BarSlider from '../../Template/BarSlider';
 import { useAppSelector } from '../../REDUX/store';
 import { SushiWork } from '../../Template/SushiWork';
+import { CINEMA_PHONE } from '@/utils/constants';
 
 function IndexContent({ isMobile }: {
   isMobile: boolean;
@@ -49,7 +50,7 @@ function IndexContent({ isMobile }: {
           {' '}
           появилась функция онлайн продаж билетов на сеанс!
         </p>
-        <p>• Расписание сеансов можно узнать по телефону: +7-965-025-08-68</p>
+        <p>• Расписание сеансов можно узнать по телефону: <span style={{whiteSpace: 'nowrap'}}>{CINEMA_PHONE}</span></p>
         <p>
           • Бар "КИН-НО". Время работы: понедельник - четверг с 12:00 до 23:00,
           пятница - суббота с 12:00 до 01:00, воскресенье с 12:00 до 23:00.
