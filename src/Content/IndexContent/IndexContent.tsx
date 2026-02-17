@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import { MobileAdv } from '@/Template/Adv';
+import { CINEMA_PHONE } from '@/utils/constants';
 import { convertVideoId } from '@/utils/convertVideoId';
 import BarSlider from '../../Template/BarSlider';
 import { useAppSelector } from '../../REDUX/store';
 import { SushiWork } from '../../Template/SushiWork';
-import { CINEMA_PHONE } from '@/utils/constants';
 
 function IndexContent({ isMobile }: {
   isMobile: boolean;
@@ -24,7 +24,7 @@ function IndexContent({ isMobile }: {
                 'picture-in-picture; screen-wake-lock;'
               }
               src={`https://vkvideo.ru/video_ext.php?oid=-${convertVideoId(
-                '181157148_456244609',
+                '212496568_456250412',
               )}`}
               height="360"
               width="640"
@@ -50,7 +50,10 @@ function IndexContent({ isMobile }: {
           {' '}
           появилась функция онлайн продаж билетов на сеанс!
         </p>
-        <p>• Расписание сеансов можно узнать по телефону: <span style={{whiteSpace: 'nowrap'}}>{CINEMA_PHONE}</span></p>
+        <p>
+          • Расписание сеансов можно узнать по телефону:
+          <span style={{ whiteSpace: 'nowrap' }}>{CINEMA_PHONE}</span>
+        </p>
         <p>
           • Бар "КИН-НО". Время работы: понедельник - четверг с 12:00 до 23:00,
           пятница - суббота с 12:00 до 01:00, воскресенье с 12:00 до 23:00.
