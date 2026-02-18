@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { karaokeDB, KaraokeSong } from '../../utils/karaokeDB';
-import './karaoke.scss';
 
 export default function Karaoke() {
   const [songs, setSongs] = useState<KaraokeSong[]>([]);
@@ -131,7 +130,7 @@ export default function Karaoke() {
       <div className="karaoke-search">
         <input
           className="karaoke-search-input"
-          placeholder="Введите исполнителя или название трека"
+          placeholder="Введите исполнителя или трек"
           type="text"
           value={search}
           onChange={e => handleSearch(e.target.value)}
@@ -147,14 +146,13 @@ export default function Karaoke() {
       <div className="karaoke-results">
         <p className="karaoke-count">
           Найдено песен:
-          {totalCount}
+          {` ${totalCount}`}
           {searching && <span className="karaoke-count-spinner" />}
         </p>
 
         <div className="karaoke-list">
           {songs.map(song => (
             <div className="karaoke-item" key={song.id}>
-              <span className="karaoke-id">{song.id}</span>
               <span className="karaoke-artist">{song.artist}</span>
               <span className="karaoke-song">{song.song}</span>
             </div>

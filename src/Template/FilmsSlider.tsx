@@ -1,5 +1,5 @@
 import { memo, useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useMatch } from 'react-router-dom';
 import { PRE_SHOW_SERVICE } from '@/utils/constants';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { useMobilePaddings } from './useMobilePaddings';
@@ -10,29 +10,37 @@ const FilmsSlider = memo<FilmSliderT>(function FilmsSlider({ films, isMobile }) 
   const { allImgLoaded, onLoad } = useImagesLoaded(films.length || 0);
   // adds paddings to mobile slider to make it look like 3.5 slides
   useMobilePaddings(isMobile);
+  const matchKaraoke = useMatch({ path: 'karaoke' });
+
+  if (matchKaraoke && isMobile) return null;
 
   return (
-    <div className="cinemaSlider">
-      <h4 className="displayMobile">Фильмы</h4>
-      <Splide
-        options={{
-          perPage: isMobile ? 3 : 5,
-          perMove: 1,
-          pagination: false,
-          gap: isMobile ? '2vw' : '0.6rem',
-          arrows: isMobile ? false : true,
-        }}
-      >
-        {films.map((item, i) => (
-          <Slide
-            allImgLoaded={allImgLoaded}
-            film={item}
-            key={i + 'FS'}
-            onLoad={onLoad}
-          />
-        ))}
-      </Splide>
+    <div>
+      <div className="cinemaSlider">
+        <h4 className="displayMobile">Фильмы</h4>
+        <Splide
+          options={{
+            perPage: isMobile ? 3 : 5,
+            perMove: 1,
+            pagination: false,
+            gap: isMobile ? '2vw' : '0.6rem',
+            arrows: isMobile ? false : true,
+          }}
+        >
+          {films.map((item, i) => (
+            <Slide
+              allImgLoaded={allImgLoaded}
+              film={item}
+              key={i + 'FS'}
+              onLoad={onLoad}
+            />
+          ))}
+        </Splide>
+      </div>
+
+      <div className="separatorMobile" />
     </div>
+
   );
 });
 

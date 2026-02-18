@@ -15,9 +15,9 @@ const SECOND_SLIDER_SLIDES = [
 
 export function DesktopAdv() {
   const matchSushi = useMatch({ path: 'sushi' });
-  const matchKaraoke = useMatch({ path: 'karaoke' });
+  // const matchKaraoke = useMatch({ path: 'karaoke' });
 
-  if (!matchSushi && !matchKaraoke) {
+  if (!matchSushi) {
     return (
       <div className="content__gridRightItem--1fr contentMT">
         <AdvSlider slides={FIRST_SLIDER_SLIDES} type="slide" />
