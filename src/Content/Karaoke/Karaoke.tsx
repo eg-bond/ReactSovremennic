@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { karaokeDB, KaraokeSong } from '../../utils/karaokeDB';
 import './karaoke.scss';
 
@@ -6,7 +6,15 @@ export default function Karaoke() {
   const [songs, setSongs] = useState<KaraokeSong[]>([]);
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(true);
+  const [searching, setSearching] = useState(false);
   const [dbReady, setDbReady] = useState(false);
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  const [totalCount, setTotalCount] = useState(0);
+  const observerRef = useRef<IntersectionObserver | null>(null);
+  const loadMoreRef = useRef<HTMLDivElement>(null);
+  const debounceRef = useRef<NodeJS.Timeout | null>(null);
+  const LIMIT = 50;
 
   useEffect(() => {
     const initDB = async () => {
@@ -21,8 +29,10 @@ export default function Karaoke() {
         }
 
         setDbReady(true);
-        const initial = await karaokeDB.getAll(100);
+        const initial = await karaokeDB.getAll(LIMIT);
         setSongs(initial);
+        setHasMore(initial.length === LIMIT);
+        setTotalCount(count);
       } catch (error) {
         console.error('Ошибка инициализации БД:', error);
       } finally {
@@ -33,40 +43,112 @@ export default function Karaoke() {
     initDB();
   }, []);
 
-  const handleSearch = useCallback(async (query: string) => {
-    if (!dbReady) return;
-    setSearch(query);
+  const loadMore = useCallback(async () => {
+    if (!dbReady || !hasMore || loading) return;
 
     try {
-      const results = await karaokeDB.search(query, 100);
+      const offset = page * LIMIT;
+      const newSongs = search
+        ? await karaokeDB.search(search, offset + LIMIT)
+        : await karaokeDB.getAll(offset + LIMIT);
+
+      const sliced = newSongs.slice(offset);
+      if (sliced.length > 0) {
+        setSongs(prev => [...prev, ...sliced]);
+        setPage(prev => prev + 1);
+        setHasMore(sliced.length === LIMIT);
+      } else {
+        setHasMore(false);
+      }
+    } catch (error) {
+      console.error('Ошибка загрузки:', error);
+    }
+  }, [dbReady, hasMore, loading, page, search]);
+
+  const performSearch = useCallback(async (query: string) => {
+    if (!dbReady) return;
+    setPage(1);
+    setSearching(true);
+
+    try {
+      const allResults = await karaokeDB.searchAll(query);
+      setTotalCount(allResults.length);
+      const results = allResults.slice(0, LIMIT);
       setSongs(results);
+      setHasMore(allResults.length > LIMIT);
     } catch (error) {
       console.error('Ошибка поиска:', error);
+    } finally {
+      setSearching(false);
     }
   }, [dbReady]);
 
-  if (loading) {
-    return <div className="karaoke-loading">Загрузка базы караоке...</div>;
-  }
+  const handleSearch = useCallback((query: string) => {
+    setSearch(query);
+
+    if (debounceRef.current) {
+      clearTimeout(debounceRef.current);
+    }
+
+    debounceRef.current = setTimeout(() => {
+      performSearch(query);
+    }, 500);
+  }, [performSearch]);
+
+  useEffect(() => {
+    return () => {
+      if (debounceRef.current) {
+        clearTimeout(debounceRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!loadMoreRef.current || !hasMore) return;
+
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          loadMore();
+        }
+      },
+      { threshold: 0.1 },
+    );
+
+    observerRef.current.observe(loadMoreRef.current);
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, [loadMore, hasMore]);
 
   return (
     <div className="karaoke-container">
-      <h1>Караоке</h1>
+      <h1>Список песен для караоке</h1>
 
       <div className="karaoke-search">
         <input
           className="karaoke-search-input"
-          placeholder="Поиск по исполнителю или названию..."
+          placeholder="Введите исполнителя или название трека"
           type="text"
           value={search}
           onChange={e => handleSearch(e.target.value)}
         />
       </div>
 
+      {loading && (
+        <div className="karaoke-loading">
+          <div className="karaoke-spinner" />
+        </div>
+      )}
+
       <div className="karaoke-results">
         <p className="karaoke-count">
-          Найдено:
-          {songs.length}
+          Найдено песен:
+          {totalCount}
+          {searching && <span className="karaoke-count-spinner" />}
         </p>
 
         <div className="karaoke-list">
@@ -77,6 +159,7 @@ export default function Karaoke() {
               <span className="karaoke-song">{song.song}</span>
             </div>
           ))}
+          {hasMore && <div className="karaoke-loader" ref={loadMoreRef} />}
         </div>
       </div>
     </div>
