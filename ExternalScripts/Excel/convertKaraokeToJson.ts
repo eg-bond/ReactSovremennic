@@ -6,7 +6,7 @@ import { dirname, join } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const xlsxPath = join(__dirname, '../../src/karaoke_songs.xlsx');
+const xlsxPath = join(__dirname, 'karaoke_songs.xlsx');
 const jsonPath = join(__dirname, '../../public/karaoke_songs.json');
 
 const workbook = XLSX.readFile(xlsxPath);
