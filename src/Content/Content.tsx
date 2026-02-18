@@ -7,6 +7,7 @@ import IndexContent from './IndexContent/IndexContent';
 import SelectedMovieContainer from './Cinema/SelectedMovieContainer';
 
 const SushiContainer = lazy(() => import('./Sushi/SushiContainer'));
+const Karaoke = lazy(() => import('./Karaoke/Karaoke'));
 
 const Content = memo<{
   isMobile: boolean;
@@ -28,6 +29,7 @@ const Content = memo<{
         <Route element={<Rules />} path="rules" />
         {/* lazy routes */}
         <Route element={<SushiContainer isMobile={isMobile} />} path="sushi" />
+        <Route element={<Karaoke />} path="karaoke" />
       </Routes>
     </Suspense>
   );

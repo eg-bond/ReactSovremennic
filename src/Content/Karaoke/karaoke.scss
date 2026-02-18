@@ -1,0 +1,87 @@
+.karaoke-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+}
+
+.karaoke-loading {
+  text-align: center;
+  padding: 50px;
+  font-size: 18px;
+}
+
+.karaoke-search {
+  margin-bottom: 20px;
+
+  &-input {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s;
+
+    &:focus {
+      border-color: #007bff;
+    }
+  }
+}
+
+.karaoke-results {
+  .karaoke-count {
+    margin-bottom: 15px;
+    color: #666;
+    font-size: 14px;
+  }
+}
+
+.karaoke-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.karaoke-item {
+  display: grid;
+  grid-template-columns: 60px 1fr 1fr;
+  gap: 15px;
+  padding: 12px 15px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  transition: background 0.2s;
+
+  &:hover {
+    background: #e9ecef;
+  }
+
+  .karaoke-id {
+    color: #999;
+    font-size: 14px;
+  }
+
+  .karaoke-artist {
+    font-weight: 600;
+    color: #333;
+  }
+
+  .karaoke-song {
+    color: #555;
+  }
+}
+
+@media (max-width: 768px) {
+  .karaoke-item {
+    grid-template-columns: 50px 1fr;
+    gap: 10px;
+
+    .karaoke-song {
+      grid-column: 2;
+    }
+  }
+}
