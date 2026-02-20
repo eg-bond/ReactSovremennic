@@ -93,7 +93,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 15px;
-  padding: 12px 15px;
+  padding: 8px 10px;
   background: #f8f9fa;
   border-radius: 6px;
   transition: background 0.2s;
@@ -112,20 +112,6 @@
   }
 }
 
-@media #{$mediaQueryMobile} {
-  .karaoke-container {
-    grid-column: 1/5;
-    h1 {
-      font-size: 6vw;
-    }
-  }
-
-  .karaoke-item {
-    grid-template-columns: 1fr;
-    gap: 5px;
-  }
-}
-
 .karaoke-loader {
   height: 20px;
   margin: 20px 0;
@@ -140,5 +126,28 @@
     border-top: 3px solid #ff0000;
     border-radius: 50%;
     animation: spin 0.8s linear infinite;
+  }
+}
+
+@media #{$mediaQueryMobile} {
+  .karaoke-container {
+    grid-column: 1/5;
+    h1 {
+      font-size: 6vw;
+    }
+  }
+
+  .karaoke-item {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+
+  .karaoke-list {
+    max-height: 70vh;
+    gap: 6px;
+  }
+
+  .karaoke-item {
+    font-size: 3.2vw;
   }
 }

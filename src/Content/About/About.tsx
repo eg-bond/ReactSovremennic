@@ -1,4 +1,5 @@
 import { CINEMA_PHONE } from '@/utils/constants';
+import Rules from '../Rules/Rules';
 import { useAppSelector } from '../../REDUX/store';
 
 const SRC =
@@ -25,7 +26,10 @@ function About() {
           авто и мото гонки, другие электронные игры.
         </p>
         <p>
-          Узнать раписание кинотеатра можно на нашем сайте или по телефону <span style={{whiteSpace: 'nowrap'}}>{CINEMA_PHONE}</span>, по
+          Узнать раписание кинотеатра можно на нашем сайте или по телефону
+          {' '}
+          <span style={{ whiteSpace: 'nowrap' }}>{CINEMA_PHONE}</span>
+          , по
           этому телефону можно забронировать билеты, как частному лицу, так и
           организациям для массового просмотра фильма.
         </p>
@@ -69,6 +73,7 @@ function About() {
           </div>
         )}
       </div>
+
     </div>
   );
 }
