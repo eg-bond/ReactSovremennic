@@ -17,6 +17,8 @@
     "webp": "node ExternalScripts/WebpConverter/convert.mjs",
     "make_ps": "tsx ExternalScripts/PhotoShopScedule/makePSscedule.ts",
     "get_schedule": "tsx ExternalScripts/Excel/insertScheduleFromXLSX.ts",
+    "convert_karaoke": "tsx ExternalScripts/Excel/convertKaraokeToJson.ts",
+    "check_xlsx": "tsx ExternalScripts/Excel/checkXlsxStructure.ts",
     "resize": "node ExternalScripts/ImgResizer/resize.js",
     "test": "vitest",
     "test_ui": "vitest --ui --coverage"

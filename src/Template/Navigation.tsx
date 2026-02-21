@@ -1,9 +1,9 @@
 import { memo } from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import { SUSHI_BAR_URL } from '@/utils/constants';
 import { modifiedClass } from '../helpers';
 import SpecialSettings from './SpecialSettings';
 import type { SpecialStateT } from '../REDUX/special/specialReducerT';
-import { SUSHI_BAR_URL } from '@/utils/constants';
 
 const Navigation = memo<NavigationT>(function Navigation({
   siteMode,
@@ -36,13 +36,21 @@ const Navigation = memo<NavigationT>(function Navigation({
           <ul>
             <NavItem title="РАСПИСАНИЕ" url="seance" />
             <NavItem title="О КИНОТЕАТРЕ" url="about" />
-            <NavItem title="ПРАВИЛА РАБОТЫ" url="rules" />
-            {/* <NavItem title='БАР "КИН-НО"' url="sushi" /> */}
+            <NavItem title="ПРАВИЛА" url="rules" />
             <li>
-              <a className={'fill_button'} href={SUSHI_BAR_URL} target="_blank" rel="noopener noreferrer">БАР "КИН-НО"</a>
-            </li>           
+              <a
+                className="fill_button"
+                href={SUSHI_BAR_URL}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                БАР "КИН-НО"
+              </a>
+            </li>
+            <NavItem title="КАРАОКЕ" url="karaoke" />
           </ul>
         </div>
+
       </nav>
     </div>
   );

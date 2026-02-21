@@ -2,11 +2,11 @@ import { useMatch } from 'react-router-dom';
 import { AdvSlider } from '@/components/Sliders';
 import {
   AfishaSlide,
-  LottenSlide,  SushiSlide,
+  LottenSlide, SushiSlide,
 } from '@/components/Sliders/Slides';
 import { SushiWorkModal } from './SushiWork';
 
-const FIRST_SLIDER_SLIDES = [  
+const FIRST_SLIDER_SLIDES = [
   SushiSlide,
 ];
 const SECOND_SLIDER_SLIDES = [
@@ -15,12 +15,13 @@ const SECOND_SLIDER_SLIDES = [
 
 export function DesktopAdv() {
   const matchSushi = useMatch({ path: 'sushi' });
+  // const matchKaraoke = useMatch({ path: 'karaoke' });
 
   if (!matchSushi) {
     return (
       <div className="content__gridRightItem--1fr contentMT">
         <AdvSlider slides={FIRST_SLIDER_SLIDES} type="slide" />
-        
+
         <div style={{ marginTop: '1rem' }}>
           <AdvSlider slides={SECOND_SLIDER_SLIDES} type="slide" />
         </div>
