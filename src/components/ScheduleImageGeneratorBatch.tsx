@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { SCHEDULE_STYLES, drawSeansBlock, drawFilmBorder } from './scheduleStyles';
+import { SCHEDULE_STYLES, drawSeansBlock, drawFilmBackground, drawAgeRating, getLayoutConfig } from './scheduleStyles';
 
 interface DaySchedule {
   seansScedule: {
@@ -16,12 +16,17 @@ interface FilmMapping {
   [title: string]: string;
 }
 
+interface AgeRatingMapping {
+  [title: string]: string;
+}
+
 interface Props {
   filmMapping: FilmMapping;
+  ageRatingMapping?: AgeRatingMapping;
   scheduleData: ScheduleData;
 }
 
-export const ScheduleImageGeneratorBatch = ({ scheduleData, filmMapping }: Props) => {
+export const ScheduleImageGeneratorBatch = ({ scheduleData, filmMapping, ageRatingMapping }: Props) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [selectedDay, setSelectedDay] = useState<string>('');
   const [isGenerating, setIsGenerating] = useState(false);
@@ -36,15 +41,6 @@ export const ScheduleImageGeneratorBatch = ({ scheduleData, filmMapping }: Props
     });
   };
 
-  const getLayoutConfig = (filmCount: number) => {
-    const configs = {
-      3: { posterWidth: 480, posterHeight: 710, spacing: 100, padding: 60 },
-      4: { posterWidth: 380, posterHeight: 560, spacing: 70, padding: 50 },
-      5: { posterWidth: 310, posterHeight: 460, spacing: 50, padding: 40 },
-    };
-    return configs[filmCount as 3 | 4 | 5] || configs[4];
-  };
-
   const drawDaySchedule = async (
     ctx: CanvasRenderingContext2D,
     dayKey: string,
@@ -55,43 +51,54 @@ export const ScheduleImageGeneratorBatch = ({ scheduleData, filmMapping }: Props
     const films = daySchedule.titles;
     const filmCount = films.length;
 
-    // Черный фон
-    ctx.fillStyle = SCHEDULE_STYLES.background;
+    // Градиентный фон от левого нижнего угла к верхнему правому
+    const gradient = ctx.createLinearGradient(0, height, width, 0);
+    gradient.addColorStop(0, SCHEDULE_STYLES.background);
+    gradient.addColorStop(1, SCHEDULE_STYLES.backgroundGradientEnd);
+    ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, width, height);
 
     const config = getLayoutConfig(filmCount);
-    const { posterWidth, posterHeight, spacing, padding } = config;
-    const startX = (width - (posterWidth * filmCount + spacing * (filmCount - 1))) / 2;
-    const posterY = padding;
+    const { posterWidth, posterHeight, spacing, sidePadding, filmBlockPadding, topPadding, bottomPadding, fontSize, margins, seansBlockHeight, seansBlockWidth } = config;
+    const filmBlockWidth = filmBlockPadding.left + posterWidth + filmBlockPadding.right;
+    const availableWidth = width - sidePadding * 2;
+    const totalContentWidth = filmBlockWidth * filmCount + spacing * (filmCount - 1);
+    const startX = sidePadding + (availableWidth - totalContentWidth) / 2;
+    const posterY = topPadding;
+    const filmBlockHeight = height - topPadding - bottomPadding;
 
     for (let i = 0; i < filmCount; i++) {
       const filmTitle = films[i];
-      const x = startX + i * (posterWidth + spacing);
+      const blockX = startX + i * (filmBlockWidth + spacing);
+      const x = blockX + filmBlockPadding.left;
+      const posterYWithPadding = posterY + filmBlockPadding.top;
 
-      // Граница фильма
-      const filmSeans = daySchedule.seansScedule[filmTitle];
-      const seansCount = filmSeans.length;
-      const filmHeight = posterHeight + 150 + seansCount * 80;
-      drawFilmBorder(ctx, x, posterY, posterWidth, filmHeight);
+      // Фон фильма на всю допустимую высоту
+      drawFilmBackground(ctx, x, posterYWithPadding, posterWidth, filmBlockHeight - filmBlockPadding.top, i, filmBlockPadding);
 
       // Загрузка и отрисовка постера
       const imagePath = filmMapping[filmTitle];
       if (imagePath) {
         try {
           const img = await loadImage(imagePath);
-          ctx.drawImage(img, x, posterY, posterWidth, posterHeight);
+          ctx.drawImage(img, x, posterYWithPadding, posterWidth, posterHeight);
         } catch (e) {
           // Заглушка если изображение не загрузилось
           ctx.fillStyle = '#e0e0e0';
-          ctx.fillRect(x, posterY, posterWidth, posterHeight);
+          ctx.fillRect(x, posterYWithPadding, posterWidth, posterHeight);
         }
       }
 
-      // Название фильма желтым
-      ctx.fillStyle = SCHEDULE_STYLES.titleColor;
-      ctx.font = 'bold 20px Arial';
+      // Возрастное ограничение
+      if (ageRatingMapping && ageRatingMapping[filmTitle]) {
+        drawAgeRating(ctx, ageRatingMapping[filmTitle], x + 10, posterYWithPadding + 10);
+      }
+
+      // Название фильма красным
+      ctx.fillStyle = SCHEDULE_STYLES.accentColor;
+      ctx.font = `bold ${fontSize.title}px ${SCHEDULE_STYLES.fontFamily}`;
       ctx.textAlign = 'center';
-      const titleY = posterY + posterHeight + 30;
+      const titleY = posterYWithPadding + posterHeight + margins.titleTop;
       const maxWidth = posterWidth - 10;
       const words = filmTitle.split(' ');
       let line = '';
@@ -111,12 +118,13 @@ export const ScheduleImageGeneratorBatch = ({ scheduleData, filmMapping }: Props
       ctx.fillText(line, x + posterWidth / 2, lineY);
 
       // Сеансы
-      let seansY = lineY + 40;
+      const filmSeans = daySchedule.seansScedule[filmTitle];
+      let seansY = lineY + margins.seansTop;
 
       filmSeans.forEach(([time, , , price]) => {
-        const centerX = x + posterWidth / 2;
-        drawSeansBlock(ctx, time, price, centerX - 100, seansY - 25, 200, 75);
-        seansY += 90;
+        const blockX = x + (posterWidth - seansBlockWidth) / 2;
+        drawSeansBlock(ctx, time, price, blockX, seansY - 25, seansBlockWidth, seansBlockHeight, fontSize);
+        seansY += margins.seansBetween;
       });
     }
   };
