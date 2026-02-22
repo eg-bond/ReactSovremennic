@@ -1,5 +1,6 @@
 import { Suspense, lazy, memo } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { ScheduleGeneratorExample } from '@/components/ScheduleGeneratorExample';
 import About from './About/About';
 import Rules from './Rules/Rules';
 import Seance from './Seance/Seance';
@@ -27,6 +28,8 @@ const Content = memo<{
         />
         <Route element={<About />} path="about" />
         <Route element={<Rules />} path="rules" />
+
+        <Route element={<ScheduleGeneratorExample />} path="/gener" />
         {/* lazy routes */}
         <Route element={<SushiContainer isMobile={isMobile} />} path="sushi" />
         <Route element={<Karaoke />} path="karaoke" />
