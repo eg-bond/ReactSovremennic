@@ -14,44 +14,79 @@ export const SCHEDULE_STYLES = {
 
 export const getLayoutConfig = (filmCount: number) => {
   const configs = {
-    3: {
+    2: {
       posterWidth: 560,
-      posterHeight: 680,
+      posterHeight: 760,
       spacing: 20,
       sidePadding: 40,
       filmBlockPadding: { left: 30, right: 30, top: 30 },
       topPadding: 0,
       bottomPadding: 0,
-      fontSize: { title: 40, time: 28, price: 22 },
-      margins: { titleTop: 45, seansTop: 55, seansBetween: 95 },
-      seansBlockHeight: { time: 50, price: 25 },
+      fontSize: { title: 40, time: 28, price: 25 },
+      margins: { titleTop: 55, seansTop: 60, seansBetween: 110 },
+      seansBlockHeight: { time: 45, price: 30 },
       seansBlockWidth: 250,
+      seansLayout: 'grid' as const, // 'grid' или 'vertical'
+      seansGridColumns: 2, // количество колонок в grid
+      seansGridGap: 20, // расстояние между блоками в grid
+    },
+    3: {
+      posterWidth: 560,
+      posterHeight: 760,
+      spacing: 20,
+      sidePadding: 40,
+      filmBlockPadding: { left: 30, right: 30, top: 30 },
+      topPadding: 0,
+      bottomPadding: 0,
+      fontSize: { title: 40, time: 28, price: 25 },
+      margins: { titleTop: 55, seansTop: 60, seansBetween: 110 },
+      seansBlockHeight: { time: 45, price: 30 },
+      seansBlockWidth: 250,
+      seansLayout: 'grid' as const, // 'grid' или 'vertical'
+      seansGridColumns: 2, // количество колонок в grid
+      seansGridGap: 20, // расстояние между блоками в grid
     },
     4: {
       posterWidth: 450,
       posterHeight: 640,
       spacing: 20,
       sidePadding: 40,
-      filmBlockPadding: { left: 0, right: 0, top: 0 },
-      topPadding: 30,
-      bottomPadding: 30,
-      fontSize: { title: 30, time: 30, price: 22 },
-      margins: { titleTop: 45, seansTop: 55, seansBetween: 105 },
-      seansBlockHeight: { time: 55, price: 30 },
+      filmBlockPadding: { left: 5, right: 5, top: 15 },
+      topPadding: 0,
+      bottomPadding: 0,
+      fontSize: { title: 32, time: 30, price: 26 },
+      margins: { titleTop: 50, seansTop: 60, seansBetween: 112 },
+      seansBlockHeight: { time: 55, price: 35 },
       seansBlockWidth: 250,
+      seansLayout: 'vertical' as const,
     },
     5: {
-      posterWidth: 310,
-      posterHeight: 460,
-      spacing: 50,
+      posterWidth: 354,
+      posterHeight: 506,
+      spacing: 20,
       sidePadding: 40,
-      filmBlockPadding: { left: 20, right: 20, top: 20 },
-      topPadding: 40,
-      bottomPadding: 40,
-      fontSize: { title: 20, time: 18, price: 14 },
-      margins: { titleTop: 30, seansTop: 40, seansBetween: 90 },
-      seansBlockHeight: { time: 40, price: 35 },
-      seansBlockWidth: 310,
+      filmBlockPadding: { left: 5, right: 5, top: 10 },
+      topPadding: 140,
+      bottomPadding: 140,
+      fontSize: { title: 24, time: 26, price: 24 },
+      margins: { titleTop: 45, seansTop: 55, seansBetween: 110 },
+      seansBlockHeight: { time: 50, price: 35 },
+      seansBlockWidth: 340,
+      seansLayout: 'vertical' as const,
+    },
+    6: {
+      posterWidth: 296,
+      posterHeight: 450,
+      spacing: 20,
+      sidePadding: 40,
+      filmBlockPadding: { left: 2, right: 2, top: 5 },
+      topPadding: 200,
+      bottomPadding: 200,
+      fontSize: { title: 24, time: 26, price: 24 },
+      margins: { titleTop: 45, seansTop: 85, seansBetween: 110 },
+      seansBlockHeight: { time: 50, price: 35 },
+      seansBlockWidth: 280,
+      seansLayout: 'vertical' as const,
     },
   };
   return configs[filmCount as 3 | 4 | 5] || configs[4];
@@ -97,9 +132,17 @@ export const drawSeansBlock = (
   const priceHeight = blockHeight.price;
   const totalHeight = timeHeight + priceHeight;
 
-  // Нижняя часть (цена) - желтый фон
+  // Нижняя часть (цена) - желтый фон без скругления сверху
   ctx.fillStyle = SCHEDULE_STYLES.accentColor;
-  drawRoundedRect(ctx, x, y + timeHeight, width, priceHeight, radius);
+  ctx.beginPath();
+  ctx.moveTo(x, y + timeHeight);
+  ctx.lineTo(x + width, y + timeHeight);
+  ctx.lineTo(x + width, y + timeHeight + priceHeight - radius);
+  ctx.quadraticCurveTo(x + width, y + timeHeight + priceHeight, x + width - radius, y + timeHeight + priceHeight);
+  ctx.lineTo(x + radius, y + timeHeight + priceHeight);
+  ctx.quadraticCurveTo(x, y + timeHeight + priceHeight, x, y + timeHeight + priceHeight - radius);
+  ctx.lineTo(x, y + timeHeight);
+  ctx.closePath();
   ctx.fill();
 
   // Желтая граница
@@ -117,7 +160,9 @@ export const drawSeansBlock = (
   // Цена (черный текст)
   ctx.fillStyle = SCHEDULE_STYLES.priceTextColor;
   ctx.font = `bold ${fontSize.price}px ${SCHEDULE_STYLES.seansFontFamily}`;
-  ctx.fillText(price, x + width / 2, y + timeHeight + priceHeight / 2 + fontSize.price / 3);
+  const priceText = `2D / ${price} `;
+  // const priceText = format ? `${price} ${format}` : price;
+  ctx.fillText(priceText, x + width / 2, y + timeHeight + priceHeight / 2 + fontSize.price / 3);
 };
 
 export const drawFilmBackground = (

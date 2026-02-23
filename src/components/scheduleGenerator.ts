@@ -96,6 +96,9 @@ export const drawDaySchedule = async (
     margins,
     seansBlockHeight,
     seansBlockWidth,
+    seansLayout,
+    seansGridColumns,
+    seansGridGap,
   } = config;
   const filmBlockWidth = filmBlockPadding.left + posterWidth + filmBlockPadding.right;
   const availableWidth = width - sidePadding * 2;
@@ -128,16 +131,31 @@ export const drawDaySchedule = async (
     }
 
     const titleY = posterYWithPadding + posterHeight + margins.titleTop;
-    const lineY = drawFilmTitle(ctx, filmTitle, x + posterWidth / 2, titleY, posterWidth - 10, fontSize.title);
+    const lineY = drawFilmTitle(ctx, filmTitle.replace(/\s*2D\s*/g, ' ').trim(), x + posterWidth / 2, titleY, posterWidth - 10, fontSize.title);
 
     const filmSeans = daySchedule.seansScedule[filmTitle];
-    let seansY = lineY + margins.seansTop;
+    const seansStartY = lineY + margins.seansTop;
 
-    filmSeans.forEach(([time, , , price]) => {
-      const blockX = x + (posterWidth - seansBlockWidth) / 2;
-      drawSeansBlock(ctx, time, price, blockX, seansY - 25, seansBlockWidth, seansBlockHeight, fontSize);
-      seansY += margins.seansBetween;
-    });
+    if (seansLayout === 'grid' && seansGridColumns && seansGridGap !== undefined) {
+      const cols = seansGridColumns;
+      const gap = seansGridGap;
+      const blockWidth = (posterWidth - gap * (cols - 1)) / cols;
+
+      filmSeans.forEach(([time, , , price], idx) => {
+        const col = idx % cols;
+        const row = Math.floor(idx / cols);
+        const blockX = x + col * (blockWidth + gap);
+        const blockY = seansStartY - 25 + row * (seansBlockHeight.time + seansBlockHeight.price + gap);
+        drawSeansBlock(ctx, time, price, blockX, blockY, blockWidth, seansBlockHeight, fontSize);
+      });
+    } else {
+      let seansY = seansStartY;
+      filmSeans.forEach(([time, , , price]) => {
+        const blockX = x + (posterWidth - seansBlockWidth) / 2;
+        drawSeansBlock(ctx, time, price, blockX, seansY - 25, seansBlockWidth, seansBlockHeight, fontSize);
+        seansY += margins.seansBetween;
+      });
+    }
   }
 };
 
