@@ -29,6 +29,7 @@ export const getLayoutConfig = (filmCount: number) => {
       seansLayout: 'grid' as const, // 'grid' или 'vertical'
       seansGridColumns: 2, // количество колонок в grid
       seansGridGap: 20, // расстояние между блоками в grid
+      titleHeight: 0,
     },
     3: {
       posterWidth: 560,
@@ -45,6 +46,7 @@ export const getLayoutConfig = (filmCount: number) => {
       seansLayout: 'grid' as const, // 'grid' или 'vertical'
       seansGridColumns: 2, // количество колонок в grid
       seansGridGap: 20, // расстояние между блоками в grid
+      titleHeight: 0,
     },
     4: {
       posterWidth: 450,
@@ -57,8 +59,9 @@ export const getLayoutConfig = (filmCount: number) => {
       fontSize: { title: 32, time: 30, price: 26 },
       margins: { titleTop: 50, seansTop: 60, seansBetween: 112 },
       seansBlockHeight: { time: 55, price: 35 },
-      seansBlockWidth: 250,
+      seansBlockWidth: 430,
       seansLayout: 'vertical' as const,
+      titleHeight: 0,
     },
     5: {
       posterWidth: 354,
@@ -73,6 +76,7 @@ export const getLayoutConfig = (filmCount: number) => {
       seansBlockHeight: { time: 50, price: 35 },
       seansBlockWidth: 340,
       seansLayout: 'vertical' as const,
+      titleHeight: 0,
     },
     6: {
       posterWidth: 296,
@@ -80,13 +84,14 @@ export const getLayoutConfig = (filmCount: number) => {
       spacing: 20,
       sidePadding: 40,
       filmBlockPadding: { left: 2, right: 2, top: 5 },
-      topPadding: 200,
-      bottomPadding: 200,
-      fontSize: { title: 24, time: 26, price: 24 },
+      topPadding: 210,
+      bottomPadding: 215,
+      fontSize: { title: 28, time: 26, price: 24 },
       margins: { titleTop: 45, seansTop: 85, seansBetween: 110 },
       seansBlockHeight: { time: 50, price: 35 },
       seansBlockWidth: 280,
       seansLayout: 'vertical' as const,
+      titleHeight: 0,
     },
   };
   return configs[filmCount as 3 | 4 | 5] || configs[4];

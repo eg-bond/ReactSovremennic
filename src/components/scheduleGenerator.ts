@@ -68,6 +68,13 @@ const drawFilmTitle = (
   return lineY;
 };
 
+const normalizeFilmTitle = (title: string): string => {
+  // Remove "(предс. обсл.)" suffix with any surrounding whitespace variations
+  const normalized = title.replace(/\s*\(предс\.\s*обсл\.\)\s*$/g, '');
+  // Only trim if we actually removed the suffix (title changed)
+  return normalized !== title ? normalized.trim() : normalized;
+};
+
 export const drawDaySchedule = async (
   ctx: CanvasRenderingContext2D,
   scheduleData: ScheduleData,
@@ -99,6 +106,7 @@ export const drawDaySchedule = async (
     seansLayout,
     seansGridColumns,
     seansGridGap,
+    titleHeight,
   } = config;
   const filmBlockWidth = filmBlockPadding.left + posterWidth + filmBlockPadding.right;
   const availableWidth = width - sidePadding * 2;
@@ -115,7 +123,8 @@ export const drawDaySchedule = async (
 
     drawFilmBackground(ctx, x, posterYWithPadding, posterWidth, filmBlockHeight - filmBlockPadding.top, i, filmBlockPadding);
 
-    const imagePath = filmMapping[filmTitle];
+    const normalizedTitle = normalizeFilmTitle(filmTitle);
+    const imagePath = filmMapping[normalizedTitle];
     if (imagePath) {
       try {
         const img = await loadImage(imagePath);
@@ -126,15 +135,15 @@ export const drawDaySchedule = async (
       }
     }
 
-    if (ageRatingMapping?.[filmTitle]) {
-      drawAgeRating(ctx, ageRatingMapping[filmTitle], x + 10, posterYWithPadding + 10);
+    if (ageRatingMapping?.[normalizedTitle]) {
+      drawAgeRating(ctx, ageRatingMapping[normalizedTitle], x + 10, posterYWithPadding + 10);
     }
 
     const titleY = posterYWithPadding + posterHeight + margins.titleTop;
     const lineY = drawFilmTitle(ctx, filmTitle.replace(/\s*2D\s*/g, ' ').trim(), x + posterWidth / 2, titleY, posterWidth - 10, fontSize.title);
 
     const filmSeans = daySchedule.seansScedule[filmTitle];
-    const seansStartY = lineY + margins.seansTop;
+    const seansStartY = posterYWithPadding + posterHeight + margins.titleTop + titleHeight + margins.seansTop;
 
     if (seansLayout === 'grid' && seansGridColumns && seansGridGap !== undefined) {
       const cols = seansGridColumns;
