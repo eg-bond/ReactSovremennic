@@ -57,6 +57,27 @@ export const getLayoutConfig = (filmCount: number) => {
   return configs[filmCount as 3 | 4 | 5] || configs[4];
 };
 
+const drawRoundedRect = (
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+  radius: number,
+) => {
+  ctx.beginPath();
+  ctx.moveTo(x + radius, y);
+  ctx.lineTo(x + width - radius, y);
+  ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+  ctx.lineTo(x + width, y + height - radius);
+  ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+  ctx.lineTo(x + radius, y + height);
+  ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+  ctx.lineTo(x, y + radius);
+  ctx.quadraticCurveTo(x, y, x + radius, y);
+  ctx.closePath();
+};
+
 export const drawSeansBlock = (
   ctx: CanvasRenderingContext2D,
   time: string,
@@ -76,34 +97,15 @@ export const drawSeansBlock = (
   const priceHeight = blockHeight.price;
   const totalHeight = timeHeight + priceHeight;
 
-  // Верхняя часть (время) - прозрачный фон (пропускаем)
-
   // Нижняя часть (цена) - желтый фон
   ctx.fillStyle = SCHEDULE_STYLES.accentColor;
-  ctx.beginPath();
-  ctx.moveTo(x, y + timeHeight);
-  ctx.lineTo(x + width, y + timeHeight);
-  ctx.lineTo(x + width, y + totalHeight - radius);
-  ctx.quadraticCurveTo(x + width, y + totalHeight, x + width - radius, y + totalHeight);
-  ctx.lineTo(x + radius, y + totalHeight);
-  ctx.quadraticCurveTo(x, y + totalHeight, x, y + totalHeight - radius);
-  ctx.closePath();
+  drawRoundedRect(ctx, x, y + timeHeight, width, priceHeight, radius);
   ctx.fill();
 
   // Желтая граница
   ctx.strokeStyle = SCHEDULE_STYLES.accentColor;
   ctx.lineWidth = 2;
-  ctx.beginPath();
-  ctx.moveTo(x + radius, y);
-  ctx.lineTo(x + width - radius, y);
-  ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
-  ctx.lineTo(x + width, y + totalHeight - radius);
-  ctx.quadraticCurveTo(x + width, y + totalHeight, x + width - radius, y + totalHeight);
-  ctx.lineTo(x + radius, y + totalHeight);
-  ctx.quadraticCurveTo(x, y + totalHeight, x, y + totalHeight - radius);
-  ctx.lineTo(x, y + radius);
-  ctx.quadraticCurveTo(x, y, x + radius, y);
-  ctx.closePath();
+  drawRoundedRect(ctx, x, y, width, totalHeight, radius);
   ctx.stroke();
 
   // Время (желтый текст)
@@ -153,17 +155,7 @@ export const drawAgeRating = (
 
   // Желтый фон со скругленными углами
   ctx.fillStyle = SCHEDULE_STYLES.accentColor;
-  ctx.beginPath();
-  ctx.moveTo(x + radius, y);
-  ctx.lineTo(x + boxWidth - radius, y);
-  ctx.quadraticCurveTo(x + boxWidth, y, x + boxWidth, y + radius);
-  ctx.lineTo(x + boxWidth, y + boxHeight - radius);
-  ctx.quadraticCurveTo(x + boxWidth, y + boxHeight, x + boxWidth - radius, y + boxHeight);
-  ctx.lineTo(x + radius, y + boxHeight);
-  ctx.quadraticCurveTo(x, y + boxHeight, x, y + boxHeight - radius);
-  ctx.lineTo(x, y + radius);
-  ctx.quadraticCurveTo(x, y, x + radius, y);
-  ctx.closePath();
+  drawRoundedRect(ctx, x, y, boxWidth, boxHeight, radius);
   ctx.fill();
 
   // Черный текст
