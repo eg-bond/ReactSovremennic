@@ -44,6 +44,7 @@ const drawFilmTitle = (
   y: number,
   maxWidth: number,
   fontSize: number,
+  lineHeight: number,
 ) => {
   ctx.fillStyle = SCHEDULE_STYLES.accentColor;
   ctx.font = `bold ${fontSize}px ${SCHEDULE_STYLES.fontFamily}`;
@@ -59,7 +60,7 @@ const drawFilmTitle = (
     if (metrics.width > maxWidth && idx > 0) {
       ctx.fillText(line, x, lineY);
       line = word + ' ';
-      lineY += 25;
+      lineY += lineHeight;
     } else {
       line = testLine;
     }
@@ -107,6 +108,7 @@ export const drawDaySchedule = async (
     seansGridColumns,
     seansGridGap,
     titleHeight,
+    titleLineHeight,
   } = config;
   const filmBlockWidth = filmBlockPadding.left + posterWidth + filmBlockPadding.right;
   const availableWidth = width - sidePadding * 2;
@@ -140,7 +142,7 @@ export const drawDaySchedule = async (
     }
 
     const titleY = posterYWithPadding + posterHeight + margins.titleTop;
-    const lineY = drawFilmTitle(ctx, filmTitle.replace(/\s*2D\s*/g, ' ').trim(), x + posterWidth / 2, titleY, posterWidth - 10, fontSize.title);
+    const lineY = drawFilmTitle(ctx, filmTitle.replace(/\s*2D\s*/g, ' ').trim(), x + posterWidth / 2, titleY, posterWidth - 10, fontSize.title, titleLineHeight);
 
     const filmSeans = daySchedule.seansScedule[filmTitle];
     const seansStartY = posterYWithPadding + posterHeight + margins.titleTop + titleHeight + margins.seansTop;

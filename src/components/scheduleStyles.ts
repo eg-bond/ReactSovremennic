@@ -30,16 +30,17 @@ export const getLayoutConfig = (filmCount: number) => {
       seansGridColumns: 2, // количество колонок в grid
       seansGridGap: 20, // расстояние между блоками в grid
       titleHeight: 0,
+      titleLineHeight: 48, // междустрочное расстояние для заголовка
     },
     3: {
-      posterWidth: 560,
-      posterHeight: 760,
+      posterWidth: 600,
+      posterHeight: 855,
       spacing: 20,
       sidePadding: 40,
-      filmBlockPadding: { left: 30, right: 30, top: 30 },
+      filmBlockPadding: { left: 10, right: 10, top: 30 },
       topPadding: 0,
       bottomPadding: 0,
-      fontSize: { title: 40, time: 28, price: 25 },
+      fontSize: { title: 42, time: 28, price: 25 },
       margins: { titleTop: 55, seansTop: 60, seansBetween: 110 },
       seansBlockHeight: { time: 45, price: 30 },
       seansBlockWidth: 250,
@@ -47,21 +48,23 @@ export const getLayoutConfig = (filmCount: number) => {
       seansGridColumns: 2, // количество колонок в grid
       seansGridGap: 20, // расстояние между блоками в grid
       titleHeight: 0,
+      titleLineHeight: 48, // междустрочное расстояние для заголовка
     },
     4: {
       posterWidth: 450,
       posterHeight: 640,
       spacing: 20,
       sidePadding: 40,
-      filmBlockPadding: { left: 5, right: 5, top: 15 },
-      topPadding: 0,
-      bottomPadding: 0,
-      fontSize: { title: 32, time: 30, price: 26 },
-      margins: { titleTop: 50, seansTop: 60, seansBetween: 112 },
+      filmBlockPadding: { left: 5, right: 5, top: 10 },
+      topPadding: 45,
+      bottomPadding: 45,
+      fontSize: { title: 34, time: 30, price: 26 },
+      margins: { titleTop: 50, seansTop: 60, seansBetween: 115 },
       seansBlockHeight: { time: 55, price: 35 },
       seansBlockWidth: 430,
       seansLayout: 'vertical' as const,
-      titleHeight: 0,
+      titleHeight: 35,
+      titleLineHeight: 40, // междустрочное расстояние для заголовка
     },
     5: {
       posterWidth: 354,
@@ -77,6 +80,7 @@ export const getLayoutConfig = (filmCount: number) => {
       seansBlockWidth: 340,
       seansLayout: 'vertical' as const,
       titleHeight: 0,
+      titleLineHeight: 30, // междустрочное расстояние для заголовка
     },
     6: {
       posterWidth: 296,
@@ -92,6 +96,7 @@ export const getLayoutConfig = (filmCount: number) => {
       seansBlockWidth: 280,
       seansLayout: 'vertical' as const,
       titleHeight: 0,
+      titleLineHeight: 34, // междустрочное расстояние для заголовка
     },
   };
   return configs[filmCount as 3 | 4 | 5] || configs[4];
