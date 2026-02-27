@@ -142,7 +142,7 @@ export const drawDaySchedule = async (
     }
 
     const titleY = posterYWithPadding + posterHeight + margins.titleTop;
-    const lineY = drawFilmTitle(ctx, filmTitle.replace(/\s*2D\s*/g, ' ').trim(), x + posterWidth / 2, titleY, posterWidth - 10, fontSize.title, titleLineHeight);
+    drawFilmTitle(ctx, filmTitle.replace(/\s*2D\s*/g, ' ').trim(), x + posterWidth / 2, titleY, posterWidth - 10, fontSize.title, titleLineHeight);
 
     const filmSeans = daySchedule.seansScedule[filmTitle];
     const seansStartY = posterYWithPadding + posterHeight + margins.titleTop + titleHeight + margins.seansTop;

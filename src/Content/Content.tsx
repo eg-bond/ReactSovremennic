@@ -1,6 +1,6 @@
 import { Suspense, lazy, memo } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { ScheduleGeneratorExample } from '@/components/ScheduleGeneratorExample';
+import { ScheduleGeneratorExample } from '@/components/ScheduleGenerator/ScheduleGeneratorExample';
 import About from './About/About';
 import Rules from './Rules/Rules';
 import Seance from './Seance/Seance';

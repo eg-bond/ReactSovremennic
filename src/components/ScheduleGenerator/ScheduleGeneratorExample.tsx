@@ -1,6 +1,6 @@
 import { filmsArray } from '@/REDUX/filmsArray';
 import { ScheduleImageGeneratorBatch } from './ScheduleImageGeneratorBatch';
-import scheduleData from '../../ExternalScripts/PhotoShopScedule/psSchedule.json';
+import scheduleData from '../../../ExternalScripts/PhotoShopScedule/psSchedule.json';
 
 const createFilmMapping = () => {
   return filmsArray.reduce((acc, film) => {
