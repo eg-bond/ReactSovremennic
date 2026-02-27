@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import type { DateKeysT, SeanceStateT, getDayT } from './seanceReducerT';
 
-const initialState: SeanceStateT = {
+export const initialState: SeanceStateT = {
   datesArr: [
     ['day1', 'Понедельник', '23 февраля'],
     ['day2', 'Вторник', '24 февраля'],

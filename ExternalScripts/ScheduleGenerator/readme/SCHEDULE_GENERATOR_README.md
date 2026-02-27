@@ -20,7 +20,8 @@
 ```tsx
 import { ScheduleImageGeneratorBatch } from './ExternalScripts/ScheduleGenerator/ScheduleImageGeneratorBatch';
 import { filmsArray } from '@/REDUX/filmsArray';
-import scheduleData from '../ExternalScripts/PhotoShopScedule/psSchedule.json';
+import { schedule } from '@/Content/Seance/schedule';
+import { transformScheduleData } from './ExternalScripts/ScheduleGenerator/transformSchedule';
 
 const createFilmMapping = () => {
   return filmsArray.reduce((acc, film) => {
@@ -39,6 +40,7 @@ const createAgeRatingMapping = () => {
 function App() {
   const filmMapping = createFilmMapping();
   const ageRatingMapping = createAgeRatingMapping();
+  const scheduleData = transformScheduleData(schedule as Record<string, unknown[][]>);
 
   return (
     <ScheduleImageGeneratorBatch
@@ -104,13 +106,15 @@ export const getLayoutConfig = (filmCount: number) => {
     "titles": ["Фильм 1 2D", "Фильм 2 2D"],
     "seansScedule": {
       "Фильм 1 2D": [
-        ["11:10", "Фильм 1", "6+", "400₽", 0],
-        ["17:40", "Фильм 1", "6+", "520₽", 3]
+        ["11:10", "Фильм 1 2D", "6+", "400₽", 0],
+        ["17:40", "Фильм 1 2D", "6+", "520₽", 3]
       ]
     }
   }
 }
 ```
+
+Данные загружаются из `src/Content/Seance/schedule.ts` и преобразуются функцией `transformScheduleData()` из `transformSchedule.ts`.
 
 ### filmMapping
 

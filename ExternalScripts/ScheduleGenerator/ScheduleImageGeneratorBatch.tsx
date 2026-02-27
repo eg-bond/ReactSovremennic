@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import { dayKeyToDateName } from './dateMapping';
 import {
   drawDaySchedule,
   generateScheduleImage,
@@ -33,7 +34,8 @@ export const ScheduleImageGeneratorBatch = ({
         ageRatingMapping,
         selectedDay,
       );
-      downloadImage(dataUrl, `schedule-${selectedDay}.jpg`);
+      const fileName = `${dayKeyToDateName[selectedDay]}.jpg`;
+      downloadImage(dataUrl, fileName);
     } finally {
       setIsGenerating(false);
     }
@@ -49,8 +51,53 @@ export const ScheduleImageGeneratorBatch = ({
           ageRatingMapping,
           dayKey,
         );
-        downloadImage(dataUrl, `schedule-${dayKey}.jpg`);
+        const fileName = `${dayKeyToDateName[dayKey]}.jpg`;
+        downloadImage(dataUrl, fileName);
         await new Promise(resolve => setTimeout(resolve, 500));
+      }
+    } finally {
+      setIsGenerating(false);
+    }
+  };
+
+  const downloadWeekdaySchedules = async () => {
+    setIsGenerating(true);
+    try {
+      const weekdayKeys = ['day1', 'day2', 'day3'];
+      for (const dayKey of weekdayKeys) {
+        if (scheduleData[dayKey]) {
+          const dataUrl = await generateScheduleImage(
+            scheduleData,
+            filmMapping,
+            ageRatingMapping,
+            dayKey,
+          );
+          const fileName = `${dayKeyToDateName[dayKey]}.jpg`;
+          downloadImage(dataUrl, fileName);
+          await new Promise(resolve => setTimeout(resolve, 500));
+        }
+      }
+    } finally {
+      setIsGenerating(false);
+    }
+  };
+
+  const downloadWeekendSchedules = async () => {
+    setIsGenerating(true);
+    try {
+      const weekendKeys = ['day4', 'day5', 'day6', 'day0'];
+      for (const dayKey of weekendKeys) {
+        if (scheduleData[dayKey]) {
+          const dataUrl = await generateScheduleImage(
+            scheduleData,
+            filmMapping,
+            ageRatingMapping,
+            dayKey,
+          );
+          const fileName = `${dayKeyToDateName[dayKey]}.jpg`;
+          downloadImage(dataUrl, fileName);
+          await new Promise(resolve => setTimeout(resolve, 500));
+        }
       }
     } finally {
       setIsGenerating(false);
@@ -108,6 +155,20 @@ export const ScheduleImageGeneratorBatch = ({
           onClick={downloadDay}
         >
           Скачать день
+        </button>
+        <button
+          disabled={isGenerating}
+          style={{ marginRight: '10px', padding: '8px 16px' }}
+          onClick={downloadWeekdaySchedules}
+        >
+          Скачать пн-ср
+        </button>
+        <button
+          disabled={isGenerating}
+          style={{ marginRight: '10px', padding: '8px 16px' }}
+          onClick={downloadWeekendSchedules}
+        >
+          Скачать чт-вс
         </button>
         <button
           disabled={isGenerating}

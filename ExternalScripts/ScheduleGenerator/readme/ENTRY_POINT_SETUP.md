@@ -9,7 +9,8 @@
 ### Файлы
 
 - **main.tsx** - Entry point приложения
-  - Импортирует реальные данные из `psSchedule.json`
+  - Импортирует реальные данные из `src/Content/Seance/schedule.ts` и `src/REDUX/filmsArray.ts`
+  - Использует функцию `transformScheduleData()` для преобразования данных
   - Создает маппинги постеров и возрастных ограничений
   - Монтирует компонент `ScheduleImageGeneratorBatch` в DOM
 
@@ -53,8 +54,9 @@ yarn run preview
 ## Как работает
 
 1. **Загрузка данных**
-   - Расписание загружается из `ExternalScripts/PhotoShopScedule/psSchedule.json`
-   - Данные фильмов определены в `main.tsx`
+   - Расписание загружается из `src/Content/Seance/schedule.ts`
+   - Данные фильмов загружаются из `src/REDUX/filmsArray.ts`
+   - Функция `transformScheduleData()` преобразует данные в нужный формат
 
 2. **Создание маппингов**
    - `filmMapping` - связывает названия фильмов с путями к постерам
@@ -66,21 +68,34 @@ yarn run preview
 
 ## Обновление данных
 
-Для обновления данных фильмов отредактируйте массив `filmsArray` в `main.tsx`:
+Для обновления данных фильмов отредактируйте массив `filmsArray` в `src/REDUX/filmsArray.ts`:
 
 ```typescript
-const filmsArray = [
+export const filmsArray = [
   {
     title: 'Название фильма',
     age: '6+',
     link: 'film_link',
+    // ... другие поля
   },
   // ...
 ];
 ```
 
+Для обновления расписания отредактируйте объект `schedule` в `src/Content/Seance/schedule.ts`:
+
+```typescript
+const schedule = {
+  day0: [
+    ['10:30', 'Название фильма 2D', '6+', '370₽'],
+    // ...
+  ],
+  // ...
+};
+```
+
 Убедитесь, что:
-- `title` совпадает с названием в `psSchedule.json` (без суффикса "2D")
+- `title` в filmsArray совпадает с названием в schedule (без суффикса "2D")
 - `link` соответствует имени файла постера в `/Images/description/`
 - `age` содержит возрастное ограничение
 
