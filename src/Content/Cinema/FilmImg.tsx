@@ -33,7 +33,7 @@ export const FilmImg = ({
         alt={title}
         className="fadeIn"
         key={link + 'SM'}
-        src={`Images/description/${link}_D.webp`}
+        src={`Images/description/${link}.webp`}
         onLoad={handleLoad}
       />
 

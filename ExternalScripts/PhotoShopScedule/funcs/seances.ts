@@ -1,4 +1,4 @@
-import schedule from '../../../src/Content/Seance/schedule';
+import { schedule } from '@/Content/Seance/schedule';
 
 type SeanceItemT = Array<string | number>;
 

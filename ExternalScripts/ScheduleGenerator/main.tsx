@@ -10,7 +10,7 @@ import type { FilmMapping, AgeRatingMapping } from './scheduleGenerator';
 const createFilmMapping = (): FilmMapping => {
   return filmsArray.reduce(
     (acc, film) => {
-      acc[`${film.title} 2D`] = `/Images/description/${film.link}_D.webp`;
+      acc[`${film.title} 2D`] = `/Images/description/${film.link}.webp`;
       return acc;
     },
     {} as FilmMapping,

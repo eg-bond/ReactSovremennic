@@ -25,7 +25,7 @@ import { transformScheduleData } from './ExternalScripts/ScheduleGenerator/trans
 
 const createFilmMapping = () => {
   return filmsArray.reduce((acc, film) => {
-    acc[`${film.title} 2D`] = `/Images/description/${film.link}_D.webp`;
+    acc[`${film.title} 2D`] = `/Images/description/${film.link}.webp`;
     return acc;
   }, {} as Record<string, string>);
 };
@@ -120,8 +120,8 @@ export const getLayoutConfig = (filmCount: number) => {
 
 ```typescript
 {
-  "Фильм 1 2D": "/Images/description/film1_D.webp",
-  "Фильм 2 2D": "/Images/description/film2_D.webp"
+  "Фильм 1 2D": "/Images/description/film1.webp",
+  "Фильм 2 2D": "/Images/description/film2.webp"
 }
 ```
 

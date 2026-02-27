@@ -1,11 +1,11 @@
 import { useCallback } from 'react';
 import { MobileAdv } from '@/Template/Adv';
 import { useEffect, useState } from 'react';
-import BarSlider from '@/Template/BarSlider';
+// import BarSlider from '@/Template/BarSlider';
 import { SushiWork } from '@/Template/SushiWork';
+import { schedule } from '@/Content/Seance/schedule';
 import { OnlineSales } from '@/components/OnlineSales';
 import { useSeanceState } from '@/REDUX/stateHooks/useSeanceState';
-import schedule from './schedule';
 import { TableContent } from './seanceComponents/TableContent';
 import { CreateSeanceButtons } from './seanceComponents/CreateSeanceButtons';
 import SeanceMobileNavContainer from './seanceComponents/SeanceMobileNavContainer';
@@ -82,8 +82,8 @@ const Seance = ({ isMobile }: {
         />
       </table>
 
-      {/* <div className="news" style={{ paddingBottom: '1vw' }}>              
-          <p>Уважаемые посетители кинотеатра! Онлайн продажи билетов временно приостановлены по техническим причинам. Просим прощения за доставленные неудобства!</p>              
+      {/* <div className="news" style={{ paddingBottom: '1vw' }}>
+          <p>Уважаемые посетители кинотеатра! Онлайн продажи билетов временно приостановлены по техническим причинам. Просим прощения за доставленные неудобства!</p>
       </div> */}
 
       <OnlineSales />
