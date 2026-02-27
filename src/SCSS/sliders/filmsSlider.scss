@@ -16,17 +16,18 @@
 }
 
 .cinemaSlider__imgCont {
-  height: 255px;
+  // height: 255px;
+  aspect-ratio: 3/4;
   overflow: hidden;
   border-radius: $imagesBR;
   position: relative;
   z-index: 1;
-  @media ($mediaQuery1200) {
-    height: 210px;
-  }
-  @media ($mediaQuery992) {
-    height: 166px;
-  }
+  // @media ($mediaQuery1200) {
+  //   height: 210px;
+  // }
+  // @media ($mediaQuery992) {
+  //   height: 166px;
+  // }
 }
 
 .cinemaSlider .swSlide__img {
@@ -81,11 +82,11 @@
     padding: 0 15px 0 15px;
   }
   .cinemaSlider__slide {
-    height: 42vw;
+    height: 47vw;
   }
-  .cinemaSlider__imgCont {
-    height: 34vw;
-  }
+  // .cinemaSlider__imgCont {
+  //   height: 34vw;
+  // }
   .cinemaSlider .swSlide__h1 {
     font-size: 2.4vw;
   }
