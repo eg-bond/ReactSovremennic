@@ -31,6 +31,8 @@ export const getLayoutConfig = (filmCount: number) => {
       seansGridGap: 20, // расстояние между блоками в grid
       titleHeight: 0,
       titleLineHeight: 48, // междустрочное расстояние для заголовка
+      pirateBannerHeight: 40,
+      pirateBannerFontSize: 14,
     },
     3: {
       posterWidth: 600,
@@ -49,6 +51,8 @@ export const getLayoutConfig = (filmCount: number) => {
       seansGridGap: 20, // расстояние между блоками в grid
       titleHeight: 0,
       titleLineHeight: 48, // междустрочное расстояние для заголовка
+      pirateBannerHeight: 40,
+      pirateBannerFontSize: 14,
     },
     4: {
       posterWidth: 450,
@@ -63,8 +67,12 @@ export const getLayoutConfig = (filmCount: number) => {
       seansBlockHeight: { time: 55, price: 35 },
       seansBlockWidth: 430,
       seansLayout: 'vertical' as const,
+      seansGridColumns: 1,
+      seansGridGap: 0,
       titleHeight: 35,
       titleLineHeight: 40, // междустрочное расстояние для заголовка
+      pirateBannerHeight: 80,
+      pirateBannerFontSize: 20,
     },
     5: {
       posterWidth: 354,
@@ -79,8 +87,12 @@ export const getLayoutConfig = (filmCount: number) => {
       seansBlockHeight: { time: 50, price: 35 },
       seansBlockWidth: 340,
       seansLayout: 'vertical' as const,
+      seansGridColumns: 1,
+      seansGridGap: 0,
       titleHeight: 0,
       titleLineHeight: 30, // междустрочное расстояние для заголовка
+      pirateBannerHeight: 40,
+      pirateBannerFontSize: 14,
     },
     6: {
       posterWidth: 296,
@@ -95,8 +107,12 @@ export const getLayoutConfig = (filmCount: number) => {
       seansBlockHeight: { time: 50, price: 35 },
       seansBlockWidth: 280,
       seansLayout: 'vertical' as const,
+      seansGridColumns: 1,
+      seansGridGap: 0,
       titleHeight: 0,
       titleLineHeight: 34, // междустрочное расстояние для заголовка
+      pirateBannerHeight: 40,
+      pirateBannerFontSize: 14,
     },
   };
   return configs[filmCount as 3 | 4 | 5] || configs[4];
@@ -246,4 +262,57 @@ export const drawAgeRating = (
   // Сбрасываем настройки
   ctx.textAlign = 'center';
   ctx.textBaseline = 'alphabetic';
+};
+
+export const drawPirateBanner = (
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+  fontSize: number = 14,
+) => {
+  const bannerText = 'ДЕМОНСТРИРУЕТСЯ ДОПОЛНИТЕЛЬНО ПЕРЕД СЕАНСОМ ФИЛЬМА "СНЕГУР"';
+  const padding = 4;
+  const paddingTop = 12;
+  const maxWidth = width - padding * 2;
+  const lineHeight = fontSize + 10;
+
+  // Red background
+  ctx.fillStyle = '#dc2626';
+  ctx.fillRect(x, y, width, height);
+
+  // White text with wrapping
+  ctx.fillStyle = '#ffffff';
+  ctx.font = `bold ${fontSize}px ${SCHEDULE_STYLES.fontFamily}`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'top';
+
+  // Split text into words and wrap to fit width
+  const words = bannerText.split(' ');
+  const lines: string[] = [];
+  let currentLine = '';
+
+  words.forEach((word) => {
+    const testLine = currentLine + (currentLine ? ' ' : '') + word;
+    const metrics = ctx.measureText(testLine);
+    if (metrics.width > maxWidth && currentLine) {
+      lines.push(currentLine);
+      currentLine = word;
+    } else {
+      currentLine = testLine;
+    }
+  });
+  if (currentLine) {
+    lines.push(currentLine);
+  }
+
+  // Draw lines centered vertically in the banner with top padding
+  const totalTextHeight = lines.length * lineHeight;
+  let startY = y + paddingTop + (height - totalTextHeight - paddingTop) / 2;
+
+  lines.forEach((line) => {
+    ctx.fillText(line, x + width / 2, startY);
+    startY += lineHeight;
+  });
 };

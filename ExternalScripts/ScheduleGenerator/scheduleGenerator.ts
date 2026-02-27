@@ -3,6 +3,7 @@ import {
   drawSeansBlock,
   drawFilmBackground,
   drawAgeRating,
+  drawPirateBanner,
   getLayoutConfig,
 } from './scheduleStyles';
 
@@ -23,6 +24,10 @@ export interface FilmMapping {
 
 export interface AgeRatingMapping {
   [title: string]: string;
+}
+
+export interface PirateMapping {
+  [title: string]: boolean;
 }
 
 const loadImage = (src: string): Promise<HTMLImageElement> => {
@@ -94,6 +99,7 @@ export const drawDaySchedule = async (
   dayKey: string,
   width: number,
   height: number,
+  pirateMapping?: PirateMapping,
 ) => {
   const daySchedule = scheduleData[dayKey];
   const films = daySchedule.titles;
@@ -119,6 +125,8 @@ export const drawDaySchedule = async (
     seansGridGap,
     titleHeight,
     titleLineHeight,
+    pirateBannerHeight,
+    pirateBannerFontSize,
   } = config;
   const filmBlockWidth =
     filmBlockPadding.left + posterWidth + filmBlockPadding.right;
@@ -196,7 +204,9 @@ export const drawDaySchedule = async (
         const row = Math.floor(idx / cols);
         const blockX = x + col * (blockWidth + gap);
         const blockY =
-          seansStartY - 25 + row * (seansBlockHeight.time + seansBlockHeight.price + gap);
+          seansStartY -
+          25 +
+          row * (seansBlockHeight.time + seansBlockHeight.price + gap);
         drawSeansBlock(
           ctx,
           time,
@@ -225,6 +235,18 @@ export const drawDaySchedule = async (
         seansY += margins.seansBetween;
       });
     }
+
+    // Draw pirate banner last (on top of everything)
+    if (pirateMapping?.[normalizedTitle]) {
+      drawPirateBanner(
+        ctx,
+        x,
+        posterYWithPadding + posterHeight - pirateBannerHeight,
+        posterWidth,
+        pirateBannerHeight,
+        pirateBannerFontSize,
+      );
+    }
   }
 };
 
@@ -233,6 +255,7 @@ export const generateScheduleImage = async (
   filmMapping: FilmMapping,
   ageRatingMapping: AgeRatingMapping | undefined,
   dayKey: string,
+  pirateMapping?: PirateMapping,
 ): Promise<string> => {
   const canvas = document.createElement('canvas');
   canvas.width = 1920;
@@ -248,6 +271,7 @@ export const generateScheduleImage = async (
       dayKey,
       canvas.width,
       canvas.height,
+      pirateMapping,
     );
     return canvas.toDataURL('image/jpeg', 0.95);
   }

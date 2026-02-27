@@ -7,11 +7,13 @@ import {
   type ScheduleData,
   type FilmMapping,
   type AgeRatingMapping,
+  type PirateMapping,
 } from './scheduleGenerator';
 
 interface Props {
   ageRatingMapping?: AgeRatingMapping;
   filmMapping: FilmMapping;
+  pirateMapping?: PirateMapping;
   scheduleData: ScheduleData;
 }
 
@@ -19,6 +21,7 @@ export const ScheduleImageGeneratorBatch = ({
   scheduleData,
   filmMapping,
   ageRatingMapping,
+  pirateMapping,
 }: Props) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [selectedDay, setSelectedDay] = useState<string>('');
@@ -33,6 +36,7 @@ export const ScheduleImageGeneratorBatch = ({
         filmMapping,
         ageRatingMapping,
         selectedDay,
+        pirateMapping,
       );
       const fileName = `${dayKeyToDateName[selectedDay]}.jpg`;
       downloadImage(dataUrl, fileName);
@@ -50,6 +54,7 @@ export const ScheduleImageGeneratorBatch = ({
           filmMapping,
           ageRatingMapping,
           dayKey,
+          pirateMapping,
         );
         const fileName = `${dayKeyToDateName[dayKey]}.jpg`;
         downloadImage(dataUrl, fileName);
@@ -71,6 +76,7 @@ export const ScheduleImageGeneratorBatch = ({
             filmMapping,
             ageRatingMapping,
             dayKey,
+            pirateMapping,
           );
           const fileName = `${dayKeyToDateName[dayKey]}.jpg`;
           downloadImage(dataUrl, fileName);
@@ -93,6 +99,7 @@ export const ScheduleImageGeneratorBatch = ({
             filmMapping,
             ageRatingMapping,
             dayKey,
+            pirateMapping,
           );
           const fileName = `${dayKeyToDateName[dayKey]}.jpg`;
           downloadImage(dataUrl, fileName);
@@ -118,6 +125,7 @@ export const ScheduleImageGeneratorBatch = ({
           selectedDay,
           1920,
           1080,
+          pirateMapping,
         );
       }
     } finally {
