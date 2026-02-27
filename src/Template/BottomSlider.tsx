@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { PRE_SHOW_SERVICE } from '@/utils/constants';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { scrollToNavigation } from '../helpers';
+import { FilmImg } from '../Content/Cinema/FilmImg';
 import type { CinemaStateT } from '../REDUX/cinema/cinemaReducerT';
 
 const BottomSlider = memo<BottomSliderT>(function BottomSliderN({ isMobile, filmsToday }) {
@@ -46,13 +47,13 @@ const Slide = memo(function Slide({ film }: SlideT) {
         to={`/movies/${film.link}`}
         onClick={scrollToNavigation}
       >
-        <div className="bottomSlider__imgCont skeleton-Gray">
-          <img
-            alt={film.title}
-            className="swSlide__img"
-            src={`Images/description/${film.link}_D.webp`}
-          />
-        </div>
+        <FilmImg
+          age={film.age}
+          containerClassName="bottomSlider__imgCont skeleton-Gray"
+          link={film.link}
+          pirate={film.pirate}
+          title={title}
+        />
         <h1 className="swSlide__h1">{title}</h1>
         <p className="swSlide__p">{film.kind.split(', ')[0]}</p>
       </Link>

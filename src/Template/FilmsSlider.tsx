@@ -2,12 +2,13 @@ import { memo, useMemo } from 'react';
 import { Link, useMatch } from 'react-router-dom';
 import { PRE_SHOW_SERVICE } from '@/utils/constants';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
+import { FilmImg } from '../Content/Cinema/FilmImg';
 import { useMobilePaddings } from './useMobilePaddings';
 import { useImagesLoaded } from '../hooks/useImagesLoaded';
 import type { CinemaStateT } from '../REDUX/cinema/cinemaReducerT';
 
 const FilmsSlider = memo<FilmSliderT>(function FilmsSlider({ films, isMobile }) {
-  const { allImgLoaded, onLoad } = useImagesLoaded(films.length || 0);
+  const { onLoad } = useImagesLoaded(films.length || 0);
   // adds paddings to mobile slider to make it look like 3.5 slides
   useMobilePaddings(isMobile);
   const matchKaraoke = useMatch({ path: 'karaoke' });
@@ -29,7 +30,6 @@ const FilmsSlider = memo<FilmSliderT>(function FilmsSlider({ films, isMobile }) 
         >
           {films.map((item, i) => (
             <Slide
-              allImgLoaded={allImgLoaded}
               film={item}
               key={i + 'FS'}
               onLoad={onLoad}
@@ -44,11 +44,7 @@ const FilmsSlider = memo<FilmSliderT>(function FilmsSlider({ films, isMobile }) 
   );
 });
 
-const Slide = memo(function Slide({
-  film,
-allImgLoaded,
-onLoad,
-}: SlideT) {
+const Slide = memo(function Slide({ film, onLoad }: SlideT) {
   const title = useMemo(() =>
     film.pirate ? `${film.title} ${PRE_SHOW_SERVICE}` : film.title,
   [film.title, film.pirate],
@@ -57,18 +53,14 @@ onLoad,
   return (
     <SplideSlide className="swSlide cinemaSlider__slide">
       <Link className="swSlide__a" to={`movies/${film.link}`}>
-        <div
-          className={`cinemaSlider__imgCont skeleton-Gray ${
-            !allImgLoaded ? 'skeleton' : ''
-          }`}
-        >
-          <img
-            alt={film.title}
-            className="swSlide__img"
-            src={`Images/description/${film.link}_D.webp`}
-            onLoad={onLoad}
-          />
-        </div>
+        <FilmImg
+          age={film.age}
+          containerClassName="cinemaSlider__imgCont skeleton-Gray"
+          link={film.link}
+          pirate={film.pirate}
+          title={title}
+          onLoad={onLoad}
+        />
         <h1 className="swSlide__h1">{title}</h1>
         <p className="swSlide__p">{film.beginDate}</p>
       </Link>
@@ -79,7 +71,6 @@ onLoad,
 export default FilmsSlider;
 
 type SlideT = {
-  allImgLoaded: boolean;
   film: CinemaStateT['films'][0];
   onLoad: () => void;
 };
