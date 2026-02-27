@@ -18,7 +18,7 @@
 ### Базовое использование
 
 ```tsx
-import { ScheduleImageGeneratorBatch } from './components/ScheduleImageGeneratorBatch';
+import { ScheduleImageGeneratorBatch } from './ExternalScripts/ScheduleGenerator/ScheduleImageGeneratorBatch';
 import { filmsArray } from '@/REDUX/filmsArray';
 import scheduleData from '../ExternalScripts/PhotoShopScedule/psSchedule.json';
 

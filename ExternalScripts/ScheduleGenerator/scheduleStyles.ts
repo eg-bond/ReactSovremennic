@@ -131,10 +131,12 @@ export const drawSeansBlock = (
   y: number,
   width: number,
   blockHeight: {
-    price: number; time: number;
+    price: number;
+    time: number;
   },
   fontSize: {
-    price: number; time: number;
+    price: number;
+    time: number;
   },
 ) => {
   const radius = SCHEDULE_STYLES.borderRadius;
@@ -148,9 +150,19 @@ export const drawSeansBlock = (
   ctx.moveTo(x, y + timeHeight);
   ctx.lineTo(x + width, y + timeHeight);
   ctx.lineTo(x + width, y + timeHeight + priceHeight - radius);
-  ctx.quadraticCurveTo(x + width, y + timeHeight + priceHeight, x + width - radius, y + timeHeight + priceHeight);
+  ctx.quadraticCurveTo(
+    x + width,
+    y + timeHeight + priceHeight,
+    x + width - radius,
+    y + timeHeight + priceHeight,
+  );
   ctx.lineTo(x + radius, y + timeHeight + priceHeight);
-  ctx.quadraticCurveTo(x, y + timeHeight + priceHeight, x, y + timeHeight + priceHeight - radius);
+  ctx.quadraticCurveTo(
+    x,
+    y + timeHeight + priceHeight,
+    x,
+    y + timeHeight + priceHeight - radius,
+  );
   ctx.lineTo(x, y + timeHeight);
   ctx.closePath();
   ctx.fill();
@@ -172,7 +184,11 @@ export const drawSeansBlock = (
   ctx.font = `bold ${fontSize.price}px ${SCHEDULE_STYLES.seansFontFamily}`;
   const priceText = `2D / ${price} `;
   // const priceText = format ? `${price} ${format}` : price;
-  ctx.fillText(priceText, x + width / 2, y + timeHeight + priceHeight / 2 + fontSize.price / 3);
+  ctx.fillText(
+    priceText,
+    x + width / 2,
+    y + timeHeight + priceHeight / 2 + fontSize.price / 3,
+  );
 };
 
 export const drawFilmBackground = (
@@ -183,14 +199,22 @@ export const drawFilmBackground = (
   height: number,
   filmIndex: number,
   padding: {
-    left: number; right: number; top: number;
+    left: number;
+    right: number;
+    top: number;
   },
 ) => {
   const totalWidth = padding.left + width + padding.right;
-  ctx.fillStyle = filmIndex % 2 === 0
-    ? SCHEDULE_STYLES.filmBackgroundDark
-    : SCHEDULE_STYLES.filmBackgroundLight;
-  ctx.fillRect(x - padding.left - 10, y - padding.top - 10, totalWidth + 20, height + padding.top + 20);
+  ctx.fillStyle =
+    filmIndex % 2 === 0
+      ? SCHEDULE_STYLES.filmBackgroundDark
+      : SCHEDULE_STYLES.filmBackgroundLight;
+  ctx.fillRect(
+    x - padding.left - 10,
+    y - padding.top - 10,
+    totalWidth + 20,
+    height + padding.top + 20,
+  );
 };
 
 export const drawAgeRating = (

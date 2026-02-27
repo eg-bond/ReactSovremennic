@@ -27,7 +27,12 @@ export const ScheduleImageGeneratorBatch = ({
     if (!selectedDay) return;
     setIsGenerating(true);
     try {
-      const dataUrl = await generateScheduleImage(scheduleData, filmMapping, ageRatingMapping, selectedDay);
+      const dataUrl = await generateScheduleImage(
+        scheduleData,
+        filmMapping,
+        ageRatingMapping,
+        selectedDay,
+      );
       downloadImage(dataUrl, `schedule-${selectedDay}.jpg`);
     } finally {
       setIsGenerating(false);
@@ -38,7 +43,12 @@ export const ScheduleImageGeneratorBatch = ({
     setIsGenerating(true);
     try {
       for (const dayKey of Object.keys(scheduleData)) {
-        const dataUrl = await generateScheduleImage(scheduleData, filmMapping, ageRatingMapping, dayKey);
+        const dataUrl = await generateScheduleImage(
+          scheduleData,
+          filmMapping,
+          ageRatingMapping,
+          dayKey,
+        );
         downloadImage(dataUrl, `schedule-${dayKey}.jpg`);
         await new Promise(resolve => setTimeout(resolve, 500));
       }
@@ -53,7 +63,15 @@ export const ScheduleImageGeneratorBatch = ({
     try {
       const ctx = canvasRef.current.getContext('2d');
       if (ctx) {
-        await drawDaySchedule(ctx, scheduleData, filmMapping, ageRatingMapping, selectedDay, 1920, 1080);
+        await drawDaySchedule(
+          ctx,
+          scheduleData,
+          filmMapping,
+          ageRatingMapping,
+          selectedDay,
+          1920,
+          1080,
+        );
       }
     } finally {
       setIsGenerating(false);
@@ -71,7 +89,9 @@ export const ScheduleImageGeneratorBatch = ({
         >
           <option value="">Выберите день</option>
           {Object.keys(scheduleData).map(key => (
-            <option key={key} value={key}>{key}</option>
+            <option key={key} value={key}>
+              {key}
+            </option>
           ))}
         </select>
 

@@ -1,4 +1,10 @@
-import { SCHEDULE_STYLES, drawSeansBlock, drawFilmBackground, drawAgeRating, getLayoutConfig } from './scheduleStyles';
+import {
+  SCHEDULE_STYLES,
+  drawSeansBlock,
+  drawFilmBackground,
+  drawAgeRating,
+  getLayoutConfig,
+} from './scheduleStyles';
 
 export interface DaySchedule {
   seansScedule: {
@@ -29,7 +35,11 @@ const loadImage = (src: string): Promise<HTMLImageElement> => {
   });
 };
 
-const drawBackground = (ctx: CanvasRenderingContext2D, width: number, height: number) => {
+const drawBackground = (
+  ctx: CanvasRenderingContext2D,
+  width: number,
+  height: number,
+) => {
   const gradient = ctx.createLinearGradient(0, height, width, 0);
   gradient.addColorStop(0, SCHEDULE_STYLES.background);
   gradient.addColorStop(1, SCHEDULE_STYLES.backgroundGradientEnd);
@@ -110,9 +120,11 @@ export const drawDaySchedule = async (
     titleHeight,
     titleLineHeight,
   } = config;
-  const filmBlockWidth = filmBlockPadding.left + posterWidth + filmBlockPadding.right;
+  const filmBlockWidth =
+    filmBlockPadding.left + posterWidth + filmBlockPadding.right;
   const availableWidth = width - sidePadding * 2;
-  const totalContentWidth = filmBlockWidth * filmCount + spacing * (filmCount - 1);
+  const totalContentWidth =
+    filmBlockWidth * filmCount + spacing * (filmCount - 1);
   const startX = sidePadding + (availableWidth - totalContentWidth) / 2;
   const posterY = topPadding;
   const filmBlockHeight = height - topPadding - bottomPadding;
@@ -123,7 +135,15 @@ export const drawDaySchedule = async (
     const x = blockX + filmBlockPadding.left;
     const posterYWithPadding = posterY + filmBlockPadding.top;
 
-    drawFilmBackground(ctx, x, posterYWithPadding, posterWidth, filmBlockHeight - filmBlockPadding.top, i, filmBlockPadding);
+    drawFilmBackground(
+      ctx,
+      x,
+      posterYWithPadding,
+      posterWidth,
+      filmBlockHeight - filmBlockPadding.top,
+      i,
+      filmBlockPadding,
+    );
 
     const normalizedTitle = normalizeFilmTitle(filmTitle);
     const imagePath = filmMapping[normalizedTitle];
@@ -131,21 +151,40 @@ export const drawDaySchedule = async (
       try {
         const img = await loadImage(imagePath);
         ctx.drawImage(img, x, posterYWithPadding, posterWidth, posterHeight);
-      } catch (e) {
+      } catch {
         ctx.fillStyle = '#e0e0e0';
         ctx.fillRect(x, posterYWithPadding, posterWidth, posterHeight);
       }
     }
 
     if (ageRatingMapping?.[normalizedTitle]) {
-      drawAgeRating(ctx, ageRatingMapping[normalizedTitle], x + 10, posterYWithPadding + 10);
+      drawAgeRating(
+        ctx,
+        ageRatingMapping[normalizedTitle],
+        x + 10,
+        posterYWithPadding + 10,
+      );
     }
 
-    const titleY = posterYWithPadding + posterHeight + margins.titleTop;
-    drawFilmTitle(ctx, filmTitle.replace(/\s*2D\s*/g, ' ').trim(), x + posterWidth / 2, titleY, posterWidth - 10, fontSize.title, titleLineHeight);
+    const titleY =
+      posterYWithPadding + posterHeight + margins.titleTop;
+    drawFilmTitle(
+      ctx,
+      filmTitle.replace(/\s*2D\s*/g, ' ').trim(),
+      x + posterWidth / 2,
+      titleY,
+      posterWidth - 10,
+      fontSize.title,
+      titleLineHeight,
+    );
 
     const filmSeans = daySchedule.seansScedule[filmTitle];
-    const seansStartY = posterYWithPadding + posterHeight + margins.titleTop + titleHeight + margins.seansTop;
+    const seansStartY =
+      posterYWithPadding +
+      posterHeight +
+      margins.titleTop +
+      titleHeight +
+      margins.seansTop;
 
     if (seansLayout === 'grid' && seansGridColumns && seansGridGap !== undefined) {
       const cols = seansGridColumns;
@@ -156,14 +195,33 @@ export const drawDaySchedule = async (
         const col = idx % cols;
         const row = Math.floor(idx / cols);
         const blockX = x + col * (blockWidth + gap);
-        const blockY = seansStartY - 25 + row * (seansBlockHeight.time + seansBlockHeight.price + gap);
-        drawSeansBlock(ctx, time, price, blockX, blockY, blockWidth, seansBlockHeight, fontSize);
+        const blockY =
+          seansStartY - 25 + row * (seansBlockHeight.time + seansBlockHeight.price + gap);
+        drawSeansBlock(
+          ctx,
+          time,
+          price,
+          blockX,
+          blockY,
+          blockWidth,
+          seansBlockHeight,
+          fontSize,
+        );
       });
     } else {
       let seansY = seansStartY;
       filmSeans.forEach(([time, , , price]) => {
         const blockX = x + (posterWidth - seansBlockWidth) / 2;
-        drawSeansBlock(ctx, time, price, blockX, seansY - 25, seansBlockWidth, seansBlockHeight, fontSize);
+        drawSeansBlock(
+          ctx,
+          time,
+          price,
+          blockX,
+          seansY - 25,
+          seansBlockWidth,
+          seansBlockHeight,
+          fontSize,
+        );
         seansY += margins.seansBetween;
       });
     }
@@ -182,7 +240,15 @@ export const generateScheduleImage = async (
   const ctx = canvas.getContext('2d');
 
   if (ctx) {
-    await drawDaySchedule(ctx, scheduleData, filmMapping, ageRatingMapping, dayKey, canvas.width, canvas.height);
+    await drawDaySchedule(
+      ctx,
+      scheduleData,
+      filmMapping,
+      ageRatingMapping,
+      dayKey,
+      canvas.width,
+      canvas.height,
+    );
     return canvas.toDataURL('image/jpeg', 0.95);
   }
   return '';

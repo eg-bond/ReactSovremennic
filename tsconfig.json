@@ -19,7 +19,8 @@
     "types": ["vitest/globals"],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@/external/*": ["ExternalScripts/*"]
     },
     // this line needed to import modules with default exports
     "allowSyntheticDefaultImports": true,
