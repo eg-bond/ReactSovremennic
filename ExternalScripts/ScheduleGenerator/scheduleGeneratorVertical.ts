@@ -1,6 +1,6 @@
 import { dayKeyToDateName } from './utils/mappings';
-import type { AgeRatingMapping } from './utils/mappings';
 import type { ScheduleData } from './utils/transformSchedule';
+import type { AgeRatingMapping, PirateMapping } from './utils/mappings';
 
 const VERTICAL_STYLES = {
   background: '#ffffff',
@@ -12,12 +12,24 @@ const VERTICAL_STYLES = {
   dayFontSize: 24,
   padding: 20,
   headerPadding: 30,
-  dayPadding: 15,
+  dayPadding: 45,
   sectionGap: 25,
   cardGap: 10,
   cardPadding: 10,
   cardBorderWidth: 2,
   cardBorderColor: '#cccccc',
+  cardTitleMaxLines: 2,
+  cardTitleLineHeight: 16,
+  cardContentGap: 4,
+  // Base font sizes for card elements (before scaling by card width)
+  cardTitleBaseFontSize: 12, // базовый размер для названия фильма
+  cardTimeBaseFontSize: 16, // базовый размер для времени
+  cardPriceBaseFontSize: 12, // базовый размер для цены
+  cardFormatBaseFontSize: 10, // базовый размер для формата (2D/3D)
+  cardAgeBaseFontSize: 12, // базовый размер для возраста
+  // Отступы для времени и цены
+  cardTimeOffsetFromTop: 80, // отступ для блока времени от верхней границы карточки
+  cardPriceOffsetFromTime: 40, // отступ для блока цены от блока времени
 } as const;
 
 interface SeanceInfo {
@@ -67,11 +79,26 @@ const getLayoutConfig = (numSeancesPerDay: number[]): LayoutConfig => {
     cardHeight,
     contentWidth,
     fontSizes: {
-      cardTitle: calculateFontSize(cardWidth, 14),
-      cardTime: calculateFontSize(cardWidth, 16),
-      cardPrice: calculateFontSize(cardWidth, 12),
-      cardFormat: calculateFontSize(cardWidth, 10),
-      cardAge: calculateFontSize(cardWidth, 12),
+      cardTitle: calculateFontSize(
+        cardWidth,
+        VERTICAL_STYLES.cardTitleBaseFontSize,
+      ),
+      cardTime: calculateFontSize(
+        cardWidth,
+        VERTICAL_STYLES.cardTimeBaseFontSize,
+      ),
+      cardPrice: calculateFontSize(
+        cardWidth,
+        VERTICAL_STYLES.cardPriceBaseFontSize,
+      ),
+      cardFormat: calculateFontSize(
+        cardWidth,
+        VERTICAL_STYLES.cardFormatBaseFontSize,
+      ),
+      cardAge: calculateFontSize(
+        cardWidth,
+        VERTICAL_STYLES.cardAgeBaseFontSize,
+      ),
     },
   };
 };
@@ -85,11 +112,13 @@ const drawText = (
   color: string = VERTICAL_STYLES.textColor,
   align: CanvasTextAlign = 'center',
   maxWidth?: number,
-) => {
+): number => {
   ctx.fillStyle = color;
   ctx.font = `${fontSize}px ${VERTICAL_STYLES.fontFamily}`;
   ctx.textAlign = align;
   ctx.textBaseline = 'top';
+
+  let linesDrawn = 0;
 
   if (maxWidth) {
     const words = text.split(' ');
@@ -102,6 +131,7 @@ const drawText = (
       const metrics = ctx.measureText(testLine);
       if (metrics.width > maxWidth && line) {
         ctx.fillText(line, x, lineY);
+        linesDrawn++;
         line = word;
         lineY += lineHeight;
       } else {
@@ -110,10 +140,14 @@ const drawText = (
     });
     if (line) {
       ctx.fillText(line, x, lineY);
+      linesDrawn++;
     }
   } else {
     ctx.fillText(text, x, y);
+    linesDrawn = 1;
   }
+
+  return linesDrawn;
 };
 
 const drawSeanceCard = (
@@ -139,9 +173,10 @@ const drawSeanceCard = (
 
   // Draw title (top, centered)
   const titleY = y + padding;
+  const cleanTitle = filmTitle.replace(/\s*2D\s*|\s*3D\s*/g, ' ').trim();
   drawText(
     ctx,
-    filmTitle.replace(/\s*2D\s*|\s*3D\s*/g, ' ').trim(),
+    cleanTitle,
     x + width / 2,
     titleY,
     fontSizes.cardTitle,
@@ -150,8 +185,8 @@ const drawSeanceCard = (
     width - padding * 2,
   );
 
-  // Draw time (red, centered, below title)
-  const timeY = titleY + fontSizes.cardTitle + 4;
+  // Draw time (red, centered) - using fixed offset from top
+  const timeY = y + VERTICAL_STYLES.cardTimeOffsetFromTop;
   drawText(
     ctx,
     time,
@@ -162,8 +197,8 @@ const drawSeanceCard = (
     'center',
   );
 
-  // Draw price (centered, below time)
-  const priceY = timeY + fontSizes.cardTime + 3;
+  // Draw price (centered) - using fixed offset from time
+  const priceY = timeY + VERTICAL_STYLES.cardPriceOffsetFromTime;
   drawText(
     ctx,
     `${price} ₽`,
@@ -204,6 +239,7 @@ const collectDaySeances = (
   scheduleData: ScheduleData,
   dayKey: string,
   ageRatingMapping: AgeRatingMapping | undefined,
+  pirateMapping?: PirateMapping,
 ): SeanceInfo[] => {
   const daySchedule = scheduleData[dayKey];
   if (!daySchedule) return [];
@@ -213,8 +249,22 @@ const collectDaySeances = (
   for (const filmTitle of daySchedule.titles) {
     const seancesForFilm = daySchedule.seansScedule[filmTitle];
     for (const [time, , , price] of seancesForFilm) {
+      let displayTitle = filmTitle;
+      // Получить нормализованное название (без суффикса)
+      const normalizedTitle = filmTitle.replace(
+        /\s*\(предс\.\s*обсл\.\)\s*$/g,
+        '',
+      ).trim();
+
+      // Заменить "(предс. обсл.)" на "*" если фильм в pirateMapping
+      if (pirateMapping?.[normalizedTitle]) {
+        displayTitle = filmTitle
+          .replace(/\s*\(предс\.\s*обсл\.\)\s*$/g, ' *')
+          .trim();
+      }
+
       seances.push({
-        filmTitle,
+        filmTitle: displayTitle,
         time,
         price,
         format: filmTitle.includes('3D') ? '3D' : '2D',
@@ -234,7 +284,15 @@ const drawDaySection = (
   config: LayoutConfig,
 ): number => {
   const contentX = VERTICAL_STYLES.padding;
-  const cardGap = VERTICAL_STYLES.cardGap;
+  const containerWidth = 1080 - VERTICAL_STYLES.padding * 2;
+  const totalCardsWidth = config.cardWidth * seances.length;
+
+  // Calculate space-between distribution
+  let gap = VERTICAL_STYLES.cardGap;
+  if (seances.length > 1) {
+    const availableSpace = containerWidth - totalCardsWidth;
+    gap = availableSpace / (seances.length - 1);
+  }
 
   // Draw day name (red)
   drawText(
@@ -249,9 +307,9 @@ const drawDaySection = (
 
   const currentY = startY + VERTICAL_STYLES.dayFontSize + VERTICAL_STYLES.dayPadding;
 
-  // Draw seance cards in one row
+  // Draw seance cards in one row with space-between distribution
   seances.forEach((seance, idx) => {
-    const cardX = contentX + idx * (config.cardWidth + cardGap);
+    const cardX = contentX + idx * (config.cardWidth + gap);
     const cardY = currentY;
 
     drawSeanceCard(
@@ -278,6 +336,7 @@ export const drawWeekdaySchedule = async (
   ageRatingMapping: AgeRatingMapping | undefined,
   width: number,
   height: number,
+  pirateMapping?: PirateMapping,
 ): Promise<void> => {
   // White background
   ctx.fillStyle = VERTICAL_STYLES.background;
@@ -288,7 +347,12 @@ export const drawWeekdaySchedule = async (
 
   // Collect seances for each day
   for (const dayKey of weekdayKeys) {
-    const seances = collectDaySeances(scheduleData, dayKey, ageRatingMapping);
+    const seances = collectDaySeances(
+      scheduleData,
+      dayKey,
+      ageRatingMapping,
+      pirateMapping,
+    );
     if (seances.length > 0) {
       daySeancesArray.push({
         dayKey,
@@ -335,6 +399,7 @@ export const drawWeekendSchedule = async (
   ageRatingMapping: AgeRatingMapping | undefined,
   width: number,
   height: number,
+  pirateMapping?: PirateMapping,
 ): Promise<void> => {
   // White background
   ctx.fillStyle = VERTICAL_STYLES.background;
@@ -345,7 +410,12 @@ export const drawWeekendSchedule = async (
 
   // Collect seances for each day
   for (const dayKey of weekendKeys) {
-    const seances = collectDaySeances(scheduleData, dayKey, ageRatingMapping);
+    const seances = collectDaySeances(
+      scheduleData,
+      dayKey,
+      ageRatingMapping,
+      pirateMapping,
+    );
     if (seances.length > 0) {
       daySeancesArray.push({
         dayKey,
@@ -389,6 +459,7 @@ export const drawWeekendSchedule = async (
 export const generateWeekdayScheduleImage = async (
   scheduleData: ScheduleData,
   ageRatingMapping: AgeRatingMapping | undefined,
+  pirateMapping?: PirateMapping,
 ): Promise<string> => {
   const canvas = document.createElement('canvas');
   canvas.width = 1080;
@@ -402,6 +473,7 @@ export const generateWeekdayScheduleImage = async (
       ageRatingMapping,
       canvas.width,
       canvas.height,
+      pirateMapping,
     );
     return canvas.toDataURL('image/jpeg') as string;
   }
@@ -411,6 +483,7 @@ export const generateWeekdayScheduleImage = async (
 export const generateWeekendScheduleImage = async (
   scheduleData: ScheduleData,
   ageRatingMapping: AgeRatingMapping | undefined,
+  pirateMapping?: PirateMapping,
 ): Promise<string> => {
   const canvas = document.createElement('canvas');
   canvas.width = 1080;
@@ -424,6 +497,7 @@ export const generateWeekendScheduleImage = async (
       ageRatingMapping,
       canvas.width,
       canvas.height,
+      pirateMapping,
     );
     return canvas.toDataURL('image/jpeg') as string;
   }
@@ -435,6 +509,7 @@ export const generateVerticalScheduleImage = async (
   scheduleData: ScheduleData,
   ageRatingMapping: AgeRatingMapping | undefined,
   dayKey: string,
+  pirateMapping?: PirateMapping,
 ): Promise<string> => {
   const canvas = document.createElement('canvas');
   canvas.width = 1080;
@@ -452,6 +527,7 @@ export const generateVerticalScheduleImage = async (
       ageRatingMapping,
       canvas.width,
       canvas.height,
+      pirateMapping,
     );
   } else {
     await drawWeekendSchedule(
@@ -460,6 +536,7 @@ export const generateVerticalScheduleImage = async (
       ageRatingMapping,
       canvas.width,
       canvas.height,
+      pirateMapping,
     );
   }
 

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import {
   dayKeyToDateName,
   type AgeRatingMapping,
+  type PirateMapping,
 } from '../utils/mappings';
 import {
   generateVerticalScheduleImage,
@@ -28,6 +29,7 @@ export const useScheduleDownloadVertical = (
   scheduleData: ScheduleData,
   canvasRef: React.RefObject<HTMLCanvasElement>,
   ageRatingMapping?: AgeRatingMapping,
+  pirateMapping?: PirateMapping,
 ): UseScheduleDownloadVerticalReturn => {
   const [selectedDay, setSelectedDay] = useState<string>('');
   const [isGenerating, setIsGenerating] = useState(false);
@@ -40,6 +42,7 @@ export const useScheduleDownloadVertical = (
         scheduleData,
         ageRatingMapping,
         selectedDay,
+        pirateMapping,
       );
       const fileName = `${dayKeyToDateName[selectedDay]}_vertical.jpg`;
       downloadImage(dataUrl, fileName);
@@ -56,6 +59,7 @@ export const useScheduleDownloadVertical = (
           scheduleData,
           ageRatingMapping,
           dayKey,
+          pirateMapping,
         );
         const fileName = `${dayKeyToDateName[dayKey]}_vertical.jpg`;
         downloadImage(dataUrl, fileName);
@@ -72,6 +76,7 @@ export const useScheduleDownloadVertical = (
       const dataUrl = await generateWeekdayScheduleImage(
         scheduleData,
         ageRatingMapping,
+        pirateMapping,
       );
       downloadImage(dataUrl, 'weekday_schedule_vertical.jpg');
     } finally {
@@ -85,6 +90,7 @@ export const useScheduleDownloadVertical = (
       const dataUrl = await generateWeekendScheduleImage(
         scheduleData,
         ageRatingMapping,
+        pirateMapping,
       );
       downloadImage(dataUrl, 'weekend_schedule_vertical.jpg');
     } finally {
@@ -106,6 +112,7 @@ export const useScheduleDownloadVertical = (
             ageRatingMapping,
             1080,
             1920,
+            pirateMapping,
           );
         } else {
           await drawWeekendSchedule(
@@ -114,6 +121,7 @@ export const useScheduleDownloadVertical = (
             ageRatingMapping,
             1080,
             1920,
+            pirateMapping,
           );
         }
       }
