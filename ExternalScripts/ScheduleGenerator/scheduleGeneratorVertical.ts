@@ -3,33 +3,56 @@ import type { ScheduleData } from './utils/transformSchedule';
 import type { AgeRatingMapping, PirateMapping } from './utils/mappings';
 
 const VERTICAL_STYLES = {
+  // Цвета ------------------------------------------------------
   background: '#ffffff',
   textColor: '#000000',
-  accentColor: '#FFD700',
+  accentColor: '#dc2626',
   timeColor: '#dc2626',
-  fontFamily: 'Microsoft Sans Serif, Arial, sans-serif',
-  headerFontSize: 32,
-  dayFontSize: 24,
+  // Font Families -----------------------------------------------
+  fontFamily: 'Microsoft Sans Serif, sans-serif',
+  headerFontFamily: 'Gerhaus Regular, sans-serif',
+  dayFontFamily: 'Gerhaus Regular, sans-serif',
+  // cardTitleFontFamily: 'Gerhaus Regular, sans-serif',
+  cardTitleFontFamily: 'Microsoft Sans Serif, sans-serif',
+  cardTimeFontFamily: 'Gerhaus Regular, sans-serif',
+  cardPriceFontFamily: 'Gerhaus Regular, sans-serif',
+  cardFormatAgeFontFamily: 'Gerhaus Regular, sans-serif',
+  // Font Sizes -----------------------------------------------------
+  headerFontSize: 60,
+  dayFontSize: 42,
+  // Base font sizes for card elements (before scaling by card width)
+  cardTitleBaseFontSize: 13, // базовый размер для названия фильма
+  cardTimeBaseFontSize: 26, // базовый размер для времени
+  cardPriceBaseFontSize: 16, // базовый размер для цены
+  cardFormatBaseFontSize: 15, // базовый размер для формата (2D/3D)
+  cardAgeBaseFontSize: 15, // базовый размер для возраста
+  // Footer FS
+  footerFontSize: 22, // размер шрифта для сноски
+  // Отступы ------------------------------------------------------
   padding: 20,
-  headerPadding: 30,
-  dayPadding: 45,
-  sectionGap: 25,
+  // "КИНОТЕАТР "СОВРЕМЕННИК""
+  headerPadding: 110,
+  headerPaddingBottom: 80,
+  // Между днями
+  dayPadding: 25,
+  sectionGap: 80,
+  //
+  cardTimeOffsetFromTop: 80, // отступ для блока времени от верхней границы карточки
+  cardPriceOffsetFromTime: 80, // отступ для блока цены от блока времени
+  footerPadding: 110, // отступ сноски от нижнего края
   cardGap: 10,
-  cardPadding: 10,
+  cardPaddingVertical: 10, // padding сверху и снизу внутри карточки
+  cardPaddingHorizontal: 6, // padding слева и справа внутри карточки
   cardBorderWidth: 2,
-  cardBorderColor: '#cccccc',
+  cardBorderColor: '#000000',
   cardTitleMaxLines: 2,
   cardTitleLineHeight: 16,
-  cardContentGap: 4,
-  // Base font sizes for card elements (before scaling by card width)
-  cardTitleBaseFontSize: 12, // базовый размер для названия фильма
-  cardTimeBaseFontSize: 16, // базовый размер для времени
-  cardPriceBaseFontSize: 12, // базовый размер для цены
-  cardFormatBaseFontSize: 10, // базовый размер для формата (2D/3D)
-  cardAgeBaseFontSize: 12, // базовый размер для возраста
-  // Отступы для времени и цены
-  cardTimeOffsetFromTop: 80, // отступ для блока времени от верхней границы карточки
-  cardPriceOffsetFromTime: 40, // отступ для блока цены от блока времени
+  cardContentGap: 5,
+  // Price oval styles
+  priceOvalColor: '#e0e0e0', // цвет овала (серый)
+  priceOvalPadding: 18, // отступ текста от края овала
+  priceOvalHeight: 60, // высота овала
+  priceOvalOffsetY: -12, // fine-tuning vertical position of price text within oval
 } as const;
 
 interface SeanceInfo {
@@ -103,6 +126,28 @@ const getLayoutConfig = (numSeancesPerDay: number[]): LayoutConfig => {
   };
 };
 
+const drawOval = (
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+  color: string,
+) => {
+  ctx.fillStyle = color;
+  ctx.beginPath();
+  ctx.ellipse(
+    x + width / 2,
+    y + height / 2,
+    width / 2,
+    height / 2,
+    0,
+    0,
+    Math.PI * 2,
+  );
+  ctx.fill();
+};
+
 const drawText = (
   ctx: CanvasRenderingContext2D,
   text: string,
@@ -112,9 +157,10 @@ const drawText = (
   color: string = VERTICAL_STYLES.textColor,
   align: CanvasTextAlign = 'center',
   maxWidth?: number,
+  fontFamily?: string,
 ): number => {
   ctx.fillStyle = color;
-  ctx.font = `${fontSize}px ${VERTICAL_STYLES.fontFamily}`;
+  ctx.font = `${fontSize}px ${fontFamily || VERTICAL_STYLES.fontFamily}`;
   ctx.textAlign = align;
   ctx.textBaseline = 'top';
 
@@ -163,7 +209,8 @@ const drawSeanceCard = (
   height: number,
   fontSizes: LayoutConfig['fontSizes'],
 ) => {
-  const padding = VERTICAL_STYLES.cardPadding;
+  const paddingVertical = VERTICAL_STYLES.cardPaddingVertical;
+  const paddingHorizontal = VERTICAL_STYLES.cardPaddingHorizontal;
   const borderWidth = VERTICAL_STYLES.cardBorderWidth;
 
   // Draw border
@@ -172,7 +219,7 @@ const drawSeanceCard = (
   ctx.strokeRect(x, y, width, height);
 
   // Draw title (top, centered)
-  const titleY = y + padding;
+  const titleY = y + paddingVertical;
   const cleanTitle = filmTitle.replace(/\s*2D\s*|\s*3D\s*/g, ' ').trim();
   drawText(
     ctx,
@@ -182,7 +229,8 @@ const drawSeanceCard = (
     fontSizes.cardTitle,
     VERTICAL_STYLES.textColor,
     'center',
-    width - padding * 2,
+    width - paddingHorizontal * 2,
+    VERTICAL_STYLES.cardTitleFontFamily,
   );
 
   // Draw time (red, centered) - using fixed offset from top
@@ -195,42 +243,66 @@ const drawSeanceCard = (
     fontSizes.cardTime,
     VERTICAL_STYLES.timeColor,
     'center',
+    undefined,
+    VERTICAL_STYLES.cardTimeFontFamily,
   );
 
   // Draw price (centered) - using fixed offset from time
-  const priceY = timeY + VERTICAL_STYLES.cardPriceOffsetFromTime;
+  const basePriceY = timeY + VERTICAL_STYLES.cardPriceOffsetFromTime;
+  const displayPrice = price.replace('₽', 'р.');
+
+  // Рассчитать размер овала
+  const ovalWidth = fontSizes.cardPrice * 4.5; // примерная ширина
+  const ovalHeight = VERTICAL_STYLES.priceOvalHeight;
+  const ovalX = x + width / 2 - ovalWidth / 2;
+  const ovalY = basePriceY - ovalHeight / 2;
+
+  // Нарисовать овал
+  drawOval(ctx, ovalX, ovalY, ovalWidth, ovalHeight, VERTICAL_STYLES.priceOvalColor);
+
+  // Calculate text position with offset
+  const priceTextY = basePriceY + VERTICAL_STYLES.priceOvalOffsetY;
+
+  // Нарисовать текст цены поверх овала
   drawText(
     ctx,
-    `${price} ₽`,
+    displayPrice,
     x + width / 2,
-    priceY,
+    priceTextY,
     fontSizes.cardPrice,
     VERTICAL_STYLES.textColor,
     'center',
+    undefined,
+    VERTICAL_STYLES.cardPriceFontFamily,
   );
 
   // Draw format (2D/3D) - bottom left
-  const formatY = y + height - padding - fontSizes.cardFormat;
+  const formatY = y + height - paddingVertical - fontSizes.cardFormat;
   drawText(
     ctx,
     format,
-    x + padding,
+    x + paddingHorizontal + 2,
     formatY,
     fontSizes.cardFormat,
     VERTICAL_STYLES.textColor,
     'left',
+    undefined,
+    VERTICAL_STYLES.cardFormatAgeFontFamily,
   );
 
   // Draw age rating - bottom right
   if (ageRating) {
+    // Draw age rating text at original formatY position (without offsets)
     drawText(
       ctx,
       ageRating,
-      x + width - padding,
+      x + width - paddingHorizontal - 2,
       formatY,
       fontSizes.cardAge,
       VERTICAL_STYLES.accentColor,
       'right',
+      undefined,
+      VERTICAL_STYLES.cardFormatAgeFontFamily,
     );
   }
 };
@@ -268,7 +340,7 @@ const collectDaySeances = (
         time,
         price,
         format: filmTitle.includes('3D') ? '3D' : '2D',
-        ageRating: ageRatingMapping?.[filmTitle],
+        ageRating: ageRatingMapping?.[normalizedTitle],
       });
     }
   }
@@ -297,12 +369,14 @@ const drawDaySection = (
   // Draw day name (red)
   drawText(
     ctx,
-    dayName,
+    dayName.toUpperCase(),
     1080 / 2,
     startY,
     VERTICAL_STYLES.dayFontSize,
     VERTICAL_STYLES.timeColor,
     'center',
+    undefined,
+    VERTICAL_STYLES.dayFontFamily,
   );
 
   const currentY = startY + VERTICAL_STYLES.dayFontSize + VERTICAL_STYLES.dayPadding;
@@ -328,6 +402,26 @@ const drawDaySection = (
   });
 
   return currentY + config.cardHeight + VERTICAL_STYLES.sectionGap;
+};
+
+const drawFooter = (
+  ctx: CanvasRenderingContext2D,
+  y: number,
+  width: number,
+) => {
+  const footerText =
+    '* - В РАМКАХ ПРЕДСЕАНСОВОГО ОБСЛУЖИВАНИЯ ПЕРЕД МУЛЬТФИЛЬМОМ "СНЕГУР"';
+  drawText(
+    ctx,
+    footerText,
+    width / 2,
+    y,
+    VERTICAL_STYLES.footerFontSize,
+    VERTICAL_STYLES.textColor,
+    'center',
+    width - VERTICAL_STYLES.padding * 2,
+    VERTICAL_STYLES.headerFontFamily,
+  );
 };
 
 export const drawWeekdaySchedule = async (
@@ -377,9 +471,11 @@ export const drawWeekdaySchedule = async (
     VERTICAL_STYLES.headerFontSize,
     VERTICAL_STYLES.textColor,
     'center',
+    undefined,
+    VERTICAL_STYLES.headerFontFamily,
   );
 
-  currentY += VERTICAL_STYLES.headerFontSize + VERTICAL_STYLES.dayPadding;
+  currentY += VERTICAL_STYLES.headerFontSize + VERTICAL_STYLES.headerPaddingBottom;
 
   // Draw each day section
   for (const daySeances of daySeancesArray) {
@@ -391,6 +487,13 @@ export const drawWeekdaySchedule = async (
       config,
     );
   }
+
+  // Draw footer
+  const footerY =
+    height -
+    VERTICAL_STYLES.footerPadding -
+    VERTICAL_STYLES.footerFontSize;
+  drawFooter(ctx, footerY, width);
 };
 
 export const drawWeekendSchedule = async (
@@ -440,9 +543,11 @@ export const drawWeekendSchedule = async (
     VERTICAL_STYLES.headerFontSize,
     VERTICAL_STYLES.textColor,
     'center',
+    undefined,
+    VERTICAL_STYLES.headerFontFamily,
   );
 
-  currentY += VERTICAL_STYLES.headerFontSize + VERTICAL_STYLES.dayPadding;
+  currentY += VERTICAL_STYLES.headerFontSize + VERTICAL_STYLES.headerPaddingBottom;
 
   // Draw each day section
   for (const daySeances of daySeancesArray) {
@@ -454,6 +559,13 @@ export const drawWeekendSchedule = async (
       config,
     );
   }
+
+  // Draw footer
+  const footerY =
+    height -
+    VERTICAL_STYLES.footerPadding -
+    VERTICAL_STYLES.footerFontSize;
+  drawFooter(ctx, footerY, width);
 };
 
 export const generateWeekdayScheduleImage = async (
