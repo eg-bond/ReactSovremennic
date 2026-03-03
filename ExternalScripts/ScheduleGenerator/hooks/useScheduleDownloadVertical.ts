@@ -5,8 +5,11 @@ import {
 } from '../utils/mappings';
 import {
   generateVerticalScheduleImage,
+  generateWeekdayScheduleImage,
+  generateWeekendScheduleImage,
   downloadImage,
-  drawVerticalSchedule,
+  drawWeekdaySchedule,
+  drawWeekendSchedule,
 } from '../scheduleGeneratorVertical';
 import type { ScheduleData } from '../utils/transformSchedule';
 
@@ -66,19 +69,11 @@ export const useScheduleDownloadVertical = (
   const downloadWeekdaySchedules = async () => {
     setIsGenerating(true);
     try {
-      const weekdayKeys = ['day1', 'day2', 'day3'];
-      for (const dayKey of weekdayKeys) {
-        if (scheduleData[dayKey]) {
-          const dataUrl = await generateVerticalScheduleImage(
-            scheduleData,
-            ageRatingMapping,
-            dayKey,
-          );
-          const fileName = `${dayKeyToDateName[dayKey]}_vertical.jpg`;
-          downloadImage(dataUrl, fileName);
-          await new Promise(resolve => setTimeout(resolve, 500));
-        }
-      }
+      const dataUrl = await generateWeekdayScheduleImage(
+        scheduleData,
+        ageRatingMapping,
+      );
+      downloadImage(dataUrl, 'weekday_schedule_vertical.jpg');
     } finally {
       setIsGenerating(false);
     }
@@ -87,19 +82,11 @@ export const useScheduleDownloadVertical = (
   const downloadWeekendSchedules = async () => {
     setIsGenerating(true);
     try {
-      const weekendKeys = ['day4', 'day5', 'day6', 'day0'];
-      for (const dayKey of weekendKeys) {
-        if (scheduleData[dayKey]) {
-          const dataUrl = await generateVerticalScheduleImage(
-            scheduleData,
-            ageRatingMapping,
-            dayKey,
-          );
-          const fileName = `${dayKeyToDateName[dayKey]}_vertical.jpg`;
-          downloadImage(dataUrl, fileName);
-          await new Promise(resolve => setTimeout(resolve, 500));
-        }
-      }
+      const dataUrl = await generateWeekendScheduleImage(
+        scheduleData,
+        ageRatingMapping,
+      );
+      downloadImage(dataUrl, 'weekend_schedule_vertical.jpg');
     } finally {
       setIsGenerating(false);
     }
@@ -111,14 +98,24 @@ export const useScheduleDownloadVertical = (
     try {
       const ctx = canvasRef.current.getContext('2d');
       if (ctx) {
-        await drawVerticalSchedule(
-          ctx,
-          scheduleData,
-          ageRatingMapping,
-          selectedDay,
-          1080,
-          1920,
-        );
+        const isWeekday = ['day1', 'day2', 'day3'].includes(selectedDay);
+        if (isWeekday) {
+          await drawWeekdaySchedule(
+            ctx,
+            scheduleData,
+            ageRatingMapping,
+            1080,
+            1920,
+          );
+        } else {
+          await drawWeekendSchedule(
+            ctx,
+            scheduleData,
+            ageRatingMapping,
+            1080,
+            1920,
+          );
+        }
       }
     } finally {
       setIsGenerating(false);

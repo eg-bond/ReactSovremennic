@@ -9,46 +9,70 @@ const VERTICAL_STYLES = {
   timeColor: '#dc2626',
   fontFamily: 'Microsoft Sans Serif, Arial, sans-serif',
   headerFontSize: 32,
-  dayFontSize: 28,
-  cardTitleFontSize: 16,
-  cardTimeFontSize: 18,
-  cardPriceFontSize: 14,
-  cardFormatFontSize: 12,
-  cardAgeFontSize: 14,
+  dayFontSize: 24,
   padding: 20,
   headerPadding: 30,
-  dayPadding: 20,
-  cardGap: 12,
-  cardPadding: 12,
+  dayPadding: 15,
+  sectionGap: 25,
+  cardGap: 10,
+  cardPadding: 10,
   cardBorderWidth: 2,
   cardBorderColor: '#cccccc',
 } as const;
 
-interface VerticalLayoutConfig {
-  cardHeight: number;
-  cardsPerRow: number;
-  cardWidth: number;
-  contentHeight: number;
-  contentWidth: number;
+interface SeanceInfo {
+  ageRating?: string;
+  filmTitle: string;
+  format: string;
+  price: string;
+  time: string;
 }
 
-const getVerticalLayoutConfig = (dayKey: string): VerticalLayoutConfig => {
-  // day1, day2, day3 = 3 дня (пн-ср)
-  // day4, day5, day6, day0 = 4 дня (чт-вс)
-  const isWeekday = ['day1', 'day2', 'day3'].includes(dayKey);
-  const cardsPerRow = isWeekday ? 5 : 4; // 5 карточек для 3 дней, 4 для 4 дней
+interface DaySeances {
+  dayKey: string;
+  dayName: string;
+  seances: SeanceInfo[];
+}
+
+interface LayoutConfig {
+  cardHeight: number;
+  cardWidth: number;
+  contentWidth: number;
+  fontSizes: {
+    cardAge: number;
+    cardFormat: number;
+    cardPrice: number;
+    cardTime: number;
+    cardTitle: number;
+  };
+}
+
+const calculateFontSize = (cardWidth: number, baseSize: number): number => {
+  // Масштабируем шрифт в зависимости от ширины карточки
+  const scaleFactor = cardWidth / 100; // 100 - базовая ширина
+  return Math.max(8, Math.round(baseSize * scaleFactor));
+};
+
+const getLayoutConfig = (numSeancesPerDay: number[]): LayoutConfig => {
+  // Находим максимальное количество сеансов в день
+  const maxSeances = Math.max(...numSeancesPerDay);
 
   const contentWidth = 1080 - VERTICAL_STYLES.padding * 2;
   const cardGap = VERTICAL_STYLES.cardGap;
-  const cardWidth = (contentWidth - cardGap * (cardsPerRow - 1)) / cardsPerRow;
-  const cardHeight = cardWidth * 1.3; // Высота больше ширины для вертикальной карточки
+  const cardWidth = (contentWidth - cardGap * (maxSeances - 1)) / maxSeances;
+  const cardHeight = cardWidth * 1.4; // Высота больше ширины
 
   return {
     cardWidth,
     cardHeight,
-    cardsPerRow,
     contentWidth,
-    contentHeight: 1920,
+    fontSizes: {
+      cardTitle: calculateFontSize(cardWidth, 14),
+      cardTime: calculateFontSize(cardWidth, 16),
+      cardPrice: calculateFontSize(cardWidth, 12),
+      cardFormat: calculateFontSize(cardWidth, 10),
+      cardAge: calculateFontSize(cardWidth, 12),
+    },
   };
 };
 
@@ -71,9 +95,9 @@ const drawText = (
     const words = text.split(' ');
     let line = '';
     let lineY = y;
-    const lineHeight = fontSize + 4;
+    const lineHeight = fontSize + 2;
 
-    words.forEach((word, idx) => {
+    words.forEach((word) => {
       const testLine = line + (line ? ' ' : '') + word;
       const metrics = ctx.measureText(testLine);
       if (metrics.width > maxWidth && line) {
@@ -103,6 +127,7 @@ const drawSeanceCard = (
   y: number,
   width: number,
   height: number,
+  fontSizes: LayoutConfig['fontSizes'],
 ) => {
   const padding = VERTICAL_STYLES.cardPadding;
   const borderWidth = VERTICAL_STYLES.cardBorderWidth;
@@ -119,44 +144,44 @@ const drawSeanceCard = (
     filmTitle.replace(/\s*2D\s*|\s*3D\s*/g, ' ').trim(),
     x + width / 2,
     titleY,
-    VERTICAL_STYLES.cardTitleFontSize,
+    fontSizes.cardTitle,
     VERTICAL_STYLES.textColor,
     'center',
     width - padding * 2,
   );
 
   // Draw time (red, centered, below title)
-  const timeY = titleY + VERTICAL_STYLES.cardTitleFontSize + 8;
+  const timeY = titleY + fontSizes.cardTitle + 4;
   drawText(
     ctx,
     time,
     x + width / 2,
     timeY,
-    VERTICAL_STYLES.cardTimeFontSize,
+    fontSizes.cardTime,
     VERTICAL_STYLES.timeColor,
     'center',
   );
 
   // Draw price (centered, below time)
-  const priceY = timeY + VERTICAL_STYLES.cardTimeFontSize + 6;
+  const priceY = timeY + fontSizes.cardTime + 3;
   drawText(
     ctx,
     `${price} ₽`,
     x + width / 2,
     priceY,
-    VERTICAL_STYLES.cardPriceFontSize,
+    fontSizes.cardPrice,
     VERTICAL_STYLES.textColor,
     'center',
   );
 
   // Draw format (2D/3D) - bottom left
-  const formatY = y + height - padding - VERTICAL_STYLES.cardFormatFontSize;
+  const formatY = y + height - padding - fontSizes.cardFormat;
   drawText(
     ctx,
     format,
     x + padding,
     formatY,
-    VERTICAL_STYLES.cardFormatFontSize,
+    fontSizes.cardFormat,
     VERTICAL_STYLES.textColor,
     'left',
   );
@@ -168,72 +193,27 @@ const drawSeanceCard = (
       ageRating,
       x + width - padding,
       formatY,
-      VERTICAL_STYLES.cardAgeFontSize,
+      fontSizes.cardAge,
       VERTICAL_STYLES.accentColor,
       'right',
     );
   }
 };
 
-export const drawVerticalSchedule = async (
-  ctx: CanvasRenderingContext2D,
+const collectDaySeances = (
   scheduleData: ScheduleData,
-  ageRatingMapping: AgeRatingMapping | undefined,
   dayKey: string,
-  width: number,
-  height: number,
-) => {
-  // White background
-  ctx.fillStyle = VERTICAL_STYLES.background;
-  ctx.fillRect(0, 0, width, height);
-
-  const config = getVerticalLayoutConfig(dayKey);
+  ageRatingMapping: AgeRatingMapping | undefined,
+): SeanceInfo[] => {
   const daySchedule = scheduleData[dayKey];
+  if (!daySchedule) return [];
 
-  if (!daySchedule) return;
-
-  let currentY = VERTICAL_STYLES.headerPadding;
-
-  // Draw header "КИНОТЕАТР "СОВРЕМЕННИК""
-  drawText(
-    ctx,
-    'КИНОТЕАТР "СОВРЕМЕННИК"',
-    width / 2,
-    currentY,
-    VERTICAL_STYLES.headerFontSize,
-    VERTICAL_STYLES.textColor,
-    'center',
-  );
-
-  currentY += VERTICAL_STYLES.headerFontSize + VERTICAL_STYLES.dayPadding;
-
-  // Draw day name (red)
-  const dayName = dayKeyToDateName[dayKey];
-  drawText(
-    ctx,
-    dayName,
-    width / 2,
-    currentY,
-    VERTICAL_STYLES.dayFontSize,
-    VERTICAL_STYLES.timeColor,
-    'center',
-  );
-
-  currentY += VERTICAL_STYLES.dayFontSize + VERTICAL_STYLES.dayPadding;
-
-  // Collect all seances
-  const allSeances: Array<{
-    ageRating?: string;
-    filmTitle: string;
-    format: string;
-    price: string;
-    time: string;
-  }> = [];
+  const seances: SeanceInfo[] = [];
 
   for (const filmTitle of daySchedule.titles) {
-    const seances = daySchedule.seansScedule[filmTitle];
-    for (const [time, , , price] of seances) {
-      allSeances.push({
+    const seancesForFilm = daySchedule.seansScedule[filmTitle];
+    for (const [time, , , price] of seancesForFilm) {
+      seances.push({
         filmTitle,
         time,
         price,
@@ -243,17 +223,36 @@ export const drawVerticalSchedule = async (
     }
   }
 
-  // Draw seance cards in grid
+  return seances;
+};
+
+const drawDaySection = (
+  ctx: CanvasRenderingContext2D,
+  dayName: string,
+  seances: SeanceInfo[],
+  startY: number,
+  config: LayoutConfig,
+): number => {
   const contentX = VERTICAL_STYLES.padding;
   const cardGap = VERTICAL_STYLES.cardGap;
-  const cardsPerRow = config.cardsPerRow;
 
-  allSeances.forEach((seance, idx) => {
-    const row = Math.floor(idx / cardsPerRow);
-    const col = idx % cardsPerRow;
+  // Draw day name (red)
+  drawText(
+    ctx,
+    dayName,
+    1080 / 2,
+    startY,
+    VERTICAL_STYLES.dayFontSize,
+    VERTICAL_STYLES.timeColor,
+    'center',
+  );
 
-    const cardX = contentX + col * (config.cardWidth + cardGap);
-    const cardY = currentY + row * (config.cardHeight + cardGap);
+  const currentY = startY + VERTICAL_STYLES.dayFontSize + VERTICAL_STYLES.dayPadding;
+
+  // Draw seance cards in one row
+  seances.forEach((seance, idx) => {
+    const cardX = contentX + idx * (config.cardWidth + cardGap);
+    const cardY = currentY;
 
     drawSeanceCard(
       ctx,
@@ -266,10 +265,172 @@ export const drawVerticalSchedule = async (
       cardY,
       config.cardWidth,
       config.cardHeight,
+      config.fontSizes,
     );
   });
+
+  return currentY + config.cardHeight + VERTICAL_STYLES.sectionGap;
 };
 
+export const drawWeekdaySchedule = async (
+  ctx: CanvasRenderingContext2D,
+  scheduleData: ScheduleData,
+  ageRatingMapping: AgeRatingMapping | undefined,
+  width: number,
+  height: number,
+): Promise<void> => {
+  // White background
+  ctx.fillStyle = VERTICAL_STYLES.background;
+  ctx.fillRect(0, 0, width, height);
+
+  const weekdayKeys = ['day1', 'day2', 'day3'];
+  const daySeancesArray: DaySeances[] = [];
+
+  // Collect seances for each day
+  for (const dayKey of weekdayKeys) {
+    const seances = collectDaySeances(scheduleData, dayKey, ageRatingMapping);
+    if (seances.length > 0) {
+      daySeancesArray.push({
+        dayKey,
+        dayName: dayKeyToDateName[dayKey],
+        seances,
+      });
+    }
+  }
+
+  // Calculate layout based on max seances per day
+  const numSeancesPerDay = daySeancesArray.map(d => d.seances.length);
+  const config = getLayoutConfig(numSeancesPerDay);
+
+  let currentY: number = VERTICAL_STYLES.headerPadding;
+
+  // Draw header
+  drawText(
+    ctx,
+    'КИНОТЕАТР "СОВРЕМЕННИК"',
+    width / 2,
+    currentY,
+    VERTICAL_STYLES.headerFontSize,
+    VERTICAL_STYLES.textColor,
+    'center',
+  );
+
+  currentY += VERTICAL_STYLES.headerFontSize + VERTICAL_STYLES.dayPadding;
+
+  // Draw each day section
+  for (const daySeances of daySeancesArray) {
+    currentY = drawDaySection(
+      ctx,
+      daySeances.dayName,
+      daySeances.seances,
+      currentY,
+      config,
+    );
+  }
+};
+
+export const drawWeekendSchedule = async (
+  ctx: CanvasRenderingContext2D,
+  scheduleData: ScheduleData,
+  ageRatingMapping: AgeRatingMapping | undefined,
+  width: number,
+  height: number,
+): Promise<void> => {
+  // White background
+  ctx.fillStyle = VERTICAL_STYLES.background;
+  ctx.fillRect(0, 0, width, height);
+
+  const weekendKeys = ['day4', 'day5', 'day6', 'day0'];
+  const daySeancesArray: DaySeances[] = [];
+
+  // Collect seances for each day
+  for (const dayKey of weekendKeys) {
+    const seances = collectDaySeances(scheduleData, dayKey, ageRatingMapping);
+    if (seances.length > 0) {
+      daySeancesArray.push({
+        dayKey,
+        dayName: dayKeyToDateName[dayKey],
+        seances,
+      });
+    }
+  }
+
+  // Calculate layout based on max seances per day
+  const numSeancesPerDay = daySeancesArray.map(d => d.seances.length);
+  const config = getLayoutConfig(numSeancesPerDay);
+
+  let currentY: number = VERTICAL_STYLES.headerPadding;
+
+  // Draw header
+  drawText(
+    ctx,
+    'КИНОТЕАТР "СОВРЕМЕННИК"',
+    width / 2,
+    currentY,
+    VERTICAL_STYLES.headerFontSize,
+    VERTICAL_STYLES.textColor,
+    'center',
+  );
+
+  currentY += VERTICAL_STYLES.headerFontSize + VERTICAL_STYLES.dayPadding;
+
+  // Draw each day section
+  for (const daySeances of daySeancesArray) {
+    currentY = drawDaySection(
+      ctx,
+      daySeances.dayName,
+      daySeances.seances,
+      currentY,
+      config,
+    );
+  }
+};
+
+export const generateWeekdayScheduleImage = async (
+  scheduleData: ScheduleData,
+  ageRatingMapping: AgeRatingMapping | undefined,
+): Promise<string> => {
+  const canvas = document.createElement('canvas');
+  canvas.width = 1080;
+  canvas.height = 1920;
+  const ctx = canvas.getContext('2d');
+
+  if (ctx) {
+    await drawWeekdaySchedule(
+      ctx,
+      scheduleData,
+      ageRatingMapping,
+      canvas.width,
+      canvas.height,
+    );
+    return canvas.toDataURL('image/jpeg') as string;
+  }
+  return '';
+};
+
+export const generateWeekendScheduleImage = async (
+  scheduleData: ScheduleData,
+  ageRatingMapping: AgeRatingMapping | undefined,
+): Promise<string> => {
+  const canvas = document.createElement('canvas');
+  canvas.width = 1080;
+  canvas.height = 1920;
+  const ctx = canvas.getContext('2d');
+
+  if (ctx) {
+    await drawWeekendSchedule(
+      ctx,
+      scheduleData,
+      ageRatingMapping,
+      canvas.width,
+      canvas.height,
+    );
+    return canvas.toDataURL('image/jpeg') as string;
+  }
+  return '';
+};
+
+// Backward compatibility - for single day preview
 export const generateVerticalScheduleImage = async (
   scheduleData: ScheduleData,
   ageRatingMapping: AgeRatingMapping | undefined,
@@ -280,18 +441,29 @@ export const generateVerticalScheduleImage = async (
   canvas.height = 1920;
   const ctx = canvas.getContext('2d');
 
-  if (ctx) {
-    await drawVerticalSchedule(
+  if (!ctx) return '';
+
+  const isWeekday = ['day1', 'day2', 'day3'].includes(dayKey);
+
+  if (isWeekday) {
+    await drawWeekdaySchedule(
       ctx,
       scheduleData,
       ageRatingMapping,
-      dayKey,
       canvas.width,
       canvas.height,
     );
-    return canvas.toDataURL('image/jpeg', 0.95);
+  } else {
+    await drawWeekendSchedule(
+      ctx,
+      scheduleData,
+      ageRatingMapping,
+      canvas.width,
+      canvas.height,
+    );
   }
-  return '';
+
+  return canvas.toDataURL('image/jpeg') as string;
 };
 
 export const downloadImage = (dataUrl: string, filename: string) => {
