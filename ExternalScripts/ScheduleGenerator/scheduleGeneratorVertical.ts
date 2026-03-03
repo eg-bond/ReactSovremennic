@@ -366,6 +366,15 @@ const drawDaySection = (
     gap = availableSpace / (seances.length - 1);
   }
 
+  // Sort seances by time (earliest to latest)
+  const sortedSeances = [...seances].sort((a, b) => {
+    const timeA = a.time.split(':').map(Number);
+    const timeB = b.time.split(':').map(Number);
+    const minutesA = timeA[0] * 60 + timeA[1];
+    const minutesB = timeB[0] * 60 + timeB[1];
+    return minutesA - minutesB;
+  });
+
   // Draw day name (red)
   drawText(
     ctx,
@@ -382,7 +391,7 @@ const drawDaySection = (
   const currentY = startY + VERTICAL_STYLES.dayFontSize + VERTICAL_STYLES.dayPadding;
 
   // Draw seance cards in one row with space-between distribution
-  seances.forEach((seance, idx) => {
+  sortedSeances.forEach((seance, idx) => {
     const cardX = contentX + idx * (config.cardWidth + gap);
     const cardY = currentY;
 
