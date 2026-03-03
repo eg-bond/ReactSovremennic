@@ -1,3 +1,5 @@
+import { ScheduleData } from './utils/transformSchedule';
+import { AgeRatingMapping, FilmMapping, PirateMapping } from './utils/mappings';
 import {
   SCHEDULE_STYLES,
   drawSeansBlock,
@@ -6,29 +8,6 @@ import {
   drawPirateBanner,
   getLayoutConfig,
 } from './scheduleStyles';
-
-export interface DaySchedule {
-  seansScedule: {
-    [filmTitle: string]: [string, string, string, string, number][];
-  };
-  titles: string[];
-}
-
-export interface ScheduleData {
-  [dayKey: string]: DaySchedule;
-}
-
-export interface FilmMapping {
-  [title: string]: string;
-}
-
-export interface AgeRatingMapping {
-  [title: string]: string;
-}
-
-export interface PirateMapping {
-  [title: string]: boolean;
-}
 
 const loadImage = (src: string): Promise<HTMLImageElement> => {
   return new Promise((resolve, reject) => {
