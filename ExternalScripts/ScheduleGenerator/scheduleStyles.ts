@@ -36,8 +36,8 @@ export const getLayoutConfig = (filmCount: number) => {
     },
     3: {
       posterWidth: 600,
-      posterHeight: 760,
-      // posterHeight: 855,
+      // posterHeight: 760,
+      posterHeight: 855,
       spacing: 20,
       sidePadding: 40,
       filmBlockPadding: { left: 10, right: 10, top: 30 },

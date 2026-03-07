@@ -32,7 +32,8 @@ const VERTICAL_STYLES = {
   padding: 20,
   // "КИНОТЕАТР "СОВРЕМЕННИК""
   headerPadding: 110,
-  headerPaddingBottom: 80,
+  headerPaddingBottom: 180,
+  // headerPaddingBottom: 80,
   // Между днями
   dayPadding: 25,
   sectionGap: 80,
