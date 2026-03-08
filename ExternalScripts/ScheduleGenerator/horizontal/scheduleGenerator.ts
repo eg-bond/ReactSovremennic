@@ -5,6 +5,24 @@ import {
 } from './scheduleStyles';
 import { AgeRatingMapping, FilmMapping, PirateMapping } from '../utils/mappings';
 
+export interface StyleOverrides {
+  F2?: {
+    bottomPadding?: number; posterHeight?: number; topPadding?: number;
+  };
+  F3?: {
+    bottomPadding?: number; posterHeight?: number; topPadding?: number;
+  };
+  F4?: {
+    bottomPadding?: number; posterHeight?: number; topPadding?: number;
+  };
+  F5?: {
+    bottomPadding?: number; posterHeight?: number; topPadding?: number;
+  };
+  F6?: {
+    bottomPadding?: number; posterHeight?: number; topPadding?: number;
+  };
+}
+
 const loadImage = (src: string): Promise<HTMLImageElement> => {
   return new Promise((resolve, reject) => {
     const img = new Image();
@@ -98,8 +116,8 @@ export const drawSeansBlock = (
     price: number;
     time: number;
   },
-  priceFontSize,
-  timeFontSize,
+  timeFontSize: number,
+  priceFontSize: number,
   // fontSize: {
   //   price: number;
   //   time: number;
@@ -276,6 +294,7 @@ export const drawDaySchedule = async (
   width: number,
   height: number,
   pirateMapping?: PirateMapping,
+  styleOverrides?: StyleOverrides,
 ) => {
   const daySchedule = scheduleData[dayKey];
   const films = daySchedule.titles;
@@ -284,14 +303,19 @@ export const drawDaySchedule = async (
   drawBackground(ctx, width, height);
 
   const config = getLayoutConfig(filmCount);
+
+  // Merge styleOverrides with config based on filmCount
+  const formatKey = `F${filmCount}` as keyof StyleOverrides;
+  const overrides = styleOverrides?.[formatKey];
+
   const {
     posterWidth,
-    posterHeight,
+    posterHeight: configPosterHeight,
     spacing,
     sidePadding,
     filmBlockPadding,
-    topPadding,
-    bottomPadding,
+    topPadding: configTopPadding,
+    bottomPadding: configBottomPadding,
     // fontSize,
     titleFontSize,
     timeFontSize,
@@ -307,6 +331,12 @@ export const drawDaySchedule = async (
     pirateBannerHeight,
     pirateBannerFontSize,
   } = config;
+
+  // Apply style overrides
+  const topPadding = overrides?.topPadding ?? configTopPadding;
+  const bottomPadding = overrides?.bottomPadding ?? configBottomPadding;
+  const posterHeight = overrides?.posterHeight ?? configPosterHeight;
+
   const filmBlockWidth =
     filmBlockPadding.left + posterWidth + filmBlockPadding.right;
   const availableWidth = width - sidePadding * 2;
@@ -437,6 +467,7 @@ export const generateScheduleImage = async (
   ageRatingMapping: AgeRatingMapping | undefined,
   dayKey: string,
   pirateMapping?: PirateMapping,
+  styleOverrides?: StyleOverrides,
 ): Promise<string> => {
   const canvas = document.createElement('canvas');
   canvas.width = 1920;
@@ -453,6 +484,7 @@ export const generateScheduleImage = async (
       canvas.width,
       canvas.height,
       pirateMapping,
+      styleOverrides,
     );
     return canvas.toDataURL('image/jpeg', 0.95);
   }

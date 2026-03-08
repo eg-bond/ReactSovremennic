@@ -3,6 +3,7 @@ import {
   drawDaySchedule,
   generateScheduleImage,
   downloadImage,
+  type StyleOverrides,
 } from '../horizontal/scheduleGenerator';
 import {
   dayKeyToDateName,
@@ -29,6 +30,7 @@ export const useScheduleDownload = (
   canvasRef: React.RefObject<HTMLCanvasElement>,
   ageRatingMapping?: AgeRatingMapping,
   pirateMapping?: PirateMapping,
+  styleOverrides?: StyleOverrides,
 ): UseScheduleDownloadReturn => {
   const [selectedDay, setSelectedDay] = useState<string>('');
   const [isGenerating, setIsGenerating] = useState(false);
@@ -43,6 +45,7 @@ export const useScheduleDownload = (
         ageRatingMapping,
         selectedDay,
         pirateMapping,
+        styleOverrides,
       );
       const fileName = `${dayKeyToDateName[selectedDay]}.jpg`;
       downloadImage(dataUrl, fileName);
@@ -61,6 +64,7 @@ export const useScheduleDownload = (
           ageRatingMapping,
           dayKey,
           pirateMapping,
+          styleOverrides,
         );
         const fileName = `${dayKeyToDateName[dayKey]}.jpg`;
         downloadImage(dataUrl, fileName);
@@ -83,6 +87,7 @@ export const useScheduleDownload = (
             ageRatingMapping,
             dayKey,
             pirateMapping,
+            styleOverrides,
           );
           const fileName = `${dayKeyToDateName[dayKey]}.jpg`;
           downloadImage(dataUrl, fileName);
@@ -106,6 +111,7 @@ export const useScheduleDownload = (
             ageRatingMapping,
             dayKey,
             pirateMapping,
+            styleOverrides,
           );
           const fileName = `${dayKeyToDateName[dayKey]}.jpg`;
           downloadImage(dataUrl, fileName);
@@ -132,6 +138,7 @@ export const useScheduleDownload = (
           1920,
           1080,
           pirateMapping,
+          styleOverrides,
         );
       }
     } finally {
