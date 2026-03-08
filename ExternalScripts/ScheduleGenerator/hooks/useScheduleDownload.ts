@@ -3,7 +3,7 @@ import {
   drawDaySchedule,
   generateScheduleImage,
   downloadImage,
-} from '../scheduleGenerator';
+} from '../horizontal/scheduleGenerator';
 import {
   dayKeyToDateName,
   type AgeRatingMapping,

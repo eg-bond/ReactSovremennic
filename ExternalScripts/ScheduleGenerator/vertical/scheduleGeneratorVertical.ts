@@ -1,6 +1,6 @@
-import { dayKeyToDateName } from './utils/mappings';
-import type { ScheduleData } from './utils/transformSchedule';
-import type { AgeRatingMapping, PirateMapping } from './utils/mappings';
+import { dayKeyToDateName } from '../utils/mappings';
+import type { ScheduleData } from '../utils/transformSchedule';
+import type { AgeRatingMapping, PirateMapping } from '../utils/mappings';
 
 const VERTICAL_STYLES = {
   // Цвета ------------------------------------------------------
@@ -12,7 +12,6 @@ const VERTICAL_STYLES = {
   fontFamily: 'Microsoft Sans Serif, sans-serif',
   headerFontFamily: 'Gerhaus Regular, sans-serif',
   dayFontFamily: 'Gerhaus Regular, sans-serif',
-  // cardTitleFontFamily: 'Gerhaus Regular, sans-serif',
   cardTitleFontFamily: 'Microsoft Sans Serif, sans-serif',
   cardTimeFontFamily: 'Gerhaus Regular, sans-serif',
   cardPriceFontFamily: 'Gerhaus Regular, sans-serif',

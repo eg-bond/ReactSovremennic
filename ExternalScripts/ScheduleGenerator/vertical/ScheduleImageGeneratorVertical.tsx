@@ -1,7 +1,7 @@
 import { useRef } from 'react';
-import { useScheduleDownloadVertical } from './hooks/useScheduleDownloadVertical';
-import type { ScheduleData } from './utils/transformSchedule';
-import type { AgeRatingMapping, PirateMapping } from './utils/mappings';
+import { useScheduleDownloadVertical } from '../hooks/useScheduleDownloadVertical';
+import type { ScheduleData } from '../utils/transformSchedule';
+import type { AgeRatingMapping, PirateMapping } from '../utils/mappings';
 
 interface Props {
   ageRatingMapping?: AgeRatingMapping;

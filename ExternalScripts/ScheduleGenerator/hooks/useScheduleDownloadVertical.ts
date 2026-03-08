@@ -11,7 +11,7 @@ import {
   downloadImage,
   drawWeekdaySchedule,
   drawWeekendSchedule,
-} from '../scheduleGeneratorVertical';
+} from '../vertical/scheduleGeneratorVertical';
 import type { ScheduleData } from '../utils/transformSchedule';
 
 interface UseScheduleDownloadVerticalReturn {

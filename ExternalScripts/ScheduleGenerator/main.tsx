@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import { ScheduleImageGeneratorBatch } from './ScheduleImageGeneratorBatch';
-import { ScheduleImageGeneratorVertical } from './ScheduleImageGeneratorVertical';
+import { ScheduleImageGeneratorBatch } from './horizontal/ScheduleImageGeneratorBatch';
+import { ScheduleImageGeneratorVertical } from './vertical/ScheduleImageGeneratorVertical';
 import {
   ageRatingMapping, filmMapping,
   pirateMapping, scheduleData,

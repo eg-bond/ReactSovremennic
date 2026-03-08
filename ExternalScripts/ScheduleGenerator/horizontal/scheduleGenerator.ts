@@ -1,5 +1,5 @@
-import { ScheduleData } from './utils/transformSchedule';
-import { AgeRatingMapping, FilmMapping, PirateMapping } from './utils/mappings';
+import { ScheduleData } from '../utils/transformSchedule';
+import { AgeRatingMapping, FilmMapping, PirateMapping } from '../utils/mappings';
 import {
   SCHEDULE_STYLES,
   drawSeansBlock,

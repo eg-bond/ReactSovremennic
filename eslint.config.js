@@ -130,7 +130,7 @@ export default tseslint.config(
       '@stylistic/max-len': [
         'warn',
         {
-          code: 85,
+          code: 100,
           ignoreStrings: false,
           ignoreTemplateLiterals: false,
           ignoreRegExpLiterals: true,
