@@ -1,59 +1,7 @@
+import { VERTICAL_STYLES } from './verticalStyles';
 import { dayKeyToDateName } from '../utils/mappings';
 import type { ScheduleData } from '../utils/transformSchedule';
 import type { AgeRatingMapping, PirateMapping } from '../utils/mappings';
-
-const VERTICAL_STYLES = {
-  // Цвета ------------------------------------------------------
-  background: '#ffffff',
-  textColor: '#000000',
-  accentColor: '#dc2626',
-  timeColor: '#dc2626',
-  // Font Families -----------------------------------------------
-  fontFamily: 'Microsoft Sans Serif, sans-serif',
-  headerFontFamily: 'Gerhaus Regular, sans-serif',
-  dayFontFamily: 'Gerhaus Regular, sans-serif',
-  cardTitleFontFamily: 'Microsoft Sans Serif, sans-serif',
-  cardTimeFontFamily: 'Gerhaus Regular, sans-serif',
-  cardPriceFontFamily: 'Gerhaus Regular, sans-serif',
-  cardFormatAgeFontFamily: 'Gerhaus Regular, sans-serif',
-  // Font Sizes -----------------------------------------------------
-  headerFontSize: 60,
-  dayFontSize: 42,
-  // Base font sizes for card elements (before scaling by card width)
-  cardTitleBaseFontSize: 13, // базовый размер для названия фильма
-  cardTimeBaseFontSize: 26, // базовый размер для времени
-  cardPriceBaseFontSize: 16, // базовый размер для цены
-  cardFormatBaseFontSize: 15, // базовый размер для формата (2D/3D)
-  cardAgeBaseFontSize: 15, // базовый размер для возраста
-  // Footer FS
-  footerFontSize: 22, // размер шрифта для сноски
-  // Отступы ------------------------------------------------------
-  padding: 20,
-  // "КИНОТЕАТР "СОВРЕМЕННИК""
-  headerPadding: 110,
-  headerPaddingBottom: 180,
-  // headerPaddingBottom: 80,
-  // Между днями
-  dayPadding: 25,
-  sectionGap: 80,
-  //
-  cardTimeOffsetFromTop: 80, // отступ для блока времени от верхней границы карточки
-  cardPriceOffsetFromTime: 80, // отступ для блока цены от блока времени
-  footerPadding: 110, // отступ сноски от нижнего края
-  cardGap: 10,
-  cardPaddingVertical: 10, // padding сверху и снизу внутри карточки
-  cardPaddingHorizontal: 6, // padding слева и справа внутри карточки
-  cardBorderWidth: 2,
-  cardBorderColor: '#000000',
-  cardTitleMaxLines: 2,
-  cardTitleLineHeight: 16,
-  cardContentGap: 5,
-  // Price oval styles
-  priceOvalColor: '#e0e0e0', // цвет овала (серый)
-  priceOvalPadding: 18, // отступ текста от края овала
-  priceOvalHeight: 60, // высота овала
-  priceOvalOffsetY: -12, // fine-tuning vertical position of price text within oval
-} as const;
 
 interface SeanceInfo {
   ageRating?: string;

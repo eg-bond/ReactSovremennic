@@ -21,9 +21,6 @@ export const ScheduleImageGeneratorVertical = ({
     setSelectedDay,
     isGenerating,
     downloadDay,
-    downloadAll,
-    downloadWeekdaySchedules,
-    downloadWeekendSchedules,
     previewDay,
   } = useScheduleDownloadVertical(
     scheduleData,
@@ -62,27 +59,6 @@ export const ScheduleImageGeneratorVertical = ({
           onClick={downloadDay}
         >
           Скачать день
-        </button>
-        <button
-          disabled={isGenerating}
-          style={{ marginRight: '10px', padding: '8px 16px' }}
-          onClick={downloadWeekdaySchedules}
-        >
-          Скачать пн-ср
-        </button>
-        <button
-          disabled={isGenerating}
-          style={{ marginRight: '10px', padding: '8px 16px' }}
-          onClick={downloadWeekendSchedules}
-        >
-          Скачать чт-вс
-        </button>
-        <button
-          disabled={isGenerating}
-          style={{ padding: '8px 16px' }}
-          onClick={downloadAll}
-        >
-          Скачать все дни
         </button>
       </div>
 
