@@ -98,10 +98,12 @@ export const drawSeansBlock = (
     price: number;
     time: number;
   },
-  fontSize: {
-    price: number;
-    time: number;
-  },
+  priceFontSize,
+  timeFontSize,
+  // fontSize: {
+  //   price: number;
+  //   time: number;
+  // },
 ) => {
   const radius = SCHEDULE_STYLES.borderRadius;
   const timeHeight = blockHeight.time;
@@ -139,19 +141,19 @@ export const drawSeansBlock = (
 
   // Время (желтый текст)
   ctx.fillStyle = SCHEDULE_STYLES.accentColor;
-  ctx.font = `bold ${fontSize.time}px ${SCHEDULE_STYLES.seansFontFamily}`;
+  ctx.font = `bold ${timeFontSize}px ${SCHEDULE_STYLES.seansFontFamily}`;
   ctx.textAlign = 'center';
-  ctx.fillText(time, x + width / 2, y + timeHeight / 2 + fontSize.time / 3);
+  ctx.fillText(time, x + width / 2, y + timeHeight / 2 + timeFontSize / 3);
 
   // Цена (черный текст)
   ctx.fillStyle = SCHEDULE_STYLES.priceTextColor;
-  ctx.font = `bold ${fontSize.price}px ${SCHEDULE_STYLES.seansFontFamily}`;
+  ctx.font = `bold ${priceFontSize}px ${SCHEDULE_STYLES.seansFontFamily}`;
   const priceText = `2D / ${price} `;
   // const priceText = format ? `${price} ${format}` : price;
   ctx.fillText(
     priceText,
     x + width / 2,
-    y + timeHeight + priceHeight / 2 + fontSize.price / 3,
+    y + timeHeight + priceHeight / 2 + priceFontSize / 3,
   );
 };
 
@@ -290,14 +292,17 @@ export const drawDaySchedule = async (
     filmBlockPadding,
     topPadding,
     bottomPadding,
-    fontSize,
+    // fontSize,
+    titleFontSize,
+    timeFontSize,
+    priceFontSize,
     margins,
     seansBlockHeight,
     seansBlockWidth,
     seansLayout,
     seansGridColumns,
     seansGridGap,
-    titleHeight,
+    titlePaddingBottom,
     titleLineHeight,
     pirateBannerHeight,
     pirateBannerFontSize,
@@ -356,7 +361,7 @@ export const drawDaySchedule = async (
       x + posterWidth / 2,
       titleY,
       posterWidth - 10,
-      fontSize.title,
+      titleFontSize,
       titleLineHeight,
     );
 
@@ -365,7 +370,7 @@ export const drawDaySchedule = async (
       posterYWithPadding +
       posterHeight +
       margins.titleTop +
-      titleHeight +
+      titlePaddingBottom +
       margins.seansTop;
 
     if (seansLayout === 'grid' && seansGridColumns && seansGridGap !== undefined) {
@@ -389,7 +394,8 @@ export const drawDaySchedule = async (
           blockY,
           blockWidth,
           seansBlockHeight,
-          fontSize,
+          timeFontSize,
+          priceFontSize,
         );
       });
     } else {
@@ -404,7 +410,8 @@ export const drawDaySchedule = async (
           seansY - 25,
           seansBlockWidth,
           seansBlockHeight,
-          fontSize,
+          timeFontSize,
+          priceFontSize,
         );
         seansY += margins.seansBetween;
       });
