@@ -19,8 +19,7 @@ const schedule = dataToObj(data);
 const finalSchedule = finalizeScedule(schedule);
 
 // Write final data to schedule.ts file
-const finalData = `const schedule = ${JSON.stringify(finalSchedule)}
-export default schedule;`;
+const finalData = `export const schedule = ${JSON.stringify(finalSchedule)}`;
 fs.writeFileSync('src/Content/Seance/schedule.ts', finalData);
 
 // ------------------------------------------------------------------------

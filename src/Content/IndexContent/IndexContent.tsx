@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { MobileAdv } from '@/Template/Adv';
 import { CINEMA_PHONE } from '@/utils/constants';
 import { convertVideoId } from '@/utils/convertVideoId';
-import BarSlider from '../../Template/BarSlider';
+// import BarSlider from '../../Template/BarSlider';
 import { useAppSelector } from '../../REDUX/store';
 import { SushiWork } from '../../Template/SushiWork';
 
@@ -24,7 +24,7 @@ function IndexContent({ isMobile }: {
                 'picture-in-picture; screen-wake-lock;'
               }
               src={`https://vkvideo.ru/video_ext.php?oid=-${convertVideoId(
-                '212496568_456250412',
+                '169056005_456250420',
               )}`}
               height="360"
               width="640"
@@ -40,7 +40,7 @@ function IndexContent({ isMobile }: {
         <h1 className={siteMode === 'special' ? 'index__h1--special' : ''}>
           Информация
         </h1>
-        {/* <p>• Уважаемые посетители кинотеатра! Онлайн продажи билетов временно приостановлены по техническим причинам. Просим прощения за доставленные неудобства!</p> */}
+
         <p>
           • Уважаемые гости кинотеатра! На странице
           {' '}

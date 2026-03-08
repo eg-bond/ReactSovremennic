@@ -1,0 +1,161 @@
+# Генератор изображений расписания для браузера
+
+## Описание
+
+Компоненты для генерации изображений расписания кинотеатра непосредственно в браузере с поддержкой постеров фильмов, возрастных ограничений и гибкой настройкой дизайна.
+
+## Архитектура
+
+### Файлы
+
+- **ScheduleImageGeneratorBatch.tsx** - UI компонент с интерфейсом управления
+- **scheduleGenerator.ts** - Логика генерации изображений
+- **scheduleStyles.ts** - Стили и конфигурация дизайна
+- **ScheduleGeneratorExample.tsx** - Пример использования
+
+## Использование
+
+### Базовое использование
+
+```tsx
+import { ScheduleImageGeneratorBatch } from './ExternalScripts/ScheduleGenerator/ScheduleImageGeneratorBatch';
+import { filmsArray } from '@/REDUX/filmsArray';
+import { schedule } from '@/Content/Seance/schedule';
+import { transformScheduleData } from './ExternalScripts/ScheduleGenerator/transformSchedule';
+
+const createFilmMapping = () => {
+  return filmsArray.reduce((acc, film) => {
+    acc[`${film.title} 2D`] = `/Images/description/${film.link}.webp`;
+    return acc;
+  }, {} as Record<string, string>);
+};
+
+const createAgeRatingMapping = () => {
+  return filmsArray.reduce((acc, film) => {
+    acc[`${film.title} 2D`] = film.age;
+    return acc;
+  }, {} as Record<string, string>);
+};
+
+function App() {
+  const filmMapping = createFilmMapping();
+  const ageRatingMapping = createAgeRatingMapping();
+  const scheduleData = transformScheduleData(schedule as Record<string, unknown[][]>);
+
+  return (
+    <ScheduleImageGeneratorBatch
+      scheduleData={scheduleData}
+      filmMapping={filmMapping}
+      ageRatingMapping={ageRatingMapping}
+    />
+  );
+}
+```
+
+## Настройка дизайна
+
+### Редактирование scheduleStyles.ts
+
+#### Цвета и стили
+
+```typescript
+export const SCHEDULE_STYLES = {
+  background: '#000000',              // Цвет фона (начало градиента)
+  backgroundGradientEnd: '#2a2a2a',  // Цвет фона (конец градиента)
+  accentColor: '#FFD700',             // Акцентный цвет (желтый)
+  blockBackground: '#333333',         // Фон блоков времени
+  textColor: '#ffffff',               // Цвет текста
+  filmBackgroundDark: 'rgba(0, 0, 0, 0.6)',   // Фон четных фильмов
+  filmBackgroundLight: 'rgba(60, 60, 60, 0.6)', // Фон нечетных фильмов
+  borderRadius: 10,                   // Радиус скругления углов
+  fontFamily: 'Microsoft Sans Serif, Arial, sans-serif',
+  priceTextColor: '#000000',          // Цвет текста цены
+};
+```
+
+#### Конфигурация для разного количества фильмов
+
+```typescript
+export const getLayoutConfig = (filmCount: number) => {
+  const configs = {
+    3: {  // Конфигурация для 3 фильмов
+      posterWidth: 560,
+      posterHeight: 680,
+      spacing: 20,                    // Расстояние между фильмами
+      sidePadding: 40,                // Боковые отступы
+      filmBlockPadding: { left: 30, right: 30, top: 30 },
+      topPadding: 0,
+      bottomPadding: 0,
+      fontSize: { title: 40, time: 28, price: 22 },
+      margins: { titleTop: 45, seansTop: 55, seansBetween: 95 },
+      seansBlockHeight: { time: 50, price: 25 },
+      seansBlockWidth: 250,
+    },
+    // ... конфигурации для 4 и 5 фильмов
+  };
+};
+```
+
+## Формат данных
+
+### scheduleData
+
+```json
+{
+  "day0": {
+    "titles": ["Фильм 1 2D", "Фильм 2 2D"],
+    "seansScedule": {
+      "Фильм 1 2D": [
+        ["11:10", "Фильм 1 2D", "6+", "400₽", 0],
+        ["17:40", "Фильм 1 2D", "6+", "520₽", 3]
+      ]
+    }
+  }
+}
+```
+
+Данные загружаются из `src/Content/Seance/schedule.ts` и преобразуются функцией `transformScheduleData()` из `transformSchedule.ts`.
+
+### filmMapping
+
+```typescript
+{
+  "Фильм 1 2D": "/Images/description/film1.webp",
+  "Фильм 2 2D": "/Images/description/film2.webp"
+}
+```
+
+### ageRatingMapping (опционально)
+
+```typescript
+{
+  "Фильм 1 2D": "6+",
+  "Фильм 2 2D": "12+"
+}
+```
+
+## Функции
+
+- **Предпросмотр**: Выберите день и нажмите "Предпросмотр"
+- **Скачать день**: Скачивает изображение выбранного дня в JPG (1920x1080)
+- **Скачать все дни**: Массовое скачивание всех дней
+
+## Особенности дизайна
+
+- ✨ Диагональный градиентный фон (от левого нижнего к правому верхнему)
+- 🎨 Чередующиеся фоны для блоков фильмов
+- 🎬 Постеры фильмов с возрастными ограничениями
+- ⏰ Блоки времени и цены со скругленными углами
+- 📐 Адаптивная компоновка для 3, 4 или 5 фильмов
+- 🔤 Автоматический перенос длинных названий
+
+## Преимущества
+
+- ✅ Не требует PhotoShop
+- ✅ Работает в браузере
+- ✅ Быстрая генерация
+- ✅ Гибкая настройка через конфигурацию
+- ✅ Предпросмотр в реальном времени
+- ✅ Массовая генерация
+- ✅ Поддержка постеров и возрастных ограничений
+- ✅ Разделение UI и бизнес-логики

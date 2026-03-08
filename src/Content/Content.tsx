@@ -27,6 +27,7 @@ const Content = memo<{
         />
         <Route element={<About />} path="about" />
         <Route element={<Rules />} path="rules" />
+
         {/* lazy routes */}
         <Route element={<SushiContainer isMobile={isMobile} />} path="sushi" />
         <Route element={<Karaoke />} path="karaoke" />

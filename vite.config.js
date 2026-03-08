@@ -22,6 +22,16 @@ export default defineConfig({
       '@': '/src',
     },
   },
+  build: {
+    rollupOptions: {
+      input: process.env.VITE_BUILD_MAIN_ONLY === 'true'
+        ? { main: './index.html' }
+        : {
+            main: './index.html',
+            scheduleGenerator: './gen.html',
+          },
+    },
+  },
   test: {
     globals: true,
     environment: 'jsdom',

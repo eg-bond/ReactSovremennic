@@ -20,7 +20,14 @@ const SelectedMovie = memo<{
   return (
     <div className="content__gridLeftItem--3fr contentMT">
       <div className="selectedMovie">
-        <FilmImg link={filmItem.link} title={filmItem.title} />
+        <div className="selectedMovie--leftFr">
+          <FilmImg
+            age={filmItem.age}
+            link={filmItem.link}
+            pirate={filmItem.pirate}
+            title={filmItem.title}
+          />
+        </div>
         <div className={gridClass}>
           <div className="selectedMovie__title">
             <h2>{filmItem['title']}</h2>
