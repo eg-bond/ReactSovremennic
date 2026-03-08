@@ -3,6 +3,11 @@ import { dayKeyToDateName } from '../utils/mappings';
 import type { ScheduleData } from '../utils/transformSchedule';
 import type { AgeRatingMapping, PirateMapping } from '../utils/mappings';
 
+export interface StyleOverrides {
+  headerPaddingBottom?: number;
+  sectionGap?: number;
+}
+
 interface SeanceInfo {
   ageRating?: string;
   filmTitle: string;
@@ -36,12 +41,16 @@ const calculateFontSize = (cardWidth: number, baseSize: number): number => {
   return Math.max(8, Math.round(baseSize * scaleFactor));
 };
 
-const getLayoutConfig = (numSeancesPerDay: number[]): LayoutConfig => {
+const getLayoutConfig = (
+  numSeancesPerDay: number[],
+  styleOverrides?: StyleOverrides,
+): LayoutConfig => {
   // Находим максимальное количество сеансов в день
   const maxSeances = Math.max(...numSeancesPerDay);
 
-  const contentWidth = 1080 - VERTICAL_STYLES.padding * 2;
-  const cardGap = VERTICAL_STYLES.cardGap;
+  const styles = { ...VERTICAL_STYLES, ...styleOverrides };
+  const contentWidth = 1080 - styles.padding * 2;
+  const cardGap = styles.cardGap;
   const cardWidth = (contentWidth - cardGap * (maxSeances - 1)) / maxSeances;
   const cardHeight = cardWidth * 1.4; // Высота больше ширины
 
@@ -52,26 +61,30 @@ const getLayoutConfig = (numSeancesPerDay: number[]): LayoutConfig => {
     fontSizes: {
       cardTitle: calculateFontSize(
         cardWidth,
-        VERTICAL_STYLES.cardTitleBaseFontSize,
+        styles.cardTitleBaseFontSize,
       ),
       cardTime: calculateFontSize(
         cardWidth,
-        VERTICAL_STYLES.cardTimeBaseFontSize,
+        styles.cardTimeBaseFontSize,
       ),
       cardPrice: calculateFontSize(
         cardWidth,
-        VERTICAL_STYLES.cardPriceBaseFontSize,
+        styles.cardPriceBaseFontSize,
       ),
       cardFormat: calculateFontSize(
         cardWidth,
-        VERTICAL_STYLES.cardFormatBaseFontSize,
+        styles.cardFormatBaseFontSize,
       ),
       cardAge: calculateFontSize(
         cardWidth,
-        VERTICAL_STYLES.cardAgeBaseFontSize,
+        styles.cardAgeBaseFontSize,
       ),
     },
   };
+};
+
+const getEffectiveStyles = (styleOverrides?: StyleOverrides) => {
+  return { ...VERTICAL_STYLES, ...styleOverrides } as typeof VERTICAL_STYLES;
 };
 
 const drawOval = (
@@ -156,13 +169,14 @@ const drawSeanceCard = (
   width: number,
   height: number,
   fontSizes: LayoutConfig['fontSizes'],
+  styles: typeof VERTICAL_STYLES = VERTICAL_STYLES,
 ) => {
-  const paddingVertical = VERTICAL_STYLES.cardPaddingVertical;
-  const paddingHorizontal = VERTICAL_STYLES.cardPaddingHorizontal;
-  const borderWidth = VERTICAL_STYLES.cardBorderWidth;
+  const paddingVertical = styles.cardPaddingVertical;
+  const paddingHorizontal = styles.cardPaddingHorizontal;
+  const borderWidth = styles.cardBorderWidth;
 
   // Draw border
-  ctx.strokeStyle = VERTICAL_STYLES.cardBorderColor;
+  ctx.strokeStyle = styles.cardBorderColor;
   ctx.lineWidth = borderWidth;
   ctx.strokeRect(x, y, width, height);
 
@@ -175,41 +189,41 @@ const drawSeanceCard = (
     x + width / 2,
     titleY,
     fontSizes.cardTitle,
-    VERTICAL_STYLES.textColor,
+    styles.textColor,
     'center',
     width - paddingHorizontal * 2,
-    VERTICAL_STYLES.cardTitleFontFamily,
+    styles.cardTitleFontFamily,
   );
 
   // Draw time (red, centered) - using fixed offset from top
-  const timeY = y + VERTICAL_STYLES.cardTimeOffsetFromTop;
+  const timeY = y + styles.cardTimeOffsetFromTop;
   drawText(
     ctx,
     time,
     x + width / 2,
     timeY,
     fontSizes.cardTime,
-    VERTICAL_STYLES.timeColor,
+    styles.timeColor,
     'center',
     undefined,
-    VERTICAL_STYLES.cardTimeFontFamily,
+    styles.cardTimeFontFamily,
   );
 
   // Draw price (centered) - using fixed offset from time
-  const basePriceY = timeY + VERTICAL_STYLES.cardPriceOffsetFromTime;
+  const basePriceY = timeY + styles.cardPriceOffsetFromTime;
   const displayPrice = price.replace('₽', 'р.');
 
   // Рассчитать размер овала
   const ovalWidth = fontSizes.cardPrice * 4.5; // примерная ширина
-  const ovalHeight = VERTICAL_STYLES.priceOvalHeight;
+  const ovalHeight = styles.priceOvalHeight;
   const ovalX = x + width / 2 - ovalWidth / 2;
   const ovalY = basePriceY - ovalHeight / 2;
 
   // Нарисовать овал
-  drawOval(ctx, ovalX, ovalY, ovalWidth, ovalHeight, VERTICAL_STYLES.priceOvalColor);
+  drawOval(ctx, ovalX, ovalY, ovalWidth, ovalHeight, styles.priceOvalColor);
 
   // Calculate text position with offset
-  const priceTextY = basePriceY + VERTICAL_STYLES.priceOvalOffsetY;
+  const priceTextY = basePriceY + styles.priceOvalOffsetY;
 
   // Нарисовать текст цены поверх овала
   drawText(
@@ -218,10 +232,10 @@ const drawSeanceCard = (
     x + width / 2,
     priceTextY,
     fontSizes.cardPrice,
-    VERTICAL_STYLES.textColor,
+    styles.textColor,
     'center',
     undefined,
-    VERTICAL_STYLES.cardPriceFontFamily,
+    styles.cardPriceFontFamily,
   );
 
   // Draw format (2D/3D) - bottom left
@@ -232,10 +246,10 @@ const drawSeanceCard = (
     x + paddingHorizontal + 2,
     formatY,
     fontSizes.cardFormat,
-    VERTICAL_STYLES.textColor,
+    styles.textColor,
     'left',
     undefined,
-    VERTICAL_STYLES.cardFormatAgeFontFamily,
+    styles.cardFormatAgeFontFamily,
   );
 
   // Draw age rating - bottom right
@@ -247,10 +261,10 @@ const drawSeanceCard = (
       x + width - paddingHorizontal - 2,
       formatY,
       fontSizes.cardAge,
-      VERTICAL_STYLES.accentColor,
+      styles.accentColor,
       'right',
       undefined,
-      VERTICAL_STYLES.cardFormatAgeFontFamily,
+      styles.cardFormatAgeFontFamily,
     );
   }
 };
@@ -302,13 +316,14 @@ const drawDaySection = (
   seances: SeanceInfo[],
   startY: number,
   config: LayoutConfig,
+  styles: typeof VERTICAL_STYLES = VERTICAL_STYLES,
 ): number => {
-  const contentX = VERTICAL_STYLES.padding;
-  const containerWidth = 1080 - VERTICAL_STYLES.padding * 2;
+  const contentX = styles.padding;
+  const containerWidth = 1080 - styles.padding * 2;
   const totalCardsWidth = config.cardWidth * seances.length;
 
   // Calculate space-between distribution
-  let gap = VERTICAL_STYLES.cardGap;
+  let gap = styles.cardGap;
   if (seances.length > 1) {
     const availableSpace = containerWidth - totalCardsWidth;
     gap = availableSpace / (seances.length - 1);
@@ -329,14 +344,14 @@ const drawDaySection = (
     dayName.toUpperCase(),
     1080 / 2,
     startY,
-    VERTICAL_STYLES.dayFontSize,
-    VERTICAL_STYLES.timeColor,
+    styles.dayFontSize,
+    styles.timeColor,
     'center',
     undefined,
-    VERTICAL_STYLES.dayFontFamily,
+    styles.dayFontFamily,
   );
 
-  const currentY = startY + VERTICAL_STYLES.dayFontSize + VERTICAL_STYLES.dayPadding;
+  const currentY = startY + styles.dayFontSize + styles.dayPadding;
 
   // Draw seance cards in one row with space-between distribution
   sortedSeances.forEach((seance, idx) => {
@@ -355,10 +370,11 @@ const drawDaySection = (
       config.cardWidth,
       config.cardHeight,
       config.fontSizes,
+      styles,
     );
   });
 
-  return currentY + config.cardHeight + VERTICAL_STYLES.sectionGap;
+  return currentY + config.cardHeight + styles.sectionGap;
 };
 
 const drawFooter = (
@@ -388,9 +404,12 @@ export const drawWeekdaySchedule = async (
   width: number,
   height: number,
   pirateMapping?: PirateMapping,
+  styleOverrides?: StyleOverrides,
 ): Promise<void> => {
+  const styles = getEffectiveStyles(styleOverrides);
+
   // White background
-  ctx.fillStyle = VERTICAL_STYLES.background;
+  ctx.fillStyle = styles.background;
   ctx.fillRect(0, 0, width, height);
 
   const weekdayKeys = ['day1', 'day2', 'day3'];
@@ -415,9 +434,9 @@ export const drawWeekdaySchedule = async (
 
   // Calculate layout based on max seances per day
   const numSeancesPerDay = daySeancesArray.map(d => d.seances.length);
-  const config = getLayoutConfig(numSeancesPerDay);
+  const config = getLayoutConfig(numSeancesPerDay, styleOverrides);
 
-  let currentY: number = VERTICAL_STYLES.headerPadding;
+  let currentY: number = styles.headerPadding;
 
   // Draw header
   drawText(
@@ -425,14 +444,14 @@ export const drawWeekdaySchedule = async (
     'КИНОТЕАТР "СОВРЕМЕННИК"',
     width / 2,
     currentY,
-    VERTICAL_STYLES.headerFontSize,
-    VERTICAL_STYLES.textColor,
+    styles.headerFontSize,
+    styles.textColor,
     'center',
     undefined,
-    VERTICAL_STYLES.headerFontFamily,
+    styles.headerFontFamily,
   );
 
-  currentY += VERTICAL_STYLES.headerFontSize + VERTICAL_STYLES.headerPaddingBottom;
+  currentY += styles.headerFontSize + styles.headerPaddingBottom;
 
   // Draw each day section
   for (const daySeances of daySeancesArray) {
@@ -442,14 +461,15 @@ export const drawWeekdaySchedule = async (
       daySeances.seances,
       currentY,
       config,
+      styles,
     );
   }
 
   // Draw footer
   const footerY =
     height -
-    VERTICAL_STYLES.footerPadding -
-    VERTICAL_STYLES.footerFontSize;
+    styles.footerPadding -
+    styles.footerFontSize;
   drawFooter(ctx, footerY, width);
 };
 
@@ -460,9 +480,12 @@ export const drawWeekendSchedule = async (
   width: number,
   height: number,
   pirateMapping?: PirateMapping,
+  styleOverrides?: StyleOverrides,
 ): Promise<void> => {
+  const styles = getEffectiveStyles(styleOverrides);
+
   // White background
-  ctx.fillStyle = VERTICAL_STYLES.background;
+  ctx.fillStyle = styles.background;
   ctx.fillRect(0, 0, width, height);
 
   const weekendKeys = ['day4', 'day5', 'day6', 'day0'];
@@ -487,9 +510,9 @@ export const drawWeekendSchedule = async (
 
   // Calculate layout based on max seances per day
   const numSeancesPerDay = daySeancesArray.map(d => d.seances.length);
-  const config = getLayoutConfig(numSeancesPerDay);
+  const config = getLayoutConfig(numSeancesPerDay, styleOverrides);
 
-  let currentY: number = VERTICAL_STYLES.headerPadding;
+  let currentY: number = styles.headerPadding;
 
   // Draw header
   drawText(
@@ -497,14 +520,14 @@ export const drawWeekendSchedule = async (
     'КИНОТЕАТР "СОВРЕМЕННИК"',
     width / 2,
     currentY,
-    VERTICAL_STYLES.headerFontSize,
-    VERTICAL_STYLES.textColor,
+    styles.headerFontSize,
+    styles.textColor,
     'center',
     undefined,
-    VERTICAL_STYLES.headerFontFamily,
+    styles.headerFontFamily,
   );
 
-  currentY += VERTICAL_STYLES.headerFontSize + VERTICAL_STYLES.headerPaddingBottom;
+  currentY += styles.headerFontSize + styles.headerPaddingBottom;
 
   // Draw each day section
   for (const daySeances of daySeancesArray) {
@@ -514,14 +537,15 @@ export const drawWeekendSchedule = async (
       daySeances.seances,
       currentY,
       config,
+      styles,
     );
   }
 
   // Draw footer
   const footerY =
     height -
-    VERTICAL_STYLES.footerPadding -
-    VERTICAL_STYLES.footerFontSize;
+    styles.footerPadding -
+    styles.footerFontSize;
   drawFooter(ctx, footerY, width);
 };
 
@@ -529,6 +553,7 @@ export const generateWeekdayScheduleImage = async (
   scheduleData: ScheduleData,
   ageRatingMapping: AgeRatingMapping | undefined,
   pirateMapping?: PirateMapping,
+  styleOverrides?: StyleOverrides,
 ): Promise<string> => {
   const canvas = document.createElement('canvas');
   canvas.width = 1080;
@@ -543,6 +568,7 @@ export const generateWeekdayScheduleImage = async (
       canvas.width,
       canvas.height,
       pirateMapping,
+      styleOverrides,
     );
     return canvas.toDataURL('image/jpeg') as string;
   }
@@ -553,6 +579,7 @@ export const generateWeekendScheduleImage = async (
   scheduleData: ScheduleData,
   ageRatingMapping: AgeRatingMapping | undefined,
   pirateMapping?: PirateMapping,
+  styleOverrides?: StyleOverrides,
 ): Promise<string> => {
   const canvas = document.createElement('canvas');
   canvas.width = 1080;
@@ -567,6 +594,7 @@ export const generateWeekendScheduleImage = async (
       canvas.width,
       canvas.height,
       pirateMapping,
+      styleOverrides,
     );
     return canvas.toDataURL('image/jpeg') as string;
   }
@@ -579,6 +607,7 @@ export const generateVerticalScheduleImage = async (
   ageRatingMapping: AgeRatingMapping | undefined,
   dayKey: string,
   pirateMapping?: PirateMapping,
+  styleOverrides?: StyleOverrides,
 ): Promise<string> => {
   const canvas = document.createElement('canvas');
   canvas.width = 1080;
@@ -597,6 +626,7 @@ export const generateVerticalScheduleImage = async (
       canvas.width,
       canvas.height,
       pirateMapping,
+      styleOverrides,
     );
   } else {
     await drawWeekendSchedule(
@@ -606,6 +636,7 @@ export const generateVerticalScheduleImage = async (
       canvas.width,
       canvas.height,
       pirateMapping,
+      styleOverrides,
     );
   }
 
