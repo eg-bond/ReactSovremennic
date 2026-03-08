@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import { ScheduleImageGeneratorBatch } from './horizontal/ScheduleImageGeneratorBatch';
 import { ScheduleImageGeneratorVertical } from './vertical/ScheduleImageGeneratorVertical';
+import { ScheduleImageGeneratorHorizontal } from './horizontal/ScheduleImageGeneratorHorizontal';
 import {
   ageRatingMapping, filmMapping,
   pirateMapping, scheduleData,
@@ -45,7 +45,7 @@ const App = () => {
       </div>
 
       {activeTab === 'horizontal' && (
-        <ScheduleImageGeneratorBatch
+        <ScheduleImageGeneratorHorizontal
           ageRatingMapping={ageRatingMapping}
           filmMapping={filmMapping}
           pirateMapping={pirateMapping}

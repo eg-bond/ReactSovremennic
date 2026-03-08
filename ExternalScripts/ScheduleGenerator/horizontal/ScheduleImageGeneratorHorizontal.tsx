@@ -15,7 +15,7 @@ interface Props {
   scheduleData: ScheduleData;
 }
 
-export const ScheduleImageGeneratorBatch = ({
+export const ScheduleImageGeneratorHorizontal = ({
   scheduleData,
   filmMapping,
   ageRatingMapping,
