@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import { MOST_IMPORTANT_STYLES } from './scheduleStyles';
 import { useScheduleDownload } from '../hooks/useScheduleDownload';
 import {
   type AgeRatingMapping,
@@ -24,25 +25,25 @@ export const ScheduleImageGeneratorHorizontal = ({
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   // Style overrides state for each format
-  const [topPaddingF2, setTopPaddingF2] = useState(0);
-  const [bottomPaddingF2, setBottomPaddingF2] = useState(0);
-  const [posterHeightF2, setPosterHeightF2] = useState(855);
+  const [topPaddingF2, setTopPaddingF2] = useState(MOST_IMPORTANT_STYLES.F2.topPadding);
+  const [bottomPaddingF2, setBottomPaddingF2] = useState(MOST_IMPORTANT_STYLES.F2.bottomPadding);
+  const [posterHeightF2, setPosterHeightF2] = useState(MOST_IMPORTANT_STYLES.F2.posterHeight);
 
-  const [topPaddingF3, setTopPaddingF3] = useState(0);
-  const [bottomPaddingF3, setBottomPaddingF3] = useState(0);
-  const [posterHeightF3, setPosterHeightF3] = useState(855);
+  const [topPaddingF3, setTopPaddingF3] = useState(MOST_IMPORTANT_STYLES.F3.topPadding);
+  const [bottomPaddingF3, setBottomPaddingF3] = useState(MOST_IMPORTANT_STYLES.F3.bottomPadding);
+  const [posterHeightF3, setPosterHeightF3] = useState(MOST_IMPORTANT_STYLES.F3.posterHeight);
 
-  const [topPaddingF4, setTopPaddingF4] = useState(45);
-  const [bottomPaddingF4, setBottomPaddingF4] = useState(45);
-  const [posterHeightF4, setPosterHeightF4] = useState(640);
+  const [topPaddingF4, setTopPaddingF4] = useState(MOST_IMPORTANT_STYLES.F4.topPadding);
+  const [bottomPaddingF4, setBottomPaddingF4] = useState(MOST_IMPORTANT_STYLES.F4.bottomPadding);
+  const [posterHeightF4, setPosterHeightF4] = useState(MOST_IMPORTANT_STYLES.F4.posterHeight);
 
-  const [topPaddingF5, setTopPaddingF5] = useState(0);
-  const [bottomPaddingF5, setBottomPaddingF5] = useState(0);
-  const [posterHeightF5, setPosterHeightF5] = useState(506);
+  const [topPaddingF5, setTopPaddingF5] = useState(MOST_IMPORTANT_STYLES.F5.topPadding);
+  const [bottomPaddingF5, setBottomPaddingF5] = useState(MOST_IMPORTANT_STYLES.F5.bottomPadding);
+  const [posterHeightF5, setPosterHeightF5] = useState(MOST_IMPORTANT_STYLES.F5.posterHeight);
 
-  const [topPaddingF6, setTopPaddingF6] = useState(0);
-  const [bottomPaddingF6, setBottomPaddingF6] = useState(0);
-  const [posterHeightF6, setPosterHeightF6] = useState(450);
+  const [topPaddingF6, setTopPaddingF6] = useState(MOST_IMPORTANT_STYLES.F6.topPadding);
+  const [bottomPaddingF6, setBottomPaddingF6] = useState(MOST_IMPORTANT_STYLES.F6.bottomPadding);
+  const [posterHeightF6, setPosterHeightF6] = useState(MOST_IMPORTANT_STYLES.F6.posterHeight);
 
   const [activeFormatTab, setActiveFormatTab] = useState<'F2' | 'F3' | 'F4' | 'F5' | 'F6'>('F2');
 

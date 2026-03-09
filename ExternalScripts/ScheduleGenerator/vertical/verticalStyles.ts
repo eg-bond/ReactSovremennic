@@ -32,7 +32,7 @@ export const VERTICAL_STYLES = {
   dayFontSize: 42,
   footerFontSize: 22,
   // Базовые FS для элементов карточки (до скалирования по ширине карточки)
-  cardTitleBaseFontSize: 13, // базовый размер для названия фильма
+  cardTitleBaseFontSize: 12, // базовый размер для названия фильма
   cardTimeBaseFontSize: 26, // базовый размер для времени
   cardPriceBaseFontSize: 16, // базовый размер для цены
   cardFormatBaseFontSize: 15, // базовый размер для формата (2D/3D)

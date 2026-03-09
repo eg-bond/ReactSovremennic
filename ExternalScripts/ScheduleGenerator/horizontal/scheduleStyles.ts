@@ -1,4 +1,4 @@
-const MOST_IMPORTANT_STYLES = {
+export const MOST_IMPORTANT_STYLES = {
   F2: {
     topPadding: 0,
     bottomPadding: 0,
@@ -15,13 +15,13 @@ const MOST_IMPORTANT_STYLES = {
     posterHeight: 640,
   },
   F5: {
-    topPadding: 0,
-    bottomPadding: 0,
+    topPadding: 130,
+    bottomPadding: 130,
     posterHeight: 506,
   },
   F6: {
-    topPadding: 0,
-    bottomPadding: 0,
+    topPadding: 150,
+    bottomPadding: 150,
     posterHeight: 450,
   },
 };
@@ -145,7 +145,7 @@ export const getLayoutConfig = (filmCount: number) => {
       filmBlockPadding: { left: 5, right: 5, top: 10 },
       sidePadding: 40,
       // Отступы сверху для заголовка, блоков с ценой от заголовка и между
-      margins: { titleTop: 45, seansTop: 55, seansBetween: 110 },
+      margins: { titleTop: 40, seansTop: 80, seansBetween: 110 },
       // Grid setup ---------------------------------------------------
       seansLayout: 'vertical' as const, // 'grid' или 'vertical'
       seansGridColumns: 1, // количество колонок в grid
@@ -160,7 +160,7 @@ export const getLayoutConfig = (filmCount: number) => {
       titleLineHeight: 30, // междустрочное расстояние для заголовка
       titleFontSize: 24,
       // Pirate banner ------------------------------------------------
-      pirateBannerHeight: 40,
+      pirateBannerHeight: 60,
       pirateBannerFontSize: 14,
     },
     6: {
