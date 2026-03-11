@@ -1,7 +1,7 @@
 import { useParams } from 'react-router';
+import Redirect from '@/Template/Redirect';
 import { memo, useCallback, useEffect } from 'react';
 import SelectedMovie from './SelectedMovie';
-import Redirect from '../../Template/Redirect';
 import { useAppDispatch, useAppSelector } from '../../REDUX/store';
 import { createFilmsObject_AC } from '../../REDUX/cinema/cinemaReducer';
 import type { FilmItemT } from '../../REDUX/cinema/cinemaReducerT';
@@ -24,7 +24,9 @@ const SelectedMovieContainer = memo<{
 
     // Creates filmsObject if it doesn't exist
     useEffect(() => {
-      !filmsObjCreated() && dispatch(createFilmsObject_AC());
+      if (!filmsObjCreated()) {
+        dispatch(createFilmsObject_AC());
+      }
     }, [dispatch, filmsObjCreated]);
 
     if (!filmsObjCreated()) {

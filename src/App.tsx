@@ -64,7 +64,6 @@ const App = () => {
       <div>
         <Navigation fontSize={fontSize} siteMode={siteMode} theme={theme} />
 
-        {/* <div className="separatorMobile" /> */}
         <div
           className="separatorMobile separatorMobile--sticky"
           ref={anchorRef}
@@ -72,11 +71,6 @@ const App = () => {
 
         <div className={`container wrapper ${imgHidden ? 'hideImages' : ''}`}>
           <FilmsSlider films={films} isMobile={isMobile} />
-
-          {/* <div
-            className="separatorMobile separatorMobile--sticky"
-            ref={anchorRef}
-          /> */}
 
           <div className="mainContainer__content" ref={contentRef}>
             <Content isMobile={isMobile} />

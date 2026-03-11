@@ -3,10 +3,9 @@ import { Routes, Route } from 'react-router-dom';
 import About from './About/About';
 import Rules from './Rules/Rules';
 import Seance from './Seance/Seance';
+import Redirect from '../Template/Redirect';
 import IndexContent from './IndexContent/IndexContent';
 import SelectedMovieContainer from './Cinema/SelectedMovieContainer';
-
-const SushiContainer = lazy(() => import('./Sushi/SushiContainer'));
 const Karaoke = lazy(() => import('./Karaoke/Karaoke'));
 
 const Content = memo<{
@@ -29,8 +28,10 @@ const Content = memo<{
         <Route element={<Rules />} path="rules" />
 
         {/* lazy routes */}
-        <Route element={<SushiContainer isMobile={isMobile} />} path="sushi" />
         <Route element={<Karaoke />} path="karaoke" />
+
+        {/* catch all - redirect to home */}
+        <Route element={<Redirect to="/" />} path="*" />
       </Routes>
     </Suspense>
   );
