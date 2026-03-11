@@ -57,20 +57,29 @@ const SelectedMovie = memo<{
                 <td>Возраст</td>
                 <td>{filmItem['age']}</td>
               </tr>
-              <tr>
+              {/* <tr>
                 <td>В главных ролях</td>
                 <td>{filmItem['actors']}</td>
-              </tr>
+              </tr> */}
             </tbody>
           </table>
         </div>
-
-        <DescriptionTrailer
-          description={filmItem['description']}
-          fontSize={fontSize}
-          trailer_src={filmItem['playerCode']}
-        />
       </div>
+
+      <table className="selectedMovie__table">
+        <tbody>
+          <tr>
+            <td>В главных ролях</td>
+            <td>{filmItem['actors']}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <DescriptionTrailer
+        description={filmItem['description']}
+        fontSize={fontSize}
+        trailer_src={filmItem['playerCode']}
+      />
 
       <div className="separatorMobile separatorMobile--index" />
       {isMobile && <SushiWork />}
