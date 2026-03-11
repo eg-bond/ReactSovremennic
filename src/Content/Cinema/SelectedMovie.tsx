@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { formatTextWithLineBreaks } from '@/utils/formatTextWithLineBreaks';
 import { FilmImg } from './FilmImg';
 import { SushiWork } from '../../Template/SushiWork';
 import { DescriptionTrailer } from './DescriptionTrailer';
@@ -30,50 +31,50 @@ const SelectedMovie = memo<{
         </div>
         <div className={gridClass}>
           <div className="selectedMovie__title">
-            <h2>{filmItem['title']}</h2>
+            <h2>{formatTextWithLineBreaks(filmItem['title'])}</h2>
             {filmItem['pirate'] && <h2>(предсеансовое обслуживание)</h2>}
             <p>
               Смотрите
               {' '}
               {`${filmItem['beginDate']} ${filmItem['endDate']}`}
             </p>
-
           </div>
+
           <table className="selectedMovie__table">
             <tbody>
               <tr>
-                <td>Жанр</td>
-                <td>{filmItem['kind']}</td>
+                <td style={{ fontWeight: 'bold' }}>Год производства:</td>
+                <td>{filmItem['year']}</td>
               </tr>
               <tr>
-                <td>Режиссер</td>
+                <td style={{ fontWeight: 'bold' }}>Страна:</td>
+                <td>{filmItem['countries']}</td>
+              </tr>
+              <tr>
+                <td style={{ fontWeight: 'bold' }}>Режиссер:</td>
                 <td>{filmItem['director']}</td>
               </tr>
               <tr>
-                <td>Длительность</td>
+                <td style={{ fontWeight: 'bold' }}>Длительность:</td>
                 <td>{filmItem['duration']}</td>
               </tr>
               <tr>
-                <td>Возраст</td>
+                <td style={{ fontWeight: 'bold' }}>Возраст:</td>
                 <td>{filmItem['age']}</td>
               </tr>
-              {/* <tr>
-                <td>В главных ролях</td>
-                <td>{filmItem['actors']}</td>
-              </tr> */}
+              <tr>
+                <td style={{ fontWeight: 'bold' }}>Жанр:</td>
+                <td>{filmItem['kind']}</td>
+              </tr>
             </tbody>
           </table>
         </div>
       </div>
 
-      <table className="selectedMovie__table">
-        <tbody>
-          <tr>
-            <td>В главных ролях</td>
-            <td>{filmItem['actors']}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div>
+        <p className="selectedMovie__description" style={{ fontWeight: 'bold' }}>В главных ролях:</p>
+        <p className="selectedMovie__description">{filmItem['actors']}</p>
+      </div>
 
       <DescriptionTrailer
         description={filmItem['description']}

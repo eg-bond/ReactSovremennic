@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import { convertVideoId } from '@/utils/convertVideoId';
+import { formatTextWithLineBreaks } from '@/utils/formatTextWithLineBreaks';
 import { SpecialStateT } from '../../REDUX/special/specialReducerT';
 
 export const DescriptionTrailer = memo<DescriptionTrailerT>(
@@ -17,7 +18,10 @@ fontSize,
 
     return (
       <div className={gridClass} key={trailer_src}>
-        <p className="selectedMovie__description">{description}</p>
+        <p className="selectedMovie__description" style={{ fontWeight: 'bold' }}>Описание:</p>
+        <p className="selectedMovie__description">
+          {formatTextWithLineBreaks(description)}
+        </p>
         <div className="embed-responsive">
           <iframe
             allow={

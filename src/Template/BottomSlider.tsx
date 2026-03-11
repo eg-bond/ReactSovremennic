@@ -2,6 +2,7 @@ import { memo, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { PRE_SHOW_SERVICE } from '@/utils/constants';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
+import { removeLineBreaks } from '@/utils/formatTextWithLineBreaks';
 import { scrollToNavigation } from '../helpers';
 import { FilmImg } from '../Content/Cinema/FilmImg';
 import type { CinemaStateT } from '../REDUX/cinema/cinemaReducerT';
@@ -35,8 +36,12 @@ const BottomSlider = memo<BottomSliderT>(function BottomSliderN({ isMobile, film
 });
 
 const Slide = memo(function Slide({ film }: SlideT) {
-  const title = useMemo(() =>
-    film.pirate ? `${film.title} ${PRE_SHOW_SERVICE}` : film.title,
+  const title = useMemo(() => {
+    const baseTitle = film.pirate
+      ? `${film.title} ${PRE_SHOW_SERVICE}`
+      : film.title;
+    return removeLineBreaks(baseTitle);
+  },
   [film.title, film.pirate],
   );
 
