@@ -12,10 +12,14 @@
   grid-row: 1/3;
   @media #{$mediaQueryMobile} {
     grid-row: 1/2;
+    margin: 0 0 3vw 0;
   }
 }
 .selectedMovie--rightFr {
   grid-column: 2/ 4;
+  @media #{$mediaQueryMobile} {
+    margin-left: 2vw;
+  }
 }
 .descTrailer--grid {
   grid-column: 2/4;
@@ -60,12 +64,13 @@
   right: 0;
   background-color: #dc2626;
   color: white;
-  padding: 0.5cqw 1cqw;
-  font-size: 5cqw;
+  padding: 1.8cqw 1cqw 1cqw 1cqw;
+  font-size: 6.2cqw;
+  line-height: 1; 
   text-align: center;
   width: 100%;
   box-sizing: border-box;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .selectedMovie__title {
@@ -79,6 +84,7 @@
     @extend %desktopParagraphsFS;
   }
 }
+
 
 .selectedMovie__table {
   width: 100%;
@@ -109,8 +115,10 @@
   .selectedMovie__title {
     h2 {
       font-size: $mobileTitlesFS !important;
+      margin-bottom: 0;
     }
     p {
+      margin: 1vw 0;
       font-size: $mobileParagraphsFS !important;
     }
   }

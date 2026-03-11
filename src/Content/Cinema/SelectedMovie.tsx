@@ -1,10 +1,10 @@
 import { memo } from 'react';
+import { SushiWork } from '@/Template/SushiWork';
 import { formatTextWithLineBreaks } from '@/utils/formatTextWithLineBreaks';
 import { FilmImg } from './FilmImg';
-import { SushiWork } from '../../Template/SushiWork';
 import { DescriptionTrailer } from './DescriptionTrailer';
-import type { FilmItemT } from '../../REDUX/cinema/cinemaReducerT';
-import type { SpecialStateT } from '../../REDUX/special/specialReducerT';
+import type { FilmItemT } from '@/REDUX/cinema/cinemaReducerT';
+import type { SpecialStateT } from '@/REDUX/special/specialReducerT';
 
 const SelectedMovie = memo<{
   filmItem: FilmItemT;
@@ -32,7 +32,7 @@ const SelectedMovie = memo<{
         <div className={gridClass}>
           <div className="selectedMovie__title">
             <h2>{formatTextWithLineBreaks(filmItem['title'])}</h2>
-            {filmItem['pirate'] && <h2>(предсеансовое обслуживание)</h2>}
+            {/* {filmItem['pirate'] && <h2>(предсеансовое обслуживание)</h2>} */}
             <p>
               Смотрите
               {' '}
@@ -42,10 +42,12 @@ const SelectedMovie = memo<{
 
           <table className="selectedMovie__table">
             <tbody>
-              <tr>
-                <td style={{ fontWeight: 'bold' }}>Год производства:</td>
-                <td>{filmItem['year']}</td>
-              </tr>
+              {!isMobile && (
+                <tr>
+                  <td style={{ fontWeight: 'bold' }}>Год производства:</td>
+                  <td>{filmItem['year']}</td>
+                </tr>
+              )}
               <tr>
                 <td style={{ fontWeight: 'bold' }}>Страна:</td>
                 <td>{filmItem['countries']}</td>

@@ -46,7 +46,7 @@ export const FilmImg = ({
       {pirate && (
         <div className="selectedMovie__pirateBanner">
           <span style={{ textTransform: 'uppercase' }}>
-            Демонстрируется дополнительно перед сеансом фильма "Снегур"
+            в рамках предсеансового обслуживания перед фильмом "Снегур"
           </span>
         </div>
       )}
