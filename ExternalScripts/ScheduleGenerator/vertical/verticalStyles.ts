@@ -50,7 +50,7 @@ export const VERTICAL_STYLES = {
   cardTimeOffsetFromTop: 80, // отступ для блока времени от верхней границы карточки
   cardPriceOffsetFromTime: 80, // отступ для блока цены от блока времени
   cardPaddingVertical: 10, // padding сверху и снизу внутри карточки
-  cardPaddingHorizontal: 6, // padding слева и справа внутри карточки
+  cardPaddingHorizontal: 4, // padding слева и справа внутри карточки
   // Прочее ---------------------------------------------------------
   cardBorderWidth: 3,
   cardGap: 15, // Расстояние между карточками
