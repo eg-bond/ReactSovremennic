@@ -86,7 +86,7 @@ export const filmsArray = [
     link: 'dr_gaf',
   },
   {
-    title: 'Домовенок Кузя 2',
+    title: 'Домовёнок Кузя 2',
     beginDate: 'с 19 марта',
     endDate: '',
     pirate: false,
