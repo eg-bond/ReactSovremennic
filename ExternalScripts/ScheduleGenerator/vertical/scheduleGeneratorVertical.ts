@@ -198,12 +198,40 @@ const drawPirateDot = (
   ctx.restore();
 };
 
+const drawAgeRatingDot = (
+  ctx: CanvasRenderingContext2D,
+  ageRating: string,
+  x: number,
+  y: number,
+  width: number,
+  styles: typeof VERTICAL_STYLES,
+) => {
+  const radius = Math.min(width, width) * 0.10;
+  const margin = radius * 0.4;
+  const cx = x + width - margin;
+  const cy = y + margin;
+
+  ctx.save();
+  ctx.fillStyle = styles.ageRatingDotColor;
+  ctx.beginPath();
+  ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.fillStyle = styles.ageRatingTextColor;
+  ctx.font = `400 ${styles.cardAgeBaseFontSize}px ${styles.fontFamily}`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(ageRating, cx, cy);
+  ctx.restore();
+};
+
 const drawSeanceCard = async (
   ctx: CanvasRenderingContext2D,
   filmTitle: string,
   time: string,
   price: string,
   isPirate: boolean,
+  ageRating: string | undefined,
   x: number,
   y: number,
   width: number,
@@ -242,6 +270,11 @@ const drawSeanceCard = async (
   // Pirate dot in bottom-right corner
   if (isPirate) {
     drawPirateDot(ctx, x, y, width, height, styles);
+  }
+
+  // Age rating dot in top-right corner
+  if (ageRating) {
+    drawAgeRatingDot(ctx, ageRating, x, y, width, styles);
   }
 
   // Time & price below the card
@@ -361,6 +394,7 @@ const drawDaySection = async (
       seance.time,
       seance.price,
       seance.isPirate,
+      seance.ageRating,
       cardX,
       currentY,
       config.cardWidth,
@@ -384,14 +418,34 @@ const drawFooter = (
   y: number,
   width: number,
 ) => {
-  const footerText =
-    '* - В РАМКАХ ПРЕДСЕАНСОВОГО ОБСЛУЖИВАНИЯ ПЕРЕД МУЛЬТФИЛЬМОМ "СНЕГУР"';
-  ctx.fillStyle = VERTICAL_STYLES.textColor;
-  ctx.font = `${VERTICAL_STYLES.footerFontSize}px ${VERTICAL_STYLES.headerFontFamily}`;
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'top';
-  ctx.fillText(footerText, width / 2, y, width - VERTICAL_STYLES.padding * 2);
+  const styles = VERTICAL_STYLES;
+  const text = ' - В РАМКАХ ПРЕДСЕАНСОВОГО ОБСЛУЖИВАНИЯ ПЕРЕД МУЛЬТФИЛЬМОМ "СНЕГУР"';
+  const fontSize = styles.footerFontSize;
+
+  ctx.font = `${fontSize}px ${styles.headerFontFamily}`;
+  ctx.textBaseline = 'middle';
+
+  // Measure full line to center it
+  const dotRadius = fontSize * 0.5;
+  const gap = dotRadius * 0.6;
+  const textWidth = ctx.measureText(text).width;
+  const totalWidth = dotRadius * 2 + gap + textWidth;
+  const startX = (width - totalWidth) / 2;
+  const cy = y;
+
+  // Draw pirate dot
+  ctx.fillStyle = styles.pirateDotColor;
+  ctx.beginPath();
+  ctx.arc(startX + dotRadius, cy, dotRadius, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Draw text after the dot
+  ctx.fillStyle = styles.footerColor;
+  ctx.textAlign = 'left';
+  ctx.fillText(text, startX + dotRadius * 2 + gap, cy);
+
   ctx.textBaseline = 'alphabetic';
+  ctx.textAlign = 'center';
 };
 
 export const drawWeekdaySchedule = async (

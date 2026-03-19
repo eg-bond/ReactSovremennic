@@ -1,6 +1,8 @@
-const MOST_IMPORTANT_STYLES = {
-  headerPaddingBottom: 50, // 180 для 3х, 80 для 4х
-  sectionGap: 30, // 140 для 3х, 80 для 4х
+export const MOST_IMPORTANT_STYLES = {
+  headerPaddingBottom_3movies: 150, // 150 для 3х, 60 для 4х
+  sectionGap_3movies: 150, // 150 для 3х, 60 для 4х
+  headerPaddingBottom_4movies: 65, // 150 для 3х, 60 для 4х
+  sectionGap_4movies: 65, // 150 для 3х, 60 для 4х
   // Fonts
   primaryFont: 'Audex Regular, sans-serif',
   secondaryFont: 'Microsoft Sans Serif, sans-serif',
@@ -28,14 +30,14 @@ export const VERTICAL_STYLES = {
   headerColor: MOST_IMPORTANT_STYLES.purple,
   headerGlowColor: MOST_IMPORTANT_STYLES.purple,
   headerGlowBlur: 60,
-  headerGlowLayers: 5,
+  headerGlowLayers: 3,
   footerColor: MOST_IMPORTANT_STYLES.white,
   // Фоновая картинка
   backgroundImage: '/ExternalScripts/ScheduleGenerator/vertical/back.jpg',
   gradientStart: '#381d98',
   gradientEnd: '#e4774d',
   // Font Families -----------------------------------------------
-  fontFamily: MOST_IMPORTANT_STYLES.secondaryFont,
+  fontFamily: MOST_IMPORTANT_STYLES.primaryFont,
   headerFontFamily: MOST_IMPORTANT_STYLES.primaryFont,
   dayFontFamily: MOST_IMPORTANT_STYLES.primaryFont,
   cardTitleFontFamily: MOST_IMPORTANT_STYLES.secondaryFont,
@@ -43,7 +45,7 @@ export const VERTICAL_STYLES = {
   cardPriceFontFamily: MOST_IMPORTANT_STYLES.primaryFont,
   cardFormatAgeFontFamily: MOST_IMPORTANT_STYLES.primaryFont,
   // Font Sizes -----------------------------------------------------
-  headerFontSize: 64,
+  headerFontSize: 70,
   dayFontSize: 32,
   footerFontSize: 22,
   // Базовые FS для элементов карточки (до скалирования по ширине карточки)
@@ -51,14 +53,14 @@ export const VERTICAL_STYLES = {
   cardTimeBaseFontSize: 14,
   cardPriceBaseFontSize: 14,
   cardFormatBaseFontSize: 15,
-  cardAgeBaseFontSize: 15,
+  cardAgeBaseFontSize: 17,
   // Отступы ------------------------------------------------------
   padding: 20,
   headerPadding: 80,
-  headerPaddingBottom: MOST_IMPORTANT_STYLES.headerPaddingBottom,
+  headerPaddingBottom: MOST_IMPORTANT_STYLES.headerPaddingBottom_3movies,
   footerPadding: 80,
   dayPadding: 25,
-  sectionGap: MOST_IMPORTANT_STYLES.sectionGap,
+  sectionGap: MOST_IMPORTANT_STYLES.sectionGap_3movies,
   // Отступы элементов внутри карточки
   cardTimeOffsetFromTop: 80,
   cardPriceOffsetFromTime: 80,
