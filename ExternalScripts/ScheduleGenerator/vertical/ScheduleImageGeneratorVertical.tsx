@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { MOST_IMPORTANT_STYLES } from './verticalStyles';
+import { PRESETS } from './verticalStyles';
 import { useScheduleDownloadVertical } from '../hooks/useScheduleDownloadVertical';
 import type { ScheduleData } from '../utils/transformSchedule';
 import type { AgeRatingMapping, FilmMapping, PirateMapping } from '../utils/mappings';
@@ -20,17 +20,18 @@ export const ScheduleImageGeneratorVertical = ({
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const [
-    headerPaddingBottom, setHeaderPaddingBottom,
-  ] = useState(MOST_IMPORTANT_STYLES.headerPaddingBottom_4movies);
-  const [sectionGap, setSectionGap] = useState(MOST_IMPORTANT_STYLES.sectionGap_4movies);
+    headerPaddingBottom,
+    setHeaderPaddingBottom,
+  ] = useState<number>(PRESETS.days4.headerPaddingBottom);
+  const [sectionGap, setSectionGap] = useState<number>(PRESETS.days4.sectionGap);
 
   const handle3days = () => {
-    setHeaderPaddingBottom(MOST_IMPORTANT_STYLES.headerPaddingBottom_3movies);
-    setSectionGap(MOST_IMPORTANT_STYLES.sectionGap_3movies);
+    setHeaderPaddingBottom(PRESETS.days3.headerPaddingBottom);
+    setSectionGap(PRESETS.days3.sectionGap);
   };
   const handle4days = () => {
-    setHeaderPaddingBottom(MOST_IMPORTANT_STYLES.headerPaddingBottom_4movies);
-    setSectionGap(MOST_IMPORTANT_STYLES.sectionGap_4movies);
+    setHeaderPaddingBottom(PRESETS.days4.headerPaddingBottom);
+    setSectionGap(PRESETS.days4.sectionGap);
   };
 
   const styleOverrides = {

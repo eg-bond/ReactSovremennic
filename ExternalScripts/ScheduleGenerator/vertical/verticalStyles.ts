@@ -1,79 +1,59 @@
-export const MOST_IMPORTANT_STYLES = {
-  headerPaddingBottom_3movies: 150, // 150 для 3х, 60 для 4х
-  sectionGap_3movies: 150, // 150 для 3х, 60 для 4х
-  headerPaddingBottom_4movies: 65, // 150 для 3х, 60 для 4х
-  sectionGap_4movies: 65, // 150 для 3х, 60 для 4х
-  // Fonts
-  primaryFont: 'Audex Regular, sans-serif',
-  secondaryFont: 'Microsoft Sans Serif, sans-serif',
-  // primaryFont: 'Gerhaus Regular, sans-serif',
-  // colors
+// Пресеты для быстрого переключения количества дней
+export const PRESETS = {
+  days3: { headerPaddingBottom: 150, sectionGap: 150 },
+  days4: { headerPaddingBottom: 65, sectionGap: 65 },
+} as const;
+
+const FONT = 'Audex Regular, sans-serif';
+
+const COLORS = {
   red: '#dc2626',
   black: '#000000',
   white: '#ffffff',
-  gray: '#e0e0e0',
   purple: '#9f6aff',
+  teal: '#93cac4',
+  gradient1: '#381d98',
+  gradient2: '#e4774d',
 };
 
 export const VERTICAL_STYLES = {
-  // Цвета ------------------------------------------------------
-  background: MOST_IMPORTANT_STYLES.black,
-  textColor: MOST_IMPORTANT_STYLES.black,
-  weekDayColor: MOST_IMPORTANT_STYLES.white,
-  timeColor: MOST_IMPORTANT_STYLES.red,
-  cardBorderColor: MOST_IMPORTANT_STYLES.black,
-  priceOvalColor: MOST_IMPORTANT_STYLES.gray,
-  pirateDotColor: '#93cac4',
-  ageRatingDotColor: MOST_IMPORTANT_STYLES.white,
-  ageRatingTextColor: MOST_IMPORTANT_STYLES.black,
-  // Свечение заголовка
-  headerColor: MOST_IMPORTANT_STYLES.purple,
-  headerGlowColor: MOST_IMPORTANT_STYLES.purple,
+  // Фон ----------------------------------------------------------
+  background: COLORS.black,
+  backgroundImage: '/ExternalScripts/ScheduleGenerator/vertical/back.jpg',
+  // Цвета --------------------------------------------------------
+  textColor: COLORS.black,
+  weekDayColor: COLORS.white,
+  footerColor: COLORS.white,
+  // Градиент (обводка постера + блок времени)
+  gradientStart: COLORS.gradient1,
+  gradientEnd: COLORS.gradient2,
+  // Кружок пирата
+  pirateDotColor: COLORS.teal,
+  // Кружок возрастного рейтинга
+  ageRatingDotColor: COLORS.white,
+  ageRatingTextColor: COLORS.black,
+  // Заголовок "РАСПИСАНИЕ" ---------------------------------------
+  headerColor: COLORS.purple,
   headerGlowBlur: 60,
   headerGlowLayers: 3,
-  footerColor: MOST_IMPORTANT_STYLES.white,
-  // Фоновая картинка
-  backgroundImage: '/ExternalScripts/ScheduleGenerator/vertical/back.jpg',
-  gradientStart: '#381d98',
-  gradientEnd: '#e4774d',
-  // Font Families -----------------------------------------------
-  fontFamily: MOST_IMPORTANT_STYLES.primaryFont,
-  headerFontFamily: MOST_IMPORTANT_STYLES.primaryFont,
-  dayFontFamily: MOST_IMPORTANT_STYLES.primaryFont,
-  cardTitleFontFamily: MOST_IMPORTANT_STYLES.secondaryFont,
-  cardTimeFontFamily: MOST_IMPORTANT_STYLES.primaryFont,
-  cardPriceFontFamily: MOST_IMPORTANT_STYLES.primaryFont,
-  cardFormatAgeFontFamily: MOST_IMPORTANT_STYLES.primaryFont,
-  // Font Sizes -----------------------------------------------------
+  // Шрифт --------------------------------------------------------
+  fontFamily: FONT,
+  // Размеры шрифтов
   headerFontSize: 70,
   dayFontSize: 32,
   footerFontSize: 22,
-  // Базовые FS для элементов карточки (до скалирования по ширине карточки)
-  cardTitleBaseFontSize: 12,
   cardTimeBaseFontSize: 14,
   cardPriceBaseFontSize: 14,
-  cardFormatBaseFontSize: 15,
   cardAgeBaseFontSize: 17,
   // Отступы ------------------------------------------------------
   padding: 20,
   headerPadding: 80,
-  headerPaddingBottom: MOST_IMPORTANT_STYLES.headerPaddingBottom_3movies,
+  headerPaddingBottom: 150, // 150 для 3х дней, 65 для 4х
   footerPadding: 80,
   dayPadding: 25,
-  sectionGap: MOST_IMPORTANT_STYLES.sectionGap_3movies,
-  // Отступы элементов внутри карточки
-  cardTimeOffsetFromTop: 80,
-  cardPriceOffsetFromTime: 80,
-  cardPaddingVertical: 10,
-  cardPaddingHorizontal: 6,
-  // Прочее ---------------------------------------------------------
-  cardBorderWidth: 3,
+  sectionGap: 150, // 150 для 3х дней, 65 для 4х
+  // Карточки -----------------------------------------------------
   cardGap: 15,
-  // Обводка постера -------------------------------------------------
   posterBorderWidth: 2,
   posterBorderRadius: 15,
-  // Стили овала цены ------------------------------------------------
-  priceOvalPadding: 18,
-  priceOvalHeight: 60,
-  priceOvalOffsetY: -12,
 } as const;

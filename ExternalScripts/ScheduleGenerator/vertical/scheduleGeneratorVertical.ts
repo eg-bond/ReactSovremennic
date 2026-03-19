@@ -57,10 +57,10 @@ const getLayoutConfig = (
     cardHeight,
     contentWidth,
     fontSizes: {
-      cardTitle: calculateFontSize(cardWidth, styles.cardTitleBaseFontSize),
+      cardTitle: calculateFontSize(cardWidth, 12),
       cardTime: calculateFontSize(cardWidth, styles.cardTimeBaseFontSize),
       cardPrice: calculateFontSize(cardWidth, styles.cardPriceBaseFontSize),
-      cardFormat: calculateFontSize(cardWidth, styles.cardFormatBaseFontSize),
+      cardFormat: calculateFontSize(cardWidth, 15),
       cardAge: calculateFontSize(cardWidth, styles.cardAgeBaseFontSize),
     },
   };
@@ -134,7 +134,7 @@ const drawTimePrice = (
   ctx.fill();
 
   ctx.fillStyle = '#ffffff';
-  ctx.font = `bold ${timeFontSize}px ${styles.cardTimeFontFamily}`;
+  ctx.font = `bold ${timeFontSize}px ${styles.fontFamily}`;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   ctx.fillText(time, x + halfWidth / 2, y + blockHeight / 2);
@@ -146,7 +146,7 @@ const drawTimePrice = (
   ctx.fill();
 
   ctx.fillStyle = styles.textColor;
-  ctx.font = `bold ${priceFontSize}px ${styles.cardPriceFontFamily}`;
+  ctx.font = `bold ${priceFontSize}px ${styles.fontFamily}`;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   ctx.fillText(price.replace('₽', 'р.'), priceX + halfWidth / 2, y + blockHeight / 2);
@@ -334,15 +334,15 @@ const drawGlowText = (
   y: number,
   styles: typeof VERTICAL_STYLES,
 ) => {
-  ctx.font = `${styles.headerFontSize}px ${styles.headerFontFamily}`;
+  ctx.font = `${styles.headerFontSize}px ${styles.fontFamily}`;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'top';
 
   for (let i = 0; i < styles.headerGlowLayers; i++) {
     ctx.save();
-    ctx.shadowColor = styles.headerGlowColor;
+    ctx.shadowColor = styles.headerColor;
     ctx.shadowBlur = styles.headerGlowBlur * (i + 1);
-    ctx.fillStyle = styles.headerGlowColor;
+    ctx.fillStyle = styles.headerColor;
     ctx.fillText(text, x, y);
     ctx.restore();
   }
@@ -378,7 +378,7 @@ const drawDaySection = async (
   });
 
   ctx.fillStyle = styles.weekDayColor;
-  ctx.font = `${styles.dayFontSize}px ${styles.dayFontFamily}`;
+  ctx.font = `${styles.dayFontSize}px ${styles.fontFamily}`;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'top';
   ctx.fillText(dayName.toUpperCase(), 1080 / 2, startY);
@@ -422,7 +422,7 @@ const drawFooter = (
   const text = ' - В РАМКАХ ПРЕДСЕАНСОВОГО ОБСЛУЖИВАНИЯ ПЕРЕД МУЛЬТФИЛЬМОМ "СНЕГУР"';
   const fontSize = styles.footerFontSize;
 
-  ctx.font = `${fontSize}px ${styles.headerFontFamily}`;
+  ctx.font = `${fontSize}px ${styles.fontFamily}`;
   ctx.textBaseline = 'middle';
 
   // Measure full line to center it
