@@ -57,6 +57,7 @@ const Slide = memo(function Slide({ film }: SlideT) {
           containerClassName="bottomSlider__imgCont skeleton-Gray"
           link={film.link}
           pirate={film.pirate}
+          rounded={false}
           title={title}
         />
         <h1 className="swSlide__h1">{title}</h1>
