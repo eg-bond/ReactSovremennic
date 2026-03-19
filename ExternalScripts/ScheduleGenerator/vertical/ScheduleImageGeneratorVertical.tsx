@@ -1,10 +1,11 @@
 import { useRef, useState } from 'react';
 import { useScheduleDownloadVertical } from '../hooks/useScheduleDownloadVertical';
 import type { ScheduleData } from '../utils/transformSchedule';
-import type { AgeRatingMapping, PirateMapping } from '../utils/mappings';
+import type { AgeRatingMapping, FilmMapping, PirateMapping } from '../utils/mappings';
 
 interface Props {
   ageRatingMapping?: AgeRatingMapping;
+  filmMapping?: FilmMapping;
   pirateMapping?: PirateMapping;
   scheduleData: ScheduleData;
 }
@@ -12,6 +13,7 @@ interface Props {
 export const ScheduleImageGeneratorVertical = ({
   scheduleData,
   ageRatingMapping,
+  filmMapping,
   pirateMapping,
 }: Props) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -45,6 +47,7 @@ export const ScheduleImageGeneratorVertical = ({
     ageRatingMapping,
     pirateMapping,
     styleOverrides,
+    filmMapping,
   );
 
   return (
