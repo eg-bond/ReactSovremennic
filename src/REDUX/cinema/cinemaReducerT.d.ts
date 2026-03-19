@@ -8,7 +8,7 @@ type CinemaStateT = {
   films: FilmsArrayT;
   filmsObject: FilmsObjectT;
   filmsToday: FilmsArrayT;
-  filmsTodayAmount: number;
+  filmsTodayLinks: string[];
 };
 
 type FilmsObjectT = {

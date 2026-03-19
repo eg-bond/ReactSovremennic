@@ -1,5 +1,6 @@
 import './SCSS/style.scss';
 import { useEffect, useRef } from 'react';
+import { LINKS } from '@/REDUX/cinema/cinemaReducer';
 import Footer from './Template/Footer';
 import Content from './Content/Content';
 import { DesktopAdv } from './Template/Adv';
@@ -28,7 +29,7 @@ const App = () => {
   // Initialization
   useEffect(() => {
     setTodayScheduleItem();
-    createFilmsTodayArr();
+    createFilmsTodayArr(LINKS);
   }, [setTodayScheduleItem, createFilmsTodayArr]);
 
   // Media query hook.
@@ -79,7 +80,7 @@ const App = () => {
 
           {siteMode === 'default' && (
             <div>
-              <h1 className="bottomSlider__bar">На этой неделе в кино</h1>
+              <h1 className="bottomSlider__bar">Скоро в кино</h1>
               <hr className="bottomSlider__border" />
               <BottomSlider filmsToday={filmsToday || []} isMobile={isMobile} />
             </div>

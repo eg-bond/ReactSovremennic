@@ -17,8 +17,8 @@ export const useAppState = () => {
   const switchSiteMode = useCallback((mode: SpecialStateT['siteMode']) => {
     dispatch(switchSiteMode_AC({ mode }));
   }, [dispatch]);
-  const createFilmsTodayArr = useCallback(() => {
-    dispatch(createFilmsTodayArr_AC());
+  const createFilmsTodayArr = useCallback((links: string[]) => {
+    dispatch(createFilmsTodayArr_AC(links));
   }, [dispatch]);
   const setTodayScheduleItem = useCallback(() => {
     dispatch(setTodayScheduleItem_AC());
