@@ -68,7 +68,7 @@ export const filmsArray = [
   },
 
   {
-    title: 'Домовенок Кузя 2',
+    title: 'Домовёнок Кузя 2',
     year: 2026,
     countries: 'Россия',
     beginDate: 'с 19 марта',

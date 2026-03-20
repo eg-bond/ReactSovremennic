@@ -1,6 +1,6 @@
 // Пресеты для быстрого переключения количества дней
 export const PRESETS = {
-  days3: { headerPaddingBottom: 150, sectionGap: 150 },
+  days3: { headerPaddingBottom: 90, sectionGap: 150 },
   days4: { headerPaddingBottom: 65, sectionGap: 65 },
 } as const;
 
