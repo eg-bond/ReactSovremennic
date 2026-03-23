@@ -56,6 +56,7 @@ const App = () => {
       {activeTab === 'vertical' && (
         <ScheduleImageGeneratorVertical
           ageRatingMapping={ageRatingMapping}
+          filmMapping={filmMapping}
           pirateMapping={pirateMapping}
           scheduleData={scheduleData}
         />

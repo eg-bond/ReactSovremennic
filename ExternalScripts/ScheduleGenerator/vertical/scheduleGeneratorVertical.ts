@@ -1,7 +1,7 @@
 import { VERTICAL_STYLES } from './verticalStyles';
 import { dayKeyToDateName } from '../utils/mappings';
 import type { ScheduleData } from '../utils/transformSchedule';
-import type { AgeRatingMapping, PirateMapping } from '../utils/mappings';
+import type { AgeRatingMapping, FilmMapping, PirateMapping } from '../utils/mappings';
 
 export interface StyleOverrides {
   headerPaddingBottom?: number;
@@ -12,6 +12,7 @@ interface SeanceInfo {
   ageRating?: string;
   filmTitle: string;
   format: string;
+  isPirate: boolean;
   price: string;
   time: string;
 }
@@ -36,8 +37,7 @@ interface LayoutConfig {
 }
 
 const calculateFontSize = (cardWidth: number, baseSize: number): number => {
-  // Масштабируем шрифт в зависимости от ширины карточки
-  const scaleFactor = cardWidth / 100; // 100 - базовая ширина
+  const scaleFactor = cardWidth / 100;
   return Math.max(8, Math.round(baseSize * scaleFactor));
 };
 
@@ -45,40 +45,23 @@ const getLayoutConfig = (
   numSeancesPerDay: number[],
   styleOverrides?: StyleOverrides,
 ): LayoutConfig => {
-  // Находим максимальное количество сеансов в день
   const maxSeances = Math.max(...numSeancesPerDay);
-
   const styles = { ...VERTICAL_STYLES, ...styleOverrides };
   const contentWidth = 1080 - styles.padding * 2;
   const cardGap = styles.cardGap;
   const cardWidth = (contentWidth - cardGap * (maxSeances - 1)) / maxSeances;
-  const cardHeight = cardWidth * 1.4; // Высота больше ширины
+  const cardHeight = cardWidth * 1.4;
 
   return {
     cardWidth,
     cardHeight,
     contentWidth,
     fontSizes: {
-      cardTitle: calculateFontSize(
-        cardWidth,
-        styles.cardTitleBaseFontSize,
-      ),
-      cardTime: calculateFontSize(
-        cardWidth,
-        styles.cardTimeBaseFontSize,
-      ),
-      cardPrice: calculateFontSize(
-        cardWidth,
-        styles.cardPriceBaseFontSize,
-      ),
-      cardFormat: calculateFontSize(
-        cardWidth,
-        styles.cardFormatBaseFontSize,
-      ),
-      cardAge: calculateFontSize(
-        cardWidth,
-        styles.cardAgeBaseFontSize,
-      ),
+      cardTitle: calculateFontSize(cardWidth, 12),
+      cardTime: calculateFontSize(cardWidth, styles.cardTimeBaseFontSize),
+      cardPrice: calculateFontSize(cardWidth, styles.cardPriceBaseFontSize),
+      cardFormat: calculateFontSize(cardWidth, 15),
+      cardAge: calculateFontSize(cardWidth, styles.cardAgeBaseFontSize),
     },
   };
 };
@@ -87,186 +70,223 @@ const getEffectiveStyles = (styleOverrides?: StyleOverrides) => {
   return { ...VERTICAL_STYLES, ...styleOverrides } as typeof VERTICAL_STYLES;
 };
 
-const drawOval = (
+const loadImage = (src: string): Promise<HTMLImageElement> => {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.src = src;
+  });
+};
+
+const normalizeFilmTitle = (title: string): string => {
+  return title
+    .replace(/\s*\(предс\.\s*обсл\.\)\s*$/g, '')
+    .replace(/\s*\*\s*$/g, '')
+    .trim();
+};
+
+const drawRoundedRect = (
   ctx: CanvasRenderingContext2D,
   x: number,
   y: number,
   width: number,
   height: number,
-  color: string,
+  radius: number,
 ) => {
-  ctx.fillStyle = color;
   ctx.beginPath();
-  ctx.ellipse(
-    x + width / 2,
-    y + height / 2,
-    width / 2,
-    height / 2,
-    0,
-    0,
-    Math.PI * 2,
-  );
-  ctx.fill();
+  ctx.moveTo(x + radius, y);
+  ctx.lineTo(x + width - radius, y);
+  ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+  ctx.lineTo(x + width, y + height - radius);
+  ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+  ctx.lineTo(x + radius, y + height);
+  ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+  ctx.lineTo(x, y + radius);
+  ctx.quadraticCurveTo(x, y, x + radius, y);
+  ctx.closePath();
 };
 
-const drawText = (
+const drawTimePrice = (
   ctx: CanvasRenderingContext2D,
-  text: string,
+  time: string,
+  price: string,
   x: number,
   y: number,
-  fontSize: number,
-  color: string = VERTICAL_STYLES.textColor,
-  align: CanvasTextAlign = 'center',
-  maxWidth?: number,
-  fontFamily?: string,
-): number => {
-  ctx.fillStyle = color;
-  ctx.font = `${fontSize}px ${fontFamily || VERTICAL_STYLES.fontFamily}`;
-  ctx.textAlign = align;
-  ctx.textBaseline = 'top';
+  width: number,
+  timeFontSize: number,
+  priceFontSize: number,
+  styles: typeof VERTICAL_STYLES,
+) => {
+  const radius = 10;
+  const fontSize = Math.max(timeFontSize, priceFontSize);
+  const blockHeight = fontSize + 14;
+  const gap = 6;
+  const halfWidth = (width - gap) / 2;
 
-  let linesDrawn = 0;
+  // Time block (left half) — gradient fill
+  const timeGradient = ctx.createLinearGradient(x, y, x + halfWidth, y);
+  timeGradient.addColorStop(0, styles.gradientStart);
+  timeGradient.addColorStop(1, styles.gradientEnd);
+  ctx.fillStyle = timeGradient;
+  drawRoundedRect(ctx, x, y, halfWidth, blockHeight, radius);
+  ctx.fill();
 
-  if (maxWidth) {
-    const words = text.split(' ');
-    let line = '';
-    let lineY = y;
-    const lineHeight = fontSize + 2;
+  ctx.fillStyle = '#ffffff';
+  ctx.font = `bold ${timeFontSize}px ${styles.fontFamily}`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(time, x + halfWidth / 2, y + blockHeight / 2);
 
-    words.forEach((word) => {
-      const testLine = line + (line ? ' ' : '') + word;
-      const metrics = ctx.measureText(testLine);
-      if (metrics.width > maxWidth && line) {
-        ctx.fillText(line, x, lineY);
-        linesDrawn++;
-        line = word;
-        lineY += lineHeight;
-      } else {
-        line = testLine;
-      }
-    });
-    if (line) {
-      ctx.fillText(line, x, lineY);
-      linesDrawn++;
-    }
-  } else {
-    ctx.fillText(text, x, y);
-    linesDrawn = 1;
-  }
+  // Price block (right half) — grey fill
+  const priceX = x + halfWidth + gap;
+  ctx.fillStyle = '#cccccc';
+  drawRoundedRect(ctx, priceX, y, halfWidth, blockHeight, radius);
+  ctx.fill();
 
-  return linesDrawn;
+  ctx.fillStyle = styles.textColor;
+  ctx.font = `bold ${priceFontSize}px ${styles.fontFamily}`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(price.replace('₽', 'р.'), priceX + halfWidth / 2, y + blockHeight / 2);
+
+  ctx.textBaseline = 'alphabetic';
 };
 
-const drawSeanceCard = (
+const drawGradientBorder = (
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+  borderWidth: number,
+  radius: number,
+  gradientStart: string,
+  gradientEnd: string,
+) => {
+  const gradient = ctx.createLinearGradient(x, y, x + width, y + height);
+  gradient.addColorStop(0, gradientStart);
+  gradient.addColorStop(1, gradientEnd);
+
+  ctx.save();
+  ctx.strokeStyle = gradient;
+  ctx.lineWidth = borderWidth;
+  drawRoundedRect(ctx, x, y, width, height, radius);
+  ctx.stroke();
+  ctx.restore();
+};
+
+const drawPirateDot = (
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+  styles: typeof VERTICAL_STYLES,
+) => {
+  const radius = Math.min(width, height) * 0.08;
+  const margin = radius * 0.5;
+  const cx = x + width - margin;
+  const cy = y + height - margin;
+
+  ctx.save();
+  ctx.fillStyle = styles.pirateDotColor;
+  ctx.beginPath();
+  ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+};
+
+const drawAgeRatingDot = (
+  ctx: CanvasRenderingContext2D,
+  ageRating: string,
+  x: number,
+  y: number,
+  width: number,
+  styles: typeof VERTICAL_STYLES,
+) => {
+  const radius = Math.min(width, width) * 0.10;
+  const margin = radius * 0.4;
+  const cx = x + width - margin;
+  const cy = y + margin;
+
+  ctx.save();
+  ctx.fillStyle = styles.ageRatingDotColor;
+  ctx.beginPath();
+  ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.fillStyle = styles.ageRatingTextColor;
+  ctx.font = `400 ${styles.cardAgeBaseFontSize}px ${styles.fontFamily}`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(ageRating, cx, cy);
+  ctx.restore();
+};
+
+const drawSeanceCard = async (
   ctx: CanvasRenderingContext2D,
   filmTitle: string,
   time: string,
   price: string,
-  format: string,
+  isPirate: boolean,
   ageRating: string | undefined,
   x: number,
   y: number,
   width: number,
   height: number,
   fontSizes: LayoutConfig['fontSizes'],
-  styles: typeof VERTICAL_STYLES = VERTICAL_STYLES,
+  styles: typeof VERTICAL_STYLES,
+  filmMapping?: FilmMapping,
 ) => {
-  const paddingVertical = styles.cardPaddingVertical;
-  const paddingHorizontal = styles.cardPaddingHorizontal;
-  const borderWidth = styles.cardBorderWidth;
+  const normalizedTitle = normalizeFilmTitle(filmTitle);
+  const imagePath = filmMapping?.[normalizedTitle];
+  const { posterBorderWidth: bw, posterBorderRadius: br } = styles;
 
-  // Draw border
-  ctx.strokeStyle = styles.cardBorderColor;
-  ctx.lineWidth = borderWidth;
-  ctx.strokeRect(x, y, width, height);
+  // Clip to rounded rect with posterBorderRadius
+  ctx.save();
+  drawRoundedRect(ctx, x, y, width, height, br);
+  ctx.clip();
 
-  // Draw title (top, centered)
-  const titleY = y + paddingVertical;
-  const cleanTitle = filmTitle.replace(/\s*2D\s*|\s*3D\s*/g, ' ').trim();
-  drawText(
-    ctx,
-    cleanTitle,
-    x + width / 2,
-    titleY,
-    fontSizes.cardTitle,
-    styles.textColor,
-    'center',
-    width - paddingHorizontal * 2,
-    styles.cardTitleFontFamily,
-  );
-
-  // Draw time (red, centered) - using fixed offset from top
-  const timeY = y + styles.cardTimeOffsetFromTop;
-  drawText(
-    ctx,
-    time,
-    x + width / 2,
-    timeY,
-    fontSizes.cardTime,
-    styles.timeColor,
-    'center',
-    undefined,
-    styles.cardTimeFontFamily,
-  );
-
-  // Draw price (centered) - using fixed offset from time
-  const basePriceY = timeY + styles.cardPriceOffsetFromTime;
-  const displayPrice = price.replace('₽', 'р.');
-
-  // Рассчитать размер овала
-  const ovalWidth = fontSizes.cardPrice * 4.5; // примерная ширина
-  const ovalHeight = styles.priceOvalHeight;
-  const ovalX = x + width / 2 - ovalWidth / 2;
-  const ovalY = basePriceY - ovalHeight / 2;
-
-  // Нарисовать овал
-  drawOval(ctx, ovalX, ovalY, ovalWidth, ovalHeight, styles.priceOvalColor);
-
-  // Calculate text position with offset
-  const priceTextY = basePriceY + styles.priceOvalOffsetY;
-
-  // Нарисовать текст цены поверх овала
-  drawText(
-    ctx,
-    displayPrice,
-    x + width / 2,
-    priceTextY,
-    fontSizes.cardPrice,
-    styles.textColor,
-    'center',
-    undefined,
-    styles.cardPriceFontFamily,
-  );
-
-  // Draw format (2D/3D) - bottom left
-  const formatY = y + height - paddingVertical - fontSizes.cardFormat;
-  drawText(
-    ctx,
-    format,
-    x + paddingHorizontal + 2,
-    formatY,
-    fontSizes.cardFormat,
-    styles.textColor,
-    'left',
-    undefined,
-    styles.cardFormatAgeFontFamily,
-  );
-
-  // Draw age rating - bottom right
-  if (ageRating) {
-    // Draw age rating text at original formatY position (without offsets)
-    drawText(
-      ctx,
-      ageRating,
-      x + width - paddingHorizontal - 2,
-      formatY,
-      fontSizes.cardAge,
-      styles.accentColor,
-      'right',
-      undefined,
-      styles.cardFormatAgeFontFamily,
-    );
+  if (imagePath) {
+    try {
+      const img = await loadImage(imagePath);
+      ctx.drawImage(img, x, y, width, height);
+    } catch {
+      ctx.fillStyle = '#e0e0e0';
+      ctx.fillRect(x, y, width, height);
+    }
+  } else {
+    ctx.fillStyle = '#e0e0e0';
+    ctx.fillRect(x, y, width, height);
   }
+
+  ctx.restore();
+
+  // Gradient border
+  drawGradientBorder(ctx, x, y, width, height, bw, br, styles.gradientStart, styles.gradientEnd);
+
+  // Pirate dot in bottom-right corner
+  if (isPirate) {
+    drawPirateDot(ctx, x, y, width, height, styles);
+  }
+
+  // Age rating dot in top-right corner
+  if (ageRating) {
+    drawAgeRatingDot(ctx, ageRating, x, y, width, styles);
+  }
+
+  // Time & price below the card
+  const timePriceGap = 10;
+  const timeFontSize = fontSizes.cardTime;
+  const priceFontSize = fontSizes.cardPrice;
+  const blockHeight = Math.max(timeFontSize, priceFontSize) + 14;
+  const belowY = y + height + timePriceGap;
+
+  drawTimePrice(ctx, time, price, x, belowY, width, timeFontSize, priceFontSize, styles);
+
+  return blockHeight + timePriceGap;
 };
 
 const collectDaySeances = (
@@ -284,14 +304,10 @@ const collectDaySeances = (
     const seancesForFilm = daySchedule.seansScedule[filmTitle];
     for (const [time, , , price] of seancesForFilm) {
       let displayTitle = filmTitle;
-      // Получить нормализованное название (без суффикса)
-      const normalizedTitle = filmTitle.replace(
-        /\s*\(предс\.\s*обсл\.\)\s*$/g,
-        '',
-      ).trim();
+      const normalizedTitle = normalizeFilmTitle(filmTitle);
+      const isPirate = !!pirateMapping?.[normalizedTitle];
 
-      // Заменить "(предс. обсл.)" на "*" если фильм в pirateMapping
-      if (pirateMapping?.[normalizedTitle]) {
+      if (isPirate) {
         displayTitle = filmTitle
           .replace(/\s*\(предс\.\s*обсл\.\)\s*$/g, ' *')
           .trim();
@@ -302,6 +318,7 @@ const collectDaySeances = (
         time,
         price,
         format: filmTitle.includes('3D') ? '3D' : '2D',
+        isPirate,
         ageRating: ageRatingMapping?.[normalizedTitle],
       });
     }
@@ -310,71 +327,90 @@ const collectDaySeances = (
   return seances;
 };
 
-const drawDaySection = (
+const drawGlowText = (
+  ctx: CanvasRenderingContext2D,
+  text: string,
+  x: number,
+  y: number,
+  styles: typeof VERTICAL_STYLES,
+) => {
+  ctx.font = `${styles.headerFontSize}px ${styles.fontFamily}`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'top';
+
+  for (let i = 0; i < styles.headerGlowLayers; i++) {
+    ctx.save();
+    ctx.shadowColor = styles.headerColor;
+    ctx.shadowBlur = styles.headerGlowBlur * (i + 1);
+    ctx.fillStyle = styles.headerColor;
+    ctx.fillText(text, x, y);
+    ctx.restore();
+  }
+
+  ctx.fillStyle = styles.headerColor;
+  ctx.fillText(text, x, y);
+  ctx.textBaseline = 'alphabetic';
+};
+
+const drawDaySection = async (
   ctx: CanvasRenderingContext2D,
   dayName: string,
   seances: SeanceInfo[],
   startY: number,
   config: LayoutConfig,
-  styles: typeof VERTICAL_STYLES = VERTICAL_STYLES,
-): number => {
+  styles: typeof VERTICAL_STYLES,
+  filmMapping?: FilmMapping,
+): Promise<number> => {
   const contentX = styles.padding;
   const containerWidth = 1080 - styles.padding * 2;
   const totalCardsWidth = config.cardWidth * seances.length;
 
-  // Calculate space-between distribution
   let gap = styles.cardGap;
   if (seances.length > 1) {
     const availableSpace = containerWidth - totalCardsWidth;
     gap = availableSpace / (seances.length - 1);
   }
 
-  // Sort seances by time (earliest to latest)
   const sortedSeances = [...seances].sort((a, b) => {
     const timeA = a.time.split(':').map(Number);
     const timeB = b.time.split(':').map(Number);
-    const minutesA = timeA[0] * 60 + timeA[1];
-    const minutesB = timeB[0] * 60 + timeB[1];
-    return minutesA - minutesB;
+    return (timeA[0] * 60 + timeA[1]) - (timeB[0] * 60 + timeB[1]);
   });
 
-  // Draw day name (red)
-  drawText(
-    ctx,
-    dayName.toUpperCase(),
-    1080 / 2,
-    startY,
-    styles.dayFontSize,
-    styles.timeColor,
-    'center',
-    undefined,
-    styles.dayFontFamily,
-  );
+  ctx.fillStyle = styles.weekDayColor;
+  ctx.font = `${styles.dayFontSize}px ${styles.fontFamily}`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'top';
+  ctx.fillText(dayName.toUpperCase(), 1080 / 2, startY);
 
   const currentY = startY + styles.dayFontSize + styles.dayPadding;
 
-  // Draw seance cards in one row with space-between distribution
-  sortedSeances.forEach((seance, idx) => {
+  for (let idx = 0; idx < sortedSeances.length; idx++) {
+    const seance = sortedSeances[idx];
     const cardX = contentX + idx * (config.cardWidth + gap);
-    const cardY = currentY;
-
-    drawSeanceCard(
+    await drawSeanceCard(
       ctx,
       seance.filmTitle,
       seance.time,
       seance.price,
-      seance.format,
+      seance.isPirate,
       seance.ageRating,
       cardX,
-      cardY,
+      currentY,
       config.cardWidth,
       config.cardHeight,
       config.fontSizes,
       styles,
+      filmMapping,
     );
-  });
+  }
 
-  return currentY + config.cardHeight + styles.sectionGap;
+  const timeFontSize = config.fontSizes.cardTime;
+  const priceFontSize = config.fontSizes.cardPrice;
+  const blockHeight = Math.max(timeFontSize, priceFontSize) + 14;
+  const belowBlocksHeight = blockHeight + 10;
+
+  return currentY + config.cardHeight + belowBlocksHeight + styles.sectionGap;
 };
 
 const drawFooter = (
@@ -382,19 +418,34 @@ const drawFooter = (
   y: number,
   width: number,
 ) => {
-  const footerText =
-    '* - В РАМКАХ ПРЕДСЕАНСОВОГО ОБСЛУЖИВАНИЯ ПЕРЕД МУЛЬТФИЛЬМОМ "СНЕГУР"';
-  drawText(
-    ctx,
-    footerText,
-    width / 2,
-    y,
-    VERTICAL_STYLES.footerFontSize,
-    VERTICAL_STYLES.textColor,
-    'center',
-    width - VERTICAL_STYLES.padding * 2,
-    VERTICAL_STYLES.headerFontFamily,
-  );
+  const styles = VERTICAL_STYLES;
+  const text = ' - В РАМКАХ ПРЕДСЕАНСОВОГО ОБСЛУЖИВАНИЯ ПЕРЕД МУЛЬТФИЛЬМОМ "СНЕГУР"';
+  const fontSize = styles.footerFontSize;
+
+  ctx.font = `${fontSize}px ${styles.fontFamily}`;
+  ctx.textBaseline = 'middle';
+
+  // Measure full line to center it
+  const dotRadius = fontSize * 0.5;
+  const gap = dotRadius * 0.6;
+  const textWidth = ctx.measureText(text).width;
+  const totalWidth = dotRadius * 2 + gap + textWidth;
+  const startX = (width - totalWidth) / 2;
+  const cy = y;
+
+  // Draw pirate dot
+  ctx.fillStyle = styles.pirateDotColor;
+  ctx.beginPath();
+  ctx.arc(startX + dotRadius, cy, dotRadius, 0, Math.PI * 2);
+  ctx.fill();
+
+  // Draw text after the dot
+  ctx.fillStyle = styles.footerColor;
+  ctx.textAlign = 'left';
+  ctx.fillText(text, startX + dotRadius * 2 + gap, cy);
+
+  ctx.textBaseline = 'alphabetic';
+  ctx.textAlign = 'center';
 };
 
 export const drawWeekdaySchedule = async (
@@ -405,71 +456,43 @@ export const drawWeekdaySchedule = async (
   height: number,
   pirateMapping?: PirateMapping,
   styleOverrides?: StyleOverrides,
+  filmMapping?: FilmMapping,
 ): Promise<void> => {
   const styles = getEffectiveStyles(styleOverrides);
 
-  // White background
-  ctx.fillStyle = styles.background;
-  ctx.fillRect(0, 0, width, height);
+  try {
+    const bgImg = await loadImage(styles.backgroundImage);
+    ctx.drawImage(bgImg, 0, 0, width, height);
+  } catch {
+    ctx.fillStyle = styles.background;
+    ctx.fillRect(0, 0, width, height);
+  }
 
   const weekdayKeys = ['day1', 'day2', 'day3'];
   const daySeancesArray: DaySeances[] = [];
 
-  // Collect seances for each day
   for (const dayKey of weekdayKeys) {
-    const seances = collectDaySeances(
-      scheduleData,
-      dayKey,
-      ageRatingMapping,
-      pirateMapping,
-    );
+    const seances = collectDaySeances(scheduleData, dayKey, ageRatingMapping, pirateMapping);
     if (seances.length > 0) {
-      daySeancesArray.push({
-        dayKey,
-        dayName: dayKeyToDateName[dayKey],
-        seances,
-      });
+      daySeancesArray.push({ dayKey, dayName: dayKeyToDateName[dayKey], seances });
     }
   }
 
-  // Calculate layout based on max seances per day
   const numSeancesPerDay = daySeancesArray.map(d => d.seances.length);
   const config = getLayoutConfig(numSeancesPerDay, styleOverrides);
 
   let currentY: number = styles.headerPadding;
 
-  // Draw header
-  drawText(
-    ctx,
-    'КИНОТЕАТР "СОВРЕМЕННИК"',
-    width / 2,
-    currentY,
-    styles.headerFontSize,
-    styles.textColor,
-    'center',
-    undefined,
-    styles.headerFontFamily,
-  );
-
+  drawGlowText(ctx, 'РАСПИСАНИЕ', width / 2, currentY, styles);
   currentY += styles.headerFontSize + styles.headerPaddingBottom;
 
-  // Draw each day section
   for (const daySeances of daySeancesArray) {
-    currentY = drawDaySection(
-      ctx,
-      daySeances.dayName,
-      daySeances.seances,
-      currentY,
-      config,
-      styles,
+    currentY = await drawDaySection(
+      ctx, daySeances.dayName, daySeances.seances, currentY, config, styles, filmMapping,
     );
   }
 
-  // Draw footer
-  const footerY =
-    height -
-    styles.footerPadding -
-    styles.footerFontSize;
+  const footerY = height - styles.footerPadding - styles.footerFontSize;
   drawFooter(ctx, footerY, width);
 };
 
@@ -481,71 +504,43 @@ export const drawWeekendSchedule = async (
   height: number,
   pirateMapping?: PirateMapping,
   styleOverrides?: StyleOverrides,
+  filmMapping?: FilmMapping,
 ): Promise<void> => {
   const styles = getEffectiveStyles(styleOverrides);
 
-  // White background
-  ctx.fillStyle = styles.background;
-  ctx.fillRect(0, 0, width, height);
+  try {
+    const bgImg = await loadImage(styles.backgroundImage);
+    ctx.drawImage(bgImg, 0, 0, width, height);
+  } catch {
+    ctx.fillStyle = styles.background;
+    ctx.fillRect(0, 0, width, height);
+  }
 
   const weekendKeys = ['day4', 'day5', 'day6', 'day0'];
   const daySeancesArray: DaySeances[] = [];
 
-  // Collect seances for each day
   for (const dayKey of weekendKeys) {
-    const seances = collectDaySeances(
-      scheduleData,
-      dayKey,
-      ageRatingMapping,
-      pirateMapping,
-    );
+    const seances = collectDaySeances(scheduleData, dayKey, ageRatingMapping, pirateMapping);
     if (seances.length > 0) {
-      daySeancesArray.push({
-        dayKey,
-        dayName: dayKeyToDateName[dayKey],
-        seances,
-      });
+      daySeancesArray.push({ dayKey, dayName: dayKeyToDateName[dayKey], seances });
     }
   }
 
-  // Calculate layout based on max seances per day
   const numSeancesPerDay = daySeancesArray.map(d => d.seances.length);
   const config = getLayoutConfig(numSeancesPerDay, styleOverrides);
 
   let currentY: number = styles.headerPadding;
 
-  // Draw header
-  drawText(
-    ctx,
-    'КИНОТЕАТР "СОВРЕМЕННИК"',
-    width / 2,
-    currentY,
-    styles.headerFontSize,
-    styles.textColor,
-    'center',
-    undefined,
-    styles.headerFontFamily,
-  );
-
+  drawGlowText(ctx, 'РАСПИСАНИЕ', width / 2, currentY, styles);
   currentY += styles.headerFontSize + styles.headerPaddingBottom;
 
-  // Draw each day section
   for (const daySeances of daySeancesArray) {
-    currentY = drawDaySection(
-      ctx,
-      daySeances.dayName,
-      daySeances.seances,
-      currentY,
-      config,
-      styles,
+    currentY = await drawDaySection(
+      ctx, daySeances.dayName, daySeances.seances, currentY, config, styles, filmMapping,
     );
   }
 
-  // Draw footer
-  const footerY =
-    height -
-    styles.footerPadding -
-    styles.footerFontSize;
+  const footerY = height - styles.footerPadding - styles.footerFontSize;
   drawFooter(ctx, footerY, width);
 };
 
@@ -554,6 +549,7 @@ export const generateWeekdayScheduleImage = async (
   ageRatingMapping: AgeRatingMapping | undefined,
   pirateMapping?: PirateMapping,
   styleOverrides?: StyleOverrides,
+  filmMapping?: FilmMapping,
 ): Promise<string> => {
   const canvas = document.createElement('canvas');
   canvas.width = 1080;
@@ -562,13 +558,8 @@ export const generateWeekdayScheduleImage = async (
 
   if (ctx) {
     await drawWeekdaySchedule(
-      ctx,
-      scheduleData,
-      ageRatingMapping,
-      canvas.width,
-      canvas.height,
-      pirateMapping,
-      styleOverrides,
+      ctx, scheduleData, ageRatingMapping,
+      canvas.width, canvas.height, pirateMapping, styleOverrides, filmMapping,
     );
     return canvas.toDataURL('image/jpeg') as string;
   }
@@ -580,6 +571,7 @@ export const generateWeekendScheduleImage = async (
   ageRatingMapping: AgeRatingMapping | undefined,
   pirateMapping?: PirateMapping,
   styleOverrides?: StyleOverrides,
+  filmMapping?: FilmMapping,
 ): Promise<string> => {
   const canvas = document.createElement('canvas');
   canvas.width = 1080;
@@ -588,26 +580,21 @@ export const generateWeekendScheduleImage = async (
 
   if (ctx) {
     await drawWeekendSchedule(
-      ctx,
-      scheduleData,
-      ageRatingMapping,
-      canvas.width,
-      canvas.height,
-      pirateMapping,
-      styleOverrides,
+      ctx, scheduleData, ageRatingMapping,
+      canvas.width, canvas.height, pirateMapping, styleOverrides, filmMapping,
     );
     return canvas.toDataURL('image/jpeg') as string;
   }
   return '';
 };
 
-// Backward compatibility - for single day preview
 export const generateVerticalScheduleImage = async (
   scheduleData: ScheduleData,
   ageRatingMapping: AgeRatingMapping | undefined,
   dayKey: string,
   pirateMapping?: PirateMapping,
   styleOverrides?: StyleOverrides,
+  filmMapping?: FilmMapping,
 ): Promise<string> => {
   const canvas = document.createElement('canvas');
   canvas.width = 1080;
@@ -620,23 +607,13 @@ export const generateVerticalScheduleImage = async (
 
   if (isWeekday) {
     await drawWeekdaySchedule(
-      ctx,
-      scheduleData,
-      ageRatingMapping,
-      canvas.width,
-      canvas.height,
-      pirateMapping,
-      styleOverrides,
+      ctx, scheduleData, ageRatingMapping,
+      canvas.width, canvas.height, pirateMapping, styleOverrides, filmMapping,
     );
   } else {
     await drawWeekendSchedule(
-      ctx,
-      scheduleData,
-      ageRatingMapping,
-      canvas.width,
-      canvas.height,
-      pirateMapping,
-      styleOverrides,
+      ctx, scheduleData, ageRatingMapping,
+      canvas.width, canvas.height, pirateMapping, styleOverrides, filmMapping,
     );
   }
 

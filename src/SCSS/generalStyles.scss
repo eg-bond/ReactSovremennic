@@ -148,7 +148,8 @@ article {
   margin: 0 15px;
   @media #{$mediaQueryMobile} {
     grid-column: 1/5;
-    margin: 0 15px;
+    // margin: 0 15px;
+    margin: 0 1.5vw;
   }
 }
 .content__gridRightItem--1fr {

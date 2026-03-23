@@ -6,6 +6,7 @@ export const FilmImg = ({
   link,
   onLoad: onLoadCallback,
   pirate,
+  rounded = true,
   title,
 }: {
   age: string;
@@ -13,6 +14,7 @@ export const FilmImg = ({
   link: string;
   onLoad?: () => void;
   pirate: boolean;
+  rounded?: boolean;
   title: string;
 }) => {
   const { imgLoaded, onLoad } = useImgLoaded(link);
@@ -27,7 +29,7 @@ export const FilmImg = ({
       className={`selectedMovie__image ${!imgLoaded ? 'skeleton' : ''} ${
         containerClassName || ''
       }`}
-      style={{ position: 'relative' }}
+      style={{ position: 'relative', borderRadius: rounded ? undefined : 0 }}
     >
       <img
         alt={title}
@@ -46,7 +48,7 @@ export const FilmImg = ({
       {pirate && (
         <div className="selectedMovie__pirateBanner">
           <span style={{ textTransform: 'uppercase' }}>
-            Демонстрируется дополнительно перед сеансом фильма "Снегур"
+            в рамках предсеансового обслуживания перед фильмом "Снегур"
           </span>
         </div>
       )}

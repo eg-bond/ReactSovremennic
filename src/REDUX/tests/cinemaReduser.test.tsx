@@ -5,26 +5,25 @@ import reducer, {
 } from '../cinema/cinemaReducer';
 import type { CinemaStateT } from '../cinema/cinemaReducerT';
 
+const testLinks = ['avatar_3', 'wultering_heights', 'marsupilami', 'dr_gaf'];
+
 const initialState: CinemaStateT = {
   films: filmsArray,
   filmsObject: {},
   filmsToday: [],
-  filmsTodayAmount: 4,
+  filmsTodayLinks: [],
 };
-
-const ftLength = initialState.filmsTodayAmount;
 
 describe('cinemaReducer tests:', () => {
   describe('createFilmsTodayArr', () => {
-    const newState = reducer(initialState, createFilmsTodayArr_AC());
+    const newState = reducer(initialState, createFilmsTodayArr_AC(testLinks));
 
     it('array has correct slides amount', () => {
-      expect(newState.filmsToday).toHaveLength(ftLength);
+      expect(newState.filmsToday).toHaveLength(testLinks.length);
     });
-    it('last movie is correct', () => {
-      expect(
-        newState.filmsToday[ftLength - 1] === filmsArray[ftLength - 1],
-      ).toBe(true);
+    it('films match the provided links', () => {
+      const resultLinks = newState.filmsToday.map((f) => f.link);
+      expect(resultLinks).toEqual(expect.arrayContaining(testLinks));
     });
   });
 

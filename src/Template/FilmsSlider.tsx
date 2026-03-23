@@ -2,6 +2,7 @@ import { memo, useMemo } from 'react';
 import { Link, useMatch } from 'react-router-dom';
 import { PRE_SHOW_SERVICE } from '@/utils/constants';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
+import { removeLineBreaks } from '@/utils/formatTextWithLineBreaks';
 import { FilmImg } from '../Content/Cinema/FilmImg';
 import { useMobilePaddings } from './useMobilePaddings';
 import { useImagesLoaded } from '../hooks/useImagesLoaded';
@@ -45,8 +46,12 @@ const FilmsSlider = memo<FilmSliderT>(function FilmsSlider({ films, isMobile }) 
 });
 
 const Slide = memo(function Slide({ film, onLoad }: SlideT) {
-  const title = useMemo(() =>
-    film.pirate ? `${film.title} ${PRE_SHOW_SERVICE}` : film.title,
+  const title = useMemo(() => {
+    const baseTitle = film.pirate
+      ? `${film.title} ${PRE_SHOW_SERVICE}`
+      : film.title;
+    return removeLineBreaks(baseTitle);
+  },
   [film.title, film.pirate],
   );
 

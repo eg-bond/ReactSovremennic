@@ -2,6 +2,7 @@ import { useState } from 'react';
 import {
   dayKeyToDateName,
   type AgeRatingMapping,
+  type FilmMapping,
   type PirateMapping,
 } from '../utils/mappings';
 import {
@@ -32,6 +33,7 @@ export const useScheduleDownloadVertical = (
   ageRatingMapping?: AgeRatingMapping,
   pirateMapping?: PirateMapping,
   styleOverrides?: StyleOverrides,
+  filmMapping?: FilmMapping,
 ): UseScheduleDownloadVerticalReturn => {
   const [selectedDay, setSelectedDay] = useState<string>('');
   const [isGenerating, setIsGenerating] = useState(false);
@@ -46,6 +48,7 @@ export const useScheduleDownloadVertical = (
         selectedDay,
         pirateMapping,
         styleOverrides,
+        filmMapping,
       );
       const fileName = `${dayKeyToDateName[selectedDay]}_vertical.jpg`;
       downloadImage(dataUrl, fileName);
@@ -64,6 +67,7 @@ export const useScheduleDownloadVertical = (
           dayKey,
           pirateMapping,
           styleOverrides,
+          filmMapping,
         );
         const fileName = `${dayKeyToDateName[dayKey]}_vertical.jpg`;
         downloadImage(dataUrl, fileName);
@@ -82,6 +86,7 @@ export const useScheduleDownloadVertical = (
         ageRatingMapping,
         pirateMapping,
         styleOverrides,
+        filmMapping,
       );
       downloadImage(dataUrl, 'weekday_schedule_vertical.jpg');
     } finally {
@@ -97,6 +102,7 @@ export const useScheduleDownloadVertical = (
         ageRatingMapping,
         pirateMapping,
         styleOverrides,
+        filmMapping,
       );
       downloadImage(dataUrl, 'weekend_schedule_vertical.jpg');
     } finally {
@@ -120,6 +126,7 @@ export const useScheduleDownloadVertical = (
             1920,
             pirateMapping,
             styleOverrides,
+            filmMapping,
           );
         } else {
           await drawWeekendSchedule(
@@ -130,6 +137,7 @@ export const useScheduleDownloadVertical = (
             1920,
             pirateMapping,
             styleOverrides,
+            filmMapping,
           );
         }
       }

@@ -1,10 +1,12 @@
 import { useRef, useState } from 'react';
+import { PRESETS } from './verticalStyles';
 import { useScheduleDownloadVertical } from '../hooks/useScheduleDownloadVertical';
 import type { ScheduleData } from '../utils/transformSchedule';
-import type { AgeRatingMapping, PirateMapping } from '../utils/mappings';
+import type { AgeRatingMapping, FilmMapping, PirateMapping } from '../utils/mappings';
 
 interface Props {
   ageRatingMapping?: AgeRatingMapping;
+  filmMapping?: FilmMapping;
   pirateMapping?: PirateMapping;
   scheduleData: ScheduleData;
 }
@@ -12,20 +14,24 @@ interface Props {
 export const ScheduleImageGeneratorVertical = ({
   scheduleData,
   ageRatingMapping,
+  filmMapping,
   pirateMapping,
 }: Props) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  const [headerPaddingBottom, setHeaderPaddingBottom] = useState(80);
-  const [sectionGap, setSectionGap] = useState(80);
+  const [
+    headerPaddingBottom,
+    setHeaderPaddingBottom,
+  ] = useState<number>(PRESETS.days4.headerPaddingBottom);
+  const [sectionGap, setSectionGap] = useState<number>(PRESETS.days4.sectionGap);
 
   const handle3days = () => {
-    setHeaderPaddingBottom(180);
-    setSectionGap(140);
+    setHeaderPaddingBottom(PRESETS.days3.headerPaddingBottom);
+    setSectionGap(PRESETS.days3.sectionGap);
   };
   const handle4days = () => {
-    setHeaderPaddingBottom(80);
-    setSectionGap(80);
+    setHeaderPaddingBottom(PRESETS.days4.headerPaddingBottom);
+    setSectionGap(PRESETS.days4.sectionGap);
   };
 
   const styleOverrides = {
@@ -45,6 +51,7 @@ export const ScheduleImageGeneratorVertical = ({
     ageRatingMapping,
     pirateMapping,
     styleOverrides,
+    filmMapping,
   );
 
   return (

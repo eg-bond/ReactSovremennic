@@ -1,9 +1,5 @@
-import { useMatch } from 'react-router-dom';
 import { AdvSlider } from '@/components/Sliders';
-import {
-  AfishaSlide,
-  LottenSlide, SushiSlide,
-} from '@/components/Sliders/Slides';
+import { LottenSlide, SushiSlide } from '@/components/Sliders/Slides';
 import { SushiWorkModal } from './SushiWork';
 
 const FIRST_SLIDER_SLIDES = [
@@ -14,26 +10,19 @@ const SECOND_SLIDER_SLIDES = [
 ];
 
 export function DesktopAdv() {
-  const matchSushi = useMatch({ path: 'sushi' });
-  // const matchKaraoke = useMatch({ path: 'karaoke' });
+  return (
+    <div className="content__gridRightItem--1fr contentMT">
+      <AdvSlider slides={FIRST_SLIDER_SLIDES} type="slide" />
 
-  if (!matchSushi) {
-    return (
-      <div className="content__gridRightItem--1fr contentMT">
-        <AdvSlider slides={FIRST_SLIDER_SLIDES} type="slide" />
-
-        <div style={{ marginTop: '1rem' }}>
-          <AdvSlider slides={SECOND_SLIDER_SLIDES} type="slide" />
-        </div>
-
-        <div style={{ marginTop: '1rem' }}>
-          <SushiWorkModal />
-        </div>
+      <div style={{ marginTop: '1rem' }}>
+        <AdvSlider slides={SECOND_SLIDER_SLIDES} type="slide" />
       </div>
-    );
-  }
 
-  return null;
+      <div style={{ marginTop: '1rem' }}>
+        <SushiWorkModal />
+      </div>
+    </div>
+  );
 }
 
 export function MobileAdv() {
