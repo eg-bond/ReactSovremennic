@@ -1,4 +1,5 @@
 import './SCSS/style.scss';
+import './styles/global.css';
 import { useEffect, useRef } from 'react';
 import { LINKS } from '@/REDUX/cinema/cinemaReducer';
 import Footer from './Template/Footer';

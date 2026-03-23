@@ -1,323 +1,323 @@
-* {
-  margin: 0;
-  padding: 0;
-  font-family: 'JostLocal';
-}
+// * {
+//   margin: 0;
+//   padding: 0;
+//   font-family: 'JostLocal';
+// }
 
-html {
-  --mainClr: black;
-  --secondaryClr: white;
-  --movieTitlesClr: #e41b2b;
-  --mobileSeparatorClr: #292e33;
-  --htmlFontSize: 14px;
+// html {
+//   --mainClr: black;
+//   --secondaryClr: white;
+//   --movieTitlesClr: #e41b2b;
+//   --mobileSeparatorClr: #292e33;
+//   --htmlFontSize: 14px;
 
-  background-color: var(--mainClr);
-  font-size: var(--htmlFontSize);
-  -webkit-tap-highlight-color: transparent;
+//   background-color: var(--mainClr);
+//   font-size: var(--htmlFontSize);
+//   -webkit-tap-highlight-color: transparent;
 
-  --desktopContentMT: 15px;
-  --mobileContentMT: 2.5vw;
+//   --desktopContentMT: 15px;
+//   --mobileContentMT: 2.5vw;
 
-  --navbarMobileH768: 8.5vw;
-  --navbarMobileH544: 19vw;
-}
+//   --navbarMobileH768: 8.5vw;
+//   --navbarMobileH544: 19vw;
+// }
 
-@media #{$mediaQueryMobile} {
-  html::-webkit-scrollbar {
-    display: none;
-  }
-}
+// @media #{$mediaQueryMobile} {
+//   html::-webkit-scrollbar {
+//     display: none;
+//   }
+// }
 
-hr {
-  border: 0;
-  margin-top: 0;
-  margin-bottom: 0;
-}
+// hr {
+//   border: 0;
+//   margin-top: 0;
+//   margin-bottom: 0;
+// }
 
-a {
-  color: var(--secondaryClr);
-  text-decoration: none;
-  font-weight: 600;
-  &:focus {
-    outline: none;
-  }
-}
+// a {
+//   color: var(--secondaryClr);
+//   text-decoration: none;
+//   font-weight: 600;
+//   &:focus {
+//     outline: none;
+//   }
+// }
 
-p {
-  color: var(--secondaryClr);
-  margin: 0 0 10px;
-}
+// p {
+//   color: var(--secondaryClr);
+//   margin: 0 0 10px;
+// }
 
-button {
-  font-weight: 600;
-}
+// button {
+//   font-weight: 600;
+// }
 
-button,
-table {
-  color: var(--secondaryClr);
-}
+// button,
+// table {
+//   color: var(--secondaryClr);
+// }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  line-height: 1;
-  color: var(--secondaryClr);
-  font-weight: 600;
-}
+// h1,
+// h2,
+// h3,
+// h4,
+// h5,
+// h6 {
+//   line-height: 1;
+//   color: var(--secondaryClr);
+//   font-weight: 600;
+// }
 
-img,
-article {
-  transition: all 0.3s;
-}
+// img,
+// article {
+//   transition: all 0.3s;
+// }
 
-.opacity_0 {
-  opacity: 0;
-  transition: ease 550ms;
-}
-.opacity_1 {
-  opacity: 1;
-  transition: ease 550ms;
-}
+// .opacity_0 {
+//   opacity: 0;
+//   transition: ease 550ms;
+// }
+// .opacity_1 {
+//   opacity: 1;
+//   transition: ease 550ms;
+// }
 
-.displayMobile {
-  display: none;
-  @media #{$mediaQueryMobile} {
-    display: block;
-  }
-}
+// .displayMobile {
+//   display: none;
+//   @media #{$mediaQueryMobile} {
+//     display: block;
+//   }
+// }
 
-.red {
-  color: red;
-}
+// .red {
+//   color: red;
+// }
 
-.padd_l {
-  padding-left: 7vw !important;
-}
-.padd_r {
-  padding-right: 7vw !important;
-}
+// .padd_l {
+//   padding-left: 7vw !important;
+// }
+// .padd_r {
+//   padding-right: 7vw !important;
+// }
 
-.contentMT {
-  padding-top: var(--desktopContentMT) !important;
-  @media #{$mediaQueryMobile} {
-    padding-top: var(--mobileContentMT) !important;
-  }
-}
+// .contentMT {
+//   padding-top: var(--desktopContentMT) !important;
+//   @media #{$mediaQueryMobile} {
+//     padding-top: var(--mobileContentMT) !important;
+//   }
+// }
 
 //sushi work modal
-.overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 9;
-  background: rgba(0, 0, 0, 0.5);
-}
-.modal {
-  position: fixed;
-  width: 40vw;
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
-  z-index: 5;
-  min-height: auto;
-  @media ($mediaQuery1200) {
-    width: 55vw;
-  }
-}
-.modal__img {
-  width: 100%;
-}
+// .overlay {
+//   position: fixed;
+//   inset: 0;
+//   z-index: 9;
+//   background: rgba(0, 0, 0, 0.5);
+// }
+// .modal {
+//   position: fixed;
+//   width: 40vw;
+//   top: 50%;
+//   left: 50%;
+//   translate: -50% -50%;
+//   z-index: 5;
+//   min-height: auto;
+//   @media ($mediaQuery1200) {
+//     width: 55vw;
+//   }
+// }
+// .modal__img {
+//   width: 100%;
+// }
 
 // Флекс для прижатия футера к нижней части экрана
-.flex-wrapper {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-  justify-content: space-between;
-}
+// .flex-wrapper {
+//   display: flex;
+//   min-height: 100vh;
+//   flex-direction: column;
+//   justify-content: space-between;
+// }
 
 // Грид сетка для основного контента страниц
-.mainContainer__content {
-  display: grid;
-  grid-template: 100% / repeat(4, 1fr);
-}
-.content__gridLeftItem--3fr {
-  grid-column: 1/4;
-  margin: 0 15px;
-  @media #{$mediaQueryMobile} {
-    grid-column: 1/5;
-    // margin: 0 15px;
-    margin: 0 1.5vw;
-  }
-}
-.content__gridRightItem--1fr {
-  grid-column: 4/5;
-  margin-right: 15px;
-}
-.content__gridLeftItem--1fr {
-  grid-column: 1/2;
-  margin: 0 15px;
-}
-.content__gridRightItem--3fr {
-  grid-column: 2/5;
-  margin-right: 15px;
-  @media #{$mediaQueryMobile} {
-    grid-column: 1/5;
-    margin: 0 15px;
-  }
-}
-.content__gridRightItem--full {
-  grid-column: 1/5;
-  height: 90vh;
-  margin: 15px;
-  @media #{$mediaQueryMobile} {
-    grid-column: 1/5;
-    margin: 0 15px;
-  }
-}
+// .mainContainer__content {
+//   display: grid;
+//   grid-template: 100% / repeat(4, 1fr);
+// }
+// .content__gridLeftItem--3fr {
+//   grid-column: 1/4;
+//   margin: 0 15px;
+//   @media #{$mediaQueryMobile} {
+//     grid-column: 1/5;
+//     // margin: 0 15px;
+//     margin: 0 1.5vw;
+//   }
+// }
+// .content__gridRightItem--1fr {
+//   grid-column: 4/5;
+//   margin-right: 15px;
+// }
+// .content__gridLeftItem--1fr {
+//   grid-column: 1/2;
+//   margin: 0 15px;
+// }
+// .content__gridRightItem--3fr {
+//   grid-column: 2/5;
+//   margin-right: 15px;
+//   @media #{$mediaQueryMobile} {
+//     grid-column: 1/5;
+//     margin: 0 15px;
+//   }
+// }
+// .content__gridRightItem--full {
+//   grid-column: 1/5;
+//   height: 90vh;
+//   margin: 15px;
+//   @media #{$mediaQueryMobile} {
+//     grid-column: 1/5;
+//     margin: 0 15px;
+//   }
+// }
 //--------------------------------------
 
-$backImgHeight: 335px;
-$backImgHeight1200: 275px;
-$backImgHeight992: 213px;
-.space {
-  background-image: url('../images/main_image.webp');
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: relative;
-  opacity: 1;
-  height: $backImgHeight;
-  @media ($mediaQuery1200) {
-    height: $backImgHeight1200;
-  }
-  @media ($mediaQuery992) {
-    height: $backImgHeight992;
-  }
-  @media #{$mediaQueryMobile} {
-    display: none;
-  }
-}
-.hidden {
-  display: none;
-}
+// $backImgHeight: 335px;
+// $backImgHeight1200: 275px;
+// $backImgHeight992: 213px;
+// .space {
+//   background-image: url('../images/main_image.webp');
+//   background-size: cover;
+//   background-repeat: no-repeat;
+//   position: relative;
+//   opacity: 1;
+//   height: $backImgHeight;
+//   @media ($mediaQuery1200) {
+//     height: $backImgHeight1200;
+//   }
+//   @media ($mediaQuery992) {
+//     height: $backImgHeight992;
+//   }
+//   @media #{$mediaQueryMobile} {
+//     display: none;
+//   }
+// }
+// .hidden {
+//   display: none;
+// }
 
-.mainContainer {
-  background-size: 100% $backImgHeight + 1, 100%;
-  height: 100%;
-  // overflow: hidden;
-  background-color: var(--mainClr);
-  @media ($mediaQuery1200) {
-    background-size: 100% $backImgHeight1200 + 1, 100%;
-  }
-  @media ($mediaQuery992) {
-    background-size: 110% $backImgHeight992 + 1, 100%;
-  }
-  @media #{$mediaQueryMobile} {
-    background-image: none !important;
-  }
-}
-.mainContainer--default {
-  background-color: #b8b8b8;
-}
+// .mainContainer {
+//   background-size: 100% $backImgHeight + 1, 100%;
+//   height: 100%;
+//   // overflow: hidden;
+//   background-color: var(--mainClr);
+//   @media ($mediaQuery1200) {
+//     background-size: 100% $backImgHeight1200 + 1, 100%;
+//   }
+//   @media ($mediaQuery992) {
+//     background-size: 110% $backImgHeight992 + 1, 100%;
+//   }
+//   @media #{$mediaQueryMobile} {
+//     background-image: none !important;
+//   }
+// }
+// .mainContainer--default {
+//   background-color: #b8b8b8;
+// }
 
-.wrapper {
-  height: 100%;
-  min-height: 85vh;
-  border-top: none !important;
-  border-bottom: none !important;
-  background-color: var(--mainClr);
-  @extend %desktopBorders;
-  @media #{$mediaQueryMobile} {
-    border-width: 0;
-    min-height: 90vh;
-  }
-}
+// .wrapper {
+//   height: 100%;
+//   min-height: 85vh;
+//   border-top: none !important;
+//   border-bottom: none !important;
+//   background-color: var(--mainClr);
+//   @extend %desktopBorders;
+//   @media #{$mediaQueryMobile} {
+//     border-width: 0;
+//     min-height: 90vh;
+//   }
+// }
 
-.fill_button {
-  border-radius: $buttonsBR;
-  transition: all 0.4s;
-  background: none;
-  &:hover {
-    color: var(--mainClr);
-    box-shadow: inset 0 0 1.5em 2em var(--secondaryClr);
-  }
-  // keyboard focus
-  &:focus-visible {
-    color: var(--secondaryClr);
-    box-shadow: 0 0 0 0.25em var(--secondaryClr);
-  }
-  // everything else
-  &:focus:not(:focus-visible) {
-    outline: none;
-  }
-}
+// .fill_button {
+//   border-radius: $buttonsBR;
+//   transition: all 0.4s;
+//   background: none;
+//   &:hover {
+//     color: var(--mainClr);
+//     box-shadow: inset 0 0 1.5em 2em var(--secondaryClr);
+//   }
+//   // keyboard focus
+//   &:focus-visible {
+//     color: var(--secondaryClr);
+//     box-shadow: 0 0 0 0.25em var(--secondaryClr);
+//   }
+//   // everything else
+//   &:focus:not(:focus-visible) {
+//     outline: none;
+//   }
+// }
 
-.embed-responsive {
-  position: relative;
-  border: $border1px;
-  border-radius: $imagesBR;
-  overflow: hidden;
-  margin-bottom: 2%;
-  width: 100%;
-  padding-top: 55%;
-  // @media #{$mediaQuery992} {
-  //   height: 500px;
-  // }
-  @media #{$mediaQueryMobile} {
-    margin-bottom: 3%;
-    // height: 55vw;
-  }
-}
-.embed-responsive .embed-responsive-item,
-.embed-responsive embed,
-.embed-responsive iframe {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-  border-radius: $imagesBR;
-}
-.embed-responsive-16by9 {
-  padding-bottom: 56.25%;
-}
+// .embed-responsive {
+//   position: relative;
+//   border: $border1px;
+//   border-radius: $imagesBR;
+//   overflow: hidden;
+//   margin-bottom: 2%;
+//   width: 100%;
+//   padding-top: 55%;
+//   // @media #{$mediaQuery992} {
+//   //   height: 500px;
+//   // }
+//   @media #{$mediaQueryMobile} {
+//     margin-bottom: 3%;
+//     // height: 55vw;
+//   }
+// }
+// .embed-responsive .embed-responsive-item,
+// .embed-responsive embed,
+// .embed-responsive iframe {
+//   position: absolute;
+//   top: 0;
+//   bottom: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   border: 0;
+//   border-radius: $imagesBR;
+// }
+// .embed-responsive-16by9 {
+//   padding-bottom: 56.25%;
+// }
 
-@media #{$mediaQueryMobile} {
-  .hidden-xs {
-    display: none;
-  }
-  .separatorMobile {
-    height: 1vw;
-    background-color: var(--mobileSeparatorClr);
-    z-index: 200;
-  }
-  .separatorMobile--sticky {
-    position: sticky;
-    top: calc(var(--navbarMobileH768) - 0.1vw);
-    @media (max-width: 544px) {
-      top: calc(var(--navbarMobileH544) - 0.1vw);
-    }
-  }
-  .separatorMobile--index {
-    margin: 0 -15px 0 -15px;
-  }
+// @media #{$mediaQueryMobile} {
+//   .hidden-xs {
+//     display: none;
+//   }
+//   .separatorMobile {
+//     height: 1vw;
+//     background-color: var(--mobileSeparatorClr);
+//     z-index: 200;
+//   }
+//   .separatorMobile--sticky {
+//     position: sticky;
+//     top: calc(var(--navbarMobileH768) - 0.1vw);
+//     @media (max-width: 544px) {
+//       top: calc(var(--navbarMobileH544) - 0.1vw);
+//     }
+//   }
+//   .separatorMobile--index {
+//     margin: 0 -15px 0 -15px;
+//   }
 
-  .sushiWork {
-    margin: 2.5vw 0;
-    position: relative;
-    width: 100%;
-    height: 60vw;
-    border-radius: $imagesBR;
-    border: $border1px;
-    overflow: hidden;
-  }
-  .sushiWork__img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-  }
-}
+//   .sushiWork {
+//     margin: 2.5vw 0;
+//     position: relative;
+//     width: 100%;
+//     height: 60vw;
+//     border-radius: $imagesBR;
+//     border: $border1px;
+//     overflow: hidden;
+//   }
+//   .sushiWork__img {
+//     position: absolute;
+//     width: 100%;
+//     height: 100%;
+//   }
+// }
