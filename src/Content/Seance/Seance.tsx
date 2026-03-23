@@ -6,6 +6,7 @@ import BarSlider from '@/Template/BarSlider';
 import { SushiWork } from '@/Template/SushiWork';
 import { schedule } from '@/Content/Seance/schedule';
 import { OnlineSales } from '@/components/OnlineSales';
+import BarSliderNew from '@/Template/BarSlider/BarSliderNew';
 import { useSeanceState } from '@/REDUX/stateHooks/useSeanceState';
 import { TableContent } from './seanceComponents/TableContent';
 import { CreateSeanceButtons } from './seanceComponents/CreateSeanceButtons';
@@ -96,7 +97,7 @@ const Seance = ({ isMobile }: {
       {isMobile && <SushiWork />}
 
       <div className="separatorMobile separatorMobile--index" />
-      <BarSlider />
+      <BarSliderNew />
     </div>
   );
 };
