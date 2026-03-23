@@ -1,18 +1,20 @@
 import './SCSS/style.scss';
 import './styles/global.css';
+import './styles/sliders.css';
 import { useEffect, useRef } from 'react';
 import { LINKS } from '@/REDUX/cinema/cinemaReducer';
 import Footer from './Template/Footer';
 import Content from './Content/Content';
 import { DesktopAdv } from './Template/Adv';
 import Navigation from './Template/Navigation';
-import FilmsSlider from './Template/FilmsSlider';
-import BottomSlider from './Template/BottomSlider';
 import { modifiedClass, queries } from './helpers';
 import { useMediaQuery } from './hooks/useMediaQuery';
 import { useScrollToTop } from './hooks/useScrollToTop';
 import { useChangeTheme } from './hooks/useChangeTheme';
+import FilmsSlider from './Template/FilmsSlider';
 import { useAppState } from './REDUX/stateHooks/useAppState';
+import BottomSlider from './Template/BottomSlider';
+import * as bottomSliderStyles from './Template/BottomSlider/BottomSlider.css';
 
 const App = () => {
   const {
@@ -81,8 +83,8 @@ const App = () => {
 
           {siteMode === 'default' && (
             <div>
-              <h1 className="bottomSlider__bar">Скоро в кино</h1>
-              <hr className="bottomSlider__border" />
+              <h1 className={bottomSliderStyles.bar}>Скоро в кино</h1>
+              <hr className={bottomSliderStyles.border} />
               <BottomSlider filmsToday={filmsToday || []} isMobile={isMobile} />
             </div>
           )}

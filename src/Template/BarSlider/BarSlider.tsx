@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import { SUSHI_BAR_URL } from '@/utils/constants';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
+import * as s from './BarSlider.css';
 
 // const BarSliderSlide = ({ slideKey }: {
 //   slideKey: string;
@@ -26,14 +27,15 @@ const DeliverySlide = ({ slideKey }: {
 }) => {
   return (
     <SplideSlide key={slideKey}>
-      <div className="imgContainer_16na9">
-        <a href={SUSHI_BAR_URL} rel="noopener noreferrer" target="_blank">
-          <img
-            alt={slideKey}
-            className="imgContainer__img transition"
-            src={`Images/kombo/${slideKey}.webp`}
-          />
-        </a>
+      <div className={s.imgContainer16x9}>
+        <img
+          srcSet={`Images/kombo/${slideKey}_sm.webp 500w,
+                   Images/kombo/${slideKey}_md.webp 680w,
+                   Images/kombo/${slideKey}_lg.webp 1920w`}
+          alt={slideKey}
+          className={`swSlide__img ${s.imgContainerImg}`}
+          src={`Images/kombo/${slideKey}_lg.webp`}
+        />
       </div>
     </SplideSlide>
   );
@@ -58,7 +60,7 @@ const BarSlider = memo(function BarSlider() {
         // interval: 3500,
         // pauseOnHover: true,
       }}
-      className="barSlider"
+      className={s.barSlider}
     >
       {slideKeys.map(key => (
         <DeliverySlide key={key} slideKey={key} />
@@ -66,4 +68,5 @@ const BarSlider = memo(function BarSlider() {
     </Splide>
   );
 });
+
 export default BarSlider;

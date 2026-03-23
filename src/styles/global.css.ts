@@ -59,6 +59,8 @@ globalStyle('html', {
     '--mobileContentMT': '2.5vw',
     '--navbarMobileH768': '8.5vw',
     '--navbarMobileH544': '19vw',
+    '--titleFS': '2.5rem',
+    '--paragraphFS': '1.35rem',
   },
   backgroundColor: 'var(--mainClr)',
   fontSize: 'var(--htmlFontSize)',
@@ -68,6 +70,17 @@ globalStyle('html', {
 globalStyle('html::-webkit-scrollbar', {
   '@media': {
     [breakpoints.mobile]: { display: 'none' },
+  },
+});
+
+globalStyle('html', {
+  '@media': {
+    [breakpoints.w1200]: {
+      vars: { '--titleFS': '2rem', '--paragraphFS': '1.15rem' },
+    },
+    [breakpoints.w992]: {
+      vars: { '--titleFS': '1.6rem', '--paragraphFS': '1rem' },
+    },
   },
 });
 
@@ -250,8 +263,8 @@ globalStyle('.mainContainer--default', {
 globalStyle('.wrapper', {
   height: '100%',
   minHeight: '85vh',
-  borderTop: 'none',
-  borderBottom: 'none',
+  borderTop: 'none !important',
+  borderBottom: 'none !important',
   backgroundColor: 'var(--mainClr)',
   border: 'solid 5px var(--secondaryClr)',
   '@media': {
