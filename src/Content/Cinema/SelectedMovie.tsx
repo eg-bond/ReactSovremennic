@@ -1,7 +1,7 @@
 import { memo } from 'react';
+import { FilmImg } from '@/Template/FilmImg';
 import { SushiWork } from '@/Template/SushiWork';
 import { formatTextWithLineBreaks } from '@/utils/formatTextWithLineBreaks';
-import { FilmImg } from './FilmImg';
 import { DescriptionTrailer } from './DescriptionTrailer';
 import type { FilmItemT } from '@/REDUX/cinema/cinemaReducerT';
 import type { SpecialStateT } from '@/REDUX/special/specialReducerT';
