@@ -14,17 +14,26 @@ const BottomSliderNew = memo<BottomSliderT>(function BottomSliderNew({ isMobile,
   return <Inner filmsToday={filmsToday} />;
 });
 
-// Inner split so hooks are never called conditionally
+// Embla loop requires enough slides to fill viewport twice.
+// With perPage=4, we need at least 8 slides. Duplicate if needed.
+const MIN_LOOP_SLIDES = 8;
+
 const Inner = memo<Pick<BottomSliderT, 'filmsToday'>>(function Inner({ filmsToday }) {
   const [emblaRef] = useEmblaCarousel(
-    { loop: true, slidesToScroll: 1, align: 'start' },
+    { loop: true, slidesToScroll: 1, align: 'start', containScroll: false },
     [Autoplay({ delay: 2000, stopOnMouseEnter: true, stopOnInteraction: false })],
   );
+
+  const slides = filmsToday.length < MIN_LOOP_SLIDES
+    ? Array
+        .from({ length: Math.ceil(MIN_LOOP_SLIDES / filmsToday.length) }, () => filmsToday)
+        .flat()
+    : filmsToday;
 
   return (
     <div className={s.viewport} ref={emblaRef}>
       <div className={s.track}>
-        {filmsToday.map((film, i) => (
+        {slides.map((film, i) => (
           <Slide film={film} key={i + 'BSl'} />
         ))}
       </div>

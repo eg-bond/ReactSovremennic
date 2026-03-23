@@ -13,12 +13,15 @@ export const viewport = style({
 
 export const track = style({
   display: 'flex',
-  gap: '2rem',
+  marginLeft: '-2rem', // compensates first slide's paddingLeft
 });
 
 export const slide = style({
-  flex: '0 0 calc(25% - 1.5rem)',
+  // gap via paddingLeft — Embla loop clones slides with their padding intact
+  flex: '0 0 25%',
   minWidth: 0,
+  paddingLeft: '2rem',
+  boxSizing: 'border-box',
   height: '462px',
   '@media': {
     [breakpoints.w1200]: { height: '380px' },
