@@ -7,13 +7,14 @@ import Footer from './Template/Footer';
 import Content from './Content/Content';
 import { DesktopAdv } from './Template/Adv';
 import Navigation from './Template/Navigation';
+import FilmsSlider from './Template/FilmsSlider';
 import { modifiedClass, queries } from './helpers';
+import BottomSlider from './Template/BottomSlider';
 import { useMediaQuery } from './hooks/useMediaQuery';
 import { useScrollToTop } from './hooks/useScrollToTop';
 import { useChangeTheme } from './hooks/useChangeTheme';
-import FilmsSlider from './Template/FilmsSlider';
 import { useAppState } from './REDUX/stateHooks/useAppState';
-import BottomSlider from './Template/BottomSlider';
+import BottomSliderNew from './Template/BottomSlider/BottomSliderNew';
 import * as bottomSliderStyles from './Template/BottomSlider/BottomSlider.css';
 
 const App = () => {
@@ -85,7 +86,8 @@ const App = () => {
             <div>
               <h1 className={bottomSliderStyles.bar}>Скоро в кино</h1>
               <hr className={bottomSliderStyles.border} />
-              <BottomSlider filmsToday={filmsToday || []} isMobile={isMobile} />
+              <BottomSliderNew filmsToday={filmsToday || []} isMobile={isMobile} />
+              {/* <BottomSlider filmsToday={filmsToday || []} isMobile={isMobile} /> */}
             </div>
           )}
         </div>
