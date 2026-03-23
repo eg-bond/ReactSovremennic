@@ -4,7 +4,7 @@ import { PRE_SHOW_SERVICE } from '@/utils/constants';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { removeLineBreaks } from '@/utils/formatTextWithLineBreaks';
 import { scrollToNavigation } from '../../helpers';
-import { FilmImg } from '../../Content/Cinema/FilmImg';
+import { FilmImg } from '@/Template/FilmImg';
 import type { CinemaStateT } from '../../REDUX/cinema/cinemaReducerT';
 import * as s from './BottomSlider.css';
 

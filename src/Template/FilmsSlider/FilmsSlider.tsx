@@ -1,16 +1,14 @@
 import { memo, useMemo } from 'react';
+import { FilmImg } from '@/Template/FilmImg';
 import { Link, useMatch } from 'react-router-dom';
 import { PRE_SHOW_SERVICE } from '@/utils/constants';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { removeLineBreaks } from '@/utils/formatTextWithLineBreaks';
-import { FilmImg } from '../../Content/Cinema/FilmImg';
 import { useMobilePaddings } from '../useMobilePaddings';
-import { useImagesLoaded } from '../../hooks/useImagesLoaded';
 import type { CinemaStateT } from '../../REDUX/cinema/cinemaReducerT';
 import * as s from './FilmsSlider.css';
 
 const FilmsSlider = memo<FilmSliderT>(function FilmsSlider({ films, isMobile }) {
-  const { onLoad } = useImagesLoaded(films.length || 0);
   useMobilePaddings(isMobile);
   const matchKaraoke = useMatch({ path: 'karaoke' });
 
@@ -31,7 +29,7 @@ const FilmsSlider = memo<FilmSliderT>(function FilmsSlider({ films, isMobile }) 
           className={s.splideWithArrows}
         >
           {films.map((item, i) => (
-            <Slide film={item} key={i + 'FS'} onLoad={onLoad} />
+            <Slide film={item} key={i + 'FS'} />
           ))}
         </Splide>
       </div>
@@ -41,7 +39,7 @@ const FilmsSlider = memo<FilmSliderT>(function FilmsSlider({ films, isMobile }) 
   );
 });
 
-const Slide = memo(function Slide({ film, onLoad }: SlideT) {
+const Slide = memo(function Slide({ film }: SlideT) {
   const title = useMemo(() => {
     const baseTitle = film.pirate
       ? `${film.title} ${PRE_SHOW_SERVICE}`
@@ -58,7 +56,6 @@ const Slide = memo(function Slide({ film, onLoad }: SlideT) {
           link={film.link}
           pirate={film.pirate}
           title={title}
-          onLoad={onLoad}
         />
         <h1 className={s.slideH1}>{title}</h1>
         <p className={s.slideP}>{film.beginDate}</p>
@@ -69,7 +66,6 @@ const Slide = memo(function Slide({ film, onLoad }: SlideT) {
 
 type SlideT = {
   film: CinemaStateT['films'][0];
-  onLoad: () => void;
 };
 type FilmSliderT = {
   films: CinemaStateT['films'];
