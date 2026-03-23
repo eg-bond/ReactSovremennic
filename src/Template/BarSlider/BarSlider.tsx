@@ -1,18 +1,19 @@
 import { memo } from 'react';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
+import * as s from './BarSlider.css';
 
 const BarSliderSlide = ({ slideKey }: {
   slideKey: string;
 }) => {
   return (
     <SplideSlide key={slideKey}>
-      <div className="imgContainer_16na9">
+      <div className={s.imgContainer16x9}>
         <img
           srcSet={`Images/kombo/${slideKey}_sm.webp 500w,
                    Images/kombo/${slideKey}_md.webp 680w,
                    Images/kombo/${slideKey}_lg.webp 1920w`}
           alt={slideKey}
-          className="imgContainer__img transition"
+          className={`swSlide__img ${s.imgContainerImg}`}
           src={`Images/kombo/${slideKey}_lg.webp`}
         />
       </div>
@@ -36,7 +37,7 @@ const BarSlider = memo(function BarSlider() {
         interval: 3500,
         pauseOnHover: true,
       }}
-      className="barSlider"
+      className={s.barSlider}
     >
       {slideKeys.map(key => (
         <BarSliderSlide key={key} slideKey={key} />
@@ -44,4 +45,5 @@ const BarSlider = memo(function BarSlider() {
     </Splide>
   );
 });
+
 export default BarSlider;

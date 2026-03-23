@@ -1,6 +1,5 @@
 import { style } from '@vanilla-extract/css';
 import { vars, breakpoints } from '@/styles/theme.css';
-import { desktopParagraphsFS } from '@/styles/mixins.css';
 
 export const footer = style({
   textAlign: 'center',
@@ -17,14 +16,15 @@ export const footerContent = style({
   padding: '0 1rem',
 });
 
-export const footerLink = style([desktopParagraphsFS, {
-  'color': 'var(--mainClr)',
+export const footerLink = style({
+  color: 'var(--mainClr)',
+  fontSize: 'var(--paragraphFS)',
   ':hover': { textDecoration: 'underline' },
   ':focus': { textDecoration: 'underline' },
   '@media': {
     [breakpoints.mobile]: { fontSize: vars.fontSize.mobileParagraphs },
   },
-}]);
+});
 
 export const footerSocial = style({
   display: 'flex',

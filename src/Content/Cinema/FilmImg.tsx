@@ -29,7 +29,11 @@ export const FilmImg = ({
       className={`selectedMovie__image ${!imgLoaded ? 'skeleton' : ''} ${
         containerClassName || ''
       }`}
-      style={{ position: 'relative', borderRadius: rounded ? undefined : 0 }}
+      style={{
+        position: 'relative',
+        borderRadius: rounded ? '10px' : 0,
+        overflow: 'hidden',
+      }}
     >
       <img
         alt={title}

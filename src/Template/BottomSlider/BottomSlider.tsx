@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import { PRE_SHOW_SERVICE } from '@/utils/constants';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { removeLineBreaks } from '@/utils/formatTextWithLineBreaks';
-import { scrollToNavigation } from '../helpers';
-import { FilmImg } from '../Content/Cinema/FilmImg';
-import type { CinemaStateT } from '../REDUX/cinema/cinemaReducerT';
+import { scrollToNavigation } from '../../helpers';
+import { FilmImg } from '../../Content/Cinema/FilmImg';
+import type { CinemaStateT } from '../../REDUX/cinema/cinemaReducerT';
+import * as s from './BottomSlider.css';
 
 const BottomSlider = memo<BottomSliderT>(function BottomSliderN({ isMobile, filmsToday }) {
   if (isMobile || filmsToday[0] === undefined) {
@@ -26,7 +27,7 @@ const BottomSlider = memo<BottomSliderT>(function BottomSliderN({ isMobile, film
         pauseOnHover: true,
         pauseOnFocus: true,
       }}
-      className="bottomSlider"
+      className={s.bottomSlider}
     >
       {filmsToday.map((item, i) => (
         <Slide film={item} key={i + 'BSl'} />
@@ -41,12 +42,10 @@ const Slide = memo(function Slide({ film }: SlideT) {
       ? `${film.title} ${PRE_SHOW_SERVICE}`
       : film.title;
     return removeLineBreaks(baseTitle);
-  },
-  [film.title, film.pirate],
-  );
+  }, [film.title, film.pirate]);
 
   return (
-    <SplideSlide className="swSlide bottomSlider__slide">
+    <SplideSlide className={`swSlide ${s.slide}`}>
       <Link
         className="swSlide__a"
         to={`/movies/${film.link}`}
@@ -54,14 +53,14 @@ const Slide = memo(function Slide({ film }: SlideT) {
       >
         <FilmImg
           age={film.age}
-          containerClassName="bottomSlider__imgCont skeleton-Gray"
+          containerClassName={`${s.imgCont} skeleton-Gray`}
           link={film.link}
           pirate={film.pirate}
           rounded={false}
           title={title}
         />
-        <h1 className="swSlide__h1">{title}</h1>
-        <p className="swSlide__p">{film.kind.split(', ')[0]}</p>
+        <h1 className={s.slideH1}>{title}</h1>
+        <p className={s.slideP}>{film.kind.split(', ')[0]}</p>
       </Link>
     </SplideSlide>
   );
@@ -70,10 +69,9 @@ const Slide = memo(function Slide({ film }: SlideT) {
 type SlideT = {
   film: CinemaStateT['films'][0];
 };
-
-export default BottomSlider;
-
 type BottomSliderT = {
   filmsToday: CinemaStateT['filmsToday'];
   isMobile: boolean;
 };
+
+export default BottomSlider;
