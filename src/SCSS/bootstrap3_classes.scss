@@ -49,5 +49,7 @@ h6 {
   // это нужно, чтобы в мобильной версии при ширине экрана > 768 элементы растягивались на всю ширину
   @media #{$mediaQueryMobile} {
     width: auto;
+    margin-right: 0;
+    margin-left: 0;
   }
 }
