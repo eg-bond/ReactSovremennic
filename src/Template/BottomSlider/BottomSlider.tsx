@@ -1,10 +1,10 @@
 import { memo, useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import { FilmImg } from '@/Template/FilmImg';
 import { PRE_SHOW_SERVICE } from '@/utils/constants';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { removeLineBreaks } from '@/utils/formatTextWithLineBreaks';
 import { scrollToNavigation } from '../../helpers';
-import { FilmImg } from '@/Template/FilmImg';
 import type { CinemaStateT } from '../../REDUX/cinema/cinemaReducerT';
 import * as s from './BottomSlider.css';
 
