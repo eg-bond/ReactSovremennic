@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import { MobileAdv } from '@/Template/Adv';
 import { useEffect, useState } from 'react';
+import BarSlider from '@/Template/BarSlider';
 // import BarSlider from '@/Template/BarSlider';
 import { SushiWork } from '@/Template/SushiWork';
 import { schedule } from '@/Content/Seance/schedule';
@@ -94,8 +95,8 @@ const Seance = ({ isMobile }: {
       <div className="separatorMobile separatorMobile--index" />
       {isMobile && <SushiWork />}
 
-      {/* <div className="separatorMobile separatorMobile--index" />
-      <BarSlider /> */}
+      <div className="separatorMobile separatorMobile--index" />
+      <BarSlider />
     </div>
   );
 };
