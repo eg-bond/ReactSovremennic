@@ -55,7 +55,7 @@ export default tseslint.config(
         blockSpacing: true,
         braceStyle: '1tbs',
         commaDangle: 'always-multiline',
-        quoteProps: 'consistent-as-needed',
+        quoteProps: 'as-needed',
       }),
       js.configs.recommended,
       ...tseslint.configs.recommended,

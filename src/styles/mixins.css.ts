@@ -19,7 +19,7 @@ export const imgContainer = style({
 
 // Analogue of %desktopTitlesFS
 export const desktopTitlesFS = style({
-  'fontSize': vars.fontSize.desktopTitle,
+  fontSize: vars.fontSize.desktopTitle,
   '@media': {
     [breakpoints.w1200]: { fontSize: '2rem' },
     [breakpoints.w992]: { fontSize: '1.6rem' },
@@ -28,7 +28,7 @@ export const desktopTitlesFS = style({
 
 // Analogue of %desktopParagraphsFS
 export const desktopParagraphsFS = style({
-  'fontSize': vars.fontSize.desktopParagraph,
+  fontSize: vars.fontSize.desktopParagraph,
   '@media': {
     [breakpoints.w1200]: { fontSize: '1.15rem' },
     [breakpoints.w992]: { fontSize: '1rem' },
@@ -37,7 +37,7 @@ export const desktopParagraphsFS = style({
 
 // Analogue of %desktopBorders
 export const desktopBorders = style({
-  'border': 'solid 5px var(--secondaryClr)',
+  border: 'solid 5px var(--secondaryClr)',
   '@media': {
     [breakpoints.w992]: { border: 'solid 3px var(--secondaryClr)' },
   },
