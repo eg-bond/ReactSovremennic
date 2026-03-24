@@ -1,8 +1,8 @@
 import { memo } from 'react';
-import { modifiedClass } from '../../../helpers';
-import type { ChangeTableContentT } from '../Seance';
-import type { SeanceStateT } from '../../../REDUX/seance/seanceReducerT';
-import type { SpecialStateT } from '../../../REDUX/special/specialReducerT';
+import * as s from './CreateSeanceButtons.css.ts';
+import type { ChangeTableContentT } from '../../Seance.tsx';
+import type { SeanceStateT } from '../../../../REDUX/seance/seanceReducerT';
+import type { SpecialStateT } from '../../../../REDUX/special/specialReducerT';
 
 export const CreateSeanceButtons = memo<CSB_T>(function CreateSeanceButtons({
   datesArr,
@@ -10,8 +10,9 @@ export const CreateSeanceButtons = memo<CSB_T>(function CreateSeanceButtons({
   changeTableContent,
   siteMode,
 }) {
+  const modeClass = siteMode === 'special' ? s.seanceButtonsSpecial : s.seanceButtonsDefault;
   return (
-    <div className={modifiedClass('seanse__buttons', siteMode)}>
+    <div className={`${s.seanceButtons} ${modeClass}`}>
       {datesArr.map(d =>
         desktopBtn(d, activeScheduleItemKey, changeTableContent),
       )}
@@ -31,7 +32,7 @@ function desktopBtn(
       }`}
       key={d[0] + 'desc'}
       onClick={() => {
-        changeTableContent(d[0], `${d[1]} ${d[2]}`);
+        changeTableContent(d[0]);
       }}
     >
       <span>{d[1]}</span>
