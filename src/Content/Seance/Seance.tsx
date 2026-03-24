@@ -1,8 +1,8 @@
 import { useCallback } from 'react';
-import { MobileAdv } from '@/Template/Adv';
 import { useEffect, useState } from 'react';
-import { SushiWork } from '@/Template/SushiWork';
-import { BarSlider } from '@/Template/BarSlider';
+import { MobileAdv } from '@/components/Adv';
+import { SushiWork } from '@/components/SushiWork';
+import { BarSlider } from '@/components/BarSlider';
 import { schedule } from '@/Content/Seance/schedule';
 import { OnlineSales } from '@/components/OnlineSales';
 import { useSeanceState } from '@/REDUX/stateHooks/useSeanceState';

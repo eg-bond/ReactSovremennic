@@ -3,16 +3,16 @@ import './styles/global.css';
 import './styles/sliders.css';
 import { useEffect, useRef } from 'react';
 import { LINKS } from '@/REDUX/cinema/cinemaReducer';
-import Footer from './Template/Footer';
 import Content from './Content/Content';
-import { DesktopAdv } from './Template/Adv';
+import Footer from './components/Footer';
+import { DesktopAdv } from './components/Adv';
 import { modifiedClass, queries } from './helpers';
-import { Navigation } from './Template/Navigation';
-import { FilmsSlider } from './Template/FilmsSlider';
+import { Navigation } from './components/Navigation';
 import { useMediaQuery } from './hooks/useMediaQuery';
-import { BottomSlider } from './Template/BottomSlider';
+import { FilmsSlider } from './components/FilmsSlider';
 import { useScrollToTop } from './hooks/useScrollToTop';
 import { useChangeTheme } from './hooks/useChangeTheme';
+import { BottomSlider } from './components/BottomSlider';
 import { useAppState } from './REDUX/stateHooks/useAppState';
 
 const App = () => {

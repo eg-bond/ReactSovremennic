@@ -1,4 +1,4 @@
-import { FilmImg } from '@/Template/FilmImg';
+import { FilmImg } from '@/components/FilmImg';
 import { Link, useMatch } from 'react-router-dom';
 import { memo, useMemo, useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
