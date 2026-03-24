@@ -1,10 +1,11 @@
-import { FontButtons } from './SpecialSettingsComponents/FontButtons';
-import { ImgSwitcher } from './SpecialSettingsComponents/ImgSwitcher';
-import { useSpecialState } from '../REDUX/stateHooks/useSpecialState';
-import { ThemeButtons } from './SpecialSettingsComponents/ThemeButtons';
-import { SiteModeButton } from './SpecialSettingsComponents/SiteModeButton';
+import { FontButtons } from './FontButtons';
+import { ImgSwitcher } from './ImgSwitcher';
+import { ThemeButtons } from './ThemeButtons';
+import * as s from './SpecialSettings.css.ts';
+import { SiteModeButton } from './SiteModeButton';
+import { useSpecialState } from '../../REDUX/stateHooks/useSpecialState';
 
-function SpecialSettings() {
+export const SpecialSettings = () => {
   const {
     siteMode,
     imgHidden,
@@ -16,30 +17,25 @@ function SpecialSettings() {
 
   if (siteMode === 'default') {
     return (
-      <div className="space">
+      <div className={`space ${s.spaceButtonWrapper}`}>
         <SiteModeButton siteMode={siteMode} switchSiteMode={switchSiteMode} />
       </div>
     );
   }
 
   return (
-    <div className="specialSettings__container">
-      <div className="specialSettings__flex">
+    <div className={s.container}>
+      <div className={s.flex}>
         <ThemeButtons switchSiteTheme={switchSiteTheme} />
-
         <FontButtons switchFontSize={switchFontSize} />
-
         <ImgSwitcher
           imgHidden={imgHidden}
           switchImagesVisibility={switchImagesVisibility}
         />
-
-        <div className="specialSettings__flex__item specialSettings__flex__modeButton">
+        <div className={`${s.flexItem} ${s.flexItemModeButton}`}>
           <SiteModeButton siteMode={siteMode} switchSiteMode={switchSiteMode} />
         </div>
       </div>
     </div>
   );
-}
-
-export default SpecialSettings;
+};

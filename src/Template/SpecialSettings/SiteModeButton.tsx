@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import { scrollToTop } from '../../helpers';
+import * as s from './SpecialSettings.css.ts';
 import type { SpecialStateT } from '../../REDUX/special/specialReducerT';
 
 const SiteModeButtonComp = ({ siteMode, switchSiteMode }: {
@@ -10,7 +11,7 @@ const SiteModeButtonComp = ({ siteMode, switchSiteMode }: {
 
   return (
     <button
-      className="specialSettings__modeButton"
+      className={s.modeButton}
       onClick={() => {
         switchSiteMode(modeToDispatch);
         scrollToTop();
