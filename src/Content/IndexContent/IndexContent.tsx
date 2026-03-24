@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { MobileAdv } from '@/components/Adv';
 import { CINEMA_PHONE } from '@/utils/constants';
 import { convertVideoId } from '@/utils/convertVideoId';
+import * as s from './IndexContent.css.ts';
 import { useAppSelector } from '../../REDUX/store';
 import { SushiWork } from '../../components/SushiWork';
 
@@ -36,7 +37,7 @@ function IndexContent({ isMobile }: {
       <div className="separatorMobile separatorMobile--index" />
 
       <div className="news">
-        <h1 className={siteMode === 'special' ? 'index__h1--special' : ''}>
+        <h1 className={siteMode === 'special' ? s.h1Special : ''}>
           Информация
         </h1>
 
@@ -77,9 +78,6 @@ function IndexContent({ isMobile }: {
           осуществляется только от трех человек.
         </p>
       </div>
-
-      <div className="separatorMobile separatorMobile--index" />
-      <BarSlider />
 
       <div className="separatorMobile separatorMobile--index" />
       {isMobile && <MobileAdv />}
