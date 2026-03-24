@@ -1,7 +1,7 @@
 import { Suspense, lazy, memo } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import About from './About/About';
-import Rules from './Rules/Rules';
+import About from './InfoPages/About';
+import Rules from './InfoPages/Rules';
 import Seance from './Seance/Seance';
 import Redirect from '../components/Redirect';
 import IndexContent from './IndexContent/IndexContent';

@@ -1,6 +1,8 @@
+import * as s from './InfoPages.css.ts';
+
 function Rules() {
   return (
-    <div className="content__gridLeftItem--3fr contentMT rules">
+    <div className={`content__gridLeftItem--3fr contentMT ${s.rules}`}>
       <h3>Правила Кинотеатра «Современник»</h3>
       <p>
         Настоящие правила разработаны в соответствии с Законом РФ «О защите прав
