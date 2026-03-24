@@ -1,4 +1,4 @@
-import { globalStyle } from '@vanilla-extract/css';
+import { globalStyle, keyframes } from '@vanilla-extract/css';
 import { breakpoints } from './theme.css';
 
 // ─── bootstrap3_classes.scss ────────────────────────────────────────────────
@@ -383,4 +383,26 @@ globalStyle('.sushiWork__img', {
       height: '100%',
     },
   },
+});
+
+// ─── skeletons.scss ──────────────────────────────────────────────────────────
+
+const shine = keyframes({
+  to: { backgroundPosition: 'right -80px top 0' },
+});
+
+globalStyle('.skeleton', {
+  backgroundImage: 'linear-gradient(90deg, rgba(255,255,255,0), rgb(94 92 92 / 50%), rgba(255,255,255,0))',
+  backgroundSize: '80px 100%',
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: 'left -80px top 0',
+  animation: `${shine} 1s ease infinite`,
+});
+
+globalStyle('.skeleton-Black', {
+  backgroundColor: '#000000',
+});
+
+globalStyle('.skeleton-Gray', {
+  backgroundColor: '#2d2d2d',
 });
