@@ -1,56 +1,59 @@
 import { memo, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { FilmImg } from '@/Template/FilmImg';
+import Autoplay from 'embla-carousel-autoplay';
+import useEmblaCarousel from 'embla-carousel-react';
 import { PRE_SHOW_SERVICE } from '@/utils/constants';
-import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { removeLineBreaks } from '@/utils/formatTextWithLineBreaks';
 import { scrollToNavigation } from '../../helpers';
 import type { CinemaStateT } from '../../REDUX/cinema/cinemaReducerT';
 import * as s from './BottomSlider.css';
 
-const BottomSlider = memo<BottomSliderT>(function BottomSliderN({ isMobile, filmsToday }) {
-  if (isMobile || filmsToday[0] === undefined) {
-    return null;
-  }
+export const BottomSlider = memo<BottomSliderT>(function BottomSlider({ isMobile, filmsToday }) {
+  if (isMobile || filmsToday[0] === undefined) return null;
+  return <Inner filmsToday={filmsToday} />;
+});
+
+// Embla loop requires enough slides to fill viewport twice.
+// With perPage=4, we need at least 8 slides. Duplicate if needed.
+const MIN_LOOP_SLIDES = 8;
+
+const Inner = memo<Pick<BottomSliderT, 'filmsToday'>>(function Inner({ filmsToday }) {
+  const [emblaRef] = useEmblaCarousel(
+    { loop: true, slidesToScroll: 1, align: 'start', containScroll: false, dragFree: true },
+    [Autoplay({ delay: 2000, stopOnMouseEnter: true, stopOnInteraction: false })],
+  );
+
+  const slides = filmsToday.length < MIN_LOOP_SLIDES
+    ? Array
+        .from({ length: Math.ceil(MIN_LOOP_SLIDES / filmsToday.length) }, () => filmsToday)
+        .flat()
+    : filmsToday;
 
   return (
-    <Splide
-      options={{
-        perPage: 4,
-        perMove: 1,
-        pagination: false,
-        gap: '2rem',
-        arrows: false,
-        type: 'loop',
-        autoplay: true,
-        interval: 2000,
-        pauseOnHover: true,
-        pauseOnFocus: true,
-      }}
-      className={s.bottomSlider}
-    >
-      {filmsToday.map((item, i) => (
-        <Slide film={item} key={i + 'BSl'} />
-      ))}
-    </Splide>
+    <div>
+      <h1 className={s.bar}>Скоро в кино</h1>
+      <hr className={s.border} />
+      <div className={s.viewport} ref={emblaRef}>
+        <div className={s.track}>
+          {slides.map((film, i) => (
+            <Slide film={film} key={i + 'BSl'} />
+          ))}
+        </div>
+      </div>
+    </div>
   );
 });
 
 const Slide = memo(function Slide({ film }: SlideT) {
   const title = useMemo(() => {
-    const baseTitle = film.pirate
-      ? `${film.title} ${PRE_SHOW_SERVICE}`
-      : film.title;
-    return removeLineBreaks(baseTitle);
+    const base = film.pirate ? `${film.title} ${PRE_SHOW_SERVICE}` : film.title;
+    return removeLineBreaks(base);
   }, [film.title, film.pirate]);
 
   return (
-    <SplideSlide className={`swSlide ${s.slide}`}>
-      <Link
-        className="swSlide__a"
-        to={`/movies/${film.link}`}
-        onClick={scrollToNavigation}
-      >
+    <div className={`swSlide ${s.slide}`}>
+      <Link className="swSlide__a" to={`/movies/${film.link}`} onClick={scrollToNavigation}>
         <FilmImg
           age={film.age}
           containerClassName={`${s.imgCont} skeleton-Gray`}
@@ -62,7 +65,7 @@ const Slide = memo(function Slide({ film }: SlideT) {
         <h1 className={s.slideH1}>{title}</h1>
         <p className={s.slideP}>{film.kind.split(', ')[0]}</p>
       </Link>
-    </SplideSlide>
+    </div>
   );
 });
 
@@ -70,8 +73,5 @@ type SlideT = {
   film: CinemaStateT['films'][0];
 };
 type BottomSliderT = {
-  filmsToday: CinemaStateT['filmsToday'];
-  isMobile: boolean;
+  filmsToday: CinemaStateT['filmsToday']; isMobile: boolean;
 };
-
-export default BottomSlider;

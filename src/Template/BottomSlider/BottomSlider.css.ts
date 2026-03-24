@@ -18,7 +18,8 @@ export const border = style({
   },
 });
 
-export const bottomSlider = style({
+export const viewport = style({
+  overflow: 'hidden',
   minHeight: '462px',
   '@media': {
     [breakpoints.w1200]: { minHeight: '380px' },
@@ -27,7 +28,17 @@ export const bottomSlider = style({
   },
 });
 
+export const track = style({
+  display: 'flex',
+  marginLeft: '-2rem', // compensates first slide's paddingLeft
+});
+
 export const slide = style({
+  // gap via paddingLeft — Embla loop clones slides with their padding intact
+  flex: '0 0 25%',
+  minWidth: 0,
+  paddingLeft: '2rem',
+  boxSizing: 'border-box',
   height: '462px',
   '@media': {
     [breakpoints.w1200]: { height: '380px' },
