@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import styles from './Modal.module.css';
+import * as s from './Modal.css.ts';
 
 export interface IModalImage {
   alt: string;
@@ -24,14 +24,14 @@ export const Modal = ({ image, onClose }: {
     <div
       aria-label={`Image preview: ${image.alt}`}
       aria-modal="true"
-      className={styles.modalOverlay}
+      className={s.modalOverlay}
       role="dialog"
       onClick={onClose}
     >
-      <div className={styles.modalContent}>
+      <div className={s.modalContent}>
         <img
           alt={image.alt}
-          className={styles.modalImage}
+          className={s.modalImage}
           src={image.src}
         />
       </div>
