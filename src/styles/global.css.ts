@@ -3,17 +3,17 @@ import { breakpoints } from './theme.css';
 
 // ─── fonts.scss ──────────────────────────────────────────────────────────────
 
-// Using Google Fonts Jost instead of local files
-globalFontFace('Jost', {
+// Using local font files
+globalFontFace('JostRegular', {
   fontStyle: 'normal',
   fontWeight: '400',
-  src: 'url(\'https://fonts.gstatic.com/s/jost/v9/92zPtBhPNqw7Ycj9d_xF6dCf.woff2\') format(\'woff2\')',
+  src: 'url(\'./fonts/Jost-Regular.woff2\') format(\'woff2\')',
 });
 
-globalFontFace('Jost', {
+globalFontFace('JostSemiBold', {
   fontStyle: 'normal',
   fontWeight: '600',
-  src: 'url(\'https://fonts.gstatic.com/s/jost/v9/92zPtBhPNqw7Ycj9d_xF6dCf.woff2\') format(\'woff2\')',
+  src: 'url(\'./fonts/Jost-SemiBold.woff2\') format(\'woff2\')',
 });
 
 globalStyle('*, :after, :before', {
@@ -58,7 +58,7 @@ globalStyle('.container', {
 globalStyle('*', {
   margin: 0,
   padding: 0,
-  fontFamily: 'Jost, sans-serif',
+  fontFamily: 'JostRegular, JostSemiBold, sans-serif',
 });
 
 globalStyle('html', {
