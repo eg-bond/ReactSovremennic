@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import type { SpecialDispatchesT } from '../../REDUX/special/specialReducerT';
+import type { SpecialDispatchesT } from '@/REDUX/special/specialReducerT';
 import * as s from './SpecialSettings.css.ts';
 
 const ImgSwitcherComp = ({ imgHidden, switchImagesVisibility }: {

@@ -1,5 +1,5 @@
-import { useKaraokeDB } from '../../hooks/useKaraokeDB';
-import { useInfiniteScroll } from '../../hooks/useInfiniteScroll';
+import { useKaraokeDB } from '@/hooks/useKaraokeDB';
+import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
 import * as s from './Karaoke.css.ts';
 
 export default function Karaoke() {

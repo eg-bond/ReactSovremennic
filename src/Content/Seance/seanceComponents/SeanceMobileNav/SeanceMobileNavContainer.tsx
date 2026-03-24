@@ -1,12 +1,12 @@
 import { useMotionValue } from 'framer-motion';
 import { useRef, useState, useCallback } from 'react';
+import { useWindowWidth } from '@/hooks/useWindowWidth';
 import SeanceMobileNav from './SeanceMobileNav';
-import { useWindowWidth } from '../../../../hooks/useWindowWidth';
-import type { ChangeTableContentT } from '../../Seance';
+import type { ChangeTableContentT } from '@/Content/Seance/Seance';
 import type {
   DateKeysT,
   SeanceStateT,
-} from '../../../../REDUX/seance/seanceReducerT';
+} from '@/REDUX/seance/seanceReducerT';
 
 export const SeanceMobileNavContainer = ({
   activeScheduleItemKey,

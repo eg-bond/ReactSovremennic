@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { karaokeDB, KaraokeSong } from '../utils/karaokeDB';
+import { karaokeDB, KaraokeSong } from '@/utils/karaokeDB';
 
 const LIMIT = 50;
 const DEBOUNCE_DELAY = 500;

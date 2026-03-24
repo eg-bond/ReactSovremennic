@@ -1,6 +1,6 @@
 import { AdvSlider } from '@/components/AdvSlider';
 import { LottenSlide, SushiSlide } from '@/components/AdvSlider/Slides';
-import { SushiWorkModal } from '../SushiWork';
+import { SushiWorkModal } from '@/components/SushiWork';
 import * as s from './Adv.css';
 
 const FIRST_SLIDER_SLIDES = [SushiSlide];

@@ -1,8 +1,8 @@
 import { screen } from '@testing-library/react';
 import IndexContent from './IndexContent';
-import { renderWithRouterAndRedux } from '../../App.test';
-import '../../SCSS/style.scss';
-vitest.mock('../../Template/BarSlider');
+import { renderWithRouterAndRedux } from '@/App.test';
+import '@/SCSS/style.scss';
+vitest.mock('@/components/BarSlider');
 
 describe('Index page tests', () => {
   it('Has Information title:', () => {

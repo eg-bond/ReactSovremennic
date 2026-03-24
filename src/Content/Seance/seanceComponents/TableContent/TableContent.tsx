@@ -1,7 +1,7 @@
 import { memo } from 'react';
+import { schedule } from '@/Content/Seance/schedule.ts';
 import * as s from './TableContent.css.ts';
-import { schedule } from '../../schedule.ts';
-import type { SeanceStateT } from '../../../../REDUX/seance/seanceReducerT';
+import type { SeanceStateT } from '@/REDUX/seance/seanceReducerT';
 
 export const TableContent = memo<TableContentT>(
   function TableContent({ activeScheduleItemKey, tableVisible }) {

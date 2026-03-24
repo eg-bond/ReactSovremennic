@@ -1,13 +1,13 @@
 import { act, fireEvent, screen } from '@testing-library/react';
 import Seance from './Seance';
 import schedule from './schedule';
-import { delay, reg } from '../../helpers';
-import { trDuration } from '../Sushi/sushiHelpers';
-import { renderWithRouterAndRedux } from '../../App.test';
-import { matchMediaMock } from '../../test/matchMediaMock';
-import { setTodayScheduleItem_AC } from '../../REDUX/seance/seanceReducer';
-import type { SeanceStateT } from '../../REDUX/seance/seanceReducerT';
-vitest.mock('../../Template/BarSlider');
+import { delay, reg } from '@/helpers';
+import { trDuration } from '@/Content/Sushi/sushiHelpers';
+import { renderWithRouterAndRedux } from '@/App.test';
+import { matchMediaMock } from '@/test/matchMediaMock';
+import { setTodayScheduleItem_AC } from '@/REDUX/seance/seanceReducer';
+import type { SeanceStateT } from '@/REDUX/seance/seanceReducerT';
+vitest.mock('@/components/BarSlider');
 
 describe('Seance tests:', () => {
   const imgChanging = () => delay(trDuration);
