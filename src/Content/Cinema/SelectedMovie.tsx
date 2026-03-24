@@ -1,6 +1,6 @@
 import { memo } from 'react';
-import { FilmImg } from '@/Template/FilmImg';
-import { SushiWork } from '@/Template/SushiWork';
+import { FilmImg } from '@/components/FilmImg';
+import { SushiWork } from '@/components/SushiWork';
 import { formatTextWithLineBreaks } from '@/utils/formatTextWithLineBreaks';
 import { DescriptionTrailer } from './DescriptionTrailer';
 import type { FilmItemT } from '@/REDUX/cinema/cinemaReducerT';

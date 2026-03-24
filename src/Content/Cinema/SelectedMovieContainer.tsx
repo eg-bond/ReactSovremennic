@@ -1,5 +1,5 @@
 import { useParams } from 'react-router';
-import Redirect from '@/Template/Redirect';
+import Redirect from '@/components/Redirect';
 import { memo, useCallback, useEffect } from 'react';
 import SelectedMovie from './SelectedMovie';
 import { useAppDispatch, useAppSelector } from '../../REDUX/store';

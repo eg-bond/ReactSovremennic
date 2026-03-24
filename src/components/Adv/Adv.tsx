@@ -1,5 +1,5 @@
-import { AdvSlider } from '@/Template/AdvSlider';
-import { LottenSlide, SushiSlide } from '@/Template/AdvSlider/Slides';
+import { AdvSlider } from '@/components/AdvSlider';
+import { LottenSlide, SushiSlide } from '@/components/AdvSlider/Slides';
 import { SushiWorkModal } from '../SushiWork';
 import * as s from './Adv.css';
 

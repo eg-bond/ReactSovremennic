@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { SUSHI_BAR_URL } from '@/utils/constants';
-import { SpecialSettings } from '@/Template/SpecialSettings';
+import { SpecialSettings } from '@/components/SpecialSettings/index.ts';
 import * as s from './Navigation.css.ts';
 import type { SpecialStateT } from '@/REDUX/special/specialReducerT';
 

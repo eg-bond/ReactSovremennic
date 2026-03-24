@@ -1,6 +1,6 @@
 import { memo, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { FilmImg } from '@/Template/FilmImg';
+import { FilmImg } from '@/components/FilmImg';
 import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel from 'embla-carousel-react';
 import { PRE_SHOW_SERVICE } from '@/utils/constants';
