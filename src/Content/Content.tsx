@@ -1,9 +1,10 @@
 import { Suspense, lazy, memo } from 'react';
+import Redirect from '@/components/Redirect';
 import { Routes, Route } from 'react-router-dom';
 import Seance from './Seance/Seance';
+import * as s from './Content.css.ts';
 import About from './InfoPages/About';
 import Rules from './InfoPages/Rules';
-import Redirect from '@/components/Redirect';
 import { SelectedMovie } from './SelectedMovie';
 import IndexContent from './IndexContent/IndexContent';
 const Karaoke = lazy(() => import('./Karaoke'));
@@ -14,7 +15,7 @@ const Content = memo<{
   return (
     <Suspense
       fallback={
-        <div className="content__gridRightItem--full">{/* preloader?? */}</div>
+        <div className={s.suspenseFallback}>{/* preloader?? */}</div>
       }
     >
       <Routes>

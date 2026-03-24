@@ -1,10 +1,11 @@
 import './styles/global.css';
 import { useEffect, useRef } from 'react';
 import { LINKS } from '@/REDUX/cinema/cinemaReducer';
+import * as s from './App.css.ts';
+import { queries } from './helpers';
 import Content from './Content/Content';
 import Footer from './components/Footer';
 import { DesktopAdv } from './components/Adv';
-import { modifiedClass, queries } from './helpers';
 import { Navigation } from './components/Navigation';
 import { useMediaQuery } from './hooks/useMediaQuery';
 import { FilmsSlider } from './components/FilmsSlider';
@@ -55,13 +56,14 @@ const App = () => {
   const anchorRef = useRef(null);
   useScrollToTop(contentRef, anchorRef);
 
-  const mainContainerClasses = [
-    modifiedClass('mainContainer', siteMode),
-    'flex-wrapper',
+  const mainContainerClass = [
+    s.mainContainer,
+    siteMode === 'default' ? s.mainContainerDefault : '',
+    s.flexWrapper,
   ].join(' ');
 
   return (
-    <div className={mainContainerClasses}>
+    <div className={mainContainerClass}>
       <div>
         <Navigation fontSize={fontSize} siteMode={siteMode} theme={theme} />
 
@@ -70,10 +72,10 @@ const App = () => {
           ref={anchorRef}
         />
 
-        <div className={`container wrapper ${imgHidden ? 'hideImages' : ''}`}>
+        <div className={`container ${s.wrapper} ${imgHidden ? 'hideImages' : ''}`}>
           <FilmsSlider films={films} isMobile={isMobile} />
 
-          <div className="mainContainer__content" ref={contentRef}>
+          <div className={s.mainContainerContent} ref={contentRef}>
             <Content isMobile={isMobile} />
             {!isMobile && <DesktopAdv />}
           </div>
