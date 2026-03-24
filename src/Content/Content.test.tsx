@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { fireEvent, screen } from '@testing-library/react';
 import Content from './Content';
-import Navigation from '../Template/Navigation';
+import Navigation from '../Template/Navigation/Navigation';
 import { filmsArray } from '../REDUX/filmsArray';
 import { renderWithRouterAndRedux } from '../App.test';
 import { matchMediaMock } from '../test/matchMediaMock';
