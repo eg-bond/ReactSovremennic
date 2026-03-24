@@ -1,9 +1,9 @@
-export const OnlineSales = () => {
-  return (
-    <div>
-      <button className="salesBtn" data-action="open-widget">
-        Купить билеты
-      </button>
-    </div>
-  );
-};
+import * as s from './OnlineSales.css.ts';
+
+export const OnlineSales = () => (
+  <div>
+    <button className={s.salesBtn} data-action="open-widget">
+      Купить билеты
+    </button>
+  </div>
+);
