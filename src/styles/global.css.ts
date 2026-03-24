@@ -1,9 +1,8 @@
 import { globalFontFace, globalStyle, keyframes } from '@vanilla-extract/css';
 import { breakpoints } from './theme.css';
 
-// ─── fonts.scss ──────────────────────────────────────────────────────────────
+// ─── Fonts ──────────────────────────────────────────────────────────────────
 
-// Using local font files
 globalFontFace('JostRegular', {
   fontStyle: 'normal',
   fontWeight: '400',
@@ -14,6 +13,35 @@ globalFontFace('JostSemiBold', {
   fontStyle: 'normal',
   fontWeight: '600',
   src: 'url(\'./fonts/Jost-SemiBold.woff2\') format(\'woff2\')',
+});
+
+// ─── Variables ──────────────────────────────────────────────────────────────
+
+globalStyle('html', {
+  vars: {
+    '--mainClr': 'black',
+    '--secondaryClr': 'white',
+    '--movieTitlesClr': '#e41b2b',
+    '--mobileSeparatorClr': '#292e33',
+    '--htmlFontSize': '14px',
+    '--desktopContentMT': '15px',
+    '--mobileContentMT': '2.5vw',
+    '--navbarMobileH768': '8.5vw',
+    '--navbarMobileH544': '19vw',
+    '--titleFS': '2.5rem',
+    '--paragraphFS': '1.35rem',
+  },
+  backgroundColor: 'var(--mainClr)',
+  fontSize: 'var(--htmlFontSize)',
+  WebkitTapHighlightColor: 'transparent',
+});
+
+// ─── Global Tag Selectors styles ───────────────────────────────────────────────────
+
+globalStyle('*', {
+  margin: 0,
+  padding: 0,
+  fontFamily: 'JostRegular, JostSemiBold, sans-serif',
 });
 
 globalStyle('*, :after, :before', {
@@ -40,44 +68,6 @@ globalStyle('h1, h2, h3', {
 globalStyle('h4, h5, h6', {
   marginTop: '10px',
   marginBottom: '10px',
-});
-
-globalStyle('.container', {
-  marginRight: 'auto',
-  marginLeft: 'auto',
-  '@media': {
-    'screen and (min-width: 768px)': { width: '750px' },
-    'screen and (min-width: 992px)': { width: '970px' },
-    'screen and (min-width: 1200px)': { width: '1170px' },
-    [breakpoints.mobile]: { width: 'auto', marginRight: '0', marginLeft: '0' },
-  },
-});
-
-// ─── generalStyles.scss ──────────────────────────────────────────────────────
-
-globalStyle('*', {
-  margin: 0,
-  padding: 0,
-  fontFamily: 'JostRegular, JostSemiBold, sans-serif',
-});
-
-globalStyle('html', {
-  vars: {
-    '--mainClr': 'black',
-    '--secondaryClr': 'white',
-    '--movieTitlesClr': '#e41b2b',
-    '--mobileSeparatorClr': '#292e33',
-    '--htmlFontSize': '14px',
-    '--desktopContentMT': '15px',
-    '--mobileContentMT': '2.5vw',
-    '--navbarMobileH768': '8.5vw',
-    '--navbarMobileH544': '19vw',
-    '--titleFS': '2.5rem',
-    '--paragraphFS': '1.35rem',
-  },
-  backgroundColor: 'var(--mainClr)',
-  fontSize: 'var(--htmlFontSize)',
-  WebkitTapHighlightColor: 'transparent',
 });
 
 globalStyle('html::-webkit-scrollbar', {
@@ -134,6 +124,17 @@ globalStyle('h1, h2, h3, h4, h5, h6', {
 
 globalStyle('img, article', {
   transition: 'all 0.3s',
+});
+
+globalStyle('.container', {
+  marginRight: 'auto',
+  marginLeft: 'auto',
+  '@media': {
+    'screen and (min-width: 768px)': { width: '750px' },
+    'screen and (min-width: 992px)': { width: '970px' },
+    'screen and (min-width: 1200px)': { width: '1170px' },
+    [breakpoints.mobile]: { width: 'auto', marginRight: '0', marginLeft: '0' },
+  },
 });
 
 globalStyle('.opacity_0', {
