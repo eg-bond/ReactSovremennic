@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useModal } from '@/contexts/ModalContext';
 import { IBaseSlide, isExternalLink, isInternalLink, ISlideImgWrapper, isModalLink } from './types';
+import * as s from './AdvSlider.css';
 
 export const SlideImgWrapper: React.FC<ISlideImgWrapper> = ({
   children,
@@ -15,10 +16,7 @@ export const SlideImgWrapper: React.FC<ISlideImgWrapper> = ({
   if (isModalLink(link)) {
     return (
       <button
-        style={{
-          background: 'none',
-          border: 'none',
-        }}
+        className={s.modalButton}
         tabIndex={tabIndex}
         onClick={() => openModal(link.modalImage)}
       >
@@ -56,14 +54,11 @@ export const BaseSlide = ({
 
   return (
     <div className="embla__slide">
-      <SlideImgWrapper
-        link={link}
-        tabIndex={tabIndex}
-      >
-        <div className="imgContainer_23 opacity_on_hover">
+      <SlideImgWrapper link={link} tabIndex={tabIndex}>
+        <div className={s.imgContainer}>
           <img
             alt={alt}
-            className={`imgContainer__img ${!loaded ? 'skeleton skeleton-Gray' : ''}`}
+            className={`${s.img} ${!loaded ? 'skeleton skeleton-Gray' : ''}`}
             src={imgSrc}
             onLoad={() => setLoaded(true)}
           />
