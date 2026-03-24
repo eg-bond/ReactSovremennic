@@ -12,6 +12,32 @@ export const cinemaSlider = style({
   },
 });
 
+// Embla structure
+export const viewport = style({
+  overflow: 'hidden',
+});
+
+export const track = style({
+  display: 'flex',
+  marginLeft: '-0.6rem', // compensates first slide paddingLeft (desktop gap)
+  '@media': {
+    [breakpoints.mobile]: { marginLeft: '-2vw' },
+  },
+});
+
+export const slide = style({
+  flex: '0 0 20%', // 5 per page desktop
+  minWidth: 0,
+  paddingLeft: '0.6rem',
+  boxSizing: 'border-box',
+  '@media': {
+    [breakpoints.mobile]: {
+      flex: '0 0 28.571%', // 3.5 slides visible on mobile
+      paddingLeft: '2vw',
+    },
+  },
+});
+
 export const imgCont = style({
   aspectRatio: '3/4',
   overflow: 'hidden',
@@ -66,27 +92,45 @@ export const mobileTitle = style({
   padding: '1vw 0 1vw 1vw',
 });
 
-// Hover: scoped via globalStyle targeting scoped class
-globalStyle(`.swSlide__a:hover .${slideH1}, .swSlide__a:focus-visible .${slideH1}`, {
-  color: 'red',
-});
-globalStyle(`.swSlide__a:hover .${slideP}, .swSlide__a:focus-visible .${slideP}`, {
-  color: 'red',
-});
-
-// Splide arrow position overrides (applied via className on Splide component)
-export const splideWithArrows = style({});
-
-globalStyle(`.${splideWithArrows} .splide__arrow--prev`, {
-  left: '-4.5em',
+export const arrowPrev = style({
+  position: 'absolute',
+  top: '50%',
+  transform: 'translateY(-50%)',
+  left: '-8em',
+  zIndex: 2,
+  background: 'transparent',
+  border: 'none',
+  cursor: 'pointer',
+  padding: '0.5em',
   '@media': {
     [breakpoints.w992]: { left: '-3.5em' },
   },
 });
 
-globalStyle(`.${splideWithArrows} .splide__arrow--next`, {
-  right: '-4.5em',
+export const arrowNext = style({
+  position: 'absolute',
+  top: '50%',
+  transform: 'translateY(-50%)',
+  right: '-8em',
+  zIndex: 2,
+  background: 'transparent',
+  border: 'none',
+  cursor: 'pointer',
+  padding: '0.5em',
   '@media': {
     [breakpoints.w992]: { right: '-3.5em' },
   },
+});
+
+export const arrowSvg = style({
+  width: '8em',
+  height: '8em',
+  fill: 'var(--secondaryClr)',
+});
+
+globalStyle(`.swSlide__a:hover .${slideH1}, .swSlide__a:focus-visible .${slideH1}`, {
+  color: 'red',
+});
+globalStyle(`.swSlide__a:hover .${slideP}, .swSlide__a:focus-visible .${slideP}`, {
+  color: 'red',
 });

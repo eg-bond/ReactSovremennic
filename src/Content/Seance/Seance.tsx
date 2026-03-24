@@ -1,12 +1,10 @@
 import { useCallback } from 'react';
 import { MobileAdv } from '@/Template/Adv';
 import { useEffect, useState } from 'react';
-import BarSlider from '@/Template/BarSlider';
-// import BarSlider from '@/Template/BarSlider';
 import { SushiWork } from '@/Template/SushiWork';
+import { BarSlider } from '@/Template/BarSlider';
 import { schedule } from '@/Content/Seance/schedule';
 import { OnlineSales } from '@/components/OnlineSales';
-import BarSliderNew from '@/Template/BarSlider/BarSliderNew';
 import { useSeanceState } from '@/REDUX/stateHooks/useSeanceState';
 import { TableContent } from './seanceComponents/TableContent';
 import { CreateSeanceButtons } from './seanceComponents/CreateSeanceButtons';
@@ -97,7 +95,7 @@ const Seance = ({ isMobile }: {
       {isMobile && <SushiWork />}
 
       <div className="separatorMobile separatorMobile--index" />
-      <BarSliderNew />
+      <BarSlider />
     </div>
   );
 };

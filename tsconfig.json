@@ -20,8 +20,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@/external/*": ["ExternalScripts/*"],
-      "@splidejs/react-splide": ["node_modules/@splidejs/react-splide/dist/types/index.d.ts"]
+      "@/external/*": ["ExternalScripts/*"],      
     },
     // this line needed to import modules with default exports
     "allowSyntheticDefaultImports": true,
