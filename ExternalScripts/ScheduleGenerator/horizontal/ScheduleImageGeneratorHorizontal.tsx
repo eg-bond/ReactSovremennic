@@ -156,7 +156,7 @@ export const ScheduleImageGeneratorHorizontal = ({
               {config.topPadding}
             </label>
             <input
-              max="100"
+              max="200"
               min="0"
               style={{ width: '600px' }}
               type="range"
@@ -183,7 +183,7 @@ export const ScheduleImageGeneratorHorizontal = ({
               {config.bottomPadding}
             </label>
             <input
-              max="100"
+              max="200"
               min="0"
               style={{ width: '600px' }}
               type="range"

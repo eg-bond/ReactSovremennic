@@ -385,9 +385,16 @@ export const drawDaySchedule = async (
 
     const titleY =
       posterYWithPadding + posterHeight + margins.titleTop;
+
+    // Remove "предс обсл." suffix for pirate films
+    let displayTitle = filmTitle.replace(/\s*2D\s*/g, ' ').trim();
+    if (pirateMapping?.[normalizedTitle]) {
+      displayTitle = displayTitle.replace(/\s*\(предс\.\s*обсл\.\)\s*$/g, '').trim();
+    }
+
     drawFilmTitle(
       ctx,
-      filmTitle.replace(/\s*2D\s*/g, ' ').trim(),
+      displayTitle,
       x + posterWidth / 2,
       titleY,
       posterWidth - 10,
