@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { SeanceStateT } from '../../../REDUX/seance/seanceReducerT';
+import * as s from './SeanceMobileNav.css.ts';
+import { SeanceStateT } from '../../../../REDUX/seance/seanceReducerT';
 import type { MotionValue } from 'framer-motion';
 
 const SeanceMobileNav = ({
@@ -23,10 +24,10 @@ const SeanceMobileNav = ({
 
   return (
     <>
-      <div className="sushiMobileNav__container--back">
-        <div className="sushiMobileNav__container" ref={constraintRef}>
+      <div className={s.mobileNavContainerBack}>
+        <div className={s.mobileNavContainer} ref={constraintRef}>
           <motion.div
-            className={`sushiMobileNav ${isChanging ? 'changing' : ''}`}
+            className={`${s.mobileNav} ${isChanging ? s.mobileNavChanging : ''}`}
             drag="x"
             dragConstraints={constraintRef}
             ref={sliderRef}
@@ -34,7 +35,7 @@ const SeanceMobileNav = ({
           >
             {datesArr.map(item => (
               <button
-                className={`sushiMobileNav__item ${
+                className={`${s.mobileNavItem} ${
                   activeScheduleItemKey === item[0] ? 'active' : ''
                 }`}
                 id={item[0] + '_seBtn'}
@@ -47,7 +48,7 @@ const SeanceMobileNav = ({
           </motion.div>
         </div>
       </div>
-      <hr className="sushiMobileNav__anchor" ref={hrRef}></hr>
+      <hr className={s.mobileNavAnchor} ref={hrRef}></hr>
     </>
   );
 };

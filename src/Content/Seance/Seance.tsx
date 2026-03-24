@@ -2,12 +2,12 @@ import { useCallback } from 'react';
 import { useEffect, useState } from 'react';
 import { MobileAdv } from '@/components/Adv';
 import { SushiWork } from '@/components/SushiWork';
-import { schedule } from '@/Content/Seance/schedule';
 import { OnlineSales } from '@/components/OnlineSales';
 import { useSeanceState } from '@/REDUX/stateHooks/useSeanceState';
-import { TableContent } from './seanceComponents/TableContent';
-import { CreateSeanceButtons } from './seanceComponents/CreateSeanceButtons';
-import SeanceMobileNavContainer from './seanceComponents/SeanceMobileNavContainer';
+import * as s from './Seance.css.ts';
+import { TableContent } from './seanceComponents';
+import { SeanceMobileNav } from './seanceComponents';
+import { CreateSeanceButtons } from './seanceComponents';
 import type { DateKeysT } from '@/REDUX/seance/seanceReducerT';
 
 const Seance = ({ isMobile }: {
@@ -50,7 +50,7 @@ const Seance = ({ isMobile }: {
   if (!activeScheduleItemKey) return null;
 
   return (
-    <div className="content__gridLeftItem--3fr seance">
+    <div className={`content__gridLeftItem--3fr ${s.seance}`}>
       {!isMobile && (
         <CreateSeanceButtons
           activeScheduleItemKey={activeScheduleItemKey}
@@ -61,8 +61,8 @@ const Seance = ({ isMobile }: {
       )}
 
       {isMobile && (
-        <div className="sushi_menu_xs">
-          <SeanceMobileNavContainer
+        <div>
+          <SeanceMobileNav
             activeScheduleItemKey={activeScheduleItemKey}
             changeTableContent={changeTableContent}
             datesArr={datesArr}
@@ -70,16 +70,10 @@ const Seance = ({ isMobile }: {
         </div>
       )}
 
-      <table
-        className={`seanse__table ${
-          tableVisible ? 'fadeInUp' : 'fadeOutDown'
-        }`}
-      >
-        <TableContent
-          activeScheduleItemKey={activeScheduleItemKey}
-          schedule={schedule}
-        />
-      </table>
+      <TableContent
+        activeScheduleItemKey={activeScheduleItemKey}
+        tableVisible={tableVisible}
+      />
 
       <OnlineSales />
 
