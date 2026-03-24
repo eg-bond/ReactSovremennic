@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { MobileAdv } from '@/components/Adv';
 import { CINEMA_PHONE } from '@/utils/constants';
-import { convertVideoId } from '@/utils/convertVideoId';
+import { VkVideoEmbed } from '@/components/VkVideoEmbed';
 import * as s from './IndexContent.css.ts';
 import { useAppSelector } from '../../REDUX/store';
 import { SushiWork } from '../../components/SushiWork';
@@ -16,21 +16,7 @@ function IndexContent({ isMobile }: {
       {siteMode === 'default' && (
         <div className="trailers">
           {isMobile && <h4>Трейлеры</h4>}
-
-          <div className="embed-responsive">
-            <iframe
-              allow={
-                'encrypted-media; fullscreen; ' +
-                'picture-in-picture; screen-wake-lock;'
-              }
-              src={`https://vkvideo.ru/video_ext.php?oid=-${convertVideoId(
-                '169056005_456250420',
-              )}`}
-              height="360"
-              width="640"
-            >
-            </iframe>
-          </div>
+          <VkVideoEmbed videoId="169056005_456250420" />
         </div>
       )}
 
