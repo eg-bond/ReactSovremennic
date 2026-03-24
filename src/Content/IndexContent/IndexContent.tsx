@@ -14,7 +14,7 @@ function IndexContent({ isMobile }: {
   return (
     <div className="content__gridLeftItem--3fr contentMT">
       {siteMode === 'default' && (
-        <div className="trailers">
+        <div className={s.trailers}>
           {isMobile && <h4>Трейлеры</h4>}
           <VkVideoEmbed videoId="169056005_456250420" />
         </div>
@@ -22,7 +22,7 @@ function IndexContent({ isMobile }: {
 
       <div className="separatorMobile separatorMobile--index" />
 
-      <div className="news">
+      <div className={s.news}>
         <h1 className={siteMode === 'special' ? s.h1Special : ''}>
           Информация
         </h1>
@@ -30,7 +30,7 @@ function IndexContent({ isMobile }: {
         <p>
           • Уважаемые гости кинотеатра! На странице
           {' '}
-          <Link className="ref" style={{ textDecoration: 'none' }} to="seance">
+          <Link className={s.ref} style={{ textDecoration: 'none' }} to="seance">
             "Расписание"
           </Link>
           {' '}
@@ -48,12 +48,12 @@ function IndexContent({ isMobile }: {
           <span style={{ display: 'inline-block' }}>+7-992-177-24-11.</span>
           {' '}
           Меню на
-          <Link className="ref" to="sushi">
+          <Link className={s.ref} to="sushi">
             странице
           </Link>
           сайта и в группе
           <a
-            className="ref vk_ref"
+            className={`${s.ref} ${s.vkRef}`}
             href="https://vk.com/album-46510864_166402327"
           >
             Вконтакте

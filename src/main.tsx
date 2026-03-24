@@ -1,3 +1,4 @@
+import 'modern-normalize';
 import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
