@@ -1,6 +1,6 @@
 import { CINEMA_PHONE } from '@/utils/constants';
-import Rules from '../Rules/Rules';
-import { useAppSelector } from '../../REDUX/store';
+import * as s from './InfoPages.css.ts';
+import { useAppSelector } from '../../REDUX/store.ts';
 
 const SRC =
 'https://yandex.ru/map-widget/v1/?um=constructor%' +
@@ -11,7 +11,7 @@ function About() {
   const { siteMode } = useAppSelector(state => state.special);
 
   return (
-    <div className="content__gridLeftItem--3fr contentMT rules">
+    <div className={`content__gridLeftItem--3fr contentMT ${s.rules}`}>
       <div>
         <h3>О кинотеатре «Современник»</h3>
         <p>
@@ -45,17 +45,17 @@ function About() {
           препятствующий распространению звука.
         </p>
       </div>
-      <div className="aboutImages">
-        <div className="aboutImages__image">
+      <div className={s.aboutImages}>
+        <div className={s.aboutImage}>
           <img alt="фото кинотеатра 1" src="Images/about1.webp" />
         </div>
-        <div className="aboutImages__image hidden-xs">
+        <div className={`${s.aboutImage} hidden-xs`}>
           <img alt="фото кинотеатра 2" src="Images/about2.webp" />
         </div>
-        <div className="aboutImages__image hidden-xs">
+        <div className={`${s.aboutImage} hidden-xs`}>
           <img alt="фото кинотеатра 4" src="Images/about4.webp" />
         </div>
-        <div className="aboutImages__image">
+        <div className={s.aboutImage}>
           <img alt="фото кинотеатра 3" src="Images/about3.webp" />
         </div>
       </div>
@@ -73,7 +73,6 @@ function About() {
           </div>
         )}
       </div>
-
     </div>
   );
 }
