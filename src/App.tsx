@@ -8,12 +8,12 @@ import Content from './Content/Content';
 import { DesktopAdv } from './Template/Adv';
 import Navigation from './Template/Navigation';
 import { modifiedClass, queries } from './helpers';
+import { FilmsSlider } from './Template/FilmsSlider';
 import { useMediaQuery } from './hooks/useMediaQuery';
 import { BottomSlider } from './Template/BottomSlider';
 import { useScrollToTop } from './hooks/useScrollToTop';
 import { useChangeTheme } from './hooks/useChangeTheme';
 import { useAppState } from './REDUX/stateHooks/useAppState';
-import FilmsSliderNew from './Template/FilmsSlider/FilmsSliderNew';
 
 const App = () => {
   const {
@@ -73,8 +73,7 @@ const App = () => {
         />
 
         <div className={`container wrapper ${imgHidden ? 'hideImages' : ''}`}>
-          <FilmsSliderNew films={films} isMobile={isMobile} />
-          {/* <FilmsSlider films={films} isMobile={isMobile} /> */}
+          <FilmsSlider films={films} isMobile={isMobile} />
 
           <div className="mainContainer__content" ref={contentRef}>
             <Content isMobile={isMobile} />

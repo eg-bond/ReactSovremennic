@@ -1,1 +1,1 @@
-export { default } from './BarSlider';
+export { BarSlider } from './BarSlider';

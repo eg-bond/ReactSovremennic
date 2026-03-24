@@ -1,1 +1,1 @@
-export { default } from './FilmsSlider';
+export { FilmsSlider } from './FilmsSlider';
