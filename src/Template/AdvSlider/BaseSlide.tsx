@@ -1,8 +1,6 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useModal } from '@/contexts/ModalContext';
-// @ts-expect-error: splide
-import { SplideSlide } from '@splidejs/react-splide';
-import { useImagesLoaded } from '@/hooks/useImagesLoaded';
 import { IBaseSlide, isExternalLink, isInternalLink, ISlideImgWrapper, isModalLink } from './types';
 
 export const SlideImgWrapper: React.FC<ISlideImgWrapper> = ({
@@ -15,7 +13,6 @@ export const SlideImgWrapper: React.FC<ISlideImgWrapper> = ({
   if (!link) return <>{children}</>;
 
   if (isModalLink(link)) {
-    // TypeScript knows link.modalImage exists here
     return (
       <button
         style={{
@@ -31,7 +28,6 @@ export const SlideImgWrapper: React.FC<ISlideImgWrapper> = ({
   }
 
   if (isInternalLink(link)) {
-    // TypeScript knows link.path exists here
     return (
       <Link tabIndex={tabIndex} to={link.path}>
         {children}
@@ -56,10 +52,10 @@ export const BaseSlide = ({
   link,
   tabIndex,
 }: IBaseSlide) => {
-  const { allImgLoaded, onLoad } = useImagesLoaded(1);
+  const [loaded, setLoaded] = useState(false);
 
   return (
-    <SplideSlide>
+    <div className="embla__slide">
       <SlideImgWrapper
         link={link}
         tabIndex={tabIndex}
@@ -67,12 +63,12 @@ export const BaseSlide = ({
         <div className="imgContainer_23 opacity_on_hover">
           <img
             alt={alt}
-            className={`imgContainer__img ${!allImgLoaded ? 'skeleton' : ''}`}
+            className={`imgContainer__img ${!loaded ? 'skeleton skeleton-Gray' : ''}`}
             src={imgSrc}
-            onLoad={onLoad}
+            onLoad={() => setLoaded(true)}
           />
         </div>
       </SlideImgWrapper>
-    </SplideSlide>
+    </div>
   );
 };

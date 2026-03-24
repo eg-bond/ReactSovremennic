@@ -5,6 +5,12 @@ export const vars = createGlobalTheme(':root', {
   font: {
     jost: '\'Jost\', sans-serif',
   },
+  borders: {
+    b1px: 'solid 1px var(--secondaryClr)',
+    b2px: 'solid 3px var(--secondaryClr)',
+    b3px: 'solid 3px var(--secondaryClr)',
+    b5px: 'solid 5px var(--secondaryClr)',
+  },
   borderRadius: {
     images: '10px',
     buttons: '30px',
