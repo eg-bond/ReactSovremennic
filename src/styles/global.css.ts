@@ -152,29 +152,6 @@ globalStyle('.contentMT', {
   },
 });
 
-// Sushi work modal
-globalStyle('.overlay', {
-  position: 'fixed',
-  inset: '0',
-  zIndex: 9,
-  background: 'rgba(0, 0, 0, 0.5)',
-});
-
-globalStyle('.modal', {
-  position: 'fixed',
-  width: '40vw',
-  top: '50%',
-  left: '50%',
-  translate: '-50% -50%',
-  zIndex: 5,
-  minHeight: 'auto',
-  '@media': {
-    [breakpoints.w1200]: { width: '55vw' },
-  },
-});
-
-globalStyle('.modal__img', { width: '100%' });
-
 // Flex footer push
 globalStyle('.flex-wrapper', {
   display: 'flex',
@@ -358,30 +335,6 @@ globalStyle('.separatorMobile--sticky', {
 globalStyle('.separatorMobile--index', {
   '@media': {
     [breakpoints.mobile]: { margin: '0 -15px 0 -15px' },
-  },
-});
-
-globalStyle('.sushiWork', {
-  '@media': {
-    [breakpoints.mobile]: {
-      margin: '2.5vw 0',
-      position: 'relative',
-      width: '100%',
-      height: '60vw',
-      borderRadius: '10px',
-      border: 'solid 1px var(--secondaryClr)',
-      overflow: 'hidden',
-    },
-  },
-});
-
-globalStyle('.sushiWork__img', {
-  '@media': {
-    [breakpoints.mobile]: {
-      position: 'absolute',
-      width: '100%',
-      height: '100%',
-    },
   },
 });
 
