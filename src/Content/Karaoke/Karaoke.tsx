@@ -1,5 +1,6 @@
 import { useKaraokeDB } from '../../hooks/useKaraokeDB';
 import { useInfiniteScroll } from '../../hooks/useInfiniteScroll';
+import * as s from './Karaoke.css.ts';
 
 export default function Karaoke() {
   const {
@@ -17,12 +18,12 @@ export default function Karaoke() {
   const loadMoreRef = useInfiniteScroll(loadMore, hasMore);
 
   return (
-    <div className="karaoke-container">
+    <div className={s.container}>
       <h1>Список песен для караоке</h1>
 
-      <div className="karaoke-search">
+      <div className={s.search}>
         <input
-          className="karaoke-search-input"
+          className={s.searchInput}
           placeholder="Введите исполнителя или трек"
           type="text"
           value={search}
@@ -31,28 +32,28 @@ export default function Karaoke() {
       </div>
 
       {loading && (
-        <div className="karaoke-loading">
-          <div className="karaoke-spinner" />
+        <div className={s.loading}>
+          <div className={s.spinner} />
         </div>
       )}
 
-      <div className="karaoke-results">
-        <p className="karaoke-count">
+      <div>
+        <p className={s.count}>
           Найдено песен:
           {` ${totalCount}`}
-          {searching && <span className="karaoke-count-spinner" />}
+          {searching && <span className={s.countSpinner} />}
         </p>
 
-        <div className="karaoke-list">
+        <div className={s.list}>
           {songs.map(song => (
-            <div className="karaoke-item" key={song.id}>
-              <span className="karaoke-artist">{song.artist}</span>
-              <span className="karaoke-song">{song.song}</span>
+            <div className={s.item} key={song.id}>
+              <span className={s.artist}>{song.artist}</span>
+              <span className={s.song}>{song.song}</span>
             </div>
           ))}
           {hasMore && (
-            <div className="karaoke-loader" ref={loadMoreRef}>
-              {loadingMore && <div className="karaoke-loader-spinner" />}
+            <div className={s.loader} ref={loadMoreRef}>
+              {loadingMore && <div className={s.loaderSpinner} />}
             </div>
           )}
         </div>

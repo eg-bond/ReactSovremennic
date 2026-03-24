@@ -2,7 +2,6 @@ import { useCallback } from 'react';
 import { useEffect, useState } from 'react';
 import { MobileAdv } from '@/components/Adv';
 import { SushiWork } from '@/components/SushiWork';
-import { BarSlider } from '@/components/BarSlider';
 import { schedule } from '@/Content/Seance/schedule';
 import { OnlineSales } from '@/components/OnlineSales';
 import { useSeanceState } from '@/REDUX/stateHooks/useSeanceState';
@@ -90,8 +89,8 @@ const Seance = ({ isMobile }: {
       <div className="separatorMobile separatorMobile--index" />
       {isMobile && <SushiWork />}
 
-      <div className="separatorMobile separatorMobile--index" />
-      <BarSlider />
+      {/* <div className="separatorMobile separatorMobile--index" />
+      <BarSlider /> */}
     </div>
   );
 };

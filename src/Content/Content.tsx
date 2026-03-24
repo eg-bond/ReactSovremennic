@@ -1,12 +1,12 @@
 import { Suspense, lazy, memo } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import Seance from './Seance/Seance';
 import About from './InfoPages/About';
 import Rules from './InfoPages/Rules';
-import Seance from './Seance/Seance';
 import Redirect from '../components/Redirect';
 import IndexContent from './IndexContent/IndexContent';
 import SelectedMovieContainer from './Cinema/SelectedMovieContainer';
-const Karaoke = lazy(() => import('./Karaoke/Karaoke'));
+const Karaoke = lazy(() => import('./Karaoke'));
 
 const Content = memo<{
   isMobile: boolean;
