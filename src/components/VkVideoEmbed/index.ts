@@ -1,0 +1,1 @@
+export { VkVideoEmbed } from './VkVideoEmbed';

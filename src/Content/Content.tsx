@@ -4,8 +4,8 @@ import Seance from './Seance/Seance';
 import About from './InfoPages/About';
 import Rules from './InfoPages/Rules';
 import Redirect from '../components/Redirect';
+import { SelectedMovie } from './SelectedMovie';
 import IndexContent from './IndexContent/IndexContent';
-import SelectedMovieContainer from './Cinema/SelectedMovieContainer';
 const Karaoke = lazy(() => import('./Karaoke'));
 
 const Content = memo<{
@@ -21,7 +21,7 @@ const Content = memo<{
         <Route element={<IndexContent isMobile={isMobile} />} path="/" />
         <Route element={<Seance isMobile={isMobile} />} path="seance" />
         <Route
-          element={<SelectedMovieContainer isMobile={isMobile} />}
+          element={<SelectedMovie isMobile={isMobile} />}
           path="movies/:film_id"
         />
         <Route element={<About />} path="about" />
