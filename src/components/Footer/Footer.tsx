@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { Socials } from './Socials';
-import { scrollToTop } from '../../helpers';
+import { scrollToTop } from '@/helpers';
 import * as s from './Footer.css';
 
 const Footer = memo(function Footer() {

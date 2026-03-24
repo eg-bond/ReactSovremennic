@@ -1,6 +1,6 @@
 import { CINEMA_PHONE } from '@/utils/constants';
 import * as s from './InfoPages.css.ts';
-import { useAppSelector } from '../../REDUX/store.ts';
+import { useAppSelector } from '@/REDUX/store.ts';
 
 const SRC =
 'https://yandex.ru/map-widget/v1/?um=constructor%' +

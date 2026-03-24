@@ -2,9 +2,9 @@ import { useParams } from 'react-router';
 import Redirect from '@/components/Redirect';
 import { memo, useCallback, useEffect } from 'react';
 import SelectedMovie from './SelectedMovie';
-import { useAppDispatch, useAppSelector } from '../../REDUX/store';
-import { createFilmsObject_AC } from '../../REDUX/cinema/cinemaReducer';
-import type { FilmItemT } from '../../REDUX/cinema/cinemaReducerT';
+import { useAppDispatch, useAppSelector } from '@/REDUX/store';
+import { createFilmsObject_AC } from '@/REDUX/cinema/cinemaReducer';
+import type { FilmItemT } from '@/REDUX/cinema/cinemaReducerT';
 
 const SelectedMovieContainer = memo<{
   isMobile: boolean;

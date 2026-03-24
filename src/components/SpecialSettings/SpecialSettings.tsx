@@ -3,7 +3,7 @@ import { FontButtons } from './FontButtons.tsx';
 import { ImgSwitcher } from './ImgSwitcher.tsx';
 import { ThemeButtons } from './ThemeButtons.tsx';
 import { SiteModeButton } from './SiteModeButton.tsx';
-import { useSpecialState } from '../../REDUX/stateHooks/useSpecialState.ts';
+import { useSpecialState } from '@/REDUX/stateHooks/useSpecialState.ts';
 
 export const SpecialSettings = () => {
   const {

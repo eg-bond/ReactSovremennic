@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Seance from './Seance/Seance';
 import About from './InfoPages/About';
 import Rules from './InfoPages/Rules';
-import Redirect from '../components/Redirect';
+import Redirect from '@/components/Redirect';
 import { SelectedMovie } from './SelectedMovie';
 import IndexContent from './IndexContent/IndexContent';
 const Karaoke = lazy(() => import('./Karaoke'));

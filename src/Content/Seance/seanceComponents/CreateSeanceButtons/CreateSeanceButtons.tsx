@@ -1,8 +1,8 @@
 import { memo } from 'react';
 import * as s from './CreateSeanceButtons.css.ts';
-import type { ChangeTableContentT } from '../../Seance.tsx';
-import type { SeanceStateT } from '../../../../REDUX/seance/seanceReducerT';
-import type { SpecialStateT } from '../../../../REDUX/special/specialReducerT';
+import type { ChangeTableContentT } from '@/Content/Seance/Seance.tsx';
+import type { SeanceStateT } from '@/REDUX/seance/seanceReducerT';
+import type { SpecialStateT } from '@/REDUX/special/specialReducerT';
 
 export const CreateSeanceButtons = memo<CSB_T>(function CreateSeanceButtons({
   datesArr,

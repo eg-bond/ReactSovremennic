@@ -2,7 +2,7 @@ import { memo } from 'react';
 import type {
   SpecialDispatchesT,
   SpecialStateT,
-} from '../../REDUX/special/specialReducerT';
+} from '@/REDUX/special/specialReducerT';
 import * as s from './SpecialSettings.css.ts';
 
 const FontButtonsComp = ({

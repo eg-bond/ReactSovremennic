@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import * as s from './SeanceMobileNav.css.ts';
-import { SeanceStateT } from '../../../../REDUX/seance/seanceReducerT';
+import { SeanceStateT } from '@/REDUX/seance/seanceReducerT';
 import type { MotionValue } from 'framer-motion';
 
 const SeanceMobileNav = ({

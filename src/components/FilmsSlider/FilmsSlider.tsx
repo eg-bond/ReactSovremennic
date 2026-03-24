@@ -4,7 +4,7 @@ import { memo, useMemo, useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { PRE_SHOW_SERVICE } from '@/utils/constants';
 import { removeLineBreaks } from '@/utils/formatTextWithLineBreaks';
-import type { CinemaStateT } from '../../REDUX/cinema/cinemaReducerT';
+import type { CinemaStateT } from '@/REDUX/cinema/cinemaReducerT';
 import * as s from './FilmsSlider.css';
 
 export const FilmsSlider = memo<FilmSliderT>(function FilmsSlider({ films, isMobile }) {
