@@ -3,7 +3,7 @@ import { createGlobalTheme } from '@vanilla-extract/css';
 // CSS custom properties on :root — only values that make sense as CSS vars
 export const vars = createGlobalTheme(':root', {
   font: {
-    jost: '\'Jost\', sans-serif',
+    jost: '\'JostSemiBold\', sans-serif',
   },
   borders: {
     b1px: 'solid 1px var(--secondaryClr)',
