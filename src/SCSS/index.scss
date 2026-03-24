@@ -61,7 +61,7 @@
   transition: ease 300ms;
 }
 .linkWrapper:focus .desktopAdv {
-  @include shiftUp;
+  transform: translateY(-6px);
 }
 .desktopAdv--1 {
   padding-bottom: 50%;

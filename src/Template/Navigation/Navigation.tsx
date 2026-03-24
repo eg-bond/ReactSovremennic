@@ -1,9 +1,9 @@
 import { memo } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { SUSHI_BAR_URL } from '@/utils/constants';
+import { SpecialSettings } from '@/Template/SpecialSettings';
 import * as s from './Navigation.css.ts';
-import SpecialSettings from '../SpecialSettings';
-import type { SpecialStateT } from '../../REDUX/special/specialReducerT';
+import type { SpecialStateT } from '@/REDUX/special/specialReducerT';
 
 const Navigation = memo<NavigationT>(function Navigation({
   siteMode,

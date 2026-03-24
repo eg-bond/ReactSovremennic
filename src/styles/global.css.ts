@@ -222,6 +222,10 @@ globalStyle('.space', {
 
 globalStyle('.hidden', { display: 'none' });
 
+globalStyle('.hideImages img, .hideImages article', {
+  opacity: '0 !important' as '0',
+});
+
 globalStyle('.mainContainer', {
   backgroundSize: `100% calc(${backImgHeight} + 1px), 100%`,
   height: '100%',

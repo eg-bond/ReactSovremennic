@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import type { SpecialDispatchesT } from '../../REDUX/special/specialReducerT';
+import * as s from './SpecialSettings.css.ts';
 
 const ImgSwitcherComp = ({ imgHidden, switchImagesVisibility }: {
   imgHidden: boolean;
@@ -12,20 +13,17 @@ const ImgSwitcherComp = ({ imgHidden, switchImagesVisibility }: {
     e.key === 'Enter' && handleImgSwitch();
 
   return (
-    <div className="specialSettings__flex__item">
-      <div className="specialSettings__flex__title">ИЗОБРАЖЕНИЯ</div>
-      <div className="switch">
-        <label className="switch__label">
+    <div className={s.flexItem}>
+      <div className={s.flexTitle}>ИЗОБРАЖЕНИЯ</div>
+      <div className={s.switchWrapper}>
+        <label className={s.switchLabel}>
           <span
-            className={`switch__slider ${
-              imgHidden ? 'switch__slider--pressed' : ''
-            }`}
+            className={`${s.switchSlider} ${imgHidden ? s.switchSliderPressed : ''}`}
             role="button"
             tabIndex={0}
             onClick={handleImgSwitch}
             onKeyDown={handlePress}
-          >
-          </span>
+          />
         </label>
       </div>
     </div>
