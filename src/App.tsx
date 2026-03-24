@@ -1,6 +1,4 @@
-import './SCSS/style.scss';
 import './styles/global.css';
-import './styles/sliders.css';
 import { useEffect, useRef } from 'react';
 import { LINKS } from '@/REDUX/cinema/cinemaReducer';
 import Content from './Content/Content';

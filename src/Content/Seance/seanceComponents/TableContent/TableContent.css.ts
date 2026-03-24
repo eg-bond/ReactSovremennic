@@ -16,6 +16,8 @@ globalStyle(`${seanceTable} th, ${seanceTable} td`, {
   padding: '2.7% 0',
   fontSize: vars.fontSize.desktopParagraph,
   '@media': {
+    [breakpoints.w1200]: { fontSize: '1.15rem' },
+    [breakpoints.w992]: { fontSize: '1rem' },
     [breakpoints.mobile]: { fontSize: vars.fontSize.mobileParagraphs },
   },
 });

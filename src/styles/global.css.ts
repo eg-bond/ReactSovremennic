@@ -1,7 +1,19 @@
-import { globalStyle, keyframes } from '@vanilla-extract/css';
+import { globalFontFace, globalStyle, keyframes } from '@vanilla-extract/css';
 import { breakpoints } from './theme.css';
 
-// ─── bootstrap3_classes.scss ────────────────────────────────────────────────
+// ─── fonts.scss ──────────────────────────────────────────────────────────────
+
+globalFontFace('JostLocal', {
+  fontStyle: 'normal',
+  fontWeight: 400,
+  src: 'url(\'../SCSS/fonts/Jost-Regular.woff2\') format(\'woff2\')',
+});
+
+globalFontFace('JostLocal', {
+  fontStyle: 'normal',
+  fontWeight: 600,
+  src: 'url(\'../SCSS/fonts/Jost-SemiBold.woff2\') format(\'woff2\')',
+});
 
 globalStyle('*, :after, :before', {
   boxSizing: 'border-box',
@@ -363,3 +375,13 @@ globalStyle('.skeleton-Black', {
 globalStyle('.skeleton-Gray', {
   backgroundColor: '#2d2d2d',
 });
+
+// ─── sliders.css.ts ──────────────────────────────────────────────────────────
+
+globalStyle('.swSlide__img', {
+  transition: 'all 0.3s',
+  cursor: 'pointer',
+});
+
+globalStyle('.swSlide__a:hover .swSlide__img', { opacity: 0.85 });
+globalStyle('.swSlide__a:focus-visible .swSlide__img', { opacity: 0.85 });
