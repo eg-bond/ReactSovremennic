@@ -35,8 +35,10 @@ export const SCHEDULE_STYLES = {
   filmBackgroundDark: 'rgba(0, 0, 0, 0.6)',
   filmBackgroundLight: 'rgba(60, 60, 60, 0.6)',
   borderRadius: 10,
-  fontFamily: 'Microsoft Sans Serif, Arial, sans-serif',
-  seansFontFamily: 'Microsoft Sans Serif, Arial, sans-serif',
+  fontFamily: 'Audex Regular, sans-serif',
+  // fontFamily: 'Microsoft Sans Serif, Arial, sans-serif',
+  seansFontFamily: 'Audex Regular, sans-serif',
+  // seansFontFamily: 'Microsoft Sans Serif, Arial, sans-serif',
   priceTextColor: '#000000',
 } as const;
 
@@ -122,13 +124,13 @@ export const getLayoutConfig = (filmCount: number) => {
       seansGridGap: 0, // расстояние между блоками в grid
       // Блок с временем и ценой
       seansBlockWidth: 430, // не работает если seansLayout = 'grid'
-      seansBlockHeight: { time: 55, price: 35 },
+      seansBlockHeight: { time: 52, price: 42 },
       timeFontSize: 30,
       priceFontSize: 26,
       // Title --------------------------------------------------------
       titlePaddingBottom: 35,
       titleLineHeight: 40, // междустрочное расстояние для заголовка
-      titleFontSize: 34,
+      titleFontSize: 32,
       // Pirate banner ------------------------------------------------
       pirateBannerHeight: 80,
       pirateBannerFontSize: 20,
@@ -152,13 +154,13 @@ export const getLayoutConfig = (filmCount: number) => {
       seansGridGap: 0, // расстояние между блоками в grid
       // Блок с временем и ценой
       seansBlockWidth: 340, // не работает если seansLayout = 'grid'
-      seansBlockHeight: { time: 50, price: 35 },
+      seansBlockHeight: { time: 50, price: 40 },
       timeFontSize: 26,
       priceFontSize: 24,
       // Title --------------------------------------------------------
       titlePaddingBottom: 0,
       titleLineHeight: 30, // междустрочное расстояние для заголовка
-      titleFontSize: 28,
+      titleFontSize: 26,
       // Pirate banner ------------------------------------------------
       pirateBannerHeight: 60,
       pirateBannerFontSize: 14,
