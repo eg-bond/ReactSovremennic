@@ -84,7 +84,7 @@
     "tsx": "^4.7.2",
     "typescript": "^5.4.5",
     "typescript-eslint": "8.15.0",
-    "vite": "^4.3.2",
+    "vite": "^6.4.2",
     "vite-plugin-html": "^3.2.2",
     "vite-plugin-live-reload": "^3.0.2",
     "vite-plugin-qrcode": "^0.2.1",
