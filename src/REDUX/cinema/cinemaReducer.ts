@@ -3,7 +3,7 @@ import { filmsArray } from '../filmsArray';
 import type { CinemaStateT } from './cinemaReducerT';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-export const LINKS = ['peaky_blinders', 'hail_mary', 'michael', 'mario_2', 'prada_2'];
+export const LINKS = ['hail_mary', 'michael', 'mario_2', 'prada_2'];
 
 const initialState: CinemaStateT = {
   films: filmsArray,
