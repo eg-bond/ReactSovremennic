@@ -24,7 +24,7 @@ function IndexContent({ isMobile }: {
                 'picture-in-picture; screen-wake-lock;'
               }
               src={`https://vkvideo.ru/video_ext.php?oid=-${convertVideoId(
-                '220787057_456370364',
+                '105406967_456242375',
               )}`}
               height="360"
               width="640"
