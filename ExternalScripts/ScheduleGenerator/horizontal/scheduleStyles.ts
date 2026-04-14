@@ -147,7 +147,7 @@ export const getLayoutConfig = (filmCount: number) => {
       filmBlockPadding: { left: 5, right: 5, top: 10 },
       sidePadding: 40,
       // Отступы сверху для заголовка, блоков с ценой от заголовка и между
-      margins: { titleTop: 40, seansTop: 50, seansBetween: 110 },
+      margins: { titleTop: 40, seansTop: 80, seansBetween: 110 },
       // Grid setup ---------------------------------------------------
       seansLayout: 'vertical' as const, // 'grid' или 'vertical'
       seansGridColumns: 1, // количество колонок в grid
