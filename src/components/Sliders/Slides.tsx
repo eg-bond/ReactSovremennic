@@ -1,6 +1,6 @@
+import { SUSHI_BAR_URL } from '@/utils/constants';
 import { SlideType } from './types';
 import { BaseSlide } from './BaseSlide';
-import { SUSHI_BAR_URL } from '@/utils/constants';
 
 export const AfishaSlide = () => (
   <BaseSlide

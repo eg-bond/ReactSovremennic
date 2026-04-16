@@ -22,7 +22,7 @@ describe('cinemaReducer tests:', () => {
       expect(newState.filmsToday).toHaveLength(testLinks.length);
     });
     it('films match the provided links', () => {
-      const resultLinks = newState.filmsToday.map((f) => f.link);
+      const resultLinks = newState.filmsToday.map(f => f.link);
       expect(resultLinks).toEqual(expect.arrayContaining(testLinks));
     });
   });

@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import {
-  drawDaySchedule,
-  generateScheduleImage,
-  downloadImage,
-  type StyleOverrides,
-} from '../horizontal/scheduleGenerator';
-import {
   dayKeyToDateName,
   type AgeRatingMapping,
   type FilmMapping,
   type PirateMapping,
 } from '../utils/mappings';
+import {
+  drawDaySchedule,
+  generateScheduleImage,
+  downloadImage,
+  type StyleOverrides,
+} from '../horizontal/scheduleGenerator';
 import type { ScheduleData } from '../utils/transformSchedule';
 
 interface UseScheduleDownloadReturn {
