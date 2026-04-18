@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { MobileAdv } from '@/Template/Adv';
+import BarSlider from '@/Template/BarSlider';
 import { CINEMA_PHONE } from '@/utils/constants';
 import { convertVideoId } from '@/utils/convertVideoId';
-// import BarSlider from '../../Template/BarSlider';
 import { useAppSelector } from '../../REDUX/store';
 import { SushiWork } from '../../Template/SushiWork';
 
@@ -80,13 +80,14 @@ function IndexContent({ isMobile }: {
       </div>
 
       <div className="separatorMobile separatorMobile--index" />
+      <BarSlider />
+
+      <div className="separatorMobile separatorMobile--index" />
       {isMobile && <MobileAdv />}
 
       <div className="separatorMobile separatorMobile--index" />
       {isMobile && <SushiWork />}
 
-      {/* <div className="separatorMobile separatorMobile--index" />
-      <BarSlider /> */}
     </div>
   );
 }

@@ -18,7 +18,8 @@
   margin: 1rem 0;
   overflow: hidden;
   position: relative;
-  cursor: grab;
+  cursor: pointer;
+  // cursor: grab;
   width: 100%;
   aspect-ratio: 16/9;
   @media #{$mediaQueryMobile} {

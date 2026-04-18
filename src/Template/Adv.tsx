@@ -12,10 +12,10 @@ const SECOND_SLIDER_SLIDES = [
 export function DesktopAdv() {
   return (
     <div className="content__gridRightItem--1fr contentMT">
-      <AdvSlider slides={FIRST_SLIDER_SLIDES} type="slide" />
+      <AdvSlider drag={false} slides={FIRST_SLIDER_SLIDES} type="slide" />
 
       <div style={{ marginTop: '1rem' }}>
-        <AdvSlider slides={SECOND_SLIDER_SLIDES} type="slide" />
+        <AdvSlider drag={false} slides={SECOND_SLIDER_SLIDES} type="slide" />
       </div>
 
       <div style={{ marginTop: '1rem' }}>
