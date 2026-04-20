@@ -1,3 +1,5 @@
+import '../../../src/SCSS/fonts.scss';
+
 // Пресеты для быстрого переключения количества дней
 export const PRESETS = {
   days3: { headerPaddingBottom: 90, sectionGap: 150 },
@@ -5,6 +7,7 @@ export const PRESETS = {
 } as const;
 
 const FONT = 'Audex Regular, sans-serif';
+const FONT_BOLD = 'Audex Regular, sans-serif';
 
 const COLORS = {
   red: '#dc2626',
@@ -38,6 +41,7 @@ export const VERTICAL_STYLES = {
   headerGlowLayers: 3,
   // Шрифт --------------------------------------------------------
   fontFamily: FONT,
+  fontFamilyBold: FONT_BOLD,
   // Размеры шрифтов
   headerFontSize: 70,
   dayFontSize: 32,

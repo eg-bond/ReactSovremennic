@@ -1,12 +1,20 @@
 @font-face {
-  font-family: 'JostLocal';
+  font-family: 'Audex Regular';
+  src: url('/src/SCSS/fonts/Audex-Regular.ttf') format('truetype');
+  font-weight: normal;
   font-style: normal;
-  font-weight: 400;
-  src: url('./fonts/Jost-Regular.woff2') format('woff2');
 }
+
 @font-face {
-  font-family: 'JostLocal';
+  font-family: 'Audex Regular';
+  src: url('/src/SCSS/fonts/Audex-Regular.ttf') format('truetype');
+  font-weight: bold;
   font-style: normal;
-  font-weight: 600;
-  src: url('./fonts/Jost-SemiBold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Audex Italic';
+  src: url('/src/SCSS/fonts/Audex-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
 }

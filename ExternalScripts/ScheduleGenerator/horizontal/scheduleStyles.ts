@@ -1,3 +1,5 @@
+import '../../../src/SCSS/fonts.scss';
+
 export const MOST_IMPORTANT_STYLES = {
   F2: {
     topPadding: 0,
@@ -36,6 +38,7 @@ export const SCHEDULE_STYLES = {
   filmBackgroundLight: 'rgba(60, 60, 60, 0.6)',
   borderRadius: 10,
   fontFamily: 'Audex Regular, sans-serif',
+  fontFamilyBold: 'Audex Regular, sans-serif',
   // fontFamily: 'Microsoft Sans Serif, Arial, sans-serif',
   seansFontFamily: 'Audex Regular, sans-serif',
   // seansFontFamily: 'Microsoft Sans Serif, Arial, sans-serif',

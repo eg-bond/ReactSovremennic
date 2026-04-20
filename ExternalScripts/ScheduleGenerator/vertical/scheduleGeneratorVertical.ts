@@ -334,7 +334,7 @@ const drawGlowText = (
   y: number,
   styles: typeof VERTICAL_STYLES,
 ) => {
-  ctx.font = `${styles.headerFontSize}px ${styles.fontFamily}`;
+  ctx.font = `bold ${styles.headerFontSize}px ${styles.fontFamily}`;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'top';
 
