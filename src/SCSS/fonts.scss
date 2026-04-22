@@ -1,4 +1,18 @@
 @font-face {
+  font-family: 'JostLocal';
+  src: url('./fonts/Jost-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'JostLocal';
+  src: url('./fonts/Jost-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'Audex Regular';
   src: url('/src/SCSS/fonts/Audex-Regular.ttf') format('truetype');
   font-weight: normal;
