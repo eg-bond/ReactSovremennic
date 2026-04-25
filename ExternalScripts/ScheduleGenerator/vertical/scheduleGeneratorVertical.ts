@@ -551,6 +551,9 @@ export const generateWeekdayScheduleImage = async (
   styleOverrides?: StyleOverrides,
   filmMapping?: FilmMapping,
 ): Promise<string> => {
+  // Ensure fonts are loaded before drawing
+  await document.fonts.ready;
+
   const canvas = document.createElement('canvas');
   canvas.width = 1080;
   canvas.height = 1920;
@@ -573,6 +576,9 @@ export const generateWeekendScheduleImage = async (
   styleOverrides?: StyleOverrides,
   filmMapping?: FilmMapping,
 ): Promise<string> => {
+  // Ensure fonts are loaded before drawing
+  await document.fonts.ready;
+
   const canvas = document.createElement('canvas');
   canvas.width = 1080;
   canvas.height = 1920;
@@ -596,6 +602,9 @@ export const generateVerticalScheduleImage = async (
   styleOverrides?: StyleOverrides,
   filmMapping?: FilmMapping,
 ): Promise<string> => {
+  // Ensure fonts are loaded before drawing
+  await document.fonts.ready;
+
   const canvas = document.createElement('canvas');
   canvas.width = 1080;
   canvas.height = 1920;

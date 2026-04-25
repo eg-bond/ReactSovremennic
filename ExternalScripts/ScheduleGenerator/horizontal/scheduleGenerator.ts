@@ -7,19 +7,19 @@ import { AgeRatingMapping, FilmMapping, PirateMapping } from '../utils/mappings'
 
 export interface StyleOverrides {
   F2?: {
-    bottomPadding?: number; posterHeight?: number; topPadding?: number;
+    bottomPadding?: number; posterHeight?: number; topPadding?: number; seansTop?: number;
   };
   F3?: {
-    bottomPadding?: number; posterHeight?: number; topPadding?: number;
+    bottomPadding?: number; posterHeight?: number; topPadding?: number; seansTop?: number;
   };
   F4?: {
-    bottomPadding?: number; posterHeight?: number; topPadding?: number;
+    bottomPadding?: number; posterHeight?: number; topPadding?: number; seansTop?: number;
   };
   F5?: {
-    bottomPadding?: number; posterHeight?: number; topPadding?: number;
+    bottomPadding?: number; posterHeight?: number; topPadding?: number; seansTop?: number;
   };
   F6?: {
-    bottomPadding?: number; posterHeight?: number; topPadding?: number;
+    bottomPadding?: number; posterHeight?: number; topPadding?: number; seansTop?: number;
   };
 }
 
@@ -336,6 +336,8 @@ export const drawDaySchedule = async (
   const topPadding = overrides?.topPadding ?? configTopPadding;
   const bottomPadding = overrides?.bottomPadding ?? configBottomPadding;
   const posterHeight = overrides?.posterHeight ?? configPosterHeight;
+  const seansTopOverride = overrides?.seansTop ?? margins.seansTop;
+  const effectiveMargins = { ...margins, seansTop: seansTopOverride };
 
   const filmBlockWidth =
     filmBlockPadding.left + posterWidth + filmBlockPadding.right;
@@ -408,7 +410,7 @@ export const drawDaySchedule = async (
       posterHeight +
       margins.titleTop +
       titlePaddingBottom +
-      margins.seansTop;
+      effectiveMargins.seansTop;
 
     if (seansLayout === 'grid' && seansGridColumns && seansGridGap !== undefined) {
       const cols = seansGridColumns;
@@ -476,6 +478,9 @@ export const generateScheduleImage = async (
   pirateMapping?: PirateMapping,
   styleOverrides?: StyleOverrides,
 ): Promise<string> => {
+  // Ensure fonts are loaded before drawing
+  await document.fonts.ready;
+
   const canvas = document.createElement('canvas');
   canvas.width = 1920;
   canvas.height = 1080;

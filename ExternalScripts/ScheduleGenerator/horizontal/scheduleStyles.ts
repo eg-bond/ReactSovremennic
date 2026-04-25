@@ -4,27 +4,32 @@ export const MOST_IMPORTANT_STYLES = {
   F2: {
     topPadding: 0,
     bottomPadding: 0,
-    posterHeight: 855, // 760 или 855
+    posterHeight: 735, // 730 или 855
+    seansTop: 95,
   },
   F3: {
     topPadding: 0,
     bottomPadding: 0,
-    posterHeight: 855, // 760 или 855
+    posterHeight: 730, // 760 или 855
+    seansTop: 95,
   },
   F4: {
     topPadding: 45, // 0 или 45
     bottomPadding: 45,
     posterHeight: 640,
+    seansTop: 60,
   },
   F5: {
     topPadding: 130,
     bottomPadding: 130,
     posterHeight: 506,
+    seansTop: 80,
   },
   F6: {
     topPadding: 150,
     bottomPadding: 150,
     posterHeight: 450,
+    seansTop: 85,
   },
 };
 
@@ -60,7 +65,7 @@ export const getLayoutConfig = (filmCount: number) => {
       filmBlockPadding: { left: 10, right: 10, top: 30 },
       sidePadding: 40, // ???
       // Отступы сверху для заголовка, блоков с ценой от заголовка и между
-      margins: { titleTop: 55, seansTop: 60, seansBetween: 110 },
+      margins: { titleTop: 50, seansTop: 95, seansBetween: 110 },
       // Grid setup ---------------------------------------------------
       seansLayout: 'grid' as const, // 'grid' или 'vertical'
       seansGridColumns: 2, // количество колонок в grid
@@ -90,14 +95,14 @@ export const getLayoutConfig = (filmCount: number) => {
       filmBlockPadding: { left: 10, right: 10, top: 30 },
       sidePadding: 40, // ???
       // Отступы сверху для заголовка, блоков с ценой от заголовка и между
-      margins: { titleTop: 55, seansTop: 60, seansBetween: 110 },
+      margins: { titleTop: 50, seansTop: 95, seansBetween: 110 },
       // Grid setup ---------------------------------------------------
       seansLayout: 'grid' as const, // 'grid' или 'vertical'
       seansGridColumns: 2, // количество колонок в grid
       seansGridGap: 20, // расстояние между блоками в grid
       // Блок с временем и ценой
       seansBlockWidth: 250, // не работает если seansLayout = 'grid'
-      seansBlockHeight: { time: 45, price: 30 },
+      seansBlockHeight: { time: 45, price: 35 },
       timeFontSize: 28,
       priceFontSize: 25,
       // Title --------------------------------------------------------
@@ -105,8 +110,8 @@ export const getLayoutConfig = (filmCount: number) => {
       titleLineHeight: 48, // междустрочное расстояние для заголовка
       titleFontSize: 37,
       // Pirate banner ------------------------------------------------
-      pirateBannerHeight: 40,
-      pirateBannerFontSize: 14,
+      pirateBannerHeight: 60,
+      pirateBannerFontSize: 20,
     },
     4: {
       // Paddings сверху и снизу -------------------------------------
