@@ -11,7 +11,7 @@ type dataT = Array<{
 }>;
 
 // retrieve data from excel file
-const workBook = xlsx.readFile('ExternalScripts/Excel/macros.xlsm');
+const workBook = xlsx.readFile('ExternalScripts/Excel/macros.ods');
 const ws = workBook.Sheets['Лист2'];
 const data = xlsx.utils.sheet_to_json(ws) as dataT;
 
