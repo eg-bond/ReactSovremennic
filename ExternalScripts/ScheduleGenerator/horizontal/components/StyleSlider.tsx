@@ -1,9 +1,9 @@
 interface StyleSliderProps {
   label: string;
-  value: number;
-  min: number;
   max: number;
+  min: number;
   onChange: (value: number) => void;
+  value: number;
 }
 
 export const StyleSlider = ({

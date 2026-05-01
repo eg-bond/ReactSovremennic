@@ -5,10 +5,10 @@ import type { StyleOverrides } from '../scheduleGenerator';
 type FormatKey = 'F2' | 'F3' | 'F4' | 'F5' | 'F6';
 
 interface FormatState {
-  topPadding: number;
   bottomPadding: number;
   posterHeight: number;
   seansTop: number;
+  topPadding: number;
 }
 
 export const useFormatStyles = () => {

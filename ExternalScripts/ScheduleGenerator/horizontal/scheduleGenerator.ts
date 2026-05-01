@@ -7,19 +7,19 @@ import { AgeRatingMapping, FilmMapping, PirateMapping } from '../utils/mappings'
 
 export interface StyleOverrides {
   F2?: {
-    bottomPadding?: number; posterHeight?: number; topPadding?: number; seansTop?: number;
+    bottomPadding?: number; posterHeight?: number; seansTop?: number; topPadding?: number;
   };
   F3?: {
-    bottomPadding?: number; posterHeight?: number; topPadding?: number; seansTop?: number;
+    bottomPadding?: number; posterHeight?: number; seansTop?: number; topPadding?: number;
   };
   F4?: {
-    bottomPadding?: number; posterHeight?: number; topPadding?: number; seansTop?: number;
+    bottomPadding?: number; posterHeight?: number; seansTop?: number; topPadding?: number;
   };
   F5?: {
-    bottomPadding?: number; posterHeight?: number; topPadding?: number; seansTop?: number;
+    bottomPadding?: number; posterHeight?: number; seansTop?: number; topPadding?: number;
   };
   F6?: {
-    bottomPadding?: number; posterHeight?: number; topPadding?: number; seansTop?: number;
+    bottomPadding?: number; posterHeight?: number; seansTop?: number; topPadding?: number;
   };
 }
 
