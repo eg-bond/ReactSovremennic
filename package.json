@@ -91,7 +91,7 @@
     "vite-plugin-qrcode": "^0.2.1",
     "vite-plugin-remove-console": "^2.1.1",
     "vite-plugin-svgr": "^3.2.0",
-    "vitest": "^0.33.0",
+    "vitest": "^3.2.6",
     "webp-converter": "^2.3.3",
     "webpconvert": "^3.0.1",
     "xlsx": "^0.18.5"
