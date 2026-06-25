@@ -1,93 +1,108 @@
 import './SCSS/style.scss';
-import { useEffect, useRef } from 'react';
-import { LINKS } from '@/REDUX/cinema/cinemaReducer';
-import Footer from './Template/Footer';
-import Content from './Content/Content';
-import { DesktopAdv } from './Template/Adv';
-import Navigation from './Template/Navigation';
-import FilmsSlider from './Template/FilmsSlider';
-import BottomSlider from './Template/BottomSlider';
-import { modifiedClass, queries } from './helpers';
-import { useMediaQuery } from './hooks/useMediaQuery';
-import { useScrollToTop } from './hooks/useScrollToTop';
-import { useChangeTheme } from './hooks/useChangeTheme';
-import { useAppState } from './REDUX/stateHooks/useAppState';
+import { useState, useEffect } from 'react';
 
 const App = () => {
-  const {
-    films,
-    filmsToday,
-    siteMode,
-    theme,
-    imgHidden,
-    fontSize,
-    switchSiteMode,
-    createFilmsTodayArr,
-    setTodayScheduleItem,
-  } = useAppState();
+  const [redirectTimer, setRedirectTimer] = useState(10);
 
-  // Initialization
+  // Redirect countdown timer
   useEffect(() => {
-    setTodayScheduleItem();
-    createFilmsTodayArr(LINKS);
-  }, [setTodayScheduleItem, createFilmsTodayArr]);
-
-  // Media query hook.
-  const isMobile = useMediaQuery(queries.mobile);
-
-  // Changes siteMode to 'default' when switching from desktop to mobile
-  useEffect(() => {
-    if (isMobile && siteMode === 'special') {
-      switchSiteMode('default');
+    if (redirectTimer > 0) {
+      const timerId = setTimeout(() => {
+        setRedirectTimer(prev => prev - 1);
+      }, 1000);
+      return () => clearTimeout(timerId);
+    } else {
+      window.location.href = 'https://sovremenniksbor.ru';
     }
-  }, [isMobile, switchSiteMode, siteMode]);
-
-  // Switches the main fontSize style variable
-  useEffect(() => {
-    document.documentElement.style.setProperty('--htmlFontSize', fontSize);
-  }, [fontSize]);
-
-  // Changes colors if theme/siteMode changed
-  useChangeTheme(theme, siteMode);
-
-  // Scrolls to top if content starts higher than anchor
-  const contentRef = useRef(null);
-  const anchorRef = useRef(null);
-  useScrollToTop(contentRef, anchorRef);
-
-  const mainContainerClasses = [
-    modifiedClass('mainContainer', siteMode),
-    'flex-wrapper',
-  ].join(' ');
+  }, [redirectTimer]);
 
   return (
-    <div className={mainContainerClasses}>
-      <div>
-        <Navigation fontSize={fontSize} siteMode={siteMode} theme={theme} />
-
-        <div
-          className="separatorMobile separatorMobile--sticky"
-          ref={anchorRef}
-        />
-
-        <div className={`container wrapper ${imgHidden ? 'hideImages' : ''}`}>
-          <FilmsSlider films={films} isMobile={isMobile} />
-
-          <div className="mainContainer__content" ref={contentRef}>
-            <Content isMobile={isMobile} />
-            {!isMobile && <DesktopAdv />}
-          </div>
-
-          {siteMode === 'default' && (
-            <div>
-              <h1 className="bottomSlider__bar">Скоро в кино</h1>
-              <hr className="bottomSlider__border" />
-              <BottomSlider filmsToday={filmsToday || []} isMobile={isMobile} />
-            </div>
-          )}
-        </div>
+    <div>
+      {/* Discclaimer banner */}
+      <div
+        style={{
+          backgroundColor: '#000',
+          color: '#fff',
+          padding: '12px 16px',
+          textAlign: 'center',
+          width: '100%',
+          height: '100%',
+          boxSizing: 'border-box',
+          fontSize: 'clamp(14px, 2.5vw, 16px)',
+          lineHeight: '1.4',
+          fontWeight: '400',
+          fontFamily: '\'Inter\', \'Roboto\', \'Arial\', sans-serif',
+          position: 'relative',
+          zIndex: '1000',
+        }}
+      >
+        <span style={{ display: 'block', marginBottom: '4px' }}>
+          ⚠️ Уважаемые посетители кинотеатра "Современник"!
+        </span>
+        <span style={{ display: 'block', marginBottom: '4px' }}>
+          Сайт кинотеатра переехал на новый домен:
+        </span>
+        <a
+          style={{
+            color: '#fff',
+            textDecoration: 'underline',
+            fontWeight: '600',
+            whiteSpace: 'nowrap',
+          }}
+          href="https://sovremenniksbor.ru"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          sovremenniksbor.ru
+        </a>
       </div>
-      <Footer />
+      <div
+        style={{
+          backgroundColor: '#000',
+          color: '#fff',
+          padding: '10px 16px 12px',
+          textAlign: 'center',
+          width: '100%',
+          boxSizing: 'border-box',
+          fontSize: 'clamp(13px, 2.2vw, 15px)',
+          lineHeight: '1.3',
+          fontWeight: '400',
+          fontFamily: '\'Inter\', \'Roboto\', \'Arial\', sans-serif',
+          position: 'relative',
+          zIndex: '999',
+          borderTop: '1px solid #333',
+        }}
+      >
+        <span>Вы будете автоматически перенаправлены на </span>
+        <a
+          style={{
+            color: '#fff',
+            textDecoration: 'underline',
+            fontWeight: '600',
+          }}
+          href="https://sovremenniksbor.ru"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          https://sovremenniksbor.ru
+        </a>
+        <span> через </span>
+        <span
+          style={{
+            display: 'inline-block',
+            minWidth: '24px',
+            fontWeight: '700',
+            fontSize: 'clamp(14px, 2.5vw, 17px)',
+            color: '#ff6b6b',
+            textAlign: 'center',
+          }}
+        >
+          {redirectTimer}
+        </span>
+        <span> секунд</span>
+      </div>
+      <div>
+      </div>
     </div>
   );
 };

@@ -4,20 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="google" content="notranslate" />
     <link rel="icon" href="/favicon.ico" />
-    <link rel="preload" as="image" href="/Images/logo.png" />
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=110138206', 'ym');
-
-    ym(110138206, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-</script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/110138206" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    <!-- /Yandex.Metrika counter -->
+    <link rel="preload" as="image" href="/Images/logo.png" />    
     <meta
       name="description"
       content="Кинотеатр 'Современник' г. Сосновый Бор."
@@ -30,10 +17,127 @@
     <meta name="theme-color" content="#000000" />   
     <title>Кинотеатр "Современник"</title>
   </head>
-  <body data-cinema-id="607">
-    <div id="root"></div>
-    <script type="module" src="/reload.js"></script>
-    <script type="module" src="/src/main.tsx"></script>
-    <script type="module" src="/sales.js"></script>
+  <div>
+    <!-- Discclaimer banner -->
+    <div id="discclaimer-banner" style="
+      background-color: #000;
+      color: #fff;
+      padding: 17vh 3vw;
+      text-align: center;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      font-size: 3.5vw;
+      line-height: 1.4;
+      font-weight: 400;
+      font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    ">
+      <div style="display: block; margin-bottom: 4px;">
+        Уважаемые посетители кинотеатра "Современник"!
+      </div>
+      <div style="display: block; margin-bottom: 4px;">
+        Наш сайт переехал на новый домен:
+      </div>
+      <a href="https://sovremenniksbor.ru" rel="noopener noreferrer" style="
+        color: #e81616;
+        text-decoration: underline;
+        font-weight: 600;
+        white-space: nowrap;
+      ">
+        sovremenniksbor.ru
+      </a>
+      <div>
+        Добавьте в закладки чтобы не потерять нас.
+      </div>
+
+      <!-- Redirect timer -->
+      <div id="redirect-timer" style="padding: 7vh 5vw; font-size: 2.5vw;">
+        <span>Вы будете автоматически перенаправлены на </span>
+        
+        <div>
+          <a href="https://sovremenniksbor.ru" rel="noopener noreferrer" style="
+        color: #e81616;
+        text-decoration: underline;
+        font-weight: 600;
+      ">https://sovremenniksbor.ru
+          </a>
+        </div>
+        
+
+        <div>
+          <span> через </span>
+          <span id="countdown-timer" style="
+          display: inline-block;
+          min-width: 28px;
+          font-weight: 700;        
+          color: #ff6b6b;
+          text-align: center;
+          transition: color 0.3s;
+        ">10</span>
+          <span> секунд</span>
+        </div>
+      </div>
+    </div>
+  </div> 
+
+  <!-- Add padding to body to account for fixed banners -->
+  <style>
+      body { padding-top: 140px; }
+      @media (max-width: 768px) {
+        body { padding-top: 150px; }
+        #redirect-timer { top: 80px; }
+      }
+      @media (max-width: 480px) {
+        body { padding-top: 160px; }
+        #discclaimer-banner { padding: 10px 12px; font-size: clamp(13px, 2.2vw, 14px); }
+        #redirect-timer { padding: 8px 12px 10px; font-size: clamp(12px, 2vw, 13px); }
+      }
+    </style>    
+
+  <!-- Countdown and redirect script -->
+  <script>
+      (function() {
+      let countdown = 10;
+      const timerElement = document.getElementById('countdown-timer');
+      const countdownElement = document.getElementById('redirect-timer');
+        
+      function updateTimer() {
+      if (countdown > 0) {
+      timerElement.textContent = countdown;
+      // Change color when getting close to 0
+      if (countdown <= 3) {
+      timerElement.style.color = '#ff3838';
+      timerElement.style.animation = 'pulse 0.5s infinite';
+      }
+      countdown--;
+      } else {
+      // Redirect after countdown
+      window.location.href = 'https://sovremenniksbor.ru';
+      }
+      }
+        
+      // Add pulse animation for last seconds
+      const style = document.createElement('style');
+      style.textContent = `
+      @keyframes pulse {
+      0% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.1); }
+      100% { opacity: 1; transform: scale(1); }
+      }
+      `;
+      document.head.appendChild(style);
+        
+      // Start countdown
+      const timerInterval = setInterval(updateTimer, 1000);
+      
+      })();
+      </script>
+    
   </body>
 </html>
