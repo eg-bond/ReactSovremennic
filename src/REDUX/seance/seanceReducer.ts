@@ -3,13 +3,13 @@ import type { DateKeysT, SeanceStateT, getDayT } from './seanceReducerT';
 
 export const initialState: SeanceStateT = {
   datesArr: [
-    ['day1', 'Понедельник', '22 июня'],
-    ['day2', 'Вторник', '23 июня'],
-    ['day3', 'Среда', '24 июня'],
     ['day4', 'Четверг', '25 июня'],
     ['day5', 'Пятница', '26 июня'],
     ['day6', 'Суббота', '27 июня'],
     ['day0', 'Воскресенье', '28 июня'],
+    ['day1', 'Понедельник', '29 июня'],
+    ['day2', 'Вторник', '30 июня'],
+    ['day3', 'Среда', '1 июля'],
   ],
   activeScheduleItemKey: '',
 };
@@ -37,6 +37,9 @@ const seanceSlice = createSlice({
   },
 });
 
-export const { setTodayScheduleItem: setTodayScheduleItem_AC, changeScheduleItem: changeScheduleItem_AC } = seanceSlice.actions;
+export const {
+  setTodayScheduleItem: setTodayScheduleItem_AC,
+  changeScheduleItem: changeScheduleItem_AC,
+} = seanceSlice.actions;
 
 export default seanceSlice.reducer;
