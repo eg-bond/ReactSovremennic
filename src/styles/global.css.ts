@@ -240,3 +240,58 @@ globalStyle(
   '.swSlide__a:hover .swSlide__img, .swSlide__a:focus-visible .swSlide__img',
   { opacity: 0.85 },
 );
+
+// ─── Animations ──────────────────────────────────────────────────────────────
+
+globalStyle('html', {
+  vars: {
+    '--animationDuration': '200ms',
+    '--shiftLength': '1.3vw',
+  },
+});
+
+const fadeIn = keyframes({
+  from: { opacity: 0 },
+  to: { opacity: 1 },
+});
+
+const fadeInUp = keyframes({
+  from: { opacity: 0, transform: 'translate3d(0, var(--shiftLength), 0)' },
+  to: { opacity: 1, transform: 'translate3d(0, 0, 0)' },
+});
+
+const fadeOutDown = keyframes({
+  from: { opacity: 1, transform: 'translate3d(0, 0, 0)' },
+  to: { opacity: 0, transform: 'translate3d(0, var(--shiftLength), 0)' },
+});
+
+const fadeInDown = keyframes({
+  from: {
+    opacity: 0,
+    transform: 'translate3d(-10%, 0, 0)',
+  },
+  to: {
+    opacity: 1,
+    transform: 'translate3d(0, 0, 0)',
+  },
+});
+
+globalStyle('.fadeIn', {
+  animation: `${fadeIn} var(--animationDuration) ease forwards`,
+});
+
+globalStyle('.fadeInUp', {
+  animation: `${fadeInUp} var(--animationDuration) ease forwards`,
+});
+
+globalStyle('.fadeOutDown', {
+  animation: `${fadeOutDown} var(--animationDuration) ease forwards`,
+});
+
+globalStyle('.fadeInDown', {
+  opacity: 0,
+  WebkitTransform: 'translate3d(-10%, 0, 0)',
+  transform: 'translate3d(-10%, 0, 0)',
+  animation: `${fadeInDown} var(--animationDuration) ease forwards`,
+  animationDuration: '0.7s',
+});
