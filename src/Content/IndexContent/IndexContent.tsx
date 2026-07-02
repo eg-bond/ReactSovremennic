@@ -4,6 +4,7 @@ import { useAppSelector } from '@/REDUX/store';
 import { CINEMA_PHONE } from '@/utils/constants';
 import { SushiWork } from '@/components/SushiWork';
 import { VkVideoEmbed } from '@/components/VkVideoEmbed';
+import { SeparatorMobile } from '@/components/SeparatorMobile';
 import * as s from './IndexContent.css.ts';
 
 function IndexContent({ isMobile }: {
@@ -20,7 +21,7 @@ function IndexContent({ isMobile }: {
         </div>
       )}
 
-      <div className="separatorMobile separatorMobile--index" />
+      <SeparatorMobile variant="index" />
 
       <div className={s.news}>
         <h1 className={siteMode === 'special' ? s.h1Special : ''}>
@@ -65,10 +66,10 @@ function IndexContent({ isMobile }: {
         </p>
       </div>
 
-      <div className="separatorMobile separatorMobile--index" />
+      <SeparatorMobile variant="index" />
       {isMobile && <MobileAdv />}
 
-      <div className="separatorMobile separatorMobile--index" />
+      <SeparatorMobile variant="index" />
       {isMobile && <SushiWork />}
 
     </div>

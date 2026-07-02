@@ -3,6 +3,7 @@ import { Link, useMatch } from 'react-router-dom';
 import { memo, useMemo, useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { PRE_SHOW_SERVICE } from '@/utils/constants';
+import { SeparatorMobile } from '@/components/SeparatorMobile';
 import { removeLineBreaks } from '@/utils/formatTextWithLineBreaks';
 import type { CinemaStateT } from '@/REDUX/cinema/cinemaReducerT';
 import * as s from './FilmsSlider.css';
@@ -51,7 +52,7 @@ export const FilmsSlider = memo<FilmSliderT>(function FilmsSlider({ films, isMob
           )}
         </div>
       </div>
-      <div className="separatorMobile" />
+      <SeparatorMobile />
     </div>
   );
 });

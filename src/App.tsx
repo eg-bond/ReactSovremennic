@@ -1,6 +1,7 @@
 import './styles/global.css';
 import { useEffect, useRef } from 'react';
 import { LINKS } from '@/REDUX/cinema/cinemaReducer';
+import { SeparatorMobile } from '@/components/SeparatorMobile';
 import * as s from './App.css.ts';
 import { queries } from './helpers';
 import Content from './Content/Content';
@@ -67,10 +68,7 @@ const App = () => {
       <div>
         <Navigation fontSize={fontSize} siteMode={siteMode} theme={theme} />
 
-        <div
-          className="separatorMobile separatorMobile--sticky"
-          ref={anchorRef}
-        />
+        <SeparatorMobile ref={anchorRef} variant="sticky" />
 
         <div className={`container ${s.wrapper} ${imgHidden ? 'hideImages' : ''}`}>
           <FilmsSlider films={films} isMobile={isMobile} />

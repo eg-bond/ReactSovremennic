@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import { FilmImg } from '@/components/FilmImg';
 import { SushiWork } from '@/components/SushiWork';
+import { SeparatorMobile } from '@/components/SeparatorMobile';
 import { formatTextWithLineBreaks } from '@/utils/formatTextWithLineBreaks';
 import * as s from './SelectedMovie.css.ts';
 import { DescriptionTrailer } from './DescriptionTrailer';
@@ -83,7 +84,7 @@ isMobile,
         trailer_src={filmItem.playerCode}
       />
 
-      <div className="separatorMobile separatorMobile--index" />
+      <SeparatorMobile variant="index" />
       {isMobile && <SushiWork />}
     </div>
   );

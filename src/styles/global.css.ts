@@ -213,38 +213,6 @@ globalStyle(
 
 globalStyle('.embed-responsive-16by9', { paddingBottom: '56.25%' });
 
-// ─── Mobile Separator ────────────────────────────────────────────────────────
-
-globalStyle('.separatorMobile', {
-  '@media': {
-    [breakpoints.mobile]: {
-      height: '1vw',
-      backgroundColor: 'var(--mobileSeparatorClr)',
-      zIndex: 200,
-    },
-  },
-});
-
-globalStyle('.separatorMobile--sticky', {
-  '@media': {
-    [breakpoints.mobile]: {
-      position: 'sticky',
-      top: 'calc(var(--navbarMobileH768) - 0.1vw)',
-    },
-    'screen and (max-width: 544px)': {
-      top: 'calc(var(--navbarMobileH544) - 0.1vw)',
-    },
-  },
-});
-
-globalStyle('.separatorMobile--index', {
-  '@media': {
-    [breakpoints.mobile]: {
-      margin: '0',
-    },
-  },
-});
-
 // ─── Skeleton Loading ────────────────────────────────────────────────────────
 
 const shine = keyframes({

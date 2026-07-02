@@ -4,6 +4,7 @@ import { MobileAdv } from '@/components/Adv';
 import { SushiWork } from '@/components/SushiWork';
 import { BarSlider } from '@/components/BarSlider';
 import { OnlineSales } from '@/components/OnlineSales';
+import { SeparatorMobile } from '@/components/SeparatorMobile';
 import { useSeanceState } from '@/REDUX/stateHooks/useSeanceState';
 import * as s from './Seance.css.ts';
 import { TableContent } from './seanceComponents';
@@ -78,13 +79,13 @@ const Seance = ({ isMobile }: {
 
       <OnlineSales />
 
-      <div className="separatorMobile separatorMobile--index" />
+      <SeparatorMobile variant="index" />
       <BarSlider />
 
-      <div className="separatorMobile separatorMobile--index" />
+      <SeparatorMobile variant="index" />
       {isMobile && <MobileAdv />}
 
-      <div className="separatorMobile separatorMobile--index" />
+      <SeparatorMobile variant="index" />
       {isMobile && <SushiWork />}
     </div>
   );
