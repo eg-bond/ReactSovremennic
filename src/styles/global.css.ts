@@ -238,7 +238,11 @@ globalStyle('.separatorMobile--sticky', {
 });
 
 globalStyle('.separatorMobile--index', {
-  '@media': { [breakpoints.mobile]: { margin: '0 -15px 0 -15px' } },
+  '@media': {
+    [breakpoints.mobile]: {
+      margin: '0',
+    },
+  },
 });
 
 // ─── Skeleton Loading ────────────────────────────────────────────────────────

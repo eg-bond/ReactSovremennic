@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import { MobileAdv } from '@/components/Adv';
+import { useAppSelector } from '@/REDUX/store';
 import { CINEMA_PHONE } from '@/utils/constants';
+import { SushiWork } from '@/components/SushiWork';
 import { VkVideoEmbed } from '@/components/VkVideoEmbed';
 import * as s from './IndexContent.css.ts';
-import { useAppSelector } from '@/REDUX/store';
-import { SushiWork } from '@/components/SushiWork';
 
 function IndexContent({ isMobile }: {
   isMobile: boolean;

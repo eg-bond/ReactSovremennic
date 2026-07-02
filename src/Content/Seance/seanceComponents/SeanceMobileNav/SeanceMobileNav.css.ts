@@ -2,7 +2,7 @@ import { globalStyle, style } from '@vanilla-extract/css';
 import { vars } from '@/styles/theme.css';
 
 export const mobileNavContainerBack = style({
-  margin: '0 -15px',
+  margin: '0',
   backgroundColor: 'black',
   zIndex: 10,
   position: 'sticky',
@@ -16,7 +16,7 @@ export const mobileNavContainer = style({
   display: 'flex',
   overflow: 'hidden',
   cursor: 'grab',
-  margin: '0 7px',
+  margin: '0',
   height: '13.5vw',
 });
 
