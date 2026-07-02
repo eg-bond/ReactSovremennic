@@ -17,12 +17,12 @@ export const BarSlider = memo(function BarSlider() {
         {slideKeys.map(key => (
           <div className={s.slide} key={key}>
             <img
-              srcSet={`Images/kombo/${key}_sm.webp 500w,
-                       Images/kombo/${key}_md.webp 680w,
-                       Images/kombo/${key}_lg.webp 1920w`}
+              srcSet={`/Images/kombo/${key}_sm.webp 500w,
+                       /Images/kombo/${key}_md.webp 680w,
+                       /Images/kombo/${key}_lg.webp 1920w`}
               alt={key}
               className={`swSlide__img ${s.img}`}
-              src={`Images/kombo/${key}_lg.webp`}
+              src={`/Images/kombo/${key}_lg.webp`}
             />
           </div>
         ))}

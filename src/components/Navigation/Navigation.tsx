@@ -28,7 +28,7 @@ const Navigation = memo<NavigationT>(function Navigation({
             <img
               alt="logoImg"
               className={s.logoImg}
-              src={`Images/${themeLogoFile[theme]}`}
+              src={`/Images/${themeLogoFile[theme]}`}
             />
           </Link>
         </div>

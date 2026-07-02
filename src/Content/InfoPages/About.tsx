@@ -1,6 +1,6 @@
 import { CINEMA_PHONE } from '@/utils/constants';
-import * as s from './InfoPages.css.ts';
 import { useAppSelector } from '@/REDUX/store.ts';
+import * as s from './InfoPages.css.ts';
 
 const SRC =
 'https://yandex.ru/map-widget/v1/?um=constructor%' +
@@ -47,16 +47,16 @@ function About() {
       </div>
       <div className={s.aboutImages}>
         <div className={s.aboutImage}>
-          <img alt="фото кинотеатра 1" src="Images/about1.webp" />
+          <img alt="фото кинотеатра 1" src="/Images/about1.webp" />
         </div>
         <div className={`${s.aboutImage} hidden-xs`}>
-          <img alt="фото кинотеатра 2" src="Images/about2.webp" />
+          <img alt="фото кинотеатра 2" src="/Images/about2.webp" />
         </div>
         <div className={`${s.aboutImage} hidden-xs`}>
-          <img alt="фото кинотеатра 4" src="Images/about4.webp" />
+          <img alt="фото кинотеатра 4" src="/Images/about4.webp" />
         </div>
         <div className={s.aboutImage}>
-          <img alt="фото кинотеатра 3" src="Images/about3.webp" />
+          <img alt="фото кинотеатра 3" src="/Images/about3.webp" />
         </div>
       </div>
       <div>

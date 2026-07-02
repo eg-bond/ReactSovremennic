@@ -51,7 +51,7 @@ export const LottenSlide = () => (
       path: 'https://lotten.ru',
     }}
     alt="lotten кадастровые услуги"
-    imgSrc="Images/lotten_adv.webp"
+    imgSrc="/Images/lotten_adv.webp"
     tabIndex={2}
   />
 );

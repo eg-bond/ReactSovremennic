@@ -34,7 +34,7 @@ export const FilmImg = ({
       <img
         alt={title}
         className={`${s.img} ${loaded ? s.imgLoaded : ''}`}
-        src={`Images/description/${link}.webp`}
+        src={`/Images/description/${link}.webp`}
         onLoad={handleLoad}
       />
 
