@@ -2,6 +2,7 @@ import { useCallback } from 'react';
 import { useEffect, useState } from 'react';
 import { MobileAdv } from '@/components/Adv';
 import { SushiWork } from '@/components/SushiWork';
+import { BarSlider } from '@/components/BarSlider';
 import { OnlineSales } from '@/components/OnlineSales';
 import { useSeanceState } from '@/REDUX/stateHooks/useSeanceState';
 import * as s from './Seance.css.ts';
