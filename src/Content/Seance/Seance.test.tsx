@@ -1,11 +1,11 @@
-import { act, fireEvent, screen } from '@testing-library/react';
-import Seance from './Seance';
-import schedule from './schedule';
 import { delay, reg } from '@/helpers';
-import { trDuration } from '@/Content/Sushi/sushiHelpers';
 import { renderWithRouterAndRedux } from '@/App.test';
 import { matchMediaMock } from '@/test/matchMediaMock';
+import { trDuration } from '@/Content/Sushi/sushiHelpers';
+import { act, fireEvent, screen } from '@testing-library/react';
 import { setTodayScheduleItem_AC } from '@/REDUX/seance/seanceReducer';
+import Seance from './Seance';
+import schedule from './schedule';
 import type { SeanceStateT } from '@/REDUX/seance/seanceReducerT';
 vitest.mock('@/components/BarSlider');
 
@@ -14,13 +14,13 @@ describe('Seance tests:', () => {
 
   // a little helper obj
   const keyToTitle = {
-    'day0': 'Воскресенье',
-    'day1': 'Понедельник',
-    'day2': 'Вторник',
-    'day3': 'Среда',
-    'day4': 'Четверг',
-    'day5': 'Пятница',
-    'day6': 'Суббота',
+    day0: 'Воскресенье',
+    day1: 'Понедельник',
+    day2: 'Вторник',
+    day3: 'Среда',
+    day4: 'Четверг',
+    day5: 'Пятница',
+    day6: 'Суббота',
     '': 'just for TS not to bark on me',
   };
   describe('Desktop:', () => {
