@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import SeanceMobileNav from './SeanceMobileNav';
 import type { ChangeTableContentT } from '@/Content/Seance/Seance';
@@ -23,6 +23,19 @@ export const SeanceMobileNavContainer = ({
     slidesToScroll: 1,
     duration: 25,
   });
+
+  // Scroll to the active day on mount
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    const activeIndex = datesArr.findIndex(
+      ([key]) => key === activeScheduleItemKey,
+    );
+
+    if (activeIndex !== -1) {
+      emblaApi.scrollTo(activeIndex);
+    }
+  }, [emblaApi, activeScheduleItemKey, datesArr]);
 
   const handleClick = useCallback(
     (
