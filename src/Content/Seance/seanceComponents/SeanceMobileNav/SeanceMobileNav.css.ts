@@ -13,7 +13,6 @@ export const mobileNavContainerBack = style({
 });
 
 export const mobileNavContainer = style({
-  display: 'flex',
   overflow: 'hidden',
   cursor: 'grab',
   margin: '0',
@@ -34,6 +33,7 @@ export const mobileNavChanging = style({
 });
 
 export const mobileNavItem = style({
+  flex: '0 0 auto',
   width: 'fit-content',
   whiteSpace: 'nowrap',
   borderRadius: '5vw',
@@ -47,14 +47,4 @@ export const mobileNavItem = style({
 globalStyle(`${mobileNavItem}.active, ${mobileNavItem}:hover`, {
   backgroundColor: 'white',
   color: 'black',
-});
-
-export const mobileNavAnchor = style({
-  position: 'sticky',
-  top: 'calc(var(--navbarMobileH768) + var(--mobileNavHeight) + 0.5vw)',
-  '@media': {
-    'screen and (max-width: 544px)': {
-      top: 'calc(var(--navbarMobileH544) + var(--mobileNavHeight) + 0.5vw)',
-    },
-  },
 });

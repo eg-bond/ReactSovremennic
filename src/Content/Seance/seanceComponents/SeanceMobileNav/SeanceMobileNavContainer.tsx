@@ -1,6 +1,5 @@
-import { useMotionValue } from 'framer-motion';
-import { useRef, useState, useCallback } from 'react';
-import { useWindowWidth } from '@/hooks/useWindowWidth';
+import { useCallback, useState } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
 import SeanceMobileNav from './SeanceMobileNav';
 import type { ChangeTableContentT } from '@/Content/Seance/Seance';
 import type {
@@ -17,58 +16,38 @@ export const SeanceMobileNavContainer = ({
   changeTableContent: ChangeTableContentT;
   datesArr: SeanceStateT['datesArr'];
 }) => {
-  // adds class "changing" with transition style to slider for smooth animation
   const [isChanging, setIsChanging] = useState(false);
-  const sliderRef = useRef<HTMLDivElement>(null);
-  const constraintRef = useRef<HTMLDivElement>(null);
-  const hrRef = useRef<HTMLHRElement>(null);
-  const x = useMotionValue(0);
-  // window.innerWidth
-  const { width } = useWindowWidth();
-
-  const margins = 14;
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: 'center',
+    containScroll: 'keepSnaps',
+    dragFree: true,
+    slidesToScroll: 1,
+  });
 
   const handleClick = useCallback(
     (
-      e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+      _e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
       dateKey: DateKeysT,
-      ref: React.RefObject<HTMLDivElement>,
+      index: number,
     ) => {
-      if (!ref.current) return;
+      if (!emblaApi) return;
 
       setIsChanging(true);
-
-      const target = e.target as HTMLButtonElement;
-      const scrollWidth = ref.current.scrollWidth;
-      // // x coordinate for active item to be in the middle of the screen
-      const translateEdge = (width - target.offsetWidth - margins) / 2;
-      // // required translateX css prop
-      const translateX = target.offsetLeft - translateEdge;
-
-      if (translateX > 0) {
-        if (translateX < scrollWidth - width) x.set(-translateX);
-        else x.set(-(scrollWidth - width + margins));
-      }
-      if (translateX < 0) {
-        x.set(0);
-      }
+      emblaApi.scrollTo(index);
 
       setTimeout(() => setIsChanging(false), 350);
       changeTableContent(dateKey);
     },
-    [width, changeTableContent, x],
+    [emblaApi, changeTableContent],
   );
 
   return (
     <SeanceMobileNav
       activeScheduleItemKey={activeScheduleItemKey}
-      constraintRef={constraintRef}
       datesArr={datesArr}
+      emblaRef={emblaRef}
       handleClick={handleClick}
-      hrRef={hrRef}
       isChanging={isChanging}
-      sliderRef={sliderRef}
-      x={x}
     />
   );
 };
