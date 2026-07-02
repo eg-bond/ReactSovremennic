@@ -5,7 +5,6 @@ import type { EmblaViewportRefType } from 'embla-carousel-react';
 
 const SeanceMobileNav = ({
   emblaRef,
-  isChanging,
   datesArr,
   activeScheduleItemKey,
   handleClick,
@@ -22,9 +21,7 @@ const SeanceMobileNav = ({
     <>
       <div className={s.mobileNavContainerBack}>
         <div className={s.mobileNavContainer} ref={emblaRef}>
-          <div
-            className={`${s.mobileNav} ${isChanging ? s.mobileNavChanging : ''}`}
-          >
+          <div className={s.mobileNav}>
             {datesArr.map((item, index) => (
               <button
                 className={`${s.mobileNavItem} ${
@@ -55,5 +52,4 @@ type SeanceMobileNavT = {
     dateKey: SeanceStateT['datesArr'][0][0],
     index: number,
   ) => void;
-  isChanging: boolean;
 };

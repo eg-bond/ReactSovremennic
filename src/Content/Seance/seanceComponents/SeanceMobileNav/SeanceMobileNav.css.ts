@@ -27,11 +27,6 @@ export const mobileNav = style({
   padding: 'var(--mobileContentMT) 0',
 });
 
-export const mobileNavChanging = style({
-  transition: '0.25s',
-  pointerEvents: 'none',
-});
-
 export const mobileNavItem = style({
   flex: '0 0 auto',
   width: 'fit-content',

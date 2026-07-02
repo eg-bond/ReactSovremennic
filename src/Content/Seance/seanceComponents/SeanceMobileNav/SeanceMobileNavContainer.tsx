@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import SeanceMobileNav from './SeanceMobileNav';
 import type { ChangeTableContentT } from '@/Content/Seance/Seance';
@@ -16,12 +16,12 @@ export const SeanceMobileNavContainer = ({
   changeTableContent: ChangeTableContentT;
   datesArr: SeanceStateT['datesArr'];
 }) => {
-  const [isChanging, setIsChanging] = useState(false);
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: 'center',
     containScroll: 'keepSnaps',
     dragFree: true,
     slidesToScroll: 1,
+    duration: 25,
   });
 
   const handleClick = useCallback(
@@ -32,10 +32,7 @@ export const SeanceMobileNavContainer = ({
     ) => {
       if (!emblaApi) return;
 
-      setIsChanging(true);
       emblaApi.scrollTo(index);
-
-      setTimeout(() => setIsChanging(false), 350);
       changeTableContent(dateKey);
     },
     [emblaApi, changeTableContent],
@@ -47,7 +44,6 @@ export const SeanceMobileNavContainer = ({
       datesArr={datesArr}
       emblaRef={emblaRef}
       handleClick={handleClick}
-      isChanging={isChanging}
     />
   );
 };
