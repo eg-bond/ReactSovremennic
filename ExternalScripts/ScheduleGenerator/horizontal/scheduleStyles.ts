@@ -1,4 +1,4 @@
-import '../../../src/SCSS/fonts.scss';
+import '../fonts/fonts.css';
 
 export const MOST_IMPORTANT_STYLES = {
   F2: {
@@ -201,7 +201,7 @@ export const getLayoutConfig = (filmCount: number) => {
       titleFontSize: 21,
       // Pirate banner ------------------------------------------------
       pirateBannerHeight: 50,
-      pirateBannerFontSize: 14,
+      pirateBannerFontSize: 13,
     },
   };
   return configs[filmCount as 3 | 4 | 5] || configs[4];
