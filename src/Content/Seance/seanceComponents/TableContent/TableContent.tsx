@@ -1,11 +1,19 @@
 import { memo } from 'react';
-import { schedule } from '@/Content/Seance/schedule.ts';
 import * as s from './TableContent.css.ts';
-import type { SeanceStateT } from '@/REDUX/seance/seanceReducerT';
+import type { DateKeysT, SeanceStateT } from '@/REDUX/seance/seanceReducerT';
+
+type ScheduleDataT = Record<
+  DateKeysT,
+  Array<[string, string, string, string]>
+>;
 
 export const TableContent = memo<TableContentT>(
-  function TableContent({ activeScheduleItemKey, tableVisible }) {
-    if (!(activeScheduleItemKey in schedule)) return null;
+  function TableContent({
+    activeScheduleItemKey,
+tableVisible,
+schedule,
+  }) {
+    if (!schedule || !(activeScheduleItemKey in schedule)) return null;
     return (
       <table className={`${s.seanceTable} ${tableVisible ? 'fadeInUp' : 'fadeOutDown'}`}>
         <tbody>
@@ -37,5 +45,6 @@ function tableItem(seance: Array<string | number>, i: number) {
 
 type TableContentT = {
   activeScheduleItemKey: SeanceStateT['activeScheduleItemKey'];
+  schedule: ScheduleDataT | null;
   tableVisible: boolean;
 };

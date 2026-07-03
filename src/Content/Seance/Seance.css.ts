@@ -10,3 +10,18 @@ export const seance = style({
     },
   },
 });
+
+export const loader = style({
+  textAlign: 'center',
+  padding: '2rem 0',
+  fontSize: '1.1rem',
+  color: 'var(--textColor)',
+  opacity: 0.7,
+});
+
+export const error = style({
+  textAlign: 'center',
+  padding: '2rem 0',
+  fontSize: '1.1rem',
+  color: 'var(--errorColor, #e74c3c)',
+});

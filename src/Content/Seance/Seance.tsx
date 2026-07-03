@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import { useEffect, useState } from 'react';
 import { MobileAdv } from '@/components/Adv';
+import { useSchedule } from '@/hooks/useSchedule';
 import { SushiWork } from '@/components/SushiWork';
 import { BarSlider } from '@/components/BarSlider';
 import { OnlineSales } from '@/components/OnlineSales';
@@ -22,6 +23,12 @@ const Seance = ({ isMobile }: {
     setTodayScheduleItem,
     changeScheduleItem,
   } = useSeanceState();
+
+  const {
+    schedule,
+    isLoading,
+    error,
+  } = useSchedule();
 
   const [tableVisible, switchVisibility] = useState(true);
 
@@ -72,10 +79,23 @@ const Seance = ({ isMobile }: {
         </div>
       )}
 
-      <TableContent
-        activeScheduleItemKey={activeScheduleItemKey}
-        tableVisible={tableVisible}
-      />
+      {isLoading && (
+        <div className={s.loader}>Загрузка расписания...</div>
+      )}
+
+      {error && (
+        <div className={s.error}>
+          Расписание временно недоступно. Попробуйте обновить страницу.
+        </div>
+      )}
+
+      {schedule && (
+        <TableContent
+          activeScheduleItemKey={activeScheduleItemKey}
+          schedule={schedule}
+          tableVisible={tableVisible}
+        />
+      )}
 
       <OnlineSales />
 

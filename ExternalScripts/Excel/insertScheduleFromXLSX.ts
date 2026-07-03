@@ -1,7 +1,7 @@
 import fs from 'fs';
 import xlsx from 'xlsx';
-import { PRE_SHOW_SERVICE_SHORT } from '@/utils/constants';
 import { filmsArray } from '@/REDUX/filmsArray';
+import { PRE_SHOW_SERVICE_SHORT } from '@/utils/constants';
 
 type dataT = Array<{
   cost: string;
@@ -18,9 +18,11 @@ const data = xlsx.utils.sheet_to_json(ws) as dataT;
 const schedule = dataToObj(data);
 const finalSchedule = finalizeScedule(schedule);
 
-// Write final data to schedule.ts file
-const finalData = `export const schedule = ${JSON.stringify(finalSchedule)}`;
-fs.writeFileSync('src/Content/Seance/schedule.ts', finalData);
+// Write final data to public/schedule.json file
+fs.writeFileSync(
+  'public/schedule.json',
+  JSON.stringify(finalSchedule, null, 2),
+);
 
 // ------------------------------------------------------------------------
 function dataToObj(data: dataT) {
