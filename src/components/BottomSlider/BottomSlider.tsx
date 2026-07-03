@@ -5,7 +5,7 @@ import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel from 'embla-carousel-react';
 import { PRE_SHOW_SERVICE } from '@/utils/constants';
 import { removeLineBreaks } from '@/utils/formatTextWithLineBreaks';
-import { scrollToNavigation } from '@/helpers';
+import { scrollToNavigation } from '@/utils/helpers';
 import type { CinemaStateT } from '@/REDUX/cinema/cinemaReducerT';
 import * as s from './BottomSlider.css';
 

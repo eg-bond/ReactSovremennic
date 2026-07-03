@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 import { LINKS } from '@/REDUX/cinema/cinemaReducer';
 import { SeparatorMobile } from '@/components/SeparatorMobile';
 import * as s from './App.css.ts';
-import { queries } from './helpers';
+import { queries } from './utils/helpers.ts';
 import Content from './Content/Content';
 import Footer from './components/Footer';
 import { DesktopAdv } from './components/Adv';
