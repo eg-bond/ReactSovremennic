@@ -1,4 +1,4 @@
-import '../../../src/SCSS/fonts.scss';
+import '../fonts/fonts.css';
 
 // Пресеты для быстрого переключения количества дней
 export const PRESETS = {

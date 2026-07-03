@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { scrollToTop } from '../helpers';
+import { scrollToTop } from '@/utils/helpers';
 
 // scrolls to top if content starts higher than anchor
 export const useScrollToTop = (

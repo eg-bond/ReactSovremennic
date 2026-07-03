@@ -1,0 +1,1 @@
+export { BarSlider } from './BarSlider';

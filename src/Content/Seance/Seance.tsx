@@ -1,14 +1,15 @@
 import { useCallback } from 'react';
-import { MobileAdv } from '@/Template/Adv';
 import { useEffect, useState } from 'react';
-import BarSlider from '@/Template/BarSlider';
-import { SushiWork } from '@/Template/SushiWork';
-import { schedule } from '@/Content/Seance/schedule';
+import { MobileAdv } from '@/components/Adv';
+import { SushiWork } from '@/components/SushiWork';
+import { BarSlider } from '@/components/BarSlider';
 import { OnlineSales } from '@/components/OnlineSales';
+import { SeparatorMobile } from '@/components/SeparatorMobile';
 import { useSeanceState } from '@/REDUX/stateHooks/useSeanceState';
-import { TableContent } from './seanceComponents/TableContent';
-import { CreateSeanceButtons } from './seanceComponents/CreateSeanceButtons';
-import SeanceMobileNavContainer from './seanceComponents/SeanceMobileNavContainer';
+import * as s from './Seance.css.ts';
+import { TableContent } from './seanceComponents';
+import { SeanceMobileNav } from './seanceComponents';
+import { CreateSeanceButtons } from './seanceComponents';
 import type { DateKeysT } from '@/REDUX/seance/seanceReducerT';
 
 const Seance = ({ isMobile }: {
@@ -51,7 +52,7 @@ const Seance = ({ isMobile }: {
   if (!activeScheduleItemKey) return null;
 
   return (
-    <div className="content__gridLeftItem--3fr seance">
+    <div className={`content__gridLeftItem--3fr ${s.seance}`}>
       {!isMobile && (
         <CreateSeanceButtons
           activeScheduleItemKey={activeScheduleItemKey}
@@ -62,8 +63,8 @@ const Seance = ({ isMobile }: {
       )}
 
       {isMobile && (
-        <div className="sushi_menu_xs">
-          <SeanceMobileNavContainer
+        <div>
+          <SeanceMobileNav
             activeScheduleItemKey={activeScheduleItemKey}
             changeTableContent={changeTableContent}
             datesArr={datesArr}
@@ -71,32 +72,21 @@ const Seance = ({ isMobile }: {
         </div>
       )}
 
-      <table
-        className={`seanse__table ${
-          tableVisible ? 'fadeInUp' : 'fadeOutDown'
-        }`}
-      >
-        <TableContent
-          activeScheduleItemKey={activeScheduleItemKey}
-          schedule={schedule}
-        />
-      </table>
-
-      {/* <div className="news" style={{ paddingBottom: '1vw' }}>
-          <p>Уважаемые посетители кинотеатра! Онлайн продажи билетов временно приостановлены по техническим причинам. Просим прощения за доставленные неудобства!</p>
-      </div> */}
+      <TableContent
+        activeScheduleItemKey={activeScheduleItemKey}
+        tableVisible={tableVisible}
+      />
 
       <OnlineSales />
 
-      <div className="separatorMobile separatorMobile--index" />
+      <SeparatorMobile variant="index" />
       <BarSlider />
 
-      <div className="separatorMobile separatorMobile--index" />
+      <SeparatorMobile variant="index" />
       {isMobile && <MobileAdv />}
 
-      <div className="separatorMobile separatorMobile--index" />
+      <SeparatorMobile variant="index" />
       {isMobile && <SushiWork />}
-
     </div>
   );
 };

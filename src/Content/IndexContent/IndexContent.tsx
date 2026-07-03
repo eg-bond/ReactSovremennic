@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
-import { MobileAdv } from '@/Template/Adv';
-import BarSlider from '@/Template/BarSlider';
+import { MobileAdv } from '@/components/Adv';
+import { useAppSelector } from '@/REDUX/store';
 import { CINEMA_PHONE } from '@/utils/constants';
-import { convertVideoId } from '@/utils/convertVideoId';
-import { useAppSelector } from '../../REDUX/store';
-import { SushiWork } from '../../Template/SushiWork';
+import { SushiWork } from '@/components/SushiWork';
+import { BarSlider } from '@/components/BarSlider';
+import { VkVideoEmbed } from '@/components/VkVideoEmbed';
+import { SeparatorMobile } from '@/components/SeparatorMobile';
+import * as s from './IndexContent.css.ts';
 
 function IndexContent({ isMobile }: {
   isMobile: boolean;
@@ -14,37 +16,23 @@ function IndexContent({ isMobile }: {
   return (
     <div className="content__gridLeftItem--3fr contentMT">
       {siteMode === 'default' && (
-        <div className="trailers">
+        <div className={s.trailers}>
           {isMobile && <h4>Трейлеры</h4>}
-
-          <div className="embed-responsive">
-            <iframe
-              allow={
-                'encrypted-media; fullscreen; ' +
-                'picture-in-picture; screen-wake-lock;'
-              }
-              src={`https://vkvideo.ru/video_ext.php?oid=-${convertVideoId(
-                '31575153_456245341',
-              )}`}
-              height="360"
-              width="640"
-            >
-            </iframe>
-          </div>
+          <VkVideoEmbed videoId="31575153_456245341" />
         </div>
       )}
 
-      <div className="separatorMobile separatorMobile--index" />
+      <SeparatorMobile variant="index" />
 
-      <div className="news">
-        <h1 className={siteMode === 'special' ? 'index__h1--special' : ''}>
+      <div className={s.news}>
+        <h1 className={siteMode === 'special' ? s.h1Special : ''}>
           Информация
         </h1>
 
         <p>
           • Уважаемые гости кинотеатра! На странице
           {' '}
-          <Link className="ref" style={{ textDecoration: 'none' }} to="seance">
+          <Link className={s.ref} style={{ textDecoration: 'none' }} to="seance">
             "Расписание"
           </Link>
           {' '}
@@ -62,12 +50,12 @@ function IndexContent({ isMobile }: {
           <span style={{ display: 'inline-block' }}>+7-992-177-24-11.</span>
           {' '}
           Меню на
-          <Link className="ref" to="sushi">
+          <Link className={s.ref} to="sushi">
             странице
           </Link>
           сайта и в группе
           <a
-            className="ref vk_ref"
+            className={`${s.ref} ${s.vkRef}`}
             href="https://vk.com/album-46510864_166402327"
           >
             Вконтакте
@@ -79,13 +67,13 @@ function IndexContent({ isMobile }: {
         </p>
       </div>
 
-      <div className="separatorMobile separatorMobile--index" />
+      <SeparatorMobile variant="index" />
       <BarSlider />
 
-      <div className="separatorMobile separatorMobile--index" />
+      <SeparatorMobile variant="index" />
       {isMobile && <MobileAdv />}
 
-      <div className="separatorMobile separatorMobile--index" />
+      <SeparatorMobile variant="index" />
       {isMobile && <SushiWork />}
 
     </div>

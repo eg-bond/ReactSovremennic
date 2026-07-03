@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { after } from '../helpers';
+import { after } from '@/utils/helpers';
 
 export const useImagesLoaded = (amount: number) => {
   const [allImgLoaded, setAllImgLoaded] = useState(false);

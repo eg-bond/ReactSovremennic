@@ -55,7 +55,7 @@ export default tseslint.config(
         blockSpacing: true,
         braceStyle: '1tbs',
         commaDangle: 'always-multiline',
-        quoteProps: 'consistent-as-needed',
+        quoteProps: 'as-needed',
       }),
       js.configs.recommended,
       ...tseslint.configs.recommended,
@@ -126,6 +126,18 @@ export default tseslint.config(
       ],
       // Semicolons -----------------------------------------------------
       '@stylistic/no-extra-semi': 'error',
+      // Import restrictions ------------------------------------------------
+      'no-restricted-imports': [
+        'warn',
+        {
+          patterns: [
+            '../*',
+            '../../*',
+            '../../../*',
+            '../../../../*',
+          ],
+        },
+      ],
       // Lines ----------------------------------------------------------
       '@stylistic/max-len': [
         'warn',

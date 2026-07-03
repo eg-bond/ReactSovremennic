@@ -1,12 +1,13 @@
 import { Suspense, lazy, memo } from 'react';
+import Redirect from '@/components/Redirect';
 import { Routes, Route } from 'react-router-dom';
-import About from './About/About';
-import Rules from './Rules/Rules';
 import Seance from './Seance/Seance';
-import Redirect from '../Template/Redirect';
+import * as s from './Content.css.ts';
+import About from './InfoPages/About';
+import Rules from './InfoPages/Rules';
+import { SelectedMovie } from './SelectedMovie';
 import IndexContent from './IndexContent/IndexContent';
-import SelectedMovieContainer from './Cinema/SelectedMovieContainer';
-const Karaoke = lazy(() => import('./Karaoke/Karaoke'));
+const Karaoke = lazy(() => import('./Karaoke'));
 
 const Content = memo<{
   isMobile: boolean;
@@ -14,14 +15,14 @@ const Content = memo<{
   return (
     <Suspense
       fallback={
-        <div className="content__gridRightItem--full">{/* preloader?? */}</div>
+        <div className={s.suspenseFallback}>{/* preloader?? */}</div>
       }
     >
       <Routes>
         <Route element={<IndexContent isMobile={isMobile} />} path="/" />
         <Route element={<Seance isMobile={isMobile} />} path="seance" />
         <Route
-          element={<SelectedMovieContainer isMobile={isMobile} />}
+          element={<SelectedMovie isMobile={isMobile} />}
           path="movies/:film_id"
         />
         <Route element={<About />} path="about" />

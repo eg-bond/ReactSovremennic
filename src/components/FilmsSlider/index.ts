@@ -1,0 +1,1 @@
+export { FilmsSlider } from './FilmsSlider';

@@ -1,0 +1,1 @@
+export { BottomSlider } from './BottomSlider';

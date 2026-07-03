@@ -1,16 +1,18 @@
-import './SCSS/style.scss';
+import './styles/global.css';
 import { useEffect, useRef } from 'react';
 import { LINKS } from '@/REDUX/cinema/cinemaReducer';
-import Footer from './Template/Footer';
+import { SeparatorMobile } from '@/components/SeparatorMobile';
+import * as s from './App.css.ts';
+import { queries } from './utils/helpers.ts';
 import Content from './Content/Content';
-import { DesktopAdv } from './Template/Adv';
-import Navigation from './Template/Navigation';
-import FilmsSlider from './Template/FilmsSlider';
-import BottomSlider from './Template/BottomSlider';
-import { modifiedClass, queries } from './helpers';
+import Footer from './components/Footer';
+import { DesktopAdv } from './components/Adv';
+import { Navigation } from './components/Navigation';
 import { useMediaQuery } from './hooks/useMediaQuery';
+import { FilmsSlider } from './components/FilmsSlider';
 import { useScrollToTop } from './hooks/useScrollToTop';
 import { useChangeTheme } from './hooks/useChangeTheme';
+import { BottomSlider } from './components/BottomSlider';
 import { useAppState } from './REDUX/stateHooks/useAppState';
 
 const App = () => {
@@ -55,35 +57,29 @@ const App = () => {
   const anchorRef = useRef(null);
   useScrollToTop(contentRef, anchorRef);
 
-  const mainContainerClasses = [
-    modifiedClass('mainContainer', siteMode),
-    'flex-wrapper',
+  const mainContainerClass = [
+    s.mainContainer,
+    siteMode === 'default' ? s.mainContainerDefault : '',
+    s.flexWrapper,
   ].join(' ');
 
   return (
-    <div className={mainContainerClasses}>
+    <div className={mainContainerClass}>
       <div>
         <Navigation fontSize={fontSize} siteMode={siteMode} theme={theme} />
 
-        <div
-          className="separatorMobile separatorMobile--sticky"
-          ref={anchorRef}
-        />
+        <SeparatorMobile ref={anchorRef} variant="sticky" />
 
-        <div className={`container wrapper ${imgHidden ? 'hideImages' : ''}`}>
+        <div className={`container ${s.wrapper} ${imgHidden ? 'hideImages' : ''}`}>
           <FilmsSlider films={films} isMobile={isMobile} />
 
-          <div className="mainContainer__content" ref={contentRef}>
+          <div className={s.mainContainerContent} ref={contentRef}>
             <Content isMobile={isMobile} />
             {!isMobile && <DesktopAdv />}
           </div>
 
           {siteMode === 'default' && (
-            <div>
-              <h1 className="bottomSlider__bar">Скоро в кино</h1>
-              <hr className="bottomSlider__border" />
-              <BottomSlider filmsToday={filmsToday || []} isMobile={isMobile} />
-            </div>
+            <BottomSlider filmsToday={filmsToday || []} isMobile={isMobile} />
           )}
         </div>
       </div>
