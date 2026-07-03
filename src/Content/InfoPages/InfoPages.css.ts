@@ -56,25 +56,19 @@ globalStyle(`${aboutImage} img`, {
 });
 
 export const embedResponsive = style({
-  position: 'relative',
   border: 'solid 1px var(--secondaryClr)',
   borderRadius: '10px',
   overflow: 'hidden',
   marginBottom: '2%',
   width: '100%',
-  paddingTop: '55%',
+  aspectRatio: '16 / 9',
   '@media': {
     'screen and (max-width: 768px)': { marginBottom: '3%' },
   },
 });
 
 export const embedResponsiveItem = style({
-  position: 'absolute',
-  top: '0',
-  bottom: '0',
-  left: '0',
   width: '100%',
   height: '100%',
   border: '0',
-  borderRadius: '10px',
 });
