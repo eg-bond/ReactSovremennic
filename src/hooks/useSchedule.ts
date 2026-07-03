@@ -19,9 +19,10 @@ export function useSchedule(): UseScheduleResult {
 
   useEffect(() => {
     let cancelled = false;
-    const cacheBuster = `?t=${Date.now()}`;
+    // const cacheBuster = `?t=${Date.now()}`;
 
-    fetch(`/api/schedule.json${cacheBuster}`)
+    fetch(`/schedule.json`)
+    // fetch(`/api/schedule.json${cacheBuster}`)
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.json();
