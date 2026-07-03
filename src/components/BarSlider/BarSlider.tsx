@@ -39,10 +39,15 @@ export const BarSlider = memo(function BarSlider() {
     <div className={s.viewport}>
       <div className={s.track}>
         <div className={s.slide}>
-          <a href={SUSHI_BAR_URL} rel="noopener noreferrer" target="_blank">
+          <a
+            className={s.link}
+            href={SUSHI_BAR_URL}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             <img
               alt="Суши доставка"
-              className={`swSlide__img ${s.img}`}
+              className={s.img}
               src="/Images/kombo/sushi_delivery.webp"
             />
           </a>

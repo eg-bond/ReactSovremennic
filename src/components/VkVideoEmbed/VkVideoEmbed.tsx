@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import { convertVideoId } from '@/utils/convertVideoId';
+import * as css from './VkVideoEmbed.css.ts';
 
 type VkVideoEmbedProps = {
   height?: number;
@@ -15,9 +16,10 @@ export const VkVideoEmbed = memo(function VkVideoEmbed({
   const src = `https://vkvideo.ru/video_ext.php?oid=-${convertVideoId(videoId)}`;
 
   return (
-    <div className="embed-responsive">
+    <div className={css.embedResponsive}>
       <iframe
         allow="encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;"
+        className={css.embedResponsiveItem}
         height={height}
         src={src}
         title="vk-video"

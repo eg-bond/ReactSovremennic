@@ -27,9 +27,22 @@ export const slide = style({
   overflow: 'hidden',
 });
 
+export const link = style({
+  display: 'block',
+  width: '100%',
+  height: '100%',
+});
+
 export const img = style({
   borderRadius: '10px',
   width: '100%',
   height: '100%',
   objectFit: 'cover',
+  transition: 'all 0.3s',
+  cursor: 'pointer',
+  selectors: {
+    [`${link}:hover &, ${link}:focus-visible &`]: {
+      opacity: 0.85,
+    },
+  },
 });

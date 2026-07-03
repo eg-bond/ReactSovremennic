@@ -17,7 +17,7 @@ export const SpecialSettings = () => {
 
   if (siteMode === 'default') {
     return (
-      <div className={`space ${s.spaceButtonWrapper}`}>
+      <div className={`${s.space} ${s.spaceButtonWrapper}`}>
         <SiteModeButton siteMode={siteMode} switchSiteMode={switchSiteMode} />
       </div>
     );

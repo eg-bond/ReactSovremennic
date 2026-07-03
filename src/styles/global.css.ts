@@ -167,80 +167,6 @@ globalStyle('.content__gridRightItem--3fr', {
   '@media': { [breakpoints.mobile]: { gridColumn: '1/5', margin: '0 15px' } },
 });
 
-// ─── Hero Space ──────────────────────────────────────────────────────────────
-
-globalStyle('.space', {
-  backgroundImage: 'url(\'../images/main_image.webp\')',
-  backgroundSize: 'cover',
-  backgroundRepeat: 'no-repeat',
-  position: 'relative',
-  opacity: 1,
-  height: '335px',
-  '@media': {
-    [breakpoints.w1200]: { height: '275px' },
-    [breakpoints.w992]: { height: '213px' },
-    [breakpoints.mobile]: { display: 'none' },
-  },
-});
-
-// ─── Embed Responsive ────────────────────────────────────────────────────────
-
-globalStyle('.embed-responsive', {
-  position: 'relative',
-  border: 'solid 1px var(--secondaryClr)',
-  borderRadius: '10px',
-  overflow: 'hidden',
-  marginBottom: '2%',
-  width: '100%',
-  paddingTop: '55%',
-  '@media': { [breakpoints.mobile]: { marginBottom: '3%' } },
-});
-
-globalStyle(
-  '.embed-responsive .embed-responsive-item, .embed-responsive embed, ' +
-  '.embed-responsive iframe',
-  {
-    position: 'absolute',
-    top: '0',
-    bottom: '0',
-    left: '0',
-    width: '100%',
-    height: '100%',
-    border: '0',
-    borderRadius: '10px',
-  },
-);
-
-globalStyle('.embed-responsive-16by9', { paddingBottom: '56.25%' });
-
-// ─── Skeleton Loading ────────────────────────────────────────────────────────
-
-const shine = keyframes({
-  to: { backgroundPosition: 'right -80px top 0' },
-});
-
-globalStyle('.skeleton', {
-  backgroundImage:
-    'linear-gradient(90deg, rgba(255,255,255,0), ' +
-    'rgb(94 92 92 / 50%), rgba(255,255,255,0))',
-  backgroundSize: '80px 100%',
-  backgroundRepeat: 'no-repeat',
-  backgroundPosition: 'left -80px top 0',
-  animation: `${shine} 1s ease infinite`,
-});
-
-globalStyle('.skeleton-Black', { backgroundColor: '#000000' });
-globalStyle('.skeleton-Gray', { backgroundColor: '#2d2d2d' });
-
-// ─── Slider Images ───────────────────────────────────────────────────────────
-
-globalStyle('.swSlide__img', { transition: 'all 0.3s', cursor: 'pointer' });
-
-globalStyle(
-  '.swSlide__a:hover .swSlide__img, .swSlide__a:focus-visible .swSlide__img',
-  { opacity: 0.85 },
-);
-
 // ─── Animations ──────────────────────────────────────────────────────────────
 
 globalStyle('html', {
@@ -295,3 +221,22 @@ globalStyle('.fadeInDown', {
   animation: `${fadeInDown} var(--animationDuration) ease forwards`,
   animationDuration: '0.7s',
 });
+
+// ─── Skeleton Loading Animation  ────────────────────────────────────────────────────────
+
+const shine = keyframes({
+  to: { backgroundPosition: 'right -80px top 0' },
+});
+
+globalStyle('.skeleton', {
+  backgroundImage:
+    'linear-gradient(90deg, rgba(255,255,255,0), ' +
+    'rgb(94 92 92 / 50%), rgba(255,255,255,0))',
+  backgroundSize: '80px 100%',
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: 'left -80px top 0',
+  animation: `${shine} 1s ease infinite`,
+});
+
+globalStyle('.skeleton-Black', { backgroundColor: '#000000' });
+globalStyle('.skeleton-Gray', { backgroundColor: '#2d2d2d' });

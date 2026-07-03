@@ -45,7 +45,23 @@ export const flexTitle = style({
   fontWeight: 'bold',
 });
 
-// Default mode wrapper (uses .space background from global, button positioned inside)
+// ─── Hero Space ──────────────────────────────────────────────────────────────
+
+export const space = style({
+  backgroundImage: 'url(\'../../images/main_image.webp\')',
+  backgroundSize: 'cover',
+  backgroundRepeat: 'no-repeat',
+  position: 'relative',
+  opacity: 1,
+  height: '335px',
+  '@media': {
+    [breakpoints.w1200]: { height: '275px' },
+    [breakpoints.w992]: { height: '213px' },
+    [breakpoints.mobile]: { display: 'none' },
+  },
+});
+
+// Default mode wrapper (button positioned inside the space)
 export const spaceButtonWrapper = style({
   position: 'relative',
 });

@@ -21,12 +21,6 @@ globalStyle(`${trailers} h4`, {
   },
 });
 
-globalStyle(`${trailers} .embed-responsive`, {
-  '@media': {
-    [breakpoints.mobile]: { margin: '2% 0 2% 0' },
-  },
-});
-
 export const news = style({
   textAlign: 'justify',
 });
