@@ -3,6 +3,7 @@ import { MobileAdv } from '@/components/Adv';
 import { useAppSelector } from '@/REDUX/store';
 import { CINEMA_PHONE } from '@/utils/constants';
 import { SushiWork } from '@/components/SushiWork';
+import { BarSlider } from '@/components/BarSlider';
 import { VkVideoEmbed } from '@/components/VkVideoEmbed';
 import { SeparatorMobile } from '@/components/SeparatorMobile';
 import * as s from './IndexContent.css.ts';
@@ -65,6 +66,9 @@ function IndexContent({ isMobile }: {
           осуществляется только от трех человек.
         </p>
       </div>
+
+      <SeparatorMobile variant="index" />
+      <BarSlider />
 
       <SeparatorMobile variant="index" />
       {isMobile && <MobileAdv />}
