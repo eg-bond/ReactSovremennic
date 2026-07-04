@@ -8,7 +8,7 @@ set -euo pipefail
 
 # --- Configuration (EDIT THESE) ---
 SERVER_USER="root"
-SERVER_HOST="your-server.com"
+SERVER_HOST="83.217.201.69"
 SERVER_PATH="/var/www/data/schedule.json"
 # ----------------------------------
 
@@ -20,5 +20,5 @@ if [ ! -f "$LOCAL_FILE" ]; then
 fi
 
 echo "Deploying schedule to $SERVER_HOST..."
-scp "$LOCAL_FILE" "$SERVER_USER@SERVER_HOST:$SERVER_PATH"
+scp "$LOCAL_FILE" "$SERVER_USER@$SERVER_HOST:$SERVER_PATH"
 echo "Schedule deployed successfully!"
