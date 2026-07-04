@@ -44,6 +44,7 @@ export const useSpecialSettings = (): UseSpecialSettingsResult => {
   useEffect(() => {
     if (isMobile && siteMode === 'special') {
       setSiteMode('default');
+      setTheme('blackWhite');
     }
   }, [isMobile, siteMode]);
 

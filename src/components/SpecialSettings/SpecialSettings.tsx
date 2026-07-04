@@ -21,7 +21,11 @@ export const SpecialSettings = memo<{
   if (siteMode === 'default') {
     return (
       <div className={`${s.space} ${s.spaceButtonWrapper}`}>
-        <SiteModeButton siteMode={siteMode} switchSiteMode={switchSiteMode} />
+        <SiteModeButton
+          siteMode={siteMode}
+          switchSiteMode={switchSiteMode}
+          switchSiteTheme={switchSiteTheme}
+        />
       </div>
     );
   }
@@ -36,7 +40,11 @@ export const SpecialSettings = memo<{
           switchImagesVisibility={switchImagesVisibility}
         />
         <div className={`${s.flexItem} ${s.flexItemModeButton}`}>
-          <SiteModeButton siteMode={siteMode} switchSiteMode={switchSiteMode} />
+          <SiteModeButton
+            siteMode={siteMode}
+            switchSiteMode={switchSiteMode}
+            switchSiteTheme={switchSiteTheme}
+          />
         </div>
       </div>
     </div>
