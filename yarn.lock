@@ -10612,16 +10612,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-lite-youtube-embed@npm:^2.3.52":
-  version: 2.3.52
-  resolution: "react-lite-youtube-embed@npm:2.3.52"
-  peerDependencies:
-    react: ">=16.0.8"
-    react-dom: ">=16.0.8"
-  checksum: 10c0/36676f05de50a44df0c04bf55ca2557711e39c96eb0f3e4585ea54519b00ac1abca853ab8e89fe86bcb9711d679ebde079fe64c896ff92172b607ab4e8c2b841
-  languageName: node
-  linkType: hard
-
 "react-refresh@npm:^0.14.0":
   version: 0.14.0
   resolution: "react-refresh@npm:0.14.0"
@@ -10703,7 +10693,6 @@ __metadata:
     puppeteer: "npm:^21.3.8"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
-    react-lite-youtube-embed: "npm:^2.3.52"
     react-router-dom: "npm:^6.11.0"
     sharp: "npm:^0.32.3"
     source-map-explorer: "npm:^2.5.3"
