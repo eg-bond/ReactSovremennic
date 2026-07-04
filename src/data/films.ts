@@ -1,5 +1,3 @@
-export const LINKS = ['supergirl', 'toy_story_5', 'minions', 'moana'];
-
 export const filmsArray = [
   {
     year: 2026,

@@ -75,7 +75,7 @@ function logAllMovies(ids: number[]): void {
 }
 
 function appendToFilmsArray(movies: Awaited<ReturnType<typeof getMovieData>>[]): void {
-  const filePath = path.resolve(__dirname, '../../src/REDUX/filmsArray.ts');
+  const filePath = path.resolve(__dirname, '../../src/data/films.ts');
 
   // Форматируем данные как TypeScript объекты
   const formattedMovies = movies

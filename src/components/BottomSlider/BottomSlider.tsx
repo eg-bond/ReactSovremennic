@@ -1,14 +1,16 @@
 import { memo, useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import { filmsArray } from '@/data/films';
 import { FilmImg } from '@/components/FilmImg';
 import Autoplay from 'embla-carousel-autoplay';
-import { filmsArray, LINKS } from '@/data/films';
 import useEmblaCarousel from 'embla-carousel-react';
 import { PRE_SHOW_SERVICE } from '@/utils/constants';
 import { scrollToNavigation } from '@/utils/helpers';
 import { removeLineBreaks } from '@/utils/formatTextWithLineBreaks';
 import type { CinemaStateT } from '@/types/cinema';
 import * as s from './BottomSlider.css';
+
+const LINKS = ['supergirl', 'toy_story_5', 'minions', 'moana'];
 
 export const BottomSlider = memo<BottomSliderT>(function BottomSlider({ isMobile }) {
   const filmsToday = useMemo(
