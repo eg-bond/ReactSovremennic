@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { VkVideoEmbed } from '@/components/VkVideoEmbed';
 import { formatTextWithLineBreaks } from '@/utils/formatTextWithLineBreaks';
 import * as s from './SelectedMovie.css.ts';
-import type { SpecialStateT } from '@/REDUX/special/specialReducerT';
+import type { SpecialStateT } from '@/types/special';
 
 export const DescriptionTrailer = memo<DescriptionTrailerT>(
   function DescriptionTrailer({

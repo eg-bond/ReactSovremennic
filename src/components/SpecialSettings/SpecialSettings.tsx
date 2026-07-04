@@ -1,24 +1,31 @@
-import { useSpecialState } from '@/REDUX/stateHooks/useSpecialState.ts';
+import { memo } from 'react';
 import * as s from './SpecialSettings.css.ts';
 import { FontButtons } from './FontButtons.tsx';
 import { ImgSwitcher } from './ImgSwitcher.tsx';
 import { ThemeButtons } from './ThemeButtons.tsx';
 import { SiteModeButton } from './SiteModeButton.tsx';
+import type { UseSpecialSettingsResult } from '@/hooks/useSpecialSettings';
 
-export const SpecialSettings = () => {
+export const SpecialSettings = memo<{
+  specialSettings: UseSpecialSettingsResult;
+}>(function SpecialSettings({ specialSettings }) {
   const {
-    siteMode,
     imgHidden,
+    siteMode,
     switchFontSize,
     switchImagesVisibility,
     switchSiteMode,
     switchSiteTheme,
-  } = useSpecialState();
+  } = specialSettings;
 
   if (siteMode === 'default') {
     return (
       <div className={`${s.space} ${s.spaceButtonWrapper}`}>
-        <SiteModeButton siteMode={siteMode} switchSiteMode={switchSiteMode} />
+        <SiteModeButton
+          siteMode={siteMode}
+          switchSiteMode={switchSiteMode}
+          switchSiteTheme={switchSiteTheme}
+        />
       </div>
     );
   }
@@ -33,9 +40,13 @@ export const SpecialSettings = () => {
           switchImagesVisibility={switchImagesVisibility}
         />
         <div className={`${s.flexItem} ${s.flexItemModeButton}`}>
-          <SiteModeButton siteMode={siteMode} switchSiteMode={switchSiteMode} />
+          <SiteModeButton
+            siteMode={siteMode}
+            switchSiteMode={switchSiteMode}
+            switchSiteTheme={switchSiteTheme}
+          />
         </div>
       </div>
     </div>
   );
-};
+});

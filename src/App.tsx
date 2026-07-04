@@ -1,6 +1,5 @@
 import './styles/global.css';
-import { useEffect, useRef } from 'react';
-import { LINKS } from '@/REDUX/cinema/cinemaReducer';
+import { useRef } from 'react';
 import { SeparatorMobile } from '@/components/SeparatorMobile';
 import * as s from './App.css.ts';
 import Content from './Content/Content';
@@ -11,44 +10,20 @@ import { Navigation } from './components/Navigation';
 import { useMediaQuery } from './hooks/useMediaQuery';
 import { FilmsSlider } from './components/FilmsSlider';
 import { useScrollToTop } from './hooks/useScrollToTop';
-import { useChangeTheme } from './hooks/useChangeTheme';
 import { BottomSlider } from './components/BottomSlider';
-import { useAppState } from './REDUX/stateHooks/useAppState';
+import { useSpecialSettings } from './hooks/useSpecialSettings';
 
 const App = () => {
+  // ---- Special/accessibility state ----
+  const specialSettings = useSpecialSettings();
   const {
-    films,
-    filmsToday,
     siteMode,
-    theme,
-    imgHidden,
     fontSize,
-    switchSiteMode,
-    createFilmsTodayArr,
-  } = useAppState();
-
-  // Initialization
-  useEffect(() => {
-    createFilmsTodayArr(LINKS);
-  }, [createFilmsTodayArr]);
+    imgHidden,
+  } = specialSettings;
 
   // Media query hook.
   const isMobile = useMediaQuery(queries.mobile);
-
-  // Changes siteMode to 'default' when switching from desktop to mobile
-  useEffect(() => {
-    if (isMobile && siteMode === 'special') {
-      switchSiteMode('default');
-    }
-  }, [isMobile, switchSiteMode, siteMode]);
-
-  // Switches the main fontSize style variable
-  useEffect(() => {
-    document.documentElement.style.setProperty('--htmlFontSize', fontSize);
-  }, [fontSize]);
-
-  // Changes colors if theme/siteMode changed
-  useChangeTheme(theme, siteMode);
 
   // Scrolls to top if content starts higher than anchor
   const contentRef = useRef(null);
@@ -64,21 +39,19 @@ const App = () => {
   return (
     <div className={mainContainerClass}>
       <div>
-        <Navigation fontSize={fontSize} siteMode={siteMode} theme={theme} />
+        <Navigation specialSettings={specialSettings} />
 
         <SeparatorMobile ref={anchorRef} variant="sticky" />
 
         <div className={`container ${s.wrapper} ${imgHidden ? 'hideImages' : ''}`}>
-          <FilmsSlider films={films} isMobile={isMobile} />
+          <FilmsSlider isMobile={isMobile} />
 
           <div className={s.mainContainerContent} ref={contentRef}>
-            <Content isMobile={isMobile} />
+            <Content fontSize={fontSize} isMobile={isMobile} siteMode={siteMode} />
             {!isMobile && <DesktopAdv />}
           </div>
 
-          {siteMode === 'default' && (
-            <BottomSlider filmsToday={filmsToday || []} isMobile={isMobile} />
-          )}
+          {siteMode === 'default' && <BottomSlider isMobile={isMobile} />}
         </div>
       </div>
       <Footer />

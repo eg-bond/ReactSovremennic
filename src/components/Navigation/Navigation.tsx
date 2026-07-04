@@ -3,13 +3,16 @@ import { NavLink, Link } from 'react-router-dom';
 import { SUSHI_BAR_URL } from '@/utils/constants';
 import { SpecialSettings } from '@/components/SpecialSettings/index.ts';
 import * as s from './Navigation.css.ts';
-import type { SpecialStateT } from '@/REDUX/special/specialReducerT';
+import type { UseSpecialSettingsResult } from '@/hooks/useSpecialSettings';
 
 const Navigation = memo<NavigationT>(function Navigation({
-  siteMode,
-  fontSize,
-  theme,
+  specialSettings,
 }) {
+  const {
+    fontSize,
+    siteMode,
+    theme,
+  } = specialSettings;
   const isSpecial = siteMode === 'special';
 
   const fsNavCl =
@@ -21,14 +24,14 @@ const Navigation = memo<NavigationT>(function Navigation({
 
   return (
     <div className={`container ${s.container}`}>
-      <SpecialSettings />
+      <SpecialSettings specialSettings={specialSettings} />
       <nav className={`${s.navigation} ${fsNavCl}`} role="navigation">
         <div className={`${s.logo} ${isSpecial ? s.logoSpecial : ''}`}>
           <Link to="/">
             <img
               alt="logoImg"
               className={s.logoImg}
-              src={`/Images/${themeLogoFile[theme]}`}
+              src={`/Images/${themeLogoFile[theme as keyof typeof themeLogoFile]}`}
             />
           </Link>
         </div>
@@ -80,7 +83,5 @@ const themeLogoFile = {
 } as const;
 
 type NavigationT = {
-  fontSize: SpecialStateT['fontSize'];
-  siteMode: SpecialStateT['siteMode'];
-  theme: SpecialStateT['theme'];
+  specialSettings: UseSpecialSettingsResult;
 };

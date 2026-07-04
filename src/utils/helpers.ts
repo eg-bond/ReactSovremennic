@@ -1,4 +1,4 @@
-import { SpecialStateT } from '@/REDUX/special/specialReducerT';
+import { SpecialStateT } from '@/types/special';
 
 // regexp
 export const reg = (word: string, flags: string) => new RegExp(word, flags);

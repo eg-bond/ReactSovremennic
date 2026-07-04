@@ -102,9 +102,9 @@ export const arrowPrev = style({
   border: 'none',
   cursor: 'pointer',
   padding: '0.5em',
-  '@media': {
-    [breakpoints.w992]: { left: '-3.5em' },
-  },
+  // '@media': {
+  //   [breakpoints.w992]: { left: '-3.5em' },
+  // },
 });
 
 export const arrowNext = style({
@@ -117,9 +117,9 @@ export const arrowNext = style({
   border: 'none',
   cursor: 'pointer',
   padding: '0.5em',
-  '@media': {
-    [breakpoints.w992]: { right: '-3.5em' },
-  },
+  // '@media': {
+  //   [breakpoints.w992]: { right: '-3.5em' },
+  // },
 });
 
 export const arrowSvg = style({

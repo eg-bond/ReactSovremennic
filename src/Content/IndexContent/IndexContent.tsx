@@ -1,18 +1,17 @@
 import { Link } from 'react-router-dom';
 import { MobileAdv } from '@/components/Adv';
-import { useAppSelector } from '@/REDUX/store';
 import { CINEMA_PHONE } from '@/utils/constants';
 import { SushiWork } from '@/components/SushiWork';
 import { BarSlider } from '@/components/BarSlider';
 import { VkVideoEmbed } from '@/components/VkVideoEmbed';
 import { SeparatorMobile } from '@/components/SeparatorMobile';
 import * as s from './IndexContent.css.ts';
+import type { SpecialStateT } from '@/types/special';
 
-function IndexContent({ isMobile }: {
+function IndexContent({ isMobile, siteMode }: {
   isMobile: boolean;
+  siteMode: SpecialStateT['siteMode'];
 }) {
-  const { siteMode } = useAppSelector(state => state.special);
-
   return (
     <div className="content__gridLeftItem--3fr contentMT">
       {siteMode === 'default' && (

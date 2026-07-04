@@ -3,7 +3,7 @@ import * as s from './SpecialSettings.css.ts';
 import type {
   SpecialDispatchesT,
   SpecialStateT,
-} from '@/REDUX/special/specialReducerT';
+} from '@/types/special';
 
 const ThemeButtonsComp = ({
   switchSiteTheme,

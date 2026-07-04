@@ -5,8 +5,8 @@ import { SeparatorMobile } from '@/components/SeparatorMobile';
 import { formatTextWithLineBreaks } from '@/utils/formatTextWithLineBreaks';
 import * as s from './SelectedMovie.css.ts';
 import { DescriptionTrailer } from './DescriptionTrailer';
-import type { FilmItemT } from '@/REDUX/cinema/cinemaReducerT';
-import type { SpecialStateT } from '@/REDUX/special/specialReducerT';
+import type { FilmItemT } from '@/types/cinema';
+import type { SpecialStateT } from '@/types/special';
 
 const SelectedMovie = memo<{
   filmItem: FilmItemT;

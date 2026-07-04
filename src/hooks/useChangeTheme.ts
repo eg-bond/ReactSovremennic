@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import type { SpecialStateT } from '@/REDUX/special/specialReducerT';
+import type { SpecialStateT } from '@/types/special';
 
 export const useChangeTheme = (
   theme: SpecialStateT['theme'],
