@@ -1,15 +1,16 @@
 import { memo } from 'react';
+import { useAppSelector } from '@/REDUX/store';
 import * as s from './CreateSeanceButtons.css.ts';
-import type { SeanceStateT } from '@/REDUX/seance/seanceReducerT';
-import type { SpecialStateT } from '@/REDUX/special/specialReducerT';
 import type { ChangeTableContentT } from '@/Content/Seance/Seance.tsx';
+
+type DatesArrItem = [string, string, string];
 
 export const CreateSeanceButtons = memo<CSB_T>(function CreateSeanceButtons({
   datesArr,
   activeScheduleItemKey,
   changeTableContent,
-  siteMode,
 }) {
+  const siteMode = useAppSelector(state => state.special.siteMode);
   const modeClass = siteMode === 'special' ? s.seanceButtonsSpecial : s.seanceButtonsDefault;
   return (
     <div className={`${s.seanceButtons} ${modeClass}`}>
@@ -21,8 +22,8 @@ export const CreateSeanceButtons = memo<CSB_T>(function CreateSeanceButtons({
 });
 
 function desktopBtn(
-  d: SeanceStateT['datesArr'][0],
-  activeScheduleItemKey: SeanceStateT['activeScheduleItemKey'],
+  d: DatesArrItem,
+  activeScheduleItemKey: string,
   changeTableContent: ChangeTableContentT,
 ) {
   return (
@@ -32,7 +33,7 @@ function desktopBtn(
       }`}
       key={d[0] + 'desc'}
       onClick={() => {
-        changeTableContent(d[0]);
+        changeTableContent(d[0] as Parameters<ChangeTableContentT>[0]);
       }}
     >
       <span>{d[1]}</span>
@@ -42,8 +43,7 @@ function desktopBtn(
 }
 
 type CSB_T = {
-  activeScheduleItemKey: SeanceStateT['activeScheduleItemKey'];
+  activeScheduleItemKey: string;
   changeTableContent: ChangeTableContentT;
-  datesArr: SeanceStateT['datesArr'];
-  siteMode: SpecialStateT['siteMode'];
+  datesArr: DatesArrItem[];
 };

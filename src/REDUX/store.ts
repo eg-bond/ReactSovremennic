@@ -1,12 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import seanceReduser from './seance/seanceReducer';
 import cinemaReduser from './cinema/cinemaReducer';
 import specialReduser from './special/specialReducer';
 
 const store = configureStore({
   reducer: {
-    seance: seanceReduser,
     cinema: cinemaReduser,
     special: specialReduser,
   },

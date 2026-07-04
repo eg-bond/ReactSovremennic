@@ -18,10 +18,53 @@ const data = xlsx.utils.sheet_to_json(ws) as dataT;
 const schedule = dataToObj(data);
 const finalSchedule = finalizeScedule(schedule);
 
+// Generate datesArr based on current week
+const weekDays: Array<[string, string, string]> = [
+  ['day1', 'Понедельник'],
+  ['day2', 'Вторник'],
+  ['day3', 'Среда'],
+  ['day4', 'Четверг'],
+  ['day5', 'Пятница'],
+  ['day6', 'Суббота'],
+  ['day0', 'Воскресенье'],
+];
+
+const today = new Date();
+// Find the most recent Monday (or today if it's Monday)
+const currentDay = today.getDay(); // 0=Sun, 1=Mon, ...
+const mondayOffset = currentDay === 0 ? -6 : 1 - currentDay;
+const monday = new Date(today);
+monday.setDate(today.getDate() + mondayOffset);
+
+// Map months to genitive case (родительный падеж) for Russian dates
+const monthsGenitive: Record<string, string> = {
+  январь: 'января',
+  февраль: 'февраля',
+  март: 'марта',
+  апрель: 'апреля',
+  май: 'мая',
+  июнь: 'июня',
+  июль: 'июля',
+  август: 'августа',
+  сентябрь: 'сентября',
+  октябрь: 'октября',
+  ноябрь: 'ноября',
+  декабрь: 'декабря',
+};
+
+const datesArr = weekDays.map(([key, ruName], index) => {
+  const date = new Date(monday);
+  date.setDate(monday.getDate() + index);
+  const day = date.getDate();
+  const monthNom = date.toLocaleString('ru-RU', { month: 'long' });
+  const monthGen = monthsGenitive[monthNom] || monthNom;
+  return [key, ruName, `${day} ${monthGen}`] as [string, string, string];
+});
+
 // Write final data to public/schedule.json file
 fs.writeFileSync(
   'public/schedule.json',
-  JSON.stringify(finalSchedule, null, 2),
+  JSON.stringify({ datesArr, schedule: finalSchedule }, null, 2),
 );
 
 // ------------------------------------------------------------------------

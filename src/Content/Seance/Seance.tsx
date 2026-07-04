@@ -1,34 +1,28 @@
-import { useCallback } from 'react';
-import { useEffect, useState } from 'react';
 import { MobileAdv } from '@/components/Adv';
-import { useSchedule } from '@/hooks/useSchedule';
+import { useCallback, useState } from 'react';
 import { SushiWork } from '@/components/SushiWork';
 import { BarSlider } from '@/components/BarSlider';
 import { OnlineSales } from '@/components/OnlineSales';
+import { useSeanceSchedule } from '@/hooks/useSeanceSchedule';
 import { SeparatorMobile } from '@/components/SeparatorMobile';
-import { useSeanceState } from '@/REDUX/stateHooks/useSeanceState';
 import * as s from './Seance.css.ts';
 import { TableContent } from './seanceComponents';
 import { SeanceMobileNav } from './seanceComponents';
 import { CreateSeanceButtons } from './seanceComponents';
-import type { DateKeysT } from '@/REDUX/seance/seanceReducerT';
+
+type DateKeysT = 'day0' | 'day1' | 'day2' | 'day3' | 'day4' | 'day5' | 'day6';
 
 const Seance = ({ isMobile }: {
   isMobile: boolean;
 }) => {
   const {
-    siteMode,
     datesArr,
     activeScheduleItemKey,
-    setTodayScheduleItem,
     changeScheduleItem,
-  } = useSeanceState();
-
-  const {
     schedule,
     isLoading,
     error,
-  } = useSchedule();
+  } = useSeanceSchedule();
 
   const [tableVisible, switchVisibility] = useState(true);
 
@@ -49,13 +43,6 @@ const Seance = ({ isMobile }: {
     [activeScheduleItemKey, changeScheduleItem, isMobile],
   );
 
-  // Switches the schedule item to todays when user leaves Seance page
-  useEffect(() => {
-    return () => {
-      setTodayScheduleItem();
-    };
-  }, []);
-
   if (!activeScheduleItemKey) return null;
 
   return (
@@ -65,7 +52,6 @@ const Seance = ({ isMobile }: {
           activeScheduleItemKey={activeScheduleItemKey}
           changeTableContent={changeTableContent}
           datesArr={datesArr}
-          siteMode={siteMode}
         />
       )}
 

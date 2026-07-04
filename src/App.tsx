@@ -25,14 +25,12 @@ const App = () => {
     fontSize,
     switchSiteMode,
     createFilmsTodayArr,
-    setTodayScheduleItem,
   } = useAppState();
 
   // Initialization
   useEffect(() => {
-    setTodayScheduleItem();
     createFilmsTodayArr(LINKS);
-  }, [setTodayScheduleItem, createFilmsTodayArr]);
+  }, [createFilmsTodayArr]);
 
   // Media query hook.
   const isMobile = useMediaQuery(queries.mobile);

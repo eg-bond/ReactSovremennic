@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import * as s from './TableContent.css.ts';
-import type { DateKeysT, SeanceStateT } from '@/REDUX/seance/seanceReducerT';
+
+type DateKeysT = 'day0' | 'day1' | 'day2' | 'day3' | 'day4' | 'day5' | 'day6';
 
 type ScheduleDataT = Record<
   DateKeysT,
@@ -10,8 +11,8 @@ type ScheduleDataT = Record<
 export const TableContent = memo<TableContentT>(
   function TableContent({
     activeScheduleItemKey,
-tableVisible,
-schedule,
+    tableVisible,
+    schedule,
   }) {
     if (!schedule || !(activeScheduleItemKey in schedule)) return null;
     return (
@@ -44,7 +45,7 @@ function tableItem(seance: Array<string | number>, i: number) {
 }
 
 type TableContentT = {
-  activeScheduleItemKey: SeanceStateT['activeScheduleItemKey'];
+  activeScheduleItemKey: string;
   schedule: ScheduleDataT | null;
   tableVisible: boolean;
 };

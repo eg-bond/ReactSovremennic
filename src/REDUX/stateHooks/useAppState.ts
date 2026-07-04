@@ -2,7 +2,6 @@ import { useCallback } from 'react';
 import { useAppDispatch, useAppSelector } from '../store';
 import { switchSiteMode_AC } from '../special/specialReducer';
 import { createFilmsTodayArr_AC } from '../cinema/cinemaReducer';
-import { setTodayScheduleItem_AC } from '../seance/seanceReducer';
 import type { SpecialStateT } from '../special/specialReducerT';
 
 export const useAppState = () => {
@@ -20,9 +19,6 @@ export const useAppState = () => {
   const createFilmsTodayArr = useCallback((links: string[]) => {
     dispatch(createFilmsTodayArr_AC(links));
   }, [dispatch]);
-  const setTodayScheduleItem = useCallback(() => {
-    dispatch(setTodayScheduleItem_AC());
-  }, [dispatch]);
 
   return {
     films,
@@ -33,6 +29,5 @@ export const useAppState = () => {
     fontSize,
     switchSiteMode,
     createFilmsTodayArr,
-    setTodayScheduleItem,
   };
 };

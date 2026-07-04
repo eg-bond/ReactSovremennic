@@ -1,6 +1,7 @@
-import { SeanceStateT } from '@/REDUX/seance/seanceReducerT';
 import * as s from './SeanceMobileNav.css.ts';
 import type { EmblaViewportRefType } from 'embla-carousel-react';
+
+type DateKeysT = 'day0' | 'day1' | 'day2' | 'day3' | 'day4' | 'day5' | 'day6';
 
 const SeanceMobileNav = ({
   emblaRef,
@@ -18,7 +19,7 @@ const SeanceMobileNav = ({
             }`}
             id={item[0] + '_seBtn'}
             key={item[0] + '_seBtn'}
-            onClick={e => handleClick(e, item[0], index)}
+            onClick={e => handleClick(e, item[0] as DateKeysT, index)}
           >
             {`${item[1]} ${item[2]}`}
           </button>
@@ -31,12 +32,12 @@ const SeanceMobileNav = ({
 export default SeanceMobileNav;
 
 type SeanceMobileNavT = {
-  activeScheduleItemKey: SeanceStateT['activeScheduleItemKey'];
-  datesArr: SeanceStateT['datesArr'];
+  activeScheduleItemKey: string;
+  datesArr: Array<[string, string, string]>;
   emblaRef: EmblaViewportRefType;
   handleClick: (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    dateKey: SeanceStateT['datesArr'][0][0],
+    dateKey: DateKeysT,
     index: number,
   ) => void;
 };

@@ -2,19 +2,17 @@ import { useCallback, useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import SeanceMobileNav from './SeanceMobileNav';
 import type { ChangeTableContentT } from '@/Content/Seance/Seance';
-import type {
-  DateKeysT,
-  SeanceStateT,
-} from '@/REDUX/seance/seanceReducerT';
+
+type DateKeysT = 'day0' | 'day1' | 'day2' | 'day3' | 'day4' | 'day5' | 'day6';
 
 export const SeanceMobileNavContainer = ({
   activeScheduleItemKey,
   datesArr,
   changeTableContent,
 }: {
-  activeScheduleItemKey: SeanceStateT['activeScheduleItemKey'];
+  activeScheduleItemKey: string;
   changeTableContent: ChangeTableContentT;
-  datesArr: SeanceStateT['datesArr'];
+  datesArr: Array<[string, string, string]>;
 }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: 'center',
