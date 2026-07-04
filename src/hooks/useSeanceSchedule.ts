@@ -33,33 +33,28 @@ export function useSeanceSchedule(): UseSeanceScheduleResult {
 
   // Fetch schedule from server
   useEffect(() => {
-    let cancelled = false;
+    const controller = new AbortController();
 
-    fetch(`/schedule.json`)
+    fetch(`/schedule.json`, { signal: controller.signal })
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.json();
       })
       .then((json: SeanceDataT) => {
-        if (!cancelled) {
-          setData(json);
-          // Set today's day as active
-          const date = new Date();
-          const dayNum = date.getDay() as 0 | 1 | 2 | 3 | 4 | 5 | 6;
-          const todayKey = `day${dayNum}` as DateKeysT;
-          setActiveScheduleItemKey(todayKey);
-        }
+        setData(json);
+        const date = new Date();
+        const dayNum = date.getDay() as 0 | 1 | 2 | 3 | 4 | 5 | 6;
+        const todayKey = `day${dayNum}` as DateKeysT;
+        setActiveScheduleItemKey(todayKey);
       })
       .catch((err) => {
-        if (!cancelled) setError(err.message);
+        if (err.name !== 'AbortError') setError(err.message);
       })
       .finally(() => {
-        if (!cancelled) setLoading(false);
+        setLoading(false);
       });
 
-    return () => {
-      cancelled = true;
-    };
+    return () => controller.abort();
   }, []);
 
   const changeScheduleItem = useCallback((key: DateKeysT) => {
