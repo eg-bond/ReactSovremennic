@@ -1,8 +1,8 @@
 import { MobileAdv } from '@/components/Adv';
-import { useCallback, useState } from 'react';
 import { SushiWork } from '@/components/SushiWork';
 import { BarSlider } from '@/components/BarSlider';
 import { OnlineSales } from '@/components/OnlineSales';
+import { useCallback, useEffect, useState } from 'react';
 import { useSeanceSchedule } from '@/hooks/useSeanceSchedule';
 import { SeparatorMobile } from '@/components/SeparatorMobile';
 import * as s from './Seance.css.ts';
@@ -43,7 +43,9 @@ const Seance = ({ isMobile }: {
     [activeScheduleItemKey, changeScheduleItem, isMobile],
   );
 
-  if (!activeScheduleItemKey) return null;
+  useEffect(() => {
+    console.log('#####_schedule: ', schedule);
+  }, [schedule]);
 
   return (
     <div className={`content__gridLeftItem--3fr ${s.seance}`}>
@@ -66,7 +68,9 @@ const Seance = ({ isMobile }: {
       )}
 
       {isLoading && (
-        <div className={s.loader}>Загрузка расписания...</div>
+        <div className={s.loading}>
+          <div className={s.spinner} />
+        </div>
       )}
 
       {error && (
