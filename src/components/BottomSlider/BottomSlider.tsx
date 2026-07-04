@@ -2,6 +2,7 @@ import { memo, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { FilmImg } from '@/components/FilmImg';
 import Autoplay from 'embla-carousel-autoplay';
+import { filmsArray, LINKS } from '@/data/films';
 import useEmblaCarousel from 'embla-carousel-react';
 import { PRE_SHOW_SERVICE } from '@/utils/constants';
 import { scrollToNavigation } from '@/utils/helpers';
@@ -9,7 +10,12 @@ import { removeLineBreaks } from '@/utils/formatTextWithLineBreaks';
 import type { CinemaStateT } from '@/types/cinema';
 import * as s from './BottomSlider.css';
 
-export const BottomSlider = memo<BottomSliderT>(function BottomSlider({ isMobile, filmsToday }) {
+export const BottomSlider = memo<BottomSliderT>(function BottomSlider({ isMobile }) {
+  const filmsToday = useMemo(
+    () => filmsArray.filter(film => LINKS.includes(film.link)),
+    [],
+  );
+
   if (isMobile || filmsToday[0] === undefined) return null;
   return <Inner filmsToday={filmsToday} />;
 });
@@ -18,7 +24,9 @@ export const BottomSlider = memo<BottomSliderT>(function BottomSlider({ isMobile
 // With perPage=4, we need at least 8 slides. Duplicate if needed.
 const MIN_LOOP_SLIDES = 8;
 
-const Inner = memo<Pick<BottomSliderT, 'filmsToday'>>(function Inner({ filmsToday }) {
+const Inner = memo<{
+  filmsToday: CinemaStateT['filmsToday'];
+}>(function Inner({ filmsToday }) {
   const [emblaRef] = useEmblaCarousel(
     { loop: true, slidesToScroll: 1, align: 'start', containScroll: false, dragFree: true },
     [Autoplay({ delay: 2000, stopOnMouseEnter: true, stopOnInteraction: false })],
@@ -73,5 +81,5 @@ type SlideT = {
   film: CinemaStateT['films'][0];
 };
 type BottomSliderT = {
-  filmsToday: CinemaStateT['filmsToday']; isMobile: boolean;
+  isMobile: boolean;
 };

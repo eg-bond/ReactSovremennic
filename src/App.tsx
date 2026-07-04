@@ -1,6 +1,5 @@
 import './styles/global.css';
-import { useMemo, useRef } from 'react';
-import { filmsArray, LINKS } from '@/data/films';
+import { useRef } from 'react';
 import { SeparatorMobile } from '@/components/SeparatorMobile';
 import * as s from './App.css.ts';
 import Content from './Content/Content';
@@ -15,13 +14,6 @@ import { BottomSlider } from './components/BottomSlider';
 import { useSpecialSettings } from './hooks/useSpecialSettings';
 
 const App = () => {
-  // ---- Cinema state (derived from static data) ----
-  const films = filmsArray;
-  const filmsToday = useMemo(
-    () => filmsArray.filter(film => LINKS.includes(film.link)),
-    [],
-  );
-
   // ---- Special/accessibility state ----
   const specialSettings = useSpecialSettings();
   const {
@@ -52,16 +44,14 @@ const App = () => {
         <SeparatorMobile ref={anchorRef} variant="sticky" />
 
         <div className={`container ${s.wrapper} ${imgHidden ? 'hideImages' : ''}`}>
-          <FilmsSlider films={films} isMobile={isMobile} />
+          <FilmsSlider isMobile={isMobile} />
 
           <div className={s.mainContainerContent} ref={contentRef}>
             <Content fontSize={fontSize} isMobile={isMobile} siteMode={siteMode} />
             {!isMobile && <DesktopAdv />}
           </div>
 
-          {siteMode === 'default' && (
-            <BottomSlider filmsToday={filmsToday || []} isMobile={isMobile} />
-          )}
+          {siteMode === 'default' && <BottomSlider isMobile={isMobile} />}
         </div>
       </div>
       <Footer />

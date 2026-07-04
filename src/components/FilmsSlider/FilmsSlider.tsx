@@ -1,3 +1,4 @@
+import { filmsArray } from '@/data/films';
 import { FilmImg } from '@/components/FilmImg';
 import { Link, useMatch } from 'react-router-dom';
 import { memo, useMemo, useCallback } from 'react';
@@ -8,7 +9,7 @@ import { removeLineBreaks } from '@/utils/formatTextWithLineBreaks';
 import type { CinemaStateT } from '@/types/cinema';
 import * as s from './FilmsSlider.css';
 
-export const FilmsSlider = memo<FilmSliderT>(function FilmsSlider({ films, isMobile }) {
+export const FilmsSlider = memo<FilmSliderT>(function FilmsSlider({ isMobile }) {
   const matchKaraoke = useMatch({ path: 'karaoke' });
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -30,7 +31,7 @@ export const FilmsSlider = memo<FilmSliderT>(function FilmsSlider({ films, isMob
         <div style={{ position: 'relative' }}>
           <div className={s.viewport} ref={emblaRef}>
             <div className={s.track}>
-              {films.map((film, i) => (
+              {filmsArray.map((film, i) => (
                 <Slide film={film} key={i + 'FS'} />
               ))}
             </div>
@@ -84,5 +85,5 @@ type SlideT = {
   film: CinemaStateT['films'][0];
 };
 type FilmSliderT = {
-  films: CinemaStateT['films']; isMobile: boolean;
+  isMobile: boolean;
 };
