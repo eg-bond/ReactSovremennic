@@ -1,6 +1,6 @@
 import fs from 'fs';
 import xlsx from 'xlsx';
-import { filmsArray } from '@/REDUX/filmsArray';
+import { filmsArray } from '@/data/films';
 import { PRE_SHOW_SERVICE_SHORT } from '@/utils/constants';
 
 type dataT = Array<{

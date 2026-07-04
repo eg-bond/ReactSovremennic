@@ -7,11 +7,18 @@ import About from './InfoPages/About';
 import Rules from './InfoPages/Rules';
 import { SelectedMovie } from './SelectedMovie';
 import IndexContent from './IndexContent/IndexContent';
+import type { SpecialStateT } from '@/types/special';
 const Karaoke = lazy(() => import('./Karaoke'));
 
 const Content = memo<{
+  fontSize: SpecialStateT['fontSize'];
   isMobile: boolean;
-}>(function Content({ isMobile }) {
+  siteMode: SpecialStateT['siteMode'];
+}>(function Content({
+  fontSize,
+isMobile,
+siteMode,
+}) {
   return (
     <Suspense
       fallback={
@@ -19,13 +26,13 @@ const Content = memo<{
       }
     >
       <Routes>
-        <Route element={<IndexContent isMobile={isMobile} />} path="/" />
-        <Route element={<Seance isMobile={isMobile} />} path="seance" />
+        <Route element={<IndexContent isMobile={isMobile} siteMode={siteMode} />} path="/" />
+        <Route element={<Seance isMobile={isMobile} siteMode={siteMode} />} path="seance" />
         <Route
-          element={<SelectedMovie isMobile={isMobile} />}
+          element={<SelectedMovie fontSize={fontSize} isMobile={isMobile} />}
           path="movies/:film_id"
         />
-        <Route element={<About />} path="about" />
+        <Route element={<About siteMode={siteMode} />} path="about" />
         <Route element={<Rules />} path="rules" />
 
         {/* lazy routes */}

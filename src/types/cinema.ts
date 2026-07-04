@@ -1,4 +1,4 @@
-import { filmsArray } from '../filmsArray';
+import { filmsArray } from '../data/films';
 
 type FilmsArrayT = typeof filmsArray;
 

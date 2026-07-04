@@ -1,6 +1,6 @@
 import { memo } from 'react';
-import { useAppSelector } from '@/REDUX/store';
 import * as s from './CreateSeanceButtons.css.ts';
+import type { SpecialStateT } from '@/types/special';
 import type { ChangeTableContentT } from '@/Content/Seance/Seance.tsx';
 
 type DatesArrItem = [string, string, string];
@@ -9,8 +9,8 @@ export const CreateSeanceButtons = memo<CSB_T>(function CreateSeanceButtons({
   datesArr,
   activeScheduleItemKey,
   changeTableContent,
+  siteMode,
 }) {
-  const siteMode = useAppSelector(state => state.special.siteMode);
   const modeClass = siteMode === 'special' ? s.seanceButtonsSpecial : s.seanceButtonsDefault;
   return (
     <div className={`${s.seanceButtons} ${modeClass}`}>
@@ -46,4 +46,5 @@ type CSB_T = {
   activeScheduleItemKey: string;
   changeTableContent: ChangeTableContentT;
   datesArr: DatesArrItem[];
+  siteMode: SpecialStateT['siteMode'];
 };

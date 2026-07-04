@@ -1,6 +1,5 @@
-import { filmsArray } from '@/REDUX/filmsArray';
+import { filmsArray } from '@/data/films';
 import { schedule } from '@/Content/Seance/schedule';
-import { initialState } from '@/REDUX/seance/seanceReducer';
 import { transformScheduleData } from './transformSchedule';
 
 // Создание маппинга постеров фильмов
@@ -49,10 +48,10 @@ const createPirateMapping = (): PirateMapping => {
 };
 
 // Create a mapping from day keys to formatted date names (e.g., "Monday 2 of march")
-export const dayKeyToDateName: Record<string, string> = initialState.datesArr.reduce(
-  (acc, [dayKey, dayName, date]) => {
-    // For each date entry, combine the day name and date into a readable format
-    acc[dayKey] = `${dayName} ${date}`;
+// Derive day keys from the schedule object
+export const dayKeyToDateName: Record<string, string> = Object.keys(schedule).reduce(
+  (acc, dayKey) => {
+    acc[dayKey] = dayKey;
     return acc;
   },
   {} as Record<string, string>,

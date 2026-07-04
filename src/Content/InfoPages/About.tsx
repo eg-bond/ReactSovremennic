@@ -1,15 +1,15 @@
 import { CINEMA_PHONE } from '@/utils/constants';
-import { useAppSelector } from '@/REDUX/store.ts';
 import * as s from './InfoPages.css.ts';
+import type { SpecialStateT } from '@/types/special';
 
 const SRC =
 'https://yandex.ru/map-widget/v1/?um=constructor%' +
 '3Ab3cf16ca0bc3eed0838b34be9c0607866b4c270427026b7fe0dd14ef4096116b' +
-'&amp;source=constructor';
+'&source=constructor';
 
-function About() {
-  const { siteMode } = useAppSelector(state => state.special);
-
+function About({ siteMode }: {
+  siteMode: SpecialStateT['siteMode'];
+}) {
   return (
     <div className={`content__gridLeftItem--3fr contentMT ${s.rules}`}>
       <div>

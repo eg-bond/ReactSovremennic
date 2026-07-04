@@ -1,19 +1,21 @@
 import { MobileAdv } from '@/components/Adv';
+import { useCallback, useState } from 'react';
 import { SushiWork } from '@/components/SushiWork';
 import { BarSlider } from '@/components/BarSlider';
 import { OnlineSales } from '@/components/OnlineSales';
-import { useCallback, useEffect, useState } from 'react';
 import { useSeanceSchedule } from '@/hooks/useSeanceSchedule';
 import { SeparatorMobile } from '@/components/SeparatorMobile';
 import * as s from './Seance.css.ts';
 import { TableContent } from './seanceComponents';
 import { SeanceMobileNav } from './seanceComponents';
 import { CreateSeanceButtons } from './seanceComponents';
+import type { SpecialStateT } from '@/types/special';
 
 type DateKeysT = 'day0' | 'day1' | 'day2' | 'day3' | 'day4' | 'day5' | 'day6';
 
-const Seance = ({ isMobile }: {
+const Seance = ({ isMobile, siteMode }: {
   isMobile: boolean;
+  siteMode: SpecialStateT['siteMode'];
 }) => {
   const {
     datesArr,
@@ -43,10 +45,6 @@ const Seance = ({ isMobile }: {
     [activeScheduleItemKey, changeScheduleItem, isMobile],
   );
 
-  useEffect(() => {
-    console.log('#####_schedule: ', schedule);
-  }, [schedule]);
-
   return (
     <div className={`content__gridLeftItem--3fr ${s.seance}`}>
       {!isMobile && (
@@ -54,6 +52,7 @@ const Seance = ({ isMobile }: {
           activeScheduleItemKey={activeScheduleItemKey}
           changeTableContent={changeTableContent}
           datesArr={datesArr}
+          siteMode={siteMode}
         />
       )}
 

@@ -1,9 +1,9 @@
 import { memo } from 'react';
+import * as s from './SpecialSettings.css.ts';
 import type {
   SpecialDispatchesT,
   SpecialStateT,
-} from '@/REDUX/special/specialReducerT';
-import * as s from './SpecialSettings.css.ts';
+} from '@/types/special';
 
 const FontButtonsComp = ({
   switchFontSize,
@@ -20,7 +20,11 @@ const FontButtonsComp = ({
   </div>
 );
 
-const FontBtn = ({ text, sFS, FS }: FontBtnT) => (
+const FontBtn = ({
+  text,
+  sFS,
+  FS,
+}: FontBtnT) => (
   <button className={s.fontButton} onClick={() => sFS(FS)}>
     <span className={s.fontButtonLabel}>{text}</span>
   </button>

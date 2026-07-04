@@ -1,6 +1,6 @@
 import './styles/global.css';
-import { useEffect, useRef } from 'react';
-import { LINKS } from '@/REDUX/cinema/cinemaReducer';
+import { filmsArray, LINKS } from '@/data/films';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { SeparatorMobile } from '@/components/SeparatorMobile';
 import * as s from './App.css.ts';
 import Content from './Content/Content';
@@ -13,24 +13,29 @@ import { FilmsSlider } from './components/FilmsSlider';
 import { useScrollToTop } from './hooks/useScrollToTop';
 import { useChangeTheme } from './hooks/useChangeTheme';
 import { BottomSlider } from './components/BottomSlider';
-import { useAppState } from './REDUX/stateHooks/useAppState';
+import type { SpecialStateT } from './types/special';
 
 const App = () => {
-  const {
-    films,
-    filmsToday,
-    siteMode,
-    theme,
-    imgHidden,
-    fontSize,
-    switchSiteMode,
-    createFilmsTodayArr,
-  } = useAppState();
+  // ---- Cinema state (derived from static data) ----
+  const films = filmsArray;
+  const filmsToday = useMemo(
+    () => filmsArray.filter(film => LINKS.includes(film.link)),
+    [],
+  );
 
-  // Initialization
-  useEffect(() => {
-    createFilmsTodayArr(LINKS);
-  }, [createFilmsTodayArr]);
+  // ---- Special/accessibility state ----
+  const [siteMode, setSiteMode] = useState<SpecialStateT['siteMode']>('default');
+  const [theme, setTheme] = useState<SpecialStateT['theme']>('blackWhite');
+  const [fontSize, setFontSize] = useState<SpecialStateT['fontSize']>('14px');
+  const [imgHidden, setImgHidden] = useState(false);
+
+  const switchSiteMode = (mode: SpecialStateT['siteMode']) => setSiteMode(mode);
+  const switchSiteTheme = (t: SpecialStateT['theme']) => setTheme(t);
+  const switchFontSize = (fs: SpecialStateT['fontSize']) => setFontSize(fs);
+  const switchImagesVisibility = (value: boolean) => setImgHidden(value);
+
+  // Initialization — no longer needed for cinema (computed via useMemo)
+  // but we keep the effect for any future init logic
 
   // Media query hook.
   const isMobile = useMediaQuery(queries.mobile);
@@ -38,9 +43,10 @@ const App = () => {
   // Changes siteMode to 'default' when switching from desktop to mobile
   useEffect(() => {
     if (isMobile && siteMode === 'special') {
-      switchSiteMode('default');
+      setSiteMode('default');
+      setTheme('blackWhite');
     }
-  }, [isMobile, switchSiteMode, siteMode]);
+  }, [isMobile, siteMode]);
 
   // Switches the main fontSize style variable
   useEffect(() => {
@@ -64,7 +70,16 @@ const App = () => {
   return (
     <div className={mainContainerClass}>
       <div>
-        <Navigation fontSize={fontSize} siteMode={siteMode} theme={theme} />
+        <Navigation
+          fontSize={fontSize}
+          imgHidden={imgHidden}
+          siteMode={siteMode}
+          switchFontSize={switchFontSize}
+          switchImagesVisibility={switchImagesVisibility}
+          switchSiteMode={switchSiteMode}
+          switchSiteTheme={switchSiteTheme}
+          theme={theme}
+        />
 
         <SeparatorMobile ref={anchorRef} variant="sticky" />
 
@@ -72,7 +87,7 @@ const App = () => {
           <FilmsSlider films={films} isMobile={isMobile} />
 
           <div className={s.mainContainerContent} ref={contentRef}>
-            <Content isMobile={isMobile} />
+            <Content fontSize={fontSize} isMobile={isMobile} siteMode={siteMode} />
             {!isMobile && <DesktopAdv />}
           </div>
 

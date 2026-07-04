@@ -1,7 +1,7 @@
 import { memo } from 'react';
-import * as s from './SpecialSettings.css.ts';
 import { scrollToTop } from '@/utils/helpers.ts';
-import type { SpecialStateT } from '@/REDUX/special/specialReducerT';
+import * as s from './SpecialSettings.css.ts';
+import type { SpecialStateT } from '@/types/special';
 
 const SiteModeButtonComp = ({ siteMode, switchSiteMode }: {
   siteMode: SpecialStateT['siteMode'];

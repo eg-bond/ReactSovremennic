@@ -3,12 +3,17 @@ import { NavLink, Link } from 'react-router-dom';
 import { SUSHI_BAR_URL } from '@/utils/constants';
 import { SpecialSettings } from '@/components/SpecialSettings/index.ts';
 import * as s from './Navigation.css.ts';
-import type { SpecialStateT } from '@/REDUX/special/specialReducerT';
+import type { SpecialStateT } from '@/types/special';
 
 const Navigation = memo<NavigationT>(function Navigation({
   siteMode,
   fontSize,
   theme,
+  switchFontSize,
+  switchImagesVisibility,
+  switchSiteMode,
+  switchSiteTheme,
+  imgHidden,
 }) {
   const isSpecial = siteMode === 'special';
 
@@ -21,7 +26,14 @@ const Navigation = memo<NavigationT>(function Navigation({
 
   return (
     <div className={`container ${s.container}`}>
-      <SpecialSettings />
+      <SpecialSettings
+        imgHidden={imgHidden}
+        siteMode={siteMode}
+        switchFontSize={switchFontSize}
+        switchImagesVisibility={switchImagesVisibility}
+        switchSiteMode={switchSiteMode}
+        switchSiteTheme={switchSiteTheme}
+      />
       <nav className={`${s.navigation} ${fsNavCl}`} role="navigation">
         <div className={`${s.logo} ${isSpecial ? s.logoSpecial : ''}`}>
           <Link to="/">
@@ -81,6 +93,11 @@ const themeLogoFile = {
 
 type NavigationT = {
   fontSize: SpecialStateT['fontSize'];
+  imgHidden: boolean;
   siteMode: SpecialStateT['siteMode'];
+  switchFontSize: (fontSize: SpecialStateT['fontSize']) => void;
+  switchImagesVisibility: (value: boolean) => void;
+  switchSiteMode: (mode: SpecialStateT['siteMode']) => void;
+  switchSiteTheme: (theme: SpecialStateT['theme']) => void;
   theme: SpecialStateT['theme'];
 };
