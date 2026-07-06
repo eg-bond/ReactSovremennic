@@ -68,7 +68,7 @@ export function buildDayKeyToDateName(
 }
 
 /**
- * Fetch schedule.json and return the parsed data along with derived mappings.
+ * Fetch schedule.json (from public/schedule.json) and return the parsed data along with derived mappings.
  */
 export async function fetchScheduleData(): Promise<{
   dayKeyToDateName: Record<string, string>;

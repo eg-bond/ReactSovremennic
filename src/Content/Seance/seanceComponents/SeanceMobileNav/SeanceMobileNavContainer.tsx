@@ -22,17 +22,24 @@ export const SeanceMobileNavContainer = ({
     duration: 25,
   });
 
-  // Scroll to the active day on mount
+  // Scroll to the active day whenever activeScheduleItemKey or datesArr change.
+  // reInit ensures Embla re-measures slides after the DOM updates (e.g., when
+  // datesArr loads asynchronously and slides appear after initial mount).
   useEffect(() => {
     if (!emblaApi) return;
+    if (datesArr.length === 0) return;
+    if (!activeScheduleItemKey) return;
 
     const activeIndex = datesArr.findIndex(
       ([key]) => key === activeScheduleItemKey,
     );
 
-    if (activeIndex !== -1) {
-      emblaApi.scrollTo(activeIndex);
-    }
+    if (activeIndex === -1) return;
+
+    // Re-initialize Embla to pick up any new slides (e.g., after async data load),
+    // then scroll to the active index.
+    emblaApi.reInit();
+    emblaApi.scrollTo(activeIndex);
   }, [emblaApi, activeScheduleItemKey, datesArr]);
 
   const handleClick = useCallback(
