@@ -1,5 +1,5 @@
-import { useCallback, useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
+import { useCallback, useEffect, useRef } from 'react';
 import SeanceMobileNav from './SeanceMobileNav';
 import type { ChangeTableContentT } from '@/Content/Seance/Seance';
 
@@ -22,9 +22,12 @@ export const SeanceMobileNavContainer = ({
     duration: 25,
   });
 
-  // Scroll to the active day whenever activeScheduleItemKey or datesArr change.
-  // reInit ensures Embla re-measures slides after the DOM updates (e.g., when
-  // datesArr loads asynchronously and slides appear after initial mount).
+  // Track whether slides have been initially loaded (async data fetch completed)
+  const hasInitialized = useRef(false);
+
+  // Scroll to the active day. On first run (async data just arrived) we call
+  // reInit() so Embla measures the newly added slides. On subsequent runs
+  // (day switching) we just scroll smoothly without reInit.
   useEffect(() => {
     if (!emblaApi) return;
     if (datesArr.length === 0) return;
@@ -36,9 +39,12 @@ export const SeanceMobileNavContainer = ({
 
     if (activeIndex === -1) return;
 
-    // Re-initialize Embla to pick up any new slides (e.g., after async data load),
-    // then scroll to the active index.
-    emblaApi.reInit();
+    if (!hasInitialized.current) {
+      hasInitialized.current = true;
+      // Re-initialize Embla to pick up slides that appeared after async data load
+      emblaApi.reInit();
+    }
+
     emblaApi.scrollTo(activeIndex);
   }, [emblaApi, activeScheduleItemKey, datesArr]);
 
