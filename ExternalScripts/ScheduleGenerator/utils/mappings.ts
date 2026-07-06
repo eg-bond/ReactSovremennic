@@ -1,6 +1,6 @@
 import { filmsArray } from '@/data/films';
-import { schedule } from '@/Content/Seance/schedule';
 import { transformScheduleData } from './transformSchedule';
+export type { ScheduleData } from './transformSchedule';
 
 // Создание маппинга постеров фильмов
 export interface FilmMapping {
@@ -47,17 +47,45 @@ const createPirateMapping = (): PirateMapping => {
   );
 };
 
-// Create a mapping from day keys to formatted date names (e.g., "Monday 2 of march")
-// Derive day keys from the schedule object
-export const dayKeyToDateName: Record<string, string> = Object.keys(schedule).reduce(
-  (acc, dayKey) => {
-    acc[dayKey] = dayKey;
-    return acc;
-  },
-  {} as Record<string, string>,
-);
-
 export const filmMapping = createFilmMapping();
 export const ageRatingMapping = createAgeRatingMapping();
 export const pirateMapping = createPirateMapping();
-export const scheduleData = transformScheduleData(schedule as Record<string, unknown[][]>);
+
+/**
+ * Build a dayKey → formatted date name mapping from datesArr.
+ * Example: { day0: "Воскресенье 5 июля", day1: "Понедельник 6 июля", ... }
+ */
+export function buildDayKeyToDateName(
+  datesArr: [string, string, string][],
+): Record<string, string> {
+  return datesArr.reduce(
+    (acc, [dayKey, dayName, dateStr]) => {
+      acc[dayKey] = `${dayName} ${dateStr}`;
+      return acc;
+    },
+    {} as Record<string, string>,
+  );
+}
+
+/**
+ * Fetch schedule.json and return the parsed data along with derived mappings.
+ */
+export async function fetchScheduleData(): Promise<{
+  dayKeyToDateName: Record<string, string>;
+  scheduleData: ReturnType<typeof transformScheduleData>;
+}> {
+  const response = await fetch('/schedule.json');
+  if (!response.ok) {
+    throw new Error(`Failed to fetch schedule.json: ${response.status}`);
+  }
+  const json = await response.json();
+  const { datesArr, schedule } = json as {
+    datesArr: [string, string, string][];
+    schedule: Record<string, unknown[][]>;
+  };
+
+  return {
+    scheduleData: transformScheduleData(schedule),
+    dayKeyToDateName: buildDayKeyToDateName(datesArr),
+  };
+}

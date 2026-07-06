@@ -1,17 +1,16 @@
 import { useState } from 'react';
 import {
-  dayKeyToDateName,
-  type AgeRatingMapping,
-  type FilmMapping,
-  type PirateMapping,
-} from '../utils/mappings';
-import {
   drawDaySchedule,
   generateScheduleImage,
   downloadImage,
   type StyleOverrides,
 } from '../horizontal/scheduleGenerator';
 import type { ScheduleData } from '../utils/transformSchedule';
+import type {
+  AgeRatingMapping,
+  FilmMapping,
+  PirateMapping,
+} from '../utils/mappings';
 
 interface UseScheduleDownloadReturn {
   downloadAll: () => Promise<void>;
@@ -28,6 +27,7 @@ export const useScheduleDownload = (
   scheduleData: ScheduleData,
   filmMapping: FilmMapping,
   canvasRef: React.RefObject<HTMLCanvasElement>,
+  dayKeyToDateName: Record<string, string>,
   ageRatingMapping?: AgeRatingMapping,
   pirateMapping?: PirateMapping,
   styleOverrides?: StyleOverrides,

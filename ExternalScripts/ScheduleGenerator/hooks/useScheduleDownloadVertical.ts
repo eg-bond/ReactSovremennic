@@ -1,11 +1,5 @@
 import { useState } from 'react';
 import {
-  dayKeyToDateName,
-  type AgeRatingMapping,
-  type FilmMapping,
-  type PirateMapping,
-} from '../utils/mappings';
-import {
   generateVerticalScheduleImage,
   generateWeekdayScheduleImage,
   generateWeekendScheduleImage,
@@ -15,6 +9,11 @@ import {
   type StyleOverrides,
 } from '../vertical/scheduleGeneratorVertical';
 import type { ScheduleData } from '../utils/transformSchedule';
+import type {
+  AgeRatingMapping,
+  FilmMapping,
+  PirateMapping,
+} from '../utils/mappings';
 
 interface UseScheduleDownloadVerticalReturn {
   downloadAll: () => Promise<void>;
@@ -30,6 +29,7 @@ interface UseScheduleDownloadVerticalReturn {
 export const useScheduleDownloadVertical = (
   scheduleData: ScheduleData,
   canvasRef: React.RefObject<HTMLCanvasElement>,
+  dayKeyToDateName: Record<string, string>,
   ageRatingMapping?: AgeRatingMapping,
   pirateMapping?: PirateMapping,
   styleOverrides?: StyleOverrides,
@@ -46,6 +46,7 @@ export const useScheduleDownloadVertical = (
         scheduleData,
         ageRatingMapping,
         selectedDay,
+        dayKeyToDateName,
         pirateMapping,
         styleOverrides,
         filmMapping,
@@ -65,6 +66,7 @@ export const useScheduleDownloadVertical = (
           scheduleData,
           ageRatingMapping,
           dayKey,
+          dayKeyToDateName,
           pirateMapping,
           styleOverrides,
           filmMapping,
@@ -84,6 +86,7 @@ export const useScheduleDownloadVertical = (
       const dataUrl = await generateWeekdayScheduleImage(
         scheduleData,
         ageRatingMapping,
+        dayKeyToDateName,
         pirateMapping,
         styleOverrides,
         filmMapping,
@@ -100,6 +103,7 @@ export const useScheduleDownloadVertical = (
       const dataUrl = await generateWeekendScheduleImage(
         scheduleData,
         ageRatingMapping,
+        dayKeyToDateName,
         pirateMapping,
         styleOverrides,
         filmMapping,
@@ -124,6 +128,7 @@ export const useScheduleDownloadVertical = (
             ageRatingMapping,
             1080,
             1920,
+            dayKeyToDateName,
             pirateMapping,
             styleOverrides,
             filmMapping,
@@ -135,6 +140,7 @@ export const useScheduleDownloadVertical = (
             ageRatingMapping,
             1080,
             1920,
+            dayKeyToDateName,
             pirateMapping,
             styleOverrides,
             filmMapping,

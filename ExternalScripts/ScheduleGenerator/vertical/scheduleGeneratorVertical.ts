@@ -1,5 +1,4 @@
 import { VERTICAL_STYLES } from './verticalStyles';
-import { dayKeyToDateName } from '../utils/mappings';
 import type { ScheduleData } from '../utils/transformSchedule';
 import type { AgeRatingMapping, FilmMapping, PirateMapping } from '../utils/mappings';
 
@@ -454,6 +453,7 @@ export const drawWeekdaySchedule = async (
   ageRatingMapping: AgeRatingMapping | undefined,
   width: number,
   height: number,
+  dayKeyToDateName: Record<string, string>,
   pirateMapping?: PirateMapping,
   styleOverrides?: StyleOverrides,
   filmMapping?: FilmMapping,
@@ -502,6 +502,7 @@ export const drawWeekendSchedule = async (
   ageRatingMapping: AgeRatingMapping | undefined,
   width: number,
   height: number,
+  dayKeyToDateName: Record<string, string>,
   pirateMapping?: PirateMapping,
   styleOverrides?: StyleOverrides,
   filmMapping?: FilmMapping,
@@ -547,6 +548,7 @@ export const drawWeekendSchedule = async (
 export const generateWeekdayScheduleImage = async (
   scheduleData: ScheduleData,
   ageRatingMapping: AgeRatingMapping | undefined,
+  dayKeyToDateName: Record<string, string>,
   pirateMapping?: PirateMapping,
   styleOverrides?: StyleOverrides,
   filmMapping?: FilmMapping,
@@ -562,7 +564,7 @@ export const generateWeekdayScheduleImage = async (
   if (ctx) {
     await drawWeekdaySchedule(
       ctx, scheduleData, ageRatingMapping,
-      canvas.width, canvas.height, pirateMapping, styleOverrides, filmMapping,
+      canvas.width, canvas.height, dayKeyToDateName, pirateMapping, styleOverrides, filmMapping,
     );
     return canvas.toDataURL('image/jpeg') as string;
   }
@@ -572,6 +574,7 @@ export const generateWeekdayScheduleImage = async (
 export const generateWeekendScheduleImage = async (
   scheduleData: ScheduleData,
   ageRatingMapping: AgeRatingMapping | undefined,
+  dayKeyToDateName: Record<string, string>,
   pirateMapping?: PirateMapping,
   styleOverrides?: StyleOverrides,
   filmMapping?: FilmMapping,
@@ -587,7 +590,7 @@ export const generateWeekendScheduleImage = async (
   if (ctx) {
     await drawWeekendSchedule(
       ctx, scheduleData, ageRatingMapping,
-      canvas.width, canvas.height, pirateMapping, styleOverrides, filmMapping,
+      canvas.width, canvas.height, dayKeyToDateName, pirateMapping, styleOverrides, filmMapping,
     );
     return canvas.toDataURL('image/jpeg') as string;
   }
@@ -598,6 +601,7 @@ export const generateVerticalScheduleImage = async (
   scheduleData: ScheduleData,
   ageRatingMapping: AgeRatingMapping | undefined,
   dayKey: string,
+  dayKeyToDateName: Record<string, string>,
   pirateMapping?: PirateMapping,
   styleOverrides?: StyleOverrides,
   filmMapping?: FilmMapping,
@@ -617,12 +621,12 @@ export const generateVerticalScheduleImage = async (
   if (isWeekday) {
     await drawWeekdaySchedule(
       ctx, scheduleData, ageRatingMapping,
-      canvas.width, canvas.height, pirateMapping, styleOverrides, filmMapping,
+      canvas.width, canvas.height, dayKeyToDateName, pirateMapping, styleOverrides, filmMapping,
     );
   } else {
     await drawWeekendSchedule(
       ctx, scheduleData, ageRatingMapping,
-      canvas.width, canvas.height, pirateMapping, styleOverrides, filmMapping,
+      canvas.width, canvas.height, dayKeyToDateName, pirateMapping, styleOverrides, filmMapping,
     );
   }
 

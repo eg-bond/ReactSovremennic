@@ -6,6 +6,7 @@ import type { AgeRatingMapping, FilmMapping, PirateMapping } from '../utils/mapp
 
 interface Props {
   ageRatingMapping?: AgeRatingMapping;
+  dayKeyToDateName: Record<string, string>;
   filmMapping?: FilmMapping;
   pirateMapping?: PirateMapping;
   scheduleData: ScheduleData;
@@ -14,6 +15,7 @@ interface Props {
 export const ScheduleImageGeneratorVertical = ({
   scheduleData,
   ageRatingMapping,
+  dayKeyToDateName,
   filmMapping,
   pirateMapping,
 }: Props) => {
@@ -48,6 +50,7 @@ export const ScheduleImageGeneratorVertical = ({
   } = useScheduleDownloadVertical(
     scheduleData,
     canvasRef,
+    dayKeyToDateName,
     ageRatingMapping,
     pirateMapping,
     styleOverrides,

@@ -4,15 +4,16 @@ import { useFormatStyles } from './hooks/useFormatStyles';
 import { StyleEditorPanel } from './components/StyleEditorPanel';
 import { useScheduleDownload } from '../hooks/useScheduleDownload';
 import { DaySelectionPanel } from './components/DaySelectionPanel';
-import {
-  type AgeRatingMapping,
-  type FilmMapping,
-  type PirateMapping,
-} from '../utils/mappings';
 import type { ScheduleData } from '../utils/transformSchedule';
+import type {
+  AgeRatingMapping,
+  FilmMapping,
+  PirateMapping,
+} from '../utils/mappings';
 
 interface Props {
   ageRatingMapping?: AgeRatingMapping;
+  dayKeyToDateName: Record<string, string>;
   filmMapping: FilmMapping;
   pirateMapping?: PirateMapping;
   scheduleData: ScheduleData;
@@ -22,6 +23,7 @@ export const ScheduleImageGeneratorHorizontal = ({
   scheduleData,
   filmMapping,
   ageRatingMapping,
+  dayKeyToDateName,
   pirateMapping,
 }: Props) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -47,6 +49,7 @@ export const ScheduleImageGeneratorHorizontal = ({
     scheduleData,
     filmMapping,
     canvasRef,
+    dayKeyToDateName,
     ageRatingMapping,
     pirateMapping,
     styleOverrides,
