@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
+import * as s from './IndexContent.css.ts';
 import { MobileAdv } from '@/components/Adv';
 import { CINEMA_PHONE } from '@/utils/constants';
 import { SushiWork } from '@/components/SushiWork';
 import { BarSlider } from '@/components/BarSlider';
 import { VkVideoEmbed } from '@/components/VkVideoEmbed';
 import { SeparatorMobile } from '@/components/SeparatorMobile';
-import * as s from './IndexContent.css.ts';
 import type { SpecialStateT } from '@/types/special';
 
 function IndexContent({ isMobile, siteMode }: {
@@ -17,7 +17,7 @@ function IndexContent({ isMobile, siteMode }: {
       {siteMode === 'default' && (
         <div className={s.trailers}>
           {isMobile && <h4>Трейлеры</h4>}
-          <VkVideoEmbed videoId="31575153_456245341" />
+          <VkVideoEmbed videoId="31575153_456245666" />
         </div>
       )}
 
