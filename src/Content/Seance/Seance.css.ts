@@ -49,6 +49,12 @@ const spin = keyframes({
   '100%': { transform: 'rotate(360deg)' },
 });
 
+// export const phone = style({
+//   fontSize: '1.35rem',
+//   margin: '2% 1% 0 1.5%',
+
+// });
+
 export const spinner = style({
   width: '60px',
   height: '60px',

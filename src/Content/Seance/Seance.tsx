@@ -1,14 +1,15 @@
-import { MobileAdv } from '@/components/Adv';
 import { useCallback, useState } from 'react';
+import * as s from './Seance.css.ts';
+import { MobileAdv } from '@/components/Adv';
+import { TableContent } from './seanceComponents';
 import { SushiWork } from '@/components/SushiWork';
 import { BarSlider } from '@/components/BarSlider';
+import { CINEMA_PHONE } from '@/utils/constants.ts';
+import { SeanceMobileNav } from './seanceComponents';
 import { OnlineSales } from '@/components/OnlineSales';
+import { CreateSeanceButtons } from './seanceComponents';
 import { useSeanceSchedule } from '@/hooks/useSeanceSchedule';
 import { SeparatorMobile } from '@/components/SeparatorMobile';
-import * as s from './Seance.css.ts';
-import { TableContent } from './seanceComponents';
-import { SeanceMobileNav } from './seanceComponents';
-import { CreateSeanceButtons } from './seanceComponents';
 import type { SpecialStateT } from '@/types/special';
 
 type DateKeysT = 'day0' | 'day1' | 'day2' | 'day3' | 'day4' | 'day5' | 'day6';
@@ -87,6 +88,11 @@ const Seance = ({ isMobile, siteMode }: {
       )}
 
       <OnlineSales />
+
+      {/* <p className={s.phone}>
+        Узнать расписание сеансов и забронировать места в кинозале можно по телефону:
+        <span style={{ whiteSpace: 'nowrap' }}>{CINEMA_PHONE}</span>
+      </p> */}
 
       <SeparatorMobile variant="index" />
       <BarSlider />
