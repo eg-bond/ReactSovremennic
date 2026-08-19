@@ -89,10 +89,10 @@ const Seance = ({ isMobile, siteMode }: {
 
       <OnlineSales />
 
-      {/* <p className={s.phone}>
+      <p className={s.phone}>
         Узнать расписание сеансов и забронировать места в кинозале можно по телефону:
         <span style={{ whiteSpace: 'nowrap' }}>{CINEMA_PHONE}</span>
-      </p> */}
+      </p>
 
       <SeparatorMobile variant="index" />
       <BarSlider />
