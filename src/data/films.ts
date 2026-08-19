@@ -75,7 +75,7 @@ export const filmsArray = [
     title: 'Человек-паук: Новый день',
     beginDate: 'с 20 августа',
     endDate: '',
-    pirate: false,
+    pirate: true,
     kind: 'Фантастика, фэнтези, боевик, приключения',
     director: 'Дестин Дэниел Креттон',
     duration: '150 мин. / 02:30',
