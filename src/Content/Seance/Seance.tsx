@@ -4,6 +4,7 @@ import { MobileAdv } from '@/components/Adv';
 import { TableContent } from './seanceComponents';
 import { SushiWork } from '@/components/SushiWork';
 import { BarSlider } from '@/components/BarSlider';
+import { PhoneLink } from '@/components/PhoneLink';
 import { CINEMA_PHONE } from '@/utils/constants.ts';
 import { SeanceMobileNav } from './seanceComponents';
 import { OnlineSales } from '@/components/OnlineSales';
@@ -90,8 +91,9 @@ const Seance = ({ isMobile, siteMode }: {
       <OnlineSales />
 
       <p className={s.phone}>
-        Узнать расписание сеансов и забронировать места в кинозале можно по телефону:
-        <span style={{ whiteSpace: 'nowrap' }}>{CINEMA_PHONE}</span>
+        Также можно забронировать места в кинозале по телефону:
+        {' '}
+        <PhoneLink phone={CINEMA_PHONE} />
       </p>
 
       <SeparatorMobile variant="index" />

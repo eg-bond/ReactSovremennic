@@ -1,5 +1,6 @@
-import { CINEMA_PHONE } from '@/utils/constants';
 import * as s from './InfoPages.css.ts';
+import { CINEMA_PHONE } from '@/utils/constants';
+import { PhoneLink } from '@/components/PhoneLink';
 import type { SpecialStateT } from '@/types/special';
 
 const SRC =
@@ -28,7 +29,7 @@ function About({ siteMode }: {
         <p>
           Узнать раписание кинотеатра можно на нашем сайте или по телефону
           {' '}
-          <span style={{ whiteSpace: 'nowrap' }}>{CINEMA_PHONE}</span>
+          <PhoneLink phone={CINEMA_PHONE} />
           , по
           этому телефону можно забронировать билеты, как частному лицу, так и
           организациям для массового просмотра фильма.

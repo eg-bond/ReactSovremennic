@@ -51,8 +51,15 @@ const spin = keyframes({
 
 export const phone = style({
   fontSize: '1.5rem',
-  margin: '2% 1% 0 1.5%',
-  textAlign: 'justify',
+  margin: '2% 1% 2.5% 1%',
+  textAlign: 'center',
+  '@media': {
+    [breakpoints.w992]: { fontSize: '1.1rem' },
+    [breakpoints.mobile]: {
+      fontSize: '3.5vw',
+      margin: '0 1vw 1.5vw 1vw',
+    },
+  },
 });
 
 export const spinner = style({

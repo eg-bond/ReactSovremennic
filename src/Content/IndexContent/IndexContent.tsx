@@ -4,6 +4,7 @@ import { MobileAdv } from '@/components/Adv';
 import { CINEMA_PHONE } from '@/utils/constants';
 import { SushiWork } from '@/components/SushiWork';
 import { BarSlider } from '@/components/BarSlider';
+import { PhoneLink } from '@/components/PhoneLink';
 import { VkVideoEmbed } from '@/components/VkVideoEmbed';
 import { SeparatorMobile } from '@/components/SeparatorMobile';
 import type { SpecialStateT } from '@/types/special';
@@ -39,14 +40,14 @@ function IndexContent({ isMobile, siteMode }: {
         </p>
         <p>
           • Узнать расписание сеансов и забронировать места в кинозале можно по телефону:
-          <span style={{ whiteSpace: 'nowrap' }}>{CINEMA_PHONE}</span>
+          <PhoneLink phone={CINEMA_PHONE} />
         </p>
         <p>
           • Бар "КИН-НО". Время работы: понедельник - четверг с 12:00 до 23:00,
           пятница - суббота с 12:00 до 01:00, воскресенье с 12:00 до 23:00.
           Доставка осуществляется в часы работы ресторана, телефон:
           {' '}
-          <span style={{ display: 'inline-block' }}>+7-992-177-24-11.</span>
+          <PhoneLink displayText="+7-992-177-24-11." phone="+7-992-177-24-11" />
           {' '}
           Меню на
           <Link className={s.ref} to="sushi">

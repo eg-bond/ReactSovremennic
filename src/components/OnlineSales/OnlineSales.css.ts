@@ -19,7 +19,7 @@ export const salesBtn = style({
     [breakpoints.mobile]: {
       fontSize: vars.fontSize.mobileTitles,
       padding: '2vw',
-      marginBottom: '2.5vw',
+      marginBottom: '1.5vw',
     },
   },
 });
