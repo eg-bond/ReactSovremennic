@@ -10,7 +10,7 @@ import { removeLineBreaks } from '@/utils/formatTextWithLineBreaks';
 import type { CinemaStateT } from '@/types/cinema';
 import * as s from './BottomSlider.css';
 
-const LINKS = ['moana', 'astral_6', 'nineth_planet', 'heart_of_the_beast'];
+const LINKS = ['moana', 'nineth_planet', 'heart_of_the_beast', 'resident_evil'];
 
 export const BottomSlider = memo<BottomSliderT>(function BottomSlider({ isMobile }) {
   const filmsToday = useMemo(
