@@ -168,7 +168,7 @@ export const getLayoutConfig = (filmCount: number) => {
       // Title --------------------------------------------------------
       titlePaddingBottom: 0,
       titleLineHeight: 30, // междустрочное расстояние для заголовка
-      titleFontSize: 26,
+      titleFontSize: 23,
       // Pirate banner ------------------------------------------------
       pirateBannerHeight: 60,
       pirateBannerFontSize: 14,
