@@ -11,9 +11,9 @@ export function DesktopAdv() {
     <div className={s.desktopAdvWrapper}>
       <AdvSlider slides={FIRST_SLIDER_SLIDES} type="slide" />
 
-      <div className={s.advMarginTop}>
+      {/* <div className={s.advMarginTop}>
         <AdvSlider slides={SECOND_SLIDER_SLIDES} type="slide" />
-      </div>
+      </div> */}
 
       <div className={s.advMarginTop}>
         <SushiWorkModal />
