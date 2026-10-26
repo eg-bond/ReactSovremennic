@@ -47,11 +47,14 @@ export const SushiCutsSlide = () => (
 export const LottenSlide = () => (
   <BaseSlide
     link={{
-      type: SlideType.External,
-      path: 'https://lotten.ru',
+      type: SlideType.Modal,
+      modalImage: {
+        src: '/Images/karaoke.jpg',
+        alt: 'Ищем ведущего караоке (крупным планом)',
+      },
     }}
-    alt="lotten кадастровые услуги"
-    imgSrc="/Images/lotten_adv.webp"
+    alt="Ищем ведущего караоке"
+    imgSrc="/Images/karaoke.jpg"
     tabIndex={2}
   />
 );
