@@ -19,13 +19,13 @@ const schedule = dataToObj(data);
 const finalSchedule = finalizeScedule(schedule);
 
 const datesArr: Array<[string, string, string]> = [
-  ['day4', 'Четверг', '5 ноября'],
-  ['day5', 'Пятница', '6 ноября'],
-  ['day6', 'Суббота', '7 ноября'],
-  ['day0', 'Воскресенье', '8 ноября'],
   ['day1', 'Понедельник', '9 ноября'],
   ['day2', 'Вторник', '10 ноября'],
   ['day3', 'Среда', '11 ноября'],
+  ['day4', 'Четверг', '12 ноября'],
+  ['day5', 'Пятница', '13 ноября'],
+  ['day6', 'Суббота', '14 ноября'],
+  ['day0', 'Воскресенье', '15 ноября'],
 ];
 
 // Write final data to public/schedule.json file
@@ -111,6 +111,7 @@ function findTitleAndAge() {
 
 export function findFirstWordInTitle(title: string) {
   const cleaned = title.replace(/[\.:!,*]/gi, '').toLowerCase();
-  const result = cleaned.slice(0, Math.min(6, cleaned.length)).trim();
+  // тут меняем в Math.min первую цифру для изменения количества захватываемых букв
+  const result = cleaned.slice(0, Math.min(3, cleaned.length)).trim();
   return result;
 }
