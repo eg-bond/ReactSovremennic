@@ -1,10 +1,11 @@
 import { AdvSlider } from '@/components/AdvSlider';
 import { SushiWorkModal } from '@/components/SushiWork';
-import { LottenSlide, SushiSlide } from '@/components/AdvSlider/Slides';
+import { KaraokeVidsSlide, LottenSlide, SushiSlide } from '@/components/AdvSlider/Slides';
 import * as s from './Adv.css';
 
 const FIRST_SLIDER_SLIDES = [SushiSlide];
 const SECOND_SLIDER_SLIDES = [LottenSlide];
+const THIRD_SLIDER_SLIDES = [KaraokeVidsSlide];
 
 export function DesktopAdv() {
   return (
@@ -13,6 +14,10 @@ export function DesktopAdv() {
 
       <div className={s.advMarginTop}>
         <AdvSlider slides={SECOND_SLIDER_SLIDES} type="slide" />
+      </div>
+
+      <div className={s.advMarginTop}>
+        <AdvSlider aspectRatio="16/9" slides={THIRD_SLIDER_SLIDES} type="slide" />
       </div>
 
       <div className={s.advMarginTop}>

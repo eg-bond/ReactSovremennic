@@ -2,21 +2,6 @@ import { SlideType } from './types';
 import { BaseSlide } from './BaseSlide';
 import { SUSHI_BAR_URL } from '@/utils/constants';
 
-export const AfishaSlide = () => (
-  <BaseSlide
-    link={{
-      type: SlideType.Modal,
-      modalImage: {
-        src: '/Images/karaoke_afisha.webp',
-        alt: 'Афиша мероприятий Январь (крупным планом)',
-      },
-    }}
-    alt="Афиша мероприятий Январь"
-    imgSrc="/Images/karaoke_afisha.webp"
-    tabIndex={2}
-  />
-);
-
 export const SushiSlide = () => (
   <BaseSlide
     link={{
@@ -25,6 +10,18 @@ export const SushiSlide = () => (
     }}
     alt="бар"
     imgSrc="/Images/sushi_adv.webp"
+    tabIndex={2}
+  />
+);
+
+export const KaraokeVidsSlide = () => (
+  <BaseSlide
+    link={{
+      type: SlideType.Internal,
+      path: SUSHI_BAR_URL,
+    }}
+    alt="Видео с караоке бара"
+    imgSrc="/Images/karaoke_vids.jpg"
     tabIndex={2}
   />
 );
@@ -49,12 +46,12 @@ export const LottenSlide = () => (
     link={{
       type: SlideType.Modal,
       modalImage: {
-        src: '/Images/karaoke.jpg',
-        alt: 'Ищем ведущего караоке (крупным планом)',
+        src: '/Images/disco.jpg',
+        alt: 'Караоке афиша - ноябрь (крупным планом)',
       },
     }}
-    alt="Ищем ведущего караоке"
-    imgSrc="/Images/karaoke.jpg"
+    alt="Караоке афиша - ноябрь"
+    imgSrc="/Images/disco.jpg"
     tabIndex={2}
   />
 );
