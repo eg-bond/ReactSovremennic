@@ -2,7 +2,7 @@ import { style, globalStyle } from '@vanilla-extract/css';
 import { breakpoints } from '@/styles/theme.css';
 
 export const container = style({
-  gridColumn: '1/4',
+  gridColumn: '1/5',
   margin: '0 auto',
   padding: '20px',
   width: '100%',

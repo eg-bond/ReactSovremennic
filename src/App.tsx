@@ -1,6 +1,6 @@
 import './styles/global.css';
 import { useRef } from 'react';
-import { SeparatorMobile } from '@/components/SeparatorMobile';
+import { useLocation } from 'react-router-dom';
 import * as s from './App.css.ts';
 import Content from './Content/Content';
 import Footer from './components/Footer';
@@ -11,9 +11,12 @@ import { useMediaQuery } from './hooks/useMediaQuery';
 import { FilmsSlider } from './components/FilmsSlider';
 import { useScrollToTop } from './hooks/useScrollToTop';
 import { BottomSlider } from './components/BottomSlider';
+import { SeparatorMobile } from '@/components/SeparatorMobile';
 import { useSpecialSettings } from './hooks/useSpecialSettings';
 
 const App = () => {
+  const { pathname } = useLocation();
+
   // ---- Special/accessibility state ----
   const specialSettings = useSpecialSettings();
   const {
@@ -48,7 +51,7 @@ const App = () => {
 
           <div className={s.mainContainerContent} ref={contentRef}>
             <Content fontSize={fontSize} isMobile={isMobile} siteMode={siteMode} />
-            {!isMobile && <DesktopAdv />}
+            {!isMobile && !pathname.startsWith('/videos') && <DesktopAdv />}
           </div>
 
           {siteMode === 'default' && <BottomSlider isMobile={isMobile} />}

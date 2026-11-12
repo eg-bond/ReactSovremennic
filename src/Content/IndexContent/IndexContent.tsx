@@ -18,7 +18,7 @@ function IndexContent({ isMobile, siteMode }: {
       {siteMode === 'default' && (
         <div className={s.trailers}>
           {isMobile && <h4>Трейлеры</h4>}
-          <VkVideoEmbed videoId="23900316_456245872" />
+          <VkVideoEmbed videoId="24371598_456320201" />
         </div>
       )}
 

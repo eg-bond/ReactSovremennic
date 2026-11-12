@@ -18,7 +18,7 @@ export const KaraokeVidsSlide = () => (
   <BaseSlide
     link={{
       type: SlideType.Internal,
-      path: SUSHI_BAR_URL,
+      path: '/videos',
     }}
     alt="Видео с караоке бара"
     imgSrc="/Images/karaoke_vids.jpg"

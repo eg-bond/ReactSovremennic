@@ -10,14 +10,15 @@ const THIRD_SLIDER_SLIDES = [KaraokeVidsSlide];
 export function DesktopAdv() {
   return (
     <div className={s.desktopAdvWrapper}>
-      <AdvSlider slides={FIRST_SLIDER_SLIDES} type="slide" />
 
-      <div className={s.advMarginTop}>
-        <AdvSlider slides={SECOND_SLIDER_SLIDES} type="slide" />
-      </div>
+      <AdvSlider slides={SECOND_SLIDER_SLIDES} type="slide" />
 
       <div className={s.advMarginTop}>
         <AdvSlider aspectRatio="16/9" slides={THIRD_SLIDER_SLIDES} type="slide" />
+      </div>
+
+      <div className={s.advMarginTop}>
+        <AdvSlider slides={FIRST_SLIDER_SLIDES} type="slide" />
       </div>
 
       <div className={s.advMarginTop}>
@@ -39,6 +40,7 @@ export function MobileAdv() {
           <AdvSlider slides={SECOND_SLIDER_SLIDES} />
         </div>
       </div>
+
     </div>
   );
 }
