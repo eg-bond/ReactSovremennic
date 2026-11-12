@@ -1,14 +1,15 @@
 import { Suspense, lazy, memo } from 'react';
-import Redirect from '@/components/Redirect';
 import { Routes, Route } from 'react-router-dom';
 import Seance from './Seance/Seance';
 import * as s from './Content.css.ts';
 import About from './InfoPages/About';
 import Rules from './InfoPages/Rules';
+import Redirect from '@/components/Redirect';
 import { SelectedMovie } from './SelectedMovie';
 import IndexContent from './IndexContent/IndexContent';
 import type { SpecialStateT } from '@/types/special';
 const Karaoke = lazy(() => import('./Karaoke'));
+const Videos = lazy(() => import('./Videos'));
 
 const Content = memo<{
   fontSize: SpecialStateT['fontSize'];
@@ -37,6 +38,7 @@ siteMode,
 
         {/* lazy routes */}
         <Route element={<Karaoke />} path="karaoke" />
+        <Route element={<Videos />} path="videos" />
 
         {/* catch all - redirect to home */}
         <Route element={<Redirect to="/" />} path="*" />

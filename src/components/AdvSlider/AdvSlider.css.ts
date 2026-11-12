@@ -12,7 +12,7 @@ export const advSlider = style({
 });
 
 export const advSliderWide = style({
-  aspectRatio: '16/9',
+  aspectRatio: '16/10',
 });
 
 export const imgContainer = style({
@@ -46,7 +46,7 @@ export const img = style({
   borderRadius: vars.borderRadius.images,
   width: '100%',
   height: '100%',
-  objectFit: 'cover',
+  // objectFit: 'cover',
 });
 
 export const modalButton = style({
