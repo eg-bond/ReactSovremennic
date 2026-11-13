@@ -1,4 +1,5 @@
 import { SlideType } from './types';
+import { reels } from '@/data/reels';
 import { BaseSlide } from './BaseSlide';
 import { SUSHI_BAR_URL } from '@/utils/constants';
 
@@ -17,8 +18,8 @@ export const SushiSlide = () => (
 export const KaraokeVidsSlide = () => (
   <BaseSlide
     link={{
-      type: SlideType.Internal,
-      path: '/videos',
+      type: SlideType.VideoModal,
+      videos: reels,
     }}
     alt="Видео с караоке бара"
     imgSrc="/Images/karaoke_vids.jpg"
@@ -41,7 +42,7 @@ export const SushiCutsSlide = () => (
   />
 );
 
-export const LottenSlide = () => (
+export const KaraokeAfishaSlide = () => (
   <BaseSlide
     link={{
       type: SlideType.Modal,

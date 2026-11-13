@@ -1,12 +1,21 @@
-import { IModalImage, Modal } from '@/components/Modal';
 import { createContext, useContext, useState, useCallback } from 'react';
+import { IModalImage, Modal } from '@/components/Modal';
+import { IVideoItem, VideoModal } from '@/components/VideoModal';
 
 interface ModalContextType {
   closeModal: () => void;
-  openModal: (image: {
-    alt: string; src: string;
-  }) => void;
+  openModal: (image: IModalImage) => void;
+  openVideoModal: (videos: IVideoItem[]) => void;
 }
+
+type ModalState =
+  | {
+    image: IModalImage; type: 'image';
+  }
+  | {
+    type: 'video'; videos: IVideoItem[];
+  }
+  | null;
 
 const ModalContext = createContext<ModalContextType | null>(null);
 
@@ -21,21 +30,28 @@ export const useModal = () => {
 export const ModalProvider = ({ children }: {
   children: React.ReactNode;
 }) => {
-  const [modalImage, setModalImage] = useState<IModalImage | null>(null);
+  const [modal, setModal] = useState<ModalState>(null);
 
   const openModal = useCallback((image: IModalImage) => {
-    setModalImage(image);
+    setModal({ type: 'image', image });
+  }, []);
+
+  const openVideoModal = useCallback((videos: IVideoItem[]) => {
+    setModal({ type: 'video', videos });
   }, []);
 
   const closeModal = useCallback(() => {
-    setModalImage(null);
+    setModal(null);
   }, []);
 
   return (
-    <ModalContext.Provider value={{ openModal, closeModal }}>
+    <ModalContext.Provider value={{ openModal, openVideoModal, closeModal }}>
       {children}
-      {modalImage && (
-        <Modal image={modalImage} onClose={closeModal} />
+      {modal?.type === 'image' && (
+        <Modal image={modal.image} onClose={closeModal} />
+      )}
+      {modal?.type === 'video' && (
+        <VideoModal videos={modal.videos} onClose={closeModal} />
       )}
     </ModalContext.Provider>
   );

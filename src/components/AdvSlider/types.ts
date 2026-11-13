@@ -1,7 +1,10 @@
+import type { IVideoItem } from '@/components/VideoModal';
+
 export enum SlideType {
   Internal = 'internal',
   External = 'external',
   Modal = 'modal',
+  VideoModal = 'video-modal',
   None = 'none',
 }
 
@@ -28,8 +31,19 @@ interface ModalLink extends BaseLink {
   type: SlideType.Modal;
 }
 
+interface VideoModalLink extends BaseLink {
+  type: SlideType.VideoModal;
+  /** Videos played one after another inside the modal. */
+  videos: IVideoItem[];
+}
+
 // Union type of all possible link types
-export type LinkType = InternalLink | ExternalLink | ModalLink | undefined;
+export type LinkType =
+  | InternalLink
+  | ExternalLink
+  | ModalLink
+  | VideoModalLink
+  | undefined;
 
 // Main interface using the union type
 export interface ISlideImgWrapper {
@@ -48,6 +62,10 @@ export interface IBaseSlide {
 // Type guard functions
 export const isModalLink = (link: LinkType): link is ModalLink => {
   return link?.type === SlideType.Modal;
+};
+
+export const isVideoModalLink = (link: LinkType): link is VideoModalLink => {
+  return link?.type === SlideType.VideoModal;
 };
 
 export const isInternalLink = (link: LinkType): link is InternalLink => {

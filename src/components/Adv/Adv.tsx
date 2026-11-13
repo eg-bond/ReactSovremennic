@@ -1,10 +1,11 @@
 import { AdvSlider } from '@/components/AdvSlider';
 import { SushiWorkModal } from '@/components/SushiWork';
-import { KaraokeVidsSlide, LottenSlide, SushiSlide } from '@/components/AdvSlider/Slides';
+import { SeparatorMobile } from '@/components/SeparatorMobile';
+import { KaraokeVidsSlide, KaraokeAfishaSlide, SushiSlide } from '@/components/AdvSlider/Slides';
 import * as s from './Adv.css';
 
 const FIRST_SLIDER_SLIDES = [SushiSlide];
-const SECOND_SLIDER_SLIDES = [LottenSlide];
+const SECOND_SLIDER_SLIDES = [KaraokeAfishaSlide];
 const THIRD_SLIDER_SLIDES = [KaraokeVidsSlide];
 
 export function DesktopAdv() {
@@ -39,6 +40,12 @@ export function MobileAdv() {
         <div className={s.mobileAdvItem2}>
           <AdvSlider slides={SECOND_SLIDER_SLIDES} />
         </div>
+      </div>
+
+      <SeparatorMobile variant="index" />
+
+      <div className={s.advMarginTop} style={{ marginBottom: '2vw' }}>
+        <AdvSlider aspectRatio="16/9" slides={THIRD_SLIDER_SLIDES} type="slide" />
       </div>
 
     </div>

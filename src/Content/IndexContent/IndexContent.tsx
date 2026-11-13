@@ -67,10 +67,10 @@ function IndexContent({ isMobile, siteMode }: {
       </div>
 
       <SeparatorMobile variant="index" />
-      <BarSlider />
+      {isMobile && <MobileAdv />}
 
       <SeparatorMobile variant="index" />
-      {isMobile && <MobileAdv />}
+      <BarSlider />
 
       <SeparatorMobile variant="index" />
       {isMobile && <SushiWork />}

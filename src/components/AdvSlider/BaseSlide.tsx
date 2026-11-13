@@ -1,7 +1,14 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useModal } from '@/contexts/ModalContext';
-import { IBaseSlide, isExternalLink, isInternalLink, ISlideImgWrapper, isModalLink } from './types';
+import {
+  IBaseSlide,
+  isExternalLink,
+  isInternalLink,
+  ISlideImgWrapper,
+  isModalLink,
+  isVideoModalLink,
+} from './types';
 import * as s from './AdvSlider.css';
 
 export const SlideImgWrapper: React.FC<ISlideImgWrapper> = ({
@@ -9,7 +16,7 @@ export const SlideImgWrapper: React.FC<ISlideImgWrapper> = ({
   link,
   tabIndex,
 }) => {
-  const { openModal } = useModal();
+  const { openModal, openVideoModal } = useModal();
 
   if (!link) return <>{children}</>;
 
@@ -19,6 +26,18 @@ export const SlideImgWrapper: React.FC<ISlideImgWrapper> = ({
         className={s.modalButton}
         tabIndex={tabIndex}
         onClick={() => openModal(link.modalImage)}
+      >
+        {children}
+      </button>
+    );
+  }
+
+  if (isVideoModalLink(link)) {
+    return (
+      <button
+        className={s.modalButton}
+        tabIndex={tabIndex}
+        onClick={() => openVideoModal(link.videos)}
       >
         {children}
       </button>
