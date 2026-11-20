@@ -10,7 +10,7 @@ import { removeLineBreaks } from '@/utils/formatTextWithLineBreaks';
 import type { CinemaStateT } from '@/types/cinema';
 import * as s from './BottomSlider.css';
 
-const LINKS = ['alexandr', 'hunger_games', 'dvornyashka'];
+const LINKS = ['alexandr', 'hunger_games', 'dvornyashka', 'osd'];
 
 export const BottomSlider = memo<BottomSliderT>(function BottomSlider({ isMobile }) {
   const filmsToday = useMemo(

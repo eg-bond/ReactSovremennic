@@ -19,13 +19,13 @@ const schedule = dataToObj(data);
 const finalSchedule = finalizeScedule(schedule);
 
 const datesArr: Array<[string, string, string]> = [
-  ['day1', 'Понедельник', '16 ноября'],
-  ['day2', 'Вторник', '17 ноября'],
-  ['day3', 'Среда', '18 ноября'],
   ['day4', 'Четверг', '19 ноября'],
   ['day5', 'Пятница', '20 ноября'],
   ['day6', 'Суббота', '21 ноября'],
   ['day0', 'Воскресенье', '22 ноября'],
+  ['day1', 'Понедельник', '23 ноября'],
+  ['day2', 'Вторник', '24 ноября'],
+  ['day3', 'Среда', '25 ноября'],
 ];
 
 // Write final data to public/schedule.json file
